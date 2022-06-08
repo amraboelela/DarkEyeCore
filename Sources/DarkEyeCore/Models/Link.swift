@@ -9,9 +9,9 @@
 import Foundation
 import SwiftLevelDB
 
-public struct LinksContainer: Codable {
+/*public struct LinksContainer: Codable {
     public var links: [Link]
-}
+}*/
 
 public struct Link: Codable {
     public static let prefix = "link-"
@@ -64,6 +64,10 @@ public struct Link: Codable {
     
     public static func key(ofLink link: Link) -> String {
         return prefix + "-" + link.url
+    }
+    
+    public static func crawl() {
+        
     }
     
     public static func save(link: Link) -> Bool {
