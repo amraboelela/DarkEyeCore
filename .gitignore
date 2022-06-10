@@ -4,6 +4,7 @@
 
 .DS_Store
 *.log
+log.txt
 
 ## Build generated
 build/
@@ -68,3 +69,13 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+
+*.xcodeproj
+db.sqlite
+built_git_head.txt
+listwalletusers.txt
+*.key
+*.pem
+
+Library
+log

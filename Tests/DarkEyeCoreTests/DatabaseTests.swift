@@ -14,6 +14,8 @@ final class DatabaseTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Tests/DarkEyeCoreTests/DatabaseTests.swift", with: "")).path
+        database = Database(parentPath: packageRoot + "Library", name: "Database")
     }
     
     override func tearDown() {
@@ -21,13 +23,11 @@ final class DatabaseTests: XCTestCase {
     }
     
     func testInit() {
-        let database = Database(name: "Database")
         XCTAssertNotNil(database)
         XCTAssertNotNil(database.parentPath)
     }
     
     func testParentPath() {
-        let database = Database(name: "Database")
         database.parentPath = "/path/to/Library"
         XCTAssertEqual(database.dbPath, "/path/to/Library/Database")
     }

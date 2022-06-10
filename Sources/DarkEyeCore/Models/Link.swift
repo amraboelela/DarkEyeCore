@@ -31,7 +31,7 @@ public struct Link: Codable {
     }
 
     public var key: String {
-        return Link.prefix + "-" + url
+        return Link.prefix + url
     }
 
     // MARK: - Reading data
@@ -89,22 +89,7 @@ public struct Link: Codable {
             if result.count > count {
                 result.removeLast(result.count - count)
             }
-        } /*else {
-            //logger.log("getPosts, searchText is empty")
-            var startAtKey: String? = nil
-            if let time = time {
-                startAtKey = prefix + "\(time)"
-            } else {
-                database.enumerateKeysAndValues(backward: before, startingAtKey: startAtKey, andPrefix: prefix) { (key, post: Post, stop) in
-                    if result.count < count {
-                        result.append(post)
-                    } else {
-                        stop.pointee = true
-                    }
-                }
-            }
-            
-        }*/
+        }
         return result
     }
     
@@ -123,7 +108,7 @@ public struct Link: Codable {
     // MARK: - Public functions
     
     public static func key(ofLink link: Link) -> String {
-        return prefix + "-" + link.url
+        return prefix + link.url
     }
     
     public static func crawl() {
@@ -133,7 +118,7 @@ public struct Link: Codable {
     public static func save(link: Link) -> Bool {
         var newLink = false
         let url = link.url
-        let key = prefix + "-" + url
+        let key = prefix + url
         if let _: Link = database[key] {
         } else {
             newLink = true
