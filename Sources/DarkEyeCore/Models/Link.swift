@@ -34,7 +34,7 @@ public struct Link: Codable {
         return Link.prefix + url
     }
 
-    // MARK: - Reading data
+    // MARK: - Factory methods
     
     public static func with(url: String) -> Link {
         return Link(url: url)
@@ -44,42 +44,29 @@ public struct Link: Codable {
         return Link(url: url(fromKey: key))
     }
 
+    // MARK: - Reading
     
     public static func links(
         withSearchText searchText: String,
-        time: Int? = nil,
-        before: Bool = true,
         count: Int
     ) -> [Link] {
         var result = [Link]()
         let searchWords = Word.words(fromText: searchText)
         if let firstWord = searchWords.first {
-            var wordPostKeys = [String]()
+            var wordLinks = [String]()
             database.enumerateKeysAndValues(backward: true, startingAtKey: nil, andPrefix: Word.prefix + firstWord) { (key, word: Word, stop) in
-                if time == nil {
-                    wordPostKeys.append(word.postKey)
-                } else if let time = time {
-                    if before {
-                        if Word.time(fromKey: key) <= time {
-                            wordPostKeys.append(word.postKey)
-                        }
-                    } else {
-                        if Word.time(fromKey: key) >= time {
-                            wordPostKeys.append(word.postKey)
-                        }
-                    }
-                }
+                wordLinks.append(contentsOf: word.links.map { $0.url })
             }
-            for wordPostKey in wordPostKeys {
+            for wordLink in wordLinks {
                 var foundTheSearch = true
-                if let link: Link = database[wordPostKey] {
-                    for i in 1..<searchWords.count {
+                if let link: Link = database[prefix + wordLink] {
+                    /*for i in 1..<searchWords.count {
                         let searchWord = searchWords[i]
                         if link.title?.lowercased().range(of: searchWord) == nil {
                             foundTheSearch = false
                             break
                         }
-                    }
+                    }*/
                     if foundTheSearch {
                         result.append(link)
                     }
@@ -93,55 +80,32 @@ public struct Link: Codable {
         return result
     }
     
-    // MARK: - Saving data
+    // MARK: - Saving
     
-    public static func save(links: [Link]) -> Int {
-        var saveCount = 0
-        for link in links {
-            if self.save(link: link) {
-                saveCount+=1;
-            }
-        }
-        return saveCount
-    }
-    
-    // MARK: - Public functions
-    
-    public static func key(ofLink link: Link) -> String {
-        return prefix + link.url
-    }
-    
-    public static func crawl() {
-        
-    }
-    
-    public static func save(link: Link) -> Bool {
+    public func save() -> Bool {
         var newLink = false
-        let url = link.url
-        let key = prefix + url
         if let _: Link = database[key] {
         } else {
             newLink = true
-            database[key] = link
+            database[key] = self
         }
         return newLink
     }
+    
+    // MARK: - Processing
+    
+    public mutating func process() {
+        lastProcessTime = Date.secondsSinceReferenceDate
+        _ = save()
+    }
+    
+    // MARK: - Helpers
     
     public static func url(fromKey key: String) -> String {
         let arr = key.components(separatedBy: "-")
         var result = ""
         if arr.count > 1 {
             result = arr[1]
-        }
-        return result
-    }
-    
-    public static func links(forKeys keys: [String]) -> [Link] {
-        var result = [Link]()
-        for linkKey in keys {
-            if let link: Link = database[linkKey] {
-                result.append(link)
-            }
         }
         return result
     }

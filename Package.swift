@@ -6,19 +6,19 @@ import PackageDescription
 let package = Package(
     name: "DarkEyeCore",
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
-        .library(
-            name: "DarkEyeCore",
-            targets: ["DarkEyeCore"]),
+        .library(name: "DarkEyeCore", targets: ["DarkEyeCore"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
         .package(url: "https://github.com/amraboelela/SwiftLevelDB", .branch("master")),
+        //.package(url: "https://github.com/honghaoz/Ji.git", from: "5.0.0")
+        .package(url: "https://github.com/cezheng/Fuzi.git", from: "3.0.0")
+        //.package(url: "https://github.com/ndavon/NDHpple.git", from: "1.0.0")
+        
     ],
     targets: [
         .target(name: "DarkEyeCore", dependencies: [
             .product(name: "SwiftLevelDB", package: "SwiftLevelDB"),
+            .product(name: "Fuzi", package: "Fuzi")
         ]),
         .testTarget(name: "DarkEyeCoreTests", dependencies: ["DarkEyeCore"]),
     ]
