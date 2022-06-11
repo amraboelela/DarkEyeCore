@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftLevelDB
+import Fuzi
 
 public struct Link: Codable {
     public static let prefix = "link-"
@@ -18,6 +19,16 @@ public struct Link: Codable {
     public var lastProcessTime: Int = 0 // # of seconds since reference date.
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0 // # of seconds since reference date.
+    
+    var html: String?
+    
+    public enum CodingKeys: String, CodingKey {
+        case url
+        case title
+        case lastProcessTime
+        case numberOfVisits
+        case lastVisitTime
+    }
     
     // MARK: - Accessors
     
@@ -34,6 +45,45 @@ public struct Link: Codable {
         return Link.prefix + url
     }
 
+    public var text: String {
+        var result = ""
+        //do {
+        if let html = html, let doc = try? HTMLDocument(string: html) {
+            result += doc.title ?? ""
+            if let textNodes = doc.body?.childNodes(ofTypes: [.Element]) {
+                for textNode in textNodes {
+                    if textNode.toElement()?.tag != "script" {
+                        result += " " + textNode.stringValue + " "
+                    }
+                }
+            }
+        }
+        return result.replacingOccurrences(
+            of: "[ \n]+",
+            with: " ",
+            options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+    }
+    
+    var urls: [String] {
+        var result = [String]()
+        if let html = html, let doc = try? HTMLDocument(string: html) {
+            if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
+                for node in nodes {
+                    if let elementNode = node.toElement() {
+                        let anchorNodes = anchorNodesFrom(node: elementNode)
+                        result.append(contentsOf: anchorNodes.compactMap { anchor in
+                            if let url = anchor["href"], url.range(of: "#") == nil {
+                                return url
+                            }
+                            return nil
+                        })
+                    }
+                }
+            }
+        }
+        return result
+    }
+    
     // MARK: - Factory methods
     
     public static func with(url: String) -> Link {
@@ -94,7 +144,17 @@ public struct Link: Codable {
     
     // MARK: - Processing
     
+    mutating func load() {
+#if os(Linux)
+#else
+        let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
+        let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+        html = try? String(contentsOf: fileURL, encoding: .utf8)
+#endif
+    }
+    
     public mutating func process() {
+        load()
         lastProcessTime = Date.secondsSinceReferenceDate
         _ = save()
     }
@@ -106,6 +166,18 @@ public struct Link: Codable {
         var result = ""
         if arr.count > 1 {
             result = arr[1]
+        }
+        return result
+    }
+    
+    func anchorNodesFrom(node: Fuzi.XMLElement) -> [Fuzi.XMLElement] {
+        var result = [Fuzi.XMLElement]()
+        if node.toElement()?.tag == "a" {
+            result.append(node)
+        } else {
+            for childNode in node.children {
+                result.append(contentsOf: anchorNodesFrom(node: childNode))
+            }
         }
         return result
     }

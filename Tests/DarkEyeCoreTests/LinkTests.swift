@@ -54,6 +54,12 @@ final class LinkTests: XCTestCase {
         XCTAssertFalse(saved)
     }
     
+    func testLoad() {
+        var link = Link(url: "http://hanein1.news")
+        link.load()
+        XCTAssertNotNil(link.html)
+    }
+    
     func testProcess() {
         var link = Link(url: "http://hanein1.news")
         XCTAssertEqual(link.lastProcessTime, 0)
@@ -64,6 +70,58 @@ final class LinkTests: XCTestCase {
     func testUrlFromKey() {
         let url = Link.url(fromKey: "link-http://hanein1.news")
         XCTAssertEqual(url, "http://hanein1.news")
+    }
+    
+    func testText() {
+        var link = Link(url: "http://hanein1.news")
+        link.html = "<head><title>Dark Eye<title></head>"
+        var text = link.text
+        XCTAssertEqual(text, "Dark Eye")
+        link.html = """
+            <html><head><title>Dark Eye<title></head>
+            <body><ul><li>
+            <input type='image' name='input1' value='string1value' class='abc' /></li>
+            <li><input type='image' name='input2' value='string2value' class='def' /></li></ul>
+            <span class='spantext'><b>Hello World 1</b></span>
+            <span class='spantext'><b>Hello World 2</b></span>
+            <a href='example.com'>example(English)</a>
+            <a href='example.co.jp'>example(JP)</a>
+            </body>
+        """
+        text = link.text
+        XCTAssertEqual(text, "Dark Eye Hello World 1 Hello World 2 example(English) example(JP)")
+        link.load()
+        text = link.text
+        print("main_page.html text: \(text)")
+        XCTAssertEqual(text.count, 28390)
+    }
+    
+    func testUrls() {
+        var link = Link(url: "http://hanein1.news")
+        link.html = "<head><title>Dark Eye<title></head>"
+        var urls = link.urls
+        XCTAssertEqual(urls.count, 0)
+        link.html = """
+            <html><head><title>Dark Eye<title></head>
+            <body><ul><li>
+            <input type='image' name='input1' value='string1value' class='abc' /></li>
+            <li><input type='image' name='input2' value='string2value' class='def' /></li></ul>
+            <span class='spantext'><b>Hello World 1</b></span>
+            <span class='spantext'><b>Hello World 2</b></span>
+            <a href='example.com'>example(English)</a>
+            <a href='example.co.jp'>example(JP)</a>
+            </body>
+        """
+        urls = link.urls
+        XCTAssertEqual(urls.count, 2)
+        XCTAssertEqual(urls[0], "example.com")
+        XCTAssertEqual(urls[1], "example.co.jp")
+        
+        link.load()
+        urls = link.urls
+        XCTAssertEqual(urls.count, 361)
+        XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        XCTAssertEqual(urls[1], "/wiki/Contest2022")
     }
     
 }
