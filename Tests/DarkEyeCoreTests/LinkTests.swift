@@ -67,21 +67,27 @@ final class LinkTests: XCTestCase {
             <li><input type='image' name='input2' value='string2value' class='def' /></li></ul>
             <span class='spantext'><b>Hello World 1</b></span>
             <span class='spantext'><b>Hello World 2</b></span>
-            <a href='example.com'>example(English)</a>
-            <a href='example.co.jp'>example(JP)</a>
+            <a href='example.onion'>example(English)</a>
+            <a href='example.co.onion'>example(JP)</a>
             </body>
         """
         urls = link.urls
         XCTAssertEqual(urls.count, 2)
-        XCTAssertEqual(urls[0], "example.com")
-        XCTAssertEqual(urls[1], "example.co.jp")
+        XCTAssertEqual(urls[0], "example.onion")
+        XCTAssertEqual(urls[1], "example.co.onion")
         
         link.load()
         urls = link.urls
-        XCTAssertEqual(urls.count, 361)
+        XCTAssertEqual(urls.count, 287)
         XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         let wikiUrls = urls.filter { $0.range(of: "/wiki")?.lowerBound == $0.startIndex }
         XCTAssertEqual(wikiUrls.count, 0)
+        let dotOrgUrls = urls.filter { $0.range(of: ".org") != nil }
+        XCTAssertEqual(dotOrgUrls.count, 0)
+        let dotComUrls = urls.filter { $0.range(of: ".com") != nil }
+        XCTAssertEqual(dotComUrls.count, 0)
+        let notOnionUrls = urls.filter { $0.range(of: ".onion") == nil }
+        XCTAssertEqual(notOnionUrls.count, 0)
     }
     
     func testWithUrl() {

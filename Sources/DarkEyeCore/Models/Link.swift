@@ -78,7 +78,9 @@ public struct Link: Codable {
                     if let elementNode = node.toElement() {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
-                            if let url = anchor["href"], url.range(of: "#") == nil {
+                            if let url = anchor["href"],
+                               url.range(of: "#") == nil,
+                               url.range(of: ".onion") != nil {
                                 if url.first == "/" {
                                     return base + url
                                 } else {
