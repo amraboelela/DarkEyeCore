@@ -45,9 +45,15 @@ public struct Link: Codable {
         return Link.prefix + url
     }
 
+    var base: String {
+        if let onionRange = url.range(of: ".onion") {
+            return String(url.prefix(upTo: onionRange.upperBound))
+        }
+        return ""
+    }
+    
     public var text: String {
         var result = ""
-        //do {
         if let html = html, let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
             if let textNodes = doc.body?.childNodes(ofTypes: [.Element]) {
@@ -73,7 +79,11 @@ public struct Link: Codable {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if let url = anchor["href"], url.range(of: "#") == nil {
-                                return url
+                                if url.first == "/" {
+                                    return base + url
+                                } else {
+                                    return url
+                                }
                             }
                             return nil
                         })

@@ -15,65 +15,24 @@ final class LinkTests: XCTestCase {
     }
     
     func testFirstKey() {
-        database["link-http://hanein1.news"] = Link(url: "http://hanein1.news")
-        database["link-http://hanein2.news"] = Link(url: "http://hanein2.news")
-        database["link-http://hanein3.news"] = Link(url: "http://hanein3.news")
-        XCTAssertEqual(Link.firstKey, "link-http://hanein1.news")
+        database["link-http://hanein1.onion"] = Link(url: "http://hanein1.onion")
+        database["link-http://hanein2.onion"] = Link(url: "http://hanein2.onion")
+        database["link-http://hanein3.onion"] = Link(url: "http://hanein3.onion")
+        XCTAssertEqual(Link.firstKey, "link-http://hanein1.onion")
     }
     
     func testKey() {
-        let link = Link(url: "http://hanein1.news")
-        XCTAssertEqual(link.key, "link-http://hanein1.news")
+        let link = Link(url: "http://hanein1.onion")
+        XCTAssertEqual(link.key, "link-http://hanein1.onion")
     }
     
-    func testWithUrl() {
-        let link = Link.with(url: "http://hanein1.news")
-        XCTAssertEqual(link.url, "http://hanein1.news")
-    }
-    
-    func testFromKey() {
-        let link = Link.from(key: "link-http://hanein1.news")
-        XCTAssertEqual(link.url, "http://hanein1.news")
-    }
-    
-    func testLinks() {
-        let links = Link.links(withSearchText: "wiki", count: 20)
-        XCTAssertEqual(links.count, 0)
-    }
-    
-    func testSave() {
-        var link = Link(url: "http://hanein1.news")
-        var saved = link.save()
-        XCTAssertTrue(saved)
-        XCTAssertEqual(Link.firstKey, "link-http://hanein1.news")
-        link = Link(url: "http://hanein2.news")
-        saved = link.save()
-        XCTAssertTrue(saved)
-        link = Link(url: "http://hanein1.news")
-        saved = link.save()
-        XCTAssertFalse(saved)
-    }
-    
-    func testLoad() {
-        var link = Link(url: "http://hanein1.news")
-        link.load()
-        XCTAssertNotNil(link.html)
-    }
-    
-    func testProcess() {
-        var link = Link(url: "http://hanein1.news")
-        XCTAssertEqual(link.lastProcessTime, 0)
-        link.process()
-        XCTAssertNotEqual(link.lastProcessTime, 0)
-    }
-    
-    func testUrlFromKey() {
-        let url = Link.url(fromKey: "link-http://hanein1.news")
-        XCTAssertEqual(url, "http://hanein1.news")
+    func testBase() {
+        let link = Link(url: "http://hanein1.onion/main")
+        XCTAssertEqual(link.base, "http://hanein1.onion")
     }
     
     func testText() {
-        var link = Link(url: "http://hanein1.news")
+        var link = Link(url: "http://hanein1.onion")
         link.html = "<head><title>Dark Eye<title></head>"
         var text = link.text
         XCTAssertEqual(text, "Dark Eye")
@@ -97,7 +56,7 @@ final class LinkTests: XCTestCase {
     }
     
     func testUrls() {
-        var link = Link(url: "http://hanein1.news")
+        var link = Link(url: "http://hanein1.onion")
         link.html = "<head><title>Dark Eye<title></head>"
         var urls = link.urls
         XCTAssertEqual(urls.count, 0)
@@ -121,7 +80,54 @@ final class LinkTests: XCTestCase {
         urls = link.urls
         XCTAssertEqual(urls.count, 361)
         XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
-        XCTAssertEqual(urls[1], "/wiki/Contest2022")
+        let wikiUrls = urls.filter { $0.range(of: "/wiki")?.lowerBound == $0.startIndex }
+        XCTAssertEqual(wikiUrls.count, 0)
+    }
+    
+    func testWithUrl() {
+        let link = Link.with(url: "http://hanein1.onion")
+        XCTAssertEqual(link.url, "http://hanein1.onion")
+    }
+    
+    func testFromKey() {
+        let link = Link.from(key: "link-http://hanein1.onion")
+        XCTAssertEqual(link.url, "http://hanein1.onion")
+    }
+    
+    func testLinks() {
+        let links = Link.links(withSearchText: "wiki", count: 20)
+        XCTAssertEqual(links.count, 0)
+    }
+    
+    func testSave() {
+        var link = Link(url: "http://hanein1.onion")
+        var saved = link.save()
+        XCTAssertTrue(saved)
+        XCTAssertEqual(Link.firstKey, "link-http://hanein1.onion")
+        link = Link(url: "http://hanein2.onion")
+        saved = link.save()
+        XCTAssertTrue(saved)
+        link = Link(url: "http://hanein1.onion")
+        saved = link.save()
+        XCTAssertFalse(saved)
+    }
+    
+    func testLoad() {
+        var link = Link(url: "http://hanein1.onion")
+        link.load()
+        XCTAssertNotNil(link.html)
+    }
+    
+    func testProcess() {
+        var link = Link(url: "http://hanein1.onion")
+        XCTAssertEqual(link.lastProcessTime, 0)
+        link.process()
+        XCTAssertNotEqual(link.lastProcessTime, 0)
+    }
+    
+    func testUrlFromKey() {
+        let url = Link.url(fromKey: "link-http://hanein1.onion")
+        XCTAssertEqual(url, "http://hanein1.onion")
     }
     
 }

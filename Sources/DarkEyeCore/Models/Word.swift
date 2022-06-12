@@ -15,10 +15,16 @@ public struct Word: Codable {
     
     public static func words(fromText text: String) -> [String] {
         var result = [String]()
-        let words = text.lowercased().components(separatedBy: String.characters.inverted)
+        let words = text.components(separatedBy: String.characters.inverted)
         for word in words {
             if word.count > 0 {
-                result.append(word)
+                let camelWordsString = word.camelCaseToWords()
+                let finalWords = camelWordsString.components(separatedBy: String.characters.inverted)
+                for finalWord in finalWords {
+                    if finalWord.count < 16 {
+                        result.append(finalWord.lowercased())
+                    }
+                }
             }
         }
         return result
