@@ -176,7 +176,7 @@ public struct Link: Codable {
     
     mutating func load() {
 #if os(Linux)
-        filePath = "/home/$USER/swift/DarkEyeCore/Library/loaded_page.html"
+        let filePath = "/home/$USER/swift/DarkEyeCore/Library/loaded_page.html"
         if let result = shell("torsocks", "wget", url, ">", filePath) {
             print("shell result: \(result)")
             let fileURL = URL(fileURLWithPath: filePath)
