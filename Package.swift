@@ -11,7 +11,9 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/amraboelela/SwiftLevelDB", .branch("master")),
         //.package(url: "https://github.com/honghaoz/Ji.git", from: "5.0.0")
-        .package(url: "https://github.com/cezheng/Fuzi.git", from: "3.0.0")
+        //.package(url: "https://github.com/cezheng/Fuzi.git", from: "3.0.0")
+        .package(url: "https://github.com/maparoni/Fuzi.git", .branch("master"))
+        //https://github.com/maparoni/Fuzi
         //.package(url: "https://github.com/ndavon/NDHpple.git", from: "1.0.0")
         
     ],
