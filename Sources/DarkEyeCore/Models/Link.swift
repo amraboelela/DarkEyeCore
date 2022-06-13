@@ -157,7 +157,7 @@ public struct Link: Codable {
         load()
         lastProcessTime = Date.secondsSinceReferenceDate
         _ = save()
-        let words = Word.index(link: self)
+        Word.index(link: self)
     }
     
     // MARK: - Saving
@@ -177,7 +177,8 @@ public struct Link: Codable {
     mutating func load() {
 #if os(Linux)
         //torsocks wget "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
-        shell("torsocks", "wget", url)
+        let result = shell("torsocks", "wget", url)
+        print("shell result: \(result)")
 #else
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
