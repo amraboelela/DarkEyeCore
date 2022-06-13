@@ -1,17 +1,14 @@
 import XCTest
 @testable import DarkEyeCore
 
-final class LinkTests: XCTestCase {
+final class LinkTests: TestsBase {
     
     override func setUp() {
         super.setUp()
-        let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/LinkTests.swift", with: "/")).path
-        database = Database(parentPath: testRoot + "Library", name: "Database")
     }
     
     override func tearDown() {
         super.tearDown()
-        database.deleteDatabaseFromDisk()
     }
     
     func testFirstKey() {
@@ -125,10 +122,39 @@ final class LinkTests: XCTestCase {
     }
     
     func testProcess() {
-        var link = Link(url: "http://hanein1.onion")
+        var link = Link(url: "http://hanein123.onion", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
         link.process()
         XCTAssertNotEqual(link.lastProcessTime, 0)
+        if let word: Word = database[Word.prefix + "library"] {
+            XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
+            XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
+        } else {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "body"] {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "college"] {
+            XCTFail()
+        }
+        link = Link(url: "http://hanein123.onion", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
+        link.process()
+        if let word: Word = database[Word.prefix + "bitcoin"] {
+            XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
+        } else {
+            XCTFail()
+        }
+        if let word: Word = database[Word.prefix + "the"] {
+            XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
+        } else {
+            XCTFail()
+        }
+        if let word: Word = database[Word.prefix + "hidden"] {
+            XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
+        } else {
+            XCTFail()
+        }
     }
     
     func testUrlFromKey() {

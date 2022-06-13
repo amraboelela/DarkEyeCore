@@ -13,7 +13,31 @@ public struct Word: Codable {
 
     public var links: [WordLink]
     
-    public static func words(fromText text: String) -> [String] {
+    // MARK: - Indexing
+    
+    public static func index(link: Link) {
+        let wordsArray = words(fromText: link.text)
+        let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
+        for i in (0..<wordsArray.count) {
+            let text = contextStringFrom(array: wordsArray, atIndex: i)
+            let wordText = wordsArray[i]
+            if wordText.count > 2 {
+                let key = prefix + wordText.lowercased()
+                let word = Word(links: [WordLink(url: link.url, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
+                //print("index array, key: \(key), word: \(word)")
+                if var dbWord: Word = database[key] {
+                    dbWord.mergeWith(word: word)
+                    database[key] = dbWord
+                } else {
+                    database[key] = word
+                }
+            }
+        }
+    }
+    
+    // MARK: - Helpers
+    
+    static func words(fromText text: String) -> [String] {
         var result = [String]()
         let words = text.components(separatedBy: String.characters.inverted)
         for word in words {
@@ -22,14 +46,31 @@ public struct Word: Codable {
                 let finalWords = camelWordsString.components(separatedBy: String.characters.inverted)
                 for finalWord in finalWords {
                     if finalWord.count < 16 {
-                        result.append(finalWord.lowercased())
+                        result.append(finalWord)
                     }
                 }
             }
         }
         return result
     }
-
+    
+    static func contextStringFrom(array: [String], atIndex: Int) -> String {
+        let startIndex = atIndex - 10 < 0 ? 0 : atIndex - 10
+        let endIndex = startIndex + 20 >= array.count ? array.count - 1 : startIndex + 20
+        return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
+    }
+    
+    mutating func mergeWith(word: Word) {
+        for wordLink in word.links {
+            if let index = links.firstIndex(where: { $0.url == wordLink.url }) {
+                var link = links[index]
+                link.mergeWith(wordLink: wordLink)
+                links[index] = link
+            } else {
+                links.append(wordLink)
+            }
+        }
+    }
 }
 
 public struct WordLink: Codable {
@@ -38,4 +79,17 @@ public struct WordLink: Codable {
     var wordCount: Int
     var numberOfVisits: Int = 0
     var lastVisitTime: Int = 0
+    
+    // MARK: - Accessors
+    
+    var score: Int {
+        return numberOfVisits * 1000 + wordCount + lastVisitTime
+    }
+    
+    // MARK: - Helpers
+    
+    mutating func mergeWith(wordLink: WordLink) {
+        text = wordLink.text
+        wordCount = wordLink.wordCount
+    }
 }

@@ -15,7 +15,6 @@ public struct Link: Codable {
     public static var processTimeThreshold = 1 // any link with last process time smaller, need to be processed
     
     public var url: String
-    public var title: String?
     public var lastProcessTime: Int = 0 // # of seconds since reference date.
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0 // # of seconds since reference date.
@@ -24,7 +23,6 @@ public struct Link: Codable {
     
     public enum CodingKeys: String, CodingKey {
         case url
-        case title
         case lastProcessTime
         case numberOfVisits
         case lastVisitTime
@@ -50,6 +48,17 @@ public struct Link: Codable {
             return String(url.prefix(upTo: onionRange.upperBound))
         }
         return ""
+    }
+    
+    public var title: String {
+        var result = ""
+        if let html = html, let doc = try? HTMLDocument(string: html) {
+            result += doc.title ?? ""
+        }
+        return result.replacingOccurrences(
+            of: "[ \n]+",
+            with: " ",
+            options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
     public var text: String {
@@ -106,7 +115,7 @@ public struct Link: Codable {
         return Link(url: url(fromKey: key))
     }
 
-    // MARK: - Reading
+    // MARK: - Search
     
     public static func links(
         withSearchText searchText: String,
@@ -142,6 +151,15 @@ public struct Link: Codable {
         return result
     }
     
+    // MARK: - Processing
+    
+    public mutating func process() {
+        load()
+        lastProcessTime = Date.secondsSinceReferenceDate
+        _ = save()
+        let words = Word.index(link: self)
+    }
+    
     // MARK: - Saving
     
     public func save() -> Bool {
@@ -154,7 +172,7 @@ public struct Link: Codable {
         return newLink
     }
     
-    // MARK: - Processing
+    // MARK: - Helpers
     
     mutating func load() {
 #if os(Linux)
@@ -164,14 +182,6 @@ public struct Link: Codable {
         html = try? String(contentsOf: fileURL, encoding: .utf8)
 #endif
     }
-    
-    public mutating func process() {
-        load()
-        lastProcessTime = Date.secondsSinceReferenceDate
-        _ = save()
-    }
-    
-    // MARK: - Helpers
     
     public static func url(fromKey key: String) -> String {
         let arr = key.components(separatedBy: "-")

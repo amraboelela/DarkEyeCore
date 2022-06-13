@@ -16,4 +16,12 @@ extension String {
             : $0 + String($1)
         }
     }
+    
+    static func from(array: [String], startIndex: Int, endIdnex:Int) -> String {
+        var result = ""
+        for i in (startIndex...endIdnex) {
+            result += array[i] + " "
+        }
+        return result.trimmingCharacters(in: CharacterSet.whitespaces)
+    }
 }
