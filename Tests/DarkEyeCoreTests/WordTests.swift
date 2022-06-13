@@ -74,7 +74,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "the")
         XCTAssertEqual(words[5], "man")
         
-        var link = Link(url: "http://hanein1.onion")
+        var link = Link(url: "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page")
         link.load()
         words = Word.words(fromText: link.text)
         XCTAssertEqual(words.count, 4856)
