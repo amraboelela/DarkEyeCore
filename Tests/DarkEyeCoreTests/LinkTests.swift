@@ -116,7 +116,7 @@ final class LinkTests: TestsBase {
     }
     
     func testLoad() {
-        var link = Link(url: "http://hanein1.onion")
+        var link = Link(url: "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page")
         link.load()
         XCTAssertNotNil(link.html)
     }
