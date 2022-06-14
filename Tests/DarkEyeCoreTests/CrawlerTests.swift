@@ -14,30 +14,21 @@ final class CrawlerTests: TestsBase {
     func testCrawl() {
         let expectation = expectation(description: "duckduck link is there")
         crawler.crawl()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 20.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             crawler.canRun = false
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 30.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 7.0) {
             if crawler.thread?.isExecuting == false {
                 XCTAssertFalse(crawler.thread?.isExecuting == true)
                 if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
-                    print("testCrawl passed after 30 seconds")
+                    print("testCrawl passed after 5 seconds")
                     expectation.fulfill()
                 } else {
                     XCTFail()
                 }
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 60.0) {
-            XCTAssertFalse(crawler.thread?.isExecuting == true)
-            if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
-                expectation.fulfill()
-                print("testCrawl passed after 60 seconds")
-            } else {
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: 100, handler: nil)
+        waitForExpectations(timeout: 8, handler: nil)
     }
     
 }
