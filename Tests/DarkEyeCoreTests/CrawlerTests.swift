@@ -17,7 +17,11 @@ final class CrawlerTests: TestsBase {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
             crawler.canRun = false
         }
+#if os(Linux)
+        let secondsDelay = 30.0
+#else
         let secondsDelay = 7.0
+#endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             if crawler.isExecuting == false {
                 if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
@@ -28,7 +32,7 @@ final class CrawlerTests: TestsBase {
                 }
             }
         }
-        waitForExpectations(timeout: 8, handler: nil)
+        waitForExpectations(timeout: secondsDelay + 0.1, handler: nil)
     }
     
 }
