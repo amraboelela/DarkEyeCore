@@ -87,13 +87,20 @@ public struct Link: Codable {
                     if let elementNode = node.toElement() {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
-                            if let url = anchor["href"],
-                               url.range(of: "#") == nil,
-                               url.range(of: ".onion") != nil {
-                                if url.first == "/" {
-                                    return base + url
-                                } else {
-                                    return url
+                            if var href = anchor["href"], href.range(of: "#") == nil {
+                                if href.last == "/" {
+                                    href = String(href.dropLast())
+                                }
+                                if href.range(of: "//www.")?.lowerBound == href.startIndex {
+                                    href = href.replacingOccurrences(of: "//www", with: "http://www")
+                                }
+                                if href.range(of: "www.")?.lowerBound == href.startIndex {
+                                    href = href.replacingOccurrences(of: "www", with: "http://www")
+                                }
+                                if href.first == "/" {
+                                    return base + href
+                                } else if href.range(of: "http") != nil && href.range(of: ".onion") != nil {
+                                    return href
                                 }
                             }
                             return nil
@@ -116,6 +123,19 @@ public struct Link: Codable {
     }
 
     // MARK: - Search
+    
+    public static func linksToProcess(count: Int) -> [Link] {
+        var result = [Link]()
+        database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
+            if link.lastProcessTime < processTimeThreshold {
+                result.append(link)
+                if result.count >= count {
+                    stop.pointee = true
+                }
+            }
+        }
+        return result
+    }
     
     public static func links(
         withSearchText searchText: String,
@@ -151,10 +171,32 @@ public struct Link: Codable {
         return result
     }
     
-    // MARK: - Processing
+    // MARK: - Crawling
+    
+    public mutating func crawl(processCount: Int = 20) {
+        if lastProcessTime < Link.processTimeThreshold {
+            process()
+        }
+        var links = Link.linksToProcess(count: processCount)
+        if links.count == 0 {
+            Link.processTimeThreshold = Date.secondsSinceReferenceDate
+            process()
+            links = Link.linksToProcess(count: processCount)
+        }
+        for var link in links {
+            link.process()
+        }
+    }
     
     public mutating func process() {
         load()
+        for childURL in urls {
+            if let _: Link = database[Link.prefix + childURL] {
+            } else {
+                let link = Link(url: childURL)
+                _ = link.save() //crawl(processCount: processCount)
+            }
+        }
         lastProcessTime = Date.secondsSinceReferenceDate
         _ = save()
         Word.index(link: self)
@@ -167,8 +209,8 @@ public struct Link: Codable {
         if let _: Link = database[key] {
         } else {
             newLink = true
-            database[key] = self
         }
+        database[key] = self
         return newLink
     }
     
@@ -176,7 +218,7 @@ public struct Link: Codable {
     
     mutating func load() {
 #if os(Linux)
-        let filePath = "/home/amr/swift/DarkEyeCore/Library/page.html"
+        let filePath = "page.html" //"/home/amr/swift/DarkEyeCore/Library/page.html"
         _ = shell("torsocks", "wget", "-O", filePath, url)
         //print("shell result: \(result)")
         let fileURL = URL(fileURLWithPath: filePath)
