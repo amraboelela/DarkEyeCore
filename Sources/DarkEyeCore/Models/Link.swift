@@ -177,12 +177,11 @@ public struct Link: Codable {
     mutating func load() {
 #if os(Linux)
         let filePath = "/home/amr/swift/DarkEyeCore/Library/page.html"
-        if let result = shell("torsocks", "wget", "-O", filePath, url) {
-            //print("shell result: \(result)")
-            let fileURL = URL(fileURLWithPath: filePath)
-            html = try? String(contentsOf: fileURL, encoding: .utf8)
-            //print("html: \(html)")
-        }
+        _ = shell("torsocks", "wget", "-O", filePath, url)
+        //print("shell result: \(result)")
+        let fileURL = URL(fileURLWithPath: filePath)
+        html = try? String(contentsOf: fileURL, encoding: .utf8)
+        print("html: \(html)")
 #else
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")

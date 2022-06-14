@@ -31,7 +31,7 @@ final class LinkTests: TestsBase {
     }
     
     func testText() {
-        var link = Link(url: "http://hanein1.onion")
+        var link = Link(url: mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var text = link.text
         XCTAssertEqual(text, "Dark Eye")
@@ -55,7 +55,7 @@ final class LinkTests: TestsBase {
     }
     
     func testUrls() {
-        var link = Link(url: "http://hanein1.onion")
+        var link = Link(url: mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var urls = link.urls
         XCTAssertEqual(urls.count, 0)
@@ -130,7 +130,7 @@ final class LinkTests: TestsBase {
         XCTAssertNotEqual(link.lastProcessTime, 0)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-            XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
+            XCTAssertEqual(word.links[0].url, mainUrl)
         } else {
             XCTFail()
         }
