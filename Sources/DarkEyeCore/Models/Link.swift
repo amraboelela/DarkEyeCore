@@ -173,7 +173,7 @@ public struct Link: Codable {
     
     // MARK: - Crawling
     
-    public mutating func crawl(processCount: Int = 20) {
+    public mutating func crawl(processCount: Int = 10) {
         if lastProcessTime < Link.processTimeThreshold {
             process()
         }
@@ -184,6 +184,9 @@ public struct Link: Codable {
             links = Link.linksToProcess(count: processCount)
         }
         for var link in links {
+            if !crawler.canRun {
+                break
+            }
             link.process()
         }
     }
@@ -194,7 +197,7 @@ public struct Link: Codable {
             if let _: Link = database[Link.prefix + childURL] {
             } else {
                 let link = Link(url: childURL)
-                _ = link.save() //crawl(processCount: processCount)
+                _ = link.save()
             }
         }
         lastProcessTime = Date.secondsSinceReferenceDate

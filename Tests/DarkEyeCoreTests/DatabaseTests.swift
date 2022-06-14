@@ -14,8 +14,8 @@ final class DatabaseTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Tests/DarkEyeCoreTests/DatabaseTests.swift", with: "")).path
-        database = Database(parentPath: packageRoot + "Library", name: "Database")
+        let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/DatabaseTests.swift", with: "/")).path
+        database = Database(parentPath: testRoot + "Library", name: "Database")
     }
     
     override func tearDown() {

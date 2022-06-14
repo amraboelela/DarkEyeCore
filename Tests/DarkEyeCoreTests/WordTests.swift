@@ -12,11 +12,11 @@ final class WordTests: TestsBase {
     }
     
     func testIndexLink() {
-        var link = Link(url: mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-            XCTAssertEqual(word.links[0].url, mainUrl)
+            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }
@@ -24,7 +24,7 @@ final class WordTests: TestsBase {
             XCTFail()
         }
         link = Link(
-            url: mainUrl,
+            url: crawler.mainUrl,
             lastProcessTime: 0,
             numberOfVisits: 0,
             lastVisitTime: 0,
@@ -34,19 +34,19 @@ final class WordTests: TestsBase {
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
-            XCTAssertEqual(word.links[0].url, mainUrl)
+            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }
         if let word: Word = database[Word.prefix + "the"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
-            XCTAssertEqual(word.links[0].url, mainUrl)
+            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }
         if let word: Word = database[Word.prefix + "hidden"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.links[0].url, mainUrl)
+            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }
@@ -74,7 +74,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "the")
         XCTAssertEqual(words[5], "man")
         
-        var link = Link(url: mainUrl)
+        var link = Link(url: crawler.mainUrl)
         link.load()
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4810)

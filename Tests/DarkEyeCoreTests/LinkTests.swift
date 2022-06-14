@@ -29,7 +29,7 @@ final class LinkTests: TestsBase {
     }
     
     func testText() {
-        var link = Link(url: mainUrl)
+        var link = Link(url: crawler.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var text = link.text
         XCTAssertEqual(text, "Dark Eye")
@@ -53,7 +53,7 @@ final class LinkTests: TestsBase {
     }
     
     func testUrls() {
-        var link = Link(url: mainUrl)
+        var link = Link(url: crawler.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var urls = link.urls
         XCTAssertEqual(urls.count, 0)
@@ -124,19 +124,19 @@ final class LinkTests: TestsBase {
     }
     
     func testLoad() {
-        var link = Link(url: mainUrl)
+        var link = Link(url: crawler.mainUrl)
         link.load()
         XCTAssertNotNil(link.html)
     }
     
     func testProcess() {
-        var link = Link(url: mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
         link.process()
         XCTAssertNotEqual(link.lastProcessTime, 0)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-            XCTAssertEqual(word.links[0].url, mainUrl)
+            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }
@@ -146,7 +146,7 @@ final class LinkTests: TestsBase {
         if let _: Word = database[Word.prefix + "college"] {
             XCTFail()
         }
-        link = Link(url: mainUrl)
+        link = Link(url: crawler.mainUrl)
         link.process()
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
@@ -166,7 +166,7 @@ final class LinkTests: TestsBase {
     }
     
     func testCrawl() {
-        var link = Link(url: mainUrl)
+        var link = Link(url: crawler.mainUrl)
         link.crawl()
         if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
         } else {
