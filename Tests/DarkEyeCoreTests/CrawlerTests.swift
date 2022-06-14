@@ -18,7 +18,7 @@ final class CrawlerTests: TestsBase {
             crawler.canRun = false
         }
 #if os(Linux)
-        let secondsDelay = 30.0
+        let secondsDelay = 15.0
 #else
         let secondsDelay = 7.0
 #endif
