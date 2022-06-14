@@ -10,19 +10,19 @@ import Foundation
 import SwiftLevelDB
 import Dispatch
 
-public var crawler = Crawler()
+public let crawler = Crawler()
 
-public class Crawler {
-    var mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
-    var thread: Thread?
+public class Crawler: Thread {
+    let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     var canRun = true
     
-    public func crawl() {
-        thread = Thread.init(target: self, selector: #selector(runCrawl), object: nil)
-        thread?.start()
+    override init() {
+        super.init()
+        self.name = "crawler"
     }
     
-    @objc public func runCrawl() {
+    public override func main() {
+        //print("My thread name is: \(Thread.current.name!)")
         var link = Link(url: mainUrl)
         var count = 0
         while canRun {
