@@ -3,6 +3,8 @@ import XCTest
 
 final class LinkTests: TestsBase {
     
+    var mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
+    
     override func setUp() {
         super.setUp()
     }
@@ -116,13 +118,13 @@ final class LinkTests: TestsBase {
     }
     
     func testLoad() {
-        var link = Link(url: "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page")
+        var link = Link(url: mainUrl)
         link.load()
         XCTAssertNotNil(link.html)
     }
     
     func testProcess() {
-        var link = Link(url: "http://hanein123.onion", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
         link.process()
         XCTAssertNotEqual(link.lastProcessTime, 0)
@@ -138,7 +140,7 @@ final class LinkTests: TestsBase {
         if let _: Word = database[Word.prefix + "college"] {
             XCTFail()
         }
-        link = Link(url: "http://hanein123.onion", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
+        link = Link(url: mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.process()
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
