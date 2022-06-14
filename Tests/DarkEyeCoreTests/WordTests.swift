@@ -16,7 +16,7 @@ final class WordTests: TestsBase {
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-            XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
+            XCTAssertEqual(word.links[0].url, mainUrl)
         } else {
             XCTFail()
         }
@@ -34,19 +34,19 @@ final class WordTests: TestsBase {
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
-            XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
+            XCTAssertEqual(word.links[0].url, mainUrl)
         } else {
             XCTFail()
         }
         if let word: Word = database[Word.prefix + "the"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
-            XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
+            XCTAssertEqual(word.links[0].url, mainUrl)
         } else {
             XCTFail()
         }
         if let word: Word = database[Word.prefix + "hidden"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
+            XCTAssertEqual(word.links[0].url, mainUrl)
         } else {
             XCTFail()
         }
