@@ -12,7 +12,7 @@ final class WordTests: TestsBase {
     }
     
     func testIndexLink() {
-        var link = Link(url: "http://hanein123.onion", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
@@ -24,7 +24,7 @@ final class WordTests: TestsBase {
             XCTFail()
         }
         link = Link(
-            url: "http://hanein123.onion",
+            url: mainUrl,
             lastProcessTime: 0,
             numberOfVisits: 0,
             lastVisitTime: 0,
@@ -74,11 +74,11 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "the")
         XCTAssertEqual(words[5], "man")
         
-        var link = Link(url: "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page")
+        var link = Link(url: mainUrl)
         link.load()
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4810)
-        print("testWordsFromText words: \(words)")
+        //print("testWordsFromText words: \(words)")
     }
     
     func testContextStringFromArray() {

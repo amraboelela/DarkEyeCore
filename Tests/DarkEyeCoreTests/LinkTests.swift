@@ -3,8 +3,6 @@ import XCTest
 
 final class LinkTests: TestsBase {
     
-    var mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
-    
     override func setUp() {
         super.setUp()
     }
