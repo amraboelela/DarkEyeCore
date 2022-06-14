@@ -181,7 +181,7 @@ public struct Link: Codable {
         //print("shell result: \(result)")
         let fileURL = URL(fileURLWithPath: filePath)
         html = try? String(contentsOf: fileURL, encoding: .utf8)
-        print("html: \(html)")
+        //print("html: \(html)")
 #else
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
