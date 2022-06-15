@@ -11,6 +11,15 @@ final class StringTests: XCTestCase {
         super.tearDown()
     }
     
+    func testCamelCaseToWords() {
+        var words = "IRC".camelCaseWords
+        XCTAssertEqual(words.count, 1)
+        words = "ImRcHey".camelCaseWords
+        XCTAssertEqual(words.count, 3)
+        words = "ImRHey".camelCaseWords
+        XCTAssertEqual(words.count, 1)
+    }
+    
     func testFromArray() {
         let array = ["I", "went", "to", "college", "to", "go", "to", "the", "library"]
         var result = String.from(array: array, startIndex: 2, endIdnex: 4)

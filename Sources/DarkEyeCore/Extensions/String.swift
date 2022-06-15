@@ -9,12 +9,19 @@
 import Foundation
 
 extension String {
-    func camelCaseToWords() -> String {
-        return unicodeScalars.dropFirst().reduce(String(prefix(1))) {
+    var camelCaseWords: [String] {
+        let result = unicodeScalars.dropFirst().reduce(String(prefix(1))) {
             return CharacterSet.uppercaseLetters.contains($1)
             ? $0 + " " + String($1)
             : $0 + String($1)
         }
+        let components = result.components(separatedBy: String.characters.inverted)
+        for component in components {
+            if component.count == 1 {
+                return [self]
+            }
+        }
+        return components
     }
     
     static func from(array: [String], startIndex: Int, endIdnex:Int) -> String {

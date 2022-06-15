@@ -41,8 +41,7 @@ public struct Word: Codable {
         let words = text.components(separatedBy: String.characters.inverted)
         for word in words {
             if word.count > 0 {
-                let camelWordsString = word.camelCaseToWords()
-                let finalWords = camelWordsString.components(separatedBy: String.characters.inverted)
+                let finalWords = word.camelCaseWords
                 for finalWord in finalWords {
                     if finalWord.count < 16 {
                         if lowerCase {

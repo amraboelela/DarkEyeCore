@@ -97,7 +97,7 @@ final class WordTests: TestsBase {
         var link = Link(url: crawler.mainUrl)
         link.load()
         words = Word.words(fromText: link.text)
-        XCTAssertTrue(words.count > 4810)
+        XCTAssertTrue(words.count > 4300)
     }
     
     func testContextStringFromArray() {
