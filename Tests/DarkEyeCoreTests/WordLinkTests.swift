@@ -52,7 +52,7 @@ final class WordLinkTests: TestsBase {
                 }
             }
         }
-        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
     }
     
     func testMergeWordLinks() {

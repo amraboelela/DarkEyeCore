@@ -15,11 +15,11 @@ final class CrawlerTests: TestsBase {
         let expectation = expectation(description: "duckduck link is there")
         crawler.start()
 #if os(Linux)
-        let secondsDelay = 15.0
+        let secondsDelay = 20.0
 #else
         let secondsDelay = 7.0
 #endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 1.5) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
@@ -32,7 +32,7 @@ final class CrawlerTests: TestsBase {
                 }
             }
         }
-        waitForExpectations(timeout: secondsDelay + 3, handler: nil)
+        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }
     
 }
