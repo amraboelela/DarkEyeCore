@@ -38,8 +38,8 @@ final class WordLinkTests: TestsBase {
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             if crawler.isExecuting == false {
                 let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
-                XCTAssertTrue(links.count > 2)
-                if links.count > 2 {
+                XCTAssertTrue(links.count >= 1)
+                if links.count >= 1 {
                     print("links.count: \(links.count)")
                     expectation.fulfill()
                 } else {
