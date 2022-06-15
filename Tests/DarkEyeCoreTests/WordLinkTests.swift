@@ -22,6 +22,27 @@ final class WordLinkTests: XCTestCase {
         XCTAssertEqual(wordLink.score, 700005010)
     }
     
+    func testMergeWordLinks() {
+        var links = [WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 1)]
+        var links2 = [WordLink(url: "http://hanein123.onion", text: "I am good thank you. How about you?", wordCount: 2)]
+        WordLink.merge(wordLinks: &links, withWordLinks: links2)
+        XCTAssertEqual(links.count, 1)
+        XCTAssertEqual(links[0].url, "http://hanein123.onion")
+        XCTAssertEqual(links[0].text, "I am good thank you. How about you?")
+        XCTAssertEqual(links[0].wordCount, 2)
+        
+        links = [WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 1)]
+        links2 = [WordLink(url: "http://hanein1234.onion", text: "I am good thank you. How about you?", wordCount: 2)]
+        WordLink.merge(wordLinks: &links, withWordLinks: links2)
+        XCTAssertEqual(links.count, 2)
+        XCTAssertEqual(links[0].url, "http://hanein123.onion")
+        XCTAssertEqual(links[0].text, "I am good thank you")
+        XCTAssertEqual(links[0].wordCount, 1)
+        XCTAssertEqual(links[1].url, "http://hanein1234.onion")
+        XCTAssertEqual(links[1].text, "I am good thank you. How about you?")
+        XCTAssertEqual(links[1].wordCount, 2)
+    }
+    
     func testMergeWithWordLink() {
         var wordLink = WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 1)
         var wordLink2 = WordLink(url: "http://hanein123.onion", text: "I am good thank you. How about you?", wordCount: 2)

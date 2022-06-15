@@ -74,11 +74,30 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "the")
         XCTAssertEqual(words[5], "man")
         
+        words = Word.words(fromText: "camelCaseIs TheCase YaSalam?")
+        XCTAssertEqual(words.count, 7)
+        XCTAssertEqual(words[0], "camel")
+        XCTAssertEqual(words[1], "Case")
+        XCTAssertEqual(words[2], "Is")
+        XCTAssertEqual(words[3], "The")
+        XCTAssertEqual(words[4], "Case")
+        XCTAssertEqual(words[5], "Ya")
+        XCTAssertEqual(words[6], "Salam")
+        
+        words = Word.words(fromText: "camelCaseIs TheCase YaSalam?", lowerCase: true)
+        XCTAssertEqual(words.count, 7)
+        XCTAssertEqual(words[0], "camel")
+        XCTAssertEqual(words[1], "case")
+        XCTAssertEqual(words[2], "is")
+        XCTAssertEqual(words[3], "the")
+        XCTAssertEqual(words[4], "case")
+        XCTAssertEqual(words[5], "ya")
+        XCTAssertEqual(words[6], "salam")
+        
         var link = Link(url: crawler.mainUrl)
         link.load()
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4810)
-        //print("testWordsFromText words: \(words)")
     }
     
     func testContextStringFromArray() {
@@ -92,7 +111,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
     }
     
-    func testMergeWithWord() {
+    /*func testMergeWithWord() {
         var word = Word(links: [WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 1)])
         var word2 = Word(links: [WordLink(url: "http://hanein123.onion", text: "I am good thank you. How about you?", wordCount: 2)])
         word.mergeWith(word: word2)
@@ -111,5 +130,5 @@ final class WordTests: TestsBase {
         XCTAssertEqual(word.links[1].url, "http://hanein1234.onion")
         XCTAssertEqual(word.links[1].text, "I am good thank you. How about you?")
         XCTAssertEqual(word.links[1].wordCount, 2)
-    }
+    }*/
 }

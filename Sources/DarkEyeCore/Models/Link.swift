@@ -137,40 +137,6 @@ public struct Link: Codable {
         return result
     }
     
-    public static func links(
-        withSearchText searchText: String,
-        count: Int
-    ) -> [Link] {
-        var result = [Link]()
-        let searchWords = Word.words(fromText: searchText)
-        if let firstWord = searchWords.first {
-            var wordLinks = [String]()
-            database.enumerateKeysAndValues(backward: true, startingAtKey: nil, andPrefix: Word.prefix + firstWord) { (key, word: Word, stop) in
-                wordLinks.append(contentsOf: word.links.map { $0.url })
-            }
-            for wordLink in wordLinks {
-                var foundTheSearch = true
-                if let link: Link = database[prefix + wordLink] {
-                    /*for i in 1..<searchWords.count {
-                        let searchWord = searchWords[i]
-                        if link.title?.lowercased().range(of: searchWord) == nil {
-                            foundTheSearch = false
-                            break
-                        }
-                    }*/
-                    if foundTheSearch {
-                        result.append(link)
-                    }
-                }
-            }
-            result = result.sorted { $0.numberOfVisits > $1.numberOfVisits }
-            if result.count > count {
-                result.removeLast(result.count - count)
-            }
-        }
-        return result
-    }
-    
     // MARK: - Crawling
     
     public mutating func crawl(processCount: Int = 10) {

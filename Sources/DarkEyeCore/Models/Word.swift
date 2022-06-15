@@ -2,8 +2,8 @@
 //  Word.swift
 //  DarkEyeCore
 //
-//  Created by Amr Aboelela on 4/20/20.
-//  Copyright © 2020 Amr Aboelela. All rights reserved.
+//  Created by Amr Aboelela on 6/10/22.
+//  Copyright © 2022 Amr Aboelela. All rights reserved.
 //
 
 import Foundation
@@ -26,7 +26,7 @@ public struct Word: Codable {
                 let word = Word(links: [WordLink(url: link.url, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                 //print("index array, key: \(key), word: \(word)")
                 if var dbWord: Word = database[key] {
-                    dbWord.mergeWith(word: word)
+                    WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                     database[key] = dbWord
                 } else {
                     database[key] = word
@@ -37,7 +37,7 @@ public struct Word: Codable {
     
     // MARK: - Helpers
     
-    static func words(fromText text: String) -> [String] {
+    static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()
         let words = text.components(separatedBy: String.characters.inverted)
         for word in words {
@@ -46,7 +46,11 @@ public struct Word: Codable {
                 let finalWords = camelWordsString.components(separatedBy: String.characters.inverted)
                 for finalWord in finalWords {
                     if finalWord.count < 16 {
-                        result.append(finalWord)
+                        if lowerCase {
+                            result.append(finalWord.lowercased())
+                        } else {
+                            result.append(finalWord)
+                        }
                     }
                 }
             }
@@ -60,7 +64,7 @@ public struct Word: Codable {
         return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
     
-    mutating func mergeWith(word: Word) {
+    /*mutating func mergeWith(word: Word) {
         for wordLink in word.links {
             if let index = links.firstIndex(where: { $0.url == wordLink.url }) {
                 var link = links[index]
@@ -70,26 +74,5 @@ public struct Word: Codable {
                 links.append(wordLink)
             }
         }
-    }
-}
-
-public struct WordLink: Codable {
-    var url: String
-    var text: String
-    var wordCount: Int
-    var numberOfVisits: Int = 0
-    var lastVisitTime: Int = 0
-    
-    // MARK: - Accessors
-    
-    var score: Int {
-        return numberOfVisits * 1000 + wordCount + lastVisitTime
-    }
-    
-    // MARK: - Helpers
-    
-    mutating func mergeWith(wordLink: WordLink) {
-        text = wordLink.text
-        wordCount = wordLink.wordCount
-    }
+    }*/
 }
