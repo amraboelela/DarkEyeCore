@@ -32,10 +32,11 @@ final class WordLinkTests: TestsBase {
 #else
         let secondsDelay = 7.0
 #endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 1.5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 2) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
+            print("crawler.isExecuting: \(crawler.isExecuting )")
             if crawler.isExecuting == false {
                 let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
                 XCTAssertTrue(links.count >= 1)
