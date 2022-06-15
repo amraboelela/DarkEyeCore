@@ -204,7 +204,7 @@ public struct Link: Codable {
     
     mutating func load() {
 #if os(Linux)
-        if cachedFile = cachedFile {
+        if let cachedFile = cachedFile {
             html = cachedFile
         } else {
             let filePath = "cache/" + url.hash + ".html"
