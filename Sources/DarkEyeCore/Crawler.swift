@@ -10,7 +10,7 @@ import Foundation
 import SwiftLevelDB
 import Dispatch
 
-public let crawler = Crawler()
+public var crawler = Crawler()
 
 public class Crawler: Thread {
     let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
@@ -24,11 +24,9 @@ public class Crawler: Thread {
     public override func main() {
         //print("My thread name is: \(Thread.current.name!)")
         var link = Link(url: mainUrl)
-        var count = 0
         while canRun {
             link.crawl()
-            count += 1
-            print("crawl count: \(count * 10)")
+            print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
         }
         print("canRun: \(canRun), exiting")
     }

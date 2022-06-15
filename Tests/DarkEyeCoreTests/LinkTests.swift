@@ -105,11 +105,6 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(link.url, "http://hanein1.onion")
     }
     
-    /*func testLinks() {
-        let links = Link.links(withSearchText: "wiki", count: 20)
-        XCTAssertEqual(links.count, 0)
-    }*/
-    
     func testSave() {
         var link = Link(url: "http://hanein1.onion")
         var saved = link.save()

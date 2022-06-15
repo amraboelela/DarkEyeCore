@@ -157,7 +157,10 @@ public struct Link: Codable {
         }
     }
     
+    static var numberOfProcessedLinks = 0
+    
     public mutating func process() {
+        Link.numberOfProcessedLinks += 1
         load()
         for childURL in urls {
             if let _: Link = database[Link.prefix + childURL] {

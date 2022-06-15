@@ -1,7 +1,7 @@
 import XCTest
 @testable import DarkEyeCore
 
-final class WordLinkTests: XCTestCase {
+final class WordLinkTests: TestsBase {
     
     override func setUp() {
         super.setUp()
@@ -20,6 +20,34 @@ final class WordLinkTests: XCTestCase {
         XCTAssertEqual(wordLink.score, 3113)
         wordLink = WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 10, numberOfVisits: 5, lastVisitTime: 700000000)
         XCTAssertEqual(wordLink.score, 700005010)
+    }
+     
+    func testWordLinksWithSearchText() {
+        let expectation = expectation(description: "found the `wiki` word")
+        Link.numberOfProcessedLinks = 0
+        crawler = Crawler()
+        crawler.start()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
+            crawler.canRun = false
+        }
+#if os(Linux)
+        let secondsDelay = 15.0
+#else
+        let secondsDelay = 7.0
+#endif
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
+            if crawler.isExecuting == false {
+                let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
+                XCTAssertTrue(links.count > 2)
+                if links.count > 2 {
+                    print("links.count: \(links.count)")
+                    expectation.fulfill()
+                } else {
+                    XCTFail()
+                }
+            }
+        }
+        waitForExpectations(timeout: secondsDelay + 0.1, handler: nil)
     }
     
     func testMergeWordLinks() {

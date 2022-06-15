@@ -110,25 +110,4 @@ final class WordTests: TestsBase {
         result = Word.contextStringFrom(array: array, atIndex: 50)
         XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
     }
-    
-    /*func testMergeWithWord() {
-        var word = Word(links: [WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 1)])
-        var word2 = Word(links: [WordLink(url: "http://hanein123.onion", text: "I am good thank you. How about you?", wordCount: 2)])
-        word.mergeWith(word: word2)
-        XCTAssertEqual(word.links.count, 1)
-        XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
-        XCTAssertEqual(word.links[0].text, "I am good thank you. How about you?")
-        XCTAssertEqual(word.links[0].wordCount, 2)
-        
-        word = Word(links: [WordLink(url: "http://hanein123.onion", text: "I am good thank you", wordCount: 1)])
-        word2 = Word(links: [WordLink(url: "http://hanein1234.onion", text: "I am good thank you. How about you?", wordCount: 2)])
-        word.mergeWith(word: word2)
-        XCTAssertEqual(word.links.count, 2)
-        XCTAssertEqual(word.links[0].url, "http://hanein123.onion")
-        XCTAssertEqual(word.links[0].text, "I am good thank you")
-        XCTAssertEqual(word.links[0].wordCount, 1)
-        XCTAssertEqual(word.links[1].url, "http://hanein1234.onion")
-        XCTAssertEqual(word.links[1].text, "I am good thank you. How about you?")
-        XCTAssertEqual(word.links[1].wordCount, 2)
-    }*/
 }

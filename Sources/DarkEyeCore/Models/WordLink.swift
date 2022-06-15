@@ -29,11 +29,8 @@ public struct WordLink: Codable {
     ) -> [WordLink] {
         var result = [WordLink]()
         let searchWords = Word.words(fromText: searchText, lowerCase: true)
-        //if let firstWord = searchWords.first {
         for searchWord in searchWords {
-            //var result = [WordLink]()
             database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
-                //result.append(contentsOf: word.links)
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
             /*for wordLink in wordLinks {
