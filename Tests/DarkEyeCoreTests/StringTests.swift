@@ -28,13 +28,6 @@ final class StringTests: XCTestCase {
         let hashFileName = crawler.mainUrl.hash
         print("hashFileName: \(hashFileName)")
     }
-
-    func testHexEncodedString() {
-        var hexOutput = "IRC".hexEncodedString()
-        print("hexOutput: \(hexOutput)")
-        hexOutput = crawler.mainUrl.hexEncodedString(truncate: 32).lowercased()
-        print("hexOutput: \(hexOutput)")
-    }
     
     func testFromArray() {
         let array = ["I", "went", "to", "college", "to", "go", "to", "the", "library"]

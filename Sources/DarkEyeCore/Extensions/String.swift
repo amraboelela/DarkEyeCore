@@ -7,6 +7,9 @@
 //
 
 import Foundation
+import var CommonCrypto.CC_MD5_DIGEST_LENGTH
+import func CommonCrypto.CC_MD5
+import typealias CommonCrypto.CC_LONG
 
 extension String {
     var camelCaseWords: [String] {
@@ -27,15 +30,27 @@ extension String {
         return components
     }
     
-    var hash: String {
-        return self.hexEncodedString(truncate: 32).lowercased()
-    }
-    
-    public func hexEncodedString(truncate: Int = 0) -> String {
-        if let data = self.data(using: .utf8) {
-            return truncate > 0 ? data.hexEncodedString.truncate(length: truncate, trailing: "") : data.hexEncodedString
+    func MD5(string: String) -> Data {
+        let length = Int(CC_MD5_DIGEST_LENGTH)
+        let messageData = string.data(using:.utf8)!
+        var digestData = Data(count: length)
+        
+        _ = digestData.withUnsafeMutableBytes { digestBytes -> UInt8 in
+            messageData.withUnsafeBytes { messageBytes -> UInt8 in
+                if let messageBytesBaseAddress = messageBytes.baseAddress, let digestBytesBlindMemory = digestBytes.bindMemory(to: UInt8.self).baseAddress {
+                    let messageLength = CC_LONG(messageData.count)
+                    CC_MD5(messageBytesBaseAddress, messageLength, digestBytesBlindMemory)
+                }
+                return 0
+            }
         }
-        return ""
+        return digestData
+    }
+
+    var hash: String {
+        let md5Data = MD5(string: self)
+        let md5Hex = md5Data.map { String(format: "%02hhx", $0) }.joined()
+        return md5Hex.suffix(32).lowercased()
     }
     
     static func from(array: [String], startIndex: Int, endIdnex:Int) -> String {
