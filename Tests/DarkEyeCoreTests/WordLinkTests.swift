@@ -39,6 +39,7 @@ final class WordLinkTests: TestsBase {
             if crawler.isExecuting == false {
                 let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
                 XCTAssertTrue(links.count >= 1)
+                print("XCTAssertTrue(links.count >= 1)")
                 database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix) { (key, word: Word, stop) in
                     if word.links.count > 1 { //Link.numberOfProcessedLinks {
                         print("key: \(key), word.links: \(word.links.map { $0.url })")
@@ -52,7 +53,7 @@ final class WordLinkTests: TestsBase {
                 }
             }
         }
-        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+        waitForExpectations(timeout: secondsDelay + 100, handler: nil)
     }
     
     func testMergeWordLinks() {
