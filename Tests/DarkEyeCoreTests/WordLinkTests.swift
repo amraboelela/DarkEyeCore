@@ -37,18 +37,18 @@ final class WordLinkTests: TestsBase {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             if crawler.isExecuting == false {
-                let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
-                XCTAssertTrue(links.count >= 1)
-                var wordLinksUrls = [String]()
-                database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix) { (key, word: Word, stop) in
+                let links = WordLink.wordLinks(withSearchText: "use", count: 20)
+                //XCTAssertTrue(links.count > 1)
+                //var wordLinksUrls = [String]()
+                /*database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix) { (key, word: Word, stop) in
                     if word.links.count == Link.numberOfProcessedLinks {
                         wordLinksUrls = word.links.map { $0.url }
                         print("key: \(key), word.links.text: \(word.links.map { $0.text })")
                     }
-                }
-                print("wordLinksUrls: \(wordLinksUrls)")
-                if links.count >= 1 {
-                    print("links.count: \(links.count)")
+                }*/
+                //print("wordLinksUrls: \(wordLinksUrls)")
+                if links.count > 1 {
+                    print("links: \(links)")
                     expectation.fulfill()
                 } else {
                     XCTFail()
