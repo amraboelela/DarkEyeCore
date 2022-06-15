@@ -27,6 +27,17 @@ extension String {
         return components
     }
     
+    var hash: String {
+        return self.hexEncodedString(truncate: 32).lowercased()
+    }
+    
+    public func hexEncodedString(truncate: Int = 0) -> String {
+        if let data = self.data(using: .utf8) {
+            return truncate > 0 ? data.hexEncodedString.truncate(length: truncate, trailing: "") : data.hexEncodedString
+        }
+        return ""
+    }
+    
     static func from(array: [String], startIndex: Int, endIdnex:Int) -> String {
         var result = ""
         for i in (startIndex...endIdnex) {

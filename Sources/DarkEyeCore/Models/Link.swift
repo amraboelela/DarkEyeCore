@@ -112,6 +112,20 @@ public struct Link: Codable {
         return result
     }
     
+    var cachedFile: String? {
+        let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
+        let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(url.hash + ".html")
+        let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path)
+        if let fileDate = attr?[FileAttributeKey.modificationDate] as? NSDate {
+            let cacheThreashold = Date.days(numberOfDays: 10)
+            let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
+            if secondsDiff > cacheThreashold {
+                return nil
+            }
+        }
+        return try? String(contentsOf: fileURL, encoding: .utf8)
+    }
+    
     // MARK: - Factory methods
     
     public static func with(url: String) -> Link {
@@ -190,12 +204,15 @@ public struct Link: Codable {
     
     mutating func load() {
 #if os(Linux)
-        let filePath = "page.html" //"/home/amr/swift/DarkEyeCore/Library/page.html"
-        _ = shell("torsocks", "wget", "-O", filePath, url)
-        //print("shell result: \(result)")
-        let fileURL = URL(fileURLWithPath: filePath)
-        html = try? String(contentsOf: fileURL, encoding: .utf8)
-        //print("html: \(html)")
+        if cachedFile = cachedFile {
+            html = cachedFile
+        } else {
+            let filePath = "cache/" + url.hash + ".html"
+            _ = shell("torsocks", "wget", "-O", filePath, url)
+            let fileURL = URL(fileURLWithPath: filePath)
+            html = try? String(contentsOf: fileURL, encoding: .utf8)
+            //print("html: \(html)")
+        }
 #else
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")

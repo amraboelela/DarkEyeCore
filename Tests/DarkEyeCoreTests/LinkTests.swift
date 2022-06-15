@@ -96,6 +96,12 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(notHttpUrls.count, 0)
     }
     
+    func testCachedFile() {
+        let link = Link(url: crawler.mainUrl)
+        let cachedFile = link.cachedFile
+        XCTAssertNotNil(cachedFile)
+    }
+    
     func testWithUrl() {
         let link = Link.with(url: "http://hanein1.onion")
         XCTAssertEqual(link.url, "http://hanein1.onion")

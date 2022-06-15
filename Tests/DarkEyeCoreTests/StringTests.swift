@@ -24,6 +24,18 @@ final class StringTests: XCTestCase {
         XCTAssertEqual(words.count, 4)
     }
     
+    func testHash() {
+        let hashFileName = crawler.mainUrl.hash
+        print("hashFileName: \(hashFileName)")
+    }
+
+    func testHexEncodedString() {
+        var hexOutput = "IRC".hexEncodedString()
+        print("hexOutput: \(hexOutput)")
+        hexOutput = crawler.mainUrl.hexEncodedString(truncate: 32).lowercased()
+        print("hexOutput: \(hexOutput)")
+    }
+    
     func testFromArray() {
         let array = ["I", "went", "to", "college", "to", "go", "to", "the", "library"]
         var result = String.from(array: array, startIndex: 2, endIdnex: 4)
