@@ -27,14 +27,14 @@ final class WordLinkTests: TestsBase {
         Link.numberOfProcessedLinks = 0
         crawler = Crawler()
         crawler.start()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            crawler.canRun = false
-        }
 #if os(Linux)
         let secondsDelay = 15.0
 #else
         let secondsDelay = 7.0
 #endif
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 2.0) {
+            crawler.canRun = false
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             if crawler.isExecuting == false {
                 let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
