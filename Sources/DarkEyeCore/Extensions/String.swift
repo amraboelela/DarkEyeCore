@@ -10,6 +10,9 @@ import Foundation
 
 extension String {
     var camelCaseWords: [String] {
+        if self.count < 10 {
+            return [self]
+        }
         let result = unicodeScalars.dropFirst().reduce(String(prefix(1))) {
             return CharacterSet.uppercaseLetters.contains($1)
             ? $0 + " " + String($1)

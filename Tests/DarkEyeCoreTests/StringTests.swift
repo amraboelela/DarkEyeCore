@@ -15,9 +15,13 @@ final class StringTests: XCTestCase {
         var words = "IRC".camelCaseWords
         XCTAssertEqual(words.count, 1)
         words = "ImRcHey".camelCaseWords
-        XCTAssertEqual(words.count, 3)
+        XCTAssertEqual(words.count, 1)
         words = "ImRHey".camelCaseWords
         XCTAssertEqual(words.count, 1)
+        words = "PayPal".camelCaseWords
+        XCTAssertEqual(words.count, 1)
+        words = "PayPalIsGood".camelCaseWords
+        XCTAssertEqual(words.count, 4)
     }
     
     func testFromArray() {
