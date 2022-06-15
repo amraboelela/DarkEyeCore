@@ -32,7 +32,7 @@ final class CrawlerTests: TestsBase {
                 }
             }
         }
-        waitForExpectations(timeout: secondsDelay + 0.1, handler: nil)
+        waitForExpectations(timeout: secondsDelay + 3, handler: nil)
     }
     
 }
