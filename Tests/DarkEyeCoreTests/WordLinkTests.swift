@@ -28,7 +28,7 @@ final class WordLinkTests: TestsBase {
         crawler = Crawler()
         crawler.start()
 #if os(Linux)
-        let secondsDelay = 30.0
+        let secondsDelay = 60.0
 #else
         let secondsDelay = 7.0
 #endif
