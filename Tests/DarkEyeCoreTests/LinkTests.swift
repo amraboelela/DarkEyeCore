@@ -48,8 +48,8 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(text, "Dark Eye Hello World 1 Hello World 2 example(English) example(JP)")
         link.load()
         text = link.text
-        //print("main_page.html text: \(text)")
-        XCTAssertTrue(text.count > 28150)
+        print("text.count: \(text.count)")
+        XCTAssertTrue(text.count > 27000)
     }
     
     func testUrls() {
@@ -77,7 +77,8 @@ final class LinkTests: TestsBase {
         
         link.load()
         urls = link.urls
-        XCTAssertTrue(urls.count >= 200)
+        print("urls.count: \(urls.count)")
+        XCTAssertTrue(urls.count > 200)
         XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         let wikiUrls = urls.filter { $0.range(of: "/wiki")?.lowerBound == $0.startIndex }
         XCTAssertEqual(wikiUrls.count, 0)
