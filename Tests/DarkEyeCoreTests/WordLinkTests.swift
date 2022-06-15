@@ -28,11 +28,11 @@ final class WordLinkTests: TestsBase {
         crawler = Crawler()
         crawler.start()
 #if os(Linux)
-        let secondsDelay = 15.0
+        let secondsDelay = 20.0
 #else
         let secondsDelay = 7.0
 #endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 2.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 1.5) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
