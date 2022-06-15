@@ -36,23 +36,23 @@ final class WordLinkTests: TestsBase {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
-            print("crawler.isExecuting: \(crawler.isExecuting )")
-            if crawler.isExecuting == false {
-                let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
-                XCTAssertTrue(links.count >= 1)
-                print("XCTAssertTrue(links.count >= 1)")
-                database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix) { (key, word: Word, stop) in
-                    if word.links.count > 1 { //Link.numberOfProcessedLinks {
-                        print("key: \(key), word.links: \(word.links.map { $0.url })")
-                    }
-                }
-                if links.count >= 1 {
-                    print("links.count: \(links.count)")
-                    expectation.fulfill()
-                } else {
-                    XCTFail()
+            print("crawler.isExecuting: \(crawler.isExecuting)")
+            //if crawler.isExecuting == false {
+            let links = WordLink.wordLinks(withSearchText: "wiki", count: 20)
+            XCTAssertTrue(links.count >= 1)
+            print("XCTAssertTrue(links.count >= 1)")
+            database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix) { (key, word: Word, stop) in
+                if word.links.count > 1 { //Link.numberOfProcessedLinks {
+                    print("key: \(key), word.links: \(word.links.map { $0.url })")
                 }
             }
+            if links.count >= 1 {
+                print("links.count: \(links.count)")
+                expectation.fulfill()
+            } else {
+                XCTFail()
+            }
+            //}
         }
         waitForExpectations(timeout: secondsDelay + 100, handler: nil)
     }
