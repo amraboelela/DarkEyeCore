@@ -33,21 +33,6 @@ public struct WordLink: Codable {
             database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
-            /*for wordLink in wordLinks {
-                var foundTheSearch = true
-                if let link: Link = database[prefix + wordLink] {
-                    /*for i in 1..<searchWords.count {
-                        let searchWord = searchWords[i]
-                        if link.title?.lowercased().range(of: searchWord) == nil {
-                            foundTheSearch = false
-                            break
-                        }
-                    }*/
-                    if foundTheSearch {
-                        result.append(link)
-                    }
-                }
-            }*/
             result = result.sorted { $0.score > $1.score }
             if result.count > count {
                 result.removeLast(result.count - count)
