@@ -37,7 +37,7 @@ final class WordLinkTests: TestsBase {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             if crawler.isExecuting == false {
-                let links = WordLink.wordLinks(withSearchText: "use", count: 20)
+                let links = WordLink.wordLinks(withSearchText: "use the", count: 20)
                 //XCTAssertTrue(links.count > 1)
                 //var wordLinksUrls = [String]()
                 /*database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix) { (key, word: Word, stop) in
