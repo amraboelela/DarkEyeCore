@@ -117,7 +117,7 @@ public struct Link: Codable {
         let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(url.hash + ".html")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
-                print("cachedFile, fileSize == 0")
+                print("cachedFile, fileSize == 0, url: \(url)")
                 return nil
             }
             if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
