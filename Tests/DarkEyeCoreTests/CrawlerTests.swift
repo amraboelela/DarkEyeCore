@@ -19,7 +19,7 @@ final class CrawlerTests: TestsBase {
 #else
         let secondsDelay = 7.0
 #endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 3) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
