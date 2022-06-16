@@ -9,4 +9,3 @@ if [ "$1" == "full" ]; then
     echo "Making full update by running swift package update"
     swift package update
 fi
-
