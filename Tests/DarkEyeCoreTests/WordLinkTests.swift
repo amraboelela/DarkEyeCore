@@ -48,7 +48,7 @@ final class WordLinkTests: TestsBase {
                 }*/
                 //print("wordLinksUrls: \(wordLinksUrls)")
                 if links.count > 1 {
-                    print("links.score: \(links.map { "\($0.url), \($0.score)" } )")
+                    print("links: \(links.map { "\($0.url), score: \($0.score)" } )")
                     expectation.fulfill()
                 } else {
                     XCTFail()
