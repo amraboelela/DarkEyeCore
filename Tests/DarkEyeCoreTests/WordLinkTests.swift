@@ -23,7 +23,7 @@ final class WordLinkTests: TestsBase {
     }
      
     func testWordLinksWithSearchText() {
-        let expectation = expectation(description: "found the `wiki` word")
+        let expectation = expectation(description: "found the `use` word")
         Link.numberOfProcessedLinks = 0
         crawler = Crawler()
         crawler.start()
@@ -32,7 +32,7 @@ final class WordLinkTests: TestsBase {
 #else
         let secondsDelay = 7.0
 #endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 2) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 3) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
