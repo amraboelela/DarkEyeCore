@@ -208,21 +208,21 @@ public struct Link: Codable {
     // MARK: - Helpers
     
     mutating func load() {
-#if os(Linux)
         if let cachedFile = cachedFile {
             html = cachedFile
         } else {
+#if os(Linux)
             let filePath = "cache/" + url.hash + ".html"
             _ = shell("torsocks", "wget", "-O", filePath, url)
             let fileURL = URL(fileURLWithPath: filePath)
             html = try? String(contentsOf: fileURL, encoding: .utf8)
             //print("html: \(html)")
-        }
 #else
-        let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
-        let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
-        html = try? String(contentsOf: fileURL, encoding: .utf8)
+            let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
+            let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+            html = try? String(contentsOf: fileURL, encoding: .utf8)
 #endif
+        }
     }
     
     public static func url(fromKey key: String) -> String {

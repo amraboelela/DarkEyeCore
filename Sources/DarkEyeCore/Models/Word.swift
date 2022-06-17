@@ -23,7 +23,7 @@ public struct Word: Codable {
             let wordText = wordsArray[i]
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
-                let word = Word(links: [WordLink(url: link.url, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
+                let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                 if var dbWord: Word = database[key] {
                     WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                     database[key] = dbWord
@@ -61,16 +61,4 @@ public struct Word: Codable {
         let endIndex = startIndex + 20 >= array.count ? array.count - 1 : startIndex + 20
         return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
-    
-    /*mutating func mergeWith(word: Word) {
-        for wordLink in word.links {
-            if let index = links.firstIndex(where: { $0.url == wordLink.url }) {
-                var link = links[index]
-                link.mergeWith(wordLink: wordLink)
-                links[index] = link
-            } else {
-                links.append(wordLink)
-            }
-        }
-    }*/
 }

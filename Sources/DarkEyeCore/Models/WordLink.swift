@@ -10,6 +10,7 @@ import Foundation
 
 public struct WordLink: Codable {
     public var url: String
+    public var title: String
     public var text: String
     public var wordCount: Int
     public var numberOfVisits: Int = 0

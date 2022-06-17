@@ -22,7 +22,6 @@ public class Crawler: Thread {
     }
     
     public override func main() {
-        //print("My thread name is: \(Thread.current.name!)")
         var link = Link(url: mainUrl)
         while canRun {
             link.crawl()
