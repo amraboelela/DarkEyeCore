@@ -9,11 +9,11 @@
 import Foundation
 
 public struct WordLink: Codable {
-    var url: String
-    var text: String
-    var wordCount: Int
-    var numberOfVisits: Int = 0
-    var lastVisitTime: Int = 0
+    public var url: String
+    public var text: String
+    public var wordCount: Int
+    public var numberOfVisits: Int = 0
+    public var lastVisitTime: Int = 0
     
     // MARK: - Accessors
     
