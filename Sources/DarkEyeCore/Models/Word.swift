@@ -23,6 +23,7 @@ public struct Word: Codable {
             let wordText = wordsArray[i]
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
+                //print("index link key: \(key)")
                 let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                 if var dbWord: Word = database[key] {
                     WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)

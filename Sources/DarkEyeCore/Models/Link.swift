@@ -15,9 +15,11 @@ public struct Link: Codable {
     public static var processTimeThreshold = 1 // any link with last process time smaller, need to be processed
     
     public var url: String
-    public var lastProcessTime: Int = 0 // # of seconds since reference date.
-    public var numberOfVisits: Int = 0
-    public var lastVisitTime: Int = 0 // # of seconds since reference date.
+    public var lastProcessTime = 0 // # of seconds since reference date.
+    public var numberOfVisits = 0
+    public var lastVisitTime = 0 // # of seconds since reference date.
+    public var numberOfReports = 0
+    public var illegal: Bool?
     
     var html: String?
     
@@ -113,6 +115,11 @@ public struct Link: Codable {
     }
     
     var cachedFile: String? {
+#if os(Linux)
+        let thresholdDays = 10
+#else
+        let thresholdDays = 1000
+#endif
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(url.hash + ".html")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
@@ -121,7 +128,7 @@ public struct Link: Codable {
                 return nil
             }
             if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
-                let cacheThreashold = Date.days(numberOfDays: 10)
+                let cacheThreashold = Date.days(numberOfDays: thresholdDays)
                 let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
                 if secondsDiff > cacheThreashold {
                     return nil
@@ -168,6 +175,7 @@ public struct Link: Codable {
             process()
             links = Link.linksToProcess(count: processCount)
         }
+        //print("crawl links: \(links.map { $0.url })")
         for var link in links {
             if !crawler.canRun {
                 break
@@ -179,9 +187,11 @@ public struct Link: Codable {
     static var numberOfProcessedLinks = 0
     
     public mutating func process() {
+        print("process url: \(url)")
         Link.numberOfProcessedLinks += 1
         load()
         for childURL in urls {
+            //print("process childURL: \(childURL)")
             if let _: Link = database[Link.prefix + childURL] {
             } else {
                 let link = Link(url: childURL)

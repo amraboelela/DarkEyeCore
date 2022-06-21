@@ -30,7 +30,7 @@ final class WordLinkTests: TestsBase {
 #if os(Linux)
         let secondsDelay = 60.0
 #else
-        let secondsDelay = 7.0
+        let secondsDelay = 60.0
 #endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 3) {
             crawler.canRun = false
