@@ -1,7 +1,7 @@
 import XCTest
 @testable import DarkEyeCore
 
-final class StringTests: XCTestCase {
+final class StringTests: TestsBase {
     
     override func setUp() {
         super.setUp()
@@ -28,7 +28,7 @@ final class StringTests: XCTestCase {
         let hashFileName = crawler.mainUrl.hash
         var link = Link(url: crawler.mainUrl)
         XCTAssertEqual(link.hash, "")
-        link.fillHashIfNeeded()
+        link.save()
         XCTAssertEqual(link.hash, hashFileName)
     }
     

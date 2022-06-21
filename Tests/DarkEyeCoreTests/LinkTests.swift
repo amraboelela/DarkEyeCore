@@ -98,6 +98,7 @@ final class LinkTests: TestsBase {
     
     func testCachedFile() {
         var link = Link(url: crawler.mainUrl)
+        link.save()
         let cachedFile = link.cachedFile()
         XCTAssertNotNil(cachedFile)
     }
@@ -184,12 +185,5 @@ final class LinkTests: TestsBase {
     func testUrlFromKey() {
         let url = Link.url(fromKey: "link-http://hanein1.onion")
         XCTAssertEqual(url, "http://hanein1.onion")
-    }
-    
-    func testFillHashIfNeeded() {
-        var link = Link(url: crawler.mainUrl)
-        XCTAssertEqual(link.hash, "")
-        link.fillHashIfNeeded()
-        XCTAssertEqual(link.hash, link.url.hash)
     }
 }

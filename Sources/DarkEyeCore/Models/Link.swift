@@ -124,7 +124,6 @@ public struct Link: Codable {
 #else
         let thresholdDays = 1000
 #endif
-        fillHashIfNeeded()
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(hash + ".html")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
@@ -213,11 +212,9 @@ public struct Link: Codable {
     // MARK: - Saving
     
     public mutating func save() {
-        //var newLink = false
         if let _: Link = database[key] {
         } else {
-            fillHashIfNeeded()
-            //hash = url.hash
+            hash = url.hash
             let hashLink = HashLink(url: url)
             database[HashLink.prefix + hash] = hashLink
         }
@@ -231,7 +228,6 @@ public struct Link: Codable {
             html = cachedFile
         } else {
 #if os(Linux)
-            fillHashIfNeeded()
             let filePath = "cache/" + hash + ".html"
             _ = shell("torsocks", "wget", "-O", filePath, url)
             let fileURL = URL(fileURLWithPath: filePath)
@@ -266,10 +262,10 @@ public struct Link: Codable {
         return result
     }
     
-    mutating func fillHashIfNeeded() {
+    /*mutating func fillHashIfNeeded() {
         if hash.isEmpty {
             hash = url.hash
         }
-    }
+    }*/
     
 }
