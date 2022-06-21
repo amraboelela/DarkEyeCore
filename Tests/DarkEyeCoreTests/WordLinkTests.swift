@@ -41,7 +41,7 @@ final class WordLinkTests: TestsBase {
                 var wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
                 let wordLinksCount = wordLinks.count
                 if wordLinksCount > 1 {
-                    print("wordLinks 1: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
+                    //print("wordLinks 1: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
                     let illegalKey = Link.prefix + wordLinks[0].url
                     print("illegalKey: \(illegalKey)")
                     if var link: Link = database[illegalKey] {
@@ -49,7 +49,7 @@ final class WordLinkTests: TestsBase {
                         _ = link.save()
                     }
                     wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
-                    print("wordLinks 2: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
+                    //print("wordLinks 2: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
                     XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
                     expectation.fulfill()
                 } else {

@@ -15,6 +15,7 @@ public struct Link: Codable {
     public static var processTimeThreshold = 1 // any link with last process time smaller, need to be processed
     
     public var url: String
+    public var hash = ""
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
@@ -25,6 +26,7 @@ public struct Link: Codable {
     
     public enum CodingKeys: String, CodingKey {
         case url
+        case hash
         case lastProcessTime
         case numberOfVisits
         case lastVisitTime
@@ -116,14 +118,15 @@ public struct Link: Codable {
         return result
     }
     
-    var cachedFile: String? {
+    mutating func cachedFile() -> String? {
 #if os(Linux)
         let thresholdDays = 10
 #else
         let thresholdDays = 1000
 #endif
+        fillHashIfNeeded()
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
-        let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(url.hash + ".html")
+        let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(hash + ".html")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
                 print("cachedFile, fileSize == 0, url: \(url)")
@@ -199,34 +202,37 @@ public struct Link: Codable {
             //print("process childURL: \(childURL)")
             if let _: Link = database[Link.prefix + childURL] {
             } else {
-                let link = Link(url: childURL)
-                _ = link.save()
+                var link = Link(url: childURL)
+                link.save()
             }
         }
         lastProcessTime = Date.secondsSinceReferenceDate
-        _ = save()
+        save()
     }
     
     // MARK: - Saving
     
-    public func save() -> Bool {
-        var newLink = false
+    public mutating func save() {
+        //var newLink = false
         if let _: Link = database[key] {
         } else {
-            newLink = true
+            fillHashIfNeeded()
+            //hash = url.hash
+            let hashLink = HashLink(url: url)
+            database[HashLink.prefix + hash] = hashLink
         }
         database[key] = self
-        return newLink
     }
     
     // MARK: - Helpers
     
     mutating func load() {
-        if let cachedFile = cachedFile {
+        if let cachedFile = cachedFile() {
             html = cachedFile
         } else {
 #if os(Linux)
-            let filePath = "cache/" + url.hash + ".html"
+            fillHashIfNeeded()
+            let filePath = "cache/" + hash + ".html"
             _ = shell("torsocks", "wget", "-O", filePath, url)
             let fileURL = URL(fileURLWithPath: filePath)
             html = try? String(contentsOf: fileURL, encoding: .utf8)
@@ -258,6 +264,12 @@ public struct Link: Codable {
             }
         }
         return result
+    }
+    
+    mutating func fillHashIfNeeded() {
+        if hash.isEmpty {
+            hash = url.hash
+        }
     }
     
 }

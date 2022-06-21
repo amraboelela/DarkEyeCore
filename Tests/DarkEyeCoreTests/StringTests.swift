@@ -26,7 +26,10 @@ final class StringTests: XCTestCase {
     
     func testHash() {
         let hashFileName = crawler.mainUrl.hash
-        print("hashFileName: \(hashFileName)")
+        var link = Link(url: crawler.mainUrl)
+        XCTAssertEqual(link.hash, "")
+        link.fillHashIfNeeded()
+        XCTAssertEqual(link.hash, hashFileName)
     }
     
     func testFromArray() {
