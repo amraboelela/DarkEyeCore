@@ -28,6 +28,8 @@ public struct Link: Codable {
         case lastProcessTime
         case numberOfVisits
         case lastVisitTime
+        case numberOfReports
+        case illegal
     }
     
     // MARK: - Accessors
@@ -165,7 +167,7 @@ public struct Link: Codable {
     
     // MARK: - Crawling
     
-    public mutating func crawl(processCount: Int = 10) {
+    public mutating func crawl(processCount: Int = 20) {
         if lastProcessTime < Link.processTimeThreshold {
             process()
         }
@@ -181,13 +183,16 @@ public struct Link: Codable {
                 break
             }
             link.process()
+            DispatchQueue.global(qos: .background).async {
+                Word.index(link: link)
+            }
         }
     }
     
     static var numberOfProcessedLinks = 0
     
     public mutating func process() {
-        print("process url: \(url)")
+        //print("process url: \(url)")
         Link.numberOfProcessedLinks += 1
         load()
         for childURL in urls {
@@ -200,7 +205,6 @@ public struct Link: Codable {
         }
         lastProcessTime = Date.secondsSinceReferenceDate
         _ = save()
-        Word.index(link: self)
     }
     
     // MARK: - Saving

@@ -25,8 +25,9 @@ public class Crawler: Thread {
         var link = Link(url: mainUrl)
         while canRun {
             link.crawl()
-            print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
+            //print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
         }
+        print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
         print("canRun: \(canRun), exiting")
     }
 }

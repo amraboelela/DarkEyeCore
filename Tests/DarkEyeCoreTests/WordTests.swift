@@ -23,13 +23,7 @@ final class WordTests: TestsBase {
         if let _: Word = database[Word.prefix + "body"] {
             XCTFail()
         }
-        link = Link(
-            url: crawler.mainUrl,
-            lastProcessTime: 0,
-            numberOfVisits: 0,
-            lastVisitTime: 0,
-            html: nil
-        )
+        link = Link(url: crawler.mainUrl)
         link.load()
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "bitcoin"] {
@@ -40,13 +34,11 @@ final class WordTests: TestsBase {
         }
         if let word: Word = database[Word.prefix + "the"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
-            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }
         if let word: Word = database[Word.prefix + "hidden"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()
         }

@@ -30,16 +30,27 @@ final class WordLinkTests: TestsBase {
 #if os(Linux)
         let secondsDelay = 60.0
 #else
-        let secondsDelay = 60.0
+        let secondsDelay = 15.0
 #endif
+        let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 3) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             if crawler.isExecuting == false {
-                let links = WordLink.wordLinks(withSearchText: "use the", count: 20)
-                if links.count > 1 {
-                    print("links: \(links.map { "\($0.url), score: \($0.score)" } )")
+                var wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
+                let wordLinksCount = wordLinks.count
+                if wordLinksCount > 1 {
+                    print("wordLinks 1: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
+                    let illegalKey = Link.prefix + wordLinks[0].url
+                    print("illegalKey: \(illegalKey)")
+                    if var link: Link = database[illegalKey] {
+                        link.illegal = true
+                        _ = link.save()
+                    }
+                    wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
+                    print("wordLinks 2: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
+                    XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
                     expectation.fulfill()
                 } else {
                     XCTFail()

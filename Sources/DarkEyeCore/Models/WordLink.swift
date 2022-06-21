@@ -34,6 +34,19 @@ public struct WordLink: Codable {
             database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
+            result = result.filter { wordLink in
+                let key = Link.prefix + wordLink.url
+                //print("wordLink key: \(key)")
+                if let link: Link = database[key] {
+                    //print("wordLinks withSearchText link: \(link)")
+                } else {
+                    print("Couldn't get wordLink key: \(key)")
+                }
+                if let link: Link = database[key], link.illegal == true {
+                    return false
+                }
+                return true
+            }
             result = result.sorted { $0.score > $1.score }
             if result.count > count {
                 result.removeLast(result.count - count)

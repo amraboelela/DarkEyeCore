@@ -135,6 +135,7 @@ final class LinkTests: TestsBase {
         var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
         link.process()
+        Word.index(link: link)
         XCTAssertNotEqual(link.lastProcessTime, 0)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
@@ -145,11 +146,12 @@ final class LinkTests: TestsBase {
         if let _: Word = database[Word.prefix + "body"] {
             XCTFail()
         }
-        if let _: Word = database[Word.prefix + "college"] {
+        if let _: Word = database[Word.prefix + "html"] {
             XCTFail()
         }
         link = Link(url: crawler.mainUrl)
         link.process()
+        Word.index(link: link)
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
         } else {
