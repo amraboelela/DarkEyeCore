@@ -193,15 +193,14 @@ public struct Link: Codable {
         }
         var myLink = link
         myLink.saveChildren()
-        //DispatchQueue.global(qos: .background).async {
         if Word.index(link: myLink) {
             myLink.lastProcessTime = Date.secondsSinceReferenceDate
             myLink.save()
             Link.numberOfProcessedLinks += 1
+            print("processed link: \(myLink.url)")
         } else {
             print("word index link failed")
         }
-        //}
     }
     
     public mutating func saveChildren() {
