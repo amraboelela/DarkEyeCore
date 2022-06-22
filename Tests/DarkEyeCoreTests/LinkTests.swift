@@ -135,6 +135,7 @@ final class LinkTests: TestsBase {
         XCTAssertNotNil(link.html)
     }
     
+    func testProcessLink() {
         let url = "http://library123.onion"
         var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
