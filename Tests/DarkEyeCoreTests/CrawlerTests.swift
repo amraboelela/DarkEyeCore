@@ -40,7 +40,7 @@ final class CrawlerTests: TestsBase {
     func testRestart() {
         let stoppedExpectation = expectation(description: "crawler stopped")
         let relunchedExpectation = expectation(description: "crawler relunched")
-        crawler.start()
+        Crawler.restart()
 #if os(Linux)
         let secondsDelay = 30.0
 #else
@@ -66,9 +66,9 @@ final class CrawlerTests: TestsBase {
                 XCTFail()
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 4.0) {
+        /*DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 4.0) {
             crawler.canRun = false
-        }
+        }*/
         waitForExpectations(timeout: secondsDelay + 10, handler: nil)
     }
     

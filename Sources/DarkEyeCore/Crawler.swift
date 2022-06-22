@@ -22,6 +22,7 @@ public class Crawler: Thread {
     }
     
     public override func main() {
+        Thread.setThreadPriority(0.1)
         var link = Link(url: mainUrl)
         while canRun {
             link.crawl()

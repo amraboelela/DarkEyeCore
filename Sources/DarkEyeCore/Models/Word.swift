@@ -15,15 +15,17 @@ public struct Word: Codable {
     
     // MARK: - Indexing
     
-    public static func index(link: Link) {
+    public static func index(link: Link) -> Bool {
+        //print("index link: \(link)")
         let wordsArray = words(fromText: link.text)
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         for i in (0..<wordsArray.count) {
             if !crawler.canRun || database.closed() {
-                break
+                return false
             }
             let text = contextStringFrom(array: wordsArray, atIndex: i)
             let wordText = wordsArray[i]
+            //print("wordText: \(wordText)")
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
                 //print("index link key: \(key)")
@@ -31,11 +33,14 @@ public struct Word: Codable {
                 if var dbWord: Word = database[key] {
                     WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                     database[key] = dbWord
+                    //print("database[key] = dbWord: \(dbWord)")
                 } else {
                     database[key] = word
+                    //print("database[key] = word: \(word)")
                 }
             }
         }
+        return true
     }
     
     // MARK: - Helpers

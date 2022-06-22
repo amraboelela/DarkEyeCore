@@ -135,12 +135,63 @@ final class LinkTests: TestsBase {
         XCTAssertNotNil(link.html)
     }
     
-    func testProcess() {
+        let url = "http://library123.onion"
+        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        XCTAssertEqual(link.lastProcessTime, 0)
+        crawler.canRun = true
+        Link.process(link: link)
+        let processedExpectation = expectation(description: "link processed")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            if let dbLink: Link = database[Link.prefix + url] {
+                XCTAssertNotEqual(dbLink.lastProcessTime, 0)
+            } else {
+                XCTFail()
+            }
+            if let word: Word = database[Word.prefix + "library"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
+                XCTAssertEqual(word.links[0].url, url)
+                processedExpectation.fulfill()
+            } else {
+                XCTFail()
+            }
+            if let _: Word = database[Word.prefix + "body"] {
+                XCTFail()
+            }
+            if let _: Word = database[Word.prefix + "html"] {
+                XCTFail()
+            }
+        }
+        link = Link(url: crawler.mainUrl)
+        Link.process(link: link)
+        let link2ProcessedExpectation = expectation(description: "link2 processed")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+            if let word: Word = database[Word.prefix + "bitcoin"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
+            } else {
+                XCTFail()
+            }
+            if let word: Word = database[Word.prefix + "the"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
+            } else {
+                XCTFail()
+            }
+            if let word: Word = database[Word.prefix + "hidden"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
+                link2ProcessedExpectation.fulfill()
+            } else {
+                XCTFail()
+            }
+        }
+        waitForExpectations(timeout: 25.0, handler: nil)
+    }
+    
+    func testSaveChildren() {
         var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
-        link.process()
-        Word.index(link: link)
-        XCTAssertNotEqual(link.lastProcessTime, 0)
+        crawler.canRun = true
+        link.saveChildren()
+        var success = Word.index(link: link)
+        XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
             XCTAssertEqual(word.links[0].url, crawler.mainUrl)
@@ -154,8 +205,9 @@ final class LinkTests: TestsBase {
             XCTFail()
         }
         link = Link(url: crawler.mainUrl)
-        link.process()
-        Word.index(link: link)
+        link.saveChildren()
+        success = Word.index(link: link)
+        XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
         } else {

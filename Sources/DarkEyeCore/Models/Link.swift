@@ -171,32 +171,43 @@ public struct Link: Codable {
     
     public mutating func crawl(processCount: Int = 20) {
         if lastProcessTime < Link.processTimeThreshold {
-            process()
+            saveChildren()
         }
         var links = Link.linksToProcess(count: processCount)
         if links.count == 0 {
             Link.processTimeThreshold = Date.secondsSinceReferenceDate
-            process()
+            saveChildren()
             links = Link.linksToProcess(count: processCount)
         }
         //print("crawl links: \(links.map { $0.url })")
-        for var link in links {
-            if !crawler.canRun {
-                break
-            }
-            link.process()
-            DispatchQueue.global(qos: .background).async {
-                Word.index(link: link)
-            }
+        for link in links {
+            Link.process(link: link)
         }
     }
     
     static var numberOfProcessedLinks = 0
     
-    public mutating func process() {
-        //print("process url: \(url)")
-        Link.numberOfProcessedLinks += 1
-        load()
+    public static func process(link: Link) {
+        if !crawler.canRun || database.closed() {
+            return
+        }
+        var myLink = link
+        myLink.saveChildren()
+        //DispatchQueue.global(qos: .background).async {
+        if Word.index(link: myLink) {
+            myLink.lastProcessTime = Date.secondsSinceReferenceDate
+            myLink.save()
+            Link.numberOfProcessedLinks += 1
+        } else {
+            print("word index link failed")
+        }
+        //}
+    }
+    
+    public mutating func saveChildren() {
+        if html == nil {
+            load()
+        }
         for childURL in urls {
             //print("process childURL: \(childURL)")
             if let _: Link = database[Link.prefix + childURL] {
@@ -205,8 +216,6 @@ public struct Link: Codable {
                 link.save()
             }
         }
-        lastProcessTime = Date.secondsSinceReferenceDate
-        save()
     }
     
     // MARK: - Saving
