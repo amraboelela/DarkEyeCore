@@ -12,10 +12,17 @@ final class WordTests: TestsBase {
     }
     
     func testIndexLink() {
-        var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>")
         Word.index(link: link)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
+            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
+        } else {
+            XCTFail()
+        }
+        if let word: Word = database[Word.prefix + "college"] {
+            XCTAssertEqual(word.links[0].title, "The College")
+            XCTAssertTrue(word.links[0].text.lowercased().contains("college"))
             XCTAssertEqual(word.links[0].url, crawler.mainUrl)
         } else {
             XCTFail()

@@ -14,7 +14,7 @@ public var crawler = Crawler()
 
 public class Crawler: Thread {
     let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
-    var canRun = true
+    public var canRun = true
     
     override init() {
         super.init()
