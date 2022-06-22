@@ -13,7 +13,6 @@ final class CrawlerTests: TestsBase {
     
     func testCrawl() {
         let duckduckExpectation = expectation(description: "duckduck link is there")
-        let relunchedExpectation = expectation(description: "crawler relunched")
         crawler.start()
 #if os(Linux)
         let secondsDelay = 30.0
@@ -35,9 +34,30 @@ final class CrawlerTests: TestsBase {
                 XCTFail()
             }
         }
+        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+    }
+    
+    func testRestart() {
+        let stoppedExpectation = expectation(description: "crawler stopped")
+        let relunchedExpectation = expectation(description: "crawler relunched")
+        crawler.start()
+#if os(Linux)
+        let secondsDelay = 30.0
+#else
+        let secondsDelay = 30.0
+#endif
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 3) {
+            crawler.canRun = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
+            if !crawler.isExecuting {
+                stoppedExpectation.fulfill()
+            } else {
+                XCTFail()
+            }
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            crawler = Crawler()
-            crawler.start()
+            Crawler.restart()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3.0) {
             if crawler.isExecuting {

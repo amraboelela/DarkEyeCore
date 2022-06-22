@@ -30,7 +30,7 @@ final class WordLinkTests: TestsBase {
 #if os(Linux)
         let secondsDelay = 60.0
 #else
-        let secondsDelay = 15.0
+        let secondsDelay = 30.0
 #endif
         let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay / 3) {
@@ -46,7 +46,7 @@ final class WordLinkTests: TestsBase {
                     print("illegalKey: \(illegalKey)")
                     if var link: Link = database[illegalKey] {
                         link.illegal = true
-                        _ = link.save()
+                        link.save()
                     }
                     wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
                     //print("wordLinks 2: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")

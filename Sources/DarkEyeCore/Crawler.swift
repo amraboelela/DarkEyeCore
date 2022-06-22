@@ -30,4 +30,9 @@ public class Crawler: Thread {
         print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
         print("canRun: \(canRun), exiting")
     }
+    
+    public static func restart() {
+        crawler = Crawler()
+        crawler.start()
+    }
 }
