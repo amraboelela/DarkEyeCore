@@ -19,10 +19,10 @@ public class Crawler: Thread {
     override init() {
         super.init()
         self.name = "crawler"
+        self.qualityOfService = .background
     }
     
     public override func main() {
-        Thread.setThreadPriority(0.1)
         var link = Link(url: mainUrl)
         while canRun {
             link.crawl()

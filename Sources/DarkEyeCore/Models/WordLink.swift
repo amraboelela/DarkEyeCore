@@ -37,7 +37,7 @@ public struct WordLink: Codable {
             result = result.filter { wordLink in
                 let key = Link.prefix + wordLink.url
                 //print("wordLink key: \(key)")
-                if let link: Link = database[key] {
+                if let _: Link = database[key] {
                     //print("wordLinks withSearchText link: \(link)")
                 } else {
                     print("Couldn't get wordLink key: \(key)")

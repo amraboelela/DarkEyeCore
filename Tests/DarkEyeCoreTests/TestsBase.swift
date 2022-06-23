@@ -16,7 +16,7 @@ class TestsBase: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        database.deleteDatabaseFromDisk()
+        //database.deleteDatabaseFromDisk()
         crawler.canRun = false
     }
     
