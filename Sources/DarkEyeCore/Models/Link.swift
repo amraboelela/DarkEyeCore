@@ -237,10 +237,14 @@ public struct Link: Codable {
         } else {
 #if os(Linux)
             fillHashIfNeeded()
-            let filePath = "cache/" + hash + ".html"
+            let filePath = "cache/" + hash + "-temp.html"
             _ = shell("torsocks", "wget", "-O", filePath, url)
             let fileURL = URL(fileURLWithPath: filePath)
-            html = try? String(contentsOf: fileURL, encoding: .utf8)
+            if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
+                shell("cp", filePath, "cache/" + hash + ".html")
+                html = fileContent
+            }
+            shell("rm", filePath)
             //print("html: \(html)")
 #else
             let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
