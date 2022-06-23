@@ -236,6 +236,7 @@ public struct Link: Codable {
             html = cachedFile
         } else {
 #if os(Linux)
+            fillHashIfNeeded()
             let filePath = "cache/" + hash + ".html"
             _ = shell("torsocks", "wget", "-O", filePath, url)
             let fileURL = URL(fileURLWithPath: filePath)
@@ -270,10 +271,10 @@ public struct Link: Codable {
         return result
     }
     
-    /*mutating func fillHashIfNeeded() {
+    mutating func fillHashIfNeeded() {
         if hash.isEmpty {
             hash = url.hash
         }
-    }*/
+    }
     
 }
