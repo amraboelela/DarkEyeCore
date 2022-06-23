@@ -14,7 +14,8 @@ final class WordTests: TestsBase {
     func testIndexLink() {
         var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>")
         crawler.canRun = true
-        Word.index(link: link)
+        var success = Word.index(link: link)
+        XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
             XCTAssertEqual(word.links[0].url, crawler.mainUrl)
@@ -33,7 +34,8 @@ final class WordTests: TestsBase {
         }
         link = Link(url: crawler.mainUrl)
         link.load()
-        Word.index(link: link)
+        success = Word.index(link: link)
+        XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
             XCTAssertEqual(word.links[0].url, crawler.mainUrl)
@@ -93,7 +95,7 @@ final class WordTests: TestsBase {
         var link = Link(url: crawler.mainUrl)
         link.load()
         words = Word.words(fromText: link.text)
-        XCTAssertTrue(words.count > 4300)
+        XCTAssertTrue(words.count > 4000)
     }
     
     func testContextStringFromArray() {

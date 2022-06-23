@@ -142,7 +142,7 @@ final class LinkTests: TestsBase {
         crawler.canRun = true
         Link.process(link: link)
         let processedExpectation = expectation(description: "link processed")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
             if let dbLink: Link = database[Link.prefix + url] {
                 XCTAssertNotEqual(dbLink.lastProcessTime, 0)
             } else {
@@ -165,7 +165,7 @@ final class LinkTests: TestsBase {
         link = Link(url: crawler.mainUrl)
         Link.process(link: link)
         let link2ProcessedExpectation = expectation(description: "link2 processed")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 20) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
             if let word: Word = database[Word.prefix + "bitcoin"] {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
             } else {
@@ -183,7 +183,7 @@ final class LinkTests: TestsBase {
                 XCTFail()
             }
         }
-        waitForExpectations(timeout: 25.0, handler: nil)
+        waitForExpectations(timeout: 20.0, handler: nil)
     }
     
     func testSaveChildren() {
