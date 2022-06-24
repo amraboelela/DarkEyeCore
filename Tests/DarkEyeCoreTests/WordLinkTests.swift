@@ -37,25 +37,25 @@ final class WordLinkTests: TestsBase {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            if crawler.isExecuting == false {
-                var wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
-                let wordLinksCount = wordLinks.count
-                if wordLinksCount > 1 {
-                    //print("wordLinks 1: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
-                    let blockedKey = Link.prefix + wordLinks[0].url
-                    print("blockedKey: \(blockedKey)")
-                    if var link: Link = database[blockedKey] {
-                        link.blocked = true
-                        link.save()
-                    }
-                    wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
-                    //print("wordLinks 2: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
-                    XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
-                    expectation.fulfill()
-                } else {
-                    XCTFail()
+            //if crawler.isExecuting == false {
+            var wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
+            let wordLinksCount = wordLinks.count
+            if wordLinksCount > 1 {
+                //print("wordLinks 1: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
+                let blockedKey = Link.prefix + wordLinks[0].url
+                print("blockedKey: \(blockedKey)")
+                if var link: Link = database[blockedKey] {
+                    link.blocked = true
+                    link.save()
                 }
+                wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
+                //print("wordLinks 2: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
+                XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
+                expectation.fulfill()
+            } else {
+                XCTFail()
             }
+            //}
         }
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }
