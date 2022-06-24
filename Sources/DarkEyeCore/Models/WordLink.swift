@@ -42,7 +42,7 @@ public struct WordLink: Codable {
                 } else {
                     print("Couldn't get wordLink key: \(key)")
                 }
-                if let link: Link = database[key], link.illegal == true {
+                if let link: Link = database[key], link.blocked == true {
                     return false
                 }
                 return true

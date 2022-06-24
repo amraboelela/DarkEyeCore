@@ -20,7 +20,7 @@ public struct Link: Codable {
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
-    public var illegal: Bool?
+    public var blocked: Bool?
     
     var html: String?
     
@@ -31,7 +31,7 @@ public struct Link: Codable {
         case numberOfVisits
         case lastVisitTime
         case numberOfReports
-        case illegal
+        case blocked
     }
     
     // MARK: - Accessors

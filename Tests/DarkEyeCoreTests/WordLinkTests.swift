@@ -42,10 +42,10 @@ final class WordLinkTests: TestsBase {
                 let wordLinksCount = wordLinks.count
                 if wordLinksCount > 1 {
                     //print("wordLinks 1: \(wordLinks.map { "\($0.url), score: \($0.score)" } )")
-                    let illegalKey = Link.prefix + wordLinks[0].url
-                    print("illegalKey: \(illegalKey)")
-                    if var link: Link = database[illegalKey] {
-                        link.illegal = true
+                    let blockedKey = Link.prefix + wordLinks[0].url
+                    print("blockedKey: \(blockedKey)")
+                    if var link: Link = database[blockedKey] {
+                        link.blocked = true
                         link.save()
                     }
                     wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
