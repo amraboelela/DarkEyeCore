@@ -45,7 +45,7 @@ public struct Link: Codable {
         return result
     }
 
-    public var key: String {
+    var key: String {
         return Link.prefix + url
     }
 
@@ -144,17 +144,17 @@ public struct Link: Codable {
     
     // MARK: - Factory methods
     
-    public static func with(url: String) -> Link {
+    static func with(url: String) -> Link {
         return Link(url: url)
     }
 
-    public static func from(key: String) -> Link {
+    static func from(key: String) -> Link {
         return Link(url: url(fromKey: key))
     }
 
-    // MARK: - Search
+    // MARK: - Crawling
     
-    public static func linksToProcess(count: Int) -> [Link] {
+    static func linksToProcess(count: Int) -> [Link] {
         var result = [Link]()
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
@@ -166,8 +166,6 @@ public struct Link: Codable {
         }
         return result
     }
-    
-    // MARK: - Crawling
     
     public mutating func crawl(processCount: Int = 20) {
         if lastProcessTime < Link.processTimeThreshold {
@@ -187,23 +185,31 @@ public struct Link: Codable {
     
     static var numberOfProcessedLinks = 0
     
-    public static func process(link: Link) {
+    static func process(link: Link) {
         if !crawler.canRun || database.closed() {
             return
         }
         var myLink = link
-        myLink.saveChildren()
-        if Word.index(link: myLink) {
-            myLink.lastProcessTime = Date.secondsSinceReferenceDate
-            myLink.save()
-            Link.numberOfProcessedLinks += 1
-            print("processed link: \(myLink.url)")
+        if link.blocked == true {
+            myLink.processAndSave()
         } else {
-            print("word index link failed")
+            myLink.saveChildren()
+            if Word.index(link: myLink) {
+                myLink.processAndSave()
+            } else {
+                print("word index link failed")
+            }
         }
     }
     
-    public mutating func saveChildren() {
+    mutating func processAndSave() {
+        lastProcessTime = Date.secondsSinceReferenceDate
+        save()
+        Link.numberOfProcessedLinks += 1
+        print("processed link: \(url)")
+    }
+    
+    mutating func saveChildren() {
         if html == nil {
             load()
         }
@@ -219,7 +225,7 @@ public struct Link: Codable {
     
     // MARK: - Saving
     
-    public mutating func save() {
+    mutating func save() {
         if let _: Link = database[key] {
         } else {
             hash = url.hash
@@ -254,7 +260,7 @@ public struct Link: Codable {
         }
     }
     
-    public static func url(fromKey key: String) -> String {
+    static func url(fromKey key: String) -> String {
         let arr = key.components(separatedBy: "-")
         var result = ""
         if arr.count > 1 {

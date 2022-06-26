@@ -186,6 +186,28 @@ final class LinkTests: TestsBase {
         waitForExpectations(timeout: 20.0, handler: nil)
     }
     
+    func testProcessBlockedLink() {
+        let url = "http://library123.onion"
+        let link = Link(url: url, hash: "", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        XCTAssertEqual(link.lastProcessTime, 0)
+        crawler.canRun = true
+        Link.process(link: link)
+        let blockedExpectation = expectation(description: "link is blocked")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            if let dbLink: Link = database[Link.prefix + url] {
+                XCTAssertNotEqual(dbLink.lastProcessTime, 0)
+            } else {
+                XCTFail()
+            }
+            if let _: Word = database[Word.prefix + "library"] {
+                XCTFail()
+            } else {
+                blockedExpectation.fulfill()
+            }
+        }
+        waitForExpectations(timeout: 10.0, handler: nil)
+    }
+    
     func testSaveChildren() {
         var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
