@@ -117,8 +117,8 @@ final class LinkTests: TestsBase {
         var link = Link(url: "http://hanein1.onion")
         link.save()
         XCTAssertEqual(Link.firstKey, "link-http://hanein1.onion")
-        XCTAssertEqual(link.hash, "http://hanein1.onion".hash)
-        if let hashLink: HashLink = database[HashLink.prefix + "http://hanein1.onion".hash] {
+        XCTAssertEqual(link.hash, "http://hanein1.onion".hashBase32(numberOfDigits: 12))
+        if let hashLink: HashLink = database[HashLink.prefix + "http://hanein1.onion".hashBase32(numberOfDigits: 12)] {
             XCTAssertEqual(hashLink.url, "http://hanein1.onion")
         } else {
             XCTFail()
