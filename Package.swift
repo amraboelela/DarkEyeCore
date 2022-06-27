@@ -11,19 +11,13 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/amraboelela/SwiftLevelDB", .branch("master")),
         .package(url: "https://github.com/maparoni/Fuzi.git", .branch("master")),
-        .package(url: "https://github.com/amraboelela/CommonCrypto", .branch("master")),
+        .package(url: "https://github.com/amraboelela/SwiftEncrypt", .branch("main")),
         
     ],
     targets: [
-        /*.target(name: "DarkEyeCore", dependencies: [
-            .product(name: "SwiftLevelDB", package: "SwiftLevelDB"),
-            .product(name: "CommonCrypto", package: "CommonDigest"),
-            .product(name: "Fuzi", package: "Fuzi")
-        ]),
-        */
         .target(
             name: "DarkEyeCore",
-            dependencies: ["SwiftLevelDB", "Fuzi", "CommonCrypto"]),
+            dependencies: ["SwiftLevelDB", "Fuzi", "SwiftEncrypt"]),
         .testTarget(name: "DarkEyeCoreTests", dependencies: ["DarkEyeCore"]),
     ]
 )

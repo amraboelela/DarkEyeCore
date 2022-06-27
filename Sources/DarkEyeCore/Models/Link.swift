@@ -9,6 +9,7 @@
 import Foundation
 import SwiftLevelDB
 import Fuzi
+import SwiftEncrypt
 
 public struct Link: Codable {
     public static let prefix = "link-"
@@ -124,6 +125,7 @@ public struct Link: Codable {
 #else
         let thresholdDays = 1000
 #endif
+        fillHashIfNeeded()
         let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(hash + ".html")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
@@ -139,7 +141,16 @@ public struct Link: Codable {
                 }
             }
         }
-        return try? String(contentsOf: fileURL, encoding: .utf8)
+        if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
+            return result
+        } else {
+            let oldFileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
+            if let result = try? String(contentsOf: oldFileURL, encoding: .utf8) {
+                _ = shell("mv", oldFileURL.path, fileURL.path)
+                return result
+            }
+        }
+        return nil
     }
     
     // MARK: - Factory methods
@@ -228,7 +239,7 @@ public struct Link: Codable {
     mutating func save() {
         if let _: Link = database[key] {
         } else {
-            hash = url.hash
+            hash = url.hashBase32(numberOfDigits: 12)
             let hashLink = HashLink(url: url)
             database[HashLink.prefix + hash] = hashLink
         }
@@ -283,7 +294,7 @@ public struct Link: Codable {
     
     mutating func fillHashIfNeeded() {
         if hash.isEmpty {
-            hash = url.hash
+            hash = url.hashBase32(numberOfDigits: 12)
         }
     }
     

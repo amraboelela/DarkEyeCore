@@ -24,13 +24,13 @@ final class StringTests: TestsBase {
         XCTAssertEqual(words.count, 4)
     }
     
-    func testHash() {
+    /*func testHash() {
         let hashFileName = crawler.mainUrl.hash
         var link = Link(url: crawler.mainUrl)
         XCTAssertEqual(link.hash, "")
         link.save()
         XCTAssertEqual(link.hash, hashFileName)
-    }
+    }*/
     
     func testFromArray() {
         let array = ["I", "went", "to", "college", "to", "go", "to", "the", "library"]
