@@ -14,6 +14,7 @@ import SwiftEncrypt
 public struct Link: Codable {
     public static let prefix = "link-"
     public static var processTimeThreshold = 1 // any link with last process time smaller, need to be processed
+    public static var workingDirectory = ""
     
     public var url: String
     public var hash = ""
@@ -119,6 +120,18 @@ public struct Link: Codable {
         return result
     }
     
+    var workingURL: URL {
+        if Link.workingDirectory.isEmpty {
+            return URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
+        } else {
+            return URL(fileURLWithPath: Link.workingDirectory)
+        }
+    }
+    
+    var cacheURL: URL {
+        return workingURL.appendingPathComponent("cache", isDirectory: true)
+    }
+    
     mutating func cachedFile() -> String? {
 #if os(Linux)
         let thresholdDays = 10
@@ -126,8 +139,7 @@ public struct Link: Codable {
         let thresholdDays = 1000
 #endif
         fillHashIfNeeded()
-        let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
-        let fileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(hash + ".html")
+        let fileURL = cacheURL.appendingPathComponent(hash + ".html")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
                 print("cachedFile, fileSize == 0, url: \(url)")
@@ -144,7 +156,7 @@ public struct Link: Codable {
         if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
             return result
         } else {
-            let oldFileURL = packageRoot.appendingPathComponent("cache", isDirectory: true).appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
+            let oldFileURL = cacheURL.appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
             if let result = try? String(contentsOf: oldFileURL, encoding: .utf8) {
                 _ = shell("mv", oldFileURL.path, fileURL.path)
                 return result
@@ -254,18 +266,16 @@ public struct Link: Codable {
         } else {
 #if os(Linux)
             fillHashIfNeeded()
-            let filePath = "cache/" + hash + "-temp.html"
-            _ = shell("torsocks", "wget", "-O", filePath, url)
-            let fileURL = URL(fileURLWithPath: filePath)
-            if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
-                _ = shell("cp", filePath, "cache/" + hash + ".html")
+            let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
+            let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
+            _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
+            if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
+                _ = shell("cp", tempFileURL.path, cacheFileURL.path)
                 html = fileContent
             }
-            _ = shell("rm", filePath)
-            //print("html: \(html)")
+            _ = shell("rm", tempFileURL.path)
 #else
-            let packageRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
-            let fileURL = packageRoot.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+            let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
             html = try? String(contentsOf: fileURL, encoding: .utf8)
 #endif
         }
