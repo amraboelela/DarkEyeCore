@@ -158,6 +158,7 @@ public struct Link: Codable {
         } else {
             let oldFileURL = cacheURL.appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
             if let result = try? String(contentsOf: oldFileURL, encoding: .utf8) {
+                print("moving oldFileURL.path to fileURL.path")
                 _ = shell("mv", oldFileURL.path, fileURL.path)
                 return result
             }
