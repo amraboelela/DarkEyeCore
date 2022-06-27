@@ -19,7 +19,7 @@ public struct WordLink: Codable {
     
     // MARK: - Accessors
     
-    var link: Link {
+    public var link: Link {
         if let result: Link = database[Link.prefix + url] {
             return result
         }
