@@ -23,16 +23,12 @@ final class CrawlerTests: TestsBase {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            //if crawler.isExecuting == false {
             if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
                 print("testCrawl passed after \(secondsDelay) seconds")
                 duckduckExpectation.fulfill()
             } else {
                 XCTFail()
             }
-            /*} else {
-             XCTFail()
-             }*/
         }
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }
