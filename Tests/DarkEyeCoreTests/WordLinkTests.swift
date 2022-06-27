@@ -11,6 +11,14 @@ final class WordLinkTests: TestsBase {
         super.tearDown()
     }
     
+    func testLink() {
+        let wordLink = WordLink(url: "http://hanein123.onion", title: "Hanein News Forum" , text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
+        var link = wordLink.link
+        link.load()
+        XCTAssertNotNil(link.html)
+        XCTAssertEqual(link.hash, "ar7t3hfhcdxg")
+    }
+    
     func testScore() {
         var wordLink = WordLink(url: "http://hanein123.onion", title: "Hanein News Forum" , text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
         XCTAssertEqual(wordLink.score, 1011)

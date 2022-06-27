@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftEncrypt
 
 public struct WordLink: Codable {
     public var url: String
@@ -17,6 +18,13 @@ public struct WordLink: Codable {
     public var lastVisitTime: Int = 0
     
     // MARK: - Accessors
+    
+    var link: Link {
+        if let result: Link = database[Link.prefix + url] {
+            return result
+        }
+        return Link(url: url)
+    }
     
     var score: Int {
         return numberOfVisits * 1000 + wordCount + lastVisitTime
