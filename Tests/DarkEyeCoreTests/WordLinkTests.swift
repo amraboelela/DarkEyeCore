@@ -63,7 +63,6 @@ final class WordLinkTests: TestsBase {
             } else {
                 XCTFail()
             }
-            //}
         }
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }

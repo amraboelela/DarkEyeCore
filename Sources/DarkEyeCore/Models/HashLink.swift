@@ -13,4 +13,12 @@ public struct HashLink: Codable {
 
     public var url: String
     
+    // MARK: - Accessors
+    
+    public var link: Link {
+        if let result: Link = database[Link.prefix + url] {
+            return result
+        }
+        return Link(url: url)
+    }
 }
