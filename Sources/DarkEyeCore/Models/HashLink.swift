@@ -21,4 +21,13 @@ public struct HashLink: Codable {
         }
         return Link(url: url)
     }
+    
+    // MARK: - Reading
+    
+    public static func linkWith(hash: String) -> Link? {
+        if let hashLink: HashLink = database[HashLink.prefix + hash] {
+            return hashLink.link
+        }
+        return nil
+    }
 }
