@@ -249,7 +249,7 @@ public struct Link: Codable {
     
     // MARK: - Saving
     
-    mutating func save() {
+    public mutating func save() {
         if let _: Link = database[key] {
         } else {
             hash = url.hashBase32(numberOfDigits: 12)
