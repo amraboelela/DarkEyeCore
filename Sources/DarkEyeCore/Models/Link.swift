@@ -261,7 +261,7 @@ public struct Link: Codable {
     
     // MARK: - Helpers
     
-    mutating func load() {
+    public mutating func load() {
         if let cachedFile = cachedFile() {
             html = cachedFile
         } else {
