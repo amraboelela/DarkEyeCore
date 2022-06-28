@@ -24,7 +24,7 @@ public struct Link: Codable {
     public var numberOfReports = 0
     public var blocked: Bool?
     
-    var html: String?
+    public var html: String?
     
     public enum CodingKeys: String, CodingKey {
         case url
