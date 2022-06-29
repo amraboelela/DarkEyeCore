@@ -46,7 +46,7 @@ final class LinkTests: TestsBase {
         """
         text = link.text
         XCTAssertEqual(text, "Dark Eye Hello World 1 Hello World 2 example(English) example(JP)")
-        link.load()
+        link.loadHTML()
         text = link.text
         print("text.count: \(text.count)")
         XCTAssertTrue(text.count > 27000)
@@ -75,7 +75,7 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(urls[1], "http://example.co.onion")
         XCTAssertEqual(urls[2], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/mashy/ya/3am")
         
-        link.load()
+        link.loadHTML()
         urls = link.urls
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
@@ -131,7 +131,7 @@ final class LinkTests: TestsBase {
     
     func testLoad() {
         var link = Link(url: crawler.mainUrl)
-        link.load()
+        link.loadHTML()
         XCTAssertNotNil(link.html)
     }
     
@@ -208,41 +208,57 @@ final class LinkTests: TestsBase {
         waitForExpectations(timeout: 10.0, handler: nil)
     }
     
+    func testSaveChildrenIfNeeded() {
+        var link = Link(
+            url: crawler.mainUrl,
+            lastProcessTime: 0,
+            numberOfVisits: 0,
+            lastVisitTime: 0,
+            html:
+            """
+            <html>
+            <body>
+            <p>I went to college to go to the library</p>
+            <a href='exampleenglish.onion'>example(English)</a>
+            <a href='examplejapan.onion'>example(JP)</a>
+            </body>
+            </html>
+            """
+        )
+        link.lastProcessTime = Date.secondsSinceReferenceDate
+        link.saveChildrenIfNeeded()
+        if let _: Link = database[Link.prefix + "exampleenglish.onion"] {
+            XCTFail()
+        }
+        if let _: Link = database[Link.prefix + "examplejapan.onion"] {
+            XCTFail()
+        }
+    }
+    
     func testSaveChildren() {
-        var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(
+            url: crawler.mainUrl,
+            lastProcessTime: 0,
+            numberOfVisits: 0,
+            lastVisitTime: 0,
+            html:
+            """
+            <html>
+            <body>
+            <p>I went to college to go to the library</p>
+            <a href='exampleenglish.onion'>example(English)</a>
+            <a href='examplejapan.onion'>example(JP)</a>
+            </body>
+            </html>
+            """
+        )
         XCTAssertEqual(link.lastProcessTime, 0)
-        crawler.canRun = true
         link.saveChildren()
-        var success = Word.index(link: link)
-        XCTAssertTrue(success)
-        if let word: Word = database[Word.prefix + "library"] {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
+        if let _: Link = database[Link.prefix + "exampleenglish.onion"] {
         } else {
             XCTFail()
         }
-        if let _: Word = database[Word.prefix + "body"] {
-            XCTFail()
-        }
-        if let _: Word = database[Word.prefix + "html"] {
-            XCTFail()
-        }
-        link = Link(url: crawler.mainUrl)
-        link.saveChildren()
-        success = Word.index(link: link)
-        XCTAssertTrue(success)
-        if let word: Word = database[Word.prefix + "bitcoin"] {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
-        } else {
-            XCTFail()
-        }
-        if let word: Word = database[Word.prefix + "the"] {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
-        } else {
-            XCTFail()
-        }
-        if let word: Word = database[Word.prefix + "hidden"] {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
+        if let _: Link = database[Link.prefix + "examplejapan.onion"] {
         } else {
             XCTFail()
         }

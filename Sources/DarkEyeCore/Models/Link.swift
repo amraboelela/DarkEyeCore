@@ -96,6 +96,10 @@ public struct Link: Codable {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if var href = anchor["href"], href.range(of: "#") == nil {
+                                if href.range(of: ":") != nil &&
+                                    href.range(of: "http") == nil {
+                                    return nil
+                                }
                                 if href.last == "/" {
                                     href = String(href.dropLast())
                                 }
@@ -107,7 +111,7 @@ public struct Link: Codable {
                                 }
                                 if href.first == "/" {
                                     return base + href
-                                } else if href.range(of: "http") != nil && href.range(of: ".onion") != nil {
+                                } else if href.range(of: ".onion") != nil {
                                     return href
                                 }
                             }
@@ -192,9 +196,7 @@ public struct Link: Codable {
     }
     
     public mutating func crawl(processCount: Int = 20) {
-        if lastProcessTime < Link.processTimeThreshold {
-            saveChildren()
-        }
+        saveChildrenIfNeeded()
         var links = Link.linksToProcess(count: processCount)
         if links.count == 0 {
             Link.processTimeThreshold = Date.secondsSinceReferenceDate
@@ -233,9 +235,15 @@ public struct Link: Codable {
         print("processed link: \(url)")
     }
     
+    mutating func saveChildrenIfNeeded() {
+        if lastProcessTime < Link.processTimeThreshold {
+            saveChildren()
+        }
+    }
+    
     mutating func saveChildren() {
         if html == nil {
-            load()
+            loadHTML()
         }
         for childURL in urls {
             //print("process childURL: \(childURL)")
@@ -261,7 +269,7 @@ public struct Link: Codable {
     
     // MARK: - Helpers
     
-    public mutating func load() {
+    public mutating func loadHTML() {
         if let cachedFile = cachedFile() {
             html = cachedFile
         } else {

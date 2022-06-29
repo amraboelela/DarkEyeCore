@@ -33,7 +33,7 @@ final class WordTests: TestsBase {
             XCTFail()
         }
         link = Link(url: crawler.mainUrl)
-        link.load()
+        link.loadHTML()
         success = Word.index(link: link)
         XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "bitcoin"] {
@@ -93,7 +93,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "yasalam")
         
         var link = Link(url: crawler.mainUrl)
-        link.load()
+        link.loadHTML()
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4000)
     }
