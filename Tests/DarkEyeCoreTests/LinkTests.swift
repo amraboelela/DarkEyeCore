@@ -96,6 +96,50 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(notHttpUrls.count, 0)
     }
     
+    func testRawUrls() {
+        var link = Link(url: crawler.mainUrl)
+        link.html = "<head><title>Dark Eye<title></head>"
+        var urls = link.rawUrls
+        XCTAssertEqual(urls.count, 0)
+        link.html = """
+            <html><head><title>Dark Eye<title></head>
+            <body><ul><li>
+            <input type='image' name='input1' value='string1value' class='abc' /></li>
+            <li><input type='image' name='input2' value='string2value' class='def' /></li></ul>
+            <span class='spantext'><b>Hello World 1</b></span>
+            <span class='spantext'><b>Hello World 2</b></span>
+            <a href='http://example.onion/'>example(English)</a>
+            <a href='http://example.co.onion'>example(JP)</a>
+            <a href='/mashy/ya/3am/'>example(JP)</a>
+            </body>
+        """
+        urls = link.rawUrls
+        XCTAssertEqual(urls.count, 3)
+        XCTAssertEqual(urls[0], "http://example.onion/")
+        XCTAssertEqual(urls[1], "http://example.co.onion")
+        XCTAssertEqual(urls[2], "/mashy/ya/3am/")
+        
+        link.loadHTML()
+        urls = link.rawUrls
+        print("urls.count: \(urls.count)")
+        XCTAssertTrue(urls.count > 200)
+        XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        let wikiUrls = urls.filter { $0.range(of: "/wiki")?.lowerBound == $0.startIndex }
+        XCTAssertEqual(wikiUrls.count, 40)
+        let dotOrgUrls = urls.filter { $0.range(of: ".org") != nil }
+        XCTAssertEqual(dotOrgUrls.count, 0)
+        let dotComUrls = urls.filter { $0.range(of: ".com") != nil }
+        XCTAssertEqual(dotComUrls.count, 0)
+        let xmppUrls = urls.filter { $0.range(of: "xmpp") != nil }
+        XCTAssertEqual(xmppUrls.count, 0)
+        let ircUrls = urls.filter { $0.range(of: "irc") != nil }
+        XCTAssertEqual(ircUrls.count, 0)
+        let notOnionUrls = urls.filter { $0.range(of: ".onion") == nil }
+        XCTAssertEqual(notOnionUrls.count, 40)
+        let notHttpUrls = urls.filter { $0.range(of: "http") == nil }
+        XCTAssertEqual(notHttpUrls.count, 40)
+    }
+    
     func testCachedFile() {
         var link = Link(url: crawler.mainUrl)
         link.save()

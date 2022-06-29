@@ -124,6 +124,42 @@ public struct Link: Codable {
         return result
     }
     
+    public var rawUrls: [String] {
+        var result = [String]()
+        if let html = html, let doc = try? HTMLDocument(string: html) {
+            if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
+                for node in nodes {
+                    if let elementNode = node.toElement() {
+                        let anchorNodes = anchorNodesFrom(node: elementNode)
+                        result.append(contentsOf: anchorNodes.compactMap { anchor in
+                            if var href = anchor["href"], href.range(of: "#") == nil {
+                                if href.range(of: ":") != nil &&
+                                    href.range(of: "http") == nil {
+                                    return nil
+                                }
+                                var refinedHref = href
+                                if refinedHref.last == "/" {
+                                    refinedHref = String(refinedHref.dropLast())
+                                }
+                                if refinedHref.range(of: "//www.")?.lowerBound == refinedHref.startIndex {
+                                    refinedHref = refinedHref.replacingOccurrences(of: "//www", with: "http://www")
+                                }
+                                if refinedHref.range(of: "www.")?.lowerBound == refinedHref.startIndex {
+                                    refinedHref = refinedHref.replacingOccurrences(of: "www", with: "http://www")
+                                }
+                                if refinedHref.first == "/" || refinedHref.range(of: ".onion") != nil {
+                                    return href
+                                }
+                            }
+                            return nil
+                        })
+                    }
+                }
+            }
+        }
+        return result
+    }
+    
     var workingURL: URL {
         if Link.workingDirectory.isEmpty {
             return URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
