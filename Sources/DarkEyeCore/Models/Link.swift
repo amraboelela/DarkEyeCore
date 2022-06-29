@@ -87,7 +87,7 @@ public struct Link: Codable {
             options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
-    var urls: [String] {
+    public var urls: [String] {
         var result = [String]()
         if let html = html, let doc = try? HTMLDocument(string: html) {
             if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
@@ -235,7 +235,7 @@ public struct Link: Codable {
         print("processed link: \(url)")
     }
     
-    mutating func saveChildrenIfNeeded() {
+    public mutating func saveChildrenIfNeeded() {
         if lastProcessTime < Link.processTimeThreshold {
             saveChildren()
         }
