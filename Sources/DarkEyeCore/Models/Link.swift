@@ -132,7 +132,7 @@ public struct Link: Codable {
                     if let elementNode = node.toElement() {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
-                            if var href = anchor["href"], href.range(of: "#") == nil {
+                            if let href = anchor["href"], href.range(of: "#") == nil {
                                 if href.range(of: ":") != nil &&
                                     href.range(of: "http") == nil {
                                     return nil
@@ -148,7 +148,7 @@ public struct Link: Codable {
                                     refinedHref = refinedHref.replacingOccurrences(of: "www", with: "http://www")
                                 }
                                 if refinedHref.first == "/" || refinedHref.range(of: ".onion") != nil {
-                                    return href
+                                    return href.htmlEncoded
                                 }
                             }
                             return nil
