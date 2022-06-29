@@ -87,45 +87,9 @@ public struct Link: Codable {
             options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
-    public var urls: [String] {
-        var result = [String]()
-        if let html = html, let doc = try? HTMLDocument(string: html) {
-            if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
-                for node in nodes {
-                    if let elementNode = node.toElement() {
-                        let anchorNodes = anchorNodesFrom(node: elementNode)
-                        result.append(contentsOf: anchorNodes.compactMap { anchor in
-                            if var href = anchor["href"], href.range(of: "#") == nil {
-                                if href.range(of: ":") != nil &&
-                                    href.range(of: "http") == nil {
-                                    return nil
-                                }
-                                if href.last == "/" {
-                                    href = String(href.dropLast())
-                                }
-                                if href.range(of: "//www.")?.lowerBound == href.startIndex {
-                                    href = href.replacingOccurrences(of: "//www", with: "http://www")
-                                }
-                                if href.range(of: "www.")?.lowerBound == href.startIndex {
-                                    href = href.replacingOccurrences(of: "www", with: "http://www")
-                                }
-                                if href.first == "/" {
-                                    return base + href
-                                } else if href.range(of: ".onion") != nil {
-                                    return href
-                                }
-                            }
-                            return nil
-                        })
-                    }
-                }
-            }
-        }
-        return result
-    }
-    
-    public var rawUrls: [String] {
-        var result = [String]()
+    // Returns raw urls and refined urls
+    public var urls: [(String, String)] {
+        var result = [(String,String)]()
         if let html = html, let doc = try? HTMLDocument(string: html) {
             if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
                 for node in nodes {
@@ -147,8 +111,10 @@ public struct Link: Codable {
                                 if refinedHref.range(of: "www.")?.lowerBound == refinedHref.startIndex {
                                     refinedHref = refinedHref.replacingOccurrences(of: "www", with: "http://www")
                                 }
-                                if refinedHref.first == "/" || refinedHref.range(of: ".onion") != nil {
-                                    return href.htmlEncoded
+                                if refinedHref.first == "/" {
+                                    return (href.htmlEncoded, base + refinedHref)
+                                } else if refinedHref.range(of: ".onion") != nil {
+                                    return (href.htmlEncoded, refinedHref)
                                 }
                             }
                             return nil
@@ -281,7 +247,7 @@ public struct Link: Codable {
         if html == nil {
             loadHTML()
         }
-        for childURL in urls {
+        for (_, childURL) in urls {
             //print("process childURL: \(childURL)")
             if let _: Link = database[Link.prefix + childURL] {
             } else {

@@ -52,7 +52,7 @@ final class LinkTests: TestsBase {
         XCTAssertTrue(text.count > 27000)
     }
     
-    func testUrls() {
+    func testRawUrls() {
         var link = Link(url: crawler.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var urls = link.urls
@@ -71,35 +71,49 @@ final class LinkTests: TestsBase {
         """
         urls = link.urls
         XCTAssertEqual(urls.count, 3)
-        XCTAssertEqual(urls[0], "http://example.onion")
-        XCTAssertEqual(urls[1], "http://example.co.onion")
-        XCTAssertEqual(urls[2], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/mashy/ya/3am")
+        XCTAssertEqual(urls[0].0, "http://example.onion/")
+        XCTAssertEqual(urls[1].0, "http://example.co.onion")
+        XCTAssertEqual(urls[2].0, "/mashy/ya/3am/")
         
         link.loadHTML()
         urls = link.urls
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
-        XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
-        let wikiUrls = urls.filter { $0.range(of: "/wiki")?.lowerBound == $0.startIndex }
-        XCTAssertEqual(wikiUrls.count, 0)
-        let dotOrgUrls = urls.filter { $0.range(of: ".org") != nil }
+        XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        let wikiUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: "/wiki")?.lowerBound == rawURL.startIndex
+        }
+        XCTAssertEqual(wikiUrls.count, 40)
+        let dotOrgUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: ".org") != nil
+        }
         XCTAssertEqual(dotOrgUrls.count, 0)
-        let dotComUrls = urls.filter { $0.range(of: ".com") != nil }
+        let dotComUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: ".com") != nil
+        }
         XCTAssertEqual(dotComUrls.count, 0)
-        let xmppUrls = urls.filter { $0.range(of: "xmpp") != nil }
+        let xmppUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: "xmpp") != nil
+        }
         XCTAssertEqual(xmppUrls.count, 0)
-        let ircUrls = urls.filter { $0.range(of: "irc") != nil }
+        let ircUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: "irc") != nil
+        }
         XCTAssertEqual(ircUrls.count, 0)
-        let notOnionUrls = urls.filter { $0.range(of: ".onion") == nil }
-        XCTAssertEqual(notOnionUrls.count, 0)
-        let notHttpUrls = urls.filter { $0.range(of: "http") == nil }
-        XCTAssertEqual(notHttpUrls.count, 0)
+        let notOnionUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: ".onion") == nil
+        }
+        XCTAssertEqual(notOnionUrls.count, 40)
+        let notHttpUrls = urls.filter { rawURL, refinedURL in
+            rawURL.range(of: "http") == nil
+        }
+        XCTAssertEqual(notHttpUrls.count, 40)
     }
     
-    func testRawUrls() {
+    func testRefindedUrls() {
         var link = Link(url: crawler.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
-        var urls = link.rawUrls
+        var urls = link.urls
         XCTAssertEqual(urls.count, 0)
         link.html = """
             <html><head><title>Dark Eye<title></head>
@@ -113,31 +127,45 @@ final class LinkTests: TestsBase {
             <a href='/mashy/ya/3am/'>example(JP)</a>
             </body>
         """
-        urls = link.rawUrls
+        urls = link.urls
         XCTAssertEqual(urls.count, 3)
-        XCTAssertEqual(urls[0], "http://example.onion/")
-        XCTAssertEqual(urls[1], "http://example.co.onion")
-        XCTAssertEqual(urls[2], "/mashy/ya/3am/")
+        XCTAssertEqual(urls[0].1, "http://example.onion")
+        XCTAssertEqual(urls[1].1, "http://example.co.onion")
+        XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/mashy/ya/3am")
         
         link.loadHTML()
-        urls = link.rawUrls
+        urls = link.urls
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
-        XCTAssertEqual(urls[0], "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
-        let wikiUrls = urls.filter { $0.range(of: "/wiki")?.lowerBound == $0.startIndex }
-        XCTAssertEqual(wikiUrls.count, 40)
-        let dotOrgUrls = urls.filter { $0.range(of: ".org") != nil }
+        XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        let wikiUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: "/wiki")?.lowerBound == refinedURL.startIndex
+        }
+        XCTAssertEqual(wikiUrls.count, 0)
+        let dotOrgUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: ".org") != nil
+        }
         XCTAssertEqual(dotOrgUrls.count, 0)
-        let dotComUrls = urls.filter { $0.range(of: ".com") != nil }
+        let dotComUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: ".com") != nil
+        }
         XCTAssertEqual(dotComUrls.count, 0)
-        let xmppUrls = urls.filter { $0.range(of: "xmpp") != nil }
+        let xmppUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: "xmpp") != nil
+        }
         XCTAssertEqual(xmppUrls.count, 0)
-        let ircUrls = urls.filter { $0.range(of: "irc") != nil }
+        let ircUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: "irc") != nil
+        }
         XCTAssertEqual(ircUrls.count, 0)
-        let notOnionUrls = urls.filter { $0.range(of: ".onion") == nil }
-        XCTAssertEqual(notOnionUrls.count, 40)
-        let notHttpUrls = urls.filter { $0.range(of: "http") == nil }
-        XCTAssertEqual(notHttpUrls.count, 40)
+        let notOnionUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: ".onion") == nil
+        }
+        XCTAssertEqual(notOnionUrls.count, 0)
+        let notHttpUrls = urls.filter { rawURL, refinedURL in
+            refinedURL.range(of: "http") == nil
+        }
+        XCTAssertEqual(notHttpUrls.count, 0)
     }
     
     func testCachedFile() {
