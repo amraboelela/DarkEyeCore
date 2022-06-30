@@ -276,7 +276,7 @@ public struct Link: Codable {
             html = cachedFile
         } else {
 #if os(Linux)
-            fillHashIfNeeded()
+            //fillHashIfNeeded()
             let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
             let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
             _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
