@@ -5,7 +5,7 @@ echo "Updating DarkEyeCore"
 git pull
 git commit -a -m "Update from server"
 git push
-if [ "$1" == "full" ]; then
-    echo "Making full update by running swift package update"
+if [ "$1" == "all" ]; then
+    echo "Updating all packages by running swift package update"
     swift package update
 fi
