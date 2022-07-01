@@ -198,6 +198,7 @@ public struct Link: Codable {
     }
     
     public mutating func crawl(processCount: Int = 20) {
+        print("crawl, processCount: \(processCount)")
         saveChildrenIfNeeded()
         var links = Link.linksToProcess(count: processCount)
         if links.count == 0 {
