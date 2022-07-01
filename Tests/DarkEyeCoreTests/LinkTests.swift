@@ -29,7 +29,7 @@ final class LinkTests: TestsBase {
     }
     
     func testText() {
-        var link = Link(url: crawler.mainUrl)
+        var link = Link(url: Link.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var text = link.text
         XCTAssertEqual(text, "Dark Eye")
@@ -53,7 +53,7 @@ final class LinkTests: TestsBase {
     }
     
     func testRawUrls() {
-        var link = Link(url: crawler.mainUrl)
+        var link = Link(url: Link.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var urls = link.urls
         XCTAssertEqual(urls.count, 0)
@@ -111,7 +111,7 @@ final class LinkTests: TestsBase {
     }
     
     func testRefindedUrls() {
-        var link = Link(url: crawler.mainUrl)
+        var link = Link(url: Link.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
         var urls = link.urls
         XCTAssertEqual(urls.count, 0)
@@ -169,7 +169,7 @@ final class LinkTests: TestsBase {
     }
     
     func testCachedFile() {
-        var link = Link(url: crawler.mainUrl)
+        var link = Link(url: Link.mainUrl)
         link.save()
         let cachedFile = link.cachedFile()
         XCTAssertNotNil(cachedFile)
@@ -202,7 +202,7 @@ final class LinkTests: TestsBase {
     }
     
     func testLoad() {
-        var link = Link(url: crawler.mainUrl)
+        var link = Link(url: Link.mainUrl)
         link.loadHTML()
         XCTAssertNotNil(link.html)
     }
@@ -234,7 +234,7 @@ final class LinkTests: TestsBase {
                 XCTFail()
             }
         }
-        link = Link(url: crawler.mainUrl)
+        link = Link(url: Link.mainUrl)
         Link.process(link: link)
         let link2ProcessedExpectation = expectation(description: "link2 processed")
         DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
@@ -280,36 +280,9 @@ final class LinkTests: TestsBase {
         waitForExpectations(timeout: 10.0, handler: nil)
     }
     
-    func testSaveChildrenIfNeeded() {
-        var link = Link(
-            url: crawler.mainUrl,
-            lastProcessTime: 0,
-            numberOfVisits: 0,
-            lastVisitTime: 0,
-            html:
-            """
-            <html>
-            <body>
-            <p>I went to college to go to the library</p>
-            <a href='exampleenglish.onion'>example(English)</a>
-            <a href='examplejapan.onion'>example(JP)</a>
-            </body>
-            </html>
-            """
-        )
-        link.lastProcessTime = Date.secondsSinceReferenceDate
-        link.saveChildrenIfNeeded()
-        if let _: Link = database[Link.prefix + "exampleenglish.onion"] {
-            XCTFail()
-        }
-        if let _: Link = database[Link.prefix + "examplejapan.onion"] {
-            XCTFail()
-        }
-    }
-    
     func testSaveChildren() {
         var link = Link(
-            url: crawler.mainUrl,
+            url: Link.mainUrl,
             lastProcessTime: 0,
             numberOfVisits: 0,
             lastVisitTime: 0,
@@ -336,9 +309,9 @@ final class LinkTests: TestsBase {
         }
     }
     
-    func testCrawl() {
-        var link = Link(url: crawler.mainUrl)
-        link.crawl()
+    func crawlNext() {
+        //var link = Link(url: Link.mainUrl)
+        Link.crawlNext()
         if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
         } else {
             XCTFail()

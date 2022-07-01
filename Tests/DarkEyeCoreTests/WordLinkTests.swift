@@ -33,12 +33,12 @@ final class WordLinkTests: TestsBase {
     func testWordLinksWithSearchText() {
         let expectation = expectation(description: "found the `use` word")
         Link.numberOfProcessedLinks = 0
-        crawler = Crawler()
+        //crawler = Crawler()
         crawler.start()
 #if os(Linux)
-        let secondsDelay = 60.0
+        let secondsDelay = 120.0
 #else
-        let secondsDelay = 40.0
+        let secondsDelay = 120.0
 #endif
         let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {

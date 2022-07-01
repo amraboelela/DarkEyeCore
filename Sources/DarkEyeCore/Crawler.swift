@@ -12,27 +12,56 @@ import Dispatch
 
 public var crawler = Crawler()
 
-public class Crawler: Thread {
-    let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
-    public var canRun = true
+public class Crawler {
+    public var canRun = true {
+        didSet {
+            if !canRun && timer != nil {
+                timer.invalidate()
+            }
+        }
+    }
+    var timer: Timer!
+    var running = false
     
-    override init() {
-        super.init()
-        self.name = "crawler"
-        self.qualityOfService = .background
+    public func start() {
+        NSLog("start")
+        crawl()
+        #if os(Linux)
+        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+            self?.crawl()
+        }
+        #else
+        if #available(macOS 10.12, *) {
+            timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+                self?.crawl()
+            }
+        }
+        #endif
     }
     
-    public override func main() {
-        var link = Link(url: mainUrl)
-        while canRun {
-            link.crawl()
-            //print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
+    func crawl() {
+        NSLog("crawl")
+        if !running {
+            canRun = true
+            running = true
+            DispatchQueue.global(qos: .background).async {
+                Link.crawlNext()
+                DispatchQueue.main.async {
+                    self.running = false
+                }
+            }
+        } else {
+            NSLog("crawlNext self.canRun && !self.running is false. canRun: \(canRun) running: \(running)")
         }
-        print("Crawler numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
-        print("canRun: \(canRun), exiting")
+    }
+    
+    public func stop() {
+        NSLog("stop")
+        crawler.canRun = false
     }
     
     public static func restart() {
+        NSLog("restart")
         crawler = Crawler()
         crawler.start()
     }

@@ -13,8 +13,8 @@ import SwiftEncrypt
 
 public struct Link: Codable {
     public static let prefix = "link-"
-    public static var processTimeThreshold = 1 // any link with last process time smaller, need to be processed
     public static var workingDirectory = ""
+    static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
     public var hash = ""
@@ -184,34 +184,35 @@ public struct Link: Codable {
 
     // MARK: - Crawling
     
-    static func linksToProcess(count: Int) -> [Link] {
-        print("linksToProcess, count: \(count)")
-        var result = [Link]()
+    static func nextLinkToProcess() -> Link? {
+        //print("nextLinkToProcess")
+        var result: Link? = nil
+        let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                result.append(link)
-                if result.count >= count {
-                    stop.pointee = true
-                }
+                stop.pointee = true
+                result = link
             }
         }
         return result
     }
     
-    public mutating func crawl(processCount: Int = 20) {
-        print("crawl, processCount: \(processCount)")
-        saveChildrenIfNeeded()
-        var links = Link.linksToProcess(count: processCount)
-        if links.count == 0 {
-            print("links.count == 0")
-            Link.processTimeThreshold = Date.secondsSinceReferenceDate
-            saveChildren()
-            links = Link.linksToProcess(count: processCount)
-        }
-        print("crawl links: \(links.map { $0.url })")
-        for link in links {
-            print("crawl for link: \(link)")
-            Link.process(link: link)
+    public static func crawlNext() {
+        //print("crawlNext")
+        if let nextLink = nextLinkToProcess() {
+            //print("crawlNext nextLink: \(nextLink.url)")
+            Link.process(link: nextLink)
+        } else {
+            print("nextLink == nil")
+            Global.update(processTimeThreshold: Date.secondsSinceReferenceDate)
+            var link = Link(url: mainUrl)
+            link.saveChildren()
+            if let nextLink = nextLinkToProcess() {
+                //print("crawlNext nextLink: \(nextLink.url)")
+                Link.process(link: nextLink)
+            } else {
+                print("can't find any link to process!")
+            }
         }
     }
     
@@ -230,7 +231,7 @@ public struct Link: Codable {
             if Word.index(link: myLink) {
                 myLink.processAndSave()
             } else {
-                print("word index link failed")
+                //print("word index returned false")
             }
         }
     }
@@ -240,13 +241,6 @@ public struct Link: Codable {
         save()
         Link.numberOfProcessedLinks += 1
         print("processed link: \(url)")
-    }
-    
-    public mutating func saveChildrenIfNeeded() {
-        //print("saveChildrenIfNeeded")
-        if lastProcessTime < Link.processTimeThreshold {
-            saveChildren()
-        }
     }
     
     mutating func saveChildren() {

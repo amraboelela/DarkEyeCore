@@ -12,33 +12,33 @@ final class WordTests: TestsBase {
     }
     
     func testIndexLink() {
-        var link = Link(url: crawler.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>")
         crawler.canRun = true
         var success = Word.index(link: link)
         XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "library"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
+            XCTAssertEqual(word.links[0].url, Link.mainUrl)
         } else {
             XCTFail()
         }
         if let word: Word = database[Word.prefix + "college"] {
             XCTAssertEqual(word.links[0].title, "The College")
             XCTAssertTrue(word.links[0].text.lowercased().contains("college"))
-            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
+            XCTAssertEqual(word.links[0].url, Link.mainUrl)
         } else {
             XCTFail()
         }
         if let _: Word = database[Word.prefix + "body"] {
             XCTFail()
         }
-        link = Link(url: crawler.mainUrl)
+        link = Link(url: Link.mainUrl)
         link.loadHTML()
         success = Word.index(link: link)
         XCTAssertTrue(success)
         if let word: Word = database[Word.prefix + "bitcoin"] {
             XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
-            XCTAssertEqual(word.links[0].url, crawler.mainUrl)
+            XCTAssertEqual(word.links[0].url, Link.mainUrl)
         } else {
             XCTFail()
         }
@@ -92,7 +92,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[3], "thecase")
         XCTAssertEqual(words[4], "yasalam")
         
-        var link = Link(url: crawler.mainUrl)
+        var link = Link(url: Link.mainUrl)
         link.loadHTML()
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4000)

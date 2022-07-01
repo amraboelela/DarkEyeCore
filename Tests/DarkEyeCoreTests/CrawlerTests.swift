@@ -9,15 +9,30 @@ final class CrawlerTests: TestsBase {
     
     override func tearDown() {
         super.tearDown()
+        crawler.stop()
+    }
+    
+    func testStart() {
+        let runningExpectation = expectation(description: "crawler is running")
+        crawler.start()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            NSLog("testing running")
+            if crawler.running {
+                runningExpectation.fulfill()
+            } else {
+                XCTFail()
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
     }
     
     func testCrawl() {
         let duckduckExpectation = expectation(description: "duckduck link is there")
-        crawler.start()
+        crawler.crawl()
 #if os(Linux)
-        let secondsDelay = 60.0
-#else
         let secondsDelay = 40.0
+#else
+        let secondsDelay = 20.0
 #endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false
@@ -33,36 +48,49 @@ final class CrawlerTests: TestsBase {
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }
     
-    func testRestart() {
-        let stoppedExpectation = expectation(description: "crawler stopped")
-        let relunchedExpectation = expectation(description: "crawler relunched")
-        Crawler.restart()
-#if os(Linux)
-        let secondsDelay = 30.0
-#else
-        let secondsDelay = 30.0
-#endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
-            crawler.canRun = false
+    func testStop() {
+        let stoppedExpectation = expectation(description: "crawler has stopped")
+        crawler.start()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            crawler.stop()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 1.0) {
-            if !crawler.isExecuting {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+            if !crawler.running {
                 stoppedExpectation.fulfill()
             } else {
                 XCTFail()
             }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            Crawler.restart()
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
+    func testRestart() {
+        let runningExpectation = expectation(description: "crawler is runiing")
+        let stoppedExpectation = expectation(description: "crawler stopped")
+        Crawler.restart()
+#if os(Linux)
+        let secondsDelay = 30.0
+#else
+        let secondsDelay = 10.0
+#endif
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 1.0) {
+            if crawler.running {
+                runningExpectation.fulfill()
+            } else {
+                XCTFail()
+            }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3.0) {
-            if crawler.isExecuting {
-                relunchedExpectation.fulfill()
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
+            crawler.canRun = false
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3) {
+            NSLog("testing stopped")
+            if !crawler.running {
+                stoppedExpectation.fulfill()
             } else {
                 XCTFail()
             }
         }
         waitForExpectations(timeout: secondsDelay + 10, handler: nil)
     }
-    
 }
