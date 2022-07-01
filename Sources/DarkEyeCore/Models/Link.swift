@@ -202,14 +202,15 @@ public struct Link: Codable {
         print("crawl, processCount: \(processCount)")
         saveChildrenIfNeeded()
         var links = Link.linksToProcess(count: processCount)
-        print("crawl links 1: \(links.map { $0.url })")
         if links.count == 0 {
+            print("links.count == 0")
             Link.processTimeThreshold = Date.secondsSinceReferenceDate
             saveChildren()
             links = Link.linksToProcess(count: processCount)
         }
-        print("crawl links 2: \(links.map { $0.url })")
+        print("crawl links: \(links.map { $0.url })")
         for link in links {
+            print("crawl for link: \(link)")
             Link.process(link: link)
         }
     }
@@ -242,7 +243,7 @@ public struct Link: Codable {
     }
     
     public mutating func saveChildrenIfNeeded() {
-        print("saveChildrenIfNeeded")
+        //print("saveChildrenIfNeeded")
         if lastProcessTime < Link.processTimeThreshold {
             saveChildren()
         }
