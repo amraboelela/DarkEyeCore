@@ -27,12 +27,12 @@ public class Crawler {
         NSLog("start")
         crawl()
         #if os(Linux)
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
             self?.crawl()
         }
         #else
         if #available(macOS 10.12, *) {
-            timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { [weak self] _ in
+            timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
                 self?.crawl()
             }
         }

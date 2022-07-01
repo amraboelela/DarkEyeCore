@@ -243,6 +243,13 @@ public struct Link: Codable {
         print("processed link: \(url)")
     }
     
+    public mutating func saveChildrenIfNeeded() {
+        //print("saveChildrenIfNeeded")
+        if lastProcessTime < Global.global.processTimeThreshold {
+            saveChildren()
+        }
+    }
+    
     mutating func saveChildren() {
         print("saveChildren")
         if html == nil {

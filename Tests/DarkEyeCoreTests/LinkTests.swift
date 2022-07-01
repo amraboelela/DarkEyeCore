@@ -280,6 +280,33 @@ final class LinkTests: TestsBase {
         waitForExpectations(timeout: 10.0, handler: nil)
     }
     
+    func testSaveChildrenIfNeeded() {
+        var link = Link(
+            url: Link.mainUrl,
+            lastProcessTime: 0,
+            numberOfVisits: 0,
+            lastVisitTime: 0,
+            html:
+            """
+            <html>
+            <body>
+            <p>I went to college to go to the library</p>
+            <a href='exampleenglish.onion'>example(English)</a>
+            <a href='examplejapan.onion'>example(JP)</a>
+            </body>
+            </html>
+            """
+        )
+        link.lastProcessTime = Date.secondsSinceReferenceDate
+        link.saveChildrenIfNeeded()
+        if let _: Link = database[Link.prefix + "exampleenglish.onion"] {
+            XCTFail()
+        }
+        if let _: Link = database[Link.prefix + "examplejapan.onion"] {
+            XCTFail()
+        }
+    }
+    
     func testSaveChildren() {
         var link = Link(
             url: Link.mainUrl,
