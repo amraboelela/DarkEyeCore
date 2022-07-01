@@ -18,7 +18,7 @@ final class CrawlerTests: TestsBase {
 #if os(Linux)
         let secondsDelay = 40.0
 #else
-        let secondsDelay = 20.0
+        let secondsDelay = 30.0
 #endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false

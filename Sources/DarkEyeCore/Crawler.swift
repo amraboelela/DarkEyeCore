@@ -23,14 +23,14 @@ public class Crawler {
             running = true
             DispatchQueue.global(qos: .background).async {
                 Link.crawlNext()
-                DispatchQueue.main.async {
-                    self.running = false
-                    if self.canRun {
-                        DispatchQueue.global(qos: .background).async {
-                            self.crawl()
-                        }
+                //DispatchQueue.main.async {
+                self.running = false
+                if self.canRun {
+                    DispatchQueue.global(qos: .background).async {
+                        self.crawl()
                     }
                 }
+                //}
             }
         } else {
             NSLog("crawlNext self.canRun && !self.running is false. canRun: \(canRun) running: \(running)")
