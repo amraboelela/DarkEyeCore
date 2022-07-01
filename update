@@ -6,6 +6,7 @@ git pull
 git commit -a -m "Update from server"
 git push
 if [ "$1" == "all" ]; then
-    echo "\nUpdating all packages by running swift package update"
+    echo
+    echo "Updating all packages by running swift package update"
     swift package update
 fi
