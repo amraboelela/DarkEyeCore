@@ -13,31 +13,8 @@ import Dispatch
 public var crawler = Crawler()
 
 public class Crawler {
-    public var canRun = true {
-        didSet {
-            if !canRun && timer != nil {
-                timer.invalidate()
-            }
-        }
-    }
-    var timer: Timer!
+    public var canRun = true
     var running = false
-    
-    public func start() {
-        NSLog("start")
-        crawl()
-        #if os(Linux)
-        timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
-            self?.crawl()
-        }
-        #else
-        if #available(macOS 10.12, *) {
-            timer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { [weak self] _ in
-                self?.crawl()
-            }
-        }
-        #endif
-    }
     
     func crawl() {
         NSLog("crawl")
@@ -48,6 +25,11 @@ public class Crawler {
                 Link.crawlNext()
                 DispatchQueue.main.async {
                     self.running = false
+                    if self.canRun {
+                        DispatchQueue.global(qos: .background).async {
+                            self.crawl()
+                        }
+                    }
                 }
             }
         } else {
@@ -63,6 +45,6 @@ public class Crawler {
     public static func restart() {
         NSLog("restart")
         crawler = Crawler()
-        crawler.start()
+        crawler.crawl()
     }
 }

@@ -12,20 +12,6 @@ final class CrawlerTests: TestsBase {
         crawler.stop()
     }
     
-    func testStart() {
-        let runningExpectation = expectation(description: "crawler is running")
-        crawler.start()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            NSLog("testing running")
-            if crawler.running {
-                runningExpectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: 5, handler: nil)
-    }
-    
     func testCrawl() {
         let duckduckExpectation = expectation(description: "duckduck link is there")
         crawler.crawl()
@@ -50,7 +36,7 @@ final class CrawlerTests: TestsBase {
     
     func testStop() {
         let stoppedExpectation = expectation(description: "crawler has stopped")
-        crawler.start()
+        crawler.crawl()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             crawler.stop()
         }

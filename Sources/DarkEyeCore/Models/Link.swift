@@ -240,7 +240,7 @@ public struct Link: Codable {
         lastProcessTime = Date.secondsSinceReferenceDate
         save()
         Link.numberOfProcessedLinks += 1
-        print("processed link: \(url)")
+        NSLog("processed link: \(url)")
     }
     
     public mutating func saveChildrenIfNeeded() {
@@ -251,7 +251,7 @@ public struct Link: Codable {
     }
     
     mutating func saveChildren() {
-        print("saveChildren")
+        //print("saveChildren")
         if html == nil {
             loadHTML()
         }
