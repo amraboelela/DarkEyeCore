@@ -16,7 +16,7 @@ public class Crawler {
     public var canRun = true
     var running = false
     
-    func crawl() {
+    public func crawl() {
         NSLog("crawl")
         if !running {
             canRun = true
