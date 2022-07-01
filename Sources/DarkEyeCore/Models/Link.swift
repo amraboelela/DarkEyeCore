@@ -225,18 +225,18 @@ public struct Link: Codable {
         }
         var myLink = link
         if link.blocked == true {
-            myLink.processAndSave()
+            myLink.updateAndSave()
         } else {
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                myLink.processAndSave()
+                myLink.updateAndSave()
             } else {
                 //print("word index returned false")
             }
         }
     }
     
-    mutating func processAndSave() {
+    mutating func updateAndSave() {
         lastProcessTime = Date.secondsSinceReferenceDate
         save()
         Link.numberOfProcessedLinks += 1
