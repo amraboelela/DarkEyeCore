@@ -14,26 +14,22 @@ public var crawler = Crawler()
 
 public class Crawler {
     public var canRun = true
-    var running = false
     
-    public func crawl() {
+    public func start() {
+        NSLog("start")
+        crawler.canRun = true
+        crawl()
+    }
+    
+    func crawl() {
         NSLog("crawl")
-        if !running {
-            canRun = true
-            running = true
-            DispatchQueue.global(qos: .background).async {
-                Link.crawlNext()
-                //DispatchQueue.main.async {
-                self.running = false
-                if self.canRun {
-                    DispatchQueue.global(qos: .background).async {
-                        self.crawl()
-                    }
+        DispatchQueue.global(qos: .background).async {
+            Link.crawlNext()
+            if self.canRun {
+                DispatchQueue.global(qos: .background).async {
+                    self.crawl()
                 }
-                //}
             }
-        } else {
-            NSLog("crawlNext self.canRun && !self.running is false. canRun: \(canRun) running: \(running)")
         }
     }
     
@@ -45,6 +41,6 @@ public class Crawler {
     public static func restart() {
         NSLog("restart")
         crawler = Crawler()
-        crawler.crawl()
+        crawler.start()
     }
 }

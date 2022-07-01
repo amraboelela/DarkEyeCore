@@ -12,6 +12,20 @@ final class CrawlerTests: TestsBase {
         crawler.stop()
     }
     
+    func testStart() {
+        let runningExpectation = expectation(description: "crawler is running")
+        crawler.start()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+            NSLog("testing running")
+            if crawler.canRun {
+                runningExpectation.fulfill()
+            } else {
+                XCTFail()
+            }
+        }
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+    
     func testCrawl() {
         let duckduckExpectation = expectation(description: "duckduck link is there")
         crawler.crawl()
@@ -41,7 +55,7 @@ final class CrawlerTests: TestsBase {
             crawler.stop()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            if !crawler.running {
+            if !crawler.canRun {
                 stoppedExpectation.fulfill()
             } else {
                 XCTFail()
@@ -60,7 +74,7 @@ final class CrawlerTests: TestsBase {
         let secondsDelay = 10.0
 #endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 1.0) {
-            if crawler.running {
+            if crawler.canRun {
                 runningExpectation.fulfill()
             } else {
                 XCTFail()
@@ -71,7 +85,7 @@ final class CrawlerTests: TestsBase {
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3) {
             NSLog("testing stopped")
-            if !crawler.running {
+            if !crawler.canRun {
                 stoppedExpectation.fulfill()
             } else {
                 XCTFail()
