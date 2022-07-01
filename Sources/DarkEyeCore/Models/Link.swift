@@ -185,6 +185,7 @@ public struct Link: Codable {
     // MARK: - Crawling
     
     static func linksToProcess(count: Int) -> [Link] {
+        print("linksToProcess, count: \(count)")
         var result = [Link]()
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
@@ -201,12 +202,13 @@ public struct Link: Codable {
         print("crawl, processCount: \(processCount)")
         saveChildrenIfNeeded()
         var links = Link.linksToProcess(count: processCount)
+        print("crawl links 1: \(links.map { $0.url })")
         if links.count == 0 {
             Link.processTimeThreshold = Date.secondsSinceReferenceDate
             saveChildren()
             links = Link.linksToProcess(count: processCount)
         }
-        //print("crawl links: \(links.map { $0.url })")
+        print("crawl links 2: \(links.map { $0.url })")
         for link in links {
             Link.process(link: link)
         }
@@ -240,12 +242,14 @@ public struct Link: Codable {
     }
     
     public mutating func saveChildrenIfNeeded() {
+        print("saveChildrenIfNeeded")
         if lastProcessTime < Link.processTimeThreshold {
             saveChildren()
         }
     }
     
     mutating func saveChildren() {
+        print("saveChildren")
         if html == nil {
             loadHTML()
         }
@@ -278,7 +282,6 @@ public struct Link: Codable {
             html = cachedFile
         } else {
 #if os(Linux)
-            //fillHashIfNeeded()
             let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
             let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
             _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
