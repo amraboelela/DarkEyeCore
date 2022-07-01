@@ -25,18 +25,18 @@ public struct Word: Codable {
             }
             let text = contextStringFrom(array: wordsArray, atIndex: i)
             let wordText = wordsArray[i]
-            print("wordText: \(wordText)")
+            //print("wordText: \(wordText)")
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
-                print("index link key: \(key)")
+                //print("index link key: \(key)")
                 let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                 if var dbWord: Word = database[key] {
                     WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                     database[key] = dbWord
-                    print("database[key] = dbWord: \(dbWord)")
+                    //print("database[key] = dbWord: \(dbWord)")
                 } else {
                     database[key] = word
-                    print("database[key] = word: \(word)")
+                    //print("database[key] = word: \(word)")
                 }
             }
         }
