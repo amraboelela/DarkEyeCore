@@ -25,7 +25,7 @@ public struct Word: Codable {
             }
             let text = contextStringFrom(array: wordsArray, atIndex: i)
             let wordText = wordsArray[i]
-            //print("wordText: \(wordText)")
+            print("wordText: \(wordText)")
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
                 //print("index link key: \(key)")
