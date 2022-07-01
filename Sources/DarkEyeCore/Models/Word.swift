@@ -16,7 +16,7 @@ public struct Word: Codable {
     // MARK: - Indexing
     
     public static func index(link: Link) -> Bool {
-        print("index link: \(link.url)")
+        //print("index link: \(link.url)")
         let wordsArray = words(fromText: link.text)
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         for i in (0..<wordsArray.count) {
