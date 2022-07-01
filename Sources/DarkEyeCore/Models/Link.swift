@@ -217,7 +217,7 @@ public struct Link: Codable {
     static var numberOfProcessedLinks = 0
     
     static func process(link: Link) {
-        print("processing link: \(url)")
+        print("processing link: \(link.url)")
         if !crawler.canRun || database.closed() {
             return
         }
