@@ -35,16 +35,15 @@ final class WordLinkTests: TestsBase {
         Link.numberOfProcessedLinks = 0
         crawler.start()
 #if os(Linux)
-        let secondsDelay = 60.0
+        let secondsDelay = 30.0
 #else
-        let secondsDelay = 60.0
+        let secondsDelay = 30.0
 #endif
         let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            //if crawler.isExecuting == false {
             var wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
             let wordLinksCount = wordLinks.count
             if wordLinksCount > 1 {

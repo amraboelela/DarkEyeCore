@@ -30,17 +30,18 @@ final class CrawlerTests: TestsBase {
         let duckduckExpectation = expectation(description: "duckduck link is there")
         crawler.crawl()
 #if os(Linux)
-        let secondsDelay = 40.0
-#else
         let secondsDelay = 30.0
+#else
+        let secondsDelay = 20.0
 #endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
             if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
-                print("testCrawl passed after \(secondsDelay) seconds")
+                //print("testCrawl passed after \(secondsDelay) seconds")
                 duckduckExpectation.fulfill()
+                print("Link.numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
             } else {
                 XCTFail()
             }
@@ -69,7 +70,7 @@ final class CrawlerTests: TestsBase {
         let stoppedExpectation = expectation(description: "crawler stopped")
         Crawler.restart()
 #if os(Linux)
-        let secondsDelay = 30.0
+        let secondsDelay = 20.0
 #else
         let secondsDelay = 10.0
 #endif

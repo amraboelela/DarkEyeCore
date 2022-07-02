@@ -14,6 +14,7 @@ import SwiftEncrypt
 public struct Link: Codable {
     public static let prefix = "link-"
     public static var workingDirectory = ""
+    static var numberOfProcessedLinks = 0
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
@@ -215,8 +216,6 @@ public struct Link: Codable {
             }
         }
     }
-    
-    static var numberOfProcessedLinks = 0
     
     static func process(link: Link) {
         //print("processing link: \(link.url)")

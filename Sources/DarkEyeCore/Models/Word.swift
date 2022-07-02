@@ -17,6 +17,7 @@ public struct Word: Codable {
     
     public static func index(link: Link) -> Bool {
         //print("index link: \(link.url)")
+        var processedKeys = Set<String>()
         let wordsArray = words(fromText: link.text)
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         for i in (0..<wordsArray.count) {
@@ -28,6 +29,10 @@ public struct Word: Codable {
             //print("wordText: \(wordText)")
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
+                if processedKeys.contains(key) {
+                    continue
+                }
+                processedKeys.insert(key)
                 //print("index link key: \(key)")
                 let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                 if var dbWord: Word = database[key] {

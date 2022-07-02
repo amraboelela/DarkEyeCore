@@ -24,7 +24,7 @@ public class Crawler {
     func crawl() {
         NSLog("crawl")
         DispatchQueue.global(qos: .background).async {
-            print("DispatchQueue.global(qos: .background).async")
+            //print("DispatchQueue.global(qos: .background).async")
             Link.crawlNext()
             if self.canRun {
                 DispatchQueue.global(qos: .background).async {
