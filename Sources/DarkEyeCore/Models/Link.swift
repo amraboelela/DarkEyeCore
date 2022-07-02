@@ -141,7 +141,7 @@ public struct Link: Codable {
     
     mutating func cachedFile() -> String? {
 #if os(Linux)
-        let thresholdDays = 10
+        let thresholdDays = 100
 #else
         let thresholdDays = 1000
 #endif
