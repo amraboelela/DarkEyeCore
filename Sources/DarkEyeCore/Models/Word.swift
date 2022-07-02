@@ -24,15 +24,15 @@ public struct Word: Codable {
             if !crawler.canRun || database.closed() {
                 return false
             }
+            let wordText = wordsArray[i].lowercased()
+            if processedKeys.contains(wordText) {
+                continue
+            }
+            processedKeys.insert(wordText)
             let text = contextStringFrom(array: wordsArray, atIndex: i)
-            let wordText = wordsArray[i]
             //print("wordText: \(wordText)")
             if wordText.count > 2 {
                 let key = prefix + wordText.lowercased()
-                if processedKeys.contains(key) {
-                    continue
-                }
-                processedKeys.insert(key)
                 //print("index link key: \(key)")
                 let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                 if var dbWord: Word = database[key] {
