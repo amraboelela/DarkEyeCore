@@ -30,7 +30,7 @@ final class CrawlerTests: TestsBase {
         let duckduckExpectation = expectation(description: "duckduck link is there")
         crawler.crawl()
 #if os(Linux)
-        let secondsDelay = 10.0
+        let secondsDelay = 20.0
 #else
         let secondsDelay = 5.0
 #endif
