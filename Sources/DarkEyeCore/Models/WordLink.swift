@@ -66,6 +66,7 @@ public struct WordLink: Codable {
     // MARK: - Helpers
     
     static func merge(wordLinks: inout [WordLink], withWordLinks: [WordLink]) {
+        print("merge wordLinks.count: \(wordLinks.count) withWordLinks.count: \(withWordLinks.count)")
         for withWordLink in withWordLinks {
             if let index = wordLinks.firstIndex(where: { $0.url == withWordLink.url }) {
                 var wordLink = wordLinks[index]
