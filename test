@@ -2,6 +2,8 @@
 
 PARAM=x$1
 
+./update
+
 if [ $PARAM = "xrelease" ]; then
     swift test
 else
