@@ -198,9 +198,9 @@ public struct Link: Codable {
     }
     
     public static func crawlNext() {
-        //print("crawlNext")
+        print("crawlNext")
         if let nextLink = nextLinkToProcess() {
-            //print("crawlNext nextLink: \(nextLink.url)")
+            print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
         } else {
             print("nextLink == nil")
@@ -208,7 +208,7 @@ public struct Link: Codable {
             var link = Link(url: mainUrl)
             link.saveChildren()
             if let nextLink = nextLinkToProcess() {
-                //print("crawlNext nextLink: \(nextLink.url)")
+                print("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
             } else {
                 print("can't find any link to process!")
@@ -219,7 +219,7 @@ public struct Link: Codable {
     static var numberOfProcessedLinks = 0
     
     static func process(link: Link) {
-        //print("processing link: \(link.url)")
+        print("processing link: \(link.url)")
         if !crawler.canRun || database.closed() {
             return
         }
