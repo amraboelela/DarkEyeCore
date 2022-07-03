@@ -186,7 +186,7 @@ public struct Link: Codable {
     // MARK: - Crawling
     
     static func nextLinkToProcess() -> Link? {
-        //print("nextLinkToProcess")
+        NSLog("nextLinkToProcess")
         var result: Link? = nil
         let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
@@ -199,7 +199,7 @@ public struct Link: Codable {
     }
     
     public static func crawlNext() {
-        //print("crawlNext")
+        NSLog("crawlNext")
         if let nextLink = nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
@@ -209,7 +209,7 @@ public struct Link: Codable {
             var link = Link(url: mainUrl)
             link.saveChildren()
             if let nextLink = nextLinkToProcess() {
-                //print("crawlNext nextLink: \(nextLink.url)")
+                NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
             } else {
                 NSLog("can't find any link to process!")
@@ -218,7 +218,7 @@ public struct Link: Codable {
     }
     
     static func process(link: Link) {
-        //print("processing link: \(link.url)")
+        NSLog("processing link: \(link.url)")
         if !crawler.canRun || database.closed() {
             return
         }
