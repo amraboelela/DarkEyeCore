@@ -1,7 +1,7 @@
 import XCTest
 @testable import DarkEyeCore
 
-final class CrawlerTests: TestsBase {
+final class CrawlerTests: TestsBase, CrawlerDelegate {
     
     override func setUp() {
         super.setUp()
@@ -49,14 +49,21 @@ final class CrawlerTests: TestsBase {
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }
     
+    var stopped = false
+    
+    func crawlerStopped() {
+        stopped = true
+    }
+    
     func testStop() {
         let stoppedExpectation = expectation(description: "crawler has stopped")
+        crawler.delegate = self
         crawler.crawl()
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             crawler.stop()
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-            if !crawler.canRun {
+            if !crawler.canRun && self.stopped {
                 stoppedExpectation.fulfill()
             } else {
                 XCTFail()

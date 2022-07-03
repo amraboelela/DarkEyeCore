@@ -12,8 +12,13 @@ import Dispatch
 
 public var crawler = Crawler()
 
+public protocol CrawlerDelegate: AnyObject {
+    func crawlerStopped()
+}
+
 public class Crawler {
     public var canRun = true
+    public weak var delegate: CrawlerDelegate?
     
     public func start() {
         NSLog("start")
@@ -23,6 +28,9 @@ public class Crawler {
     
     func crawl() {
         NSLog("crawl")
+        if !canRun {
+            delegate?.crawlerStopped()
+        }
         DispatchQueue.global(qos: .background).async {
             //print("DispatchQueue.global(qos: .background).async")
             Link.crawlNext()
@@ -30,6 +38,8 @@ public class Crawler {
                 DispatchQueue.global(qos: .background).async {
                     self.crawl()
                 }
+            } else {
+                self.delegate?.crawlerStopped()
             }
         }
     }
