@@ -147,10 +147,10 @@ public struct Link: Codable {
 #endif
         fillHashIfNeeded()
         let fileURL = cacheURL.appendingPathComponent(hash + ".html")
-        NSLog("cachedFile fileURL: \(fileURL)")
+        //NSLog("cachedFile fileURL: \(fileURL)")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
-                NSLog("cachedFile, fileSize == 0, url: \(url)")
+                //NSLog("cachedFile, fileSize == 0, url: \(url)")
                 return nil
             }
             if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
@@ -163,7 +163,7 @@ public struct Link: Codable {
             }
         }
         if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
-            NSLog("cachedFile return result fileURL: \(fileURL)")
+            //NSLog("cachedFile return result fileURL: \(fileURL)")
             return result
         } else {
             /*let oldFileURL = cacheURL.appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
