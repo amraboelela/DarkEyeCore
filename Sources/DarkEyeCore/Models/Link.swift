@@ -147,29 +147,33 @@ public struct Link: Codable {
 #endif
         fillHashIfNeeded()
         let fileURL = cacheURL.appendingPathComponent(hash + ".html")
+        NSLog("cachedFile fileURL: \(fileURL)")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
-                print("cachedFile, fileSize == 0, url: \(url)")
+                NSLog("cachedFile, fileSize == 0, url: \(url)")
                 return nil
             }
             if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
                 let cacheThreashold = Date.days(numberOfDays: thresholdDays)
                 let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
                 if secondsDiff > cacheThreashold {
+                    NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold)")
                     return nil
                 }
             }
         }
         if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
+            NSLog("cachedFile return result fileURL: \(fileURL)")
             return result
         } else {
-            let oldFileURL = cacheURL.appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
+            /*let oldFileURL = cacheURL.appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
             if let result = try? String(contentsOf: oldFileURL, encoding: .utf8) {
                 print("moving \(oldFileURL.path) to \(fileURL.path)")
                 _ = shell("mv", oldFileURL.path, fileURL.path)
                 return result
-            }
+            }*/
         }
+        NSLog("cachedFile return nil")
         return nil
     }
     

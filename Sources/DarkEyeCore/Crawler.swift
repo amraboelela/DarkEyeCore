@@ -34,13 +34,13 @@ public class Crawler {
         }
         serialQueue.async {
             Link.crawlNext()
-            /*if self.canRun {
+            if self.canRun && Link.numberOfProcessedLinks < 2 {
                 self.serialQueue.async {
                     self.crawl()
                 }
             } else {
                 self.delegate?.crawlerStopped()
-            }*/
+            }
         }
     }
     
