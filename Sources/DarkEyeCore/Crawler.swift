@@ -21,6 +21,14 @@ public class Crawler {
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
     
+    init() {
+        if let _: Link = database[Link.prefix + Link.mainUrl] {
+        } else {
+            var link = Link(url: Link.mainUrl)
+            link.save()
+        }
+    }
+    
     public func start() {
         NSLog("start")
         crawler.canRun = true
