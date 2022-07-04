@@ -32,7 +32,8 @@ public struct Word: Codable {
             let text = contextStringFrom(array: wordsArray, atIndex: i)
             //print("wordText: \(wordText)")
             if wordText.count > 2 {
-                DispatchQueue.global(qos: .background).sync {
+                crawler.serialQueue.async {
+                //DispatchQueue.global(qos: .background).sync {
                     if crawler.canRun {
                         let key = prefix + wordText.lowercased()
                         //print("index link key: \(key)")

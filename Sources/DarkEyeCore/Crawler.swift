@@ -17,6 +17,7 @@ public protocol CrawlerDelegate: AnyObject {
 }
 
 public class Crawler {
+    public let serialQueue = DispatchQueue(label: "org.darkeye.crawler", qos: .background)
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
     
@@ -31,11 +32,12 @@ public class Crawler {
         if !canRun {
             delegate?.crawlerStopped()
         }
-        DispatchQueue.global(qos: .background).async {
+        serialQueue.async {
+        //DispatchQueue.global(qos: .background).async {
             //print("DispatchQueue.global(qos: .background).async")
             Link.crawlNext()
             if self.canRun {
-                DispatchQueue.global(qos: .background).async {
+                self.serialQueue.async {
                     self.crawl()
                 }
             } else {
