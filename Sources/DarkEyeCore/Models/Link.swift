@@ -228,7 +228,9 @@ public struct Link: Codable {
         } else {
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                myLink.updateAndSave()
+                crawler.serialQueue.async {
+                    myLink.updateAndSave()
+                }
             } else {
                 //print("word index returned false")
             }
