@@ -222,7 +222,7 @@ public struct Link: Codable {
     }
     
     static func process(link: Link) {
-        NSLog("processing link: \(link.url)")
+        //NSLog("processing link: \(link.url)")
         if !crawler.canRun || database.closed() {
             return
         }
@@ -245,7 +245,7 @@ public struct Link: Codable {
         lastProcessTime = Date.secondsSinceReferenceDate
         save()
         Link.numberOfProcessedLinks += 1
-        NSLog("processed link: \(url)")
+        NSLog("processed link #\(Link.numberOfProcessedLinks): \(url)")
     }
     
     public mutating func saveChildrenIfNeeded() {
