@@ -313,6 +313,7 @@ public struct Link: Codable {
             html = cachedFile
             return true
         } else {
+#if os(Linux)
             let linkFileURL = cacheURL.appendingPathComponent(hash + ".link")
             do {
                 if let data = url.data(using: .utf8) {
@@ -323,6 +324,24 @@ public struct Link: Codable {
                 NSLog("loadHTML addeding link error: \(error)")
             }
             return false
+#else
+            let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+            html = try? String(contentsOf: fileURL, encoding: .utf8)
+            return true
+#endif
+/*#if os(Linux)
+            let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
+            let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
+            _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
+            if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
+                _ = shell("cp", tempFileURL.path, cacheFileURL.path)
+                html = fileContent
+            }
+            _ = shell("rm", tempFileURL.path)
+#else
+            let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+            html = try? String(contentsOf: fileURL, encoding: .utf8)
+#endif*/
         }
     }
     
