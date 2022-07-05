@@ -223,13 +223,14 @@ public struct Link: Codable {
         if link.blocked == true {
             myLink.updateAndSave()
         } else {
-            myLink.saveChildren()
-            if Word.index(link: myLink) {
-                crawler.serialQueue.async {
-                    myLink.updateAndSave()
+            if myLink.saveChildren() {
+                if Word.index(link: myLink) {
+                    crawler.serialQueue.async {
+                        myLink.updateAndSave()
+                    }
+                } else {
+                    //print("word index returned false")
                 }
-            } else {
-                //print("word index returned false")
             }
         }
     }
@@ -244,14 +245,16 @@ public struct Link: Codable {
     public mutating func saveChildrenIfNeeded() {
         //print("saveChildrenIfNeeded")
         if lastProcessTime < Global.global.processTimeThreshold {
-            saveChildren()
+            _ = saveChildren()
         }
     }
     
-    mutating func saveChildren() {
+    mutating func saveChildren() -> Bool {
         //print("saveChildren")
         if html == nil {
-            loadHTML()
+            if !loadHTML() {
+                return false
+            }
         }
         for (_, childURL) in urls {
             //print("process childURL: \(childURL)")
@@ -261,6 +264,7 @@ public struct Link: Codable {
                 link.save()
             }
         }
+        return true
     }
     
     // MARK: - Saving
@@ -277,11 +281,23 @@ public struct Link: Codable {
     
     // MARK: - Helpers
     
-    public mutating func loadHTML() {
+    public mutating func loadHTML() -> Bool {
         if let cachedFile = cachedFile() {
             html = cachedFile
+            return true
         } else {
-#if os(Linux)
+            let linkFileURL = cacheURL.appendingPathComponent(hash + ".link")
+            do {
+                if let data = url.data(using: .utf8) {
+                    try data.write(to: linkFileURL)
+                    NSLog("added link: \(url)")
+                }
+            } catch {
+                NSLog("loadHTML addeding link error: \(error)")
+                //return false
+            }
+            return false
+/*#if os(Linux)
             let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
             let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
             _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
@@ -293,7 +309,7 @@ public struct Link: Codable {
 #else
             let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
             html = try? String(contentsOf: fileURL, encoding: .utf8)
-#endif
+#endif*/
         }
     }
     
