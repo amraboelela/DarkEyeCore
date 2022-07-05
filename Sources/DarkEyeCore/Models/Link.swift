@@ -165,15 +165,8 @@ public struct Link: Codable {
         if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
             //NSLog("cachedFile return result fileURL: \(fileURL)")
             return result
-        } else {
-            /*let oldFileURL = cacheURL.appendingPathComponent(url.hashBase16(numberOfDigits: 32) + ".html")
-            if let result = try? String(contentsOf: oldFileURL, encoding: .utf8) {
-                print("moving \(oldFileURL.path) to \(fileURL.path)")
-                _ = shell("mv", oldFileURL.path, fileURL.path)
-                return result
-            }*/
         }
-        NSLog("cachedFile return nil")
+        //NSLog("cachedFile return nil")
         return nil
     }
     
