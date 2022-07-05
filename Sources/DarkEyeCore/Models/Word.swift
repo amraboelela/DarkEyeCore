@@ -35,7 +35,8 @@ public struct Word: Codable {
                 crawler.serialQueue.async {
                     if crawler.canRun {
                         let key = prefix + wordText.lowercased()
-                        NSLog("index link key: \(key)")
+                        //NSLog("index link key: \(key)")
+                        sleep(1)
                         let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                         if var dbWord: Word = database[key] {
                             WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
