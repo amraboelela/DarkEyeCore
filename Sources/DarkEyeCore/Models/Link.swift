@@ -32,6 +32,7 @@ public struct Link: Codable {
         case url
         case hash
         case lastProcessTime
+        case linkAddedTime
         case numberOfVisits
         case lastVisitTime
         case numberOfReports

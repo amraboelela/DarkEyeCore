@@ -46,7 +46,8 @@ final class LinkTests: TestsBase {
         """
         text = link.text
         XCTAssertEqual(text, "Dark Eye Hello World 1 Hello World 2 example(English) example(JP)")
-        link.loadHTML()
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         text = link.text
         print("text.count: \(text.count)")
         XCTAssertTrue(text.count > 27000)
@@ -75,7 +76,8 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(urls[1].0, "http://example.co.onion")
         XCTAssertEqual(urls[2].0, "/mashy/ya/3am/")
         
-        link.loadHTML()
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         urls = link.urls
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
@@ -133,7 +135,8 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(urls[1].1, "http://example.co.onion")
         XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/mashy/ya/3am")
         
-        link.loadHTML()
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         urls = link.urls
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
@@ -203,7 +206,8 @@ final class LinkTests: TestsBase {
     
     func testLoad() {
         var link = Link(url: Link.mainUrl)
-        link.loadHTML()
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         XCTAssertNotNil(link.html)
     }
     
@@ -325,7 +329,8 @@ final class LinkTests: TestsBase {
             """
         )
         XCTAssertEqual(link.lastProcessTime, 0)
-        link.saveChildren()
+        let result = link.saveChildren()
+        XCTAssertTrue(result)
         if let _: Link = database[Link.prefix + "exampleenglish.onion"] {
         } else {
             XCTFail()

@@ -40,7 +40,8 @@ final class WordTests: TestsBase {
         
         let words2FoundExpectation = expectation(description: "words found")
         link = Link(url: Link.mainUrl)
-        link.loadHTML()
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         success = Word.index(link: link)
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 5) {
             XCTAssertTrue(success)
@@ -104,7 +105,8 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "yasalam")
         
         var link = Link(url: Link.mainUrl)
-        link.loadHTML()
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4000)
     }

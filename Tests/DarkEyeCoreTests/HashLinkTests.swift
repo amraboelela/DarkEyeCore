@@ -25,8 +25,8 @@ final class HashLinkTests: TestsBase {
         let url = "http://library123.onion"
         let hashLink = HashLink(url: url)
         var link = hashLink.link
-        link.loadHTML()
-        //XCTAssertNotNil(link.html)
+        let result = link.loadHTML()
+        XCTAssertTrue(result)
         XCTAssertEqual(hashLink.link.url, url)
     }
     
