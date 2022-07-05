@@ -20,6 +20,7 @@ public struct Link: Codable {
     public var url: String
     public var hash = ""
     public var lastProcessTime = 0 // # of seconds since reference date.
+    public var linkAddedTime = 0
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
@@ -187,7 +188,8 @@ public struct Link: Codable {
         var result: Link? = nil
         let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            if link.lastProcessTime < processTimeThreshold {
+            if link.lastProcessTime < processTimeThreshold &&
+                link.linkAddedTime < processTimeThreshold {
                 stop.pointee = true
                 result = link
             }
@@ -204,7 +206,7 @@ public struct Link: Codable {
             //print("nextLink == nil")
             Global.update(processTimeThreshold: Date.secondsSinceReferenceDate)
             var link = Link(url: mainUrl)
-            link.saveChildren()
+            _ = link.saveChildren()
             if let nextLink = nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
@@ -233,6 +235,13 @@ public struct Link: Codable {
                 }
             }
         }
+    }
+    
+    mutating func updateLinkAddedAndSave() {
+        linkAddedTime = Date.secondsSinceReferenceDate
+        save()
+        //Link.numberOfProcessedLinks += 1
+        NSLog("added link: \(url)")
     }
     
     mutating func updateAndSave() {
@@ -290,7 +299,7 @@ public struct Link: Codable {
             do {
                 if let data = url.data(using: .utf8) {
                     try data.write(to: linkFileURL)
-                    NSLog("added link: \(url)")
+                    self.updateLinkAddedAndSave()
                 }
             } catch {
                 NSLog("loadHTML addeding link error: \(error)")
