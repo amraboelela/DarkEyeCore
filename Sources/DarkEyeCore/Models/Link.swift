@@ -15,6 +15,7 @@ public struct Link: Codable {
     public static let prefix = "link-"
     public static var workingDirectory = ""
     static var numberOfProcessedLinks = 0
+    static var numberOfAddedLinks = 0
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
@@ -198,16 +199,32 @@ public struct Link: Codable {
         return result
     }
     
+    static func nextAddedLinkToProcess() -> Link? {
+        NSLog("nextAddedLinkToProcess")
+        var result: Link? = nil
+        let processTimeThreshold = Global.global.processTimeThreshold
+        database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
+            if link.linkAddedTime > link.lastProcessTime {
+                stop.pointee = true
+                result = link
+            }
+        }
+        return result
+    }
+    
     public static func crawlNext() {
         //NSLog("crawlNext")
         if let nextLink = nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
+        } else if let nextLink = nextAddedLinkToProcess() {
+            print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
+            Link.process(link: nextLink)
         } else {
             //print("nextLink == nil")
             Global.update(processTimeThreshold: Date.secondsSinceReferenceDate)
-            var link = Link(url: mainUrl)
-            _ = link.saveChildren()
+            //var link = Link(url: mainUrl)
+            //_ = link.saveChildren()
             if let nextLink = nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
@@ -241,8 +258,8 @@ public struct Link: Codable {
     mutating func updateLinkAddedAndSave() {
         linkAddedTime = Date.secondsSinceReferenceDate
         save()
-        //Link.numberOfProcessedLinks += 1
-        NSLog("added link: \(url)")
+        Link.numberOfAddedLinks += 1
+        NSLog("added link #\(Link.numberOfAddedLinks): \(url)")
     }
     
     mutating func updateAndSave() {
@@ -304,22 +321,8 @@ public struct Link: Codable {
                 }
             } catch {
                 NSLog("loadHTML addeding link error: \(error)")
-                //return false
             }
             return false
-/*#if os(Linux)
-            let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
-            let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
-            _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
-            if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                _ = shell("cp", tempFileURL.path, cacheFileURL.path)
-                html = fileContent
-            }
-            _ = shell("rm", tempFileURL.path)
-#else
-            let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
-            html = try? String(contentsOf: fileURL, encoding: .utf8)
-#endif*/
         }
     }
     

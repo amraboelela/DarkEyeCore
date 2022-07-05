@@ -28,6 +28,26 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(link.base, "http://hanein1.onion")
     }
     
+    func testNextLinkToProcess() {
+        let url = "http://hanein1.onion"
+        let link = Link(url: url)
+        database["link-" + url] = link
+        let nextLink = Link.nextLinkToProcess()
+        XCTAssertNotNil(nextLink)
+    }
+    
+    func testNextAddedLinkToProcess() {
+        let url = "http://hanein1.onion"
+        var link = Link(url: url)
+        database["link-" + url] = link
+        var nextLink = Link.nextAddedLinkToProcess()
+        XCTAssertNil(nextLink)
+        link.linkAddedTime = Date.secondsSinceReferenceDate
+        database["link-" + url] = link
+        nextLink = Link.nextAddedLinkToProcess()
+        XCTAssertNotNil(nextLink)
+    }
+    
     func testText() {
         var link = Link(url: Link.mainUrl)
         link.html = "<head><title>Dark Eye<title></head>"
