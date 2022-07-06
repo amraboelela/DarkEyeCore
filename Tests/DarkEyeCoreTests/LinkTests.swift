@@ -40,11 +40,11 @@ final class LinkTests: TestsBase {
         let url = "http://hanein1.onion"
         var link = Link(url: url)
         database["link-" + url] = link
-        var nextLink = Link.nextAddedLinkToProcess()
+        var nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
         XCTAssertNil(nextLink)
         link.linkAddedTime = Date.secondsSinceReferenceDate
         database["link-" + url] = link
-        nextLink = Link.nextAddedLinkToProcess()
+        nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
         XCTAssertNotNil(nextLink)
     }
     
@@ -237,8 +237,9 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(link.lastProcessTime, 0)
         crawler.canRun = true
         Link.process(link: link)
+        let timeDelay = 5.0
         let processedExpectation = expectation(description: "link processed")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
             if let dbLink: Link = database[Link.prefix + url] {
                 XCTAssertNotEqual(dbLink.lastProcessTime, 0)
             } else {
@@ -258,10 +259,10 @@ final class LinkTests: TestsBase {
                 XCTFail()
             }
         }
-        link = Link(url: Link.mainUrl)
-        Link.process(link: link)
+        let link2 = Link(url: Link.mainUrl)
+        Link.process(link: link2)
         let link2ProcessedExpectation = expectation(description: "link2 processed")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay * 2) {
             if let word: Word = database[Word.prefix + "bitcoin"] {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
             } else {
@@ -279,7 +280,7 @@ final class LinkTests: TestsBase {
                 XCTFail()
             }
         }
-        waitForExpectations(timeout: 20.0, handler: nil)
+        waitForExpectations(timeout: timeDelay * 3, handler: nil)
     }
     
     func testProcessBlockedLink() {
@@ -349,8 +350,7 @@ final class LinkTests: TestsBase {
             """
         )
         XCTAssertEqual(link.lastProcessTime, 0)
-        let result = link.saveChildren()
-        XCTAssertTrue(result)
+        link.saveChildren()
         if let _: Link = database[Link.prefix + "exampleenglish.onion"] {
         } else {
             XCTFail()

@@ -20,6 +20,7 @@ public struct Word: Codable {
         var processedKeys = Set<String>()
         let wordsArray = words(fromText: link.text)
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
+        NSLog("indexing wordsArray.count: \(wordsArray.count)")
         for i in (0..<wordsArray.count) {
             if !crawler.canRun || database.closed() {
                 return false

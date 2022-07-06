@@ -13,6 +13,7 @@ class TestsBase: XCTestCase {
         //usleep(1000000)
         let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/TestsBase.swift", with: "/")).path
         database = Database(parentPath: testRoot + "Library", name: "Database")
+        crawler = Crawler()
     }
     
     override func tearDown() {

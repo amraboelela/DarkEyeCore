@@ -22,6 +22,7 @@ public struct Link: Codable {
     public var hash = ""
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var linkAddedTime = 0
+    public var failedToLoad = false
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
@@ -34,6 +35,7 @@ public struct Link: Codable {
         case hash
         case lastProcessTime
         case linkAddedTime
+        case failedToLoad
         case numberOfVisits
         case lastVisitTime
         case numberOfReports
@@ -190,21 +192,25 @@ public struct Link: Codable {
         var result: Link? = nil
         let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
+            //NSLog("nextLinkToProcess, Key: \(Key)")
             if link.lastProcessTime < processTimeThreshold &&
                 link.linkAddedTime < processTimeThreshold {
                 stop.pointee = true
                 result = link
+            } else {
+                NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
         return result
     }
     
-    static func nextAddedLinkToProcess() -> Link? {
+    static func nextAddedLinkToProcess(includeFailedToLoad: Bool) -> Link? {
         NSLog("nextAddedLinkToProcess")
         var result: Link? = nil
         //let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            if link.linkAddedTime > link.lastProcessTime {
+            if link.linkAddedTime > link.lastProcessTime &&
+                (includeFailedToLoad || !link.failedToLoad) {
                 stop.pointee = true
                 result = link
             }
@@ -217,40 +223,48 @@ public struct Link: Codable {
         if let nextLink = nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
-        } else if let nextLink = nextAddedLinkToProcess() {
+        } else if let nextLink = nextAddedLinkToProcess(includeFailedToLoad: false) {
             //print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
             Link.process(link: nextLink)
         } else {
-            //print("nextLink == nil")
             Global.update(processTimeThreshold: Date.secondsSinceReferenceDate)
-            //var link = Link(url: mainUrl)
-            //_ = link.saveChildren()
             if let nextLink = nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
             } else {
-                NSLog("can't find any link to process!")
+                if let nextLink = nextAddedLinkToProcess(includeFailedToLoad: true) {
+                    //print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
+                    Link.process(link: nextLink)
+                } else {
+                    NSLog("can't find any link to process!")
+                }
             }
         }
     }
     
     static func process(link: Link) {
-        //NSLog("processing link: \(link.url)")
+        NSLog("processing link: \(link.url)")
         if !crawler.canRun || database.closed() {
             return
         }
         var myLink = link
-        if link.blocked == true {
+        if myLink.blocked == true {
             myLink.updateAndSave()
         } else {
-            if myLink.saveChildren() {
-                if Word.index(link: myLink) {
-                    crawler.serialQueue.async {
-                        myLink.updateAndSave()
-                    }
-                } else {
-                    //print("word index returned false")
+            if myLink.html == nil {
+                if !myLink.loadHTML() {
+                    myLink.failedToLoad = true
+                    myLink.save()
+                    NSLog("failedToLoad url: \(myLink.url)")
                 }
+            }
+            myLink.saveChildren()
+            if Word.index(link: myLink) {
+                crawler.serialQueue.async {
+                    myLink.updateAndSave()
+                }
+            } else {
+                //print("word index returned false")
             }
         }
     }
@@ -266,7 +280,7 @@ public struct Link: Codable {
         lastProcessTime = Date.secondsSinceReferenceDate
         save()
         Link.numberOfProcessedLinks += 1
-        NSLog("processed link #\(Link.numberOfProcessedLinks): \(url)")
+        NSLog("processed link #\(Link.numberOfProcessedLinks)")
     }
     
     public mutating func saveChildrenIfNeeded() {
@@ -276,13 +290,7 @@ public struct Link: Codable {
         }
     }
     
-    mutating func saveChildren() -> Bool {
-        //print("saveChildren")
-        if html == nil {
-            if !loadHTML() {
-                return false
-            }
-        }
+    mutating func saveChildren() {
         for (_, childURL) in urls {
             //print("process childURL: \(childURL)")
             if let _: Link = database[Link.prefix + childURL] {
@@ -291,7 +299,6 @@ public struct Link: Codable {
                 link.save()
             }
         }
-        return true
     }
     
     // MARK: - Saving
@@ -329,19 +336,6 @@ public struct Link: Codable {
             html = try? String(contentsOf: fileURL, encoding: .utf8)
             return true
 #endif
-/*#if os(Linux)
-            let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
-            let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
-            _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
-            if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                _ = shell("cp", tempFileURL.path, cacheFileURL.path)
-                html = fileContent
-            }
-            _ = shell("rm", tempFileURL.path)
-#else
-            let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
-            html = try? String(contentsOf: fileURL, encoding: .utf8)
-#endif*/
         }
     }
     
