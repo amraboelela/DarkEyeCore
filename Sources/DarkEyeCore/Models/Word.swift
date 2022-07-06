@@ -36,17 +36,18 @@ public struct Word: Codable {
             let text = contextStringFrom(array: wordsArray, atIndex: i)
             //print("wordText: \(wordText)")
             if wordText.count > 2 {
-                crawler.serialQueue.async {
-                    if crawler.canRun {
-                        let key = prefix + wordText.lowercased()
-                        //NSLog("index link key: \(key)")
-                        usleep(1000)
-                        let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
-                        if var dbWord: Word = database[key] {
-                            WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
-                            database[key] = dbWord
-                        } else {
-                            database[key] = word
+                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.01) {
+                    crawler.serialQueue.async {
+                        if crawler.canRun {
+                            let key = prefix + wordText.lowercased()
+                            //NSLog("index link key: \(key)")
+                            let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
+                            if var dbWord: Word = database[key] {
+                                WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
+                                database[key] = dbWord
+                            } else {
+                                database[key] = word
+                            }
                         }
                     }
                 }
