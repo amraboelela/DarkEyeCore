@@ -286,7 +286,7 @@ public struct Link: Codable {
     public mutating func saveChildrenIfNeeded() {
         //print("saveChildrenIfNeeded")
         if lastProcessTime < Global.global.processTimeThreshold {
-            _ = saveChildren()
+            saveChildren()
         }
     }
     
