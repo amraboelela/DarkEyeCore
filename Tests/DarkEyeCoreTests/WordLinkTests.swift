@@ -35,9 +35,9 @@ final class WordLinkTests: TestsBase {
         Link.numberOfProcessedLinks = 0
         crawler.start()
 #if os(Linux)
-        let secondsDelay = 130.0
+        let secondsDelay = 60.0
 #else
-        let secondsDelay = 100.0
+        let secondsDelay = 30.0
 #endif
         let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {

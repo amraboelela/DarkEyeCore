@@ -30,7 +30,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         let duckduckExpectation = expectation(description: "duckduck link is there")
         crawler.crawl()
 #if os(Linux)
-        let secondsDelay = 20.0
+        let secondsDelay = 10.0
 #else
         let secondsDelay = 5.0
 #endif
@@ -77,9 +77,9 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         let stoppedExpectation = expectation(description: "crawler stopped")
         Crawler.restart()
 #if os(Linux)
-        let secondsDelay = 20.0
-#else
         let secondsDelay = 10.0
+#else
+        let secondsDelay = 5.0
 #endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 1.0) {
             if crawler.canRun {
