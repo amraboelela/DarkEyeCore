@@ -202,7 +202,7 @@ public struct Link: Codable {
     static func nextAddedLinkToProcess() -> Link? {
         NSLog("nextAddedLinkToProcess")
         var result: Link? = nil
-        let processTimeThreshold = Global.global.processTimeThreshold
+        //let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.linkAddedTime > link.lastProcessTime {
                 stop.pointee = true
@@ -218,7 +218,7 @@ public struct Link: Codable {
             //print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
         } else if let nextLink = nextAddedLinkToProcess() {
-            print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
+            //print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
             Link.process(link: nextLink)
         } else {
             //print("nextLink == nil")
