@@ -59,17 +59,18 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         let stoppedExpectation = expectation(description: "crawler has stopped")
         crawler.delegate = self
         crawler.crawl()
+        let timeDelay = 10.0
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             crawler.stop()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
             if !crawler.canRun && self.stopped {
                 stoppedExpectation.fulfill()
             } else {
                 XCTFail()
             }
         }
-        waitForExpectations(timeout: 5, handler: nil)
+        waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
     }
     
     func testRestart() {
