@@ -198,7 +198,7 @@ public struct Link: Codable {
                 stop.pointee = true
                 result = link
             } else {
-                NSLog("nextLinkToProcess else, Key: \(Key)")
+                //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
         return result
