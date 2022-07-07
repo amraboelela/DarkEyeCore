@@ -39,6 +39,7 @@ public class Crawler {
     
     func crawl() {
         //NSLog("crawl")
+        Data.reportMemory()
         if !canRun {
             delegate?.crawlerStopped()
         }
