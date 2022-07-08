@@ -49,6 +49,7 @@ public class Crawler {
                     self.crawl()
                 }
             }
+            return
         }
         serialQueue.async {
             Link.crawlNext()
