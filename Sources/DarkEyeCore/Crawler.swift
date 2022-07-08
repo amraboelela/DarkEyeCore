@@ -43,6 +43,13 @@ public class Crawler {
         if !canRun {
             delegate?.crawlerStopped()
         }
+        if availableMemory() < 200 {
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
+                self.serialQueue.async {
+                    self.crawl()
+                }
+            }
+        }
         serialQueue.async {
             Link.crawlNext()
             if self.canRun {
