@@ -39,13 +39,13 @@ public class Crawler {
     
     func crawl() {
         //NSLog("crawl")
-        reportMemory()
+        //reportMemory()
         if !canRun {
             delegate?.crawlerStopped()
         }
-        let theAvailableMemory = availableMemory()
-        NSLog("availableMemory: \(theAvailableMemory)")
-        if theAvailableMemory < 400 {
+        let theFreeMemory = freeMemory()
+        NSLog("freeMemory: \(theFreeMemory)")
+        if theFreeMemory < 100 {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
                 self.serialQueue.async {
                     self.crawl()
