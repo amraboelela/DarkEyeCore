@@ -43,7 +43,9 @@ public class Crawler {
         if !canRun {
             delegate?.crawlerStopped()
         }
-        if availableMemory() < 200 {
+        let theAvailableMemory = availableMemory()
+        NSLog("availableMemory: \(theAvailableMemory)")
+        if theAvailableMemory < 400 {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
                 self.serialQueue.async {
                     self.crawl()
