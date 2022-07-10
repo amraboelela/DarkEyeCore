@@ -44,7 +44,7 @@ public class Crawler {
             delegate?.crawlerStopped()
         }
         let theFreeMemory = freeMemory()
-        NSLog("freeMemory: \(theFreeMemory)")
+        NSLog("Free Memory: \(theFreeMemory)")
         if theFreeMemory < 100 {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
                 self.serialQueue.async {
