@@ -235,7 +235,7 @@ final class LinkTests: TestsBase {
         let url = "http://library123.onion"
         var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
-        //crawler.canRun = true
+        crawler.canRun = true
         Link.process(link: link)
         let timeDelay = 5.0
         let processedExpectation = expectation(description: "link processed")
@@ -287,7 +287,7 @@ final class LinkTests: TestsBase {
         let url = "http://library123.onion"
         let link = Link(url: url, hash: "", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
-        //crawler.canRun = true
+        crawler.canRun = true
         Link.process(link: link)
         let blockedExpectation = expectation(description: "link is blocked")
         DispatchQueue.main.asyncAfter(deadline: .now() + 5) {

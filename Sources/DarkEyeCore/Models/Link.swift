@@ -244,7 +244,7 @@ public struct Link: Codable {
     
     static func process(link: Link) {
         NSLog("processing link: \(link.url)")
-        if true { //}!crawler.canRun || database.closed() {
+        if !crawler.canRun || database.closed() {
             return
         }
         var myLink = link
@@ -260,9 +260,9 @@ public struct Link: Codable {
             }
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                /*crawler.serialQueue.async {
+                crawler.serialQueue.async {
                     myLink.updateAndSave()
-                }*/
+                }
             } else {
                 //print("word index returned false")
             }

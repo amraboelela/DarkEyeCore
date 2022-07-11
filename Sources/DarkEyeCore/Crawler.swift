@@ -33,7 +33,7 @@ public class Crawler {
     
     public func start() {
         NSLog("start")
-        //crawler.canRun = true
+        crawler.canRun = true
         crawl()
     }
     
@@ -69,12 +69,12 @@ public class Crawler {
     
     public func stop() {
         NSLog("stop")
-        //crawler.canRun = false
+        crawler.canRun = false
     }
     
     public static func restart() {
         NSLog("restart")
-        //crawler = Crawler()
-        //crawler.start()
+        crawler = Crawler()
+        crawler.start()
     }
 }

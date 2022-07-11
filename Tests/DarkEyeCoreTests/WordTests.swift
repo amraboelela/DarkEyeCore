@@ -14,7 +14,7 @@ final class WordTests: TestsBase {
     func testIndexLink() {
         let wordsFoundExpectation = expectation(description: "words found")
         var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>")
-        //crawler.canRun = true
+        crawler.canRun = true
         var success = Word.index(link: link)
         let secondsDelay = 5.0
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
