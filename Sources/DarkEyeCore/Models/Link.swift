@@ -249,7 +249,9 @@ public struct Link: Codable {
         }
         var myLink = link
         if myLink.blocked == true {
-            myLink.updateAndSave()
+            crawler.serialQueue.async {
+                myLink.updateAndSave()
+            }
         } else {
             if myLink.html == nil {
                 if !myLink.loadHTML() {
@@ -260,7 +262,9 @@ public struct Link: Codable {
             }
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                myLink.updateAndSave()
+                crawler.serialQueue.async {
+                    myLink.updateAndSave()
+                }
             } else {
                 //print("word index returned false")
             }
@@ -304,14 +308,11 @@ public struct Link: Codable {
     // MARK: - Saving
     
     public mutating func save() {
-        crawler.serialQueue.async {
-            if let _: Link = database[key] {
-            } else {
-                hash = url.hashBase32(numberOfDigits: 12)
-                let hashLink = HashLink(url: url)
-                database[HashLink.prefix + hash] = hashLink
-            }
-            database[key] = self
+        if let _: Link = database[key] {
+        } else {
+            hash = url.hashBase32(numberOfDigits: 12)
+            let hashLink = HashLink(url: url)
+            database[HashLink.prefix + hash] = hashLink
         }
     }
     
