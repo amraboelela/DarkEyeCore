@@ -25,7 +25,7 @@ public class Crawler {
         if let _: Link = database[Link.prefix + Link.mainUrl] {
             NSLog("Crawler init, " + Link.prefix + Link.mainUrl + " already exists")
         } else {
-            //NSLog("Crawler init, creating: " + Link.prefix + Link.mainUrl)
+            NSLog("Crawler init, creating: " + Link.prefix + Link.mainUrl)
             var link = Link(url: Link.mainUrl)
             link.save()
         }
