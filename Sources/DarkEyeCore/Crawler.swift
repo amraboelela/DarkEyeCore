@@ -28,17 +28,6 @@ public class Crawler {
             NSLog("Crawler init, creating: " + Link.prefix + Link.mainUrl)
             var link = Link(url: Link.mainUrl)
             link.save()
-            NSLog("ya lahweeeeee")
-            database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-                NSLog("nextLinkToProcess, Key: \(Key)")
-                //if link.lastProcessTime < processTimeThreshold &&
-                //  link.linkAddedTime < processTimeThreshold {
-                //  stop.pointee = true
-                //result = link
-                /*} else {
-                 NSLog("nextLinkToProcess else, Key: \(Key)")
-                 }*/
-            }
         }
     }
     
