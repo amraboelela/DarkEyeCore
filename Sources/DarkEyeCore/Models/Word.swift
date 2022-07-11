@@ -17,11 +17,12 @@ public struct Word: Codable {
     
     public static func index(link: Link) -> Bool {
         //print("index link: \(link.url)")
-        return true
+        //return true
         var processedKeys = Set<String>()
         var wordsArray = words(fromText: link.text)
-        if wordsArray.count > 1000 {
-            wordsArray.removeLast(wordsArray.count - 1000)
+        let countLimit = 1
+        if wordsArray.count > countLimit {
+            wordsArray.removeLast(wordsArray.count - countLimit)
         }
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing wordsArray.count: \(wordsArray.count)")
