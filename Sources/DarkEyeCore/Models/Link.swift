@@ -188,17 +188,17 @@ public struct Link: Codable {
     // MARK: - Crawling
     
     static func nextLinkToProcess() -> Link? {
-        //NSLog("nextLinkToProcess")
+        NSLog("nextLinkToProcess")
         var result: Link? = nil
         let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            //NSLog("nextLinkToProcess, Key: \(Key)")
+            NSLog("nextLinkToProcess, Key: \(Key)")
             if link.lastProcessTime < processTimeThreshold &&
                 link.linkAddedTime < processTimeThreshold {
                 stop.pointee = true
                 result = link
             } else {
-                //NSLog("nextLinkToProcess else, Key: \(Key)")
+                NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
         return result
@@ -207,7 +207,6 @@ public struct Link: Codable {
     static func nextAddedLinkToProcess(includeFailedToLoad: Bool) -> Link? {
         NSLog("nextAddedLinkToProcess")
         var result: Link? = nil
-        //let processTimeThreshold = Global.global.processTimeThreshold
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.linkAddedTime > link.lastProcessTime &&
                 (includeFailedToLoad || !link.failedToLoad) {
@@ -219,12 +218,12 @@ public struct Link: Codable {
     }
     
     public static func crawlNext() {
-        //NSLog("crawlNext")
+        NSLog("crawlNext")
         if let nextLink = nextLinkToProcess() {
-            //print("crawlNext nextLink: \(nextLink.url)")
+            print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
         } else if let nextLink = nextAddedLinkToProcess(includeFailedToLoad: false) {
-            //print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
+            print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
             Link.process(link: nextLink)
         } else {
             Global.update(processTimeThreshold: Date.secondsSinceReferenceDate)
@@ -294,7 +293,7 @@ public struct Link: Codable {
     
     mutating func saveChildren() {
         for (_, childURL) in urls {
-            crawler.serialQueue.async {
+            crawler.serialQueue.sync {
                 //print("process childURL: \(childURL)")
                 if let _: Link = database[Link.prefix + childURL] {
                 } else {
