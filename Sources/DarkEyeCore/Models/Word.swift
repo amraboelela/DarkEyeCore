@@ -25,9 +25,9 @@ public struct Word: Codable {
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing wordsArray.count: \(wordsArray.count)")
         for i in (0..<wordsArray.count) {
-            if !crawler.canRun || database.closed() {
+            /*if !crawler.canRun || database.closed() {
                 return false
-            }
+            }*/
             let wordText = wordsArray[i].lowercased()
             if processedKeys.contains(wordText) {
                 continue
@@ -36,7 +36,7 @@ public struct Word: Codable {
             let text = contextStringFrom(array: wordsArray, atIndex: i)
             //print("wordText: \(wordText)")
             if wordText.count > 2 {
-                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.01) {
+                /*DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.01) {
                     crawler.serialQueue.async {
                         if crawler.canRun {
                             let key = prefix + wordText.lowercased()
@@ -50,7 +50,7 @@ public struct Word: Codable {
                             }
                         }
                     }
-                }
+                }*/
             }
         }
         return true
