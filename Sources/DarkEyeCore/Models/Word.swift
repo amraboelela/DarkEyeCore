@@ -20,7 +20,7 @@ public struct Word: Codable {
         //return true
         var processedKeys = Set<String>()
         var wordsArray = words(fromText: link.text)
-        let countLimit = 10
+        let countLimit = 100
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }

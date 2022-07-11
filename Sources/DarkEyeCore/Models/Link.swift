@@ -260,9 +260,7 @@ public struct Link: Codable {
             }
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                crawler.serialQueue.async {
-                    myLink.updateAndSave()
-                }
+                myLink.updateAndSave()
             } else {
                 //print("word index returned false")
             }
@@ -292,11 +290,13 @@ public struct Link: Codable {
     
     mutating func saveChildren() {
         for (_, childURL) in urls {
-            //print("process childURL: \(childURL)")
-            if let _: Link = database[Link.prefix + childURL] {
-            } else {
-                var link = Link(url: childURL)
-                link.save()
+            crawler.serialQueue.async {
+                //print("process childURL: \(childURL)")
+                if let _: Link = database[Link.prefix + childURL] {
+                } else {
+                    var link = Link(url: childURL)
+                    link.save()
+                }
             }
         }
     }
@@ -304,13 +304,15 @@ public struct Link: Codable {
     // MARK: - Saving
     
     public mutating func save() {
-        if let _: Link = database[key] {
-        } else {
-            hash = url.hashBase32(numberOfDigits: 12)
-            let hashLink = HashLink(url: url)
-            database[HashLink.prefix + hash] = hashLink
+        crawler.serialQueue.async {
+            if let _: Link = database[key] {
+            } else {
+                hash = url.hashBase32(numberOfDigits: 12)
+                let hashLink = HashLink(url: url)
+                database[HashLink.prefix + hash] = hashLink
+            }
+            database[key] = self
         }
-        database[key] = self
     }
     
     // MARK: - Helpers

@@ -56,11 +56,11 @@ public class Crawler {
         serialQueue.async {
             Link.crawlNext()
             if self.canRun {
-                DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5.0) {
-                    self.serialQueue.async {
-                        self.crawl()
-                    }
+                //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5.0) {
+                self.serialQueue.async {
+                    self.crawl()
                 }
+                //}
             } else {
                 self.delegate?.crawlerStopped()
             }
