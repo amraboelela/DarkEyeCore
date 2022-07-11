@@ -293,7 +293,7 @@ public struct Link: Codable {
     
     mutating func saveChildren() {
         for (_, childURL) in urls {
-            crawler.serialQueue.sync {
+            crawler.serialQueue.async {
                 //print("process childURL: \(childURL)")
                 if let _: Link = database[Link.prefix + childURL] {
                 } else {
