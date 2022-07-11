@@ -10,7 +10,7 @@ import Foundation
 import SwiftLevelDB
 import Dispatch
 
-public var crawler = Crawler()
+//public var crawler = Crawler()
 
 public protocol CrawlerDelegate: AnyObject {
     func crawlerStopped()
