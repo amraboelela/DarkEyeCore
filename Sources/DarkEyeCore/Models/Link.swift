@@ -313,6 +313,7 @@ public struct Link: Codable {
             let hashLink = HashLink(url: url)
             database[HashLink.prefix + hash] = hashLink
         }
+        database[key] = self
     }
     
     // MARK: - Helpers
