@@ -17,6 +17,7 @@ public struct Word: Codable {
     
     public static func index(link: Link) -> Bool {
         //print("index link: \(link.url)")
+        return true
         var processedKeys = Set<String>()
         var wordsArray = words(fromText: link.text)
         if wordsArray.count > 1000 {
