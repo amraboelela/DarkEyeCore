@@ -19,7 +19,6 @@ public struct Link: Codable {
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
-    public var hash = ""
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var linkAddedTime = 0
     public var failedToLoad = false
@@ -32,7 +31,6 @@ public struct Link: Codable {
     
     public enum CodingKeys: String, CodingKey {
         case url
-        case hash
         case lastProcessTime
         case linkAddedTime
         case failedToLoad
@@ -62,6 +60,10 @@ public struct Link: Codable {
             return String(url.prefix(upTo: onionRange.upperBound))
         }
         return ""
+    }
+    
+    public var hash: String {
+        return url.hashBase32(numberOfDigits: 12)
     }
     
     public var title: String {
@@ -150,7 +152,6 @@ public struct Link: Codable {
 #else
         let thresholdDays = 1000
 #endif
-        fillHashIfNeeded()
         let fileURL = cacheURL.appendingPathComponent(hash + ".html")
         //NSLog("cachedFile fileURL: \(fileURL)")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
@@ -248,9 +249,7 @@ public struct Link: Codable {
         }
         var myLink = link
         if myLink.blocked == true {
-            //crawler.serialQueue.async {
             myLink.updateAndSave()
-            //}
         } else {
             if myLink.html == nil {
                 if !myLink.loadHTML() {
@@ -261,9 +260,7 @@ public struct Link: Codable {
             }
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                //crawler.serialQueue.async {
                 myLink.updateAndSave()
-                //}
             } else {
                 print("word index returned false")
             }
@@ -309,7 +306,6 @@ public struct Link: Codable {
     public mutating func save() {
         if let _: Link = database[key] {
         } else {
-            hash = url.hashBase32(numberOfDigits: 12)
             let hashLink = HashLink(url: url)
             database[HashLink.prefix + hash] = hashLink
         }
@@ -361,12 +357,6 @@ public struct Link: Codable {
             }
         }
         return result
-    }
-    
-    mutating func fillHashIfNeeded() {
-        if hash.isEmpty {
-            hash = url.hashBase32(numberOfDigits: 12)
-        }
     }
     
 }

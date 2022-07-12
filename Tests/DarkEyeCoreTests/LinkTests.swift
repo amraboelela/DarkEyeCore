@@ -233,7 +233,7 @@ final class LinkTests: TestsBase {
     
     func testProcessLink() {
         let url = "http://library123.onion"
-        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
         crawler.canRun = true
         Link.process(link: link)
@@ -247,7 +247,7 @@ final class LinkTests: TestsBase {
             }
             if let word: Word = database[Word.prefix + "library"] {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-                XCTAssertEqual(word.links[0].url, url)
+                XCTAssertEqual(word.links[0].hashLink?.link.url, url)
                 processedExpectation.fulfill()
             } else {
                 XCTFail()
@@ -285,7 +285,7 @@ final class LinkTests: TestsBase {
     
     func testProcessBlockedLink() {
         let url = "http://library123.onion"
-        let link = Link(url: url, hash: "", lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true, html: "<html><body><p>I went to college to go to the library</p></body></html>")
         XCTAssertEqual(link.lastProcessTime, 0)
         crawler.canRun = true
         Link.process(link: link)

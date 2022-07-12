@@ -13,7 +13,10 @@ final class WordTests: TestsBase {
     
     func testIndexLink() {
         let wordsFoundExpectation = expectation(description: "words found")
-        var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>")
+        let url = "khamees.onion"
+        let html = "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>"
+        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: html)
+        link.save()
         crawler.canRun = true
         var success = Word.index(link: link)
         let secondsDelay = 5.0
@@ -21,14 +24,16 @@ final class WordTests: TestsBase {
             XCTAssertTrue(success)
             if let word: Word = database[Word.prefix + "library"] {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-                XCTAssertEqual(word.links[0].url, Link.mainUrl)
+                XCTAssertEqual(word.links[0].urlHash, url.hashBase32(numberOfDigits: 12))
             } else {
                 XCTFail()
             }
             if let word: Word = database[Word.prefix + "college"] {
-                XCTAssertEqual(word.links[0].title, "The College")
+                var returnedLink = try! XCTUnwrap(word.links[0].hashLink?.link)
+                returnedLink.html = html
+                XCTAssertEqual(returnedLink.title, "The College")
                 XCTAssertTrue(word.links[0].text.lowercased().contains("college"))
-                XCTAssertEqual(word.links[0].url, Link.mainUrl)
+                XCTAssertEqual(word.links[0].urlHash, url.hashBase32(numberOfDigits: 12))
             } else {
                 XCTFail()
             }
@@ -47,7 +52,7 @@ final class WordTests: TestsBase {
             XCTAssertTrue(success)
             if let word: Word = database[Word.prefix + "bitcoin"] {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
-                XCTAssertEqual(word.links[0].url, Link.mainUrl)
+                XCTAssertEqual(word.links[0].urlHash, Link.mainUrl.hashBase32(numberOfDigits: 12))
             } else {
                 XCTFail()
             }

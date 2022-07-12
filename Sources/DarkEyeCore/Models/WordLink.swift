@@ -10,8 +10,7 @@ import Foundation
 import SwiftEncrypt
 
 public struct WordLink: Codable {
-    public var url: String
-    public var title: String
+    public var urlHash: String
     public var text: String
     public var wordCount: Int
     public var numberOfVisits: Int = 0
@@ -19,11 +18,11 @@ public struct WordLink: Codable {
     
     // MARK: - Accessors
     
-    public var link: Link {
-        if let result: Link = database[Link.prefix + url] {
+    public var hashLink: HashLink? {
+        if let result: HashLink = database[HashLink.prefix + urlHash] {
             return result
         }
-        return Link(url: url)
+        return nil
     }
     
     var score: Int {
@@ -43,14 +42,12 @@ public struct WordLink: Codable {
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
             result = result.filter { wordLink in
-                let key = Link.prefix + wordLink.url
-                //print("wordLink key: \(key)")
-                if let _: Link = database[key] {
-                    //print("wordLinks withSearchText link: \(link)")
+                if let link = wordLink.hashLink?.link {
+                    if link.blocked == true {
+                        return false
+                    }
                 } else {
-                    print("Couldn't get wordLink key: \(key)")
-                }
-                if let link: Link = database[key], link.blocked == true {
+                    NSLog("Couldn't get wordLink for urlHash: \(wordLink.urlHash)")
                     return false
                 }
                 return true
@@ -68,7 +65,7 @@ public struct WordLink: Codable {
     static func merge(wordLinks: inout [WordLink], withWordLinks: [WordLink]) {
         //print("merge wordLinks.count: \(wordLinks.count) withWordLinks.count: \(withWordLinks.count)")
         for withWordLink in withWordLinks {
-            if let index = wordLinks.firstIndex(where: { $0.url == withWordLink.url }) {
+            if let index = wordLinks.firstIndex(where: { $0.urlHash == withWordLink.urlHash }) {
                 var wordLink = wordLinks[index]
                 wordLink.mergeWith(wordLink: withWordLink)
                 wordLinks[index] = wordLink

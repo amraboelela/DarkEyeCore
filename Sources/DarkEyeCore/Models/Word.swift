@@ -17,13 +17,13 @@ public struct Word: Codable {
     
     public static func index(link: Link) -> Bool {
         //print("index link: \(link.url)")
-        //return true
         var processedKeys = Set<String>()
         var wordsArray = words(fromText: link.text)
-        let countLimit = 1000
+        let countLimit = 500
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
+        var saveArray = [(String, Word)]()
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing wordsArray.count: \(wordsArray.count)")
         for i in (0..<wordsArray.count) {
@@ -41,18 +41,19 @@ public struct Word: Codable {
                 if crawler.canRun {
                     let key = prefix + wordText.lowercased()
                     //NSLog("index link key: \(key)")
-                    let word = Word(links: [WordLink(url: link.url, title: link.title, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
+                    let word = Word(links: [WordLink(urlHash: link.hash, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                     if var dbWord: Word = database[key] {
                         WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
-                        database[key] = dbWord
+                        saveArray.append((key, dbWord))
                     } else {
-                        database[key] = word
+                        saveArray.append((key, word))
                     }
                 } else {
                     return false
                 }
             }
         }
+        database.save(array: saveArray)
         return true
     }
     
