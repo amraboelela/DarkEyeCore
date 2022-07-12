@@ -20,7 +20,8 @@ public class Crawler {
     //public let serialQueue = DispatchQueue(label: "org.darkeye.crawler", qos: .background)
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
-    private var startTime = Date().timeIntervalSinceReferenceDate
+    var startTime = Date().timeIntervalSinceReferenceDate
+    var isRunning = false
     
     init() {
         if let _: Link = database[Link.prefix + Link.mainUrl] {
@@ -38,7 +39,9 @@ public class Crawler {
             if Date().timeIntervalSinceReferenceDate >= self.startTime {
                 NSLog("start")
                 crawler.canRun = true
-                self.crawl()
+                if !self.isRunning {
+                    self.crawl()
+                }
             }
         }
     }
@@ -53,24 +56,18 @@ public class Crawler {
         NSLog("Free Memory: \(theFreeMemory)")
         if theFreeMemory < 100 {
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
-                //self.serialQueue.async {
                 self.crawl()
-                //}
             }
             return
         }
-        //serialQueue.async {
+        isRunning = true
         Link.crawlNext()
         if self.canRun {
-            //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5.0) {
-            //self.serialQueue.async {
             self.crawl()
-            //}
-            //}
         } else {
             self.delegate?.crawlerStopped()
+            isRunning = false
         }
-        //}
     }
     
     public func stop() {
