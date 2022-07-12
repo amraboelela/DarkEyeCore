@@ -20,10 +20,10 @@ public struct Word: Codable {
         //return true
         var processedKeys = Set<String>()
         var wordsArray = words(fromText: link.text)
-        let countLimit = 100
+        /*let countLimit = 100
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
-        }
+        }*/
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing wordsArray.count: \(wordsArray.count)")
         for i in (0..<wordsArray.count) {
