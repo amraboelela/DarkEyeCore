@@ -248,9 +248,9 @@ public struct Link: Codable {
         }
         var myLink = link
         if myLink.blocked == true {
-            crawler.serialQueue.async {
-                myLink.updateAndSave()
-            }
+            //crawler.serialQueue.async {
+            myLink.updateAndSave()
+            //}
         } else {
             if myLink.html == nil {
                 if !myLink.loadHTML() {
@@ -261,9 +261,9 @@ public struct Link: Codable {
             }
             myLink.saveChildren()
             if Word.index(link: myLink) {
-                crawler.serialQueue.async {
-                    myLink.updateAndSave()
-                }
+                //crawler.serialQueue.async {
+                myLink.updateAndSave()
+                //}
             } else {
                 //print("word index returned false")
             }
@@ -293,14 +293,14 @@ public struct Link: Codable {
     
     mutating func saveChildren() {
         for (_, childURL) in urls {
-            crawler.serialQueue.async {
-                //print("process childURL: \(childURL)")
-                if let _: Link = database[Link.prefix + childURL] {
-                } else {
-                    var link = Link(url: childURL)
-                    link.save()
-                }
+            //crawler.serialQueue.async {
+            //print("process childURL: \(childURL)")
+            if let _: Link = database[Link.prefix + childURL] {
+            } else {
+                var link = Link(url: childURL)
+                link.save()
             }
+            //}
         }
     }
     

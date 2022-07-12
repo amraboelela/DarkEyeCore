@@ -17,7 +17,7 @@ public protocol CrawlerDelegate: AnyObject {
 }
 
 public class Crawler {
-    public let serialQueue = DispatchQueue(label: "org.darkeye.crawler", qos: .background)
+    //public let serialQueue = DispatchQueue(label: "org.darkeye.crawler", qos: .background)
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
     private var startTime = Date().timeIntervalSinceReferenceDate
@@ -56,35 +56,29 @@ public class Crawler {
         let theFreeMemory = freeMemory()
         NSLog("Free Memory: \(theFreeMemory)")
         if theFreeMemory < 100 {
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
-                self.serialQueue.async {
-                    self.crawl()
-                }
-            }
+            //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
+                //self.serialQueue.async {
+                self.crawl()
+                //}
+            //}
             return
         }
-        serialQueue.async {
+        //serialQueue.async {
             Link.crawlNext()
-            if self.canRun {
-                //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5.0) {
-                self.serialQueue.async {
-                    self.crawl()
-                }
-                //}
-            } else {
+        if self.canRun {
+            //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5.0) {
+            //self.serialQueue.async {
+            self.crawl()
+            //}
+            //}
+        } else {
                 self.delegate?.crawlerStopped()
             }
-        }
+        //}
     }
     
     public func stop() {
         NSLog("stop")
         crawler.canRun = false
     }
-    
-    /*public static func restart() {
-        NSLog("restart")
-        crawler = Crawler()
-        crawler.start()
-    }*/
 }

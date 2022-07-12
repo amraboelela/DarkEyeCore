@@ -73,6 +73,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
     }
     
+    /*
     func testRestart() {
         let runningExpectation = expectation(description: "crawler is runiing")
         let stoppedExpectation = expectation(description: "crawler stopped")
@@ -101,5 +102,5 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
             }
         }
         waitForExpectations(timeout: secondsDelay + 10, handler: nil)
-    }
+    }*/
 }
