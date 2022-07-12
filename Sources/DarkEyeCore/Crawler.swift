@@ -33,12 +33,8 @@ public class Crawler {
     }
     
     public func start(after: TimeInterval = 0) {
-        let suggestedStartTime = Date().timeIntervalSinceReferenceDate + after
-        if suggestedStartTime > startTime {
-            startTime = suggestedStartTime
-        }
-        let timeDiff = startTime - Date().timeIntervalSinceReferenceDate
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + timeDiff) {
+        startTime = Date().timeIntervalSinceReferenceDate + after
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + after) {
             if Date().timeIntervalSinceReferenceDate >= self.startTime {
                 NSLog("start")
                 crawler.canRun = true
