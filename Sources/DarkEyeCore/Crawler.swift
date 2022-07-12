@@ -60,7 +60,7 @@ public class Crawler {
             return
         }
         //serialQueue.async {
-            Link.crawlNext()
+        Link.crawlNext()
         if self.canRun {
             //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 5.0) {
             //self.serialQueue.async {
@@ -68,8 +68,8 @@ public class Crawler {
             //}
             //}
         } else {
-                self.delegate?.crawlerStopped()
-            }
+            self.delegate?.crawlerStopped()
+        }
         //}
     }
     
