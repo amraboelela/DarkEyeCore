@@ -20,6 +20,7 @@ public class Crawler {
     public let serialQueue = DispatchQueue(label: "org.darkeye.crawler", qos: .background)
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
+    private var startTime = Date().timeIntervalSinceReferenceDate
     
     init() {
         if let _: Link = database[Link.prefix + Link.mainUrl] {
@@ -31,10 +32,19 @@ public class Crawler {
         }
     }
     
-    public func start() {
-        NSLog("start")
-        crawler.canRun = true
-        crawl()
+    public func start(after: TimeInterval = 0) {
+        let suggestedStartTime = Date().timeIntervalSinceReferenceDate + after
+        if suggestedStartTime > startTime {
+            startTime = suggestedStartTime
+        }
+        let timeDiff = startTime - Date().timeIntervalSinceReferenceDate
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + timeDiff) {
+            if Date().timeIntervalSinceReferenceDate >= self.startTime {
+                NSLog("start")
+                crawler.canRun = true
+                self.crawl()
+            }
+        }
     }
     
     func crawl() {
@@ -72,9 +82,9 @@ public class Crawler {
         crawler.canRun = false
     }
     
-    public static func restart() {
+    /*public static func restart() {
         NSLog("restart")
         crawler = Crawler()
         crawler.start()
-    }
+    }*/
 }
