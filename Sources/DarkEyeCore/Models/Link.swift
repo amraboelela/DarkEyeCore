@@ -265,7 +265,7 @@ public struct Link: Codable {
                 myLink.updateAndSave()
                 //}
             } else {
-                //print("word index returned false")
+                print("word index returned false")
             }
         }
     }
