@@ -62,11 +62,13 @@ public class Crawler {
         }
         isRunning = true
         Link.crawlNext()
-        if self.canRun {
-            self.crawl()
-        } else {
-            self.delegate?.crawlerStopped()
-            isRunning = false
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1.0) {
+            if self.canRun {
+                self.crawl()
+            } else {
+                self.delegate?.crawlerStopped()
+                self.isRunning = false
+            }
         }
     }
     
