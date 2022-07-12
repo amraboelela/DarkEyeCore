@@ -56,11 +56,11 @@ public class Crawler {
         let theFreeMemory = freeMemory()
         NSLog("Free Memory: \(theFreeMemory)")
         if theFreeMemory < 100 {
-            //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
                 //self.serialQueue.async {
                 self.crawl()
                 //}
-            //}
+            }
             return
         }
         //serialQueue.async {
