@@ -317,14 +317,14 @@ public struct Link: Codable {
         linkAddedTime = Date.secondsSinceReferenceDate
         save()
         Link.numberOfAddedLinks += 1
-        NSLog("added link #\(Link.numberOfAddedLinks): \(url)")
+        NSLog("added link #\(Link.numberOfAddedLinks)")
     }
     
     mutating func updateLinkIndexedAndSave() {
         lastWordIndex += 1
         save()
         Link.numberOfIndexedLinks += 1
-        NSLog("indexed link #\(Link.numberOfIndexedLinks): \(url)")
+        NSLog("indexed link #\(Link.numberOfIndexedLinks)")
     }
     
     mutating func updateLinkProcessedAndSave() {
