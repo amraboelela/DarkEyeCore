@@ -36,7 +36,7 @@ public struct Word: Codable {
             let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }
             let word = sortedArray[wordIndex]
             let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
-            NSLog("indexing wordsArray.count: \(wordsArray.count), wordIndex: \(wordIndex)")
+            NSLog("indexing wordsArray.count: \(wordsArray.count), wordIndex: \(wordIndex), word: \(word)")
             for i in (0..<wordsArray.count) {
                 if !crawler.canRun || database.closed() {
                     return .ended
@@ -46,8 +46,7 @@ public struct Word: Codable {
                 }
                 let wordText = wordsArray[i].lowercased()
                 let text = contextStringFrom(array: wordsArray, atIndex: i)
-                print("wordText: \(wordText)")
-                //if wordText.count > 2 {
+                //print("wordText: \(wordText)")
                 if crawler.canRun {
                     let key = prefix + wordText.lowercased()
                     //NSLog("index link key: \(key)")
