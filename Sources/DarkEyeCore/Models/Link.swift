@@ -295,6 +295,10 @@ public struct Link: Codable {
             myLink.updateLinkProcessedAndSave()
         } else {
             if let linkHtml = myLink.html {
+                if myLink.failedToLoad {
+                    myLink.failedToLoad = false
+                    myLink.save()
+                }
             } else {
                 myLink.addLinkFile()
                 return
@@ -375,16 +379,9 @@ public struct Link: Codable {
         } catch {
             NSLog("loadHTML addeding link error: \(error)")
         }
-        //return false
-        /*#else
-         let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
-         html = try? String(contentsOf: fileURL, encoding: .utf8)
-         return true
-         #endif*/
-        //}
         failedToLoad = true
         save()
-        NSLog("failedToLoad url: \(url)")
+        //NSLog("failedToLoad url: \(url)")
     }
     
     static func url(fromKey key: String) -> String {
