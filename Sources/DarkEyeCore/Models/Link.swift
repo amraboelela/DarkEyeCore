@@ -22,9 +22,9 @@ public struct Link: Codable {
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
-    public var linkAddedTime = 0
-    public var lastWordIndex = -1 // last indexed word index
+    public var addedLink = false
     public var failedToLoad = false
+    public var lastWordIndex = -1 // last indexed word index
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
@@ -33,9 +33,9 @@ public struct Link: Codable {
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
-        case linkAddedTime
-        case lastWordIndex
+        case addedLink
         case failedToLoad
+        case lastWordIndex
         case numberOfVisits
         case lastVisitTime
         case numberOfReports
@@ -230,7 +230,7 @@ public struct Link: Codable {
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if link.lastProcessTime < processTimeThreshold &&
-                link.linkAddedTime < processTimeThreshold &&
+                !link.addedLink &&
                 link.lastWordIndex < currentWordIndex {
                 stop.pointee = true
                 result = link
@@ -245,8 +245,7 @@ public struct Link: Codable {
         NSLog("nextAddedLinkToProcess")
         var result: Link? = nil
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            if link.linkAddedTime > link.lastProcessTime &&
-                (includeFailedToLoad || !link.failedToLoad) {
+            if link.addedLink && (includeFailedToLoad || !link.failedToLoad) {
                 stop.pointee = true
                 result = link
             }
@@ -294,14 +293,15 @@ public struct Link: Codable {
         if myLink.blocked == true {
             myLink.updateLinkProcessedAndSave()
         } else {
-            if let linkHtml = myLink.html {
-                if myLink.failedToLoad {
+            if myLink.html == nil {
+                myLink.addLinkFile()
+                return
+            } else {
+                if myLink.addedLink || myLink.failedToLoad {
+                    myLink.addedLink = false
                     myLink.failedToLoad = false
                     myLink.save()
                 }
-            } else {
-                myLink.addLinkFile()
-                return
             }
             myLink.saveChildren()
             switch Word.indexNextWord(link: myLink) {
@@ -318,7 +318,7 @@ public struct Link: Codable {
     }
     
     mutating func updateLinkAddedAndSave() {
-        linkAddedTime = Date.secondsSinceReferenceDate
+        addedLink = true
         save()
         Link.numberOfAddedLinks += 1
         NSLog("added link #\(Link.numberOfAddedLinks)")

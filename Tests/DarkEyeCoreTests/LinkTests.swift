@@ -42,7 +42,7 @@ final class LinkTests: TestsBase {
         database["link-" + url] = link
         var nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
         XCTAssertNil(nextLink)
-        link.linkAddedTime = Date.secondsSinceReferenceDate
+        link.addedLink = true
         database["link-" + url] = link
         nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
         XCTAssertNotNil(nextLink)
