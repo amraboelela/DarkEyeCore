@@ -12,36 +12,10 @@ final class WordTests: TestsBase {
     }
     
     func testIndexNextWord() {
-        let wordsFoundExpectation = expectation(description: "words found")
-        let url = "khamees.onion"
-        let html = "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>"
-        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: html)
-        link.save()
-        crawler.canRun = true
-        var indexResult = Word.indexNextWord(link: link)
-        XCTAssertEqual(indexResult, .done)
         let secondsDelay = 5.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
-            if let word: Word = database[Word.prefix + "college"] {
-                var returnedLink = try! XCTUnwrap(word.links[0].hashLink?.link)
-                returnedLink.html = html
-                XCTAssertEqual(returnedLink.title, "The College")
-                XCTAssertTrue(word.links[0].text.lowercased().contains("college"))
-                XCTAssertEqual(word.links[0].urlHash, url.hashBase32(numberOfDigits: 12))
-            } else {
-                XCTFail()
-            }
-            if let _: Word = database[Word.prefix + "body"] {
-                XCTFail()
-            }
-            wordsFoundExpectation.fulfill()
-        }
-        
-        let words2FoundExpectation = expectation(description: "words found")
-        link = Link(url: Link.mainUrl)
-        let result = link.loadHTML()
-        XCTAssertTrue(result)
-        indexResult  = Word.indexNextWord(link: link)
+        let wordsFoundExpectation = expectation(description: "words found")
+        let link = Link(url: Link.mainUrl)
+        let indexResult  = Word.indexNextWord(link: link)
         XCTAssertEqual(indexResult, .done)
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 5) {
             if let word: Word = database[Word.prefix + "2009"] {
@@ -50,16 +24,6 @@ final class WordTests: TestsBase {
             } else {
                 XCTFail()
             }
-            /*if let word: Word = database[Word.prefix + "the"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
-            } else {
-                XCTFail()
-            }
-            if let word: Word = database[Word.prefix + "hidden"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
-            } else {
-                XCTFail()
-            }*/
             if let _: Word = database[Word.prefix + "a"] {
                 XCTFail()
             }
@@ -72,7 +36,7 @@ final class WordTests: TestsBase {
             if let _: Word = database[Word.prefix + "to"] {
                 XCTFail()
             }
-            words2FoundExpectation.fulfill()
+            wordsFoundExpectation.fulfill()
         }
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
     }
@@ -103,9 +67,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[3], "thecase")
         XCTAssertEqual(words[4], "yasalam")
         
-        var link = Link(url: Link.mainUrl)
-        let result = link.loadHTML()
-        XCTAssertTrue(result)
+        let link = Link(url: Link.mainUrl)
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 4000)
     }

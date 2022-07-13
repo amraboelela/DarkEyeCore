@@ -17,9 +17,7 @@ final class WordLinkTests: TestsBase {
         link.save()
         let urlHash = url.hashBase32(numberOfDigits: 12)
         let wordLink = WordLink(urlHash: urlHash, text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        var link2 = try! XCTUnwrap(wordLink.hashLink?.link)
-        let result = link2.loadHTML()
-        XCTAssertTrue(result)
+        let link2 = try! XCTUnwrap(wordLink.hashLink?.link)
         XCTAssertEqual(link2.hash, "ar7t3hfhcdxg")
     }
     

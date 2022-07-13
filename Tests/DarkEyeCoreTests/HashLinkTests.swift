@@ -13,7 +13,7 @@ final class HashLinkTests: TestsBase {
     
     func testURL() {
         let url = "http://library123.onion"
-        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true)
         link.save()
         
         if let hashLink: HashLink = database[HashLink.prefix + link.hash] {
@@ -24,15 +24,13 @@ final class HashLinkTests: TestsBase {
     func testLink() {
         let url = "http://library123.onion"
         let hashLink = HashLink(url: url)
-        var link = hashLink.link
-        let result = link.loadHTML()
-        //XCTAssertTrue(result)
+        _ = hashLink.link
         XCTAssertEqual(hashLink.link.url, url)
     }
     
     func testLinkWithHash() throws {
         let url = "http://library123.onion"
-        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true)
         link.save()
         let rLink = try XCTUnwrap(HashLink.linkWith(hash: link.hash))
         XCTAssertEqual(rLink.url, url)

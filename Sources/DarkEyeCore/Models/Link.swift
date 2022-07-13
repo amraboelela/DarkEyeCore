@@ -30,8 +30,6 @@ public struct Link: Codable {
     public var numberOfReports = 0
     public var blocked: Bool?
     
-    public var html: String?
-    
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
@@ -68,6 +66,38 @@ public struct Link: Codable {
     
     public var hash: String {
         return url.hashBase32(numberOfDigits: 12)
+    }
+    
+    var cachedHtml: String?
+    
+    public var html: String? {
+#if os(Linux)
+        let thresholdDays = 100
+#else
+        let thresholdDays = 1000
+#endif
+        let fileURL = cacheURL.appendingPathComponent(hash + ".html")
+        //NSLog("cachedFile fileURL: \(fileURL)")
+        if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
+            if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
+                //NSLog("cachedFile, fileSize == 0, url: \(url)")
+                return nil
+            }
+            if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
+                let cacheThreashold = Date.days(numberOfDays: thresholdDays)
+                let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
+                if secondsDiff > cacheThreashold {
+                    NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold)")
+                    return nil
+                }
+            }
+        }
+        if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
+            //NSLog("cachedFile return result fileURL: \(fileURL)")
+            return result
+        }
+        //NSLog("cachedFile return nil")
+        return nil
     }
     
     public var title: String {
@@ -150,7 +180,7 @@ public struct Link: Codable {
         return workingURL.appendingPathComponent("cache", isDirectory: true)
     }
     
-    mutating func cachedFile() -> String? {
+    /*func cachedFile() -> String? {
 #if os(Linux)
         let thresholdDays = 100
 #else
@@ -178,7 +208,7 @@ public struct Link: Codable {
         }
         //NSLog("cachedFile return nil")
         return nil
-    }
+    }*/
     
     // MARK: - Factory methods
     
@@ -264,12 +294,10 @@ public struct Link: Codable {
         if myLink.blocked == true {
             myLink.updateLinkProcessedAndSave()
         } else {
-            if myLink.html == nil {
-                if !myLink.loadHTML() {
-                    myLink.failedToLoad = true
-                    myLink.save()
-                    NSLog("failedToLoad url: \(myLink.url)")
-                }
+            if let linkHtml = myLink.html {
+            } else {
+                myLink.addLinkFile()
+                return
             }
             myLink.saveChildren()
             switch Word.indexNextWord(link: myLink) {
@@ -316,14 +344,11 @@ public struct Link: Codable {
     
     mutating func saveChildren() {
         for (_, childURL) in urls {
-            //crawler.serialQueue.async {
-            //print("process childURL: \(childURL)")
             if let _: Link = database[Link.prefix + childURL] {
             } else {
                 var link = Link(url: childURL)
                 link.save()
             }
-            //}
         }
     }
     
@@ -340,28 +365,26 @@ public struct Link: Codable {
     
     // MARK: - Helpers
     
-    public mutating func loadHTML() -> Bool {
-        if let cachedFile = cachedFile() {
-            html = cachedFile
-            return true
-        } else {
-#if os(Linux)
-            let linkFileURL = cacheURL.appendingPathComponent(hash + ".link")
-            do {
-                if let data = url.data(using: .utf8) {
-                    try data.write(to: linkFileURL)
-                    self.updateLinkAddedAndSave()
-                }
-            } catch {
-                NSLog("loadHTML addeding link error: \(error)")
+    public mutating func addLinkFile() {
+        let linkFileURL = cacheURL.appendingPathComponent(hash + ".link")
+        do {
+            if let data = url.data(using: .utf8) {
+                try data.write(to: linkFileURL)
+                updateLinkAddedAndSave()
             }
-            return false
-#else
-            let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
-            html = try? String(contentsOf: fileURL, encoding: .utf8)
-            return true
-#endif
+        } catch {
+            NSLog("loadHTML addeding link error: \(error)")
         }
+        //return false
+        /*#else
+         let fileURL = workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+         html = try? String(contentsOf: fileURL, encoding: .utf8)
+         return true
+         #endif*/
+        //}
+        failedToLoad = true
+        save()
+        NSLog("failedToLoad url: \(url)")
     }
     
     static func url(fromKey key: String) -> String {
