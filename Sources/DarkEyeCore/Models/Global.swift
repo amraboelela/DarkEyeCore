@@ -11,6 +11,7 @@ import Foundation
 public struct Global: Codable {
     public static let prefix = "global"
     public var processTimeThreshold: Int // any link with last process time smaller, need to be processed
+    public var currentWordIndex = 0
     
     // MARK: - Accessors
     
@@ -23,7 +24,7 @@ public struct Global: Codable {
     
     // MARK: - Helpers
     
-    static func update(processTimeThreshold: Int) {
-        database[Global.prefix] = Global(processTimeThreshold: processTimeThreshold)
+    func save() {
+        database[Global.prefix] = self
     }
 }

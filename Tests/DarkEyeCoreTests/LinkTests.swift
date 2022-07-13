@@ -233,20 +233,22 @@ final class LinkTests: TestsBase {
     
     func testProcessLink() {
         let url = "http://library123.onion"
-        let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: "<html><body><p>I went to college to go to the library</p></body></html>")
+        let html = "<html><body><p>I went to college to go to the library</p></body></html>"
+        let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: html)
         XCTAssertEqual(link.lastProcessTime, 0)
         crawler.canRun = true
         Link.process(link: link)
+        
         let timeDelay = 5.0
         let processedExpectation = expectation(description: "link processed")
         DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
             if let dbLink: Link = database[Link.prefix + url] {
-                XCTAssertNotEqual(dbLink.lastProcessTime, 0)
+                XCTAssertEqual(dbLink.lastWordIndex, 0)
             } else {
                 XCTFail()
             }
-            if let word: Word = database[Word.prefix + "library"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
+            if let word: Word = database[Word.prefix + "college"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("college"))
                 XCTAssertEqual(word.links[0].hashLink?.link.url, url)
                 processedExpectation.fulfill()
             } else {
@@ -263,18 +265,8 @@ final class LinkTests: TestsBase {
         Link.process(link: link2)
         let link2ProcessedExpectation = expectation(description: "link2 processed")
         DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay * 2) {
-            if let word: Word = database[Word.prefix + "bitcoin"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
-            } else {
-                XCTFail()
-            }
-            if let word: Word = database[Word.prefix + "the"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
-            } else {
-                XCTFail()
-            }
-            if let word: Word = database[Word.prefix + "hidden"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
+            if let word: Word = database[Word.prefix + "2009"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("2009"))
                 link2ProcessedExpectation.fulfill()
             } else {
                 XCTFail()

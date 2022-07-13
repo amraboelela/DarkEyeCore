@@ -14,13 +14,16 @@ import SwiftEncrypt
 public struct Link: Codable {
     public static let prefix = "link-"
     public static var workingDirectory = ""
+    
     static var numberOfProcessedLinks = 0
+    static var numberOfIndexedLinks = 0
     static var numberOfAddedLinks = 0
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var linkAddedTime = 0
+    public var lastWordIndex = -1 // last indexed word index
     public var failedToLoad = false
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
@@ -33,6 +36,7 @@ public struct Link: Codable {
         case url
         case lastProcessTime
         case linkAddedTime
+        case lastWordIndex
         case failedToLoad
         case numberOfVisits
         case lastVisitTime
@@ -192,10 +196,12 @@ public struct Link: Codable {
         //NSLog("nextLinkToProcess")
         var result: Link? = nil
         let processTimeThreshold = Global.global.processTimeThreshold
+        let currentWordIndex = Global.global.currentWordIndex
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if link.lastProcessTime < processTimeThreshold &&
-                link.linkAddedTime < processTimeThreshold {
+                link.linkAddedTime < processTimeThreshold &&
+                link.lastWordIndex < currentWordIndex {
                 stop.pointee = true
                 result = link
             } else {
@@ -227,7 +233,9 @@ public struct Link: Codable {
             print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
             Link.process(link: nextLink)
         } else {
-            Global.update(processTimeThreshold: Date.secondsSinceReferenceDate)
+            var global = Global.global
+            global.processTimeThreshold = Date.secondsSinceReferenceDate
+            global.save()
             if let nextLink = nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
@@ -236,7 +244,9 @@ public struct Link: Codable {
                     //print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
                     Link.process(link: nextLink)
                 } else {
-                    NSLog("can't find any link to process!")
+                    NSLog("can't find any link to process, increasing currentWordIndex")
+                    global.currentWordIndex += global.currentWordIndex
+                    global.save()
                 }
             }
         }
@@ -249,7 +259,7 @@ public struct Link: Codable {
         }
         var myLink = link
         if myLink.blocked == true {
-            myLink.updateAndSave()
+            myLink.updateLinkProcessedAndSave()
         } else {
             if myLink.html == nil {
                 if !myLink.loadHTML() {
@@ -259,10 +269,16 @@ public struct Link: Codable {
                 }
             }
             myLink.saveChildren()
-            if Word.index(link: myLink) {
-                myLink.updateAndSave()
-            } else {
-                print("word index returned false")
+            switch Word.indexNextWord(link: myLink) {
+            case .done:
+                myLink.updateLinkIndexedAndSave()
+            case .complete:
+                myLink.lastWordIndex += 1
+                myLink.updateLinkProcessedAndSave()
+            case .ended:
+                NSLog("indexNextWord returned .ended")
+            case .notFound:
+                NSLog("indexNextWord returned .notFound")
             }
         }
     }
@@ -274,7 +290,14 @@ public struct Link: Codable {
         NSLog("added link #\(Link.numberOfAddedLinks): \(url)")
     }
     
-    mutating func updateAndSave() {
+    mutating func updateLinkIndexedAndSave() {
+        lastWordIndex += 1
+        save()
+        Link.numberOfIndexedLinks += 1
+        NSLog("indexed link #\(Link.numberOfIndexedLinks): \(url)")
+    }
+    
+    mutating func updateLinkProcessedAndSave() {
         lastProcessTime = Date.secondsSinceReferenceDate
         save()
         Link.numberOfProcessedLinks += 1

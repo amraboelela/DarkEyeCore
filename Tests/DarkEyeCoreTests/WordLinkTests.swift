@@ -49,7 +49,7 @@ final class WordLinkTests: TestsBase {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            var wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
+            var wordLinks = WordLink.wordLinks(withSearchText: "2009 120", count: countLimit)
             let wordLinksCount = wordLinks.count
             if wordLinksCount > 1 {
                 let blockedKey = HashLink.prefix + wordLinks[0].urlHash
@@ -59,7 +59,7 @@ final class WordLinkTests: TestsBase {
                     link.blocked = true
                     link.save()
                 }
-                wordLinks = WordLink.wordLinks(withSearchText: "use the", count: countLimit)
+                wordLinks = WordLink.wordLinks(withSearchText: "2009 120", count: countLimit)
                 XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
                 expectation.fulfill()
             } else {

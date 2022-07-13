@@ -8,6 +8,13 @@
 
 import Foundation
 
+public enum WordIndexingStatus {
+    case done     // done with next word
+    case complete // finished all the words up to 500 word
+    case notFound
+    case ended    // ended as it can't run
+}
+
 public struct Word: Codable {
     public static let prefix = "word-"
 
@@ -15,46 +22,59 @@ public struct Word: Codable {
     
     // MARK: - Indexing
     
-    public static func index(link: Link) -> Bool {
+    public static func indexNextWord(link: Link) -> WordIndexingStatus {
         //print("index link: \(link.url)")
-        var processedKeys = Set<String>()
         var wordsArray = words(fromText: link.text)
-        let countLimit = 500
+        wordsArray = wordsArray.filter { $0.count > 2 }
+        let countLimit = 1000
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
-        var saveArray = [(String, Word)]()
-        let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
-        NSLog("indexing wordsArray.count: \(wordsArray.count)")
-        for i in (0..<wordsArray.count) {
-            if !crawler.canRun || database.closed() {
-                return false
-            }
-            let wordText = wordsArray[i].lowercased()
-            if processedKeys.contains(wordText) {
-                continue
-            }
-            processedKeys.insert(wordText)
-            let text = contextStringFrom(array: wordsArray, atIndex: i)
-            //print("wordText: \(wordText)")
-            if wordText.count > 2 {
+        let uniqueArray = Array(Set(wordsArray))
+        let filteredArray = uniqueArray.filter { $0.count > 2 }
+        if link.lastWordIndex < filteredArray.count - 1 {
+            let wordIndex = link.lastWordIndex + 1
+            let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }
+            let word = sortedArray[wordIndex]
+            let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
+            NSLog("indexing wordsArray.count: \(wordsArray.count)")
+            for i in (0..<wordsArray.count) {
+                if !crawler.canRun || database.closed() {
+                    return .ended
+                }
+                if word != wordsArray[i] {
+                    continue
+                }
+                let wordText = wordsArray[i].lowercased()
+                let text = contextStringFrom(array: wordsArray, atIndex: i)
+                print("wordText: \(wordText)")
+                //if wordText.count > 2 {
                 if crawler.canRun {
                     let key = prefix + wordText.lowercased()
                     //NSLog("index link key: \(key)")
                     let word = Word(links: [WordLink(urlHash: link.hash, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
                     if var dbWord: Word = database[key] {
                         WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
-                        saveArray.append((key, dbWord))
+                        database[key] = dbWord
+                        return .done
                     } else {
-                        saveArray.append((key, word))
+                        database[key] = word
+                        return .done
                     }
                 } else {
-                    return false
+                    return .ended
                 }
+                //}
             }
+            if wordIndex == wordsArray.count - 1 {
+                return .complete
+            } else {
+                return .done
+            }
+        } else {
+            return .complete
         }
-        database.save(array: saveArray)
-        return true
+        return .notFound
     }
     
     // MARK: - Helpers

@@ -11,23 +11,17 @@ final class WordTests: TestsBase {
         super.tearDown()
     }
     
-    func testIndexLink() {
+    func testIndexNextWord() {
         let wordsFoundExpectation = expectation(description: "words found")
         let url = "khamees.onion"
         let html = "<html><title>The College</title><body><p>I went to college to go to the library</p></body></html>"
         var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, html: html)
         link.save()
         crawler.canRun = true
-        var success = Word.index(link: link)
+        var indexResult = Word.indexNextWord(link: link)
+        XCTAssertEqual(indexResult, .done)
         let secondsDelay = 5.0
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
-            XCTAssertTrue(success)
-            if let word: Word = database[Word.prefix + "library"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("library"))
-                XCTAssertEqual(word.links[0].urlHash, url.hashBase32(numberOfDigits: 12))
-            } else {
-                XCTFail()
-            }
             if let word: Word = database[Word.prefix + "college"] {
                 var returnedLink = try! XCTUnwrap(word.links[0].hashLink?.link)
                 returnedLink.html = html
@@ -47,16 +41,16 @@ final class WordTests: TestsBase {
         link = Link(url: Link.mainUrl)
         let result = link.loadHTML()
         XCTAssertTrue(result)
-        success = Word.index(link: link)
+        indexResult  = Word.indexNextWord(link: link)
+        XCTAssertEqual(indexResult, .done)
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 5) {
-            XCTAssertTrue(success)
-            if let word: Word = database[Word.prefix + "bitcoin"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("bitcoin"))
+            if let word: Word = database[Word.prefix + "2009"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("2009"))
                 XCTAssertEqual(word.links[0].urlHash, Link.mainUrl.hashBase32(numberOfDigits: 12))
             } else {
                 XCTFail()
             }
-            if let word: Word = database[Word.prefix + "the"] {
+            /*if let word: Word = database[Word.prefix + "the"] {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("the"))
             } else {
                 XCTFail()
@@ -65,7 +59,7 @@ final class WordTests: TestsBase {
                 XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
             } else {
                 XCTFail()
-            }
+            }*/
             if let _: Word = database[Word.prefix + "a"] {
                 XCTFail()
             }
