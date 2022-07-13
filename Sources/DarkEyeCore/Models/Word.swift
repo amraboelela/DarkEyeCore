@@ -25,7 +25,6 @@ public struct Word: Codable {
     public static func indexNextWord(link: Link) -> WordIndexingStatus {
         //print("index link: \(link.url)")
         var wordsArray = words(fromText: link.text)
-        wordsArray = wordsArray.filter { $0.count > 2 }
         let countLimit = 1000
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
@@ -64,7 +63,6 @@ public struct Word: Codable {
                 } else {
                     return .ended
                 }
-                //}
             }
             if wordIndex == wordsArray.count - 1 {
                 return .complete
@@ -72,6 +70,7 @@ public struct Word: Codable {
                 return .done
             }
         } else {
+            NSLog("link.lastWordIndex < filteredArray.count - 1, link.lastWordIndex: \(link.lastWordIndex), filteredArray.count: \(filteredArray.count)")
             return .complete
         }
         return .notFound
