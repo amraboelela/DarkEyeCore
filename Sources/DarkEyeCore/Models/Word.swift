@@ -78,7 +78,7 @@ public struct Word: Codable {
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()
-        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,.<>\|"))
+        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,.<>\\|"))
         let words = text.components(separatedBy: whiteCharacters)
         for word in words {
             if word.count > 0 {
