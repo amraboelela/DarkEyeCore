@@ -379,6 +379,10 @@ public struct Link: Codable {
                 return false
             }
         }
+        let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: ":._?/-="))
+        if url.rangeOfCharacter(from: allowedCharacters.inverted) != nil {
+            return false
+        }
         return true
     }
     

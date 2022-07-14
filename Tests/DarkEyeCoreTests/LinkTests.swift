@@ -273,6 +273,8 @@ final class LinkTests: TestsBase {
         XCTAssertFalse(allowed)
         allowed = Link.allowed(url: "http://www.onion/file.epub")
         XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/@file")
+        XCTAssertFalse(allowed)
         allowed = Link.allowed(url: "http://www.onion/file.html")
         XCTAssertTrue(allowed)
     }

@@ -32,13 +32,9 @@ public struct Word: Codable {
         let filteredArray = uniqueArray.filter { word in
             word.count > 2 && word.prefix(1).rangeOfCharacter(from: CharacterSet.decimalDigits) == nil
         }
-        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "_"))
-        let cleanArray = filteredArray.map { word in
-            return word.trimmingCharacters(in: whiteCharacters)
-        }
-        if link.lastWordIndex < cleanArray.count - 1 {
+        if link.lastWordIndex < filteredArray.count - 1 {
             let wordIndex = link.lastWordIndex + 1
-            let sortedArray = cleanArray.sorted { $0.lowercased() < $1.lowercased() }
+            let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }
             let word = sortedArray[wordIndex]
             let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
             NSLog("indexing wordsArray.count: \(wordsArray.count), wordIndex: \(wordIndex), word: \(word)")
@@ -84,7 +80,7 @@ public struct Word: Codable {
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()
-        let words = text.components(separatedBy: String.characters.inverted)
+        let words = text.components(separatedBy: CharacterSet.alphanumerics.inverted)
         for word in words {
             if word.count > 0 {
                 let finalWords = word.camelCaseWords
