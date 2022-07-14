@@ -32,9 +32,13 @@ public struct Word: Codable {
         let filteredArray = uniqueArray.filter { word in
             word.count > 2 && word.prefix(1).rangeOfCharacter(from: CharacterSet.decimalDigits) == nil
         }
-        if link.lastWordIndex < filteredArray.count - 1 {
+        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "_"))
+        let cleanArray = filteredArray.map { word in
+            return word.trimmingCharacters(in: whiteCharacters)
+        }
+        if link.lastWordIndex < cleanArray.count - 1 {
             let wordIndex = link.lastWordIndex + 1
-            let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }
+            let sortedArray = cleanArray.sorted { $0.lowercased() < $1.lowercased() }
             let word = sortedArray[wordIndex]
             let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
             NSLog("indexing wordsArray.count: \(wordsArray.count), wordIndex: \(wordIndex), word: \(word)")

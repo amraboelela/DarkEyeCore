@@ -59,9 +59,9 @@ final class LinkTests: TestsBase {
     func testRawUrls() {
         let link = Link(url: Link.mainUrl)
         var urls = link.urls
-        XCTAssertEqual(urls.count, 268)
+        XCTAssertEqual(urls.count, 266)
         urls = link.urls
-        XCTAssertEqual(urls.count, 268)
+        XCTAssertEqual(urls.count, 266)
         XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].0, "/wiki/Contest2022")
         XCTAssertEqual(urls[2].0, "/wiki/The_Matrix")
@@ -103,9 +103,9 @@ final class LinkTests: TestsBase {
     func testRefindedUrls() {
         let link = Link(url: Link.mainUrl)
         var urls = link.urls
-        XCTAssertEqual(urls.count, 268)
+        XCTAssertEqual(urls.count, 266)
         urls = link.urls
-        XCTAssertEqual(urls.count, 268)
+        XCTAssertEqual(urls.count, 266)
         XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Contest2022")
         XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/The_Matrix")
