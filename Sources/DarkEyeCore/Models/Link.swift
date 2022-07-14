@@ -76,7 +76,7 @@ public struct Link: Codable {
 #else
         let thresholdDays = 1000
 #endif
-        let fileURL = cacheURL.appendingPathComponent(hash + ".html")
+        let fileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
         //NSLog("cachedFile fileURL: \(fileURL)")
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
@@ -140,6 +140,7 @@ public struct Link: Codable {
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if let href = anchor["href"], href.range(of: "#") == nil {
                                 if !Link.allowed(url: href) {
+                                    Link.remove(url: href)
                                     return nil
                                 }
                                 var refinedHref = href
@@ -167,7 +168,7 @@ public struct Link: Codable {
         return result
     }
     
-    var workingURL: URL {
+    static var workingURL: URL {
         if Link.workingDirectory.isEmpty {
             return URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
         } else {
@@ -175,7 +176,7 @@ public struct Link: Codable {
         }
     }
     
-    var cacheURL: URL {
+    static var cacheURL: URL {
         return workingURL.appendingPathComponent("cache", isDirectory: true)
     }
     
@@ -345,7 +346,7 @@ public struct Link: Codable {
     // MARK: - Helpers
     
     public mutating func addLinkFile() {
-        let linkFileURL = cacheURL.appendingPathComponent(hash + ".link")
+        let linkFileURL = Link.cacheURL.appendingPathComponent(hash + ".link")
         do {
             if let data = url.data(using: .utf8) {
                 try data.write(to: linkFileURL)
@@ -364,7 +365,7 @@ public struct Link: Codable {
             url.range(of: "http") == nil {
             return false
         }
-        let forbiddenExtensions = [".png", ".jpg", ".mp4", ".zip", ".gif", ".epub"]
+        let forbiddenExtensions = [".png", ".jpg", ".mp4", ".zip", ".gif", ".epub", ".nib", ".pdf"]
         for anExtension in forbiddenExtensions {
             if url.suffix(anExtension.count).range(of: anExtension) != nil {
                 return false
@@ -408,6 +409,14 @@ public struct Link: Codable {
             }
         }
         return result
+    }
+    
+    static func remove(url: String) {
+        let hash = url.hashBase32(numberOfDigits: 12)
+        var filePath = cacheURL.appendingPathComponent(hash + ".html").path
+        try? FileManager.default.removeItem(atPath: filePath)
+        filePath = cacheURL.appendingPathComponent(hash + ".link").path
+        try? FileManager.default.removeItem(atPath: filePath)
     }
     
 }

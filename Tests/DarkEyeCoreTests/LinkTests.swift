@@ -278,4 +278,12 @@ final class LinkTests: TestsBase {
         allowed = Link.allowed(url: "http://www.onion/file.html")
         XCTAssertTrue(allowed)
     }
+    
+    func testRemoveURL() {
+        let url = "http://2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd.onion"
+        let hash = url.hashBase32(numberOfDigits: 12)
+        Link.remove(url: url)
+        let filePath = Link.cacheURL.appendingPathComponent(hash + ".html").path
+        XCTAssertFalse(FileManager.default.fileExists(atPath: filePath))
+    }
 }

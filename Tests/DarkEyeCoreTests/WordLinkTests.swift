@@ -12,13 +12,21 @@ final class WordLinkTests: TestsBase {
     }
     
     func testHashLink() {
-        let url = "http://hanein123.onion"
+        var url = "http://hanein123.onion"
         var link = Link(url: url)
         link.save()
-        let urlHash = url.hashBase32(numberOfDigits: 12)
-        let wordLink = WordLink(urlHash: urlHash, text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        let link2 = try! XCTUnwrap(wordLink.hashLink?.link)
+        var urlHash = url.hashBase32(numberOfDigits: 12)
+        var wordLink = WordLink(urlHash: urlHash, text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
+        var link2 = try! XCTUnwrap(wordLink.hashLink?.link)
         XCTAssertEqual(link2.hash, "ar7t3hfhcdxg")
+        
+        url = Link.mainUrl
+        link = Link(url: url)
+        link.save()
+        urlHash = url.hashBase32(numberOfDigits: 12)
+        wordLink = WordLink(urlHash: urlHash, text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
+        link2 = try! XCTUnwrap(wordLink.hashLink?.link)
+        XCTAssertEqual(link2.hash, "9c2c4863y3x7")
     }
     
     func testScore() {
