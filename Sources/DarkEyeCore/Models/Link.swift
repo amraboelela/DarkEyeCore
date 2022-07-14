@@ -299,7 +299,8 @@ public struct Link: Codable {
         lastWordIndex += 1
         save()
         Link.numberOfIndexedLinks += 1
-        if Link.numberOfIndexedLinks >= 1000 {
+        if Link.numberOfIndexedLinks > 1000 {
+            Link.numberOfIndexedLinks = 0
             Link.updateCurrentWordIndex()
         }
         NSLog("indexed link #\(Link.numberOfIndexedLinks)")
@@ -368,9 +369,6 @@ public struct Link: Codable {
             if url.suffix(anExtension.count).range(of: anExtension) != nil {
                 return false
             }
-        }
-        if url.suffix(4) == ".zip" {
-            return false
         }
         let forbiddenTerms = [
             "beverages",
