@@ -18,8 +18,8 @@ final class WordTests: TestsBase {
         let indexResult  = Word.indexNextWord(link: link)
         XCTAssertEqual(indexResult, .done)
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 5) {
-            if let word: Word = database[Word.prefix + "2009"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("2009"))
+            if let word: Word = database[Word.prefix + "accepted"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("accepted"))
                 XCTAssertEqual(word.links[0].urlHash, Link.mainUrl.hashBase32(numberOfDigits: 12))
             } else {
                 XCTFail()

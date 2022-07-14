@@ -23,14 +23,15 @@ public struct Word: Codable {
     // MARK: - Indexing
     
     public static func indexNextWord(link: Link) -> WordIndexingStatus {
-        //print("index link: \(link.url)")
         var wordsArray = words(fromText: link.text)
         let countLimit = 1000
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
         let uniqueArray = Array(Set(wordsArray))
-        let filteredArray = uniqueArray.filter { $0.count > 2 }
+        let filteredArray = uniqueArray.filter { word in
+            word.count > 2 && word.prefix(1).rangeOfCharacter(from: CharacterSet.decimalDigits) == nil
+        }
         if link.lastWordIndex < filteredArray.count - 1 {
             let wordIndex = link.lastWordIndex + 1
             let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }

@@ -187,8 +187,8 @@ final class LinkTests: TestsBase {
         Link.process(link: link2)
         let link2ProcessedExpectation = expectation(description: "link2 processed")
         DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay * 2) {
-            if let word: Word = database[Word.prefix + "2009"] {
-                XCTAssertTrue(word.links[0].text.lowercased().contains("2009"))
+            if let word: Word = database[Word.prefix + "accepted"] {
+                XCTAssertTrue(word.links[0].text.lowercased().contains("accepted"))
                 link2ProcessedExpectation.fulfill()
             } else {
                 XCTFail()
