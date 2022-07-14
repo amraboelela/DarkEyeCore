@@ -72,35 +72,4 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         }
         waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
     }
-    
-    /*
-    func testRestart() {
-        let runningExpectation = expectation(description: "crawler is runiing")
-        let stoppedExpectation = expectation(description: "crawler stopped")
-        Crawler.restart()
-#if os(Linux)
-        let secondsDelay = 10.0
-#else
-        let secondsDelay = 5.0
-#endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 1.0) {
-            if crawler.canRun {
-                runningExpectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            crawler.canRun = false
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3) {
-            NSLog("testing stopped")
-            if !crawler.canRun {
-                stoppedExpectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
-    }*/
 }
