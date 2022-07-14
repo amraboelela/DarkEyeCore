@@ -265,6 +265,7 @@ public struct Link: Codable {
         }
         var myLink = link
         if myLink.blocked == true {
+            Link.remove(url: myLink.url)
             myLink.updateLinkProcessedAndSave()
         } else {
             if myLink.html == nil {
