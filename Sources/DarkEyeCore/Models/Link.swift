@@ -222,6 +222,17 @@ public struct Link: Codable {
         return result
     }
     
+    static func updateCurrentWordIndex() {
+        var global = Global.global
+        if global.currentWordIndex < 500 {
+            global.currentWordIndex += 1
+        } else {
+            global.currentWordIndex = 0
+            global.processTimeThreshold = Date.secondsSinceReferenceDate
+        }
+        global.save()
+    }
+    
     public static func crawlNext() {
         //NSLog("crawlNext")
         if let nextLink = nextLinkToProcess() {
@@ -231,14 +242,7 @@ public struct Link: Codable {
             print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
             Link.process(link: nextLink)
         } else {
-            var global = Global.global
-            if global.currentWordIndex < 500 {
-                global.currentWordIndex += global.currentWordIndex
-            } else {
-                global.currentWordIndex = 0
-                global.processTimeThreshold = Date.secondsSinceReferenceDate
-            }
-            global.save()
+            updateCurrentWordIndex()
             if let nextLink = nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
@@ -280,8 +284,6 @@ public struct Link: Codable {
                 myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
-            case .notFound:
-                NSLog("indexNextWord returned .notFound")
             }
         }
     }
@@ -297,6 +299,9 @@ public struct Link: Codable {
         lastWordIndex += 1
         save()
         Link.numberOfIndexedLinks += 1
+        if Link.numberOfIndexedLinks >= 1000 {
+            Link.updateCurrentWordIndex()
+        }
         NSLog("indexed link #\(Link.numberOfIndexedLinks)")
     }
     

@@ -59,9 +59,9 @@ final class LinkTests: TestsBase {
     func testRawUrls() {
         let link = Link(url: Link.mainUrl)
         var urls = link.urls
-        XCTAssertEqual(urls.count, 266)
+        XCTAssertEqual(urls.count, 257)
         urls = link.urls
-        XCTAssertEqual(urls.count, 266)
+        XCTAssertEqual(urls.count, 257)
         XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].0, "/wiki/Contest2022")
         XCTAssertEqual(urls[2].0, "/wiki/The_Matrix")
@@ -73,7 +73,7 @@ final class LinkTests: TestsBase {
         let wikiUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: "/wiki")?.lowerBound == rawURL.startIndex
         }
-        XCTAssertEqual(wikiUrls.count, 40)
+        XCTAssertEqual(wikiUrls.count, 32)
         let dotOrgUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: ".org") != nil
         }
@@ -93,19 +93,19 @@ final class LinkTests: TestsBase {
         let notOnionUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: ".onion") == nil
         }
-        XCTAssertEqual(notOnionUrls.count, 40)
+        XCTAssertEqual(notOnionUrls.count, 32)
         let notHttpUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: "http") == nil
         }
-        XCTAssertEqual(notHttpUrls.count, 40)
+        XCTAssertEqual(notHttpUrls.count, 32)
     }
     
     func testRefindedUrls() {
         let link = Link(url: Link.mainUrl)
         var urls = link.urls
-        XCTAssertEqual(urls.count, 266)
+        XCTAssertEqual(urls.count, 257)
         urls = link.urls
-        XCTAssertEqual(urls.count, 266)
+        XCTAssertEqual(urls.count, 257)
         XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Contest2022")
         XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/The_Matrix")

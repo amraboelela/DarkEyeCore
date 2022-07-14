@@ -11,7 +11,6 @@ import Foundation
 public enum WordIndexingStatus {
     case done     // done with next word
     case complete // finished all the words up to 500 word
-    case notFound
     case ended    // ended as it can't run
 }
 
@@ -73,14 +72,14 @@ public struct Word: Codable {
             NSLog("link.lastWordIndex < filteredArray.count - 1, link.lastWordIndex: \(link.lastWordIndex), filteredArray.count: \(filteredArray.count)")
             return .complete
         }
-        return .notFound
     }
     
     // MARK: - Helpers
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()
-        let words = text.components(separatedBy: CharacterSet.alphanumerics.inverted)
+        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,."))
+        let words = text.components(separatedBy: whiteCharacters)
         for word in words {
             if word.count > 0 {
                 let finalWords = word.camelCaseWords
