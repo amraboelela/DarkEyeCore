@@ -42,7 +42,7 @@ final class LinkTests: TestsBase {
         database["link-" + url] = link
         var nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
         XCTAssertNil(nextLink)
-        link.addedLink = true
+        link.addedLinkFile = true
         database["link-" + url] = link
         nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
         XCTAssertNotNil(nextLink)
@@ -252,5 +252,26 @@ final class LinkTests: TestsBase {
     func testUrlFromKey() {
         let url = Link.url(fromKey: "link-http://hanein1.onion")
         XCTAssertEqual(url, "http://hanein1.onion")
+    }
+    
+    func testAllowedUrl() {
+        var allowed = Link.allowed(url: "ring://www")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/beverages/vodka")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/beverages/whiskey")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd.onion")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/file.zip")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/file.jpg")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/file.png")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/file.mp4")
+        XCTAssertFalse(allowed)
+        allowed = Link.allowed(url: "http://www.onion/file.html")
+        XCTAssertTrue(allowed)
     }
 }

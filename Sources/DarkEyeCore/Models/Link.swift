@@ -17,12 +17,12 @@ public struct Link: Codable {
     
     static var numberOfProcessedLinks = 0
     static var numberOfIndexedLinks = 0
-    static var numberOfAddedLinks = 0
+    static var numberOfAddedLinkFiles = 0
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
-    public var addedLink = false
+    public var addedLinkFile = false
     public var failedToLoad = false
     public var lastWordIndex = -1 // last indexed word index
     public var numberOfVisits = 0
@@ -33,7 +33,7 @@ public struct Link: Codable {
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
-        case addedLink
+        case addedLinkFile
         case failedToLoad
         case lastWordIndex
         case numberOfVisits
@@ -139,8 +139,7 @@ public struct Link: Codable {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if let href = anchor["href"], href.range(of: "#") == nil {
-                                if href.range(of: ":") != nil &&
-                                    href.range(of: "http") == nil {
+                                if !Link.allowed(url: href) {
                                     return nil
                                 }
                                 var refinedHref = href
@@ -180,36 +179,6 @@ public struct Link: Codable {
         return workingURL.appendingPathComponent("cache", isDirectory: true)
     }
     
-    /*func cachedFile() -> String? {
-#if os(Linux)
-        let thresholdDays = 100
-#else
-        let thresholdDays = 1000
-#endif
-        let fileURL = cacheURL.appendingPathComponent(hash + ".html")
-        //NSLog("cachedFile fileURL: \(fileURL)")
-        if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
-            if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
-                //NSLog("cachedFile, fileSize == 0, url: \(url)")
-                return nil
-            }
-            if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
-                let cacheThreashold = Date.days(numberOfDays: thresholdDays)
-                let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
-                if secondsDiff > cacheThreashold {
-                    NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold)")
-                    return nil
-                }
-            }
-        }
-        if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
-            //NSLog("cachedFile return result fileURL: \(fileURL)")
-            return result
-        }
-        //NSLog("cachedFile return nil")
-        return nil
-    }*/
-    
     // MARK: - Factory methods
     
     static func with(url: String) -> Link {
@@ -230,7 +199,7 @@ public struct Link: Codable {
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if link.lastProcessTime < processTimeThreshold &&
-                !link.addedLink &&
+                !link.addedLinkFile &&
                 link.lastWordIndex < currentWordIndex {
                 stop.pointee = true
                 result = link
@@ -245,7 +214,7 @@ public struct Link: Codable {
         NSLog("nextAddedLinkToProcess")
         var result: Link? = nil
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            if link.addedLink && (includeFailedToLoad || !link.failedToLoad) {
+            if link.addedLinkFile && (includeFailedToLoad || !link.failedToLoad) {
                 stop.pointee = true
                 result = link
             }
@@ -297,8 +266,8 @@ public struct Link: Codable {
                 myLink.addLinkFile()
                 return
             } else {
-                if myLink.addedLink || myLink.failedToLoad {
-                    myLink.addedLink = false
+                if myLink.addedLinkFile || myLink.failedToLoad {
+                    myLink.addedLinkFile = false
                     myLink.failedToLoad = false
                     myLink.save()
                 }
@@ -318,10 +287,10 @@ public struct Link: Codable {
     }
     
     mutating func updateLinkAddedAndSave() {
-        addedLink = true
+        addedLinkFile = true
         save()
-        Link.numberOfAddedLinks += 1
-        NSLog("added link #\(Link.numberOfAddedLinks)")
+        Link.numberOfAddedLinkFiles += 1
+        NSLog("added link file #\(Link.numberOfAddedLinkFiles)")
     }
     
     mutating func updateLinkIndexedAndSave() {
@@ -382,6 +351,35 @@ public struct Link: Codable {
         failedToLoad = true
         save()
         //NSLog("failedToLoad url: \(url)")
+    }
+    
+    static func allowed(url: String) -> Bool {
+        if url.range(of: ":") != nil &&
+            url.range(of: "http") == nil {
+            return false
+        }
+        let forbiddenExtensions = [".png", ".jpg", ".mp4", ".zip", ".gif"]
+        for anExtension in forbiddenExtensions {
+            if url.suffix(4).range(of: anExtension) != nil {
+                return false
+            }
+        }
+        if url.suffix(4) == ".zip" {
+            return false
+        }
+        let forbiddenTerms = [
+            "beverages",
+            "money-transfers",
+            "music",
+            "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
+            "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid"
+        ]
+        for term in forbiddenTerms {
+            if url.range(of: term) != nil {
+                return false
+            }
+        }
+        return true
     }
     
     static func url(fromKey key: String) -> String {
