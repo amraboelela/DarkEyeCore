@@ -36,7 +36,7 @@ public struct Word: Codable {
             let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }
             let word = sortedArray[wordIndex]
             let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
-            NSLog("indexing wordsArray.count: \(wordsArray.count), wordIndex: \(wordIndex), word: \(word.lowercased())")
+            NSLog("indexing, wordIndex: \(wordIndex), word: \(word.lowercased()), wordCount: \(wordsArray.count)")
             for i in (0..<wordsArray.count) {
                 if !crawler.canRun || database.closed() {
                     return .ended
