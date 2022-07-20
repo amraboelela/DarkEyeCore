@@ -63,13 +63,13 @@ public struct Word: Codable {
                     return .ended
                 }
             }
-            if wordIndex == wordsArray.count - 1 {
+            if wordIndex >= filteredArray.count - 1 {
                 return .complete
             } else {
                 return .done
             }
         } else {
-            NSLog("link.lastWordIndex < filteredArray.count - 1, link.lastWordIndex: \(link.lastWordIndex), filteredArray.count: \(filteredArray.count)")
+            NSLog("link.lastWordIndex > filteredArray.count - 1, link.lastWordIndex: \(link.lastWordIndex), filteredArray.count: \(filteredArray.count)")
             return .complete
         }
     }
