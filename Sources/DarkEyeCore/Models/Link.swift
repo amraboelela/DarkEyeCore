@@ -94,14 +94,18 @@ public struct Link: Codable {
         }
         if result == nil {
 #if os(Linux)
-            let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
-            let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
-            _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
-            if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                _ = shell("cp", tempFileURL.path, cacheFileURL.path)
-                result = fileContent
+            try {
+                let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
+                let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
+                _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
+                if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
+                    _ = shell("cp", tempFileURL.path, cacheFileURL.path)
+                    result = fileContent
+                }
+                _ = shell("rm", tempFileURL.path)
+            } catch {
+                NSLog("html, error: \(error)")
             }
-            _ = shell("rm", tempFileURL.path)
 #endif
         }
         NSLog("html returns nil")
