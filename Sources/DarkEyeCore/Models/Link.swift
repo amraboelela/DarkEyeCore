@@ -102,7 +102,6 @@ public struct Link: Codable {
                 result = fileContent
             }
             _ = shell("rm", tempFileURL.path)
-#else
 #endif
         }
         NSLog("html returns nil")
