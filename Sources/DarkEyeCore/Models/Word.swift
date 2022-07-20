@@ -98,8 +98,10 @@ public struct Word: Codable {
     }
     
     static func contextStringFrom(array: [String], atIndex: Int) -> String {
-        let startIndex = atIndex - 10 < 0 ? 0 : atIndex - 10
-        let endIndex = startIndex + 20 >= array.count ? array.count - 1 : startIndex + 20
+        let wordsCount = 30
+        let halfOfCount = wordsCount / 2
+        let startIndex = atIndex - halfOfCount < 0 ? 0 : atIndex - halfOfCount
+        let endIndex = startIndex + wordsCount >= array.count ? array.count - 1 : startIndex + wordsCount
         return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
 }
