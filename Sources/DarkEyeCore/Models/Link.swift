@@ -108,7 +108,9 @@ public struct Link: Codable {
             }
 #endif
         }
-        NSLog("html returns nil")
+        if result == nil {
+            NSLog("html returns nil")
+        }
         return result
     }
     
