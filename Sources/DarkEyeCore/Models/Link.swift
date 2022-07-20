@@ -99,7 +99,7 @@ public struct Link: Codable {
                 let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
                 _ = try shell("torsocks", "wget", "-O", tempFileURL.path, url)
                 if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                    _ = shell("cp", tempFileURL.path, cacheFileURL.path)
+                    _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
                     result = fileContent
                 }
                 _ = try shell("rm", tempFileURL.path)
