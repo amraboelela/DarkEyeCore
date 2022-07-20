@@ -17,12 +17,10 @@ public struct Link: Codable {
     
     static var numberOfProcessedLinks = 0
     static var numberOfIndexedLinks = 0
-    static var numberOfAddedLinkFiles = 0
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
-    public var addedLinkFile = false
     public var failedToLoad = false
     public var lastWordIndex = -1 // last indexed word index
     public var numberOfVisits = 0
@@ -33,7 +31,6 @@ public struct Link: Codable {
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
-        case addedLinkFile
         case failedToLoad
         case lastWordIndex
         case numberOfVisits
@@ -76,28 +73,46 @@ public struct Link: Codable {
 #else
         let thresholdDays = 1000
 #endif
+        //var result: String?
         let fileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
         //NSLog("cachedFile fileURL: \(fileURL)")
+        var result: String?
+        result = try? String(contentsOf: fileURL, encoding: .utf8)
         if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
             if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
                 //NSLog("cachedFile, fileSize == 0, url: \(url)")
-                return nil
+                result = nil
             }
             if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
                 let cacheThreashold = Date.days(numberOfDays: thresholdDays)
                 let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
                 if secondsDiff > cacheThreashold {
                     NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold)")
-                    return nil
+                    result = nil
                 }
             }
         }
-        if let result = try? String(contentsOf: fileURL, encoding: .utf8) {
+         //{
             //NSLog("cachedFile return result fileURL: \(fileURL)")
-            return result
+            //return result
+        //}
+        if result == nil {
+#if os(Linux)
+            let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
+            let tempFileURL = cacheURL.appendingPathComponent(hash + "-temp.html")
+            _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
+            if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
+                _ = shell("cp", tempFileURL.path, cacheFileURL.path)
+                result = fileContent
+            }
+            _ = shell("rm", tempFileURL.path)
+#else
+            //let fileURL = Link.workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
+            //result = try? String(contentsOf: fileURL, encoding: .utf8)
+#endif
         }
         //NSLog("cachedFile return nil")
-        return nil
+        return result
     }
     
     public var title: String {
@@ -200,24 +215,11 @@ public struct Link: Codable {
         database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if link.lastProcessTime < processTimeThreshold &&
-                !link.addedLinkFile &&
                 link.lastWordIndex < currentWordIndex {
                 stop.pointee = true
                 result = link
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
-            }
-        }
-        return result
-    }
-    
-    static func nextAddedLinkToProcess(includeFailedToLoad: Bool) -> Link? {
-        NSLog("nextAddedLinkToProcess")
-        var result: Link? = nil
-        database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            if link.addedLinkFile && (includeFailedToLoad || !link.failedToLoad) {
-                stop.pointee = true
-                result = link
             }
         }
         return result
@@ -239,21 +241,13 @@ public struct Link: Codable {
         if let nextLink = nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
             Link.process(link: nextLink)
-        } else if let nextLink = nextAddedLinkToProcess(includeFailedToLoad: false) {
-            print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
-            Link.process(link: nextLink)
         } else {
             updateCurrentWordIndex()
             if let nextLink = nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 Link.process(link: nextLink)
             } else {
-                if let nextLink = nextAddedLinkToProcess(includeFailedToLoad: true) {
-                    //print("crawlNext nextAddedLinkToProcess: \(nextLink.url)")
-                    Link.process(link: nextLink)
-                } else {
-                    NSLog("can't find any link to process")
-                }
+                NSLog("can't find any link to process")
             }
         }
     }
@@ -267,17 +261,7 @@ public struct Link: Codable {
         if myLink.blocked == true {
             Link.remove(url: myLink.url)
             myLink.updateLinkProcessedAndSave()
-        } else {
-            if myLink.html == nil {
-                myLink.addLinkFile()
-                return
-            } else {
-                if myLink.addedLinkFile || myLink.failedToLoad {
-                    myLink.addedLinkFile = false
-                    myLink.failedToLoad = false
-                    myLink.save()
-                }
-            }
+        } else if myLink.html != nil {
             myLink.saveChildren()
             switch Word.indexNextWord(link: myLink) {
             case .done:
@@ -288,13 +272,6 @@ public struct Link: Codable {
                 NSLog("indexNextWord returned .ended")
             }
         }
-    }
-    
-    mutating func updateLinkAddedAndSave() {
-        addedLinkFile = true
-        save()
-        Link.numberOfAddedLinkFiles += 1
-        NSLog("added link file #\(Link.numberOfAddedLinkFiles)")
     }
     
     mutating func updateLinkIndexedAndSave() {
@@ -345,21 +322,6 @@ public struct Link: Codable {
     }
     
     // MARK: - Helpers
-    
-    public mutating func addLinkFile() {
-        let linkFileURL = Link.cacheURL.appendingPathComponent(hash + ".link")
-        do {
-            if let data = url.data(using: .utf8) {
-                try data.write(to: linkFileURL)
-                updateLinkAddedAndSave()
-            }
-        } catch {
-            NSLog("loadHTML addeding link error: \(error)")
-        }
-        failedToLoad = true
-        save()
-        //NSLog("failedToLoad url: \(url)")
-    }
     
     static func allowed(url: String) -> Bool {
         if url.range(of: ":") != nil &&

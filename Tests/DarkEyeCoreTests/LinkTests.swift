@@ -36,18 +36,6 @@ final class LinkTests: TestsBase {
         XCTAssertNotNil(nextLink)
     }
     
-    func testNextAddedLinkToProcess() {
-        let url = "http://hanein1.onion"
-        var link = Link(url: url)
-        database["link-" + url] = link
-        var nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
-        XCTAssertNil(nextLink)
-        link.addedLinkFile = true
-        database["link-" + url] = link
-        nextLink = Link.nextAddedLinkToProcess(includeFailedToLoad: true)
-        XCTAssertNotNil(nextLink)
-    }
-    
     func testText() {
         let link = Link(url: Link.mainUrl)
         let text = link.text
