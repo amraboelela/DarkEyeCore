@@ -92,10 +92,6 @@ public struct Link: Codable {
                 }
             }
         }
-         //{
-            //NSLog("cachedFile return result fileURL: \(fileURL)")
-            //return result
-        //}
         if result == nil {
 #if os(Linux)
             let cacheFileURL = cacheURL.appendingPathComponent(hash + ".html")
@@ -107,11 +103,9 @@ public struct Link: Codable {
             }
             _ = shell("rm", tempFileURL.path)
 #else
-            //let fileURL = Link.workingURL.appendingPathComponent("Resources", isDirectory: true).appendingPathComponent("main_page.html")
-            //result = try? String(contentsOf: fileURL, encoding: .utf8)
 #endif
         }
-        //NSLog("cachedFile return nil")
+        NSLog("html returns nil")
         return result
     }
     
