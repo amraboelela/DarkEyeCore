@@ -94,7 +94,7 @@ public struct Link: Codable {
         }
         if result == nil {
 #if os(Linux)
-            try {
+            do {
                 let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
                 let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
                 _ = shell("torsocks", "wget", "-O", tempFileURL.path, url)
