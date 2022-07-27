@@ -381,10 +381,8 @@ public struct Link: Codable {
     
     static func remove(url: String) {
         let hash = url.hashBase32(numberOfDigits: 12)
-        var filePath = cacheURL.appendingPathComponent(hash + ".html").path
+        let filePath = cacheURL.appendingPathComponent(hash + ".html").path
         try? FileManager.default.removeItem(atPath: filePath)
-        //filePath = cacheURL.appendingPathComponent(hash + ".link").path
-        //try? FileManager.default.removeItem(atPath: filePath)
     }
     
 }
