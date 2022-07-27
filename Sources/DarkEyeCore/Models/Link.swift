@@ -65,9 +65,12 @@ public struct Link: Codable {
         return url.hashBase32(numberOfDigits: 12)
     }
     
-    var cachedHtml: String?
+    static var cachedHtml = [String: String]()
     
     public var html: String? {
+        if let cachedHtml = Link.cachedHtml[self.url] {
+            return cachedHtml
+        }
 #if os(Linux)
         let thresholdDays = 100
 #else
@@ -111,6 +114,7 @@ public struct Link: Codable {
         if result == nil {
             NSLog("html returns nil")
         }
+        Link.cachedHtml[self.url] = result
         return result
     }
     
@@ -257,10 +261,12 @@ public struct Link: Codable {
             return
         }
         var myLink = link
-        if myLink.blocked == true {
+        if myLink.blocked == true || myLink.html == nil {
             Link.remove(url: myLink.url)
             myLink.updateLinkProcessedAndSave()
-        } else if myLink.html != nil {
+        } else if myLink.html == nil {
+            myLink.updateLinkProcessedAndSave()
+        } else {
             myLink.saveChildren()
             switch Word.indexNextWord(link: myLink) {
             case .done:
@@ -377,8 +383,8 @@ public struct Link: Codable {
         let hash = url.hashBase32(numberOfDigits: 12)
         var filePath = cacheURL.appendingPathComponent(hash + ".html").path
         try? FileManager.default.removeItem(atPath: filePath)
-        filePath = cacheURL.appendingPathComponent(hash + ".link").path
-        try? FileManager.default.removeItem(atPath: filePath)
+        //filePath = cacheURL.appendingPathComponent(hash + ".link").path
+        //try? FileManager.default.removeItem(atPath: filePath)
     }
     
 }
