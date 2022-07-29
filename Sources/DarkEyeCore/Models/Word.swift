@@ -80,13 +80,29 @@ public struct Word: Codable {
         var result = [String]()
         let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,.<>\\|"))
         let words = text.components(separatedBy: whiteCharacters)
+        let commonWords: Set = [
+            "and",
+            "the",
+            "from",
+            "for",
+            "not",
+            "with",
+            "but",
+            "any",
+            "its",
+            "can"
+        ]
         for word in words {
             if word.count > 0 {
                 let finalWords = word.camelCaseWords
                 for finalWord in finalWords {
                     if finalWord.count < 16 {
+                        let lowerCaseWord = finalWord.lowercased()
+                        if commonWords.contains(lowerCaseWord) {
+                            continue
+                        }
                         if lowerCase {
-                            result.append(finalWord.lowercased())
+                            result.append(lowerCaseWord)
                         } else {
                             result.append(finalWord)
                         }

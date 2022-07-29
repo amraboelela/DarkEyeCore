@@ -43,13 +43,12 @@ final class WordTests: TestsBase {
     
     func testWordsFromText() {
         var words = Word.words(fromText: " Hey a of in the \n man   ")
-        XCTAssertEqual(words.count, 6)
+        XCTAssertEqual(words.count, 5)
         XCTAssertEqual(words[0], "Hey")
         XCTAssertEqual(words[1], "a")
         XCTAssertEqual(words[2], "of")
         XCTAssertEqual(words[3], "in")
-        XCTAssertEqual(words[4], "the")
-        XCTAssertEqual(words[5], "man")
+        XCTAssertEqual(words[4], "man")
         
         words = Word.words(fromText: "camelCaseIs TheCase YaSalam?")
         XCTAssertEqual(words.count, 5)
@@ -69,7 +68,7 @@ final class WordTests: TestsBase {
         
         let link = Link(url: Link.mainUrl)
         words = Word.words(fromText: link.text)
-        XCTAssertTrue(words.count > 4000)
+        XCTAssertTrue(words.count > 3900)
     }
     
     func testContextStringFromArray() {
