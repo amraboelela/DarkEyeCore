@@ -333,7 +333,18 @@ public struct Link: Codable {
             url.range(of: "http") == nil {
             return false
         }
-        let forbiddenExtensions = [".png", ".jpg", ".mp4", ".zip", ".gif", ".epub", ".nib", ".pdf", ".asc"]
+        let forbiddenExtensions = [
+            ".png",
+            ".jpg",
+            ".mp4",
+            ".zip",
+            ".gif",
+            ".epub",
+            ".nib",
+            ".pdf",
+            ".asc",
+            "?menu=1"
+        ]
         for anExtension in forbiddenExtensions {
             if url.suffix(anExtension.count).range(of: anExtension) != nil {
                 return false

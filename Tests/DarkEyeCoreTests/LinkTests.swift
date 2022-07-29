@@ -265,6 +265,8 @@ final class LinkTests: TestsBase {
         XCTAssertFalse(allowed)
         allowed = Link.allowed(url: "http://www.onion/file.html")
         XCTAssertTrue(allowed)
+        allowed = Link.allowed(url: "http://27m3p2uv7igmj6kvd4ql3cct5h3sdwrsajovkkndeufumzyfhlfev4qd.onion/2022/02/17/richard-ciano-donation-freedom-convoy-canada-givesendgo/?menu=1")
+        XCTAssertFalse(allowed)
     }
     
     func testRemoveURL() {
