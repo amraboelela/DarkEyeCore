@@ -23,7 +23,7 @@ public struct Word: Codable {
     
     public static func indexNextWord(link: Link) -> WordIndexingStatus {
         var wordsArray = words(fromText: link.text)
-        let countLimit = 1000
+        let countLimit = 700
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
