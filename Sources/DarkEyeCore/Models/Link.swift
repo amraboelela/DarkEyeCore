@@ -235,7 +235,7 @@ public struct Link: Codable {
             NSLog("global.currentWordIndex < 500")
             global.currentWordIndex += 1
         } else {
-            NSLog("global.currentWordIndex < 500" else)
+            NSLog("global.currentWordIndex < 500 else")
             global.currentWordIndex = 0
             global.processTimeThreshold = Date.secondsSinceReferenceDate
         }
