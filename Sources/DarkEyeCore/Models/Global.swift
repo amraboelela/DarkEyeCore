@@ -25,6 +25,7 @@ public struct Global: Codable {
     // MARK: - Helpers
     
     func save() {
+        NSLog("global.save()")
         database[Global.prefix] = self
     }
 }

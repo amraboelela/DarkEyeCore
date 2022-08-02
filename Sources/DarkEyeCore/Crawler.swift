@@ -47,20 +47,10 @@ public class Crawler {
     }
     
     func crawl() {
-        //NSLog("crawl")
-        //reportMemory()
+        NSLog("crawl")
         if !canRun {
             delegate?.crawlerStopped()
         }
-        //let theFreeMemory = freeMemory()
-        //NSLog("Free Memory: \(theFreeMemory)")
-        /*if theFreeMemory < 100 {
-            //NSLog("Free Memory: \(theFreeMemory)")
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 60.0) {
-                self.crawl()
-            }
-            return
-        }*/
         isRunning = true
         Link.crawlNext()
         DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1.0) {

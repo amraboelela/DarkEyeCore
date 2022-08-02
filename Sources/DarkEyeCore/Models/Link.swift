@@ -229,10 +229,13 @@ public struct Link: Codable {
     }
     
     static func updateCurrentWordIndex() {
+        NSLog("updateCurrentWordIndex")
         var global = Global.global
         if global.currentWordIndex < 500 {
+            NSLog("global.currentWordIndex < 500")
             global.currentWordIndex += 1
         } else {
+            NSLog("global.currentWordIndex < 500" else)
             global.currentWordIndex = 0
             global.processTimeThreshold = Date.secondsSinceReferenceDate
         }
@@ -291,6 +294,7 @@ public struct Link: Codable {
     }
     
     mutating func updateLinkProcessedAndSave() {
+        NSLog("updateLinkProcessedAndSave")
         lastWordIndex = -1
         lastProcessTime = Date.secondsSinceReferenceDate
         save()
@@ -306,6 +310,7 @@ public struct Link: Codable {
     }
     
     mutating func saveChildren() {
+        NSLog("saveChildren")
         for (_, childURL) in urls {
             if let _: Link = database[Link.prefix + childURL] {
             } else {
