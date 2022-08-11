@@ -35,15 +35,15 @@ public class Crawler {
     
     public func start(after: TimeInterval = 0) {
         startTime = Date().timeIntervalSinceReferenceDate + after
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + after) {
-            if Date().timeIntervalSinceReferenceDate >= self.startTime {
-                NSLog("start")
-                crawler.canRun = true
-                if !self.isRunning {
-                    self.crawl()
-                }
-            }
+        //DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + after) {
+        //  if Date().timeIntervalSinceReferenceDate >= self.startTime {
+        NSLog("start")
+        crawler.canRun = true
+        if !self.isRunning {
+            self.crawl()
         }
+        //}
+        //}
     }
     
     func crawl() {
@@ -52,15 +52,17 @@ public class Crawler {
             delegate?.crawlerStopped()
         }
         isRunning = true
-        Link.crawlNext()
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1.0) {
-            if self.canRun {
-                self.crawl()
-            } else {
-                self.delegate?.crawlerStopped()
-                self.isRunning = false
-            }
+        while self.canRun {
+            Link.crawlNext()
         }
+        /*DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1.0) {
+         if self.canRun {
+         self.crawl()
+         } else {*/
+        self.delegate?.crawlerStopped()
+        self.isRunning = false
+        //}
+        //}
     }
     
     public func stop() {
