@@ -114,7 +114,7 @@ public struct Word: Codable {
     }
     
     static func contextStringFrom(array: [String], atIndex: Int) -> String {
-        let wordsCount = 30
+        let wordsCount = 20
         let halfOfCount = wordsCount / 2
         let startIndex = atIndex - halfOfCount < 0 ? 0 : atIndex - halfOfCount
         let endIndex = startIndex + wordsCount >= array.count ? array.count - 1 : startIndex + wordsCount
