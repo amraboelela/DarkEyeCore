@@ -11,10 +11,21 @@ import SwiftEncrypt
 
 public struct WordLink: Codable {
     public var urlHash: String
+    public var word: String
+    var otherWords: Set<String>?
     public var text: String
     public var wordCount: Int
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0
+    
+    public enum CodingKeys: String, CodingKey {
+        case urlHash
+        case word
+        case text
+        case wordCount
+        case numberOfVisits
+        case lastVisitTime
+    }
     
     // MARK: - Accessors
     
@@ -76,7 +87,13 @@ public struct WordLink: Codable {
     }
     
     mutating func mergeWith(wordLink: WordLink) {
-        if urlHash == wordLink.urlHash {
+        if urlHash == wordLink.urlHash &&
+            word != wordLink.word &&
+            otherWords?.contains(wordLink.word) != true {
+            if otherWords == nil {
+                otherWords = Set<String>()
+            }
+            otherWords?.insert(wordLink.word)
             text += "..." + wordLink.text
             wordCount += wordLink.wordCount
         }

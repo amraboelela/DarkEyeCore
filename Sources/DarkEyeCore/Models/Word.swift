@@ -48,9 +48,9 @@ public struct Word: Codable {
                 let text = contextStringFrom(array: wordsArray, atIndex: i)
                 //print("wordText: \(wordText)")
                 if crawler.canRun {
-                    let key = prefix + wordText.lowercased()
+                    let key = prefix + wordText
                     //NSLog("index link key: \(key)")
-                    let word = Word(links: [WordLink(urlHash: link.hash, text: text, wordCount: counts[wordText.lowercased()] ?? 0)])
+                    let word = Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
                     if var dbWord: Word = database[key] {
                         WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                         database[key] = dbWord
