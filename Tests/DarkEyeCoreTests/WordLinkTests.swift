@@ -82,8 +82,8 @@ final class WordLinkTests: TestsBase {
         WordLink.merge(wordLinks: &links, withWordLinks: links2)
         XCTAssertEqual(links.count, 1)
         XCTAssertEqual(links[0].urlHash, urlHash)
-        XCTAssertEqual(links[0].text, "I am good thank you. How about you?")
-        XCTAssertEqual(links[0].wordCount, 2)
+        XCTAssertEqual(links[0].text, "I am good thank you...I am good thank you. How about you?")
+        XCTAssertEqual(links[0].wordCount, 3)
         
         links = [WordLink(urlHash: urlHash, text: "I am good thank you", wordCount: 1)]
         let urlHash2 = "http://hanein1234.onion".hashBase32(numberOfDigits: 12)
@@ -104,15 +104,15 @@ final class WordLinkTests: TestsBase {
         var wordLink2 = WordLink(urlHash: urlHash, text: "I am good thank you. How about you?", wordCount: 2)
         wordLink.mergeWith(wordLink: wordLink2)
         XCTAssertEqual(wordLink.urlHash, urlHash)
-        XCTAssertEqual(wordLink.text, "I am good thank you. How about you?")
-        XCTAssertEqual(wordLink.wordCount, 2)
+        XCTAssertEqual(wordLink.text, "I am good thank you...I am good thank you. How about you?")
+        XCTAssertEqual(wordLink.wordCount, 3)
         
         wordLink = WordLink(urlHash: urlHash, text: "I am good thank you", wordCount: 1)
         let urlHash2 = "http://hanein1234.onion".hashBase32(numberOfDigits: 12)
         wordLink2 = WordLink(urlHash: urlHash2, text: "I am good thank you. How about you?", wordCount: 2)
         wordLink.mergeWith(wordLink: wordLink2)
         XCTAssertEqual(wordLink.urlHash, urlHash)
-        XCTAssertEqual(wordLink.text, "I am good thank you. How about you?")
-        XCTAssertEqual(wordLink.wordCount, 2)
+        XCTAssertEqual(wordLink.text, "I am good thank you")
+        XCTAssertEqual(wordLink.wordCount, 1)
     }
 }

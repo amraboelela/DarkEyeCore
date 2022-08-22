@@ -52,10 +52,10 @@ public struct WordLink: Codable {
                 }
                 return true
             }
-            result = result.sorted { $0.score > $1.score }
-            if result.count > count {
-                result.removeLast(result.count - count)
-            }
+        }
+        result = result.sorted { $0.score > $1.score }
+        if result.count > count {
+            result.removeLast(result.count - count)
         }
         return result
     }
@@ -76,7 +76,9 @@ public struct WordLink: Codable {
     }
     
     mutating func mergeWith(wordLink: WordLink) {
-        text = wordLink.text
-        wordCount = wordLink.wordCount
+        if urlHash == wordLink.urlHash {
+            text += "..." + wordLink.text
+            wordCount += wordLink.wordCount
+        }
     }
 }
