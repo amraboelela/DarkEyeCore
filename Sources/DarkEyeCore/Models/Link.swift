@@ -76,7 +76,6 @@ public struct Link: Codable {
 #else
         let thresholdDays = 1000
 #endif
-        //var result: String?
         let fileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
         //NSLog("cachedFile fileURL: \(fileURL)")
         var result: String?
@@ -100,7 +99,8 @@ public struct Link: Codable {
             do {
                 let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
                 let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
-                _ = try shell("torsocks", "wget", "-O", tempFileURL.path, url)
+                let result = try shell("torsocks", "wget", "-O", tempFileURL.path, url)
+                NSLog("torsocks result: \(result)")
                 if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
                     _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
                     result = fileContent
