@@ -29,11 +29,11 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
     func testCrawl() {
         let duckduckExpectation = expectation(description: "duckduck link is there")
         crawler.crawl()
-#if os(Linux)
-        let secondsDelay = 10.0
-#else
+//#if os(Linux)
+//        let secondsDelay = 10.0
+//#else
         let secondsDelay = 5.0
-#endif
+//#endif
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false
         }

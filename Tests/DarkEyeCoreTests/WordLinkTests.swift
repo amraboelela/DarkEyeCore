@@ -45,11 +45,11 @@ final class WordLinkTests: TestsBase {
         let expectation = expectation(description: "found the `use` word")
         Link.numberOfProcessedLinks = 0
         crawler.start()
-#if os(Linux)
-        let secondsDelay = 60.0
-#else
+//#if os(Linux)
+//        let secondsDelay = 60.0
+//#else
         let secondsDelay = 30.0
-#endif
+//#endif
         let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false
