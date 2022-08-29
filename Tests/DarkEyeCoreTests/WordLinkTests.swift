@@ -45,18 +45,29 @@ final class WordLinkTests: TestsBase {
         let expectation = expectation(description: "found the `use` word")
         Link.numberOfProcessedLinks = 0
         crawler.start()
-//#if os(Linux)
-//        let secondsDelay = 60.0
-//#else
         let secondsDelay = 30.0
-//#endif
         let countLimit = 1000
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
             crawler.canRun = false
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
+            let wordLinks = WordLink.wordLinks(withSearchText: "ac abortion", count: countLimit)
+            let wordLinksCount = wordLinks.count
+            print("wordLinksCount 1: \(wordLinksCount)")
+            print("wordLinks 1: \(wordLinks)")
+            if wordLinksCount > 0 {
+                for wordLink in wordLinks {
+                    XCTAssertEqual(wordLink.word, "abortion")
+                }
+            } else {
+                XCTFail()
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3.0) {
             var wordLinks = WordLink.wordLinks(withSearchText: "accepted Abortion", count: countLimit)
             let wordLinksCount = wordLinks.count
+            print("wordLinksCount 2: \(wordLinksCount)")
+            print("wordLinks 2: \(wordLinks)")
             if wordLinksCount > 1 {
                 let blockedKey = HashLink.prefix + wordLinks[0].urlHash
                 print("blockedKey: \(blockedKey)")
@@ -72,7 +83,7 @@ final class WordLinkTests: TestsBase {
                 XCTFail()
             }
         }
-        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
     }
     
     func testMergeWordLinks() {

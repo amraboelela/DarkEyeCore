@@ -49,6 +49,9 @@ public struct WordLink: Codable {
         var result = [WordLink]()
         let searchWords = Word.words(fromText: searchText, lowerCase: true)
         for searchWord in searchWords {
+            if searchWords.count > 0 && searchWord.count <= 2 {
+                continue
+            }
             database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
