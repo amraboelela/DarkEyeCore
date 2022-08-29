@@ -271,7 +271,7 @@ public struct Link: Codable {
             myLink.updateLinkProcessedAndSave()
         } else {
             myLink.saveChildren()
-            switch Word.indexNextWord(link: myLink) {
+            switch Word.index(link: myLink) {
             case .done:
                 myLink.updateLinkIndexedAndSave()
             case .complete:

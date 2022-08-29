@@ -11,6 +11,33 @@ final class WordTests: TestsBase {
         super.tearDown()
     }
     
+    func testIndexLink() {
+        let link = Link(url: Link.mainUrl)
+        let result  = Word.index(link: link)
+        XCTAssertEqual(result, .complete)
+        if let word: Word = database[Word.prefix + "hidden"] {
+            XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
+            XCTAssertEqual(word.links[0].urlHash, Link.mainUrl.hashBase32(numberOfDigits: 12))
+        } else {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "body"] {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "a"] {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "in"] {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "of"] {
+            XCTFail()
+        }
+        if let _: Word = database[Word.prefix + "to"] {
+            XCTFail()
+        }
+    }
+    
     func testIndexNextWord() {
         let secondsDelay = 5.0
         let wordsFoundExpectation = expectation(description: "words found")

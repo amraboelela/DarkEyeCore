@@ -21,6 +21,35 @@ public struct Word: Codable {
     
     // MARK: - Indexing
     
+    public static func index(link: Link) -> WordIndexingStatus {
+        NSLog("index link: \(link)")
+        var wordsArray = words(fromText: link.text)
+        let countLimit = 20
+        if wordsArray.count > countLimit {
+            wordsArray.removeLast(wordsArray.count - countLimit)
+        }
+        let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
+        NSLog("indexing, wordsArray: \(wordsArray)")
+        let text = contextStringFrom(array: wordsArray, atIndex: 0)
+        for i in (0..<wordsArray.count) {
+            if !crawler.canRun || database.closed() {
+                return .ended
+            }
+            let wordText = wordsArray[i].lowercased()
+            if wordText.count > 2 {
+                let key = prefix + wordText.lowercased()
+                let word = Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
+                if var dbWord: Word = database[key] {
+                    WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
+                    database[key] = dbWord
+                } else {
+                    database[key] = word
+                }
+            }
+        }
+        return .complete
+    }
+    
     public static func indexNextWord(link: Link) -> WordIndexingStatus {
         var wordsArray = words(fromText: link.text)
         let countLimit = 700
