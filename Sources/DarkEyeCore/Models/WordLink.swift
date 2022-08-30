@@ -97,7 +97,9 @@ public struct WordLink: Codable {
                 otherWords = Set<String>()
             }
             otherWords?.insert(wordLink.word)
-            text += "..." + wordLink.text
+            if wordLink.text != text {
+                text += "..." + wordLink.text
+            }
             wordCount += wordLink.wordCount
         }
     }

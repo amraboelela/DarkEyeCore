@@ -125,5 +125,12 @@ final class WordLinkTests: TestsBase {
         XCTAssertEqual(wordLink.urlHash, urlHash)
         XCTAssertEqual(wordLink.text, "I am good thank you")
         XCTAssertEqual(wordLink.wordCount, 1)
+        
+        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)
+        wordLink2 = WordLink(urlHash: urlHash, word: "how", text: "I am good thank you", wordCount: 2)
+        wordLink.mergeWith(wordLink: wordLink2)
+        XCTAssertEqual(wordLink.urlHash, urlHash)
+        XCTAssertEqual(wordLink.text, "I am good thank you")
+        XCTAssertEqual(wordLink.wordCount, 3)
     }
 }
