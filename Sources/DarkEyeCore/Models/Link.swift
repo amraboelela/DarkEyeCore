@@ -104,7 +104,8 @@ public struct Link: Codable {
                     //NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     NSLog("torsocks shellResult: \(shellResult)")
                 }
-                if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
+                //if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
+                if let fileContent = try? shell("cat", tempFileURL.path), !fileContent.isVacant {
                     _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
                     result = fileContent
                 } else {
