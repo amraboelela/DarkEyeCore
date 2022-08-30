@@ -105,12 +105,16 @@ public struct Link: Codable {
                     NSLog("torsocks shellResult: \(shellResult)")
                 }
                 //if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                if let fileContent = try? shell("cat", tempFileURL.path), !fileContent.isVacant {
-                    _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
-                    result = fileContent
+                if let fileContent = try? shell("cat", tempFileURL.path) {
                     NSLog("fileContent: \(fileContent)")
+                    if !fileContent.isVacant {
+                        _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
+                        result = fileContent
+                    } else {
+                        NSLog("fileContent is empty, tempFileURL: \(tempFileURL)")
+                    }
                 } else {
-                    NSLog("fileContent is empty, tempFileURL: \(tempFileURL)")
+                    NSLog("error getting fileContent, tempFileURL: \(tempFileURL)")
                 }
                 _ = try shell("rm", tempFileURL.path)
             } catch {
