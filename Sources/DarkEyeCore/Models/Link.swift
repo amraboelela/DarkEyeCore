@@ -98,24 +98,25 @@ public struct Link: Codable {
 #if os(Linux)
             do {
                 let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
-                let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
-                if let shellResult = try shell("torsocks", "wget", "-O", tempFileURL.path, url) {
+                //let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
+                if let shellResult = try shell("torsocks", "wget", "-O", cacheFileURL.path, url) {
                     //NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     NSLog("torsocks shellResult: \(shellResult)")
+                    return html
                 }
                 //if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                if let fileContent = try shell("cat", tempFileURL.path) {
+                /*if let fileContent = try shell("cat", tempFileURL.path) {
                     NSLog("fileContent: \(fileContent)")
                     if !fileContent.isVacant {
                         _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
                         result = fileContent
                     } else {
-                        NSLog("fileContent is empty, tempFileURL: \(tempFileURL)")
+                        NSLog("fileContent is empty, tempFileURL: \(tempFileURL.path)")
                     }
                 } else {
-                    NSLog("error getting fileContent, tempFileURL: \(tempFileURL)")
+                    NSLog("error getting fileContent, tempFileURL: \(tempFileURL.path)")
                 }
-                _ = try shell("rm", tempFileURL.path)
+                _ = try shell("rm", tempFileURL.path)*/
             } catch {
                 NSLog("html, error: \(error)")
             }
