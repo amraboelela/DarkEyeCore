@@ -94,7 +94,6 @@ public struct Link: Codable {
                 }
             }
         }
-        
         if result == nil {
 #if os(Linux)
             do {
@@ -105,7 +104,7 @@ public struct Link: Codable {
                     NSLog("torsocks shellResult: \(shellResult)")
                 }
                 //if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
-                if let fileContent = try? shell("cat", tempFileURL.path) {
+                if let fileContent = try shell("cat", tempFileURL.path) {
                     NSLog("fileContent: \(fileContent)")
                     if !fileContent.isVacant {
                         _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
