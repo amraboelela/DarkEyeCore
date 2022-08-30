@@ -101,7 +101,8 @@ public struct Link: Codable {
                 let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
                 let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
                 if let shellResult = try shell("torsocks", "wget", "-O", tempFileURL.path, url) {
-                    NSLog("torsocks shellResult: \(shellResult.prefix(200))")
+                    //NSLog("torsocks shellResult: \(shellResult.prefix(200))")
+                    NSLog("torsocks shellResult: \(shellResult)")
                 }
                 if let fileContent = try? String(contentsOf: tempFileURL, encoding: .utf8), !fileContent.isVacant {
                     _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
