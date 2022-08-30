@@ -106,7 +106,8 @@ public struct Link: Codable {
                 }
                 if let fileContent = try? String(contentsOf: cacheFileURL, encoding: .utf8), !fileContent.isVacant {
                     //if let fileContent = try shell("cat", cacheFileURL.path) {
-                    NSLog("fileContent: \(fileContent)")
+                    result = fileContent
+                    //NSLog("fileContent: \(fileContent)")
                     /*if !fileContent.isVacant {
                      //_ = try shell("cp", tempFileURL.path, cacheFileURL.path)
                      result = fileContent
