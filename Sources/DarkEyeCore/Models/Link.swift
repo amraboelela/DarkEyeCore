@@ -108,6 +108,7 @@ public struct Link: Codable {
                 if let fileContent = try? shell("cat", tempFileURL.path), !fileContent.isVacant {
                     _ = try shell("cp", tempFileURL.path, cacheFileURL.path)
                     result = fileContent
+                    NSLog("fileContent: \(fileContent)")
                 } else {
                     NSLog("fileContent is empty, tempFileURL: \(tempFileURL)")
                 }
