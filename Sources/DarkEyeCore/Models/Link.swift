@@ -352,6 +352,7 @@ public struct Link: Codable {
             ".nib",
             ".pdf",
             ".asc",
+            ".webm",
             "?menu=1"
         ]
         for anExtension in forbiddenExtensions {
@@ -363,6 +364,7 @@ public struct Link: Codable {
             "beverages",
             "money-transfers",
             "music",
+            ".media",
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid"
         ]
