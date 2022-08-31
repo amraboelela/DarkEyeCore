@@ -97,17 +97,17 @@ public struct Link: Codable {
         if result == nil {
 #if os(Linux)
             do {
-                let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
+                //let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
                 //let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
-                if let shellResult = try shell("torsocks", "wget", "-O", cacheFileURL.path, url) {
-                    NSLog("torsocks shellResult: \(shellResult.prefix(200))")
-                    //NSLog("torsocks shellResult: \(shellResult)")
+                if let shellResult = try shell("torsocks", "wget", "-O", fileURL.path, url) {
+                    //NSLog("torsocks shellResult: \(shellResult.prefix(200))")
+                    NSLog("torsocks shellResult: \(shellResult)")
                 }
-                if let fileContent = try? String(contentsOf: cacheFileURL, encoding: .utf8), !fileContent.isVacant {
+                if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
                     //if let fileContent = try shell("cat", cacheFileURL.path) {
                     result = fileContent
                 } else {
-                    NSLog("error getting fileContent, tempFileURL: \(cacheFileURL.path)")
+                    NSLog("error getting fileContent, fileURL: \(fileURL.path)")
                 }
                 //_ = try shell("rm", tempFileURL.path)
             } catch {
