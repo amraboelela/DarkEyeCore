@@ -12,6 +12,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         try? await Crawler.shared().stop()
     }
     
+    @MainActor
     func testStart() async {
         await asyncSetup()
         let runningExpectation = expectation(description: "crawler is running")
@@ -26,14 +27,11 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         } else {
             XCTFail()
         }
-#if os(Linux)
         waitForExpectations(timeout: 5, handler: nil)
-#else
-        await waitForExpectations(timeout: 5, handler: nil)
-#endif
         await asyncTearDown()
     }
     
+    @MainActor
     func testCrawl() async {
         await asyncSetup()
         let duckduckExpectation = expectation(description: "duckduck link is there")
@@ -50,11 +48,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         } else {
             XCTFail()
         }
-#if os(Linux)
         waitForExpectations(timeout: secondsDelay + 5, handler: nil)
-#else
-        await waitForExpectations(timeout: secondsDelay + 5, handler: nil)
-#endif
         await asyncTearDown()
     }
     
@@ -64,6 +58,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         stopped = true
     }
     
+    @MainActor
     func testStop() async {
         await asyncSetup()
         let stoppedExpectation = expectation(description: "crawler has stopped")
@@ -79,11 +74,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         } else {
             XCTFail()
         }
-#if os(Linux)
         waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
-#else
-        await waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
-#endif
         await asyncTearDown()
     }
 }
