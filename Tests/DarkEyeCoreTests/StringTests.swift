@@ -3,12 +3,13 @@ import XCTest
 
 final class StringTests: TestsBase {
     
-    override func setUp() {
-        super.setUp()
+    override func asyncSetup() async {
+        await super.asyncSetup()
     }
     
-    override func tearDown() {
-        super.tearDown()
+    override func asyncTearDown() async {
+        await super.asyncTearDown()
+        try? await Crawler.shared().stop()
     }
     
     func testCamelCaseToWords() {

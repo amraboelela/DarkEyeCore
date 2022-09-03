@@ -20,4 +20,14 @@ extension Array where Element: Any {
         }
         return result
     }
+    
+    public func asyncCompactMap<Element2>(closure: (Element) async -> Element2?) async -> [Element2] {
+        var result = [Element2]()
+        for item in self {
+            if let item2 = await closure(item) {
+                result.append(item2)
+            }
+        }
+        return result
+    }
 }
