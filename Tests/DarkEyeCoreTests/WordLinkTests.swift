@@ -47,7 +47,6 @@ final class WordLinkTests: TestsBase {
      
     func testWordLinksWithSearchText() async {
         await asyncSetup()
-        let expectation = expectation(description: "found the `use` word")
         Link.numberOfProcessedLinks = 0
         let crawler = try! await Crawler.shared()
         await crawler.start()
@@ -82,15 +81,9 @@ final class WordLinkTests: TestsBase {
             }
             wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
             XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
-            expectation.fulfill()
         } else {
             XCTFail()
         }
-#if os(Linux)
-        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
-#else
-        await waitForExpectations(timeout: secondsDelay + 10, handler: nil)
-#endif
         await asyncTearDown()
     }
     

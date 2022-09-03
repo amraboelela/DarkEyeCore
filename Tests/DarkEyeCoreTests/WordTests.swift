@@ -43,7 +43,6 @@ final class WordTests: TestsBase {
     func testIndexNextWord() async {
         await asyncSetup()
         let secondsDelay = 5.0
-        let wordsFoundExpectation = expectation(description: "words found")
         let link = Link(url: Link.mainUrl)
         let indexResult = try! await Word.indexNextWord(link: link)
         XCTAssertEqual(indexResult, .done)
@@ -66,12 +65,6 @@ final class WordTests: TestsBase {
         if let _: Word = await database.valueForKey(Word.prefix + "to") {
             XCTFail()
         }
-        wordsFoundExpectation.fulfill()
-#if os(Linux)
-        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
-#else
-        await waitForExpectations(timeout: secondsDelay + 10, handler: nil)
-#endif
         await asyncTearDown()
     }
     

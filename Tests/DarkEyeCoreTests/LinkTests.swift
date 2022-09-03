@@ -209,19 +209,12 @@ final class LinkTests: TestsBase {
         let timeDelay = 5.0
         let link1 = Link(url: Link.mainUrl)
         try? await Link.process(link: link1)
-        let link1ProcessedExpectation = expectation(description: "link1 processed")
         try? await Task.sleep(seconds: timeDelay)
         if let word: Word = await database.valueForKey(Word.prefix + "jump") {
             XCTAssertTrue(word.links[0].text.lowercased().contains("jump"))
-            link1ProcessedExpectation.fulfill()
         } else {
             XCTFail()
         }
-#if os(Linux)
-        waitForExpectations(timeout: timeDelay * 2, handler: nil)
-#else
-        await waitForExpectations(timeout: timeDelay * 2, handler: nil)
-#endif
         await asyncTearDown()
     }
     
@@ -233,23 +226,18 @@ final class LinkTests: TestsBase {
         let crawler = try! await Crawler.shared()
         crawler.canRun = true
         try? await Link.process(link: link)
-        let blockedExpectation = expectation(description: "link is blocked")
+        print("testProcessBlockedLink before sleep 5 seconds")
         try? await Task.sleep(seconds: 5)
+        print("testProcessBlockedLink after sleep 5 seconds")
         if let dbLink: Link = await database.valueForKey(Link.prefix + url) {
             XCTAssertNotEqual(dbLink.lastProcessTime, 0)
         } else {
             XCTFail()
         }
+        print("testProcessBlockedLink after if let dbLink: Link ")
         if let _: Word = await database.valueForKey(Word.prefix + "library") {
             XCTFail()
-        } else {
-            blockedExpectation.fulfill()
         }
-#if os(Linux)
-        waitForExpectations(timeout: 10.0, handler: nil)
-#else
-        await waitForExpectations(timeout: 10.0, handler: nil)
-#endif
         await asyncTearDown()
     }
     
