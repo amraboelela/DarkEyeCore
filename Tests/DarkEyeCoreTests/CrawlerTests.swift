@@ -65,10 +65,4 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         }
         await asyncTearDown()
     }
-    
-    func testSyncTask() {
-        print("syncTask before")
-        Crawler.syncTask()
-        print("syncTask after")
-    }
 }

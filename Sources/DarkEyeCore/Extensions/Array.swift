@@ -2,8 +2,8 @@
 //  Array.swift
 //  SwiftLevelDB
 //
-//  Created by Amr Aboelela on 4/25/18.
-//  Copyright © 2018 Amr Aboelela.
+//  Created by Amr Aboelela on 9/3/22.
+//  Copyright © 2022 Amr Aboelela.
 //
 
 import Foundation

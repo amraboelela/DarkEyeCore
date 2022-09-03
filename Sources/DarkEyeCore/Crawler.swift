@@ -39,14 +39,6 @@ public class Crawler: @unchecked Sendable {
         return crawler!
     }
     
-    static func syncTask() {
-        Task {
-            print("syncTask task begin")
-            try? await Task.sleep(seconds: 1)
-            print("syncTask task ended")
-        }
-    }
-    
     public func start() async {
         Task(priority: .background) {
             if Date().timeIntervalSinceReferenceDate >= self.startTime {
