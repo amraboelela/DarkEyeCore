@@ -9,7 +9,7 @@
 import Foundation
 
 @available(macOS 10.15.0, *)
-public struct Global: Codable {
+public struct Global: Codable, Sendable {
     public static let prefix = "global"
     public var processTimeThreshold: Int // any link with last process time smaller, need to be processed
     public var currentWordIndex = 0

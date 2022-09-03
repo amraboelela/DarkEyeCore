@@ -10,7 +10,7 @@ import Foundation
 import SwiftEncrypt
 
 @available(macOS 10.15.0, *)
-public struct WordLink: Codable {
+public struct WordLink: Codable, Sendable {
     public var urlHash: String
     public var word: String
     var otherWords: Set<String>?

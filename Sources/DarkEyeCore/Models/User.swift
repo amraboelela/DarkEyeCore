@@ -22,7 +22,7 @@ public enum UserStatus: String {
 }
 
 @available(macOS 10.15.0, *)
-public struct User: Codable, Hashable {
+public struct User: Codable, Hashable, Sendable {
     public static let prefix = "user-"
     
     public var username: String
