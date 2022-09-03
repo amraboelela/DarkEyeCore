@@ -3,33 +3,36 @@ import XCTest
 
 final class WordLinkTests: TestsBase {
     
-    override func setUp() {
-        super.setUp()
+    override func asyncSetup() async {
+        await super.asyncSetup()
     }
     
-    override func tearDown() {
-        super.tearDown()
+    override func asyncTearDown() async {
+        await super.asyncTearDown()
     }
     
-    func testHashLink() {
+    func testHashLink() async {
+        await asyncSetup()
         var url = "http://hanein123.onion"
         var link = Link(url: url)
-        link.save()
+        try? await link.save()
         var urlHash = url.hashBase32(numberOfDigits: 12)
         var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        var link2 = try! XCTUnwrap(wordLink.hashLink?.link)
-        XCTAssertEqual(link2.hash, "ar7t3hfhcdxg")
+        var link2 = await wordLink.hashLink()?.link()
+        XCTAssertEqual(link2?.hash, "ar7t3hfhcdxg")
         
         url = Link.mainUrl
         link = Link(url: url)
-        link.save()
+        try? await link.save()
         urlHash = url.hashBase32(numberOfDigits: 12)
         wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        link2 = try! XCTUnwrap(wordLink.hashLink?.link)
-        XCTAssertEqual(link2.hash, "9c2c4863y3x7")
+        link2 = await wordLink.hashLink()?.link()
+        XCTAssertEqual(link2?.hash, "9c2c4863y3x7")
+        await asyncTearDown()
     }
     
-    func testScore() {
+    func testScore() async {
+        await asyncSetup()
         let urlHash = "http://hanein123.onion".hashBase32(numberOfDigits: 12)
         var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
         XCTAssertEqual(wordLink.score, 1011)
@@ -39,54 +42,56 @@ final class WordLinkTests: TestsBase {
         XCTAssertEqual(wordLink.score, 3113)
         wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 10, numberOfVisits: 5, lastVisitTime: 700000000)
         XCTAssertEqual(wordLink.score, 700005010)
+        await asyncTearDown()
     }
      
-    func testWordLinksWithSearchText() {
+    func testWordLinksWithSearchText() async {
+        await asyncSetup()
         let expectation = expectation(description: "found the `use` word")
         Link.numberOfProcessedLinks = 0
-        crawler.start()
-        let secondsDelay = 30.0
+        let crawler = try! await Crawler.shared()
+        await crawler.start()
+        let secondsDelay = 10.0
         let countLimit = 1000
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
-            crawler.canRun = false
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            let wordLinks = WordLink.wordLinks(withSearchText: "ac abortion", count: countLimit)
-            let wordLinksCount = wordLinks.count
-            print("wordLinksCount 1: \(wordLinksCount)")
-            print("wordLinks 1: \(wordLinks)")
-            if wordLinksCount > 0 {
-                for wordLink in wordLinks {
-                    XCTAssertEqual(wordLink.word, "abortion")
-                }
-            } else {
-                XCTFail()
+        try? await Task.sleep(seconds: secondsDelay)
+        crawler.canRun = false
+        try? await Task.sleep(seconds: 2.0)
+        var wordLinks = await WordLink.wordLinks(withSearchText: "to jump", count: countLimit)
+        var wordLinksCount = wordLinks.count
+        print("wordLinksCount 1: \(wordLinksCount)")
+        print("wordLinks 1: \(wordLinks)")
+        if wordLinksCount > 0 {
+            for wordLink in wordLinks {
+                XCTAssertEqual(wordLink.word, "jump")
             }
+        } else {
+            XCTFail()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 3.0) {
-            var wordLinks = WordLink.wordLinks(withSearchText: "accepted Abortion", count: countLimit)
-            let wordLinksCount = wordLinks.count
-            print("wordLinksCount 2: \(wordLinksCount)")
-            print("wordLinks 2: \(wordLinks)")
-            if wordLinksCount > 1 {
-                let blockedKey = HashLink.prefix + wordLinks[0].urlHash
-                print("blockedKey: \(blockedKey)")
-                if let hashLink: HashLink = database[blockedKey] {
-                    var link = hashLink.link
-                    link.blocked = true
-                    link.save()
-                }
-                wordLinks = WordLink.wordLinks(withSearchText: "accepted Abortion", count: countLimit)
-                XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
-                expectation.fulfill()
-            } else {
-                XCTFail()
+        try? await Task.sleep(seconds: 1.0)
+        wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
+        wordLinksCount = wordLinks.count
+        print("wordLinksCount 2: \(wordLinksCount)")
+        print("wordLinks 2: \(wordLinks)")
+        if wordLinksCount >= 1 {
+            let blockedKey = HashLink.prefix + wordLinks[0].urlHash
+            print("blockedKey: \(blockedKey)")
+            if let hashLink: HashLink = await database.valueForKey(blockedKey) {
+                var link = await hashLink.link()
+                link.blocked = true
+                try? await link.save()
             }
+            wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
+            XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
+            expectation.fulfill()
+        } else {
+            XCTFail()
         }
-        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+        await waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+        await asyncTearDown()
     }
     
-    func testMergeWordLinks() {
+    func testMergeWordLinks() async {
+        await asyncSetup()
         let urlHash = "http://hanein123.onion".hashBase32(numberOfDigits: 12)
         var links = [WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)]
         var links2 = [WordLink(urlHash: urlHash, word: "how", text: "I am good thank you. How about you?", wordCount: 2)]
@@ -107,9 +112,11 @@ final class WordLinkTests: TestsBase {
         XCTAssertEqual(links[1].urlHash, urlHash2)
         XCTAssertEqual(links[1].text, "I am good thank you. How about you?")
         XCTAssertEqual(links[1].wordCount, 2)
+        await asyncTearDown()
     }
     
-    func testMergeWithWordLink() {
+    func testMergeWithWordLink() async {
+        await asyncSetup()
         let urlHash = "http://hanein123.onion".hashBase32(numberOfDigits: 12)
         var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)
         var wordLink2 = WordLink(urlHash: urlHash, word: "how", text: "I am good thank you. How about you?", wordCount: 2)
@@ -132,5 +139,6 @@ final class WordLinkTests: TestsBase {
         XCTAssertEqual(wordLink.urlHash, urlHash)
         XCTAssertEqual(wordLink.text, "I am good thank you")
         XCTAssertEqual(wordLink.wordCount, 3)
+        await asyncTearDown()
     }
 }

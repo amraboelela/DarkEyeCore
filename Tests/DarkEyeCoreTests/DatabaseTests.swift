@@ -8,6 +8,7 @@
 import Foundation
 import CoreFoundation
 import XCTest
+import SwiftLevelDB
 @testable import DarkEyeCore
 
 final class DatabaseTests: XCTestCase {
@@ -15,20 +16,22 @@ final class DatabaseTests: XCTestCase {
     override func setUp() {
         super.setUp()
         let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/DatabaseTests.swift", with: "/")).path
-        database = Database(parentPath: testRoot + "Library", name: "Database")
+        database = LevelDB(parentPath: testRoot + "Library", name: "Database")
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
-    func testInit() {
+    func testInit() async {
         XCTAssertNotNil(database)
-        XCTAssertNotNil(database.parentPath)
+        let parentPath = await database.parentPath
+        XCTAssertNotNil(parentPath)
     }
     
-    func testParentPath() {
-        database.parentPath = "/path/to/Library"
-        XCTAssertEqual(database.dbPath, "/path/to/Library/Database")
+    func testParentPath() async {
+        await database.setParentPath("/path/to/Library")
+        let dbPath = await database.dbPath
+        XCTAssertEqual(dbPath, "/path/to/Library/Database")
     }
 }

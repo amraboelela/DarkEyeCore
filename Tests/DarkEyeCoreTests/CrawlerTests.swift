@@ -3,50 +3,51 @@ import XCTest
 
 final class CrawlerTests: TestsBase, CrawlerDelegate {
     
-    override func setUp() {
-        super.setUp()
+    override func asyncSetup() async {
+        await super.asyncSetup()
     }
     
-    override func tearDown() {
-        super.tearDown()
-        crawler.stop()
+    override func asyncTearDown() async {
+        await super.asyncTearDown()
+        try? await Crawler.shared().stop()
     }
     
-    func testStart() {
+    func testStart() async {
+        await asyncSetup()
         let runningExpectation = expectation(description: "crawler is running")
-        crawler.start()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            NSLog("testing running")
-            if crawler.canRun {
-                runningExpectation.fulfill()
-            } else {
-                XCTFail()
-            }
+        let crawler = try! await Crawler.shared()
+        await crawler.start()
+        print("crawler.canRun: \(crawler.canRun)")
+        try? await Task.sleep(seconds: 1.0)
+        NSLog("testing running")
+        print("crawler.canRun: \(crawler.canRun)")
+        if crawler.canRun {
+            runningExpectation.fulfill()
+        } else {
+            XCTFail()
         }
-        waitForExpectations(timeout: 5, handler: nil)
+        await waitForExpectations(timeout: 5, handler: nil)
+        await asyncTearDown()
     }
     
-    func testCrawl() {
+    func testCrawl() async {
+        await asyncSetup()
         let duckduckExpectation = expectation(description: "duckduck link is there")
-        crawler.crawl()
-//#if os(Linux)
-//        let secondsDelay = 10.0
-//#else
+        let crawler = try! await Crawler.shared()
+        await crawler.crawl()
         let secondsDelay = 5.0
-//#endif
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay) {
-            crawler.canRun = false
+        try? await Task.sleep(seconds: secondsDelay)
+        crawler.canRun = false
+        try? await Task.sleep(seconds: 2.0)
+        if let _: Link = await database.valueForKey(Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
+            //print("testCrawl passed after \(secondsDelay) seconds")
+            duckduckExpectation.fulfill()
+            print("Link.numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
+        } else {
+            XCTFail()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + secondsDelay + 2.0) {
-            if let _: Link = database[Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion"] {
-                //print("testCrawl passed after \(secondsDelay) seconds")
-                duckduckExpectation.fulfill()
-                print("Link.numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
-            } else {
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        await waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        await asyncTearDown()
     }
     
     var stopped = false
@@ -55,21 +56,22 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         stopped = true
     }
     
-    func testStop() {
+    func testStop() async {
+        await asyncSetup()
         let stoppedExpectation = expectation(description: "crawler has stopped")
+        let crawler = try! await Crawler.shared()
         crawler.delegate = self
-        crawler.crawl()
-        let timeDelay = 10.0
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            crawler.stop()
+        await crawler.crawl()
+        let timeDelay = 8.0
+        try? await Task.sleep(seconds: 2.0)
+        try? await crawler.stop()
+        try? await Task.sleep(seconds: timeDelay)
+        if !crawler.canRun && self.stopped {
+            stoppedExpectation.fulfill()
+        } else {
+            XCTFail()
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + timeDelay) {
-            if !crawler.canRun && self.stopped {
-                stoppedExpectation.fulfill()
-            } else {
-                XCTFail()
-            }
-        }
-        waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
+        await waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
+        await asyncTearDown()
     }
 }

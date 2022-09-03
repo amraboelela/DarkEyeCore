@@ -3,7 +3,7 @@
 //  DarkEyeCore
 //
 //  Created by Amr Aboelela on 6/11/22.
-//  Copyright © 2022 Amr Aboelela. All rights reserved.
+//  Copyright © 2022 Amr Aboelela.
 //
 
 import Foundation

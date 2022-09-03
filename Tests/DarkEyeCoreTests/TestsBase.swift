@@ -1,26 +1,25 @@
 import XCTest
+import SwiftLevelDB
 @testable import DarkEyeCore
 
 class TestsBase: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
+    func asyncSetup() async {
         if database != nil {
-            if database.db != nil {
-                database.deleteDatabaseFromDisk()
+            if await database.db != nil {
+                try? await database.deleteDatabaseFromDisk()
             }
         }
-        //usleep(1000000)
+        try? await Task.sleep(seconds: 1.0)
         let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/TestsBase.swift", with: "/")).path
-        database = Database(parentPath: testRoot + "Library", name: "Database")
-        crawler = Crawler()
+        database = LevelDB(parentPath: testRoot + "Library", name: "Database")
+        Crawler.crawler = nil
     }
     
-    override func tearDown() {
-        super.tearDown()
-        crawler.canRun = false
+    func asyncTearDown() async {
+        try? await Crawler.shared().canRun = false
         usleep(1000000)
-        database.deleteDatabaseFromDisk()
+        try? await database.deleteDatabaseFromDisk()
     }
     
 }

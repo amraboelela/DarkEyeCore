@@ -3,59 +3,70 @@
 //  DarkEyeCore
 //
 //  Created by Amr Aboelela on 6/7/22.
-//  Copyright © 2022 Amr Aboelela. All rights reserved.
+//  Copyright © 2022 Amr Aboelela.
 //
 
 import Foundation
 import SwiftLevelDB
 import Dispatch
 
-public var crawler = Crawler()
-
 public protocol CrawlerDelegate: AnyObject {
     func crawlerStopped()
 }
 
+@available(macOS 10.15.0, *)
 public class Crawler {
-    //public let serialQueue = DispatchQueue(label: "org.darkeye.crawler", qos: .background)
+    static var crawler: Crawler?
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
     var startTime = Date().timeIntervalSinceReferenceDate
     var isRunning = false
     
-    init() {
-        if let _: Link = database[Link.prefix + Link.mainUrl] {
+    init() async throws {
+        if let _: Link = await database.valueForKey(Link.prefix + Link.mainUrl) {
             NSLog("Crawler init, " + Link.prefix + Link.mainUrl + " already exists")
         } else {
             NSLog("Crawler init, creating: " + Link.prefix + Link.mainUrl)
             var link = Link(url: Link.mainUrl)
-            link.save()
+            try await link.save()
         }
     }
     
-    public func start(after: TimeInterval = 0) {
-        startTime = Date().timeIntervalSinceReferenceDate + after
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + after) {
+    class func shared() async throws -> Crawler {
+        if crawler == nil {
+            crawler = try await Crawler()
+        }
+        return crawler!
+    }
+    
+    /*class func reset() {
+        crawler = nil
+    }*/
+    
+    public func start(after: TimeInterval = 0) async {
+        try? await Task.sleep(seconds: after)
+        Task(priority: .background) {
             if Date().timeIntervalSinceReferenceDate >= self.startTime {
                 NSLog("start")
-                crawler.canRun = true
+                try? await Crawler.shared().canRun = true
                 if !self.isRunning {
-                    self.crawl()
+                    await self.crawl()
                 }
             }
         }
     }
     
-    func crawl() {
+    func crawl() async {
         NSLog("crawl")
         if !canRun {
             delegate?.crawlerStopped()
         }
         isRunning = true
-        Link.crawlNext()
-        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1.0) {
-            if self.canRun {
-                self.crawl()
+        try? await Link.crawlNext()
+        try? await Task.sleep(seconds: 1.0)
+        Task(priority: .background) {
+            if canRun {
+                await crawl()
             } else {
                 self.delegate?.crawlerStopped()
                 self.isRunning = false
@@ -63,8 +74,8 @@ public class Crawler {
         }
     }
     
-    public func stop() {
+    public func stop() async {
         NSLog("stop")
-        crawler.canRun = false
+        try? await Crawler.shared().canRun = false
     }
 }

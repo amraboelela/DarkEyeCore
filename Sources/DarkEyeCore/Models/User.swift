@@ -3,7 +3,7 @@
 //  DarkEyeCore
 //
 //  Created by Amr Aboelela on 6/10/22.
-//  Copyright © 2022 Amr Aboelela. All rights reserved.
+//  Copyright © 2022 Amr Aboelela.
 //
 
 import Foundation
@@ -21,6 +21,7 @@ public enum UserStatus: String {
     case suspended
 }
 
+@available(macOS 10.15.0, *)
 public struct User: Codable, Hashable {
     public static let prefix = "user-"
     
@@ -84,8 +85,8 @@ public struct User: Codable, Hashable {
         return User(username: username, password: "", timeJoined: Date.secondsSinceReferenceDate)
     }
 
-    public static func userWith(username: String) -> User? {
-        if let user: User = database[prefix + username] {
+    public static func userWith(username: String) async -> User? {
+        if let user: User = await database.valueForKey(prefix + username) {
             return user
         } else {
             return nil
@@ -108,17 +109,17 @@ public struct User: Codable, Hashable {
     
     // MARK: - Public functions
 
-    public static func usernameExists(_ username: String) -> Bool {
-        if let _: User = database[User.prefix + username] {
+    public static func usernameExists(_ username: String) async -> Bool {
+        if let _: User = await database.valueForKey(User.prefix + username) {
             return true
         } else {
             return false
         }
     }
     
-    public static func users(withUsernamePrefix usernamePrefix: String) -> [User] {
+    public static func users(withUsernamePrefix usernamePrefix: String) async -> [User] {
         var result = [User]()
-        database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: prefix + usernamePrefix) { (key, user: User, stop) in
+        await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: prefix + usernamePrefix) { (key, user: User, stop) in
             if user.userStatus != .suspended {
                 result.append(user)
             }

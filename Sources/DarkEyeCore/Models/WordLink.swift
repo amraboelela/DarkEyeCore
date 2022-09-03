@@ -3,12 +3,13 @@
 //  DarkEyeCore
 //
 //  Created by Amr Aboelela on 6/14/22.
-//  Copyright © 2022 Amr Aboelela. All rights reserved.
+//  Copyright © 2022 Amr Aboelela.
 //
 
 import Foundation
 import SwiftEncrypt
 
+@available(macOS 10.15.0, *)
 public struct WordLink: Codable {
     public var urlHash: String
     public var word: String
@@ -29,8 +30,8 @@ public struct WordLink: Codable {
     
     // MARK: - Accessors
     
-    public var hashLink: HashLink? {
-        if let result: HashLink = database[HashLink.prefix + urlHash] {
+    public func hashLink() async -> HashLink? {
+        if let result: HashLink = await database.valueForKey(HashLink.prefix + urlHash) { //[HashLink.prefix + urlHash] {
             return result
         }
         return nil
@@ -45,18 +46,19 @@ public struct WordLink: Codable {
     public static func wordLinks(
         withSearchText searchText: String,
         count: Int
-    ) -> [WordLink] {
+    ) async -> [WordLink] {
         var result = [WordLink]()
         let searchWords = Word.words(fromText: searchText, lowerCase: true)
         for searchWord in searchWords {
             if searchWords.count > 0 && searchWord.count <= 2 {
                 continue
             }
-            database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
+            await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
-            result = result.filter { wordLink in
-                if let link = wordLink.hashLink?.link {
+            
+            result = await result.asyncFilter { wordLink in
+                if let link = await wordLink.hashLink()?.link() {
                     if link.blocked == true {
                         return false
                     }
