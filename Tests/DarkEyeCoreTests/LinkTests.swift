@@ -217,7 +217,11 @@ final class LinkTests: TestsBase {
         } else {
             XCTFail()
         }
+#if os(Linux)
+        waitForExpectations(timeout: timeDelay * 2, handler: nil)
+#else
         await waitForExpectations(timeout: timeDelay * 2, handler: nil)
+#endif
         await asyncTearDown()
     }
     
@@ -241,7 +245,11 @@ final class LinkTests: TestsBase {
         } else {
             blockedExpectation.fulfill()
         }
+#if os(Linux)
+        waitForExpectations(timeout: 10.0, handler: nil)
+#else
         await waitForExpectations(timeout: 10.0, handler: nil)
+#endif
         await asyncTearDown()
     }
     

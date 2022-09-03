@@ -9,7 +9,7 @@
 import Foundation
 
 @available(macOS 10.15.0, *)
-public struct HashLink: Codable {
+public struct HashLink: Codable, Sendable {
     public static let prefix = "hashlink-"
 
     public var url: String
@@ -17,7 +17,7 @@ public struct HashLink: Codable {
     // MARK: - Accessors
     
     public func link() async -> Link {
-        if let result: Link = await database.valueForKey(Link.prefix + url) { //[Link.prefix + url] {
+        if let result: Link = await database.valueForKey(Link.prefix + url) {
             return result
         }
         return Link(url: url)
@@ -26,7 +26,7 @@ public struct HashLink: Codable {
     // MARK: - Reading
     
     public static func linkWith(hash: String) async -> Link? {
-        if let hashLink: HashLink = await database.valueForKey(HashLink.prefix + hash) { //database[HashLink.prefix + hash] {
+        if let hashLink: HashLink = await database.valueForKey(HashLink.prefix + hash) {
             return await hashLink.link()
         }
         return nil

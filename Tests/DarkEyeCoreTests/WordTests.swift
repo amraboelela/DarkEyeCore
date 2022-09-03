@@ -67,7 +67,11 @@ final class WordTests: TestsBase {
             XCTFail()
         }
         wordsFoundExpectation.fulfill()
+#if os(Linux)
+        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+#else
         await waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+#endif
         await asyncTearDown()
     }
     

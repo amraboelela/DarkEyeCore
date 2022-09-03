@@ -12,7 +12,7 @@ import Fuzi
 import SwiftEncrypt
 
 @available(macOS 10.15.0, *)
-public struct Link: Codable {
+public struct Link: Codable, Sendable {
     public static let prefix = "link-"
     public static var workingDirectory = ""
     

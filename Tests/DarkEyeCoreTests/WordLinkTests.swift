@@ -86,7 +86,11 @@ final class WordLinkTests: TestsBase {
         } else {
             XCTFail()
         }
+#if os(Linux)
+        waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+#else
         await waitForExpectations(timeout: secondsDelay + 10, handler: nil)
+#endif
         await asyncTearDown()
     }
     

@@ -26,7 +26,11 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         } else {
             XCTFail()
         }
+#if os(Linux)
+        waitForExpectations(timeout: 5, handler: nil)
+#else
         await waitForExpectations(timeout: 5, handler: nil)
+#endif
         await asyncTearDown()
     }
     
@@ -46,7 +50,11 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         } else {
             XCTFail()
         }
+#if os(Linux)
+        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+#else
         await waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+#endif
         await asyncTearDown()
     }
     
@@ -71,7 +79,11 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         } else {
             XCTFail()
         }
-        await waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
+#if os(Linux)
+        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+#else
+        await waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+#endif
         await asyncTearDown()
     }
 }
