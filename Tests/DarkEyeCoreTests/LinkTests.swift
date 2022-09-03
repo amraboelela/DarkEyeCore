@@ -226,15 +226,15 @@ final class LinkTests: TestsBase {
         let crawler = try! await Crawler.shared()
         crawler.canRun = true
         try? await Link.process(link: link)
-        print("testProcessBlockedLink before sleep 5 seconds")
+        //print("testProcessBlockedLink before sleep 5 seconds")
         try? await Task.sleep(seconds: 5)
-        print("testProcessBlockedLink after sleep 5 seconds")
+        //print("testProcessBlockedLink after sleep 5 seconds")
         if let dbLink: Link = await database.valueForKey(Link.prefix + url) {
             XCTAssertNotEqual(dbLink.lastProcessTime, 0)
         } else {
             XCTFail()
         }
-        print("testProcessBlockedLink after if let dbLink: Link ")
+        //print("testProcessBlockedLink after if let dbLink: Link ")
         if let _: Word = await database.valueForKey(Word.prefix + "library") {
             XCTFail()
         }

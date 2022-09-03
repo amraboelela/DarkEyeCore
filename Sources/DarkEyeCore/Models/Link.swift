@@ -353,6 +353,7 @@ public struct Link: Codable, Sendable {
             ".gif",
             ".epub",
             ".nib",
+            ".nb0",
             ".pdf",
             ".asc",
             ".webm",
@@ -368,6 +369,7 @@ public struct Link: Codable, Sendable {
             "money-transfers",
             "music",
             ".media",
+            "_media",
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid"
         ]
