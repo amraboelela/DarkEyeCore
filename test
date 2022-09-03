@@ -1,11 +1,4 @@
 #!/bin/bash
 
-PARAM=x$1
-
 ./update all
-
-if [ $PARAM = "xrelease" ]; then
-    swift test
-else
-    swift test -Xswiftc -DDEBUG 2<&1 | tee || exit
-fi
+swift test 2<&1 | tee || exit
