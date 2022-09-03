@@ -12,7 +12,6 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         try? await Crawler.shared().stop()
     }
     
-    @MainActor
     func testStart() async {
         await asyncSetup()
         let crawler = try! await Crawler.shared()
@@ -27,7 +26,6 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         await asyncTearDown()
     }
     
-    @MainActor
     func testCrawl() async {
         await asyncSetup()
         let crawler = try! await Crawler.shared()
@@ -53,7 +51,6 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         stopped = true
     }
     
-    @MainActor
     func testStop() async {
         await asyncSetup()
         let crawler = try! await Crawler.shared()
@@ -67,5 +64,11 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
             XCTFail()
         }
         await asyncTearDown()
+    }
+    
+    func testSyncTask() {
+        print("syncTask before")
+        Crawler.syncTask()
+        print("syncTask after")
     }
 }

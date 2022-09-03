@@ -39,8 +39,15 @@ public class Crawler: @unchecked Sendable {
         return crawler!
     }
     
-    public func start(after: TimeInterval = 0) async {
-        try? await Task.sleep(seconds: after)
+    static func syncTask() {
+        Task {
+            print("syncTask task begin")
+            try? await Task.sleep(seconds: 1)
+            print("syncTask task ended")
+        }
+    }
+    
+    public func start() async {
         Task(priority: .background) {
             if Date().timeIntervalSinceReferenceDate >= self.startTime {
                 NSLog("start")
@@ -59,7 +66,6 @@ public class Crawler: @unchecked Sendable {
         }
         isRunning = true
         try? await Link.crawlNext()
-        try? await Task.sleep(seconds: 1.0)
         Task(priority: .background) {
             if canRun {
                 await crawl()
