@@ -15,7 +15,7 @@ public enum WordIndexingStatus {
 }
 
 @available(macOS 10.15.0, *)
-public struct Word: Codable {
+public struct Word: Codable, Sendable {
     public static let prefix = "word-"
 
     public var links: [WordLink]
