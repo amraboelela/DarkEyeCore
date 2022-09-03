@@ -15,7 +15,7 @@ public protocol CrawlerDelegate: AnyObject {
 }
 
 @available(macOS 10.15.0, *)
-public class Crawler {
+public class Crawler: @unchecked Sendable {
     static var crawler: Crawler?
     public var canRun = true
     public weak var delegate: CrawlerDelegate?
@@ -32,16 +32,12 @@ public class Crawler {
         }
     }
     
-    class func shared() async throws -> Crawler {
+    public class func shared() async throws -> Crawler {
         if crawler == nil {
             crawler = try await Crawler()
         }
         return crawler!
     }
-    
-    /*class func reset() {
-        crawler = nil
-    }*/
     
     public func start(after: TimeInterval = 0) async {
         try? await Task.sleep(seconds: after)
