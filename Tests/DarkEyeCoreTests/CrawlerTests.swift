@@ -72,7 +72,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         await crawler.crawl()
         let timeDelay = 8.0
         try? await Task.sleep(seconds: 2.0)
-        try? await crawler.stop()
+        await crawler.stop()
         try? await Task.sleep(seconds: timeDelay)
         if !crawler.canRun && self.stopped {
             stoppedExpectation.fulfill()
@@ -80,9 +80,9 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
             XCTFail()
         }
 #if os(Linux)
-        waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
 #else
-        await waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        await waitForExpectations(timeout: timeDelay + 5.0, handler: nil)
 #endif
         await asyncTearDown()
     }
