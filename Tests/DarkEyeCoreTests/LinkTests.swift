@@ -68,9 +68,9 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let link = Link(url: Link.mainUrl)
         var urls = link.urls
-        XCTAssertEqual(urls.count, 257)
+        XCTAssertEqual(urls.count, 253)
         urls = link.urls
-        XCTAssertEqual(urls.count, 257)
+        XCTAssertEqual(urls.count, 253)
         XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].0, "/wiki/Contest2022")
         XCTAssertEqual(urls[2].0, "/wiki/The_Matrix")
@@ -114,9 +114,9 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let link = Link(url: Link.mainUrl)
         var urls = link.urls
-        XCTAssertEqual(urls.count, 257)
+        XCTAssertEqual(urls.count, 253)
         urls = link.urls
-        XCTAssertEqual(urls.count, 257)
+        XCTAssertEqual(urls.count, 253)
         XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Contest2022")
         XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/The_Matrix")
@@ -158,7 +158,7 @@ final class LinkTests: TestsBase {
     func testHtml() async {
         await asyncSetup()
         var link = Link(url: Link.mainUrl)
-        try? await link.save()
+        await link.save()
         let html = link.html
         XCTAssertNotNil(html)
         await asyncTearDown()
@@ -181,7 +181,7 @@ final class LinkTests: TestsBase {
     func testSave() async {
         await asyncSetup()
         var link = Link(url: "http://hanein1.onion")
-        try? await link.save()
+        await link.save()
         let firstKey = await Link.firstKey()
         XCTAssertEqual(firstKey, "link-http://hanein1.onion")
         XCTAssertEqual(link.hash, "http://hanein1.onion".hashBase32(numberOfDigits: 12))
@@ -191,9 +191,9 @@ final class LinkTests: TestsBase {
             XCTFail()
         }
         link = Link(url: "http://hanein2.onion")
-        try? await link.save()
+        await link.save()
         link = Link(url: "http://hanein1.onion")
-        try? await link.save()
+        await link.save()
         await asyncTearDown()
     }
     
@@ -208,7 +208,7 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let timeDelay = 5.0
         let link1 = Link(url: Link.mainUrl)
-        try? await Link.process(link: link1)
+        await Link.process(link: link1)
         try? await Task.sleep(seconds: timeDelay)
         if let word: Word = await database.valueForKey(Word.prefix + "jump") {
             XCTAssertTrue(word.links[0].text.lowercased().contains("jump"))
@@ -223,12 +223,10 @@ final class LinkTests: TestsBase {
         let url = "http://library123.onion"
         let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true)
         XCTAssertEqual(link.lastProcessTime, 0)
-        let crawler = try! await Crawler.shared()
+        let crawler = await Crawler.shared()
         crawler.canRun = true
-        try? await Link.process(link: link)
-        //print("testProcessBlockedLink before sleep 5 seconds")
+        await Link.process(link: link)
         try? await Task.sleep(seconds: 5)
-        //print("testProcessBlockedLink after sleep 5 seconds")
         if let dbLink: Link = await database.valueForKey(Link.prefix + url) {
             XCTAssertNotEqual(dbLink.lastProcessTime, 0)
         } else {
@@ -245,7 +243,7 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.lastProcessTime = Date.secondsSinceReferenceDate
-        try? await link.saveChildrenIfNeeded()
+        await link.saveChildrenIfNeeded()
         if let _: Link = await database.valueForKey(Link.prefix + "exampleenglish.onion") {
             XCTFail()
         }
@@ -259,7 +257,7 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         XCTAssertEqual(link.lastProcessTime, 0)
-        try? await link.saveChildren()
+        await link.saveChildren()
         if let _: Link = await database.valueForKey(Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
         } else {
             XCTFail()
@@ -269,7 +267,7 @@ final class LinkTests: TestsBase {
     
     func crawlNext() async {
         await asyncSetup()
-        try? await Link.crawlNext()
+        await Link.crawlNext()
         if let _: Link = await database.valueForKey(Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
         } else {
             XCTFail()

@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(macOS 10.15.0, *)
 public struct Global: Codable, Sendable {
     public static let prefix = "global"
     public var processTimeThreshold: Int // any link with last process time smaller, need to be processed
@@ -23,8 +22,13 @@ public struct Global: Codable, Sendable {
     
     // MARK: - Helpers
     
-    func save() async throws {
+    func save() async {
         NSLog("global.save()")
-        try await database.setValue(self, forKey: Global.prefix) //[Global.prefix] = self
+        do {
+            try await database.setValue(self, forKey: Global.prefix)
+        } catch {
+            NSLog("Global save failed. Exiting")
+            exit(1)
+        }
     }
 }

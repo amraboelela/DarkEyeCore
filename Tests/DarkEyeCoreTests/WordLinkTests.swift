@@ -15,7 +15,7 @@ final class WordLinkTests: TestsBase {
         await asyncSetup()
         var url = "http://hanein123.onion"
         var link = Link(url: url)
-        try? await link.save()
+        await link.save()
         var urlHash = url.hashBase32(numberOfDigits: 12)
         var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
         var link2 = await wordLink.hashLink()?.link()
@@ -23,7 +23,7 @@ final class WordLinkTests: TestsBase {
         
         url = Link.mainUrl
         link = Link(url: url)
-        try? await link.save()
+        await link.save()
         urlHash = url.hashBase32(numberOfDigits: 12)
         wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
         link2 = await wordLink.hashLink()?.link()
@@ -48,7 +48,7 @@ final class WordLinkTests: TestsBase {
     func testWordLinksWithSearchText() async {
         await asyncSetup()
         Link.numberOfProcessedLinks = 0
-        let crawler = try! await Crawler.shared()
+        let crawler = await Crawler.shared()
         await crawler.start()
         let secondsDelay = 10.0
         let countLimit = 1000
@@ -77,7 +77,7 @@ final class WordLinkTests: TestsBase {
             if let hashLink: HashLink = await database.valueForKey(blockedKey) {
                 var link = await hashLink.link()
                 link.blocked = true
-                try? await link.save()
+                await link.save()
             }
             wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
             XCTAssertEqual(wordLinks.count, wordLinksCount - 1)

@@ -14,7 +14,6 @@ public protocol CrawlerDelegate: AnyObject {
     func crawlerStopped()
 }
 
-@available(macOS 10.15.0, *)
 public class Crawler: @unchecked Sendable {
     static var crawler: Crawler?
     public var canRun = true
@@ -22,19 +21,19 @@ public class Crawler: @unchecked Sendable {
     var startTime = Date().timeIntervalSinceReferenceDate
     var isRunning = false
     
-    init() async throws {
+    init() async {
         if let _: Link = await database.valueForKey(Link.prefix + Link.mainUrl) {
             NSLog("Crawler init, " + Link.prefix + Link.mainUrl + " already exists")
         } else {
             NSLog("Crawler init, creating: " + Link.prefix + Link.mainUrl)
             var link = Link(url: Link.mainUrl)
-            try await link.save()
+            await link.save()
         }
     }
     
-    public class func shared() async throws -> Crawler {
+    public class func shared() async -> Crawler {
         if crawler == nil {
-            crawler = try await Crawler()
+            crawler = await Crawler()
         }
         return crawler!
     }
@@ -43,7 +42,7 @@ public class Crawler: @unchecked Sendable {
         Task(priority: .background) {
             if Date().timeIntervalSinceReferenceDate >= self.startTime {
                 NSLog("start")
-                try? await Crawler.shared().canRun = true
+                await Crawler.shared().canRun = true
                 if !self.isRunning {
                     await self.crawl()
                 }
@@ -57,7 +56,7 @@ public class Crawler: @unchecked Sendable {
             delegate?.crawlerStopped()
         }
         isRunning = true
-        try? await Link.crawlNext()
+        await Link.crawlNext()
         Task(priority: .background) {
             if canRun {
                 await crawl()
@@ -70,6 +69,6 @@ public class Crawler: @unchecked Sendable {
     
     public func stop() async {
         NSLog("stop")
-        try? await Crawler.shared().canRun = false
+        await Crawler.shared().canRun = false
     }
 }

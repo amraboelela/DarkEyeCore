@@ -9,7 +9,6 @@
 import Foundation
 import SwiftEncrypt
 
-@available(macOS 10.15.0, *)
 public struct WordLink: Codable, Sendable {
     public var urlHash: String
     public var word: String
@@ -31,7 +30,7 @@ public struct WordLink: Codable, Sendable {
     // MARK: - Accessors
     
     public func hashLink() async -> HashLink? {
-        if let result: HashLink = await database.valueForKey(HashLink.prefix + urlHash) { //[HashLink.prefix + urlHash] {
+        if let result: HashLink = await database.valueForKey(HashLink.prefix + urlHash) {
             return result
         }
         return nil

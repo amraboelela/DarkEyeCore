@@ -17,7 +17,7 @@ class TestsBase: XCTestCase {
     }
     
     func asyncTearDown() async {
-        try? await Crawler.shared().canRun = false
+        await Crawler.shared().canRun = false
         usleep(1000000)
         try? await database.deleteDatabaseFromDisk()
     }

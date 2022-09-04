@@ -9,7 +9,7 @@ final class ArrayTests: TestsBase {
     
     override func asyncTearDown() async {
         await super.asyncTearDown()
-        try? await Crawler.shared().stop()
+        await Crawler.shared().stop()
     }
     
     func isOddNumber(_ number: Int) async -> Bool {

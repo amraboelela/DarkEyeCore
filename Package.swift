@@ -5,6 +5,9 @@ import PackageDescription
 
 let package = Package(
     name: "DarkEyeCore",
+    platforms: [
+        .macOS(.v11)
+    ],
     products: [
         .library(name: "DarkEyeCore", targets: ["DarkEyeCore"]),
     ],

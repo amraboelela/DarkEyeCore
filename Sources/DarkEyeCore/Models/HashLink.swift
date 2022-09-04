@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(macOS 10.15.0, *)
 public struct HashLink: Codable, Sendable {
     public static let prefix = "hashlink-"
 

@@ -9,12 +9,12 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
     
     override func asyncTearDown() async {
         await super.asyncTearDown()
-        try? await Crawler.shared().stop()
+        await Crawler.shared().stop()
     }
     
     func testStart() async {
         await asyncSetup()
-        let crawler = try! await Crawler.shared()
+        let crawler = await Crawler.shared()
         await crawler.start()
         print("crawler.canRun: \(crawler.canRun)")
         try? await Task.sleep(seconds: 1.0)
@@ -28,7 +28,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
     
     func testCrawl() async {
         await asyncSetup()
-        let crawler = try! await Crawler.shared()
+        let crawler = await Crawler.shared()
         await crawler.crawl()
         let secondsDelay = 5.0
         try? await Task.sleep(seconds: secondsDelay)
@@ -53,7 +53,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
     
     func testStop() async {
         await asyncSetup()
-        let crawler = try! await Crawler.shared()
+        let crawler = await Crawler.shared()
         crawler.delegate = self
         await crawler.crawl()
         let timeDelay = 8.0

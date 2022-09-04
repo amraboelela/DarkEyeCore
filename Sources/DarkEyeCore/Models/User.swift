@@ -21,7 +21,6 @@ public enum UserStatus: String {
     case suspended
 }
 
-@available(macOS 10.15.0, *)
 public struct User: Codable, Hashable, Sendable {
     public static let prefix = "user-"
     

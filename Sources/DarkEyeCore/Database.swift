@@ -10,5 +10,4 @@ import Foundation
 import SwiftLevelDB
 import Dispatch
 
-@available(macOS 10.15.0, *)
 public var database: LevelDB!

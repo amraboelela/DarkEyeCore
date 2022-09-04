@@ -9,7 +9,7 @@ final class StringTests: TestsBase {
     
     override func asyncTearDown() async {
         await super.asyncTearDown()
-        try? await Crawler.shared().stop()
+        await Crawler.shared().stop()
     }
     
     func testCamelCaseToWords() {

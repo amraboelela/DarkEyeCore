@@ -14,7 +14,6 @@ public enum WordIndexingStatus {
     case ended    // ended as it can't run
 }
 
-@available(macOS 10.15.0, *)
 public struct Word: Codable, Sendable {
     public static let prefix = "word-"
 
@@ -22,10 +21,10 @@ public struct Word: Codable, Sendable {
     
     // MARK: - Indexing
     
-    public static func index(link: Link) async throws -> WordIndexingStatus {
+    public static func index(link: Link) async -> WordIndexingStatus {
         NSLog("index link: \(link)")
         var wordsArray = words(fromText: link.text)
-        let countLimit = 20
+        let countLimit = 40
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
@@ -35,22 +34,27 @@ public struct Word: Codable, Sendable {
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing, wordsArray: \(wordsArray)")
         let text = contextStringFrom(array: wordsArray, atIndex: 0)
-        let crawler = try await Crawler.shared()
+        let crawler = await Crawler.shared()
         for i in (0..<wordsArray.count) {
             let dbClosed = await database.closed()
             if !crawler.canRun || dbClosed {
                 return .ended
             }
-            let wordText = wordsArray[i].lowercased()
-            if wordText.count > 2 {
-                let key = prefix + wordText.lowercased()
-                let word = Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
-                if var dbWord: Word = await database.valueForKey(key) {
-                    WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
-                    try await database.setValue(dbWord, forKey: key)
-                } else {
-                    try await database.setValue(word, forKey: key)
+            do {
+                let wordText = wordsArray[i].lowercased()
+                if wordText.count > 2 {
+                    let key = prefix + wordText.lowercased()
+                    let word = Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
+                    if var dbWord: Word = await database.valueForKey(key) {
+                        WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
+                        try await database.setValue(dbWord, forKey: key)
+                    } else {
+                        try await database.setValue(word, forKey: key)
+                    }
                 }
+            } catch {
+                NSLog("Word index:link database.setValue failed. Exiting")
+                exit(1)
             }
         }
         return .complete
@@ -72,7 +76,7 @@ public struct Word: Codable, Sendable {
             let word = sortedArray[wordIndex]
             let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
             NSLog("indexing, wordIndex: \(wordIndex), word: \(word.lowercased()), wordCount: \(wordsArray.count)")
-            let crawler = try await Crawler.shared()
+            let crawler = await Crawler.shared()
             for i in (0..<wordsArray.count) {
                 let dbClosed = await database.closed()
                 if !crawler.canRun || dbClosed {

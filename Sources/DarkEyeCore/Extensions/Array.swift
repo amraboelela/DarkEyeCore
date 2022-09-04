@@ -8,7 +8,6 @@
 
 import Foundation
 
-@available(macOS 10.15.0, *)
 extension Array where Element: Any {
     
     public func asyncFilter(closure: (Element) async -> Bool) async -> Array {

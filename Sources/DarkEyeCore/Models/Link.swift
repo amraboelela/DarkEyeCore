@@ -11,7 +11,6 @@ import SwiftLevelDB
 import Fuzi
 import SwiftEncrypt
 
-@available(macOS 10.15.0, *)
 public struct Link: Codable, Sendable {
     public static let prefix = "link-"
     public static var workingDirectory = ""
@@ -233,7 +232,7 @@ public struct Link: Codable, Sendable {
         return result
     }
     
-    static func updateCurrentWordIndex() async throws {
+    static func updateCurrentWordIndex() async {
         NSLog("updateCurrentWordIndex")
         var global = await Global.global()
         if global.currentWordIndex < 500 {
@@ -244,28 +243,28 @@ public struct Link: Codable, Sendable {
             global.currentWordIndex = 0
             global.processTimeThreshold = Date.secondsSinceReferenceDate
         }
-        try await global.save()
+        await global.save()
     }
     
-    public static func crawlNext() async throws {
+    public static func crawlNext() async {
         //NSLog("crawlNext")
         if let nextLink = await nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
-            try await Link.process(link: nextLink)
+            await Link.process(link: nextLink)
         } else {
-            try await updateCurrentWordIndex()
+            await updateCurrentWordIndex()
             if let nextLink = await nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
-                try await Link.process(link: nextLink)
+                await Link.process(link: nextLink)
             } else {
                 NSLog("can't find any link to process")
             }
         }
     }
     
-    static func process(link: Link) async throws {
+    static func process(link: Link) async {
         NSLog("processing link: \(link.url)")
-        let crawler = try await Crawler.shared()
+        let crawler = await Crawler.shared()
         let dbClosed = await database.closed()
         if !crawler.canRun || dbClosed {
             return
@@ -273,69 +272,74 @@ public struct Link: Codable, Sendable {
         var myLink = link
         if myLink.blocked == true || myLink.html == nil {
             Link.remove(url: myLink.url)
-            try await myLink.updateLinkProcessedAndSave()
+            await myLink.updateLinkProcessedAndSave()
         } else if myLink.html == nil {
-            try await myLink.updateLinkProcessedAndSave()
+            await myLink.updateLinkProcessedAndSave()
         } else {
-            try await myLink.saveChildren()
-            switch try await Word.index(link: myLink) {
+            await myLink.saveChildren()
+            switch await Word.index(link: myLink) {
             case .done:
-                try await myLink.updateLinkIndexedAndSave()
+                await myLink.updateLinkIndexedAndSave()
             case .complete:
-                try await myLink.updateLinkProcessedAndSave()
+                await myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
             }
         }
     }
     
-    mutating func updateLinkIndexedAndSave() async throws {
+    mutating func updateLinkIndexedAndSave() async {
         lastWordIndex += 1
-        try await save()
+        await save()
         Link.numberOfIndexedLinks += 1
         if Link.numberOfIndexedLinks > 1000 {
             Link.numberOfIndexedLinks = 0
-            try await Link.updateCurrentWordIndex()
+            await Link.updateCurrentWordIndex()
         }
         NSLog("indexed link #\(Link.numberOfIndexedLinks)")
     }
     
-    mutating func updateLinkProcessedAndSave() async throws {
+    mutating func updateLinkProcessedAndSave() async {
         NSLog("updateLinkProcessedAndSave")
         lastWordIndex = -1
         lastProcessTime = Date.secondsSinceReferenceDate
-        try await save()
+        await save()
         Link.numberOfProcessedLinks += 1
         NSLog("processed link #\(Link.numberOfProcessedLinks)")
     }
     
-    public mutating func saveChildrenIfNeeded() async throws {
+    public mutating func saveChildrenIfNeeded() async {
         //print("saveChildrenIfNeeded")
         if await lastProcessTime < Global.global().processTimeThreshold {
-            try await saveChildren()
+            await saveChildren()
         }
     }
     
-    mutating func saveChildren() async throws {
+    mutating func saveChildren() async {
         NSLog("saveChildren")
         for (_, childURL) in urls {
             if let _: Link = await database.valueForKey(Link.prefix + childURL) {
             } else {
                 var link = Link(url: childURL)
-                try await link.save()
+                await link.save()
             }
         }
     }
     
     // MARK: - Saving
     
-    public mutating func save() async throws {
-        if let _: Link = await database.valueForKey(key) {
-        } else {
-            let hashLink = HashLink(url: url)
-            try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
+    public mutating func save() async {
+        do {
+            if let _: Link = await database.valueForKey(key) {
+            } else {
+                let hashLink = HashLink(url: url)
+                try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
+            }
+            try await database.setValue(self, forKey: key)
+        } catch {
+            NSLog("Link save failed. Exiting")
+            exit(1)
         }
-        try await database.setValue(self, forKey: key)
     }
     
     // MARK: - Helpers
