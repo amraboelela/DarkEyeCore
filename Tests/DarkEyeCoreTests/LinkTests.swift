@@ -82,7 +82,7 @@ final class LinkTests: TestsBase {
         let wikiUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: "/wiki")?.lowerBound == rawURL.startIndex
         }
-        XCTAssertEqual(wikiUrls.count, 32)
+        XCTAssertEqual(wikiUrls.count, 31)
         let dotOrgUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: ".org") != nil
         }
@@ -102,11 +102,11 @@ final class LinkTests: TestsBase {
         let notOnionUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: ".onion") == nil
         }
-        XCTAssertEqual(notOnionUrls.count, 32)
+        XCTAssertEqual(notOnionUrls.count, 31)
         let notHttpUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: "http") == nil
         }
-        XCTAssertEqual(notHttpUrls.count, 32)
+        XCTAssertEqual(notHttpUrls.count, 31)
         await asyncTearDown()
     }
     
