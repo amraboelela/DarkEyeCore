@@ -354,6 +354,7 @@ public struct Link: Codable, Sendable {
             ".epub",
             ".nib",
             ".nb0",
+            ".php",
             ".pdf",
             ".asc",
             ".webm",
@@ -370,6 +371,7 @@ public struct Link: Codable, Sendable {
             "music",
             ".media",
             "_media",
+            ".php?",
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid"
         ]

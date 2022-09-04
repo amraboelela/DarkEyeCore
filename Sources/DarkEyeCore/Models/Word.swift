@@ -29,6 +29,9 @@ public struct Word: Codable, Sendable {
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
+        if wordsArray.count == 0 {
+            return .complete
+        }
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing, wordsArray: \(wordsArray)")
         let text = contextStringFrom(array: wordsArray, atIndex: 0)

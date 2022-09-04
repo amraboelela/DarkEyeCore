@@ -13,8 +13,8 @@ final class WordTests: TestsBase {
     
     func testIndexLink() async {
         await asyncSetup()
-        let link = Link(url: Link.mainUrl)
-        let result  = try? await Word.index(link: link)
+        var link = Link(url: Link.mainUrl)
+        var result  = try? await Word.index(link: link)
         XCTAssertEqual(result, .complete)
         if let word: Word = await database.valueForKey(Word.prefix + "hidden") {
             XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
@@ -37,6 +37,10 @@ final class WordTests: TestsBase {
         if let _: Word = await database.valueForKey(Word.prefix + "to") {
             XCTFail()
         }
+        
+        link = Link(url: "http://kukuwawa.onion")
+        result  = try? await Word.index(link: link)
+        XCTAssertEqual(result, .complete)
         await asyncTearDown()
     }
     
