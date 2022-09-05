@@ -9,9 +9,10 @@
 import Foundation
 
 public enum WordIndexingStatus {
-    case done     // done with next word
+    //case done     // done with next word
     case complete // finished all the words up to 500 word
     case ended    // ended as it can't run
+    case failed
 }
 
 public struct Word: Codable, Sendable {
@@ -53,8 +54,9 @@ public struct Word: Codable, Sendable {
                     }
                 }
             } catch {
-                NSLog("Word index:link database.setValue failed. Exiting")
-                exit(1)
+                NSLog("Word index:link database.setValue failed.")
+                Task.sleep(seconds: 1.0)
+                return .failed
             }
         }
         return .complete

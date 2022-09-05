@@ -55,6 +55,7 @@ public class Crawler: @unchecked Sendable {
         if !canRun {
             delegate?.crawlerStopped()
         }
+        try? await Task.sleep(seconds: 1.0)
         isRunning = true
         await Link.crawlNext()
         Task(priority: .background) {

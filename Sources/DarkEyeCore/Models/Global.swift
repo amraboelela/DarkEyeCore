@@ -41,8 +41,9 @@ public struct Global: Codable, Sendable {
         do {
             try await database.setValue(self, forKey: Global.prefix)
         } catch {
-            NSLog("Global save failed. Exiting")
-            exit(1)
+            NSLog("Global save failed.")
+            //exit(1)
+            Task.sleep(seconds: 1.0)
         }
     }
 }

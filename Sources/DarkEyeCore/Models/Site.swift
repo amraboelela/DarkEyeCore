@@ -74,15 +74,10 @@ public struct Site: Codable, Sendable {
     
     public mutating func save() async {
         do {
-            /*if let _: Link = await database.valueForKey(key) {
-            } else {
-                //let hashLink = HashLink(url: url)
-                //try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
-            }*/
             try await database.setValue(self, forKey: key)
         } catch {
-            NSLog("Link save failed. Exiting")
-            exit(1)
+            NSLog("Link save failed.")
+            Task.sleep(seconds: 1.0)
         }
     }
     
