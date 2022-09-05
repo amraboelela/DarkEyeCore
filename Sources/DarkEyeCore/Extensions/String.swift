@@ -27,6 +27,18 @@ extension String {
         return components
     }
     
+    var onionID: String {
+        return slice(from: "http://", to: ".onion") ?? ""
+    }
+    
+    func slice(from: String, to: String) -> String? {
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
+    }
+    
     static func from(array: [String], startIndex: Int, endIdnex:Int) -> String {
         var result = ""
         for i in (startIndex...endIdnex) {

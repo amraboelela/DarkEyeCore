@@ -60,61 +60,6 @@ public struct Word: Codable, Sendable {
         return .complete
     }
     
-    public static func indexNextWord(link: Link) async throws -> WordIndexingStatus {
-        var wordsArray = words(fromText: link.text)
-        let countLimit = 700
-        if wordsArray.count > countLimit {
-            wordsArray.removeLast(wordsArray.count - countLimit)
-        }
-        let uniqueArray = Array(Set(wordsArray))
-        let filteredArray = uniqueArray.filter { word in
-            word.count > 2 && word.prefix(1).rangeOfCharacter(from: CharacterSet.decimalDigits) == nil
-        }
-        if link.lastWordIndex < filteredArray.count - 1 {
-            let wordIndex = link.lastWordIndex + 1
-            let sortedArray = filteredArray.sorted { $0.lowercased() < $1.lowercased() }
-            let word = sortedArray[wordIndex]
-            let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
-            NSLog("indexing, wordIndex: \(wordIndex), word: \(word.lowercased()), wordCount: \(wordsArray.count)")
-            let crawler = await Crawler.shared()
-            for i in (0..<wordsArray.count) {
-                let dbClosed = await database.closed()
-                if !crawler.canRun || dbClosed {
-                    return .ended
-                }
-                if word != wordsArray[i] {
-                    continue
-                }
-                let wordText = wordsArray[i].lowercased()
-                let text = contextStringFrom(array: wordsArray, atIndex: i)
-                //print("wordText: \(wordText)")
-                if crawler.canRun {
-                    let key = prefix + wordText
-                    //NSLog("index link key: \(key)")
-                    let word = Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
-                    if var dbWord: Word = await database.valueForKey(key) {
-                        WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
-                        try await database.setValue(dbWord, forKey: key)
-                        return .done
-                    } else {
-                        try await database.setValue(word, forKey: key)
-                        return .done
-                    }
-                } else {
-                    return .ended
-                }
-            }
-            if wordIndex >= filteredArray.count - 1 {
-                return .complete
-            } else {
-                return .done
-            }
-        } else {
-            NSLog("link.lastWordIndex > filteredArray.count - 1, link.lastWordIndex: \(link.lastWordIndex), filteredArray.count: \(filteredArray.count)")
-            return .complete
-        }
-    }
-    
     // MARK: - Helpers
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {

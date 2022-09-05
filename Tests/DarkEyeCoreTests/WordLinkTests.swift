@@ -21,7 +21,7 @@ final class WordLinkTests: TestsBase {
         var link2 = await wordLink.hashLink()?.link()
         XCTAssertEqual(link2?.hash, "ar7t3hfhcdxg")
         
-        url = Link.mainUrl
+        url = Global.mainUrl
         link = Link(url: url)
         await link.save()
         urlHash = url.hashBase32(numberOfDigits: 12)
@@ -75,9 +75,11 @@ final class WordLinkTests: TestsBase {
             let blockedKey = HashLink.prefix + wordLinks[0].urlHash
             print("blockedKey: \(blockedKey)")
             if let hashLink: HashLink = await database.valueForKey(blockedKey) {
-                var link = await hashLink.link()
-                link.blocked = true
-                await link.save()
+                let link = await hashLink.link()
+                if var site = await link.site() {
+                    site.blocked = true
+                    await site.save()
+                }
             }
             wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
             XCTAssertEqual(wordLinks.count, wordLinksCount - 1)

@@ -13,30 +13,26 @@ import SwiftEncrypt
 
 public struct Link: Codable, Sendable {
     public static let prefix = "link-"
-    public static var workingDirectory = ""
     
     static var numberOfProcessedLinks = 0
     static var numberOfIndexedLinks = 0
-    static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var failedToLoad = false
-    public var lastWordIndex = -1 // last indexed word index
+    //public var lastWordIndex = -1 // last indexed word index
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
-    public var numberOfReports = 0
-    public var blocked: Bool?
+    //public var numberOfReports = 0
+    //public var blocked: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
         case failedToLoad
-        case lastWordIndex
+        //case lastWordIndex
         case numberOfVisits
         case lastVisitTime
-        case numberOfReports
-        case blocked
     }
     
     // MARK: - Accessors
@@ -76,7 +72,7 @@ public struct Link: Codable, Sendable {
 #else
         let thresholdDays = 1000
 #endif
-        let fileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
+        let fileURL = Global.cacheURL.appendingPathComponent(hash + ".html")
         //NSLog("cachedFile fileURL: \(fileURL)")
         var result: String?
         result = try? String(contentsOf: fileURL, encoding: .utf8)
@@ -190,16 +186,17 @@ public struct Link: Codable, Sendable {
         return result
     }
     
-    static var workingURL: URL {
-        if Link.workingDirectory.isEmpty {
-            return URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Link.swift", with: ""))
-        } else {
-            return URL(fileURLWithPath: Link.workingDirectory)
+    // MARK: - Accessor functions
+    
+    func site() async -> Site? {
+        if let site: Site = await database.valueForKey(Site.prefix + url.onionID) {
+            return site
         }
+        return nil
     }
     
-    static var cacheURL: URL {
-        return workingURL.appendingPathComponent("cache", isDirectory: true)
+    func blocked() async -> Bool {
+        return await site()?.blocked ?? false
     }
     
     // MARK: - Factory methods
@@ -218,11 +215,8 @@ public struct Link: Codable, Sendable {
         //NSLog("nextLinkToProcess")
         var result: Link? = nil
         let processTimeThreshold = await Global.global().processTimeThreshold
-        let currentWordIndex = await Global.global().currentWordIndex
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
-            //NSLog("nextLinkToProcess, Key: \(Key)")
-            if link.lastProcessTime < processTimeThreshold &&
-                link.lastWordIndex < currentWordIndex {
+            if link.lastProcessTime < processTimeThreshold {
                 stop.pointee = true
                 result = link
             } else {
@@ -232,27 +226,13 @@ public struct Link: Codable, Sendable {
         return result
     }
     
-    static func updateCurrentWordIndex() async {
-        NSLog("updateCurrentWordIndex")
-        var global = await Global.global()
-        if global.currentWordIndex < 500 {
-            NSLog("global.currentWordIndex < 500")
-            global.currentWordIndex += 1
-        } else {
-            NSLog("global.currentWordIndex < 500 else")
-            global.currentWordIndex = 0
-            global.processTimeThreshold = Date.secondsSinceReferenceDate
-        }
-        await global.save()
-    }
-    
     public static func crawlNext() async {
         //NSLog("crawlNext")
         if let nextLink = await nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
             await Link.process(link: nextLink)
         } else {
-            await updateCurrentWordIndex()
+            //await updateCurrentWordIndex()
             if let nextLink = await nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 await Link.process(link: nextLink)
@@ -270,7 +250,7 @@ public struct Link: Codable, Sendable {
             return
         }
         var myLink = link
-        if myLink.blocked == true || myLink.html == nil {
+        if await myLink.blocked() == true || myLink.html == nil {
             Link.remove(url: myLink.url)
             await myLink.updateLinkProcessedAndSave()
         } else if myLink.html == nil {
@@ -289,19 +269,19 @@ public struct Link: Codable, Sendable {
     }
     
     mutating func updateLinkIndexedAndSave() async {
-        lastWordIndex += 1
+        //lastWordIndex += 1
         await save()
         Link.numberOfIndexedLinks += 1
-        if Link.numberOfIndexedLinks > 1000 {
+        /*if Link.numberOfIndexedLinks > 1000 {
             Link.numberOfIndexedLinks = 0
-            await Link.updateCurrentWordIndex()
-        }
+            //await Link.updateCurrentWordIndex()
+        }*/
         NSLog("indexed link #\(Link.numberOfIndexedLinks)")
     }
     
     mutating func updateLinkProcessedAndSave() async {
         NSLog("updateLinkProcessedAndSave")
-        lastWordIndex = -1
+        //lastWordIndex = -1
         lastProcessTime = Date.secondsSinceReferenceDate
         await save()
         Link.numberOfProcessedLinks += 1
@@ -334,6 +314,8 @@ public struct Link: Codable, Sendable {
             } else {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
+                let site = Site(url: url)
+                try await database.setValue(site, forKey: Site.prefix + url.onionID)
             }
             try await database.setValue(self, forKey: key)
         } catch {
@@ -414,7 +396,7 @@ public struct Link: Codable, Sendable {
     
     static func remove(url: String) {
         let hash = url.hashBase32(numberOfDigits: 12)
-        let filePath = cacheURL.appendingPathComponent(hash + ".html").path
+        let filePath = Global.cacheURL.appendingPathComponent(hash + ".html").path
         try? FileManager.default.removeItem(atPath: filePath)
     }
     

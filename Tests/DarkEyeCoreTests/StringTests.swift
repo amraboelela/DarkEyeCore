@@ -33,4 +33,10 @@ final class StringTests: TestsBase {
         XCTAssertEqual(result, "go to the library")
     }
     
+    func testSliceFrom() {
+        let token = "javascript:getInfo(1,'Info/99/something', 'City Hall',1, 99);"
+            .slice(from: "'", to: "',")
+        XCTAssertEqual(token, "Info/99/something")
+    }
+    
 }

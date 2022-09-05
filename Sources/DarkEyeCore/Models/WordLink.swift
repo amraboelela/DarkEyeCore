@@ -55,10 +55,9 @@ public struct WordLink: Codable, Sendable {
             await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
                 WordLink.merge(wordLinks: &result, withWordLinks: word.links)
             }
-            
             result = await result.asyncFilter { wordLink in
                 if let link = await wordLink.hashLink()?.link() {
-                    if link.blocked == true {
+                    if await link.blocked() == true {
                         return false
                     }
                 } else {

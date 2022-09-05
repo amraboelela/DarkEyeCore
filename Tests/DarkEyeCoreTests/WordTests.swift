@@ -13,12 +13,12 @@ final class WordTests: TestsBase {
     
     func testIndexLink() async {
         await asyncSetup()
-        var link = Link(url: Link.mainUrl)
+        var link = Link(url: Global.mainUrl)
         var result  = await Word.index(link: link)
         XCTAssertEqual(result, .complete)
         if let word: Word = await database.valueForKey(Word.prefix + "hidden") {
             XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.links[0].urlHash, Link.mainUrl.hashBase32(numberOfDigits: 12))
+            XCTAssertEqual(word.links[0].urlHash, Global.mainUrl.hashBase32(numberOfDigits: 12))
         } else {
             XCTFail()
         }
@@ -44,16 +44,16 @@ final class WordTests: TestsBase {
         await asyncTearDown()
     }
     
-    func testIndexNextWord() async {
+    /*func testIndexNextWord() async {
         await asyncSetup()
         let secondsDelay = 5.0
-        let link = Link(url: Link.mainUrl)
+        let link = Link(url: Global.mainUrl)
         let indexResult = try! await Word.indexNextWord(link: link)
         XCTAssertEqual(indexResult, .done)
         try? await Task.sleep(seconds: secondsDelay + 5)
         if let word: Word = await database.valueForKey(Word.prefix + "accepted") {
             XCTAssertTrue(word.links[0].text.lowercased().contains("accepted"))
-            XCTAssertEqual(word.links[0].urlHash, Link.mainUrl.hashBase32(numberOfDigits: 12))
+            XCTAssertEqual(word.links[0].urlHash, Global.mainUrl.hashBase32(numberOfDigits: 12))
         } else {
             XCTFail()
         }
@@ -70,7 +70,7 @@ final class WordTests: TestsBase {
             XCTFail()
         }
         await asyncTearDown()
-    }
+    }*/
     
     func testWordsFromText() async {
         await asyncSetup()
@@ -98,7 +98,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[3], "thecase")
         XCTAssertEqual(words[4], "yasalam")
         
-        let link = Link(url: Link.mainUrl)
+        let link = Link(url: Global.mainUrl)
         words = Word.words(fromText: link.text)
         XCTAssertTrue(words.count > 3900)
         await asyncTearDown()

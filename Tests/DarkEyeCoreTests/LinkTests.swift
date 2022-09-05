@@ -56,7 +56,7 @@ final class LinkTests: TestsBase {
     
     func testText() async {
         await asyncSetup()
-        let link = Link(url: Link.mainUrl)
+        let link = Link(url: Global.mainUrl)
         let text = link.text
         XCTAssertTrue(text.contains("Verifying PGP signatures - A short and simple how-to guide. In Praise Of Hawala - Anonymous"))
         print("text.count: \(text.count)")
@@ -66,7 +66,7 @@ final class LinkTests: TestsBase {
     
     func testRawUrls() async {
         await asyncSetup()
-        let link = Link(url: Link.mainUrl)
+        let link = Link(url: Global.mainUrl)
         var urls = link.urls
         XCTAssertEqual(urls.count, 253)
         urls = link.urls
@@ -112,7 +112,7 @@ final class LinkTests: TestsBase {
     
     func testRefindedUrls() async {
         await asyncSetup()
-        let link = Link(url: Link.mainUrl)
+        let link = Link(url: Global.mainUrl)
         var urls = link.urls
         XCTAssertEqual(urls.count, 253)
         urls = link.urls
@@ -157,7 +157,7 @@ final class LinkTests: TestsBase {
     
     func testHtml() async {
         await asyncSetup()
-        var link = Link(url: Link.mainUrl)
+        var link = Link(url: Global.mainUrl)
         await link.save()
         let html = link.html
         XCTAssertNotNil(html)
@@ -199,7 +199,7 @@ final class LinkTests: TestsBase {
     
     func testLoad() async {
         await asyncSetup()
-        let link = Link(url: Link.mainUrl)
+        let link = Link(url: Global.mainUrl)
         XCTAssertNotNil(link.html)
         await asyncTearDown()
     }
@@ -207,7 +207,7 @@ final class LinkTests: TestsBase {
     func testProcessLink() async {
         await asyncSetup()
         let timeDelay = 5.0
-        let link1 = Link(url: Link.mainUrl)
+        let link1 = Link(url: Global.mainUrl)
         await Link.process(link: link1)
         try? await Task.sleep(seconds: timeDelay)
         if let word: Word = await database.valueForKey(Word.prefix + "jump") {
@@ -221,7 +221,7 @@ final class LinkTests: TestsBase {
     func testProcessBlockedLink() async {
         await asyncSetup()
         let url = "http://library123.onion"
-        let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0, numberOfReports: 0, blocked: true)
+        let link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         XCTAssertEqual(link.lastProcessTime, 0)
         let crawler = await Crawler.shared()
         crawler.canRun = true
@@ -241,7 +241,7 @@ final class LinkTests: TestsBase {
     
     func testSaveChildrenIfNeeded() async {
         await asyncSetup()
-        var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
+        var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.lastProcessTime = Date.secondsSinceReferenceDate
         await link.saveChildrenIfNeeded()
         if let _: Link = await database.valueForKey(Link.prefix + "exampleenglish.onion") {
@@ -255,7 +255,7 @@ final class LinkTests: TestsBase {
     
     func testSaveChildren() async {
         await asyncSetup()
-        var link = Link(url: Link.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
+        var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         XCTAssertEqual(link.lastProcessTime, 0)
         await link.saveChildren()
         if let _: Link = await database.valueForKey(Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
@@ -316,7 +316,7 @@ final class LinkTests: TestsBase {
         let url = "http://2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd.onion"
         let hash = url.hashBase32(numberOfDigits: 12)
         Link.remove(url: url)
-        let filePath = Link.cacheURL.appendingPathComponent(hash + ".html").path
+        let filePath = Global.cacheURL.appendingPathComponent(hash + ".html").path
         XCTAssertFalse(FileManager.default.fileExists(atPath: filePath))
         await asyncTearDown()
     }
