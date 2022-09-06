@@ -21,7 +21,6 @@ public struct Link: Codable, Sendable {
     public static let prefix = "link-"
     
     static var numberOfProcessedLinks = 0
-    //static var numberOfIndexedLinks = 0
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
@@ -352,7 +351,8 @@ public struct Link: Codable, Sendable {
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid",
             "ejaculate",
-            "kxmrdbwcqbgyokjbiv7droplwhxvli3s7yv5xddxgrtajdpdebgzzzqd"
+            "kxmrdbwcqbgyokjbiv7droplwhxvli3s7yv5xddxgrtajdpdebgzzzqd",
+            "bitcards"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
