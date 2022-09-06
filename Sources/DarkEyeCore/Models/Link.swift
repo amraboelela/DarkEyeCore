@@ -238,8 +238,11 @@ public struct Link: Codable, Sendable {
     
     static func process(link: Link) async throws {
         NSLog("processing link: \(link.url)")
+        var myLink = link
         if !allowed(url: link.url) {
             NSLog("url not allowed")
+            Link.remove(url: myLink.url)
+            await myLink.updateLinkIndexedAndSave()
             throw LinkProcessError.notAllowed
         }
         let crawler = await Crawler.shared()
@@ -247,7 +250,6 @@ public struct Link: Codable, Sendable {
         if !crawler.canRun || dbClosed {
             throw LinkProcessError.cannotRun
         }
-        var myLink = link
         if await myLink.blocked() == true || myLink.html == nil {
             Link.remove(url: myLink.url)
             await myLink.updateLinkIndexedAndSave()
