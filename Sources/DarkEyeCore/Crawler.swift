@@ -51,7 +51,7 @@ public class Crawler: @unchecked Sendable {
     }
     
     func crawl() async {
-        NSLog("crawl")
+        //NSLog("crawl")
         if !canRun {
             delegate?.crawlerStopped()
         }
