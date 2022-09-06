@@ -116,19 +116,6 @@ public struct WordLink: Codable, Hashable, Sendable {
     
     // MARK: - Helpers
     
-    /*func merge(with word: Word) {
-        //print("merge wordLinks.count: \(wordLinks.count) withWordLinks.count: \(withWordLinks.count)")
-        for withWordLink in withWordLinks {
-            if let index = wordLinks.firstIndex(where: { $0.urlHash == withWordLink.urlHash }) {
-                var wordLink = wordLinks[index]
-                wordLink.mergeWith(wordLink: withWordLink)
-                wordLinks[index] = wordLink
-            } else {
-                wordLinks.append(withWordLink)
-            }
-        }
-    }*/
-    
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()
         let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,.<>\\|"))
