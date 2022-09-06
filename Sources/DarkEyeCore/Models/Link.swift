@@ -300,10 +300,10 @@ public struct Link: Codable, Sendable {
             } else {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
-                var site = Site(url: url)
-                site.indexed = true
-                try await database.setValue(site, forKey: Site.prefix + url.onionID)
             }
+            var site = Site(url: url)
+            site.indexed = true
+            try await database.setValue(site, forKey: Site.prefix + url.onionID)
             try await database.setValue(self, forKey: key)
         } catch {
             NSLog("Link save failed.")
