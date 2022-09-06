@@ -82,6 +82,7 @@ public struct Site: Codable, Sendable {
                 NSLog("Site crawlNext Link.process error: \(error)")
                 switch error {
                 case LinkProcessError.notAllowed:
+                    nextSite.blocked = true
                     await nextSite.updateSiteProcessedAndSave()
                 default:
                     break
