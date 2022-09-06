@@ -15,10 +15,10 @@ public struct Site: Codable, Sendable {
     public static let prefix = "site-"
     public static var workingDirectory = ""
     
-    static var numberOfIndexedSites = 0
+    static var numberOfProcessedSites = 0
     
     public var url: String
-    var indexed: Bool = false
+    var processed: Bool = false
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
@@ -26,7 +26,7 @@ public struct Site: Codable, Sendable {
     
     public enum CodingKeys: String, CodingKey {
         case url
-        case indexed
+        case processed
         case numberOfVisits
         case lastVisitTime
         case numberOfReports
@@ -59,8 +59,8 @@ public struct Site: Codable, Sendable {
         var result: Site? = nil
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Site.prefix) { (Key, site: Site, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
-            if !site.indexed {
-                NSLog("!site.indexed site: \(site)")
+            if !site.processed {
+                NSLog("!site.processed site: \(site)")
                 stop.pointee = true
                 result = site
             } else {
@@ -77,9 +77,15 @@ public struct Site: Codable, Sendable {
             //print("crawlNext nextLink: \(nextLink.url)")
             do {
                 try await Link.process(link: link)
-                await nextSite.updateSiteIndexedAndSave()
+                await nextSite.updateSiteProcessedAndSave()
             } catch {
                 NSLog("Site crawlNext Link.process error: \(error)")
+                switch error {
+                case LinkProcessError.notAllowed:
+                    await nextSite.updateSiteProcessedAndSave()
+                default:
+                    break
+                }
             }
         } else {
             NSLog("can't find any site to process")
@@ -87,12 +93,12 @@ public struct Site: Codable, Sendable {
         }
     }
     
-    mutating func updateSiteIndexedAndSave() async {
-        //NSLog("updateSiteIndexedAndSave")
-        indexed = true
+    mutating func updateSiteProcessedAndSave() async {
+        //NSLog("updateSiteProcessedAndSave")
+        processed = true
         await save()
-        Site.numberOfIndexedSites += 1
-        NSLog("indexed site #\(Site.numberOfIndexedSites)")
+        Site.numberOfProcessedSites += 1
+        NSLog("Processed site #\(Site.numberOfProcessedSites)")
     }
     
     // MARK: - Saving
