@@ -57,10 +57,10 @@ public struct Site: Codable, Sendable {
     static func nextSiteToProcess() async -> Site? {
         //NSLog("nextLinkToProcess")
         var result: Site? = nil
-        //let processTimeThreshold = await Global.global().processTimeThreshold
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Site.prefix) { (Key, site: Site, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if !site.indexed {
+                NSLog("!site.indexed site: \(site)")
                 stop.pointee = true
                 result = site
             } else {
@@ -71,7 +71,7 @@ public struct Site: Codable, Sendable {
     }
     
     public static func crawlNext() async {
-        //NSLog("crawlNext")
+        NSLog("Site.crawlNext")
         if let nextSite = await nextSiteToProcess(),
            let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
             //print("crawlNext nextLink: \(nextLink.url)")

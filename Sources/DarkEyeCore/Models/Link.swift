@@ -229,7 +229,7 @@ public struct Link: Codable, Sendable {
     }
     
     public static func crawlNext() async throws {
-        //NSLog("crawlNext")
+        NSLog("Link.crawlNext")
         if let nextLink = await nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
             try await Link.process(link: nextLink)
