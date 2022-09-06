@@ -1,6 +1,7 @@
 import XCTest
 @testable import DarkEyeCore
 
+/*
 final class WordLinkTests: TestsBase {
     
     override func asyncSetup() async {
@@ -140,4 +141,4 @@ final class WordLinkTests: TestsBase {
         XCTAssertEqual(wordLink.wordCount, 3)
         await asyncTearDown()
     }
-}
+}*/

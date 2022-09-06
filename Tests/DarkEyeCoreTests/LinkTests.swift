@@ -210,8 +210,8 @@ final class LinkTests: TestsBase {
         let link1 = Link(url: Global.mainUrl)
         await Link.process(link: link1)
         try? await Task.sleep(seconds: timeDelay)
-        if let word: Word = await database.valueForKey(Word.prefix + "jump") {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("jump"))
+        if let word: Word = await database.valueForKey(Word.prefix + "jump-" + Global.mainUrl) {
+            XCTAssertTrue(word.text.lowercased().contains("jump"))
         } else {
             XCTFail()
         }

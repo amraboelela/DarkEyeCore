@@ -43,7 +43,7 @@ public struct Global: Codable, Sendable {
         } catch {
             NSLog("Global save failed.")
             //exit(1)
-            Task.sleep(seconds: 1.0)
+            try? await Task.sleep(seconds: 1.0)
         }
     }
 }

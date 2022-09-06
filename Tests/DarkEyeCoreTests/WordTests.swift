@@ -16,25 +16,25 @@ final class WordTests: TestsBase {
         var link = Link(url: Global.mainUrl)
         var result  = await Word.index(link: link)
         XCTAssertEqual(result, .complete)
-        if let word: Word = await database.valueForKey(Word.prefix + "hidden") {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.links[0].urlHash, Global.mainUrl.hashBase32(numberOfDigits: 12))
+        if let word: Word = await database.valueForKey(Word.prefix + "hidden-" + Global.mainUrl) {
+            XCTAssertTrue(word.text.lowercased().contains("hidden"))
+            XCTAssertEqual(word.url, Global.mainUrl)
         } else {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "body") {
+        if let _: Word = await database.valueForKey(Word.prefix + "body-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "a") {
+        if let _: Word = await database.valueForKey(Word.prefix + "a-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "in") {
+        if let _: Word = await database.valueForKey(Word.prefix + "in-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "of") {
+        if let _: Word = await database.valueForKey(Word.prefix + "of-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "to") {
+        if let _: Word = await database.valueForKey(Word.prefix + "to-" + Global.mainUrl) {
             XCTFail()
         }
         
@@ -43,34 +43,6 @@ final class WordTests: TestsBase {
         XCTAssertEqual(result, .complete)
         await asyncTearDown()
     }
-    
-    /*func testIndexNextWord() async {
-        await asyncSetup()
-        let secondsDelay = 5.0
-        let link = Link(url: Global.mainUrl)
-        let indexResult = try! await Word.indexNextWord(link: link)
-        XCTAssertEqual(indexResult, .done)
-        try? await Task.sleep(seconds: secondsDelay + 5)
-        if let word: Word = await database.valueForKey(Word.prefix + "accepted") {
-            XCTAssertTrue(word.links[0].text.lowercased().contains("accepted"))
-            XCTAssertEqual(word.links[0].urlHash, Global.mainUrl.hashBase32(numberOfDigits: 12))
-        } else {
-            XCTFail()
-        }
-        if let _: Word = await database.valueForKey(Word.prefix + "a") {
-            XCTFail()
-        }
-        if let _: Word = await database.valueForKey(Word.prefix + "in") {
-            XCTFail()
-        }
-        if let _: Word = await database.valueForKey(Word.prefix + "of") {
-            XCTFail()
-        }
-        if let _: Word = await database.valueForKey(Word.prefix + "to") {
-            XCTFail()
-        }
-        await asyncTearDown()
-    }*/
     
     func testWordsFromText() async {
         await asyncSetup()

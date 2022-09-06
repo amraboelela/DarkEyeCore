@@ -9,7 +9,6 @@
 import Foundation
 
 public enum WordIndexingStatus {
-    //case done     // done with next word
     case complete // finished all the words up to 500 word
     case ended    // ended as it can't run
     case failed
@@ -18,7 +17,14 @@ public enum WordIndexingStatus {
 public struct Word: Codable, Sendable {
     public static let prefix = "word-"
 
-    public var links: [WordLink]
+    //public var links: [WordLink]
+    public var word: String
+    public var url: String
+    //var otherWords: Set<String>?
+    public var text: String
+    public var wordCount: Int
+    public var numberOfVisits: Int = 0
+    public var lastVisitTime: Int = 0
     
     // MARK: - Indexing
     
@@ -44,18 +50,19 @@ public struct Word: Codable, Sendable {
             do {
                 let wordText = wordsArray[i].lowercased()
                 if wordText.count > 2 {
-                    let key = prefix + wordText.lowercased()
-                    let word = Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
-                    if var dbWord: Word = await database.valueForKey(key) {
-                        WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
+                    let key = prefix + wordText.lowercased() + "-" + link.url
+                    let word = Word(word: wordText, url: link.url, text: text, wordCount: counts[wordText] ?? 0) //Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
+                    /*if var dbWord: Word = await database.valueForKey(key) {
+                        word.merge(with: dbWord)
+                        //WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                         try await database.setValue(dbWord, forKey: key)
-                    } else {
-                        try await database.setValue(word, forKey: key)
-                    }
+                    } else {*/
+                    try await database.setValue(word, forKey: key)
+                    //}
                 }
             } catch {
                 NSLog("Word index:link database.setValue failed.")
-                Task.sleep(seconds: 1.0)
+                try? await Task.sleep(seconds: 1.0)
                 return .failed
             }
         }
@@ -63,6 +70,19 @@ public struct Word: Codable, Sendable {
     }
     
     // MARK: - Helpers
+    
+    /*func merge(with word: Word) {
+        //print("merge wordLinks.count: \(wordLinks.count) withWordLinks.count: \(withWordLinks.count)")
+        for withWordLink in withWordLinks {
+            if let index = wordLinks.firstIndex(where: { $0.urlHash == withWordLink.urlHash }) {
+                var wordLink = wordLinks[index]
+                wordLink.mergeWith(wordLink: withWordLink)
+                wordLinks[index] = wordLink
+            } else {
+                wordLinks.append(withWordLink)
+            }
+        }
+    }*/
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()

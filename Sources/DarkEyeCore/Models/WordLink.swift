@@ -9,6 +9,7 @@
 import Foundation
 import SwiftEncrypt
 
+/*
 public struct WordLink: Codable, Sendable {
     public var urlHash: String
     public var word: String
@@ -103,4 +104,4 @@ public struct WordLink: Codable, Sendable {
             wordCount += wordLink.wordCount
         }
     }
-}
+}*/

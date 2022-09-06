@@ -77,7 +77,7 @@ public struct Site: Codable, Sendable {
             try await database.setValue(self, forKey: key)
         } catch {
             NSLog("Link save failed.")
-            Task.sleep(seconds: 1.0)
+            try? await Task.sleep(seconds: 1.0)
         }
     }
     

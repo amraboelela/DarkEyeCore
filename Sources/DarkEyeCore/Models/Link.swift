@@ -258,12 +258,14 @@ public struct Link: Codable, Sendable {
         } else {
             await myLink.saveChildren()
             switch await Word.index(link: myLink) {
-            case .done:
-                await myLink.updateLinkIndexedAndSave()
+            //case .done:
+            //    await myLink.updateLinkIndexedAndSave()
             case .complete:
                 await myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
+            case .failed:
+                NSLog("indexNextWord returned .failed")
             }
         }
     }
@@ -320,7 +322,7 @@ public struct Link: Codable, Sendable {
             try await database.setValue(self, forKey: key)
         } catch {
             NSLog("Link save failed.")
-            Task.sleep(seconds: 1.0)
+            try? await Task.sleep(seconds: 1.0)
         }
     }
     
