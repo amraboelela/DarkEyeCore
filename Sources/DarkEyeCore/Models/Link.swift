@@ -267,7 +267,7 @@ public struct Link: Codable, Sendable {
     }
     
     mutating func updateLinkProcessedAndSave() async {
-        NSLog("updateLinkProcessedAndSave")
+        //NSLog("updateLinkProcessedAndSave")
         lastProcessTime = Date.secondsSinceReferenceDate
         await save()
         Link.numberOfIndexedLinks += 1
