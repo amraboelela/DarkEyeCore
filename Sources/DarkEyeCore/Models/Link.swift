@@ -188,7 +188,7 @@ public struct Link: Codable, Sendable {
     
     // MARK: - Accessor functions
     
-    func site() async -> Site? {
+    public func site() async -> Site? {
         if let site: Site = await database.valueForKey(Site.prefix + url.onionID) {
             return site
         }
