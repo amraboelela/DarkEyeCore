@@ -56,7 +56,7 @@ public struct WordLink: Codable, Hashable, Sendable {
                 if wordText.count > 2 {
                     let key = prefix + wordText.lowercased() + "-" + link.url
                     let word = WordLink(word: wordText, url: link.url, text: text, wordCount: counts[wordText] ?? 0) //Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
-                    /*if var dbWord: Word = await database.valueForKey(key) {
+                    /*if var dbWord: Word = await database.value(forKey: key) {
                         word.merge(with: dbWord)
                         //WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
                         try await database.setValue(dbWord, forKey: key)
@@ -91,7 +91,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         }
         var result = Array(resultSet)
         result = await result.asyncFilter { wordLink in
-            if let site: Site = await database.valueForKey(Site.prefix + wordLink.url.onionID) {
+            if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
                 if site.blocked ?? false {
                     return false
                 }

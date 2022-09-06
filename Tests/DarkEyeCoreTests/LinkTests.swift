@@ -180,20 +180,18 @@ final class LinkTests: TestsBase {
     
     func testSave() async {
         await asyncSetup()
-        var link = Link(url: "http://hanein1.onion")
+        var link = Link(url: "http://hanein2.onion")
+        await link.save()
+        link = Link(url: "http://hanein1.onion")
         await link.save()
         let firstKey = await Link.firstKey()
         XCTAssertEqual(firstKey, "link-http://hanein1.onion")
         XCTAssertEqual(link.hash, "http://hanein1.onion".hashBase32(numberOfDigits: 12))
-        if let hashLink: HashLink = await database.valueForKey(HashLink.prefix + "http://hanein1.onion".hashBase32(numberOfDigits: 12)) {
+        if let hashLink: HashLink = await database.value(forKey: HashLink.prefix + "http://hanein1.onion".hashBase32(numberOfDigits: 12)) {
             XCTAssertEqual(hashLink.url, "http://hanein1.onion")
         } else {
             XCTFail()
         }
-        link = Link(url: "http://hanein2.onion")
-        await link.save()
-        link = Link(url: "http://hanein1.onion")
-        await link.save()
         await asyncTearDown()
     }
     
@@ -210,7 +208,7 @@ final class LinkTests: TestsBase {
         let link1 = Link(url: Global.mainUrl)
         await Link.process(link: link1)
         try? await Task.sleep(seconds: timeDelay)
-        if let word: WordLink = await database.valueForKey(WordLink.prefix + "jump-" + Global.mainUrl) {
+        if let word: WordLink = await database.value(forKey: WordLink.prefix + "jump-" + Global.mainUrl) {
             XCTAssertTrue(word.text.lowercased().contains("jump"))
         } else {
             XCTFail()
@@ -227,13 +225,13 @@ final class LinkTests: TestsBase {
         crawler.canRun = true
         await Link.process(link: link)
         try? await Task.sleep(seconds: 5)
-        if let dbLink: Link = await database.valueForKey(Link.prefix + url) {
+        if let dbLink: Link = await database.value(forKey: Link.prefix + url) {
             XCTAssertNotEqual(dbLink.lastProcessTime, 0)
         } else {
             XCTFail()
         }
         //print("testProcessBlockedLink after if let dbLink: Link ")
-        if let _: WordLink = await database.valueForKey(WordLink.prefix + "library") {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "library") {
             XCTFail()
         }
         await asyncTearDown()
@@ -244,10 +242,10 @@ final class LinkTests: TestsBase {
         var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.lastProcessTime = Date.secondsSinceReferenceDate
         await link.saveChildrenIfNeeded()
-        if let _: Link = await database.valueForKey(Link.prefix + "exampleenglish.onion") {
+        if let _: Link = await database.value(forKey: Link.prefix + "exampleenglish.onion") {
             XCTFail()
         }
-        if let _: Link = await database.valueForKey(Link.prefix + "examplejapan.onion") {
+        if let _: Link = await database.value(forKey: Link.prefix + "examplejapan.onion") {
             XCTFail()
         }
         await asyncTearDown()
@@ -258,7 +256,7 @@ final class LinkTests: TestsBase {
         var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         XCTAssertEqual(link.lastProcessTime, 0)
         await link.saveChildren()
-        if let _: Link = await database.valueForKey(Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
+        if let _: Link = await database.value(forKey: Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
         } else {
             XCTFail()
         }
@@ -268,7 +266,7 @@ final class LinkTests: TestsBase {
     func crawlNext() async {
         await asyncSetup()
         await Link.crawlNext()
-        if let _: Link = await database.valueForKey(Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
+        if let _: Link = await database.value(forKey: Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
         } else {
             XCTFail()
         }

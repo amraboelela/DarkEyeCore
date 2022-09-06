@@ -22,7 +22,7 @@ public class Crawler: @unchecked Sendable {
     var isRunning = false
     
     init() async {
-        if let _: Link = await database.valueForKey(Link.prefix + Global.mainUrl) {
+        if let _: Link = await database.value(forKey: Link.prefix + Global.mainUrl) {
             NSLog("Crawler init, " + Link.prefix + Global.mainUrl + " already exists")
         } else {
             NSLog("Crawler init, creating: " + Link.prefix + Global.mainUrl)
@@ -57,7 +57,7 @@ public class Crawler: @unchecked Sendable {
         }
         try? await Task.sleep(seconds: 1.0)
         isRunning = true
-        await Link.crawlNext()
+        await Site.crawlNext()
         Task(priority: .background) {
             if canRun {
                 await crawl()

@@ -85,7 +85,7 @@ public struct User: Codable, Hashable, Sendable {
     }
 
     public static func userWith(username: String) async -> User? {
-        if let user: User = await database.valueForKey(prefix + username) {
+        if let user: User = await database.value(forKey: prefix + username) {
             return user
         } else {
             return nil
@@ -109,7 +109,7 @@ public struct User: Codable, Hashable, Sendable {
     // MARK: - Public functions
 
     public static func usernameExists(_ username: String) async -> Bool {
-        if let _: User = await database.valueForKey(User.prefix + username) {
+        if let _: User = await database.value(forKey: User.prefix + username) {
             return true
         } else {
             return false

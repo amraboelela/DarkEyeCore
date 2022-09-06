@@ -16,7 +16,7 @@ public struct HashLink: Codable, Sendable {
     // MARK: - Accessors
     
     public func link() async -> Link {
-        if let result: Link = await database.valueForKey(Link.prefix + url) {
+        if let result: Link = await database.value(forKey: Link.prefix + url) {
             return result
         }
         return Link(url: url)
@@ -25,7 +25,7 @@ public struct HashLink: Codable, Sendable {
     // MARK: - Reading
     
     public static func linkWith(hash: String) async -> Link? {
-        if let hashLink: HashLink = await database.valueForKey(HashLink.prefix + hash) {
+        if let hashLink: HashLink = await database.value(forKey: HashLink.prefix + hash) {
             return await hashLink.link()
         }
         return nil

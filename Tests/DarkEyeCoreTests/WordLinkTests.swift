@@ -16,25 +16,25 @@ final class WordLinkTests: TestsBase {
         var link = Link(url: Global.mainUrl)
         var result  = await WordLink.index(link: link)
         XCTAssertEqual(result, .complete)
-        if let word: WordLink = await database.valueForKey(WordLink.prefix + "hidden-" + Global.mainUrl) {
+        if let word: WordLink = await database.value(forKey: WordLink.prefix + "hidden-" + Global.mainUrl) {
             XCTAssertTrue(word.text.lowercased().contains("hidden"))
             XCTAssertEqual(word.url, Global.mainUrl)
         } else {
             XCTFail()
         }
-        if let _: WordLink = await database.valueForKey(WordLink.prefix + "body-" + Global.mainUrl) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "body-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: WordLink = await database.valueForKey(WordLink.prefix + "a-" + Global.mainUrl) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "a-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: WordLink = await database.valueForKey(WordLink.prefix + "in-" + Global.mainUrl) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "in-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: WordLink = await database.valueForKey(WordLink.prefix + "of-" + Global.mainUrl) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "of-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: WordLink = await database.valueForKey(WordLink.prefix + "to-" + Global.mainUrl) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "to-" + Global.mainUrl) {
             XCTFail()
         }
         
@@ -119,7 +119,7 @@ final class WordLinkTests: TestsBase {
        if wordLinksCount >= 1 {
            let blockedKey = Site.prefix + wordLinks[0].url.onionID
            print("blockedKey: \(blockedKey)")
-           if var site: Site = await database.valueForKey(blockedKey) {
+           if var site: Site = await database.value(forKey: blockedKey) {
                //var link = await hashLink.link()
                site.blocked = true
                await site.save()

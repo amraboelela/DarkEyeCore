@@ -16,7 +16,7 @@ final class HashLinkTests: TestsBase {
         var link = Link(url: url, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         await link.save()
         
-        if let hashLink: HashLink = await database.valueForKey(HashLink.prefix + link.hash) {
+        if let hashLink: HashLink = await database.value(forKey: HashLink.prefix + link.hash) {
             XCTAssertEqual(hashLink.url, url)
         }
     }

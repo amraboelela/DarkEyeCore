@@ -68,6 +68,18 @@ public struct Site: Codable, Sendable {
         return result
     }
     
+    public static func crawlNext() async {
+        //NSLog("crawlNext")
+        if let nextSite = await nextSiteToProcess(),
+           let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
+            //print("crawlNext nextLink: \(nextLink.url)")
+            await Link.process(link: link)
+        } else {
+            NSLog("can't find any site to process")
+            await Link.crawlNext()
+        }
+    }
+    
     // MARK: - Saving
     
     public mutating func save() async {

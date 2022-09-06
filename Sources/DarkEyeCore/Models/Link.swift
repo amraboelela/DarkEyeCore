@@ -189,7 +189,7 @@ public struct Link: Codable, Sendable {
     // MARK: - Accessor functions
     
     public func site() async -> Site? {
-        if let site: Site = await database.valueForKey(Site.prefix + url.onionID) {
+        if let site: Site = await database.value(forKey: Site.prefix + url.onionID) {
             return site
         }
         return nil
@@ -233,12 +233,12 @@ public struct Link: Codable, Sendable {
             await Link.process(link: nextLink)
         } else {
             //await updateCurrentWordIndex()
-            if let nextLink = await nextLinkToProcess() {
+            /*if let nextLink = await nextLinkToProcess() {
                 //NSLog("crawlNext nextLink: \(nextLink.url)")
                 await Link.process(link: nextLink)
-            } else {
-                NSLog("can't find any link to process")
-            }
+            } else {*/
+            NSLog("can't find any link to process")
+            //}
         }
     }
     
@@ -300,7 +300,7 @@ public struct Link: Codable, Sendable {
     mutating func saveChildren() async {
         NSLog("saveChildren")
         for (_, childURL) in urls {
-            if let _: Link = await database.valueForKey(Link.prefix + childURL) {
+            if let _: Link = await database.value(forKey: Link.prefix + childURL) {
             } else {
                 var link = Link(url: childURL)
                 await link.save()
@@ -312,7 +312,7 @@ public struct Link: Codable, Sendable {
     
     public mutating func save() async {
         do {
-            if let _: Link = await database.valueForKey(key) {
+            if let _: Link = await database.value(forKey: key) {
             } else {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)

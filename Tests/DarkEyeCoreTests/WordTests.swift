@@ -17,25 +17,25 @@ final class WordTests: TestsBase {
         var link = Link(url: Global.mainUrl)
         var result  = await Word.index(link: link)
         XCTAssertEqual(result, .complete)
-        if let word: Word = await database.valueForKey(Word.prefix + "hidden-" + Global.mainUrl) {
+        if let word: Word = await database.value(forKey: Word.prefix + "hidden-" + Global.mainUrl) {
             XCTAssertTrue(word.text.lowercased().contains("hidden"))
             XCTAssertEqual(word.url, Global.mainUrl)
         } else {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "body-" + Global.mainUrl) {
+        if let _: Word = await database.value(forKey: Word.prefix + "body-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "a-" + Global.mainUrl) {
+        if let _: Word = await database.value(forKey: Word.prefix + "a-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "in-" + Global.mainUrl) {
+        if let _: Word = await database.value(forKey: Word.prefix + "in-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "of-" + Global.mainUrl) {
+        if let _: Word = await database.value(forKey: Word.prefix + "of-" + Global.mainUrl) {
             XCTFail()
         }
-        if let _: Word = await database.valueForKey(Word.prefix + "to-" + Global.mainUrl) {
+        if let _: Word = await database.value(forKey: Word.prefix + "to-" + Global.mainUrl) {
             XCTFail()
         }
         

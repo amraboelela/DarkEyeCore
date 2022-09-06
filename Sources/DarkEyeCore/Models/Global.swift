@@ -16,7 +16,7 @@ public struct Global: Codable, Sendable {
     public var processTimeThreshold: Int // any link with last process time smaller, need to be processed
     
     public static func global() async -> Global {
-        if let result: Global = await database.valueForKey(Global.prefix) {
+        if let result: Global = await database.value(forKey: Global.prefix) {
             return result
         }
         return Global(processTimeThreshold: 1)
