@@ -15,7 +15,6 @@ public struct Site: Codable, Sendable {
     public static let prefix = "site-"
     public static var workingDirectory = ""
     
-    //public var onionID: String
     public var url: String
     var indexed: Bool = false
     public var numberOfVisits = 0
@@ -24,7 +23,6 @@ public struct Site: Codable, Sendable {
     public var blocked: Bool?
     
     public enum CodingKeys: String, CodingKey {
-        //case onionID
         case url
         case indexed
         case numberOfVisits

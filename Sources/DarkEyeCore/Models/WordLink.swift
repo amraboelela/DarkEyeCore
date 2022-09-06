@@ -14,17 +14,21 @@ public enum WordIndexingStatus {
     case failed
 }
 
-public struct WordLink: Codable, Sendable {
+public struct WordLink: Codable, Hashable, Sendable {
     public static let prefix = "wordlink-"
 
-    //public var links: [WordLink]
     public var word: String
     public var url: String
-    //var otherWords: Set<String>?
     public var text: String
     public var wordCount: Int
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0
+    
+    // MARK: - Accessors
+    
+    var score: Int {
+        return numberOfVisits * 1000 + wordCount + lastVisitTime
+    }
     
     // MARK: - Indexing
     
@@ -67,6 +71,47 @@ public struct WordLink: Codable, Sendable {
             }
         }
         return .complete
+    }
+    
+    // MARK: - Search
+    
+    public static func wordLinks(
+        withSearchText searchText: String,
+        count: Int
+    ) async -> [WordLink] {
+        var resultSet = Set<WordLink>()
+        let searchWords = WordLink.words(fromText: searchText, lowerCase: true)
+        for searchWord in searchWords {
+            if searchWords.count > 0 && searchWord.count <= 2 {
+                continue
+            }
+            await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: WordLink.prefix + searchWord) { (key, wordLink: WordLink, stop) in
+                resultSet.insert(wordLink)
+            }
+        }
+        var result = Array(resultSet)
+        result = await result.asyncFilter { wordLink in
+            if let site: Site = await database.valueForKey(Site.prefix + wordLink.url.onionID) {
+                if site.blocked ?? false {
+                    return false
+                }
+            } else {
+                NSLog("Couldn't get site from wordLink: \(wordLink)")
+                return false
+            }
+            return true
+        }
+        result = result.sorted { $0.score > $1.score }
+        if result.count > count {
+            result.removeLast(result.count - count)
+        }
+        return result
+    }
+    
+    // MARK: - Delegates
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(word + "-" + url)
     }
     
     // MARK: - Helpers

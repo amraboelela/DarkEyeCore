@@ -88,4 +88,48 @@ final class WordLinkTests: TestsBase {
         XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
         await asyncTearDown()
     }
+    
+    
+   func testWordLinksWithSearchText() async {
+       await asyncSetup()
+       Link.numberOfProcessedLinks = 0
+       let crawler = await Crawler.shared()
+       await crawler.start()
+       let secondsDelay = 10.0
+       let countLimit = 1000
+       try? await Task.sleep(seconds: secondsDelay)
+       crawler.canRun = false
+       try? await Task.sleep(seconds: 2.0)
+       var wordLinks = await WordLink.wordLinks(withSearchText: "to jump", count: countLimit)
+       var wordLinksCount = wordLinks.count
+       print("wordLinksCount 1: \(wordLinksCount)")
+       print("wordLinks 1: \(wordLinks)")
+       if wordLinksCount > 0 {
+           for wordLink in wordLinks {
+               XCTAssertEqual(wordLink.word, "jump")
+           }
+       } else {
+           XCTFail()
+       }
+       try? await Task.sleep(seconds: 1.0)
+       wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
+       wordLinksCount = wordLinks.count
+       print("wordLinksCount 2: \(wordLinksCount)")
+       print("wordLinks 2: \(wordLinks)")
+       if wordLinksCount >= 1 {
+           let blockedKey = Site.prefix + wordLinks[0].url.onionID
+           print("blockedKey: \(blockedKey)")
+           if var site: Site = await database.valueForKey(blockedKey) {
+               //var link = await hashLink.link()
+               site.blocked = true
+               await site.save()
+           }
+           wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
+           //print("wordLinks: \(wordLinks)")
+           XCTAssertEqual(wordLinks.count, 0)
+       } else {
+           XCTFail()
+       }
+       await asyncTearDown()
+   }
 }
