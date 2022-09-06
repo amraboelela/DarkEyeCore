@@ -55,14 +55,8 @@ public struct WordLink: Codable, Hashable, Sendable {
                 let wordText = wordsArray[i].lowercased()
                 if wordText.count > 2 {
                     let key = prefix + wordText.lowercased() + "-" + link.url
-                    let word = WordLink(word: wordText, url: link.url, text: text, wordCount: counts[wordText] ?? 0) //Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
-                    /*if var dbWord: Word = await database.value(forKey: key) {
-                        word.merge(with: dbWord)
-                        //WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
-                        try await database.setValue(dbWord, forKey: key)
-                    } else {*/
+                    let word = WordLink(word: wordText, url: link.url, text: text, wordCount: counts[wordText] ?? 0)
                     try await database.setValue(word, forKey: key)
-                    //}
                 }
             } catch {
                 NSLog("Word index:link database.setValue failed.")

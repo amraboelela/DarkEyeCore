@@ -248,14 +248,14 @@ public struct Link: Codable, Sendable {
         var myLink = link
         if await myLink.blocked() == true || myLink.html == nil {
             Link.remove(url: myLink.url)
-            await myLink.updateLinkProcessedAndSave()
+            await myLink.updateLinkIndexedAndSave()
         } else if myLink.html == nil {
-            await myLink.updateLinkProcessedAndSave()
+            await myLink.updateLinkIndexedAndSave()
         } else {
             await myLink.saveChildren()
             switch await WordLink.index(link: myLink) {
             case .complete:
-                await myLink.updateLinkProcessedAndSave()
+                await myLink.updateLinkIndexedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
                 throw LinkProcessError.ended
@@ -266,7 +266,7 @@ public struct Link: Codable, Sendable {
         }
     }
     
-    mutating func updateLinkProcessedAndSave() async {
+    mutating func updateLinkIndexedAndSave() async {
         //NSLog("updateLinkProcessedAndSave")
         lastProcessTime = Date.secondsSinceReferenceDate
         await save()
@@ -299,11 +299,10 @@ public struct Link: Codable, Sendable {
             if let _: Link = await database.value(forKey: key) {
             } else {
                 let hashLink = HashLink(url: url)
+                let site = Site(url: url)
+                try await database.setValue(site, forKey: Site.prefix + url.onionID)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
             }
-            var site = Site(url: url)
-            site.indexed = true
-            try await database.setValue(site, forKey: Site.prefix + url.onionID)
             try await database.setValue(self, forKey: key)
         } catch {
             NSLog("Link save failed.")

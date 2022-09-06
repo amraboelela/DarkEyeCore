@@ -72,13 +72,12 @@ public struct Site: Codable, Sendable {
     
     public static func crawlNext() async {
         NSLog("Site.crawlNext")
-        if let nextSite = await nextSiteToProcess(),
+        if var nextSite = await nextSiteToProcess(),
            let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
             //print("crawlNext nextLink: \(nextLink.url)")
             do {
                 try await Link.process(link: link)
-                numberOfIndexedSites += 1
-                NSLog("indexed site #\(numberOfIndexedSites)")
+                await nextSite.updateSiteIndexedAndSave()
             } catch {
                 NSLog("Site crawlNext Link.process error: \(error)")
             }
@@ -86,6 +85,14 @@ public struct Site: Codable, Sendable {
             NSLog("can't find any site to process")
             try? await Link.crawlNext()
         }
+    }
+    
+    mutating func updateSiteIndexedAndSave() async {
+        //NSLog("updateSiteIndexedAndSave")
+        indexed = true
+        await save()
+        Site.numberOfIndexedSites += 1
+        NSLog("indexed site #\(Site.numberOfIndexedSites)")
     }
     
     // MARK: - Saving
