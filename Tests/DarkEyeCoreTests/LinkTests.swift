@@ -210,7 +210,7 @@ final class LinkTests: TestsBase {
         let link1 = Link(url: Global.mainUrl)
         await Link.process(link: link1)
         try? await Task.sleep(seconds: timeDelay)
-        if let word: Word = await database.valueForKey(Word.prefix + "jump-" + Global.mainUrl) {
+        if let word: WordLink = await database.valueForKey(WordLink.prefix + "jump-" + Global.mainUrl) {
             XCTAssertTrue(word.text.lowercased().contains("jump"))
         } else {
             XCTFail()
@@ -233,7 +233,7 @@ final class LinkTests: TestsBase {
             XCTFail()
         }
         //print("testProcessBlockedLink after if let dbLink: Link ")
-        if let _: Word = await database.valueForKey(Word.prefix + "library") {
+        if let _: WordLink = await database.valueForKey(WordLink.prefix + "library") {
             XCTFail()
         }
         await asyncTearDown()

@@ -2,82 +2,76 @@
 //  WordLink.swift
 //  DarkEyeCore
 //
-//  Created by Amr Aboelela on 6/14/22.
+//  Created by Amr Aboelela on 6/10/22.
 //  Copyright © 2022 Amr Aboelela.
 //
 
 import Foundation
-import SwiftEncrypt
 
-/*
+public enum WordIndexingStatus {
+    case complete // finished all the words up to 500 word
+    case ended    // ended as it can't run
+    case failed
+}
+
 public struct WordLink: Codable, Sendable {
-    public var urlHash: String
+    public static let prefix = "wordlink-"
+
+    //public var links: [WordLink]
     public var word: String
-    var otherWords: Set<String>?
+    public var url: String
+    //var otherWords: Set<String>?
     public var text: String
     public var wordCount: Int
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0
     
-    public enum CodingKeys: String, CodingKey {
-        case urlHash
-        case word
-        case text
-        case wordCount
-        case numberOfVisits
-        case lastVisitTime
-    }
+    // MARK: - Indexing
     
-    // MARK: - Accessors
-    
-    public func hashLink() async -> HashLink? {
-        if let result: HashLink = await database.valueForKey(HashLink.prefix + urlHash) {
-            return result
+    public static func index(link: Link) async -> WordIndexingStatus {
+        NSLog("index link: \(link)")
+        var wordsArray = words(fromText: link.text)
+        let countLimit = 40
+        if wordsArray.count > countLimit {
+            wordsArray.removeLast(wordsArray.count - countLimit)
         }
-        return nil
-    }
-    
-    var score: Int {
-        return numberOfVisits * 1000 + wordCount + lastVisitTime
-    }
-    
-    // MARK: - Search
-    
-    public static func wordLinks(
-        withSearchText searchText: String,
-        count: Int
-    ) async -> [WordLink] {
-        var result = [WordLink]()
-        let searchWords = Word.words(fromText: searchText, lowerCase: true)
-        for searchWord in searchWords {
-            if searchWords.count > 0 && searchWord.count <= 2 {
-                continue
+        if wordsArray.count == 0 {
+            return .complete
+        }
+        let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
+        NSLog("indexing, wordsArray: \(wordsArray)")
+        let text = contextStringFrom(array: wordsArray, atIndex: 0)
+        let crawler = await Crawler.shared()
+        for i in (0..<wordsArray.count) {
+            let dbClosed = await database.closed()
+            if !crawler.canRun || dbClosed {
+                return .ended
             }
-            await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Word.prefix + searchWord) { (key, word: Word, stop) in
-                WordLink.merge(wordLinks: &result, withWordLinks: word.links)
-            }
-            result = await result.asyncFilter { wordLink in
-                if let link = await wordLink.hashLink()?.link() {
-                    if await link.blocked() == true {
-                        return false
-                    }
-                } else {
-                    NSLog("Couldn't get wordLink for urlHash: \(wordLink.urlHash)")
-                    return false
+            do {
+                let wordText = wordsArray[i].lowercased()
+                if wordText.count > 2 {
+                    let key = prefix + wordText.lowercased() + "-" + link.url
+                    let word = WordLink(word: wordText, url: link.url, text: text, wordCount: counts[wordText] ?? 0) //Word(links: [WordLink(urlHash: link.hash, word: wordText, text: text, wordCount: counts[wordText] ?? 0)])
+                    /*if var dbWord: Word = await database.valueForKey(key) {
+                        word.merge(with: dbWord)
+                        //WordLink.merge(wordLinks: &dbWord.links, withWordLinks: word.links)
+                        try await database.setValue(dbWord, forKey: key)
+                    } else {*/
+                    try await database.setValue(word, forKey: key)
+                    //}
                 }
-                return true
+            } catch {
+                NSLog("Word index:link database.setValue failed.")
+                try? await Task.sleep(seconds: 1.0)
+                return .failed
             }
         }
-        result = result.sorted { $0.score > $1.score }
-        if result.count > count {
-            result.removeLast(result.count - count)
-        }
-        return result
+        return .complete
     }
     
     // MARK: - Helpers
     
-    static func merge(wordLinks: inout [WordLink], withWordLinks: [WordLink]) {
+    /*func merge(with word: Word) {
         //print("merge wordLinks.count: \(wordLinks.count) withWordLinks.count: \(withWordLinks.count)")
         for withWordLink in withWordLinks {
             if let index = wordLinks.firstIndex(where: { $0.urlHash == withWordLink.urlHash }) {
@@ -88,20 +82,50 @@ public struct WordLink: Codable, Sendable {
                 wordLinks.append(withWordLink)
             }
         }
+    }*/
+    
+    static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
+        var result = [String]()
+        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,.<>\\|"))
+        let words = text.components(separatedBy: whiteCharacters)
+        let commonWords: Set = [
+            "and",
+            "the",
+            "from",
+            "for",
+            "not",
+            "with",
+            "but",
+            "any",
+            "its",
+            "can"
+        ]
+        for word in words {
+            if word.count > 0 {
+                let finalWords = word.camelCaseWords
+                for finalWord in finalWords {
+                    if finalWord.count < 16 {
+                        let lowerCaseWord = finalWord.lowercased()
+                        if commonWords.contains(lowerCaseWord) {
+                            continue
+                        }
+                        if lowerCase {
+                            result.append(lowerCaseWord)
+                        } else {
+                            result.append(finalWord)
+                        }
+                    }
+                }
+            }
+        }
+        return result
     }
     
-    mutating func mergeWith(wordLink: WordLink) {
-        if urlHash == wordLink.urlHash &&
-            word != wordLink.word &&
-            otherWords?.contains(wordLink.word) != true {
-            if otherWords == nil {
-                otherWords = Set<String>()
-            }
-            otherWords?.insert(wordLink.word)
-            if wordLink.text != text {
-                text += "..." + wordLink.text
-            }
-            wordCount += wordLink.wordCount
-        }
+    static func contextStringFrom(array: [String], atIndex: Int) -> String {
+        let wordsCount = 20
+        let halfOfCount = wordsCount / 2
+        let startIndex = atIndex - halfOfCount < 0 ? 0 : atIndex - halfOfCount
+        let endIndex = startIndex + wordsCount >= array.count ? array.count - 1 : startIndex + wordsCount
+        return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
-}*/
+}

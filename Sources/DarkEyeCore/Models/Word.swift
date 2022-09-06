@@ -7,7 +7,7 @@
 //
 
 import Foundation
-
+/*
 public enum WordIndexingStatus {
     case complete // finished all the words up to 500 word
     case ended    // ended as it can't run
@@ -128,4 +128,4 @@ public struct Word: Codable, Sendable {
         let endIndex = startIndex + wordsCount >= array.count ? array.count - 1 : startIndex + wordsCount
         return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
-}
+}*/

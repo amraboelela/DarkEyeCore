@@ -257,7 +257,7 @@ public struct Link: Codable, Sendable {
             await myLink.updateLinkProcessedAndSave()
         } else {
             await myLink.saveChildren()
-            switch await Word.index(link: myLink) {
+            switch await WordLink.index(link: myLink) {
             //case .done:
             //    await myLink.updateLinkIndexedAndSave()
             case .complete:

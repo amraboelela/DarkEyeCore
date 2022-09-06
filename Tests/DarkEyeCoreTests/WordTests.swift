@@ -1,6 +1,7 @@
 import XCTest
 @testable import DarkEyeCore
 
+/*
 final class WordTests: TestsBase {
     
     override func asyncSetup() async {
@@ -88,4 +89,4 @@ final class WordTests: TestsBase {
         XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
         await asyncTearDown()
     }
-}
+}*/

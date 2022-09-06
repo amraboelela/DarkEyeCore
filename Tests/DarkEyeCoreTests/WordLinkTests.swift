@@ -1,7 +1,6 @@
 import XCTest
 @testable import DarkEyeCore
 
-/*
 final class WordLinkTests: TestsBase {
     
     override func asyncSetup() async {
@@ -12,133 +11,81 @@ final class WordLinkTests: TestsBase {
         await super.asyncTearDown()
     }
     
-    func testHashLink() async {
+    func testIndexLink() async {
         await asyncSetup()
-        var url = "http://hanein123.onion"
-        var link = Link(url: url)
-        await link.save()
-        var urlHash = url.hashBase32(numberOfDigits: 12)
-        var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        var link2 = await wordLink.hashLink()?.link()
-        XCTAssertEqual(link2?.hash, "ar7t3hfhcdxg")
-        
-        url = Global.mainUrl
-        link = Link(url: url)
-        await link.save()
-        urlHash = url.hashBase32(numberOfDigits: 12)
-        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        link2 = await wordLink.hashLink()?.link()
-        XCTAssertEqual(link2?.hash, "9c2c4863y3x7")
-        await asyncTearDown()
-    }
-    
-    func testScore() async {
-        await asyncSetup()
-        let urlHash = "http://hanein123.onion".hashBase32(numberOfDigits: 12)
-        var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 1, lastVisitTime: 10)
-        XCTAssertEqual(wordLink.score, 1011)
-        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1, numberOfVisits: 2, lastVisitTime: 10)
-        XCTAssertEqual(wordLink.score, 2011)
-        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 13, numberOfVisits: 3, lastVisitTime: 100)
-        XCTAssertEqual(wordLink.score, 3113)
-        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 10, numberOfVisits: 5, lastVisitTime: 700000000)
-        XCTAssertEqual(wordLink.score, 700005010)
-        await asyncTearDown()
-    }
-     
-    func testWordLinksWithSearchText() async {
-        await asyncSetup()
-        Link.numberOfProcessedLinks = 0
-        let crawler = await Crawler.shared()
-        await crawler.start()
-        let secondsDelay = 10.0
-        let countLimit = 1000
-        try? await Task.sleep(seconds: secondsDelay)
-        crawler.canRun = false
-        try? await Task.sleep(seconds: 2.0)
-        var wordLinks = await WordLink.wordLinks(withSearchText: "to jump", count: countLimit)
-        var wordLinksCount = wordLinks.count
-        print("wordLinksCount 1: \(wordLinksCount)")
-        print("wordLinks 1: \(wordLinks)")
-        if wordLinksCount > 0 {
-            for wordLink in wordLinks {
-                XCTAssertEqual(wordLink.word, "jump")
-            }
+        var link = Link(url: Global.mainUrl)
+        var result  = await WordLink.index(link: link)
+        XCTAssertEqual(result, .complete)
+        if let word: WordLink = await database.valueForKey(WordLink.prefix + "hidden-" + Global.mainUrl) {
+            XCTAssertTrue(word.text.lowercased().contains("hidden"))
+            XCTAssertEqual(word.url, Global.mainUrl)
         } else {
             XCTFail()
         }
-        try? await Task.sleep(seconds: 1.0)
-        wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
-        wordLinksCount = wordLinks.count
-        print("wordLinksCount 2: \(wordLinksCount)")
-        print("wordLinks 2: \(wordLinks)")
-        if wordLinksCount >= 1 {
-            let blockedKey = HashLink.prefix + wordLinks[0].urlHash
-            print("blockedKey: \(blockedKey)")
-            if let hashLink: HashLink = await database.valueForKey(blockedKey) {
-                let link = await hashLink.link()
-                if var site = await link.site() {
-                    site.blocked = true
-                    await site.save()
-                }
-            }
-            wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
-            XCTAssertEqual(wordLinks.count, wordLinksCount - 1)
-        } else {
+        if let _: WordLink = await database.valueForKey(WordLink.prefix + "body-" + Global.mainUrl) {
             XCTFail()
         }
+        if let _: WordLink = await database.valueForKey(WordLink.prefix + "a-" + Global.mainUrl) {
+            XCTFail()
+        }
+        if let _: WordLink = await database.valueForKey(WordLink.prefix + "in-" + Global.mainUrl) {
+            XCTFail()
+        }
+        if let _: WordLink = await database.valueForKey(WordLink.prefix + "of-" + Global.mainUrl) {
+            XCTFail()
+        }
+        if let _: WordLink = await database.valueForKey(WordLink.prefix + "to-" + Global.mainUrl) {
+            XCTFail()
+        }
+        
+        link = Link(url: "http://kukuwawa.onion")
+        result  = await WordLink.index(link: link)
+        XCTAssertEqual(result, .complete)
         await asyncTearDown()
     }
     
-    func testMergeWordLinks() async {
+    func testWordsFromText() async {
         await asyncSetup()
-        let urlHash = "http://hanein123.onion".hashBase32(numberOfDigits: 12)
-        var links = [WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)]
-        var links2 = [WordLink(urlHash: urlHash, word: "how", text: "I am good thank you. How about you?", wordCount: 2)]
-        WordLink.merge(wordLinks: &links, withWordLinks: links2)
-        XCTAssertEqual(links.count, 1)
-        XCTAssertEqual(links[0].urlHash, urlHash)
-        XCTAssertEqual(links[0].text, "I am good thank you...I am good thank you. How about you?")
-        XCTAssertEqual(links[0].wordCount, 3)
+        var words = WordLink.words(fromText: " Hey a of in the \n man   ")
+        XCTAssertEqual(words.count, 5)
+        XCTAssertEqual(words[0], "Hey")
+        XCTAssertEqual(words[1], "a")
+        XCTAssertEqual(words[2], "of")
+        XCTAssertEqual(words[3], "in")
+        XCTAssertEqual(words[4], "man")
         
-        links = [WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)]
-        let urlHash2 = "http://hanein1234.onion".hashBase32(numberOfDigits: 12)
-        links2 = [WordLink(urlHash: urlHash2, word: "good", text: "I am good thank you. How about you?", wordCount: 2)]
-        WordLink.merge(wordLinks: &links, withWordLinks: links2)
-        XCTAssertEqual(links.count, 2)
-        XCTAssertEqual(links[0].urlHash, urlHash)
-        XCTAssertEqual(links[0].text, "I am good thank you")
-        XCTAssertEqual(links[0].wordCount, 1)
-        XCTAssertEqual(links[1].urlHash, urlHash2)
-        XCTAssertEqual(links[1].text, "I am good thank you. How about you?")
-        XCTAssertEqual(links[1].wordCount, 2)
+        words = WordLink.words(fromText: "camelCaseIs TheCase YaSalam?")
+        XCTAssertEqual(words.count, 5)
+        XCTAssertEqual(words[0], "camel")
+        XCTAssertEqual(words[1], "Case")
+        XCTAssertEqual(words[2], "Is")
+        XCTAssertEqual(words[3], "TheCase")
+        XCTAssertEqual(words[4], "YaSalam")
+        
+        words = WordLink.words(fromText: "camelCaseIs TheCase YaSalam?", lowerCase: true)
+        XCTAssertEqual(words.count, 5)
+        XCTAssertEqual(words[0], "camel")
+        XCTAssertEqual(words[1], "case")
+        XCTAssertEqual(words[2], "is")
+        XCTAssertEqual(words[3], "thecase")
+        XCTAssertEqual(words[4], "yasalam")
+        
+        let link = Link(url: Global.mainUrl)
+        words = WordLink.words(fromText: link.text)
+        XCTAssertTrue(words.count > 3900)
         await asyncTearDown()
     }
     
-    func testMergeWithWordLink() async {
+    func testContextStringFromArray() async {
         await asyncSetup()
-        let urlHash = "http://hanein123.onion".hashBase32(numberOfDigits: 12)
-        var wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)
-        var wordLink2 = WordLink(urlHash: urlHash, word: "how", text: "I am good thank you. How about you?", wordCount: 2)
-        wordLink.mergeWith(wordLink: wordLink2)
-        XCTAssertEqual(wordLink.urlHash, urlHash)
-        XCTAssertEqual(wordLink.text, "I am good thank you...I am good thank you. How about you?")
-        XCTAssertEqual(wordLink.wordCount, 3)
-        
-        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)
-        let urlHash2 = "http://hanein1234.onion".hashBase32(numberOfDigits: 12)
-        wordLink2 = WordLink(urlHash: urlHash2, word: "good", text: "I am good thank you. How about you?", wordCount: 2)
-        wordLink.mergeWith(wordLink: wordLink2)
-        XCTAssertEqual(wordLink.urlHash, urlHash)
-        XCTAssertEqual(wordLink.text, "I am good thank you")
-        XCTAssertEqual(wordLink.wordCount, 1)
-        
-        wordLink = WordLink(urlHash: urlHash, word: "good", text: "I am good thank you", wordCount: 1)
-        wordLink2 = WordLink(urlHash: urlHash, word: "how", text: "I am good thank you", wordCount: 2)
-        wordLink.mergeWith(wordLink: wordLink2)
-        XCTAssertEqual(wordLink.urlHash, urlHash)
-        XCTAssertEqual(wordLink.text, "I am good thank you")
-        XCTAssertEqual(wordLink.wordCount, 3)
+        var array = ["I", "went", "to", "college", "to", "go", "to", "the", "library"]
+        var result = WordLink.contextStringFrom(array: array, atIndex: 5)
+        XCTAssertEqual(result, "I went to college to go to the library")
+        array = ["The", "Hidden", "Wiki", "Main", "Page", "From", "The", "Hidden", "Wiki", "Jump", "to", "navigation", "Jump", "to", "search", "Contents", "1", "Editor", "s", "picks", "2", "Volunteer", "3", "Introduction", "Points", "4", "Financial", "Services", "5", "Commercial", "Services", "6", "Domain", "Services", "7", "Anonymity", "Security", "8", "Darknet", "versions", "of", "popular", "sites", "9", "Blogs", "Essays", "News", "Sites", "10", "Email", "Messaging", "11", "Social", "Networks", "12", "Forums", "Boards", "Chats", "13", "Whistleblowing", "14", "H", "P", "A", "W", "V", "C", "15", "Hosting", "website", "developing", "16", "File", "Uploaders", "17", "Audio", "Radios", "on", "Tor", "18", "Videos", "Movies", "T", "V", "Games", "19", "Books", "20", "Drugs", "21", "Erotica", "21", "1", "Noncommercial", "E", "21", "2", "Commercial", "E", "22", "Uncategorized", "23", "Non", "English", "23", "1", "Brazilian", "23", "2", "Finnish", "Suomi", "23", "3", "French", "Français", "23", "4", "German", "Deutsch", "23", "5", "Greek", "ελληνικά", "23", "6", "Italian", "Italiano", "23", "7", "Japanese", "日本語", "23", "8", "Korean", "한국어", "23", "9", "Chinese", "中国語", "23", "10", "Polish", "Polski", "23", "11", "Russian", "Русский", "23", "12", "Spanish", "Español", "23", "13", "Portuguese", "Português", "23", "14", "Swedish", "Svenska", "23", "15", "Turkish", "Türk", "24", "Hidden", "Services", "Other", "Protocols", "25", "P2", "P", "File", "Sharing", "25", "1", "Chat", "centric", "services", "25", "1", "1", "Defunct", "I", "R", "C", "services", "for", "archive", "purposes", "25", "1", "2", "S", "I", "L", "C", "25", "1", "3", "X", "M", "P", "P", "formerly", "Jabber", "25", "1", "4", "Tor", "Chat", "Addresses", "26", "S", "F", "T", "P", "S", "S", "H", "File", "Transfer", "Protocol", "26", "1", "Onion", "Cat", "Addresses", "26", "2", "Bitcoin", "Seeding", "27", "Dead", "Hidden", "Services", "Welcome", "to", "The", "Hidden", "Wiki", "Our", "official", "Hidden", "Wiki", "url", "in", "2022", "is", "http", "onion", "Add", "it", "to", "bookmarks", "and", "spread", "it", "The", "Official", "Hidden", "Wiki", "2022", "contest", "is", "O", "N", "Now", "You", "can", "earn", "F", "R", "E", "E", "M", "O", "N", "E", "Y", "with", "the", "Hidden", "Wiki", "Click", "H", "E", "R", "E", "to", "learn", "how", "Editor", "s", "picks", "Pick", "a", "random", "page", "from", "the", "article", "index", "and", "replace", "one", "of", "these", "slots", "with", "it", "The", "Matrix", "Very", "nice", "to", "read", "How", "to", "Exit", "the", "Matrix", "Learn", "how", "to", "Protect", "yourself", "and"]
+        result = WordLink.contextStringFrom(array: array, atIndex: 5)
+        XCTAssertEqual(result, "The Hidden Wiki Main Page From The Hidden Wiki Jump to navigation Jump to search Contents 1 Editor s picks 2")
+        result = WordLink.contextStringFrom(array: array, atIndex: 50)
+        XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
         await asyncTearDown()
     }
-}*/
+}
