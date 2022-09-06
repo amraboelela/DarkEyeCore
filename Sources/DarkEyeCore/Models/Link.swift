@@ -12,7 +12,8 @@ import Fuzi
 import SwiftEncrypt
 
 enum LinkProcessError: Error {
-    case ended
+    case cannotRun
+    case notAllowed
     case failed
 }
 
@@ -32,7 +33,6 @@ public struct Link: Codable, Sendable {
         case url
         case lastProcessTime
         case failedToLoad
-        //case lastWordIndex
         case numberOfVisits
         case lastVisitTime
     }
@@ -95,8 +95,6 @@ public struct Link: Codable, Sendable {
         if result == nil {
 #if os(Linux)
             do {
-                //let cacheFileURL = Link.cacheURL.appendingPathComponent(hash + ".html")
-                //let tempFileURL = Link.cacheURL.appendingPathComponent(hash + "-temp.html")
                 if let shellResult = try shell("torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     //NSLog("torsocks shellResult: \(shellResult)")
@@ -240,16 +238,18 @@ public struct Link: Codable, Sendable {
     
     static func process(link: Link) async throws {
         NSLog("processing link: \(link.url)")
+        if !allowed(url: link.url) {
+            NSLog("url not allowed")
+            throw LinkProcessError.notAllowed
+        }
         let crawler = await Crawler.shared()
         let dbClosed = await database.closed()
         if !crawler.canRun || dbClosed {
-            return
+            throw LinkProcessError.cannotRun
         }
         var myLink = link
         if await myLink.blocked() == true || myLink.html == nil {
             Link.remove(url: myLink.url)
-            await myLink.updateLinkIndexedAndSave()
-        } else if myLink.html == nil {
             await myLink.updateLinkIndexedAndSave()
         } else {
             await myLink.saveChildren()
@@ -258,10 +258,10 @@ public struct Link: Codable, Sendable {
                 await myLink.updateLinkIndexedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
-                throw LinkProcessError.ended
+                throw LinkProcessError.cannotRun
             case .failed:
                 NSLog("indexNextWord returned .failed")
-                throw LinkProcessError.ended
+                throw LinkProcessError.failed
             }
         }
     }
