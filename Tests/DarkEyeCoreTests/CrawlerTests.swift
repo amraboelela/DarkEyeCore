@@ -35,9 +35,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         crawler.canRun = false
         try? await Task.sleep(seconds: 2.0)
         if let _: Link = await database.value(forKey: Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
-            //print("testCrawl passed after \(secondsDelay) seconds")
-            //duckduckExpectation.fulfill()
-            print("Link.numberOfIndexedLinks: \(Link.numberOfIndexedLinks)")
+            print("Link.numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
         } else {
             XCTFail()
         }

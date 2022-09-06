@@ -20,8 +20,8 @@ enum LinkProcessError: Error {
 public struct Link: Codable, Sendable {
     public static let prefix = "link-"
     
-    //static var numberOfProcessedLinks = 0
-    static var numberOfIndexedLinks = 0
+    static var numberOfProcessedLinks = 0
+    //static var numberOfIndexedLinks = 0
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
@@ -242,7 +242,7 @@ public struct Link: Codable, Sendable {
         if !allowed(url: link.url) {
             NSLog("url not allowed")
             Link.remove(url: myLink.url)
-            await myLink.updateLinkIndexedAndSave()
+            await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
         }
         let crawler = await Crawler.shared()
@@ -252,12 +252,12 @@ public struct Link: Codable, Sendable {
         }
         if await myLink.blocked() == true || myLink.html == nil {
             Link.remove(url: myLink.url)
-            await myLink.updateLinkIndexedAndSave()
+            await myLink.updateLinkProcessedAndSave()
         } else {
             await myLink.saveChildren()
             switch await WordLink.index(link: myLink) {
             case .complete:
-                await myLink.updateLinkIndexedAndSave()
+                await myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
                 throw LinkProcessError.cannotRun
@@ -268,12 +268,12 @@ public struct Link: Codable, Sendable {
         }
     }
     
-    mutating func updateLinkIndexedAndSave() async {
+    mutating func updateLinkProcessedAndSave() async {
         //NSLog("updateLinkProcessedAndSave")
         lastProcessTime = Date.secondsSinceReferenceDate
         await save()
-        Link.numberOfIndexedLinks += 1
-        NSLog("indexed link #\(Link.numberOfIndexedLinks)")
+        Link.numberOfProcessedLinks += 1
+        NSLog("Processed link #\(Link.numberOfProcessedLinks)")
     }
     
     public mutating func saveChildrenIfNeeded() async {
