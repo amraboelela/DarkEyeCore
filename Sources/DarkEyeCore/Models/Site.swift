@@ -60,7 +60,7 @@ public struct Site: Codable, Sendable {
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Site.prefix) { (Key, site: Site, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if !site.processed {
-                NSLog("!site.processed site: \(site)")
+                //NSLog("!site.processed site: \(site)")
                 stop.pointee = true
                 result = site
             } else {
@@ -74,7 +74,7 @@ public struct Site: Codable, Sendable {
         NSLog("Site.crawlNext")
         if var nextSite = await nextSiteToProcess(),
            let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
-            //print("crawlNext nextLink: \(nextLink.url)")
+            NSLog("crawlNext nextSite: \(link.url.onionID)")
             do {
                 try await Link.process(link: link)
                 await nextSite.updateSiteProcessedAndSave()
