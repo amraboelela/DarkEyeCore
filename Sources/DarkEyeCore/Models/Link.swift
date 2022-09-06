@@ -11,20 +11,22 @@ import SwiftLevelDB
 import Fuzi
 import SwiftEncrypt
 
+enum LinkProcessError: Error {
+    case ended
+    case failed
+}
+
 public struct Link: Codable, Sendable {
     public static let prefix = "link-"
     
-    static var numberOfProcessedLinks = 0
+    //static var numberOfProcessedLinks = 0
     static var numberOfIndexedLinks = 0
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var failedToLoad = false
-    //public var lastWordIndex = -1 // last indexed word index
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
-    //public var numberOfReports = 0
-    //public var blocked: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case url
@@ -226,23 +228,17 @@ public struct Link: Codable, Sendable {
         return result
     }
     
-    public static func crawlNext() async {
+    public static func crawlNext() async throws {
         //NSLog("crawlNext")
         if let nextLink = await nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
-            await Link.process(link: nextLink)
+            try await Link.process(link: nextLink)
         } else {
-            //await updateCurrentWordIndex()
-            /*if let nextLink = await nextLinkToProcess() {
-                //NSLog("crawlNext nextLink: \(nextLink.url)")
-                await Link.process(link: nextLink)
-            } else {*/
             NSLog("can't find any link to process")
-            //}
         }
     }
     
-    static func process(link: Link) async {
+    static func process(link: Link) async throws {
         NSLog("processing link: \(link.url)")
         let crawler = await Crawler.shared()
         let dbClosed = await database.closed()
@@ -258,36 +254,24 @@ public struct Link: Codable, Sendable {
         } else {
             await myLink.saveChildren()
             switch await WordLink.index(link: myLink) {
-            //case .done:
-            //    await myLink.updateLinkIndexedAndSave()
             case .complete:
                 await myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
+                throw LinkProcessError.ended
             case .failed:
                 NSLog("indexNextWord returned .failed")
+                throw LinkProcessError.ended
             }
         }
     }
     
-    mutating func updateLinkIndexedAndSave() async {
-        //lastWordIndex += 1
-        await save()
-        Link.numberOfIndexedLinks += 1
-        /*if Link.numberOfIndexedLinks > 1000 {
-            Link.numberOfIndexedLinks = 0
-            //await Link.updateCurrentWordIndex()
-        }*/
-        NSLog("indexed link #\(Link.numberOfIndexedLinks)")
-    }
-    
     mutating func updateLinkProcessedAndSave() async {
         NSLog("updateLinkProcessedAndSave")
-        //lastWordIndex = -1
         lastProcessTime = Date.secondsSinceReferenceDate
         await save()
-        Link.numberOfProcessedLinks += 1
-        NSLog("processed link #\(Link.numberOfProcessedLinks)")
+        Link.numberOfIndexedLinks += 1
+        NSLog("indexed link #\(Link.numberOfIndexedLinks)")
     }
     
     public mutating func saveChildrenIfNeeded() async {
@@ -316,7 +300,8 @@ public struct Link: Codable, Sendable {
             } else {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
-                let site = Site(url: url)
+                var site = Site(url: url)
+                site.indexed = true
                 try await database.setValue(site, forKey: Site.prefix + url.onionID)
             }
             try await database.setValue(self, forKey: key)

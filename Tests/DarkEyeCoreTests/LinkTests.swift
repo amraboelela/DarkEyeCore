@@ -206,7 +206,7 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let timeDelay = 5.0
         let link1 = Link(url: Global.mainUrl)
-        await Link.process(link: link1)
+        try? await Link.process(link: link1)
         try? await Task.sleep(seconds: timeDelay)
         if let word: WordLink = await database.value(forKey: WordLink.prefix + "jump-" + Global.mainUrl) {
             XCTAssertTrue(word.text.lowercased().contains("jump"))
@@ -223,7 +223,7 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(link.lastProcessTime, 0)
         let crawler = await Crawler.shared()
         crawler.canRun = true
-        await Link.process(link: link)
+        try? await Link.process(link: link)
         try? await Task.sleep(seconds: 5)
         if let dbLink: Link = await database.value(forKey: Link.prefix + url) {
             XCTAssertNotEqual(dbLink.lastProcessTime, 0)
@@ -265,7 +265,7 @@ final class LinkTests: TestsBase {
     
     func crawlNext() async {
         await asyncSetup()
-        await Link.crawlNext()
+        try? await Link.crawlNext()
         if let _: Link = await database.value(forKey: Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
         } else {
             XCTFail()

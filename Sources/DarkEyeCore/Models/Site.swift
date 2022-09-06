@@ -15,6 +15,8 @@ public struct Site: Codable, Sendable {
     public static let prefix = "site-"
     public static var workingDirectory = ""
     
+    static var numberOfIndexedSites = 0
+    
     public var url: String
     var indexed: Bool = false
     public var numberOfVisits = 0
@@ -73,10 +75,16 @@ public struct Site: Codable, Sendable {
         if let nextSite = await nextSiteToProcess(),
            let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
             //print("crawlNext nextLink: \(nextLink.url)")
-            await Link.process(link: link)
+            do {
+                try await Link.process(link: link)
+                numberOfIndexedSites += 1
+                NSLog("indexed site #\(numberOfIndexedSites)")
+            } catch {
+                NSLog("Site crawlNext Link.process error: \(error)")
+            }
         } else {
             NSLog("can't find any site to process")
-            await Link.crawlNext()
+            try? await Link.crawlNext()
         }
     }
     

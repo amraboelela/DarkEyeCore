@@ -92,7 +92,7 @@ final class WordLinkTests: TestsBase {
     
    func testWordLinksWithSearchText() async {
        await asyncSetup()
-       Link.numberOfProcessedLinks = 0
+       Link.numberOfIndexedLinks = 0
        let crawler = await Crawler.shared()
        await crawler.start()
        let secondsDelay = 10.0
