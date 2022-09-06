@@ -348,7 +348,8 @@ public struct Link: Codable, Sendable {
             "_media",
             ".php?",
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
-            "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid"
+            "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid",
+            "ejaculate"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
