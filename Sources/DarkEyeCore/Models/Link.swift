@@ -299,9 +299,12 @@ public struct Link: Codable, Sendable {
             if let _: Link = await database.value(forKey: key) {
             } else {
                 let hashLink = HashLink(url: url)
-                let site = Site(url: url)
-                try await database.setValue(site, forKey: Site.prefix + url.onionID)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
+                if let _: Site = await database.value(forKey: Site.prefix + url.onionID) {
+                } else {
+                    let site = Site(url: url)
+                    try await database.setValue(site, forKey: Site.prefix + url.onionID)
+                }
             }
             try await database.setValue(self, forKey: key)
         } catch {
