@@ -157,7 +157,7 @@ public struct Link: Codable, Sendable {
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if let href = anchor["href"], href.range(of: "#") == nil {
                                 if !Link.allowed(url: href) {
-                                    Link.remove(url: href)
+                                    //Link.remove(url: href)
                                     return nil
                                 }
                                 var refinedHref = href
@@ -240,7 +240,6 @@ public struct Link: Codable, Sendable {
         var myLink = link
         if !allowed(url: link.url) {
             NSLog("url not allowed")
-            Link.remove(url: link.url)
             await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
         }
@@ -251,7 +250,6 @@ public struct Link: Codable, Sendable {
         }
         if await link.blocked() == true || link.html == nil {
             NSLog("myLink.blocked() == true || myLink.html == nil ")
-            Link.remove(url: link.url)
             await myLink.updateLinkProcessedAndSave()
         } else {
             await myLink.saveChildren()
@@ -263,7 +261,6 @@ public struct Link: Codable, Sendable {
                 throw LinkProcessError.cannotRun
             case .notAllowed:
                 NSLog("url not allowed")
-                Link.remove(url: link.url)
                 await myLink.updateLinkProcessedAndSave()
                 throw LinkProcessError.notAllowed
             case .failed:
@@ -341,12 +338,6 @@ public struct Link: Codable, Sendable {
             }
         }
         return result
-    }
-    
-    static func remove(url: String) {
-        let hash = url.hashBase32(numberOfDigits: 12)
-        let filePath = Global.cacheURL.appendingPathComponent(hash + ".html").path
-        try? FileManager.default.removeItem(atPath: filePath)
     }
     
 }

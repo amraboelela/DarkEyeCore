@@ -277,14 +277,5 @@ final class LinkTests: TestsBase {
         XCTAssertEqual(url, "http://hanein1.onion")
         await asyncTearDown()
     }
-    
-    func testRemoveURL() async {
-        await asyncSetup()
-        let url = "http://2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd.onion"
-        let hash = url.hashBase32(numberOfDigits: 12)
-        Link.remove(url: url)
-        let filePath = Global.cacheURL.appendingPathComponent(hash + ".html").path
-        XCTAssertFalse(FileManager.default.fileExists(atPath: filePath))
-        await asyncTearDown()
-    }
+
 }
