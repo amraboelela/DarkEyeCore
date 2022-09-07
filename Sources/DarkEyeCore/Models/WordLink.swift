@@ -93,7 +93,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         var result = Array(resultSet)
         result = await result.asyncFilter { wordLink in
             if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
-                if site.blocked ?? false {
+                if site.blocked == true {
                     return false
                 }
             } else {

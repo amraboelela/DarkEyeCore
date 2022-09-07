@@ -74,7 +74,9 @@ extension Link {
             "porn",
             "video",
             "year",
-            "daughter"
+            "daughter",
+            "girl",
+            "boy"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
