@@ -12,6 +12,7 @@ public struct Global: Codable, Sendable {
     public static let prefix = "global"
     public static var workingDirectory = ""
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
+    // "http://5wvugn3zqfbianszhldcqz2u7ulj3xex6i3ha3c5znpgdcnqzn24nnid.onion"
     
     public var processTimeThreshold: Int // any link with last process time smaller, need to be processed
     
