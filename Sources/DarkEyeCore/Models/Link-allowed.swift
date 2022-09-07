@@ -73,7 +73,8 @@ extension Link {
             "nacked",
             "porn",
             "video",
-            "years"
+            "year",
+            "daughter"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
