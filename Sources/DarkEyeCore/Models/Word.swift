@@ -65,7 +65,12 @@ class Word {
             "drug",
             "child",
             "porn",
-            "girl"
+            "girl",
+            "sex",
+            "boy",
+            "rape",
+            "pussy",
+            "nude"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {

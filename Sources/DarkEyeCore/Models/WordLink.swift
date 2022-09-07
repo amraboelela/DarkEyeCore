@@ -50,7 +50,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         wordsArray = wordsArray.map { $0.lowercased() }
         for word in wordsArray {
             if !Word.allowed(word) {
-                NSLog("word not allowed, word: \(word)")
+                NSLog("word not allowed: \(word)")
                 return .notAllowed
             }
         }
