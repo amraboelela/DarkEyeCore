@@ -11,7 +11,7 @@ import Foundation
 extension Link {
     
     static func allowed(url: String) -> Bool {
-        NSLog("checking if allowed url")
+        //NSLog("checking if allowed url")
         if url.range(of: ":") != nil &&
             url.range(of: "http") == nil {
             return false
