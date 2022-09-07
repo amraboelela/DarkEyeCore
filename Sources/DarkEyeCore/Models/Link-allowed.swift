@@ -76,7 +76,8 @@ extension Link {
             "year",
             "daughter",
             "girl",
-            "boy"
+            "boy",
+            "csalryx3xenotyljyttsju6jfthrjyt6ijwd3zzykhkpyfoeao2nxaqd"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
