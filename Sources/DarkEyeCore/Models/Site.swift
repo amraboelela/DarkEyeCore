@@ -60,7 +60,6 @@ public struct Site: Codable, Sendable {
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Site.prefix) { (Key, site: Site, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
             if !site.processed && site.blocked != true {
-                //NSLog("!site.processed site: \(site)")
                 stop.pointee = true
                 result = site
             } else {
@@ -82,7 +81,10 @@ public struct Site: Codable, Sendable {
                 NSLog("Site crawlNext Link.process error: \(error)")
                 switch error {
                 case LinkProcessError.notAllowed:
-                    nextSite.blocked = true
+                    // if it is not the hidden wiki
+                    if nextSite.onionID != "5wvugn3zqfbianszhldcqz2u7ulj3xex6i3ha3c5znpgdcnqzn24nnid" {
+                        nextSite.blocked = true
+                    }
                     await nextSite.updateSiteProcessedAndSave()
                 default:
                     break
