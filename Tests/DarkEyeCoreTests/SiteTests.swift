@@ -39,11 +39,12 @@ final class SiteTests: TestsBase {
     
     func testNextSiteToProcess() async {
         await asyncSetup()
-        let url = "http://hanein1.onion"
-        let site = Site(url: url)
-        try? await database.setValue(site, forKey: "site-" + url.onionID)
+        var site = Site(url: "http://hanein1.onion", blocked: true)
+        try? await database.setValue(site, forKey: "site-hanein1")
+        site = Site(url: "http://hanein2.onion")
+        try? await database.setValue(site, forKey: "site-hanein2")
         let nextSite = await Site.nextSiteToProcess()
-        XCTAssertNotNil(nextSite)
+        XCTAssertEqual(nextSite?.url, "http://hanein2.onion")
         await asyncTearDown()
     }
     

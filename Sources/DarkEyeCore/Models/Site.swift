@@ -59,7 +59,7 @@ public struct Site: Codable, Sendable {
         var result: Site? = nil
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Site.prefix) { (Key, site: Site, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
-            if !site.processed {
+            if !site.processed && site.blocked != true {
                 //NSLog("!site.processed site: \(site)")
                 stop.pointee = true
                 result = site
