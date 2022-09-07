@@ -59,7 +59,6 @@ class Word {
     static func allowed(_ word: String) -> Bool {
         let forbiddenTerms = [
             "fuck",
-            "money",
             "music",
             "adult",
             "drug",
