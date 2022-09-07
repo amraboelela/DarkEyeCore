@@ -352,7 +352,8 @@ public struct Link: Codable, Sendable {
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid",
             "ejaculate",
             "kxmrdbwcqbgyokjbiv7droplwhxvli3s7yv5xddxgrtajdpdebgzzzqd",
-            "bitcards"
+            "bitcards",
+            "drugsednqhasbyoyg2oekzbnllbujro54zrogqbf3p6e7qflxti5eeqd"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
