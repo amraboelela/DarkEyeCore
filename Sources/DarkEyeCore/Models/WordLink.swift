@@ -8,9 +8,10 @@
 
 import Foundation
 
-public enum WordIndexingStatus {
+public enum WordStatus {
     case complete // finished all the words up to 500 word
     case ended    // ended as it can't run
+    case notAllowed
     case failed
 }
 
@@ -32,9 +33,9 @@ public struct WordLink: Codable, Hashable, Sendable {
     
     // MARK: - Indexing
     
-    public static func index(link: Link) async -> WordIndexingStatus {
+    public static func index(link: Link) async -> WordStatus {
         NSLog("index link: \(link)")
-        var wordsArray = words(fromText: link.text)
+        var wordsArray = Word.words(fromText: link.text)
         let countLimit = 40
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)
@@ -44,19 +45,25 @@ public struct WordLink: Codable, Hashable, Sendable {
         }
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
         NSLog("indexing, wordsArray: \(wordsArray)")
-        let text = contextStringFrom(array: wordsArray, atIndex: 0)
+        let text = Word.contextStringFrom(array: wordsArray, atIndex: 0)
         let crawler = await Crawler.shared()
-        for i in (0..<wordsArray.count) {
+        wordsArray = wordsArray.map { $0.lowercased() }
+        for word in wordsArray {
+            if !Word.allowed(word) {
+                NSLog("word not allowed, word: \(word)")
+                return .notAllowed
+            }
+        }
+        for word in wordsArray {
             let dbClosed = await database.closed()
             if !crawler.canRun || dbClosed {
                 return .ended
             }
             do {
-                let wordText = wordsArray[i].lowercased()
-                if wordText.count > 2 {
-                    let key = prefix + wordText.lowercased() + "-" + link.url
-                    let word = WordLink(word: wordText, url: link.url, text: text, wordCount: counts[wordText] ?? 0)
-                    try await database.setValue(word, forKey: key)
+                if word.count > 2 {
+                    let key = prefix + word + "-" + link.url
+                    let wordLink = WordLink(word: word, url: link.url, text: text, wordCount: counts[word] ?? 0)
+                    try await database.setValue(wordLink, forKey: key)
                 }
             } catch {
                 NSLog("Word index:link database.setValue failed.")
@@ -74,7 +81,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         count: Int
     ) async -> [WordLink] {
         var resultSet = Set<WordLink>()
-        let searchWords = WordLink.words(fromText: searchText, lowerCase: true)
+        let searchWords = Word.words(fromText: searchText, lowerCase: true)
         for searchWord in searchWords {
             if searchWords.count > 0 && searchWord.count <= 2 {
                 continue
@@ -106,52 +113,5 @@ public struct WordLink: Codable, Hashable, Sendable {
 
     public func hash(into hasher: inout Hasher) {
         hasher.combine(word + "-" + url)
-    }
-    
-    // MARK: - Helpers
-    
-    static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
-        var result = [String]()
-        let whiteCharacters = CharacterSet.whitespaces.union(CharacterSet(charactersIn: "\n_()[]-/:{}-+=*&^%$#@!~`?'\";,.<>\\|"))
-        let words = text.components(separatedBy: whiteCharacters)
-        let commonWords: Set = [
-            "and",
-            "the",
-            "from",
-            "for",
-            "not",
-            "with",
-            "but",
-            "any",
-            "its",
-            "can"
-        ]
-        for word in words {
-            if word.count > 0 {
-                let finalWords = word.camelCaseWords
-                for finalWord in finalWords {
-                    if finalWord.count < 16 {
-                        let lowerCaseWord = finalWord.lowercased()
-                        if commonWords.contains(lowerCaseWord) {
-                            continue
-                        }
-                        if lowerCase {
-                            result.append(lowerCaseWord)
-                        } else {
-                            result.append(finalWord)
-                        }
-                    }
-                }
-            }
-        }
-        return result
-    }
-    
-    static func contextStringFrom(array: [String], atIndex: Int) -> String {
-        let wordsCount = 20
-        let halfOfCount = wordsCount / 2
-        let startIndex = atIndex - halfOfCount < 0 ? 0 : atIndex - halfOfCount
-        let endIndex = startIndex + wordsCount >= array.count ? array.count - 1 : startIndex + wordsCount
-        return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
 }

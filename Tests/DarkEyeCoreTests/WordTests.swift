@@ -1,7 +1,6 @@
 import XCTest
 @testable import DarkEyeCore
 
-/*
 final class WordTests: TestsBase {
     
     override func asyncSetup() async {
@@ -10,39 +9,6 @@ final class WordTests: TestsBase {
     
     override func asyncTearDown() async {
         await super.asyncTearDown()
-    }
-    
-    func testIndexLink() async {
-        await asyncSetup()
-        var link = Link(url: Global.mainUrl)
-        var result  = await Word.index(link: link)
-        XCTAssertEqual(result, .complete)
-        if let word: Word = await database.value(forKey: Word.prefix + "hidden-" + Global.mainUrl) {
-            XCTAssertTrue(word.text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.url, Global.mainUrl)
-        } else {
-            XCTFail()
-        }
-        if let _: Word = await database.value(forKey: Word.prefix + "body-" + Global.mainUrl) {
-            XCTFail()
-        }
-        if let _: Word = await database.value(forKey: Word.prefix + "a-" + Global.mainUrl) {
-            XCTFail()
-        }
-        if let _: Word = await database.value(forKey: Word.prefix + "in-" + Global.mainUrl) {
-            XCTFail()
-        }
-        if let _: Word = await database.value(forKey: Word.prefix + "of-" + Global.mainUrl) {
-            XCTFail()
-        }
-        if let _: Word = await database.value(forKey: Word.prefix + "to-" + Global.mainUrl) {
-            XCTFail()
-        }
-        
-        link = Link(url: "http://kukuwawa.onion")
-        result  = await Word.index(link: link)
-        XCTAssertEqual(result, .complete)
-        await asyncTearDown()
     }
     
     func testWordsFromText() async {
@@ -89,4 +55,4 @@ final class WordTests: TestsBase {
         XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
         await asyncTearDown()
     }
-}*/
+}
