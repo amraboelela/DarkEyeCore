@@ -318,6 +318,7 @@ public struct Link: Codable, Sendable {
     // MARK: - Helpers
     
     static func allowed(url: String) -> Bool {
+        NSLog("checking if allowed url")
         if url.range(of: ":") != nil &&
             url.range(of: "http") == nil {
             return false
