@@ -28,7 +28,9 @@ extension String {
     }
     
     var onionID: String {
-        return slice(from: "http://", to: ".onion") ?? ""
+        let base = slice(from: "http://", to: ".onion") ?? ""
+        let splitArray = base.split(separator: ".")
+        return String(splitArray.last ?? "")
     }
     
     func slice(from: String, to: String) -> String? {

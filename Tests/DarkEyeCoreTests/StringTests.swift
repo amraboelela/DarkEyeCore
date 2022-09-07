@@ -39,4 +39,12 @@ final class StringTests: TestsBase {
         XCTAssertEqual(token, "Info/99/something")
     }
     
+    func testOnionID() {
+        var url = "http://hanein1.onion"
+        var onionID = url.onionID
+        XCTAssertEqual(onionID, "hanein1")
+        url = "http://mama.hanein1.onion"
+        onionID = url.onionID
+        XCTAssertEqual(onionID, "hanein1")
+    }
 }
