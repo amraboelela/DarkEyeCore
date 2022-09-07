@@ -69,7 +69,9 @@ extension Link {
             "bananaen6hcopc4iwdt7xbnfjtxszgoe6a5pobfrbfmbol5ihweoxiid",
             "fc3ryhftqfgwyroq7pt63f7jif4jknfrmd3pbdwm4sz3myelf4wfz7qd",
             "fxrx6qvrri4ldt7dhytdvkuakai75bpdlxlmner6zrlkq34rpcqpyqyd",
-            "fuck"
+            "fuck",
+            "nacked",
+            "porn"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {

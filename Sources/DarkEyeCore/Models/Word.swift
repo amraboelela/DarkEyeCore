@@ -62,7 +62,10 @@ class Word {
             "money",
             "music",
             "adult",
-            "drug"
+            "drug",
+            "child",
+            "porn",
+            "girl"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {
