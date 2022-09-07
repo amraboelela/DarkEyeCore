@@ -250,6 +250,7 @@ public struct Link: Codable, Sendable {
             throw LinkProcessError.cannotRun
         }
         if await myLink.blocked() == true || myLink.html == nil {
+            NSLog("myLink.blocked() == true || myLink.html == nil ")
             Link.remove(url: myLink.url)
             await myLink.updateLinkProcessedAndSave()
         } else {
@@ -370,7 +371,10 @@ public struct Link: Codable, Sendable {
             "n3irlpzwkcmfochhuswpcrg35z7bzqtaoffqecomrx57n3rd5jc72byd",
             "bobby64o755x3gsuznts6hf6agxqjcz5bop6hs7ejorekbm7omes34ad",
             "courier2w2hawxspntosy3wolvc7g7tcrwhitiu4irrupnpqub2bqxid",
-            "deepmej5tgxnpsmdgtvfghdg4dc2jwsddao473qtjmnbvs47dhxn3pid"
+            "deepmej5tgxnpsmdgtvfghdg4dc2jwsddao473qtjmnbvs47dhxn3pid",
+            "bananaen6hcopc4iwdt7xbnfjtxszgoe6a5pobfrbfmbol5ihweoxiid",
+            "fc3ryhftqfgwyroq7pt63f7jif4jknfrmd3pbdwm4sz3myelf4wfz7qd",
+            "fxrx6qvrri4ldt7dhytdvkuakai75bpdlxlmner6zrlkq34rpcqpyqyd"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
