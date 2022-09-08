@@ -53,6 +53,8 @@ final class SiteTests: TestsBase {
         XCTAssertFalse(site.allowed)
         site = Site(url: "http://27m3p2uv7igmj6kvd4ql3cct5h3sdwrsajovkkndeufumzyfhlfev4qd.onion")
         XCTAssertTrue(site.allowed)
+        site = Site(url: "http://27m3p2uv7igmj6kvd4ql3cct.onion")
+        XCTAssertFalse(site.allowed)
         await asyncTearDown()
     }
     

@@ -61,6 +61,9 @@ public struct Site: Codable, Sendable {
     }
     
     public var allowed: Bool {
+        if onionID.count < 50 {
+            return false
+        }
         let forbiddenIDs: Set = [
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid",
