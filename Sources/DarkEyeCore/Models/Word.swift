@@ -70,7 +70,9 @@ class Word {
             "boy",
             "rape",
             "pussy",
-            "nude"
+            "nude",
+            "paypal",
+            "prepaid"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {
