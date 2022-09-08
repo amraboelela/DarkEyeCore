@@ -63,9 +63,7 @@ class Word {
             }
         }
         let forbiddenTuples = [
-            ("credit", "cards"),
-            ("credit", "card"),
-            ("cloned", "cards")
+            ("credit", "card")
         ]
         let wordsSet = Set(wordsArray)
         for forbiddenTuple in forbiddenTuples {
@@ -95,7 +93,12 @@ class Word {
             "paypal",
             "prepaid",
             "weed",
-            "cannabis"
+            "cannabis",
+            "wine",
+            "gamble",
+            "ejaculate",
+            "nacked",
+            "cards"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {
