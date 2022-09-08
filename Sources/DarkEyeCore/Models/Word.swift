@@ -64,7 +64,8 @@ class Word {
         }
         let forbiddenTuples = [
             ("credit", "cards"),
-            ("credit", "card")
+            ("credit", "card"),
+            ("cloned", "cards")
         ]
         let wordsSet = Set(wordsArray)
         for forbiddenTuple in forbiddenTuples {
