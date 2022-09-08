@@ -47,6 +47,15 @@ final class SiteTests: TestsBase {
         await asyncTearDown()
     }
     
+    func testAllowed() async {
+        await asyncSetup()
+        var site = Site(url: "http://2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd.onion")
+        XCTAssertFalse(site.allowed)
+        site = Site(url: "http://27m3p2uv7igmj6kvd4ql3cct5h3sdwrsajovkkndeufumzyfhlfev4qd.onion")
+        XCTAssertTrue(site.allowed)
+        await asyncTearDown()
+    }
+    
     func testNextSiteToProcess() async {
         await asyncSetup()
         var site = Site(url: "http://hanein1.onion", blocked: true)

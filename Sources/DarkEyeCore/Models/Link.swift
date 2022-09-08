@@ -340,4 +340,60 @@ public struct Link: Codable, Sendable {
         return result
     }
     
+    static func allowed(url: String) -> Bool {
+        //NSLog("checking if allowed url")
+        if url.range(of: ":") != nil &&
+            url.range(of: "http") == nil {
+            return false
+        }
+        let forbiddenExtensions = [
+            ".png",
+            ".jpg",
+            ".mp4",
+            ".zip",
+            ".gif",
+            ".epub",
+            ".nib",
+            ".nb0",
+            ".php",
+            ".pdf",
+            ".asc",
+            ".webm",
+            "?menu=1"
+        ]
+        for anExtension in forbiddenExtensions {
+            if url.suffix(anExtension.count).range(of: anExtension) != nil {
+                return false
+            }
+        }
+        let forbiddenTerms = [
+            "beverages",
+            "money-transfers",
+            "music",
+            ".media",
+            "_media",
+            ".php?",
+            "ejaculate",
+            "bitcards",
+            "fuck",
+            "nacked",
+            "porn",
+            "video",
+            "year",
+            "daughter",
+            "girl",
+            "boy"
+        ]
+        for term in forbiddenTerms {
+            if url.range(of: term) != nil {
+                return false
+            }
+        }
+        let allowedCharacters = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: ":._?/-="))
+        if url.rangeOfCharacter(from: allowedCharacters.inverted) != nil {
+            return false
+        }
+        return true
+    }
+    
 }

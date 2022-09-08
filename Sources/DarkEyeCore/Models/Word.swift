@@ -72,7 +72,9 @@ class Word {
             "pussy",
             "nude",
             "paypal",
-            "prepaid"
+            "prepaid",
+            "weed",
+            "cannabis"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {
