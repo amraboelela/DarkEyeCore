@@ -119,10 +119,11 @@ public struct Link: Codable, Sendable {
         if let html = html, let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
         }
-        return result.replacingOccurrences(
+        result = result.replacingOccurrences(
             of: "[ \n]+",
             with: " ",
             options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
+        return result.prefix(200)
     }
     
     public var text: String {

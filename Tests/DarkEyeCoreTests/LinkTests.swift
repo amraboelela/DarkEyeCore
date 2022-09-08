@@ -202,7 +202,6 @@ final class LinkTests: TestsBase {
     
     func testProcessLink() async {
         await asyncSetup()
-        //let timeDelay = 5.0
         let link1 = Link(url: Global.mainUrl)
         try? await Link.process(link: link1)
         try? await Task.sleep(seconds: 5)
