@@ -60,5 +60,6 @@ final class WordTests: TestsBase {
         XCTAssertFalse(Word.allowed(wordsArray: ["credit", "cards"]))
         XCTAssertFalse(Word.allowed(wordsArray: ["credit", "card"]))
         XCTAssertTrue(Word.allowed(wordsArray: ["credits", "card"]))
+        XCTAssertFalse(Word.allowed(wordsArray: ["bitcoin", "private", "key"]))
     }
 }

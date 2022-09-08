@@ -202,10 +202,10 @@ final class LinkTests: TestsBase {
     
     func testProcessLink() async {
         await asyncSetup()
-        let timeDelay = 5.0
+        //let timeDelay = 5.0
         let link1 = Link(url: Global.mainUrl)
         try? await Link.process(link: link1)
-        try? await Task.sleep(seconds: timeDelay)
+        try? await Task.sleep(seconds: 5)
         if let word: WordLink = await database.value(forKey: WordLink.prefix + "jump-" + Global.mainUrl) {
             XCTAssertTrue(word.text.lowercased().contains("jump"))
         } else {

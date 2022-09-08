@@ -62,13 +62,20 @@ class Word {
                 return false
             }
         }
-        let forbiddenTuples = [
-            ("credit", "card")
+        let forbiddenWordArrays = [
+            ["credit", "card"],
+            ["bitcoin", "private", "keys"],
+            ["bitcoin", "private", "key"]
         ]
         let wordsSet = Set(wordsArray)
-        for forbiddenTuple in forbiddenTuples {
-            if wordsSet.contains(forbiddenTuple.0) && wordsSet.contains(forbiddenTuple.1) {
-                NSLog("Words not allowed: \(forbiddenTuple)")
+        for forbiddenWordArray in forbiddenWordArrays {
+            var arrayAllowed = false
+            for forbiddenWord in forbiddenWordArray {
+                if !wordsSet.contains(forbiddenWord) {
+                    arrayAllowed = true
+                }
+            }
+            if !arrayAllowed {
                 return false
             }
         }
