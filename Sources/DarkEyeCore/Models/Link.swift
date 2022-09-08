@@ -65,6 +65,7 @@ public struct Link: Codable, Sendable {
     static var cachedHtml = [String: String]()
     
     public var html: String? {
+        NSLog("getting html")
         if let cachedHtml = Link.cachedHtml[self.url] {
             return cachedHtml
         }
@@ -89,6 +90,7 @@ public struct Link: Codable, Sendable {
         if result == nil {
 #if os(Linux)
             do {
+                NSLog("calling torsocks")
                 if let shellResult = try shell("torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     //NSLog("torsocks shellResult: \(shellResult)")
