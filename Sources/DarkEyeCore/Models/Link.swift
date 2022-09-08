@@ -123,7 +123,7 @@ public struct Link: Codable, Sendable {
             of: "[ \n]+",
             with: " ",
             options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        return result.prefix(100)
+        return String(result.prefix(100))
     }
     
     public var text: String {
