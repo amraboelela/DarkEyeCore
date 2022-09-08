@@ -55,8 +55,28 @@ class Word {
         return String.from(array: array, startIndex: startIndex, endIdnex: endIndex)
     }
     
+    static func allowed(wordsArray: [String]) -> Bool {
+        for word in wordsArray {
+            if !allowed(word: word) {
+                NSLog("Word not allowed: \(word)")
+                return false
+            }
+        }
+        let forbiddenTuples = [
+            ("credit", "cards"),
+            ("credit", "card")
+        ]
+        let wordsSet = Set(wordsArray)
+        for forbiddenTuple in forbiddenTuples {
+            if wordsSet.contains(forbiddenTuple.0) && wordsSet.contains(forbiddenTuple.1) {
+                NSLog("Words not allowed: \(forbiddenTuple)")
+                return false
+            }
+        }
+        return true
+    }
     
-    static func allowed(_ word: String) -> Bool {
+    static func allowed(word: String) -> Bool {
         let forbiddenTerms = [
             "fuck",
             "cocaine",

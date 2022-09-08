@@ -55,4 +55,10 @@ final class WordTests: TestsBase {
         XCTAssertEqual(result, "of popular sites 9 Blogs Essays News Sites 10 Email Messaging 11 Social Networks 12 Forums Boards Chats 13 Whistleblowing 14")
         await asyncTearDown()
     }
+    
+    func testAllowedWordsArray() {
+        XCTAssertFalse(Word.allowed(wordsArray: ["credit", "cards"]))
+        XCTAssertFalse(Word.allowed(wordsArray: ["credit", "card"]))
+        XCTAssertTrue(Word.allowed(wordsArray: ["credits", "card"]))
+    }
 }

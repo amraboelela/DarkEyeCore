@@ -48,11 +48,8 @@ public struct WordLink: Codable, Hashable, Sendable {
         let text = Word.contextStringFrom(array: wordsArray, atIndex: 0)
         let crawler = await Crawler.shared()
         wordsArray = wordsArray.map { $0.lowercased() }
-        for word in wordsArray {
-            if !Word.allowed(word) {
-                NSLog("word not allowed: \(word)")
-                return .notAllowed
-            }
+        if !Word.allowed(wordsArray: wordsArray) {
+            return .notAllowed
         }
         for word in wordsArray {
             let dbClosed = await database.closed()
