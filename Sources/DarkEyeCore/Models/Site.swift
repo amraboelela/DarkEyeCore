@@ -60,7 +60,7 @@ public struct Site: Codable, Sendable {
         return !cannotBeBlockedSites.contains(self.onionID)
     }
     
-    var allowed: Bool {
+    public var allowed: Bool {
         let forbiddenIDs: Set = [
             "2a2a2abbjsjcjwfuozip6idfxsxyowoi3ajqyehqzfqyxezhacur7oyd",
             "222222222xn2ozdb2mjnkjrvcopf5thb6la6yj24jvyjqrbohx5kccid",
