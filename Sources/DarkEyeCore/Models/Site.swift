@@ -112,7 +112,7 @@ public struct Site: Codable, Sendable {
         //NSLog("Site.crawlNext")
         if var nextSite = await nextSiteToProcess(),
            let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
-            NSLog("Site.crawlNext nextSite: \(link.url.onionID)")
+            //NSLog("Site.crawlNext nextSite: \(link.url.onionID)")
             do {
                 try await Link.process(link: link)
                 await nextSite.updateSiteProcessedAndSave()

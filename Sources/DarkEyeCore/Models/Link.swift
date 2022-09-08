@@ -65,7 +65,7 @@ public struct Link: Codable, Sendable {
     static var cachedHtml = [String: String]()
     
     public var html: String? {
-        NSLog("getting html")
+        //NSLog("getting html")
         if let cachedHtml = Link.cachedHtml[self.url] {
             return cachedHtml
         }
@@ -236,7 +236,7 @@ public struct Link: Codable, Sendable {
         NSLog("processing link: \(link.url)")
         var myLink = link
         if !allowed(url: link.url) {
-            NSLog("url not allowed")
+            //NSLog("url not allowed")
             await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
         }
@@ -257,7 +257,7 @@ public struct Link: Codable, Sendable {
                 NSLog("indexNextWord returned .ended")
                 throw LinkProcessError.cannotRun
             case .notAllowed:
-                NSLog("url not allowed")
+                //NSLog("url not allowed")
                 await myLink.updateLinkProcessedAndSave()
                 throw LinkProcessError.notAllowed
             case .failed:

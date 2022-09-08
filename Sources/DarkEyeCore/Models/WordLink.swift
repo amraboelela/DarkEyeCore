@@ -41,6 +41,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             wordsArray.removeLast(wordsArray.count - countLimit)
         }
         if wordsArray.count == 0 {
+            NSLog("indexing, wordsArray.count == 0")
             return .complete
         }
         let counts = wordsArray.reduce(into: [:]) { counts, word in counts[word.lowercased(), default: 0] += 1 }
