@@ -60,12 +60,12 @@ final class SiteTests: TestsBase {
     
     func testNextSiteToProcess() async {
         await asyncSetup()
-        var site = Site(url: "http://hanein1.onion", blocked: true)
-        try? await database.setValue(site, forKey: "site-hanein1")
-        site = Site(url: "http://hanein2.onion")
-        try? await database.setValue(site, forKey: "site-hanein2")
+        var site = Site(url: "http://darkeyejce5fone2srstf3j26u6jbjpctkwejiis6qsrqxbpa4k4hlad.onion/darkeye", blocked: true)
+        try? await database.setValue(site, forKey: "site-darkeyejce5fone2srstf3j26u6jbjpctkwejiis6qsrqxbpa4k4hlad")
+        site = Site(url: "http://haneinhodfxcjcnsm6efuyzdffcrejd7jmstte7hwdvhf67x6okyb2ad.onion")
+        try? await database.setValue(site, forKey: "site-haneinhodfxcjcnsm6efuyzdffcrejd7jmstte7hwdvhf67x6okyb2ad")
         let nextSite = await Site.nextSiteToProcess()
-        XCTAssertEqual(nextSite?.url, "http://hanein2.onion")
+        XCTAssertEqual(nextSite?.url, "http://haneinhodfxcjcnsm6efuyzdffcrejd7jmstte7hwdvhf67x6okyb2ad.onion")
         await asyncTearDown()
     }
     
