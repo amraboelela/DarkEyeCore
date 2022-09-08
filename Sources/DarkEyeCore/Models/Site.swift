@@ -22,7 +22,7 @@ public struct Site: Codable, Sendable {
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
-    var blocked: Bool?
+    public var blocked: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case url
@@ -52,7 +52,7 @@ public struct Site: Codable, Sendable {
         return Site.prefix + onionID
     }
 
-    var canBeBlocked: Bool {
+    public var canBeBlocked: Bool {
         let cannotBeBlockedSites: Set = [
             "5wvugn3zqfbianszhldcqz2u7ulj3xex6i3ha3c5znpgdcnqzn24nnid",
             "zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad"
