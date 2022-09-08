@@ -77,18 +77,13 @@ public struct Link: Codable, Sendable {
         //NSLog("cachedFile fileURL: \(fileURL)")
         var result: String?
         result = try? String(contentsOf: fileURL, encoding: .utf8)
-        if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path) {
-            if let fileSize = attr[FileAttributeKey.size] as? NSNumber, fileSize.intValue == 0 {
-                //NSLog("cachedFile, fileSize == 0, url: \(url)")
+        if let attr = try? FileManager.default.attributesOfItem(atPath: fileURL.path),
+            let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
+            let cacheThreashold = Date.days(numberOfDays: thresholdDays)
+            let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
+            if secondsDiff > cacheThreashold {
+                NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold)")
                 result = nil
-            }
-            if let fileDate = attr[FileAttributeKey.modificationDate] as? NSDate {
-                let cacheThreashold = Date.days(numberOfDays: thresholdDays)
-                let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
-                if secondsDiff > cacheThreashold {
-                    NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold)")
-                    result = nil
-                }
             }
         }
         if result == nil {
