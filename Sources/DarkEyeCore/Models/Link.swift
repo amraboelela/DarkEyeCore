@@ -246,8 +246,8 @@ public struct Link: Codable, Sendable {
         if !crawler.canRun || dbClosed {
             throw LinkProcessError.cannotRun
         }
-        if await link.blocked() == true || link.html == nil {
-            NSLog("myLink.blocked() == true || myLink.html == nil ")
+        if link.html == nil {
+            NSLog("myLink.html == nil ")
             await myLink.updateLinkProcessedAndSave()
         } else {
             await myLink.saveChildren()
