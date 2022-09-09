@@ -244,7 +244,7 @@ public struct Link: Codable, Sendable {
             throw LinkProcessError.cannotRun
         }
         if await link.html() == nil {
-            NSLog("myLink.html() == nil ")
+            //NSLog("myLink.html() == nil ")
             await myLink.updateLinkProcessedAndSave()
         } else {
             await myLink.saveChildren()
