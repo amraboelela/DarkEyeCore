@@ -243,7 +243,7 @@ public struct Link: Codable, Sendable {
         if !crawler.canRun || dbClosed {
             throw LinkProcessError.cannotRun
         }
-        if link.html() == nil {
+        if await link.html() == nil {
             NSLog("myLink.html() == nil ")
             await myLink.updateLinkProcessedAndSave()
         } else {
