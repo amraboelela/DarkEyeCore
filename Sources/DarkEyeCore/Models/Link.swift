@@ -94,7 +94,7 @@ public struct Link: Codable, Sendable {
                 if let shellResult = try await shell(timeout: 5 * 60, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                 }
-                if let fileContent = try String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
+                if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
                     result = fileContent
                 } else {
                     NSLog("error getting fileContent, fileURL: \(fileURL.path)")
