@@ -93,7 +93,6 @@ public struct Link: Codable, Sendable {
                 NSLog("calling torsocks")
                 if let shellResult = try? await shell(timeout: 5 * 60, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
-                    //NSLog("torsocks shellResult: \(shellResult)")
                 }
                 if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
                     result = fileContent
@@ -244,8 +243,8 @@ public struct Link: Codable, Sendable {
         if !crawler.canRun || dbClosed {
             throw LinkProcessError.cannotRun
         }
-        if link.html == nil {
-            NSLog("myLink.html == nil ")
+        if link.html() == nil {
+            NSLog("myLink.html() == nil ")
             await myLink.updateLinkProcessedAndSave()
         } else {
             await myLink.saveChildren()
