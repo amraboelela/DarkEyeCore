@@ -91,7 +91,7 @@ public struct Link: Codable, Sendable {
 #if os(Linux)
             do {
                 NSLog("calling torsocks")
-                if let shellResult = try? await shell("torsocks", "wget", "-O", fileURL.path, url) {
+                if let shellResult = try? await shell(timeout: 5 * 60, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     //NSLog("torsocks shellResult: \(shellResult)")
                 }
