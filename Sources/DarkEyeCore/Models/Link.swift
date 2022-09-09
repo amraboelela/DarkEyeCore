@@ -91,17 +91,15 @@ public struct Link: Codable, Sendable {
 #if os(Linux)
             do {
                 NSLog("calling torsocks")
-                if let shellResult = try shell("torsocks", "wget", "-O", fileURL.path, url) {
+                if let shellResult = try await shell("torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     //NSLog("torsocks shellResult: \(shellResult)")
                 }
                 if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
-                    //if let fileContent = try shell("cat", cacheFileURL.path) {
                     result = fileContent
                 } else {
                     NSLog("error getting fileContent, fileURL: \(fileURL.path)")
                 }
-                //_ = try shell("rm", tempFileURL.path)
             } catch {
                 NSLog("html, error: \(error)")
             }
