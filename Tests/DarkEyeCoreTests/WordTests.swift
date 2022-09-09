@@ -38,7 +38,7 @@ final class WordTests: TestsBase {
         XCTAssertEqual(words[4], "yasalam")
         
         let link = Link(url: Global.mainUrl)
-        words = Word.words(fromText: link.text)
+        words = Word.words(fromText: await link.text())
         XCTAssertTrue(words.count > 3900)
         await asyncTearDown()
     }

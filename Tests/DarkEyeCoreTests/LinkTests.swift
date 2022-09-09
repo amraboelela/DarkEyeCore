@@ -57,7 +57,7 @@ final class LinkTests: TestsBase {
     func testText() async {
         await asyncSetup()
         let link = Link(url: Global.mainUrl)
-        let text = link.text
+        let text = await link.text()
         XCTAssertTrue(text.contains("Verifying PGP signatures - A short and simple how-to guide. In Praise Of Hawala - Anonymous"))
         print("text.count: \(text.count)")
         XCTAssertTrue(text.count > 27000)
@@ -67,14 +67,14 @@ final class LinkTests: TestsBase {
     func testRawUrls() async {
         await asyncSetup()
         let link = Link(url: Global.mainUrl)
-        var urls = link.urls
-        urls = link.urls
+        var urls = await link.urls()
+        //urls = link.urls
         XCTAssertTrue(urls.count > 240)
         XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].0, "/wiki/Contest2022")
         XCTAssertEqual(urls[2].0, "/wiki/The_Matrix")
     
-        urls = link.urls
+        urls = await link.urls()
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
         XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
@@ -112,13 +112,13 @@ final class LinkTests: TestsBase {
     func testRefindedUrls() async {
         await asyncSetup()
         let link = Link(url: Global.mainUrl)
-        var urls = link.urls
-        urls = link.urls
+        var urls = await link.urls()
+        //urls = link.urls
         XCTAssertTrue(urls.count > 240)
         XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
         XCTAssertEqual(urls[1].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Contest2022")
         XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/The_Matrix")
-        urls = link.urls
+        urls = await link.urls()
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 200)
         XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")

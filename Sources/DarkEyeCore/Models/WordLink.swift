@@ -35,7 +35,7 @@ public struct WordLink: Codable, Hashable, Sendable {
     
     public static func index(link: Link) async -> WordStatus {
         NSLog("index link: \(link)")
-        var wordsArray = Word.words(fromText: link.text)
+        var wordsArray = Word.words(fromText: await link.text())
         let countLimit = 40
         if wordsArray.count > countLimit {
             wordsArray.removeLast(wordsArray.count - countLimit)

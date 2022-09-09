@@ -64,7 +64,7 @@ public struct Link: Codable, Sendable {
     
     static var cachedHtml = [String: String]()
     
-    public var html: String? {
+    public func html() async -> String? {
         //NSLog("getting html")
         if let cachedHtml = Link.cachedHtml[self.url] {
             return cachedHtml
@@ -91,7 +91,7 @@ public struct Link: Codable, Sendable {
 #if os(Linux)
             do {
                 NSLog("calling torsocks")
-                if let shellResult = try await shell("torsocks", "wget", "-O", fileURL.path, url) {
+                if let shellResult = try? await shell("torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                     //NSLog("torsocks shellResult: \(shellResult)")
                 }
@@ -112,9 +112,9 @@ public struct Link: Codable, Sendable {
         return result
     }
     
-    public var title: String {
+    public func title() async -> String {
         var result = ""
-        if let html = html, let doc = try? HTMLDocument(string: html) {
+        if let html = await html(), let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
         }
         result = result.replacingOccurrences(
@@ -124,9 +124,9 @@ public struct Link: Codable, Sendable {
         return String(result.prefix(100))
     }
     
-    public var text: String {
+    public func text() async -> String {
         var result = ""
-        if let html = html, let doc = try? HTMLDocument(string: html) {
+        if let html = await html(), let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
             if let textNodes = doc.body?.childNodes(ofTypes: [.Element]) {
                 for textNode in textNodes {
@@ -143,9 +143,9 @@ public struct Link: Codable, Sendable {
     }
     
     // Returns raw urls and refined urls
-    public var urls: [(String, String)] {
+    public func urls() async -> [(String, String)] {
         var result = [(String,String)]()
-        if let html = html, let doc = try? HTMLDocument(string: html) {
+        if let html = await html(), let doc = try? HTMLDocument(string: html) {
             if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
                 for node in nodes {
                     if let elementNode = node.toElement() {
@@ -283,7 +283,7 @@ public struct Link: Codable, Sendable {
     
     mutating func saveChildren() async {
         NSLog("saveChildren")
-        for (_, childURL) in urls {
+        for (_, childURL) in await urls() {
             if let _: Link = await database.value(forKey: Link.prefix + childURL) {
             } else {
                 var link = Link(url: childURL)
