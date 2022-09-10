@@ -6,32 +6,35 @@
 //
 
 import Foundation
-import CoreFoundation
 import XCTest
 import SwiftLevelDB
 @testable import DarkEyeCore
 
-final class DatabaseTests: XCTestCase {
+final class DatabaseTests: TestsBase {
     
-    override func setUp() {
-        super.setUp()
+    override func asyncSetup() async {
+        await super.asyncSetup()
         let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/DatabaseTests.swift", with: "/")).path
         database = LevelDB(parentPath: testRoot + "Library", name: "Database")
     }
     
-    override func tearDown() {
-        super.tearDown()
+    override func asyncTearDown() async {
+        await super.asyncTearDown()
     }
     
     func testInit() async {
+        await asyncSetup()
         XCTAssertNotNil(database)
         let parentPath = await database.parentPath
         XCTAssertNotNil(parentPath)
+        await asyncTearDown()
     }
     
     func testParentPath() async {
+        await asyncSetup()
         await database.setParentPath("/path/to/Library")
         let dbPath = await database.dbPath
         XCTAssertEqual(dbPath, "/path/to/Library/Database")
+        await asyncTearDown()
     }
 }
