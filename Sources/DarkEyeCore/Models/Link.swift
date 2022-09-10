@@ -83,7 +83,7 @@ public struct Link: Codable, Sendable {
             let cacheThreashold = Date.days(numberOfDays: thresholdDays)
             let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
             if secondsDiff > cacheThreashold {
-                NSLog("secondsDiff > cacheThreashold. cacheThreashold: \(cacheThreashold/(24*60*60)) days")
+                NSLog("secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
                 result = nil
             }
         }
