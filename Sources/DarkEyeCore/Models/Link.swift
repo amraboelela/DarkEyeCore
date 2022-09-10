@@ -101,6 +101,9 @@ public struct Link: Codable, Sendable {
                 }
             } catch {
                 NSLog("html, error: \(error)")
+                if "\(error)".contains("Bad file descriptor") {
+                    exit(1)
+                }
             }
 #endif
         }
