@@ -17,7 +17,7 @@ enum LinkProcessError: Error {
     case failed
 }
 
-public struct Link: Codable, Sendable {
+public struct Link: Codable, Equatable, Sendable {
     public static let prefix = "link-"
     
     static var numberOfProcessedLinks = 0
