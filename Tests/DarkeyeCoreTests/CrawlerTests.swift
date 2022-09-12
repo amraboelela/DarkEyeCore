@@ -34,12 +34,7 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         try? await Task.sleep(seconds: secondsDelay)
         crawler.canRun = false
         try? await Task.sleep(seconds: 2.0)
-        if let _: Link = await database.value(forKey: Link.prefix + "https://duckduckgogg42xjoc72x3sjasowoarfbgcmvfimaftt6twagswzczad.onion") {
-            print("Link.numberOfProcessedLinks: \(Link.numberOfProcessedLinks)")
-        } else {
-            XCTFail()
-        }
-        //waitForExpectations(timeout: secondsDelay + 5, handler: nil)
+        XCTAssertTrue(Link.numberOfProcessedLinks > 3)
         await asyncTearDown()
     }
     
