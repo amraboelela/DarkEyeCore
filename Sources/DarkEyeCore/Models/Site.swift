@@ -61,6 +61,10 @@ public struct Site: Codable, Sendable {
     }
     
     public var allowed: Bool {
+        return Site.allowed(onionID: onionID) && blocked != true
+    }
+    
+    public static func allowed(onionID: String) -> Bool {
         if onionID.count < 50 {
             return false
         }
@@ -92,7 +96,7 @@ public struct Site: Codable, Sendable {
             "csalryx3xenotyljyttsju6jfthrjyt6ijwd3zzykhkpyfoeao2nxaqd",
             "gocdtu23yutzszejz4ar5axa7nmmz2oxs2ce3ivrld63axbcq5lsvdqd"
         ]
-        return !forbiddenIDs.contains(onionID) && blocked != true
+        return !forbiddenIDs.contains(onionID)
     }
     // MARK: - Crawling
     
