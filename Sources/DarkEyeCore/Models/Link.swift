@@ -252,9 +252,9 @@ public struct Link: Codable, Equatable, Sendable {
             //NSLog("myLink.html() == nil ")
             await myLink.updateLinkProcessedAndSave()
         } else {
-            await myLink.saveChildren()
             switch await WordLink.index(link: myLink) {
             case .complete:
+                await myLink.saveChildren()
                 await myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
