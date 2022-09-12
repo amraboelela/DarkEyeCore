@@ -138,6 +138,7 @@ public struct Site: Codable, Sendable {
         } else {
             do {
                 NSLog("can't find any site to process")
+                NSLog("Last processed site #\(Site.numberOfProcessedSites)")
                 try await Link.crawlNext()
             } catch {
                 NSLog("Link.crawlNext() error: \(error)")
