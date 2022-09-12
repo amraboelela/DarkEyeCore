@@ -88,7 +88,7 @@ public struct Link: Codable, Equatable, Sendable {
                 needToRefresh = true
             }
         }
-        if needToRefresh {
+        if result == nil || needToRefresh {
 #if os(Linux)
             do {
                 NSLog("needToRefresh, calling torsocks")
