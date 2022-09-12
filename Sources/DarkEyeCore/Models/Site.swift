@@ -157,7 +157,7 @@ public struct Site: Codable, Sendable {
     
     public mutating func save() async {
         do {
-            NSLog("Site, new site: \(self.onionID)")
+            //NSLog("Site, new site: \(self.onionID)")
             try await database.setValue(self, forKey: key)
         } catch {
             NSLog("Link save failed.")
