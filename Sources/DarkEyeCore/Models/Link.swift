@@ -213,18 +213,18 @@ public struct Link: Codable, Equatable, Sendable {
         //NSLog("nextLinkToProcess")
         var result: Link? = nil
         let processTimeThreshold = await Global.global().processTimeThreshold
-        var backward = false
-        if Int.random(in: 1...100) <= 50 {
-            backward = true
-        }
-        await database.enumerateKeysAndValues(backward: backward, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
+        var availableLinks = [Link]()
+        await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                stop.pointee = true
-                result = link
+                //stop.pointee = true
+                //result = link
+                availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
+        let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
+        result = availableLinks[chosenLinkIndex]
         return result
     }
     
