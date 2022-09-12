@@ -74,6 +74,7 @@ public struct Link: Codable, Equatable, Sendable {
 #else
         let thresholdDays = 1000
 #endif
+        var needToRefresh = false
         let fileURL = Global.cacheURL.appendingPathComponent(hash + ".html")
         //NSLog("cachedFile fileURL: \(fileURL)")
         var result: String?
@@ -84,13 +85,13 @@ public struct Link: Codable, Equatable, Sendable {
             let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
             if secondsDiff > cacheThreashold {
                 NSLog("secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
-                result = nil
+                needToRefresh = true
             }
         }
-        if result == nil {
+        if needToRefresh {
 #if os(Linux)
             do {
-                NSLog("calling torsocks")
+                NSLog("needToRefresh, calling torsocks")
                 if let shellResult = try await shell(timeout: 5 * 60, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                 }
