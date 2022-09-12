@@ -236,6 +236,8 @@ public struct Link: Codable, Equatable, Sendable {
     static func process(link: Link) async throws {
         NSLog("processing link: \(link.url)")
         var myLink = link
+        NSLog("process link, site: \(link.site())")
+        NSLog("process link, blocked: \(link.blocked())")
         if await link.blocked() || !allowed(url: link.url) {
             NSLog("link not allowed")
             await myLink.updateLinkProcessedAndSave()
@@ -302,10 +304,11 @@ public struct Link: Codable, Equatable, Sendable {
             } else {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
-                if let _: Site = await database.value(forKey: Site.prefix + url.onionID) {
+                let siteKey = Site.prefix + url.onionID
+                if let _: Site = await database.value(forKey: siteKey) {
                 } else {
                     let site = Site(url: url)
-                    try await database.setValue(site, forKey: Site.prefix + url.onionID)
+                    try await database.setValue(site, forKey: siteKey)
                 }
             }
             try await database.setValue(self, forKey: key)
