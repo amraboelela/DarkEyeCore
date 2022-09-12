@@ -258,7 +258,7 @@ public struct Link: Codable, Equatable, Sendable {
                 NSLog("indexNextWord returned .ended")
                 throw LinkProcessError.cannotRun
             case .notAllowed:
-                //NSLog("url not allowed")
+                NSLog("url not allowed")
                 await myLink.updateLinkProcessedAndSave()
                 throw LinkProcessError.notAllowed
             case .failed:

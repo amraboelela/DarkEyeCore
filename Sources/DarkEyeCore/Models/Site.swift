@@ -113,25 +113,26 @@ public struct Site: Codable, Sendable {
     
     public static func crawlNext() async {
         //NSLog("Site.crawlNext")
-        if var nextSite = await nextSiteToProcess(),
-           let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
-            do {
-                try await Link.process(link: link)
-                await nextSite.updateSiteProcessedAndSave()
-            } catch {
-                switch error {
-                case LinkProcessError.notAllowed:
-                    if nextSite.canBeBlocked {
-                        nextSite.blocked = true
-                    }
-                    await nextSite.updateSiteProcessedAndSave()
-                default:
-                    NSLog("Site crawlNext error: \(error)")
+        do {
+            if var nextSite = await nextSiteToProcess() {
+                if let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
+                    try await Link.process(link: link)
                 }
+                await nextSite.updateSiteProcessedAndSave()
+            } else {
+                NSLog("can't find any site to process")
+                try await Link.crawlNext()
             }
-        } else {
-            NSLog("can't find any site to process")
-            try? await Link.crawlNext()
+        } catch {
+            switch error {
+            case LinkProcessError.notAllowed:
+                if nextSite.canBeBlocked {
+                    nextSite.blocked = true
+                }
+                await nextSite.updateSiteProcessedAndSave()
+            default:
+                NSLog("Site crawlNext error: \(error)")
+            }
         }
     }
     
