@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Updating DarkEyeCore"
+echo "Updating DarkeyeCore"
 
 git pull
 git commit -a -m "Update from server"

@@ -1,6 +1,6 @@
 //
 //  Word.swift
-//  DarkEyeCore
+//  DarkeyeCore
 //
 //  Created by Amr Aboelela on 9/7/22.
 //  Copyright © 2022 Amr Aboelela.

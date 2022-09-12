@@ -1,6 +1,6 @@
 //
 //  DatabaseTests.swift
-//  DarkEyeCoreTests
+//  DarkeyeCoreTests
 //
 //  Created by: Amr Aboelela on 1/13/22.
 //
@@ -8,13 +8,13 @@
 import Foundation
 import XCTest
 import SwiftLevelDB
-@testable import DarkEyeCore
+@testable import DarkeyeCore
 
 final class DatabaseTests: TestsBase {
     
     override func asyncSetup() async {
         await super.asyncSetup()
-        let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/DatabaseTests.swift", with: "/")).path
+        let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkeyeCoreTests/DatabaseTests.swift", with: "/")).path
         database = LevelDB(parentPath: testRoot + "Library", name: "Database")
     }
     

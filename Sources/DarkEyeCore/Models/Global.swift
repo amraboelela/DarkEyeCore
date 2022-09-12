@@ -1,6 +1,6 @@
 //
 //  Global.swift
-//  DarkEyeCore
+//  DarkeyeCore
 //
 //  Created by Amr Aboelela on 7/1/22.
 //  Copyright © 2022 Amr Aboelela.
@@ -25,7 +25,7 @@ public struct Global: Codable, Sendable {
     
     static var workingURL: URL {
         if workingDirectory.isEmpty {
-            return URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkEyeCore/Models/Global.swift", with: ""))
+            return URL(fileURLWithPath: #file.replacingOccurrences(of: "Sources/DarkeyeCore/Models/Global.swift", with: ""))
         } else {
             return URL(fileURLWithPath: workingDirectory)
         }

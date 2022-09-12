@@ -1,6 +1,6 @@
 import XCTest
 import SwiftLevelDB
-@testable import DarkEyeCore
+@testable import DarkeyeCore
 
 class TestsBase: XCTestCase {
     
@@ -11,7 +11,7 @@ class TestsBase: XCTestCase {
             }
         }
         try? await Task.sleep(seconds: 1.0)
-        let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkEyeCoreTests/TestsBase.swift", with: "/")).path
+        let testRoot = URL(fileURLWithPath: #file.replacingOccurrences(of: "DarkeyeCoreTests/TestsBase.swift", with: "/")).path
         database = LevelDB(parentPath: testRoot + "Library", name: "Database")
         Crawler.crawler = nil
     }

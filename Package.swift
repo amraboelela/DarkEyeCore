@@ -4,12 +4,12 @@
 import PackageDescription
 
 let package = Package(
-    name: "DarkEyeCore",
+    name: "DarkeyeCore",
     platforms: [
         .macOS(.v12)
     ],
     products: [
-        .library(name: "DarkEyeCore", targets: ["DarkEyeCore"]),
+        .library(name: "DarkeyeCore", targets: ["DarkeyeCore"]),
     ],
     dependencies: [
         .package(url: "https://github.com/amraboelela/SwiftLevelDB", .branch("master")),
@@ -19,8 +19,8 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "DarkEyeCore",
+            name: "DarkeyeCore",
             dependencies: ["SwiftLevelDB", "Fuzi", "SwiftEncrypt"]),
-        .testTarget(name: "DarkEyeCoreTests", dependencies: ["DarkEyeCore"]),
+        .testTarget(name: "DarkeyeCoreTests", dependencies: ["DarkeyeCore"]),
     ]
 )

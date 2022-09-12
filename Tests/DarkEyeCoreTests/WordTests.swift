@@ -1,5 +1,5 @@
 import XCTest
-@testable import DarkEyeCore
+@testable import DarkeyeCore
 
 final class WordTests: TestsBase {
     
