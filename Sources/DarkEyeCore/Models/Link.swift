@@ -237,7 +237,7 @@ public struct Link: Codable, Equatable, Sendable {
         NSLog("processing link: \(link.url)")
         var myLink = link
         if await link.blocked() || !allowed(url: link.url) {
-            //NSLog("url not allowed")
+            NSLog("link not allowed")
             await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
         }
