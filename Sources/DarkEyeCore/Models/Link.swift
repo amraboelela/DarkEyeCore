@@ -309,6 +309,7 @@ public struct Link: Codable, Equatable, Sendable {
                 if let _: Site = await database.value(forKey: siteKey) {
                 } else {
                     let site = Site(url: url)
+                    NSLog("new site: \(site)")
                     try await database.setValue(site, forKey: siteKey)
                 }
             }
