@@ -224,7 +224,7 @@ final class LinkTests: TestsBase {
         await asyncTearDown()
     }
     
-    /*func testSaveChildrenIfNeeded() async {
+    func testSaveChildrenIfNeeded() async {
         await asyncSetup()
         var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.lastProcessTime = Date.secondsSinceReferenceDate
@@ -236,7 +236,7 @@ final class LinkTests: TestsBase {
             XCTFail()
         }
         await asyncTearDown()
-    }*/
+    }
     
     func testSaveChildren() async {
         await asyncSetup()

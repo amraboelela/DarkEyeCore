@@ -287,6 +287,13 @@ public struct Link: Codable, Equatable, Sendable {
         NSLog("Processed link #\(Link.numberOfProcessedLinks)")
     }
     
+    public mutating func saveChildrenIfNeeded() async {
+        //print("saveChildrenIfNeeded")
+        if await lastProcessTime < Global.global().processTimeThreshold {
+            await saveChildren()
+        }
+    }
+    
     mutating func saveChildren() async {
         NSLog("saveChildren")
         for (_, childURL) in await urls() {
