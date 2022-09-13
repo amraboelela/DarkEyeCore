@@ -245,7 +245,7 @@ public struct Link: Codable, Equatable, Sendable {
         var myLink = link
         //NSLog("process link, site: \(String(describing: await link.site()))")
         //NSLog("process link, blocked: \(await link.blocked())")
-        if await link.blocked() || !Site.allowed(onionID: link.url.onionID) {
+        if await link.blocked() {
             NSLog("link not allowed")
             await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
@@ -351,9 +351,6 @@ public struct Link: Codable, Equatable, Sendable {
     
     static func allowed(url: String) -> Bool {
         //NSLog("checking if allowed url")
-        /*if !Site.allowed(onionID: url.onionID) {
-            return false
-        }*/
         if url.range(of: ":") != nil &&
             url.range(of: "http") == nil {
             return false
