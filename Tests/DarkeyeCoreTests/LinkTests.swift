@@ -58,7 +58,7 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let link = Link(url: Global.mainUrl)
         let text = await link.text()
-        XCTAssertTrue(text.contains("Verifying PGP signatures - A short and simple how-to guide. In Praise Of Hawala - Anonymous"))
+        XCTAssertTrue(text.contains("All pages - The Hidden Wiki"))
         print("text.count: \(text.count)")
         XCTAssertTrue(text.count > 27000)
         await asyncTearDown()
@@ -68,19 +68,19 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let link = Link(url: Global.mainUrl)
         var urls = await link.urls()
-        XCTAssertTrue(urls.count > 180)
-        XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
-        //XCTAssertEqual(urls[1].0, "/wiki/Contest2022")
-        //XCTAssertEqual(urls[2].0, "/wiki/The_Matrix")
+        XCTAssertTrue(urls.count > 250)
+        XCTAssertEqual(urls[0].0, "/wiki/.Preparing_For_Pregnancy_16980")
+        XCTAssertEqual(urls[1].0, "/wiki/.onion")
+        XCTAssertEqual(urls[2].0, "/wiki/00a2f835-6c15-45a3-bc85-312c31721a05")
     
         urls = await link.urls()
         print("urls.count: \(urls.count)")
         XCTAssertTrue(urls.count > 180)
-        XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        XCTAssertEqual(urls[0].0, "/wiki/.Preparing_For_Pregnancy_16980")
         let wikiUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: "/wiki")?.lowerBound == rawURL.startIndex
         }
-        //XCTAssertTrue(wikiUrls.count > 30)
+        XCTAssertTrue(wikiUrls.count > 30)
         let dotOrgUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: ".org") != nil
         }
@@ -104,14 +104,14 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let link = Link(url: Global.mainUrl)
         var urls = await link.urls()
-        XCTAssertTrue(urls.count > 180)
-        XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
-        //XCTAssertEqual(urls[1].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Contest2022")
-        //XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/The_Matrix")
+        XCTAssertTrue(urls.count > 250)
+        XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/.Preparing_For_Pregnancy_16980")
+        XCTAssertEqual(urls[1].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/.onion")
+        XCTAssertEqual(urls[2].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/00a2f835-6c15-45a3-bc85-312c31721a05")
         urls = await link.urls()
         print("urls.count: \(urls.count)")
-        XCTAssertTrue(urls.count > 180)
-        XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        XCTAssertTrue(urls.count > 250)
+        XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/.Preparing_For_Pregnancy_16980")
         let wikiUrls = urls.filter { rawURL, refinedURL in
             refinedURL.range(of: "/wiki")?.lowerBound == refinedURL.startIndex
         }
@@ -195,8 +195,8 @@ final class LinkTests: TestsBase {
         let link1 = Link(url: Global.mainUrl)
         try? await Link.process(link: link1)
         try? await Task.sleep(seconds: 5)
-        if let word: WordLink = await database.value(forKey: WordLink.prefix + "jump-" + Global.mainUrl) {
-            XCTAssertTrue(word.text.lowercased().contains("jump"))
+        if let word: WordLink = await database.value(forKey: WordLink.prefix + "print-" + Global.mainUrl) {
+            XCTAssertTrue(word.text.lowercased().contains("print"))
         } else {
             XCTFail()
         }
@@ -224,7 +224,7 @@ final class LinkTests: TestsBase {
         await asyncTearDown()
     }
     
-    func testSaveChildrenIfNeeded() async {
+    /*func testSaveChildrenIfNeeded() async {
         await asyncSetup()
         var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.lastProcessTime = Date.secondsSinceReferenceDate
@@ -236,7 +236,7 @@ final class LinkTests: TestsBase {
             XCTFail()
         }
         await asyncTearDown()
-    }
+    }*/
     
     func testSaveChildren() async {
         await asyncSetup()

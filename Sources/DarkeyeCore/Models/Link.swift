@@ -27,6 +27,7 @@ public struct Link: Codable, Equatable, Sendable {
     public var failedToLoad = false
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
+    public var numberOfLinks = 1 // # of inbound links
     
     public enum CodingKeys: String, CodingKey {
         case url
@@ -34,6 +35,7 @@ public struct Link: Codable, Equatable, Sendable {
         case failedToLoad
         case numberOfVisits
         case lastVisitTime
+        case numberOfLinks
     }
     
     // MARK: - Accessors
@@ -285,17 +287,12 @@ public struct Link: Codable, Equatable, Sendable {
         NSLog("Processed link #\(Link.numberOfProcessedLinks)")
     }
     
-    public mutating func saveChildrenIfNeeded() async {
-        //print("saveChildrenIfNeeded")
-        if await lastProcessTime < Global.global().processTimeThreshold {
-            await saveChildren()
-        }
-    }
-    
     mutating func saveChildren() async {
         NSLog("saveChildren")
         for (_, childURL) in await urls() {
-            if let _: Link = await database.value(forKey: Link.prefix + childURL) {
+            if var link: Link = await database.value(forKey: Link.prefix + childURL) {
+                link.numberOfLinks += 1
+                await link.save()
             } else {
                 var link = Link(url: childURL)
                 await link.save()

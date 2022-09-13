@@ -54,13 +54,13 @@ final class WordLinkTests: TestsBase {
        try? await Task.sleep(seconds: secondsDelay)
        crawler.canRun = false
        try? await Task.sleep(seconds: 2.0)
-       var wordLinks = await WordLink.wordLinks(withSearchText: "to jump", count: countLimit)
+       var wordLinks = await WordLink.wordLinks(withSearchText: "to print", count: countLimit)
        var wordLinksCount = wordLinks.count
        print("wordLinksCount 1: \(wordLinksCount)")
        print("wordLinks 1: \(wordLinks)")
        if wordLinksCount > 0 {
            for wordLink in wordLinks {
-               XCTAssertEqual(wordLink.word, "jump")
+               XCTAssertEqual(wordLink.word, "print")
            }
        } else {
            XCTFail()

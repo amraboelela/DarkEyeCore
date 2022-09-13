@@ -27,8 +27,19 @@ public struct WordLink: Codable, Hashable, Sendable {
     
     // MARK: - Accessors
     
-    var score: Int {
-        return numberOfVisits * 1000 + wordCount + lastVisitTime
+    func score() async -> Int {
+        var numberOfLinks = 1
+        if let link = await link() {
+            numberOfLinks = link.numberOfLinks
+        }
+        return numberOfLinks * 1000 + numberOfVisits * 500 + wordCount * 100 + lastVisitTime
+    }
+    
+    func link() async -> Link? {
+        if let link: Link = await database.value(forKey: Link.prefix + url) {
+            return link
+        }
+        return nil
     }
     
     // MARK: - Indexing
@@ -100,7 +111,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             return true
         }
-        result = result.sorted { $0.score > $1.score }
+        await result.insertionSort { await $0.score() > $1.score() }
         if result.count > count {
             result.removeLast(result.count - count)
         }
