@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:amiga:arexx:manual:functions [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,amiga,arexx,manual,functions"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:amiga:arexx:manual"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/amiga/arexx/manual/functions"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:amiga:arexx:manual';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:amiga:arexx:manual:functions","namespace":"fuss:amiga:arexx:manual","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:amiga:arexx:manual:functions" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:amiga:arexx:manual:functions&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga" class="wikilink1" title="fuss:amiga" data-wiki-id="fuss:amiga">amiga</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx" class="wikilink1" title="fuss:amiga:arexx" data-wiki-id="fuss:amiga:arexx">arexx</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual" class="wikilink1" title="fuss:amiga:arexx:manual" data-wiki-id="fuss:amiga:arexx:manual">manual</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions" class="wikilink1" title="fuss:amiga:arexx:manual:functions" data-wiki-id="fuss:amiga:arexx:manual:functions">functions</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:amiga:arexx:manual:functions</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#functions">Functions</a></div></li>
+<li class="level1"><div class="li"><a href="#invoking_a_function">Invoking a Function</a></div></li>
+<li class="level1"><div class="li"><a href="#types_of_functions">Types of Functions</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#internal_functions">Internal Functions</a></div></li>
+<li class="level2"><div class="li"><a href="#built-in_functions">Built-In Functions</a></div></li>
+<li class="level2"><div class="li"><a href="#external_function_libraries">External Function Libraries</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#the_library_list">The Library List</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#external_function_hosts">External Function Hosts</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#the_search_order">The Search Order</a></div></li>
+<li class="level1"><div class="li"><a href="#the_clip_list">The Clip List</a></div></li>
+<li class="level1"><div class="li"><a href="#built-in_functions_reference">Built-in Functions Reference</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#syntax">Syntax</a></div></li>
+<li class="level2"><div class="li"><a href="#alphabetical_reference">Alphabetical Reference</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#abbrev">ABBREV()</a></div></li>
+<li class="level3"><div class="li"><a href="#abs">ABS()</a></div></li>
+<li class="level3"><div class="li"><a href="#addlib">ADDLIB()</a></div></li>
+<li class="level3"><div class="li"><a href="#address">ADDRESS()</a></div></li>
+<li class="level3"><div class="li"><a href="#arg">ARG()</a></div></li>
+<li class="level3"><div class="li"><a href="#b2c">B2C()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitand">BITAND()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitchg">BITCHG()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitclr">BITCLR()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitcomp">BITCOMP()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitor">BITOR()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitset">BITSET()</a></div></li>
+<li class="level3"><div class="li"><a href="#bittst">BITTST()</a></div></li>
+<li class="level3"><div class="li"><a href="#bitxor">BITXOR()</a></div></li>
+<li class="level3"><div class="li"><a href="#c2b">C2B()</a></div></li>
+<li class="level3"><div class="li"><a href="#c2d">C2D()</a></div></li>
+<li class="level3"><div class="li"><a href="#c2x">C2X()</a></div></li>
+<li class="level3"><div class="li"><a href="#centercentre">CENTER()/CENTRE()</a></div></li>
+<li class="level3"><div class="li"><a href="#close">CLOSE()</a></div></li>
+<li class="level3"><div class="li"><a href="#compare">COMPARE()</a></div></li>
+<li class="level3"><div class="li"><a href="#compress">COMPRESS()</a></div></li>
+<li class="level3"><div class="li"><a href="#copies">COPIES()</a></div></li>
+<li class="level3"><div class="li"><a href="#d2c">D2C()</a></div></li>
+<li class="level3"><div class="li"><a href="#d2x">D2X()</a></div></li>
+<li class="level3"><div class="li"><a href="#datatype">DATATYPE()</a></div></li>
+<li class="level3"><div class="li"><a href="#date">DATE()</a></div></li>
+<li class="level3"><div class="li"><a href="#delstr">DELSTR()</a></div></li>
+<li class="level3"><div class="li"><a href="#delword">DELWORD()</a></div></li>
+<li class="level3"><div class="li"><a href="#digits">DIGITS()</a></div></li>
+<li class="level3"><div class="li"><a href="#eof">EOF()</a></div></li>
+<li class="level3"><div class="li"><a href="#errortext">ERRORTEXT()</a></div></li>
+<li class="level3"><div class="li"><a href="#exists">EXISTS()</a></div></li>
+<li class="level3"><div class="li"><a href="#export">EXPORT()</a></div></li>
+<li class="level3"><div class="li"><a href="#find">FIND()</a></div></li>
+<li class="level3"><div class="li"><a href="#form">FORM()</a></div></li>
+<li class="level3"><div class="li"><a href="#freespace">FREESPACE()</a></div></li>
+<li class="level3"><div class="li"><a href="#fuzz">FUZZ()</a></div></li>
+<li class="level3"><div class="li"><a href="#getclip">GETCLIP()</a></div></li>
+<li class="level3"><div class="li"><a href="#getspace">GETSPACE()</a></div></li>
+<li class="level3"><div class="li"><a href="#hash">HASH()</a></div></li>
+<li class="level3"><div class="li"><a href="#import">IMPORT()</a></div></li>
+<li class="level3"><div class="li"><a href="#index">INDEX()</a></div></li>
+<li class="level3"><div class="li"><a href="#insert">INSERT()</a></div></li>
+<li class="level3"><div class="li"><a href="#lastpos">LASTPOS()</a></div></li>
+<li class="level3"><div class="li"><a href="#left">LEFT()</a></div></li>
+<li class="level3"><div class="li"><a href="#length">LENGTH()</a></div></li>
+<li class="level3"><div class="li"><a href="#lines">LINES()</a></div></li>
+<li class="level3"><div class="li"><a href="#max">MAX()</a></div></li>
+<li class="level3"><div class="li"><a href="#min">MIN()</a></div></li>
+<li class="level3"><div class="li"><a href="#open">OPEN()</a></div></li>
+<li class="level3"><div class="li"><a href="#overlay">OVERLAY()</a></div></li>
+<li class="level3"><div class="li"><a href="#pos">POS()</a></div></li>
+<li class="level3"><div class="li"><a href="#pragma">PRAGMA()</a></div></li>
+<li class="level3"><div class="li"><a href="#random">RANDOM()</a></div></li>
+<li class="level3"><div class="li"><a href="#randu">RANDU()</a></div></li>
+<li class="level3"><div class="li"><a href="#readch">READCH()</a></div></li>
+<li class="level3"><div class="li"><a href="#readln">READLN()</a></div></li>
+<li class="level3"><div class="li"><a href="#remlib">REMLIB()</a></div></li>
+<li class="level3"><div class="li"><a href="#reverse">REVERSE()</a></div></li>
+<li class="level3"><div class="li"><a href="#right">RIGHT()</a></div></li>
+<li class="level3"><div class="li"><a href="#seek">SEEK()</a></div></li>
+<li class="level3"><div class="li"><a href="#setclip">SETCLIP()</a></div></li>
+<li class="level3"><div class="li"><a href="#show">SHOW()</a></div></li>
+<li class="level3"><div class="li"><a href="#sign">SIGN()</a></div></li>
+<li class="level3"><div class="li"><a href="#sourceline">SOURCELINE()</a></div></li>
+<li class="level3"><div class="li"><a href="#space">SPACE()</a></div></li>
+<li class="level3"><div class="li"><a href="#storage">STORAGE()</a></div></li>
+<li class="level3"><div class="li"><a href="#strip">STRIP()</a></div></li>
+<li class="level3"><div class="li"><a href="#substr">SUBSTR()</a></div></li>
+<li class="level3"><div class="li"><a href="#subword">SUBWORD()</a></div></li>
+<li class="level3"><div class="li"><a href="#symbol">SYMBOL()</a></div></li>
+<li class="level3"><div class="li"><a href="#time">TIME()</a></div></li>
+<li class="level3"><div class="li"><a href="#trace">TRACE()</a></div></li>
+<li class="level3"><div class="li"><a href="#translate">TRANSLATE()</a></div></li>
+<li class="level3"><div class="li"><a href="#trim">TRIM()</a></div></li>
+<li class="level3"><div class="li"><a href="#trunc">TRUNC()</a></div></li>
+<li class="level3"><div class="li"><a href="#upper">UPPER()</a></div></li>
+<li class="level3"><div class="li"><a href="#value">VALUE()</a></div></li>
+<li class="level3"><div class="li"><a href="#verify">VERIFY()</a></div></li>
+<li class="level3"><div class="li"><a href="#word">WORD()</a></div></li>
+<li class="level3"><div class="li"><a href="#wordindex">WORDINDEX()</a></div></li>
+<li class="level3"><div class="li"><a href="#wordlength">WORDLENGTH()</a></div></li>
+<li class="level3"><div class="li"><a href="#words">WORDS()</a></div></li>
+<li class="level3"><div class="li"><a href="#writech">WRITECH()</a></div></li>
+<li class="level3"><div class="li"><a href="#writeln">WRITELN()</a></div></li>
+<li class="level3"><div class="li"><a href="#x2c">X2C()</a></div></li>
+<li class="level3"><div class="li"><a href="#x2d">X2D()</a></div></li>
+<li class="level3"><div class="li"><a href="#xrange">XRANGE()</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#example_program">Example Program</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_13_changestringsrexx">Program 13. Changestrings.rexx</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#rexxsupportlibrary_functions">REXXSupport.Library Functions</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#program_14_openlibraryrexx">Program 14. OpenLibrary.rexx</a></div></li>
+<li class="level2"><div class="li"><a href="#allocmem">ALLOCMEM()</a></div></li>
+<li class="level2"><div class="li"><a href="#closeport">CLOSEPORT()</a></div></li>
+<li class="level2"><div class="li"><a href="#freemem">FREEMEM()</a></div></li>
+<li class="level2"><div class="li"><a href="#getarg">GETARG()</a></div></li>
+<li class="level2"><div class="li"><a href="#getpkt">GETPKT()</a></div></li>
+<li class="level2"><div class="li"><a href="#openport">OPENPORT()</a></div></li>
+<li class="level2"><div class="li"><a href="#reply">REPLY()</a></div></li>
+<li class="level2"><div class="li"><a href="#showdir">SHOWDIR()</a></div></li>
+<li class="level2"><div class="li"><a href="#showlist">SHOWLIST()</a></div></li>
+<li class="level2"><div class="li"><a href="#statef">STATEF()</a></div></li>
+<li class="level2"><div class="li"><a href="#waitpkt">WAITPKT()</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#index1">Index</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="functions">Functions</h1>
+<div class="level1">
+
+<p>
+A function is a program or group of statements that is executed whenever that function name is called in a particular context. A function may be part of an internal program, part of a library, or a separate external program. Functions are an important building block of modular programming because they allow you to construct large programs from a series of small, easily developed modules.
+</p>
+
+<p>
+This chapter explains the different types of functions and how they are evaluated. It also provides an alphabetical reference of ARexx&#039;s built-in function library.
+</p>
+
+</div>
+
+<h1 class="sectionedit2" id="invoking_a_function">Invoking a Function</h1>
+<div class="level1">
+
+<p>
+Within a ARexx program, a function is defined as a symbol or string followed immediately by an open parenthesis. The symbol or string (taken as a literal) specifies the function name, and the open parenthesis begins the argument list. Between the opening and closing parentheses are zero or more argument expressions, separated by commas, that supply the data being passed to the function.
+</p>
+
+<p>
+Valid function calls are:
+</p>
+<pre class="code rexx"><span class="kw6">CENTER</span> <span class="br0">&#40;</span><span class="st0">'title'</span>, <span class="nu0">20</span><span class="br0">&#41;</span>
+<span class="kw1">ADDRESS</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+<span class="st0">'ALLOCMEM'</span> <span class="br0">&#40;</span><span class="nu0">256</span><span class="sy0">*</span><span class="nu0">4</span>,<span class="nu0">1</span><span class="br0">&#41;</span></pre>
+
+<p>
+Each argument expression is evaluated in turn and the resulting strings are passed as the argument list to the function. Each argument expression, while often just a single literal value, can include arithmetic or string operations or even other function calls. Argument expressions are evaluated from left to right.
+</p>
+
+<p>
+Functions can also be invoked using the <code>CALL</code> instruction. The <code>CALL</code> instruction, described in Chapter 4, can be used to invoke a function that may not return a value.
+</p>
+
+</div>
+
+<h1 class="sectionedit3" id="types_of_functions">Types of Functions</h1>
+<div class="level1">
+
+<p>
+There are three types of functions:
+</p>
+<ul>
+<li class="level1"><div class="li"> Internal functions - defined within the ARexx program.</div>
+</li>
+<li class="level1"><div class="li"> Built-in functions - supplied by the ARexx programming language.</div>
+</li>
+<li class="level1"><div class="li"> Function Libraries - a special Amiga shared library.</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit4" id="internal_functions">Internal Functions</h2>
+<div class="level2">
+
+<p>
+An internal function is identified by a label within the program. When the internal function is called. ARexx creates a new storage environment so that the previous caller&#039;s environment is preserved. The new environment inherits the values from its predecessor, but subsequent changes to the environment variables do not affect the previous environment.
+</p>
+
+<p>
+The specific values preserved are:
+</p>
+<ul>
+<li class="level1"><div class="li"> The current and previous host addresses.</div>
+</li>
+<li class="level1"><div class="li"> The <code>NUMERIC DIGITS</code>, <code>FUZZ</code>, and <code>FORM</code> settings.</div>
+</li>
+<li class="level1"><div class="li"> The trace option, inhibit flag, and interactive flag.</div>
+</li>
+<li class="level1"><div class="li"> The state of the interrupt flags as defined by the <code>SIGNAL</code> instruction.</div>
+</li>
+<li class="level1"><div class="li"> The current prompt string as set by the <code>OPTIONS PROMPT</code> instruction.</div>
+</li>
+</ul>
+
+<p>
+The new environment does not automatically get a new symbol table, so initially all of the variables in the previous environment are available to the called function. The <code>PROCEDURE</code> instruction can be used to create a table and thereby protect the caller&#039;s symbol values. <code>PROCEDURE</code> can also be used to allow the same variable name to be used in two different areas with two different values.
+</p>
+
+<p>
+Execution of the internal function proceeds until a <code>RETURN</code> instruction is executed. At this point the new environment is dismantled, and control resumes at the point of the function call. The expression supplied with the <code>RETURN</code> instruction is evaluated and passed back to the caller as the function result.
+</p>
+
+</div>
+
+<h2 class="sectionedit5" id="built-in_functions">Built-In Functions</h2>
+<div class="level2">
+
+<p>
+ARexx provides a substantial library of predefined functions as part of the language system. These functions are always available and have been optimized to work with the internal data structures. In general, the built-in functions execute much faster than an equivalent interpreted function, so their usage is strongly recommended.
+</p>
+
+<p>
+Several of the built-in functions create and manipulate external AmigaDOS files. Files are referenced by a logical name, a case-sensitive name that is assigned to a file when it is first opened. The initial input and output streams are given the names <code>STDIN</code> (standard input) and <code>STDOUT</code> (standard output). There is no theoretical limit to the number of files that may be open simultaneously, although a limit will be imposed by available memory. All open files are closed automatically when the program exits.
+</p>
+
+</div>
+
+<h2 class="sectionedit6" id="external_function_libraries">External Function Libraries</h2>
+<div class="level2">
+
+<p>
+A function library is a collection of one or more functions organized as an Amiga shared library. The library must reside in <code>LIBS:</code>, but may be either memory or disk-resident. Disk-resident libraries are loaded and opened as needed.
+</p>
+
+<p>
+The library has to be especially tailored for use by ARexx. Each function library must contain a library name, a search priority, an entry point offset, and a version number. When ARexx is searching for a function, the interpreter opens each library and checks its &quot;query&quot; entry point. This entry point must be specified as an integer offset (e.g. &quot;-30&quot;) from the library base. The return code from the query call indicates whether the desired function was found. If the function is found, it is called with the parameters passed by the interpreter, and the function result is returned to the caller. If it is not found, a &quot;Function not found&quot; error code is returned, and the search continues with the next library in the list. Function libraries are always closed after being checked so that the operating system can reclaim the memory space if required.
+</p>
+
+</div>
+
+<h3 class="sectionedit7" id="the_library_list">The Library List</h3>
+<div class="level3">
+
+<p>
+The ARexx resident process maintains a list of the currently available function libraries and function hosts called the Library List. Application programs can add or remove function libraries as required.
+</p>
+
+<p>
+The Library List is maintained as a priority-sorted queue. Each entry has an associated search priority in the range 100 (highest) to -100 (lowest). Entries can be added at an appropriate priority to control the function name resolution. Libraries with higher priorities are searched first. Within a given priority level, those libraries added first are searched first. The priority levels are significant if any of the libraries have duplicate function name definitions, since the function located further down the search chain could never be called.
+</p>
+
+</div>
+
+<h2 class="sectionedit8" id="external_function_hosts">External Function Hosts</h2>
+<div class="level2">
+
+<p>
+The name associated with a function host is the name of its public message port. Function calls are passed to the host as a message packet; it is then up to the individual host to determine whether the specified function name is one that it recognizes. The name resolution is completely internal to the host, so function hosts provide a natural gateway mechanism for implementing remote procedure calls to other machines in a network. The ARexx resident process is a function host and is installed in the Library List with a priority of <code>-60</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="the_search_order">The Search Order</h1>
+<div class="level1">
+
+<p>
+Function linkages in ARexx are established at the time of the function call. A specific search order is followed until a function matching the name symbol or string is found. If the specified function cannot be located, an error is generated and the expression evaluation is terminated. The full search order is:
+</p>
+<ol>
+<li class="level1"><div class="li"> Internal Functions - The program source is examined for a label that matches the function name. If a match is found, a new storage environment is created and control is transferred to the label.</div>
+</li>
+<li class="level1"><div class="li"> Built-In Functions - The built-in function library is searched for the specified name. All of these functions are defined by uppercase names.</div>
+</li>
+<li class="level1"><div class="li"> Function Libraries and Function Hosts - The available function libraries and function hosts are maintained in the Library List, which is searched starting at the highest priority until the requested function is found or the end of the list is reached. Function hosts are called using a message-passing protocol similar to that used for commands and may be used as gateways for remote procedure calls to other machines in a network.</div>
+</li>
+<li class="level1"><div class="li"> External ARexx Programs - The final search step is to check for an external ARexx program file by sending an invocation message to the ARexx resident process. The search always begins in the current directory and follows the same search path as the original ARexx program invocation. The name matching process is not case-sensitive.</div>
+</li>
+</ol>
+
+<p>
+The function name-matching procedure may be case-sensitive for some of the search steps, but not for others. The matching procedure used in a function library or function host is design dependent. Functions defined with mixed-case names must be called using a string token, since symbol names are always translated to uppercase.
+</p>
+
+<p>
+The full search order is followed whenever the function name is defined by a symbol token. However, the search for internal functions is bypassed if the name is specified by a string token. This allows internal functions to usurp the names of external functions, as in the following example:
+</p>
+<pre class="code rexx"><span class="kw6">CENTER</span><span class="sy0">:</span> <span class="coMULTI">/*internal &quot;CENTER&quot;*/</span>
+<span class="kw1">ARG</span> string, <span class="kw6">length</span> <span class="coMULTI">/*get arguments*/</span>
+<span class="kw6">length</span> <span class="sy0">=</span> <span class="kw6">MIN</span><span class="br0">&#40;</span><span class="kw6">length</span>,<span class="nu0">60</span><span class="br0">&#41;</span> <span class="coMULTI">/*compute length*/</span>
+<span class="kw1">return</span> <span class="st0">'CENTER'</span> <span class="br0">&#40;</span>string, <span class="kw6">length</span><span class="br0">&#41;</span></pre>
+
+<p>
+Here the built-in function <code>CENTER()</code> has been replaced by an internal function after modifying the length argument.
+</p>
+
+</div>
+
+<h1 class="sectionedit10" id="the_clip_list">The Clip List</h1>
+<div class="level1">
+
+<p>
+The Clip List is a publicly accessible mechanism that can be used as a general clipboard for intertask communication. Many functions use the clipboard for retrieving different types of information, such as predefined constants or strings.
+</p>
+
+<p>
+The Clip List maintains a set of (name, value) pairs that may be used for a variety of purposes. (<code>SETCLIP()</code> is used to add pairs to the list.) Each entry in the list consists of a name and a value string and may be located by name. In general, the names used should be chosen to be unique to an application to prevent unintended duplications with other programs. Any number of entries may be posted to the list.
+</p>
+
+<p>
+One potential application for the Clip List is as a mechanism for loading predefined constants into an ARexx program. For example:
+</p>
+<pre class="code">pi=3.14159; e=2.718; sqrt2=1.414 . . .</pre>
+
+<p>
+(i.e., a series of assignments separated by semicolons). In use, such a string could be retrieved by name using the built-in function <code>GETCLIP()</code> and then <code>INTERPRET</code>ed within the program. The assignment statements within the string would then create the required constant definitions. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*Assume a string called &quot;numbers&quot; is available*/</span>
+numbers <span class="sy0">=</span> GETCLIP <span class="br0">&#40;</span><span class="st0">'numbers'</span><span class="br0">&#41;</span>
+<span class="kw1">INTERPRET</span> numbers <span class="coMULTI">/*. . . assignments*/</span></pre>
+
+<p>
+The strings would not be restricted to contain only assignment statements, but could include any valid ARexx statements. The Clip List could thus provide a series of programs for initializations or other processing tasks.
+</p>
+
+<p>
+The resident process supports addition and deletion operations for maintaining the Clip List. The names in the (name,value) pairs are assumed to be in mixed case and are maintained to be unique in the list. An attempt to add a string with an existing name will simply update the value string. The name and value strings are copied when an entry is posted to the list, so the program that adds an entry is not required to maintain the strings.
+</p>
+
+<p>
+Entries posted to the Clip List remain available until explicitly removed. The Clip List is automatically released when the resident process exits.
+</p>
+
+</div>
+
+<h1 class="sectionedit11" id="built-in_functions_reference">Built-in Functions Reference</h1>
+<div class="level1">
+
+<p>
+This section provides an alphabetical list of the built-in functions. The syntax of each function is shown to the right of the function keyword.
+</p>
+
+</div>
+
+<h2 class="sectionedit12" id="syntax">Syntax</h2>
+<div class="level2">
+
+<p>
+Optional arguments are shown in brackets and generally have a default value that is used if the argument is omitted. When an option keyword is specified as an argument, only the first character is significant. Option keywords are not case-sensitive.
+</p>
+
+<p>
+Many functions accept a pad character argument. Pad characters are inserted to fill or create spaces. For functions that accept a pad argument, only the first character of the argument string is significant. If a null string is supplied, the default padding character, usually a blank, will be used.
+</p>
+
+<p>
+In the following examples, an arrow (-&gt;) is used as an abbreviation for &quot;evaluates as.&quot; The arrow will not be displayed when a program is run. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">ABS</span> <span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">5.35</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5.35</span></pre>
+
+<p>
+This means that <code>ABS(-5.35)</code> is evaluated as <code>5.35</code>.
+</p>
+
+</div>
+
+<h2 class="sectionedit13" id="alphabetical_reference">Alphabetical Reference</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit14" id="abbrev">ABBREV()</h3>
+<div class="level3">
+<pre class="code">ABBREV(string1,string2[,length])</pre>
+
+<p>
+Returns a Boolean value that indicates whether <code>string2</code> is an abbreviation of <code>string1</code> with length greater than or equal to the specified length argument. The default length is <code>0</code>, so the null string is an acceptable abbreviation. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">ABBREV</span> <span class="br0">&#40;</span><span class="st0">'fullname'</span>, <span class="st0">'ful'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">SAY</span> <span class="kw6">ABBREV</span> <span class="br0">&#40;</span><span class="st0">'almost'</span>, <span class="st0">'alm'</span>,<span class="nu0">4</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span>
+<span class="kw1">SAY</span> <span class="kw6">ABBREV</span> <span class="br0">&#40;</span><span class="st0">'any'</span>,<span class="st0">''</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit15" id="abs">ABS()</h3>
+<div class="level3">
+<pre class="code">ABS(number)</pre>
+
+<p>
+Returns the absolute value of the number argument. This value must be numeric. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">ABS</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">5.35</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5.35</span>
+<span class="kw1">SAY</span> <span class="kw6">ABS</span><span class="br0">&#40;</span><span class="nu0">10</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">10</span></pre>
+
+</div>
+
+<h3 class="sectionedit16" id="addlib">ADDLIB()</h3>
+<div class="level3">
+<pre class="code">ADDLIB(name,priority[,offset,version])</pre>
+
+<p>
+Adds a function library or a function host to the library list maintained by the resident process. The name argument specifies either the name of a function library or the public message port associated with a function host. The name is case-sensitive. Any specified libraries should reside in the system <code>LIBS:</code> directory.
+</p>
+
+<p>
+The priority argument specifies the search priority and must be an integer between <code>100</code> and <code>-100</code>, inclusive. The offset and version arguments apply only to libraries. The offset is the integer offset to the library&#039;s &quot;query&quot; entry point, and the version is an integer specifying the minimum acceptable release level of the library.
+</p>
+
+<p>
+The function returns a Boolean result that indicates whether the operation was successful. If a library is specified, it is not actually opened at this time. Similarly, ARexx does not check to see whether a specified function host port is open. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> ADDLIB <span class="br0">&#40;</span><span class="st0">&quot;rexxsupport.library&quot;</span>,<span class="nu0">0</span>,<span class="sy0">-</span><span class="nu0">30</span>,<span class="nu0">0</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">CALL</span> ADDLIB <span class="st0">&quot;EtherNet&quot;</span>,<span class="sy0">-</span><span class="nu0">20</span> <span class="coMULTI">/*A gateway*/</span> </pre>
+
+</div>
+
+<h3 class="sectionedit17" id="address">ADDRESS()</h3>
+<div class="level3">
+<pre class="code">ADDRESS()</pre>
+
+<p>
+Returns the current host address string. The host address is the message port to which commands will be sent. The <code>SHOW()</code> function can be used to check whether the required external host is actually available. See also <code>SHOW()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw1">ADDRESS</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> REXX </pre>
+
+</div>
+
+<h3 class="sectionedit18" id="arg">ARG()</h3>
+<div class="level3">
+<pre class="code">ARG([number][,&#039;EXISTS&#039;|&#039;OMITTED&#039;])</pre>
+
+<p>
+<code>ARG()</code> returns the number of arguments supplied to the current environment. If only the number parameter is supplied, the corresponding argument string is returned. If a number and the Exists or Omitted keyword is given, the Boolean return indicates the status of the corresponding argument. The existence or omission test does not indicate whether the string has a null value, but only whether a string was supplied. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*Assume arguments were: ('one',,10)*/</span>
+<span class="kw1">SAY</span> <span class="kw1">ARG</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3</span>
+<span class="kw1">SAY</span> <span class="kw1">ARG</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> one
+<span class="kw1">SAY</span> <span class="kw1">ARG</span><span class="br0">&#40;</span><span class="nu0">2</span>,<span class="st0">'O'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit19" id="b2c">B2C()</h3>
+<div class="level3">
+<pre class="code">B2C(string)</pre>
+
+<p>
+Converts a string of binary digits (0,1) into the corresponding (packed) character representation. The conversion is the same as though the argument string had been specified as a literal binary string (e.g. &#039;1010&#039;B). Blanks are permitted in the string, but only at byte boundaries. This function is particularly useful for creating strings that are to be used as bit masks. See also X2C(). For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> B2C<span class="br0">&#40;</span><span class="st0">'00110011'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3</span>
+<span class="kw1">SAY</span> B2C<span class="br0">&#40;</span><span class="st0">'01100001'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> a</pre>
+
+</div>
+
+<h3 class="sectionedit20" id="bitand">BITAND()</h3>
+<div class="level3">
+<pre class="code">BITAND(string1,string2[,pad])</pre>
+
+<p>
+The argument strings are logically ANDed together, with the length of the result being the longer of the two operand strings. If a pad character is supplied, the shorter string is padded on the right. Otherwise, the operation terminates at the end of the shorter string, and the remainder of the longer string is appended to the result. For example:
+</p>
+<pre class="code rexx"><span class="kw6">BITAND</span><span class="br0">&#40;</span><span class="st0">'0313'</span>x, <span class="st0">'FFF0'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'0310'</span>x </pre>
+
+</div>
+
+<h3 class="sectionedit21" id="bitchg">BITCHG()</h3>
+<div class="level3">
+<pre class="code">BITCHG(string,bit)</pre>
+
+<p>
+Changes the state of the specified bit in the argument string. Bit numbers are defined such that bit 0 is the low-order bit of the rightmost byte of the string. For example:
+</p>
+<pre class="code rexx">BITCHG<span class="br0">&#40;</span><span class="st0">'0313'</span>x,<span class="nu0">4</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'0303'</span>x </pre>
+
+</div>
+
+<h3 class="sectionedit22" id="bitclr">BITCLR()</h3>
+<div class="level3">
+<pre class="code">BITCLR(string,bit)</pre>
+
+<p>
+Clears (sets to zero) the specified bit in the argument string. Bit numbers are defined such that bit 0 is the low-order bit of the rightmost byte of the string. For example:
+</p>
+<pre class="code rexx">BITCLR<span class="br0">&#40;</span><span class="st0">'0313'</span>x,<span class="nu0">4</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'0303'</span>x </pre>
+
+</div>
+
+<h3 class="sectionedit23" id="bitcomp">BITCOMP()</h3>
+<div class="level3">
+<pre class="code">BITCOMP(string1,string2[,pad])</pre>
+
+<p>
+Compares the argument strings bit-by-bit, starting at bit number 0. The returned value is the bit number of the first bit in which the strings differ, or -1 if the strings are identical. For example:
+</p>
+<pre class="code rexx">BITCOMP<span class="br0">&#40;</span><span class="st0">'7F'</span>x, <span class="st0">'FF'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">7</span> <span class="coMULTI">/*Seventh bit*/</span>
+BITCOMP<span class="br0">&#40;</span><span class="st0">'FF'</span>x, <span class="st0">'FF'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="sy0">-</span><span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit24" id="bitor">BITOR()</h3>
+<div class="level3">
+<pre class="code">BITOR(string1,string2[,pad])</pre>
+
+<p>
+The argument strings are logically ORed together, with the length of the result being the longer of the two operand strings. If a pad character is supplied, the shorter string is padded on the right. Otherwise, the operation terminates at the end of the shorter string, and the remainder of the longer string is appended to the result. For example:
+</p>
+<pre class="code rexx"><span class="kw6">BITOR</span><span class="br0">&#40;</span><span class="st0">'0313'</span>x, <span class="st0">'00F'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'033F'</span>x </pre>
+
+</div>
+
+<h3 class="sectionedit25" id="bitset">BITSET()</h3>
+<div class="level3">
+<pre class="code">BITSET(string,bit)</pre>
+
+<p>
+Sets the specified bit in the argument string to <code>1</code>. Bit numbers are defined such that bit <code>0</code> is the low-order bit of the rightmost byte of the string. For example:
+</p>
+<pre class="code rexx">BITSET<span class="br0">&#40;</span><span class="st0">'313'</span>x,<span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'0317'</span>x </pre>
+
+</div>
+
+<h3 class="sectionedit26" id="bittst">BITTST()</h3>
+<div class="level3">
+<pre class="code">BITTST(string,bit)</pre>
+
+<p>
+The Boolean return indicates the state of the specified bit in the argument string. Bit numbers are defined such that bit <code>0</code> is the low-order bit of the rightmost byte of the string. For example:
+</p>
+<pre class="code rexx">BITTST<span class="br0">&#40;</span><span class="st0">'0313=x,4) -&gt; 1 </span></pre>
+
+</div>
+
+<h3 class="sectionedit27" id="bitxor">BITXOR()</h3>
+<div class="level3">
+<pre class="code">BITXOR(string1,string2[,pad])</pre>
+
+<p>
+The argument strings are logically and exclusively-ORed together, with the length of the result being the longer of the two operand strings. If a pad character is supplied, the shorter string is padded on the right. Otherwise, the operation terminates at the end of the shorter string, and the remainder of the longer string is appended to the result. For example:
+</p>
+<pre class="code rexx"><span class="kw6">BITXOR</span><span class="br0">&#40;</span><span class="st0">'0313'</span>x, <span class="st0">'001F'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'030C'</span>X </pre>
+
+</div>
+
+<h3 class="sectionedit28" id="c2b">C2B()</h3>
+<div class="level3">
+<pre class="code">C2B(string)</pre>
+
+<p>
+Converts the character string into the equivalent string of binary digits. See also C2X(). For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> C2B<span class="br0">&#40;</span><span class="st0">'abc'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 011000010110001001100011</pre>
+
+</div>
+
+<h3 class="sectionedit29" id="c2d">C2D()</h3>
+<div class="level3">
+<pre class="code">C2D(string[,n])</pre>
+
+<p>
+Converts the string argument from its character representation to the corresponding decimal number, expressed as ASCII digits (<code>0-9</code>). If <code>n</code> is supplied, the character string is considered to be a number expressed in <code>n</code> bytes. The string is truncated or padded with nulls on the left as required, and the sign bit is extended for the conversion. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">C2D</span><span class="br0">&#40;</span><span class="st0">'0020'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">32</span>
+<span class="kw1">SAY</span> <span class="kw6">C2D</span><span class="br0">&#40;</span><span class="st0">'FFFF ffff'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="sy0">-</span><span class="nu0">1</span>
+<span class="kw1">SAY</span> <span class="kw6">C2D</span><span class="br0">&#40;</span><span class="st0">'FF0100'</span>x,<span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">256</span></pre>
+
+</div>
+
+<h3 class="sectionedit30" id="c2x">C2X()</h3>
+<div class="level3">
+<pre class="code">C2X(string)</pre>
+
+<p>
+Converts the string argument from its character representation to the corresponding hexadecimal number, expressed as the ASCII characters <code>0-9A-Fa-f</code>. See also <code>C2B()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">C2X</span><span class="br0">&#40;</span><span class="st0">'abc'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">616263</span> </pre>
+
+</div>
+
+<h3 class="sectionedit31" id="centercentre">CENTER()/CENTRE()</h3>
+<div class="level3">
+<pre class="code">CENTER(string,length[,pad])</pre>
+<pre class="code">CENTRE(string,length[,pad])</pre>
+
+<p>
+Centers the string argument in a string with the specified length. If the length is longer than that of the string, pad characters or blanks are added as necessary. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">CENTER</span><span class="br0">&#40;</span><span class="st0">'abc'</span>,<span class="nu0">6</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">' abc '</span>
+<span class="kw1">SAY</span> <span class="kw6">CENTER</span><span class="br0">&#40;</span><span class="st0">'abc'</span>,<span class="nu0">6</span>,<span class="st0">'+'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'+abc++'</span>
+<span class="kw1">SAY</span> <span class="kw6">CENTER</span> <span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'234'</span> </pre>
+
+</div>
+
+<h3 class="sectionedit32" id="close">CLOSE()</h3>
+<div class="level3">
+<pre class="code">CLOSE(file)</pre>
+
+<p>
+Closes the file specified by the given logical name. The returned value is a Boolean success flag and will be 1 unless the specified file was not open. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> CLOSE<span class="br0">&#40;</span><span class="st0">'input'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span></pre>
+
+</div>
+
+<h3 class="sectionedit33" id="compare">COMPARE()</h3>
+<div class="level3">
+<pre class="code">COMPARE(string1,string2[,pad])</pre>
+
+<p>
+Compares two strings and returns the index of the first position in which they differ or 0 if the strings are identical. The shorter string is padded as required using the supplied character or blanks. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">COMPARE</span><span class="br0">&#40;</span><span class="st0">'abcde'</span>, <span class="st0">'abcce'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">4</span>
+<span class="kw1">SAY</span> <span class="kw6">COMPARE</span><span class="br0">&#40;</span><span class="st0">'abcde'</span>, <span class="st0">'abcde'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span>
+<span class="kw1">SAY</span> <span class="kw6">COMPARE</span><span class="br0">&#40;</span><span class="st0">'abc++'</span>, <span class="st0">'abc+-'</span>, <span class="st0">'+'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5</span> </pre>
+
+</div>
+
+<h3 class="sectionedit34" id="compress">COMPRESS()</h3>
+<div class="level3">
+<pre class="code">COMPRESS(string[,list])</pre>
+
+<p>
+If the list argument is omitted, the function removes leading, trailing or embedded blank characters from the string argument. If the optional list is supplied, it specifies the characters to be removed from the string. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> COMPRESS<span class="br0">&#40;</span><span class="st0">' why not '</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> whynot
+<span class="kw1">SAY</span> COMPRESS<span class="br0">&#40;</span><span class="st0">'++12-34-+'</span>, <span class="st0">'+-'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1234</span></pre>
+
+</div>
+
+<h3 class="sectionedit35" id="copies">COPIES()</h3>
+<div class="level3">
+<pre class="code">COPIES(string,number)</pre>
+
+<p>
+Creates a new string by concatenating the specified number of copies of the original. The number argument may be zero, in which case the null string is returned. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">COPIES</span><span class="br0">&#40;</span><span class="st0">'abc'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> abcabcabc </pre>
+
+</div>
+
+<h3 class="sectionedit36" id="d2c">D2C()</h3>
+<div class="level3">
+<pre class="code">D2C(number)</pre>
+
+<p>
+Creates a string whose value is the binary (packed) representation of the given decimal number. For example:
+</p>
+<pre class="code rexx"><span class="kw6">D2C</span><span class="br0">&#40;</span><span class="nu0">65</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> A </pre>
+
+</div>
+
+<h3 class="sectionedit37" id="d2x">D2X()</h3>
+<div class="level3">
+<pre class="code">D2X(number[,digits])</pre>
+
+<p>
+Converts a decimal number to hexadecimal. For example:
+</p>
+<pre class="code rexx"><span class="kw6">D2X</span><span class="br0">&#40;</span><span class="nu0">31</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 1F </pre>
+
+</div>
+
+<h3 class="sectionedit38" id="datatype">DATATYPE()</h3>
+<div class="level3">
+<pre class="code">DATATYPE(string[,option])</pre>
+
+<p>
+If only the string argument is specified, <code>DATATYPE()</code> tests whether the string parameter is a valid number and returns either NUM or <code>CHAR</code>. If an option keyword is given, the Boolean return indicates whether the string satisfied the requested test. The following option keywords are recognized:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>ALPHANUMERIC</code> - Accepts alphabetic (A-Z, a-z) or numeric (0-9) characters</div>
+</li>
+<li class="level1"><div class="li"> <code>BINARY</code> - Accepts a binary digits string</div>
+</li>
+<li class="level1"><div class="li"> <code>LOWERCASE</code> - Accepts lower case alphabetic (a-z) characters</div>
+</li>
+<li class="level1"><div class="li"> <code>MIXED</code> - Accepts mixed upper/lower case characters</div>
+</li>
+<li class="level1"><div class="li"> <code>NUMERIC</code> - Accepts valid numbers</div>
+</li>
+<li class="level1"><div class="li"> <code>SYMBOL</code> - Accepts valid <code>REXX</code> symbols</div>
+</li>
+<li class="level1"><div class="li"> <code>UPPER</code> - Accepts upper case alphabetic (<code>A-Z</code>) characters</div>
+</li>
+<li class="level1"><div class="li"> <code>WHOLE</code> - Accepts integer numbers</div>
+</li>
+<li class="level1"><div class="li"> <code>X</code> - Accepts Hex digit strings</div>
+</li>
+</ul>
+
+<p>
+For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">DATATYPE</span><span class="br0">&#40;</span><span class="st0">'123'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> NUM
+<span class="kw1">SAY</span> <span class="kw6">DATATYPE</span><span class="br0">&#40;</span><span class="st0">'1a f2'</span>, <span class="st0">'X'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">SAY</span> <span class="kw6">DATATYPE</span><span class="br0">&#40;</span><span class="st0">'aBcde'</span>, <span class="st0">'L'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span> </pre>
+
+</div>
+
+<h3 class="sectionedit39" id="date">DATE()</h3>
+<div class="level3">
+<pre class="code">DATE([option][,date][format])</pre>
+
+<p>
+Returns the current date in the specified format. The default (<code>NORMAL</code>) option returns the date in the form <code>DD MMM YYYY</code>, as in <code>20 APR 1988</code>. The options recognized are:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>BASEDATE</code> - The number of days since January 1, 0001</div>
+</li>
+<li class="level1"><div class="li"> <code>CENTURY</code> - The number of days since January 1 of the century</div>
+</li>
+<li class="level1"><div class="li"> <code>DAYS</code> - The number of days since January 1 of the current year</div>
+</li>
+<li class="level1"><div class="li"> <code>EUROPEAN</code> - The date in the form <code>DD/MM/YY</code></div>
+</li>
+<li class="level1"><div class="li"> <code>INTERNAL</code> - Internal system days</div>
+</li>
+<li class="level1"><div class="li"> <code>JULIAN</code> - The date in the form <code>YYDDD</code></div>
+</li>
+<li class="level1"><div class="li"> <code>MONTH</code> - The current month (in mixed case)</div>
+</li>
+<li class="level1"><div class="li"> <code>NORMAL</code> - The date in the form <code>DD MMM YYYY</code></div>
+</li>
+<li class="level1"><div class="li"> <code>ORDERED</code> - The date in the form <code>YY/MM/DD</code></div>
+</li>
+<li class="level1"><div class="li"> <code>SORTED</code> - The date in the form <code>YYYYMMDD</code></div>
+</li>
+<li class="level1"><div class="li"> <code>USA</code> - The date in the form <code>MM/DD/YY</code></div>
+</li>
+<li class="level1"><div class="li"> <code>WEEKDAY</code> - The day of the week (in mixed case)</div>
+</li>
+</ul>
+
+<p>
+These options can be shortened to just the first character.
+</p>
+
+<p>
+The <code>DATE()</code> function also accepts optional second and third arguments to supply the date either in the form of internal system days or in the &quot;sorted&quot; form <code>YYYYMMDD</code>. The second argument is specifying either system days (the default) or a sorted date. The third argument specifies the form of the date and can be either &#039;I&#039; or &#039;S&#039;. The current date in system days can be retrieved using <code>DATE(&#039;INTERNAL&#039;)</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">DATE</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">14</span> Jul <span class="nu0">1992</span>
+<span class="kw1">SAY</span> <span class="kw6">DATE</span><span class="br0">&#40;</span><span class="st0">'M'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> July
+<span class="kw1">SAY</span> <span class="kw6">DATE</span><span class="br0">&#40;</span>S<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">19920714</span>
+<span class="kw1">SAY</span> <span class="kw6">DATE</span><span class="br0">&#40;</span><span class="st0">'S'</span> ,<span class="kw6">DATE</span><span class="br0">&#40;</span><span class="st0">'I'</span><span class="br0">&#41;</span><span class="sy0">+</span><span class="nu0">21</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">19920804</span>
+<span class="kw1">SAY</span> <span class="kw6">DATE</span><span class="br0">&#40;</span><span class="st0">'W'</span> ,<span class="nu0">19890609</span>, <span class="st0">'S'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> Friday </pre>
+
+</div>
+
+<h3 class="sectionedit40" id="delstr">DELSTR()</h3>
+<div class="level3">
+<pre class="code">DELSTR(string,n[,length])</pre>
+
+<p>
+Deletes the substring of the string argument beginning with the <code>n</code>-th character for the specified length in characters. The default length is the remaining length of the string. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">DELSTR</span><span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">2</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">156</span></pre>
+
+</div>
+
+<h3 class="sectionedit41" id="delword">DELWORD()</h3>
+<div class="level3">
+<pre class="code">DELWORD(string,n[,length])</pre>
+
+<p>
+Deletes the substring of the string argument beginning with the nth word for the specified length in words. The default length is the remaining length of the string. The deleted string includes any trailing blanks following the last word. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">DELWORD</span><span class="br0">&#40;</span><span class="st0">'Tell me a story'</span>,<span class="nu0">2</span>,<span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'Tell story'</span>
+<span class="kw1">SAY</span> <span class="kw6">DELWORD</span><span class="br0">&#40;</span><span class="st0">'one two three'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'one two '</span> </pre>
+
+</div>
+
+<h3 class="sectionedit42" id="digits">DIGITS()</h3>
+<div class="level3">
+<pre class="code">DIGITS()</pre>
+
+<p>
+Returns the current Numeric Digits setting. For example:
+</p>
+<pre class="code rexx"><span class="kw1">NUMERIC</span> <span class="kw2">DIGITS</span> <span class="nu0">6</span>
+<span class="kw1">SAY</span> <span class="kw2">DIGITS</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">6</span></pre>
+
+</div>
+
+<h3 class="sectionedit43" id="eof">EOF()</h3>
+<div class="level3">
+<pre class="code">EOF(file)</pre>
+
+<p>
+Checks the specified logical file name and returns the Boolean value <code>1</code> (True), if the end-of-file has been reached, and <code>0</code> (False) otherwise. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> EOF<span class="br0">&#40;</span>infile<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit44" id="errortext">ERRORTEXT()</h3>
+<div class="level3">
+<pre class="code">ERRORTEXT(n)</pre>
+
+<p>
+Returns the error message associated with the specified ARexx error code. The null string is returned if the number is not a valid error code. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">ERRORTEXT</span><span class="br0">&#40;</span><span class="nu0">41</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> Invalid expression </pre>
+
+</div>
+
+<h3 class="sectionedit45" id="exists">EXISTS()</h3>
+<div class="level3">
+<pre class="code">EXISTS(filename)</pre>
+
+<p>
+Tests whether an external file of the given filename exists. The name string may include device and directory specifications. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> EXISTS<span class="br0">&#40;</span><span class="st0">'SYS:C/ED'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit46" id="export">EXPORT()</h3>
+<div class="level3">
+<pre class="code">EXPORT(address[,string][,length][,pad])</pre>
+
+<p>
+Copies data from the optional string into a previously-allocated memory area. This memory area must be specified as a four-byte address. The length parameter specifies the maximum number of characters to be copied. The default is the length of the string. If the specified length is longer than the string, the remaining area is filled with the pad character or nulls (&#039;00&#039;x). The returned value is the number of characters copied.
+</p>
+<div class="wrap_important plugin_wrap">
+<p>
+Any area of memory can be overwritten, possibly causing a system crash. Task switching is forbidden while the copy is being done, so system performance may be degraded if long strings are copied.
+</p>
+</div>
+<p>
+See also <code>IMPORT()</code> and <code>STORAGE()</code>. For example:
+</p>
+<pre class="code rexx">count <span class="sy0">=</span> EXPORT<span class="br0">&#40;</span><span class="st0">'0004 0000'</span>x, <span class="st0">'The answer'</span><span class="br0">&#41;</span> </pre>
+
+</div>
+
+<h3 class="sectionedit49" id="find">FIND()</h3>
+<div class="level3">
+<pre class="code">FIND(string,phrase)</pre>
+
+<p>
+The <code>FIND()</code> function locates a phrase of words in a larger string of words and returns the word number of the matched position. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> FIND<span class="br0">&#40;</span><span class="st0">'Now is the time'</span>, <span class="st0">'is the'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">2</span></pre>
+
+</div>
+
+<h3 class="sectionedit50" id="form">FORM()</h3>
+<div class="level3">
+<pre class="code">FORM()</pre>
+
+<p>
+Returns the current <code>NUMERIC FORM</code> setting. For example:
+</p>
+<pre class="code rexx"><span class="kw1">NUMERIC</span> <span class="kw2">FORM</span> <span class="kw2">SCIENTIFIC</span>
+<span class="kw1">SAY</span> <span class="kw2">FORM</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="kw2">SCIENTIFIC</span> </pre>
+
+</div>
+
+<h3 class="sectionedit51" id="freespace">FREESPACE()</h3>
+<div class="level3">
+<pre class="code">FREESPACE(address,length)</pre>
+
+<p>
+Returns a block of memory of a given length to the interpreter&#039;s internal pool. The address argument must be a 4 byte string obtained by a prior call to <code>GETSPACE()</code>, the internal allocator. It is not always necessary to release internally allocated memory, since it will be released to the system when the program terminates. However, if a very large block has been allocated, returning it to the pool may avoid memory space problems. The return value is a Boolean success flag. See also <code>GETSPACE()</code>.
+</p>
+
+<p>
+Calling <code>FREESPACE()</code> with no arguments will return the amount of memory available in the interpreter&#039;s internal pool. For example:
+</p>
+<pre class="code rexx">FREESPACE<span class="br0">&#40;</span><span class="st0">'00042000'</span>x,<span class="nu0">32</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit52" id="fuzz">FUZZ()</h3>
+<div class="level3">
+<pre class="code">FUZZ()</pre>
+
+<p>
+Returns the current <code>NUMERIC FUZZ</code> setting. For example:
+</p>
+<pre class="code rexx"><span class="kw1">NUMERIC</span> <span class="kw2">FUZZ</span> <span class="nu0">3</span>
+<span class="kw1">SAY</span> <span class="kw2">FUZZ</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3</span></pre>
+
+</div>
+
+<h3 class="sectionedit53" id="getclip">GETCLIP()</h3>
+<div class="level3">
+<pre class="code">GETCLIP(name)</pre>
+
+<p>
+Searches the Clip List for an entry matching the supplied name parameter and returns the associated value string. The name matching is case-sensitive. The null string is returned if the name cannot be found. See also <code>SETCLIP()</code>. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*Assume 'numbers' contains 'PI=3.14159'*/</span>
+<span class="kw1">SAY</span> GETCLIP<span class="br0">&#40;</span><span class="st0">'numbers'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> PI<span class="sy0">=</span><span class="nu0">3.14159</span> </pre>
+
+</div>
+
+<h3 class="sectionedit54" id="getspace">GETSPACE()</h3>
+<div class="level3">
+<pre class="code">GETSPACE(length)</pre>
+
+<p>
+Allocates a block of memory of the specified length from the interpreter&#039;s internal pool. The returned value is the four-byte address of the allocated block, which is not cleared or otherwise initialized. Internal memory is automatically returned to the system when the ARexx program terminates, so this function should not be used to allocate memory for use by external programs. The <code>REXXSupport.Library</code> includes the function <code>ALLOCMEM()</code>, which allocates memory from the system free list. See also <code>FREESPACE()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">C2X</span> <span class="br0">&#40;</span>GETSPACE<span class="br0">&#40;</span><span class="nu0">32</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'0003BF40'</span>x </pre>
+
+</div>
+
+<h3 class="sectionedit55" id="hash">HASH()</h3>
+<div class="level3">
+<pre class="code">HASH(string)</pre>
+
+<p>
+Returns the hash attribute of a string as a decimal number and updates the internal hash value of the string. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> HASH<span class="br0">&#40;</span><span class="st0">'1'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">49</span></pre>
+
+</div>
+
+<h3 class="sectionedit56" id="import">IMPORT()</h3>
+<div class="level3">
+<pre class="code">IMPORT(address[,length])</pre>
+
+<p>
+Creates a string by copying data from the specified four-byte address. If the length parameter is not supplied, the copy terminates when a null byte is found. See also <code>EXPORT()</code>. For example:
+</p>
+<pre class="code rexx">extval <span class="sy0">=</span> IMPORT<span class="br0">&#40;</span><span class="st0">'0004 0000'</span>x,<span class="nu0">8</span><span class="br0">&#41;</span> </pre>
+
+</div>
+
+<h3 class="sectionedit57" id="index">INDEX()</h3>
+<div class="level3">
+<pre class="code">INDEX(string,pattern[,start])</pre>
+
+<p>
+Searches for the first occurrence of the pattern argument in the string argument, beginning at the specified start position. The default start position is 1. The returned value is the index of the matched pattern or 0 if the pattern was not found. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> INDEX<span class="br0">&#40;</span><span class="st0">&quot;123456&quot;</span>, <span class="st0">&quot;23&quot;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">2</span>
+<span class="kw1">SAY</span> INDEX<span class="br0">&#40;</span><span class="st0">&quot;123456&quot;</span>, <span class="st0">&quot;77&quot;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span>
+<span class="kw1">SAY</span> INDEX<span class="br0">&#40;</span><span class="st0">&quot;123123&quot;</span>, <span class="st0">&quot;23&quot;</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5</span></pre>
+
+</div>
+
+<h3 class="sectionedit58" id="insert">INSERT()</h3>
+<div class="level3">
+<pre class="code">INSERT(new,old[,start][,length][,pad])</pre>
+
+<p>
+Inserts the new string into the old string after the specified start position. The default starting position is <code>0</code>. The new string is truncated or padded to the specified length as required, using the supplied pad character or blanks. If the start position is beyond the end of the string, the old string is padded on the right. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">INSERT</span><span class="br0">&#40;</span><span class="st0">'ab'</span>, <span class="st0">'12345'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> ab12345
+<span class="kw1">SAY</span> <span class="kw6">INSERT</span><span class="br0">&#40;</span><span class="st0">'123'</span>, <span class="st0">'++'</span>,<span class="nu0">3</span>,<span class="nu0">5</span>, <span class="st0">'-'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="sy0">++-</span><span class="nu0">123</span><span class="co1">-- </span></pre>
+
+</div>
+
+<h3 class="sectionedit59" id="lastpos">LASTPOS()</h3>
+<div class="level3">
+<pre class="code">LASTPOS(pattern,string[,start])</pre>
+
+<p>
+Searches backwards for the first occurrence of the pattern argument in the string argument, beginning at the specified start position. The default starting position is the end of the string. The returned value is the index of the matched pattern or <code>0</code> if the pattern was not found. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">LASTPOS</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="st0">'1234'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">2</span>
+<span class="kw1">SAY</span> <span class="kw6">LASTPOS</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="st0">'1234234'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5</span>
+<span class="kw1">SAY</span> <span class="kw6">LASTPOS</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="st0">'123234'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">2</span>
+<span class="kw1">SAY</span> <span class="kw6">LASTPOS</span><span class="br0">&#40;</span><span class="st0">'2'</span>, <span class="st0">'13579'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span></pre>
+
+</div>
+
+<h3 class="sectionedit60" id="left">LEFT()</h3>
+<div class="level3">
+<pre class="code">LEFT(string,length[,pad])</pre>
+
+<p>
+Returns the leftmost substring in the given string argument with the specified length. If the substring is shorter than the requested length, it is padded on the right with the supplied pad character or blanks. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">LEFT</span><span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">123</span>
+<span class="kw1">SAY</span> <span class="kw6">LEFT</span><span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">8</span>, <span class="st0">'+'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">123456</span><span class="sy0">++</span></pre>
+
+</div>
+
+<h3 class="sectionedit61" id="length">LENGTH()</h3>
+<div class="level3">
+<pre class="code">LENGTH(string)</pre>
+
+<p>
+Returns the length of the string. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">LENGTH</span><span class="br0">&#40;</span><span class="st0">'three'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5</span> </pre>
+
+</div>
+
+<h3 class="sectionedit62" id="lines">LINES()</h3>
+<div class="level3">
+<pre class="code">LINES(file)</pre>
+
+<p>
+Returns the number of lines queued or typed ahead at the logical file, which must refer to an interactive stream. The line count is obtained as the secondary result of a <code>WaitForChar()</code> call. For example:
+</p>
+<pre class="code rexx"><span class="kw1">PUSH</span> <span class="st0">'a line'</span>
+<span class="kw1">PUSH</span> <span class="st0">'another one'</span>
+<span class="kw1">SAY</span> <span class="kw6">LINES</span><span class="br0">&#40;</span>STDIN<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">2</span></pre>
+
+</div>
+
+<h3 class="sectionedit63" id="max">MAX()</h3>
+<div class="level3">
+<pre class="code">MAX(number,number[,number,...])</pre>
+
+<p>
+Returns the maximum of the supplied arguments, all of which must be numeric. At least two parameters must be supplied. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">MAX</span><span class="br0">&#40;</span><span class="nu0">2.1</span>,<span class="nu0">3</span>,<span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3</span> </pre>
+
+</div>
+
+<h3 class="sectionedit64" id="min">MIN()</h3>
+<div class="level3">
+<pre class="code">MIN(number,number[,number,...])</pre>
+
+<p>
+Returns the minimum of the supplied arguments, all of which must be numeric. At least two parameters must be supplied. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">MIN</span><span class="br0">&#40;</span><span class="nu0">2.1</span>,<span class="nu0">3</span>,<span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="sy0">-</span><span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit65" id="open">OPEN()</h3>
+<div class="level3">
+<pre class="code">OPEN(file,filename[,&#039;APPEND&#039;|&#039;READ&#039;|&#039;WRITE&#039;])</pre>
+
+<p>
+Opens an external file for the specified operation. The <code>file</code> argument defines the logical name by which the file will be referenced. <code>STDIN</code> and <code>STDOUT</code> are logical files that are available by default. The <code>filename</code> is the external name of the file and may include device and directory specifications. The function returns a Boolean value that indicates whether the operation was successful. There is no limit to the number of files that can be open simultaneously, and all open files are closed automatically when the program exits. See also <code>CLOSE()</code>, <code>READ()</code>, and <code>WRITE()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> OPEN<span class="br0">&#40;</span><span class="st0">'MyCon'</span>, <span class="st0">'CON:160/50/320/100/MyCON/cds'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">SAY</span> OPEN<span class="br0">&#40;</span><span class="st0">'outfile'</span>, <span class="st0">'ram:temp'</span>, <span class="st0">'W'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span></pre>
+
+</div>
+
+<h3 class="sectionedit66" id="overlay">OVERLAY()</h3>
+<div class="level3">
+<pre class="code">OVERLAY(new,old[,start][,length][,pad])</pre>
+
+<p>
+Overlays the new string onto the old string beginning at the specified start position, which must be positive. The default starting position is <code>1</code>. The new string is truncated or padded to the specified length as required, using the supplied pad character or blanks. If the start position is beyond the end of the old string, the old string is padded on the right. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">OVERLAY</span><span class="br0">&#40;</span><span class="st0">'bb'</span>, <span class="st0">'abcd'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> bbcd
+<span class="kw1">SAY</span> <span class="kw6">OVERLAY</span><span class="br0">&#40;</span><span class="st0">'4'</span>, <span class="st0">'123'</span>,<span class="nu0">5</span>,<span class="nu0">5</span>, <span class="st0">'-'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">123</span><span class="sy0">-</span><span class="nu0">4</span><span class="co1">---- </span></pre>
+
+</div>
+
+<h3 class="sectionedit67" id="pos">POS()</h3>
+<div class="level3">
+<pre class="code">POS(pattern,string[,start])</pre>
+
+<p>
+Searches for the first occurrence of the pattern argument in the string argument, beginning at the position specified by the start argument. The default starting position is 1. The value is the index of the matched string or 0 if the pattern wasn&#039;t found. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">POS</span><span class="br0">&#40;</span><span class="st0">'23'</span>, <span class="st0">'123234'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">2</span>
+<span class="kw1">SAY</span> <span class="kw6">POS</span><span class="br0">&#40;</span><span class="st0">'77'</span>, <span class="st0">'123234'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span>
+<span class="kw1">SAY</span> <span class="kw6">POS</span><span class="br0">&#40;</span><span class="st0">'23'</span>, <span class="st0">'123234'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">4</span> </pre>
+
+</div>
+
+<h3 class="sectionedit68" id="pragma">PRAGMA()</h3>
+<div class="level3">
+<pre class="code">PRAGMA(option[,value])</pre>
+
+<p>
+This function allows a program to change various attributes relating to the system environment within which the program executes. The option argument is a keyword that specifies an environmental attribute. The value argument supplies the new attribute value to be installed. The value returned by the function depends on the attribute selected. Some attributes return the previous value installed, while others may simply set a Boolean success flag.
+</p>
+
+<p>
+The currently defined option keywords are:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>DIRECTORY</code> - Specifies a new current directory. The current directory is used as the root for filenames that do not explicitly include a device specification. The return is the old directory name. <code>PRAGMA(&#039;D&#039;)</code> is equivalent to <code>PRAGMA(&#039;D&#039;,&quot;)</code>. It returns the path of the current directory without changing the directory.</div>
+</li>
+<li class="level1"><div class="li"> <code>PRIORITY</code> - Specifies a new task priority. The priority value must be an integer in the range - 128 to 127, but the practical range is much more limited. ARexx programs should never be run at a priority higher than that of the resident process, which currently runs at a priority of 4. The returned value is the previous priority level.</div>
+</li>
+<li class="level1"><div class="li"> <code>ID</code> - Returns the task <code>ID</code> (the address of the task block) as an 8-character hex string. The task <code>ID</code> is a unique identifier of the particular ARexx invocation and may be used to create a unique name for it.</div>
+</li>
+<li class="level1"><div class="li"> <code>STACK</code> - Specifies a new stack value for your current ARexx program. When a new stack value is declared, the previous stack value is returned.</div>
+</li>
+</ul>
+
+<p>
+The currently implemented options are:
+</p>
+<ul>
+<li class="level1"><div class="li"> <pre class="code">PRAGMA(&#039;W&#039;,{&#039;NULL&#039;|&#039; WORKBENCH&#039;})</pre>
+
+<p>
+ - Controls the task&#039;s WindowPtr field. Setting it to &#039;NULL&#039; will suppress any requesters that might otherwise be generated by a DOS call.
+</p>
+</div>
+</li>
+<li class="level1"><div class="li"> <pre class="code">PRAGMA(&#039;*&#039;[,name])</pre>
+
+<p>
+ - Defines the specified logical name as the current (<code>*</code>) console handler, allowing the user to open two streams on one window. If the name is omitted, the console handler is set to that of the client&#039;s process.
+</p>
+</div>
+</li>
+</ul>
+<pre class="code rexx"><span class="kw1">SAY</span> PRAGMA<span class="br0">&#40;</span><span class="st0">'D'</span>, <span class="st0">'DF0:C'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> Extras
+<span class="kw1">SAY</span> PRAGMA<span class="br0">&#40;</span><span class="st0">'D'</span>, <span class="st0">'DF1:C'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> Workbench<span class="sy0">:</span>C
+<span class="kw1">SAY</span> PRAGMA<span class="br0">&#40;</span><span class="st0">'PRIORITY'</span>, <span class="sy0">-</span><span class="nu0">5</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span>
+<span class="kw1">SAY</span> PRAGMA<span class="br0">&#40;</span><span class="st0">'ID'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 00221ABC
+<span class="kw1">CALL</span> PRAGMA <span class="st0">'*'</span>,STDOUT
+<span class="kw1">SAY</span> PRAGMA<span class="br0">&#40;</span><span class="st0">&quot;STACK&quot;</span>,<span class="nu0">8092</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">4000</span> </pre>
+
+</div>
+
+<h3 class="sectionedit69" id="random">RANDOM()</h3>
+<div class="level3">
+<pre class="code">RANDOM([MIN][,MAX][,seed])</pre>
+
+<p>
+Returns a pseudo-random integer in the interval specified by the min and max arguments. The default minimum value is <code>0</code> and the default maximum value is <code>999</code>. The interval max-min must be less than or equal to <code>1000</code>. If a greater range of random integers is required, the values from the <code>RANDU()</code> function can be suitably scaled and translated. The seed argument can be supplied to initialize the internal state of the random number generator. See also <code>RANDU()</code>. For example:
+</p>
+<pre class="code rexx">thisroll <span class="sy0">=</span> <span class="kw6">RANDOM</span><span class="br0">&#40;</span><span class="nu0">1</span>,<span class="nu0">6</span><span class="br0">&#41;</span> <span class="coMULTI">/*Might be 1*/</span>
+nextroll <span class="sy0">=</span> <span class="kw6">RANDOM</span><span class="br0">&#40;</span><span class="nu0">1</span>,<span class="nu0">6</span><span class="br0">&#41;</span> <span class="coMULTI">/*Might be snake eyes*/</span> </pre>
+
+</div>
+
+<h3 class="sectionedit70" id="randu">RANDU()</h3>
+<div class="level3">
+<pre class="code">RANDU([seed])</pre>
+
+<p>
+Returns a uniformly-distributed, pseudo-random number between <code>0</code> and <code>1</code>. The number of digits of precision in the result is always equal to the current Numeric Digits setting. With the choice of suitable scaling and translation values, <code>RANDU()</code> can be used to generate pseudo-random numbers on an arbitrary interval.
+</p>
+
+<p>
+The optional integer seed argument is used to initialize the internal state of the random number generator. See also <code>RANDOM()</code>. For example:
+</p>
+<pre class="code rexx">firsttry <span class="sy0">=</span> RANDU<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="coMULTI">/*0.371902021?*/</span>
+<span class="kw1">NUMERIC</span> <span class="kw2">DIGITS</span> <span class="nu0">3</span>
+tryagain <span class="sy0">=</span> RANDU <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="coMULTI">/*0.873?*/</span> </pre>
+
+</div>
+
+<h3 class="sectionedit71" id="readch">READCH()</h3>
+<div class="level3">
+<pre class="code">READCH(file,length)</pre>
+
+<p>
+Reads the specified number of characters from the given logical file into a string. The length of the returned string is the actual number of characters read and may be less than the requested length if, for example, the end-of-file was reached. See also <code>READLN()</code>. For example:
+</p>
+<pre class="code rexx">instring <span class="sy0">=</span> READCH<span class="br0">&#40;</span><span class="st0">'input'</span>,<span class="nu0">10</span><span class="br0">&#41;</span></pre>
+
+</div>
+
+<h3 class="sectionedit72" id="readln">READLN()</h3>
+<div class="level3">
+<pre class="code">READLN(file)</pre>
+
+<p>
+Reads characters from the given logical file into a string until a newline character is found. The returned string does not include the newline. See also <code>READCH()</code>. For example:
+</p>
+<pre class="code rexx">instring <span class="sy0">=</span> READLN<span class="br0">&#40;</span><span class="st0">'MyFile'</span><span class="br0">&#41;</span> </pre>
+
+</div>
+
+<h3 class="sectionedit73" id="remlib">REMLIB()</h3>
+<div class="level3">
+<pre class="code">REMLIB(name)</pre>
+
+<p>
+Removes an entry with the given name from the Library List maintained by the resident process. The Boolean return is <code>1</code> if the entry was found and successfully removed. This function does not make a distinction between function libraries and function hosts, but simply removes a named entry. See also <code>ADDLIB()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> REMLIB<span class="br0">&#40;</span><span class="st0">'MyLibrary.library'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span></pre>
+
+</div>
+
+<h3 class="sectionedit74" id="reverse">REVERSE()</h3>
+<div class="level3">
+<pre class="code">REVERSE(string)</pre>
+
+<p>
+Reverses the sequence of characters in the string. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">REVERSE</span><span class="br0">&#40;</span><span class="st0">'?ton yhw'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> why not?</pre>
+
+</div>
+
+<h3 class="sectionedit75" id="right">RIGHT()</h3>
+<div class="level3">
+<pre class="code">RIGHT(string,length[,pad])</pre>
+
+<p>
+Returns the rightmost substring in the given string argument with the specified length. If the substring is shorter than the requested length, it is padded on the left with the supplied pad character or blanks. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">RIGHT</span><span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">4</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3456</span>
+<span class="kw1">SAY</span> <span class="kw6">RIGHT</span><span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">8</span>, <span class="st0">'+'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="sy0">++</span><span class="nu0">123456</span></pre>
+
+</div>
+
+<h3 class="sectionedit76" id="seek">SEEK()</h3>
+<div class="level3">
+<pre class="code">SEEK(file,offset[,&#039;BEHIN&#039;|&#039;CURRENT&#039;|&#039;END&#039;])</pre>
+
+<p>
+Moves to a new position in the given logical file, specified as an offset from an anchor position. The default anchor is Current. The returned value is the new position relative to the start of the file. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> SEEK<span class="br0">&#40;</span><span class="st0">'input'</span>,<span class="nu0">10</span>,<span class="st0">'B'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">10</span>
+<span class="kw1">SAY</span> SEEK<span class="br0">&#40;</span><span class="st0">'input'</span>,<span class="nu0">0</span>,E<span class="st0">') -&gt; 356 /*file length*/</span></pre>
+
+</div>
+
+<h3 class="sectionedit77" id="setclip">SETCLIP()</h3>
+<div class="level3">
+<pre class="code">SETCLIP(name[,value])</pre>
+
+<p>
+Adds a name-value pair to the Clip List maintained by the resident process. If an entry of the same name already exists, its value is updated to the supplied value string. Entries may be removed by specifying a null value. The function returns a Boolean value that indicates whether the operation was successful. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> SETCLIP<span class="br0">&#40;</span><span class="st0">'path'</span>, <span class="st0">'DF0:s'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">SAY</span> SETCLIP<span class="br0">&#40;</span><span class="st0">'path'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h3 class="sectionedit78" id="show">SHOW()</h3>
+<div class="level3">
+<pre class="code">SHOW(option[,name][,pad])</pre>
+
+<p>
+Returns the names in the resource list specified by the option argument, or tests to see whether an entry with the specified name is available. The currently implemented options keywords are:
+</p>
+<ul>
+<li class="level1"><div class="li"> CLIP - Examines the names in the Clip List</div>
+</li>
+<li class="level1"><div class="li"> FILES - Examines the currently open logical file names</div>
+</li>
+<li class="level1"><div class="li"> LIBRARIES - Examines the names in the Library List, which are either function libraries or function hosts.</div>
+</li>
+<li class="level1"><div class="li"> PORTS - Examines the names in the system Ports List</div>
+</li>
+</ul>
+
+<p>
+If the name argument is omitted, the function returns a string with the resource names separated by a blank space or the pad character, if one was supplied. If the name argument is given, the returned Boolean value indicates whether the name was found in the resource list. The name entries are case-sensitive.
+</p>
+
+</div>
+
+<h3 class="sectionedit79" id="sign">SIGN()</h3>
+<div class="level3">
+<pre class="code">SIGN(number)</pre>
+
+<p>
+Returns <code>1</code> if the number argument is positive or zero and <code>-1</code> if the number is negative. The argument must be numeric. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">SIGN</span><span class="br0">&#40;</span><span class="nu0">12</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">SAY</span> <span class="kw6">SIGN</span><span class="br0">&#40;</span><span class="sy0">-</span><span class="nu0">33</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="sy0">-</span><span class="nu0">1</span></pre>
+
+</div>
+
+<h3 class="sectionedit80" id="sourceline">SOURCELINE()</h3>
+<div class="level3">
+<pre class="code">SOURCELINE([line])</pre>
+
+<p>
+Returns the text for the specified line of the currently executing ARexx program. If the line argument is omitted, the function returns the total number of lines in the file. This function is often used to embed &quot;help&quot; information in a program. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*A simple test program*/</span>
+<span class="kw1">SAY</span> <span class="kw6">SOURCELINE</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3</span>
+<span class="kw1">SAY</span> <span class="kw6">SOURCELINE</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">-&gt;</span> <span class="coMULTI">/*A simple test program*/</span></pre>
+
+</div>
+
+<h3 class="sectionedit81" id="space">SPACE()</h3>
+<div class="level3">
+<pre class="code">SPACE(string,n[,pad])</pre>
+
+<p>
+Reformats the string argument so that there are n spaces (blank characters) between each pair of words. If the pad character is specified, it is used instead of blanks as the separator character. Specifying <code>n</code> as <code>0</code> will remove all blanks from the string. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">SPACE</span><span class="br0">&#40;</span><span class="st0">'Now is the time'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'Now is the time'</span>
+<span class="kw1">SAY</span> <span class="kw6">SPACE</span><span class="br0">&#40;</span><span class="st0">'Now is the time'</span>,<span class="nu0">0</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'Nowisthetime'</span>
+<span class="kw1">SAY</span> <span class="kw6">SPACE</span><span class="br0">&#40;</span><span class="st0">'1 2 3'</span>,<span class="nu0">1</span>, <span class="st0">'+'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'1+2+3'</span> </pre>
+
+</div>
+
+<h3 class="sectionedit82" id="storage">STORAGE()</h3>
+<div class="level3">
+<pre class="code">STORAGE([address][,string][,length][,pad])</pre>
+
+<p>
+<code>STORAGE()</code> with no arguments returns the available system memory. If the address argument is given, it must be a four-byte string. The function copies data from the (optional) string to the indicated memory address. The length parameter specifies the maximum number of bytes to be copied and defaults to the length of the string. If the specified length is longer than the string, the remaining area is filled with the pad character or nulls (<code>&#039;00&#039;x</code>).
+</p>
+
+<p>
+The returned value is the previous contents of the memory area. This can be used in a subsequent call to restore the original contents. See also <code>EXPORT()</code>.
+</p>
+<div class="wrap_important plugin_wrap">
+<p>
+Any area of memory can be overwritten, possibly causing a system crash. Task switching is forbidden while the copy is being done, so system performance may be degraded if long strings are copied.
+</p>
+</div>
+<p>
+For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> STORAGE<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">' 248400
+oldval = STORAGE('</span>0004 0000<span class="st0">'x, '</span>The answer<span class="st0">')
+CALL STORAGE '</span>0004 0000<span class="st0">'x,,32, '</span><span class="sy0">+</span><span class="st0">' </span></pre>
+
+</div>
+
+<h3 class="sectionedit85" id="strip">STRIP()</h3>
+<div class="level3">
+<pre class="code">STRIP(string[,{&#039;B&#039; | &#039;L&#039; | &#039;T&#039;}][,pad])</pre>
+
+<p>
+If neither of the optional parameters is supplied, the function removes both leading and trailing blanks from the string argument. The second argument specifies whether Leading, Trailing or Both (leading and trailing) characters are to be removed. The optional <code>pad</code> (or <code>unpad</code>) argument selects the character to be removed. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span><span class="st0">' say what? '</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'say What?'</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span><span class="st0">' say what? '</span>,<span class="st0">'L'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'say what?
+SAY STRIP('</span><span class="sy0">++</span><span class="nu0">123</span><span class="sy0">+++</span><span class="st0">', '</span>B<span class="st0">', '</span><span class="sy0">+</span><span class="st0">') -&gt; '</span><span class="nu0">123</span><span class="st0">' </span></pre>
+
+</div>
+
+<h3 class="sectionedit86" id="substr">SUBSTR()</h3>
+<div class="level3">
+<pre class="code">SUBSTR(string,start[,length][,pad])</pre>
+
+<p>
+Returns the substring of the string argument beginning at the specified start position for the specified length. The starting position must be positive, and the default length is the remaining length of the string. If the substring is shorter than the requested length, it is padded on the right with the blanks or the specified pad character. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">SUBSTR</span><span class="br0">&#40;</span><span class="st0">'123456'</span>,<span class="nu0">4</span>,<span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">45</span>
+<span class="kw1">SAY</span> <span class="kw6">SUBSTR</span><span class="br0">&#40;</span><span class="st0">'myname'</span>,<span class="nu0">3</span>,<span class="nu0">6</span>, <span class="st0">'='</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'name=='</span></pre>
+
+</div>
+
+<h3 class="sectionedit87" id="subword">SUBWORD()</h3>
+<div class="level3">
+<pre class="code">SUBWORD(string,n[,length])</pre>
+
+<p>
+Returns the substring of the string argument beginning with the nth word for the specified length in words. The default length is the remaining length of the string. The returned string will never have leading or trailing blanks. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">SUBWORD</span><span class="br0">&#40;</span><span class="st0">'Now is the time '</span>,<span class="nu0">2</span>,<span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'is the'</span> </pre>
+
+</div>
+
+<h3 class="sectionedit88" id="symbol">SYMBOL()</h3>
+<div class="level3">
+<pre class="code">SYMBOL(name)</pre>
+
+<p>
+Tests whether the name argument is a valid ARexx symbol. If the name is not a valid symbol, the function returns the string <code>BAD</code>. If the symbol is uninitialized, the returned string is LIT. If the symbol has been assigned a value, <code>VAR</code> is returned. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">SYMBOL</span><span class="br0">&#40;</span><span class="st0">'J'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="kw6">VAR</span>
+<span class="kw1">SAY</span> <span class="kw6">SYMBOL</span><span class="br0">&#40;</span><span class="st0">'x'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> LIT
+<span class="kw1">SAY</span> <span class="kw6">SYMBOL</span><span class="br0">&#40;</span><span class="st0">'++'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> BAD </pre>
+
+</div>
+
+<h3 class="sectionedit89" id="time">TIME()</h3>
+<div class="level3">
+<pre class="code">TIME(option)</pre>
+
+<p>
+Returns the current system time or controls the internal elapsed time counter. The valid option keywords are:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>CIVIL</code> - Current time in 12 hour format (a.m./p.m.) hours/minutes</div>
+</li>
+<li class="level1"><div class="li"> <code>ELAPSED</code> - Elapsed time in seconds since program start</div>
+</li>
+<li class="level1"><div class="li"> <code>HOURS</code> - Current time in hours since midnight</div>
+</li>
+<li class="level1"><div class="li"> <code>MINUTES</code> - Current time in minutes since midnight</div>
+</li>
+<li class="level1"><div class="li"> <code>NORMAL</code> - Current time in 24 hour format (hours/minutes/seconds)</div>
+</li>
+<li class="level1"><div class="li"> <code>RESET</code> - Reset the elapsed time clock</div>
+</li>
+<li class="level1"><div class="li"> <code>SECONDS</code> - Current time in seconds since midnight</div>
+</li>
+</ul>
+
+<p>
+If no option is specified, the function returns the current system time in the form <code>HH:MM:SS</code>. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*Suppose that the time is 1:02 AM . . .*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'C'</span><span class="br0">&#40;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span><span class="sy0">:</span>02 AM
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'HOURS'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'M'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">62</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'N'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 01<span class="sy0">:</span>02<span class="sy0">:</span><span class="nu0">54</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'S'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3720</span>
+<span class="kw1">call</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'R'</span><span class="br0">&#41;</span> <span class="coMULTI">/*reset timer*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'E'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> .020
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 01<span class="sy0">:</span>02<span class="sy0">:</span>00 </pre>
+
+</div>
+
+<h3 class="sectionedit90" id="trace">TRACE()</h3>
+<div class="level3">
+<pre class="code">TRACE(option)</pre>
+
+<p>
+Sets the tracing mode (see Chapter 6) to that specified by the option keyword, which must be one of the valid alphabetic or prefix options. The <code>TRACE()</code> function will alter the tracing mode even during interactive tracing, when <code>TRACE</code> instructions in the source program are ignored. The returned value is the mode in effect before the function call. This allows the previous trace mode to be restored later. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*Assume tracing mode is ?ALL*/</span>
+<span class="kw1">SAY</span> <span class="kw1">TRACE</span><span class="br0">&#40;</span><span class="st0">'Results'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> ?A</pre>
+
+</div>
+
+<h3 class="sectionedit91" id="translate">TRANSLATE()</h3>
+<div class="level3">
+<pre class="code">TRANSLATE(string[,output][,input][,pad])</pre>
+
+<p>
+This function constructs a translation table and uses it to replace selected characters in the argument string. If only the string argument is given, it is translated to upper case. If an input table is supplied, it modifies the translation table so that characters in the argument string that occur in the input table are replaced with the corresponding character in the output table. Characters beyond the end of the output table are replaced with the specified pad character or a blank. The result string is always of the same length as the original string. The input and output tables may be of any length. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span><span class="br0">&#40;</span><span class="st0">&quot;abcde&quot;</span>, <span class="st0">&quot;123&quot;</span>, <span class="st0">&quot;cbade&quot;</span>, <span class="st0">&quot;+&quot;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">321</span><span class="sy0">++</span>
+<span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span><span class="br0">&#40;</span><span class="st0">&quot;low&quot;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> LOW
+<span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span><span class="br0">&#40;</span><span class="st0">&quot;0110&quot;</span>, <span class="st0">&quot;10&quot;</span>, <span class="st0">&quot;01&quot;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1001</span> </pre>
+
+</div>
+
+<h3 class="sectionedit92" id="trim">TRIM()</h3>
+<div class="level3">
+<pre class="code">TRIM(string)</pre>
+
+<p>
+Removes trailing blanks from the string argument. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">length</span> <span class="br0">&#40;</span>TRIM<span class="br0">&#40;</span><span class="st0">' abc '</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">4</span> </pre>
+
+</div>
+
+<h3 class="sectionedit93" id="trunc">TRUNC()</h3>
+<div class="level3">
+<pre class="code">TRUNC(number[,places])</pre>
+
+<p>
+Returns the integer part of the number argument followed by the specified number of decimal places. The default number of decimal places is 0. The number is padded with zeroes as necessary. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">TRUNC</span><span class="br0">&#40;</span><span class="nu0">123.456</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">123</span>
+<span class="kw1">SAY</span> <span class="kw6">TRUNC</span><span class="br0">&#40;</span><span class="nu0">123.456</span>,<span class="nu0">4</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">123.4560</span> </pre>
+
+</div>
+
+<h3 class="sectionedit94" id="upper">UPPER()</h3>
+<div class="level3">
+<pre class="code">UPPER(string)</pre>
+
+<p>
+Translate the string to upper case. The action of this function is equivalent to that of <code>TRANSLATE(string)</code>, but it is slightly faster for short strings. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw2">UPPER</span><span class="br0">&#40;</span><span class="st0">'One Fine Day'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> ONE FINE DAY</pre>
+
+</div>
+
+<h3 class="sectionedit95" id="value">VALUE()</h3>
+<div class="level3">
+<pre class="code">VALUE(name)</pre>
+
+<p>
+Returns the value of the symbol represented by the name argument. For example:
+</p>
+<pre class="code rexx"><span class="coMULTI">/*Assume that J has the value 12*/</span>
+<span class="kw1">SAY</span> <span class="kw6">VALUE</span><span class="br0">&#40;</span><span class="st0">'j'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">12</span></pre>
+
+</div>
+
+<h3 class="sectionedit96" id="verify">VERIFY()</h3>
+<div class="level3">
+<pre class="code">VERIFY(string,list[,&#039;MATCH&#039;])</pre>
+
+<p>
+Returns the index of the first character in the <code>string</code> argument which is not contained in the <code>list</code> argument or <code>0</code> if all of the characters are in the list. If the <code>MATCH</code> keyword is supplied, the function returns the index of the first character which is in the list or <code>0</code> if none of the characters is in the list. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">VERIFY</span><span class="br0">&#40;</span><span class="st0">'123456'</span>, <span class="st0">'0123456789'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">0</span>
+<span class="kw1">SAY</span> <span class="kw6">VERIFY</span><span class="br0">&#40;</span><span class="st0">'123a56'</span>, <span class="st0">'0123456789'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">4</span>
+<span class="kw1">SAY</span> <span class="kw6">VERIFY</span><span class="br0">&#40;</span><span class="st0">'123a45'</span>, <span class="st0">'abcdefghij'</span>, <span class="st0">'m'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">4</span> </pre>
+
+</div>
+
+<h3 class="sectionedit97" id="word">WORD()</h3>
+<div class="level3">
+<pre class="code">WORD(string,n)</pre>
+
+<p>
+Returns the nth word in the string argument or the null string if there are fewer than <code>n</code> words. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">WORD</span><span class="br0">&#40;</span><span class="st0">'Now is the time '</span>,<span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> is</pre>
+
+</div>
+
+<h3 class="sectionedit98" id="wordindex">WORDINDEX()</h3>
+<div class="level3">
+<pre class="code">WORDINDEX(string,n)</pre>
+
+<p>
+Returns the starting position of the nth word in the argument string or <code>0</code> if there are fewer than <code>n</code> words. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">WORDINDEX</span><span class="br0">&#40;</span><span class="st0">'Now is the time '</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">8</span></pre>
+
+</div>
+
+<h3 class="sectionedit99" id="wordlength">WORDLENGTH()</h3>
+<div class="level3">
+<pre class="code">WORDLENGTH(string,n)</pre>
+
+<p>
+Returns the length of the <code>n</code>-th word in the string argument. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">WORDLENGTH</span><span class="br0">&#40;</span><span class="st0">'one two three'</span>,<span class="nu0">3</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">5</span> </pre>
+
+</div>
+
+<h3 class="sectionedit100" id="words">WORDS()</h3>
+<div class="level3">
+<pre class="code">WORDS(string)</pre>
+
+<p>
+Returns the number of words in the string argument. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">WORDS</span><span class="br0">&#40;</span><span class="st0">&quot;You don't SAY!&quot;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">3</span></pre>
+
+</div>
+
+<h3 class="sectionedit101" id="writech">WRITECH()</h3>
+<div class="level3">
+<pre class="code">WRITECH(file,string)</pre>
+
+<p>
+Writes the string argument to the given logical file. The returned value is the actual number of characters written. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> WRITECH<span class="br0">&#40;</span><span class="st0">'output'</span>, <span class="st0">'Testing'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">7</span> </pre>
+
+</div>
+
+<h3 class="sectionedit102" id="writeln">WRITELN()</h3>
+<div class="level3">
+<pre class="code">WRITELN(file,string)</pre>
+
+<p>
+Writes the string argument to the given logical file with a newline appended. The returned value is the actual number of characters written. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> WRITELN<span class="br0">&#40;</span><span class="st0">'output'</span>, <span class="st0">'Testing'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">8</span></pre>
+
+</div>
+
+<h3 class="sectionedit103" id="x2c">X2C()</h3>
+<div class="level3">
+<pre class="code">X2C(string)</pre>
+
+<p>
+Converts a string of hex digits into the (packed) character representation. Blank characters are permitted in the argument string at byte boundaries. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">X2C</span><span class="br0">&#40;</span><span class="st0">'12ab'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'12ab'</span>x
+<span class="kw1">SAY</span> <span class="kw6">X2C</span><span class="br0">&#40;</span><span class="st0">'12 ab'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'12ab'</span>x
+<span class="kw1">SAY</span> <span class="kw6">X2C</span><span class="br0">&#40;</span><span class="nu0">61</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> a </pre>
+
+</div>
+
+<h3 class="sectionedit104" id="x2d">X2D()</h3>
+<div class="level3">
+<pre class="code">X2D(hex,digits)</pre>
+
+<p>
+Converts a hexadecimal number to decimal. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">X2D</span><span class="br0">&#40;</span><span class="st0">'1f'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">31</span></pre>
+
+</div>
+
+<h3 class="sectionedit105" id="xrange">XRANGE()</h3>
+<div class="level3">
+<pre class="code">XRANGE([start][,end])</pre>
+
+<p>
+Generates a string consisting of all characters numerically between the specified start and end values. The default start character is <code>&#039;00&#039;x</code>, and the default end character is <code>&#039;FF&#039;x</code>. Only the first character of the start and end arguments is significant. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">XRANGE</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'00010203 . . . FDFEFF'</span>x
+<span class="kw1">SAY</span> <span class="kw6">XRANGE</span><span class="br0">&#40;</span><span class="st0">'a'</span>, <span class="st0">'f'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'abcdef'</span>
+<span class="kw1">SAY</span> <span class="kw6">XRANGE</span><span class="br0">&#40;</span>,<span class="st0">'0A'</span>x<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="st0">'000102030405060708090A'</span>x </pre>
+
+</div>
+
+<h2 class="sectionedit106" id="example_program">Example Program</h2>
+<div class="level2">
+
+<p>
+The following example program illustrates many of the built-in functions that manipulate character strings.
+</p>
+
+</div>
+
+<h3 class="sectionedit107" id="program_13_changestringsrexx">Program 13. Changestrings.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*This ARexx program shows the effect of built-in functions that change strings. The functions come in two groups: one that manipulates individual characters and one that manipulates whole strings.*/</span>
+&nbsp;
+teststring1 <span class="sy0">=</span> <span class="st0">&quot; every good boy does fine &quot;</span>
+&nbsp;
+<span class="coMULTI">/*The first group is composed of the functions STRIP(), COMPRESS(), SPACE(), TRIM(), TRANSLATE(), DELSTR(), DELWORD(), INSERT(), OVERLAY(), and REVERSE().*/</span>
+&nbsp;
+<span class="coMULTI">/*STRIP() removes only leading and trailing characters.*/</span>
+&nbsp;
+<span class="coMULTI">/*Print the original string, for comparison. We put a period at the end of the string, so you can see what happens to the spaces at the end of the string.*/</span>
+<span class="kw1">SAY</span> <span class="st0">&quot; every  good   boy   does   fine   &quot;</span>
+&nbsp;
+<span class="coMULTI">/*The same string stripped of leading and trailing spaces*/</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span><span class="st0">&quot; every good boy does fine &quot;</span><span class="br0">&#41;</span><span class="st0">&quot;.&quot;</span>
+&nbsp;
+<span class="coMULTI">/*Failed attempt to remove leading and trailing &quot;e&quot;s*/</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span><span class="st0">&quot; every good boy does fine&quot;</span>,,<span class="st0">&quot;e&quot;</span><span class="br0">&#41;</span><span class="st0">&quot;.&quot;</span>
+&nbsp;
+<span class="coMULTI">/*The &quot;e&quot;'s were protected by the leading and trailing spaces. Removing them exposes the &quot;e&quot;'s to the effects of STRIP()*/</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span><span class="st0">&quot;every good boy does fine&quot;</span>,,<span class="st0">&quot;e&quot;</span><span class="br0">&#41;</span><span class="st0">&quot;.&quot;</span>
+&nbsp;
+<span class="coMULTI">/*Remove &quot;e&quot;'s and spaces from the original string*/</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span><span class="st0">&quot; every good boy does fine &quot;</span>,,<span class="st0">&quot; e&quot;</span><span class="br0">&#41;</span><span class="st0">&quot;.&quot;</span>
+&nbsp;
+<span class="coMULTI">/*We are now using the variable &quot;teststring1&quot;, defined above. Remove only the trailing spaces in the test string.*/</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span>teststring1, T<span class="br0">&#41;</span><span class="st0">&quot;.&quot;</span>
+&nbsp;
+<span class="coMULTI">/*Remove the trailing spaces and the &quot;e&quot;*/</span>
+<span class="kw1">SAY</span> <span class="kw6">STRIP</span><span class="br0">&#40;</span>teststring1,T,<span class="st0">&quot; e&quot;</span><span class="br0">&#41;</span><span class="st0">&quot;.&quot;</span>
+&nbsp;
+<span class="coMULTI">/*Compress() removes characters anywhere in the string. This removes all blanks from the test string*/</span>
+<span class="kw1">SAY</span> COMPRESS<span class="br0">&#40;</span>teststring1<span class="br0">&#41;</span>
+&nbsp;
+<span class="kw1">CALL</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'r'</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'Civil'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Civilian time HH:MM{AM | PM}*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'h'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Hours since midnight*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'m'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Minutes since midnight*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'s'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Seconds since midnight*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TIME</span><span class="br0">&#40;</span><span class="st0">'e'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Elapsed time since program start*/</span>
+&nbsp;
+<span class="coMULTI">/*Function:TRACE Usage: TRACE( [option] )*/</span>
+<span class="kw1">SAY</span> <span class="kw1">TRACE</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw1">TRACE</span><span class="br0">&#40;</span><span class="kw1">TRACE</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="coMULTI">/*Leave it unchanged*/</span>
+&nbsp;
+<span class="coMULTI">/*Function:TRANSLATE Usage: TRANSLATE(string[,output][,input] [,pad])*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span><span class="br0">&#40;</span><span class="st0">'aBCdef'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Translate to Uppercase*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span> <span class="br0">&#40;</span><span class="st0">'abcdef'</span>, <span class="st0">'1234'</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span><span class="br0">&#40;</span><span class="st0">'654321'</span>, <span class="st0">'abcdef'</span>, <span class="st0">'123456'</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw6">TRANSLATE</span><span class="br0">&#40;</span><span class="st0">'abcdef'</span>, <span class="st0">'123'</span>, <span class="st0">'abcdef'</span>, <span class="st0">'+'</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: TRIM Usage: TRIM(string)*/</span>
+<span class="kw1">SAY</span> TRIM<span class="br0">&#40;</span><span class="st0">' abc '</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: TRUNC Usage: TRUNC(number[,places])*/</span>
+<span class="kw1">SAY</span> <span class="kw6">TRUNC</span><span class="br0">&#40;</span><span class="nu0">123.456</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="st0">'$'</span><span class="kw6">TRUNC</span><span class="br0">&#40;</span><span class="nu0">134566.123</span>,<span class="nu0">2</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: UPPER Usage: UPPER(string)*/</span>
+<span class="kw1">SAY</span> <span class="kw2">UPPER</span><span class="br0">&#40;</span><span class="st0">'aBCdef12'</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: VALUE Usage: VALUE(name)*/</span>
+abc <span class="sy0">=</span> <span class="st0">'my name'</span>
+<span class="kw1">SAY</span> <span class="kw6">VALUE</span><span class="br0">&#40;</span><span class="st0">'abc'</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: VERIFY Usage: VERIFY(string,list[,'M'])*/</span>
+<span class="kw1">SAY</span> <span class="kw6">VERIFY</span><span class="br0">&#40;</span><span class="st0">'123a45'</span>, <span class="st0">'0123456789'</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw6">VERIFY</span><span class="br0">&#40;</span><span class="st0">'abc3de'</span>, <span class="st0">'012456789'</span>, <span class="st0">'M'</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: WORD Usage: WORD(string,n)*/</span>
+<span class="kw1">SAY</span> <span class="kw6">WORD</span><span class="br0">&#40;</span><span class="st0">'Now is the time'</span>,<span class="nu0">3</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: WORDINDEX Usage: WORDINDEX(string,n)*/</span>
+<span class="kw1">SAY</span> <span class="kw6">WORDINDEX</span><span class="br0">&#40;</span><span class="st0">'Now is the time '</span>,<span class="nu0">3</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: WORDLENGTH Usage: WORDLENGTH(string,n)*/</span>
+<span class="kw1">SAY</span> <span class="kw6">WORDLENGTH</span><span class="br0">&#40;</span><span class="st0">'Now is the time '</span>,<span class="nu0">4</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: WORDS Usage: WORDS(string)*/</span>
+<span class="kw1">SAY</span> <span class="kw6">WORDS</span><span class="br0">&#40;</span><span class="st0">'Now is the time'</span><span class="br0">&#41;</span>
+&nbsp;
+<span class="coMULTI">/*Function: WRITECH Usage: WRITECH(logical,string)*/</span>
+<span class="kw1">IF</span> OPEN<span class="br0">&#40;</span><span class="st0">'test'</span>,<span class="st0">'ram:test$$'</span>, <span class="st0">'W'</span><span class="br0">&#41;</span> <span class="kw3">THEN</span> <span class="kw1">DO</span>
+   <span class="kw1">SAY</span> WRITECH<span class="br0">&#40;</span><span class="st0">'test'</span>, <span class="st0">'message'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Write the string*/</span>
+   <span class="kw1">CALL</span> CLOSE <span class="st0">'test'</span>
+<span class="kw3">END</span>
+&nbsp;
+<span class="coMULTI">/*Function: WRITELN Usage: WRITELN(logical,string)*/</span>
+<span class="kw1">IF</span> OPEN<span class="br0">&#40;</span><span class="st0">'test'</span>, <span class="st0">'ram:test$$'</span>, <span class="st0">'W'</span><span class="br0">&#41;</span> <span class="kw3">THEN</span> <span class="kw1">DO</span>
+   <span class="kw1">SAY</span> WRITELN<span class="br0">&#40;</span><span class="st0">'test'</span>, <span class="st0">'message'</span><span class="br0">&#41;</span>
+   <span class="coMULTI">/*Write the string (with newline)*/</span>
+   <span class="kw1">CALL</span> CLOSE <span class="st0">'test'</span>
+<span class="kw3">END</span>
+&nbsp;
+<span class="coMULTI">/*Function: X2C Usage: X2C(heystring)*/</span>
+<span class="kw1">SAY</span> <span class="kw6">X2C</span><span class="br0">&#40;</span><span class="st0">'616263'</span><span class="br0">&#41;</span> <span class="coMULTI">/*Convent to character (pack)*/</span>
+&nbsp;
+<span class="coMULTI">/*Function: XRANGE Usage: XRANGE([start] [,end])*/</span>
+<span class="kw1">SAY</span> <span class="kw6">C2X</span><span class="br0">&#40;</span><span class="kw6">xrange</span><span class="br0">&#40;</span><span class="st0">'f0'</span>x<span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw6">XRANGE</span><span class="br0">&#40;</span><span class="st0">'a'</span>, <span class="st0">'g'</span><span class="br0">&#41;</span>
+<span class="kw1">EXIT</span></pre>
+
+<p>
+The output of Program 13 is:
+</p>
+<pre class="code"> every good boy does fine
+every good boy does fine.
+ every good boy does fine .
+very good boy does fin.
+very good boy does fin.
+ every good boy does fine.
+ every good boy does fin.
+everygoodboydoesfine
+1:23PM /*These results vary depending*/
+13 /*on the time the program is run.*/
+803
+48199
+0.80
+N
+N
+ABCDEF
+abcdef
+fedcba
+123+++
+   abc
+123
+$134566.12
+ABCDEF12
+my name
+4
+0
+the
+8
+4
+4
+7
+8
+abc
+F0F1F2F3F4F5F6F7F8F9FAFBFCFDFEFF
+abcdefg</pre>
+
+</div>
+
+<h1 class="sectionedit108" id="rexxsupportlibrary_functions">REXXSupport.Library Functions</h1>
+<div class="level1">
+
+<p>
+The functions listed in this section are part of the <code>REXXSupport.library</code>. They may only be used if this library has been opened. Below is an example that shows you how to open this library.
+</p>
+
+</div>
+
+<h2 class="sectionedit109" id="program_14_openlibraryrexx">Program 14. OpenLibrary.rexx</h2>
+<div class="level2">
+<pre class="code rexx"><span class="coMULTI">/*Add rexxsupport.library if it isn't already open.*/</span>
+<span class="kw1">IF</span> ~ SHOW <span class="br0">&#40;</span><span class="st0">'L'</span>, <span class="st0">&quot;rexxsupport.library&quot;</span><span class="br0">&#41;</span> <span class="kw3">THEN</span> <span class="kw1">DO</span>
+<span class="coMULTI">/*If the library isn't open, try to open it*/</span>
+<span class="kw1">IF</span> ADDLIB<span class="br0">&#40;</span><span class="st0">'rexxsupport.library'</span>, <span class="nu0">0</span>, <span class="sy0">-</span><span class="nu0">30</span>,<span class="nu0">0</span><span class="br0">&#41;</span>
+<span class="kw3">THEN</span> <span class="kw1">SAY</span> <span class="st0">&quot;Added rexxsupport.library.&quot;</span>
+<span class="kw3">ELSE</span> <span class="kw1">DO</span>
+   <span class="kw1">SAY</span> <span class="st0">'ARexx support library not available, exiting'</span>
+   <span class="kw1">EXIT</span> <span class="nu0">10</span> <span class="coMULTI">/*Exit if ADDLIB() failed*/</span>
+   <span class="kw3">END</span>
+<span class="kw3">END</span> </pre>
+
+</div>
+
+<h2 class="sectionedit110" id="allocmem">ALLOCMEM()</h2>
+<div class="level2">
+<pre class="code">ALLOCMEM(length[,attribute])</pre>
+
+<p>
+Allocates a block of memory of the specified length from the system free-memory pool and returns its address as a four-byte string. The optional attribute parameter must be a standard EXEC memory allocation flag, supplied as a four-byte string. The default attribute is for &quot;PUBLIC&quot; memory (not cleared).
+</p>
+
+<p>
+This function should be used whenever memory is allocated for use by external programs. It is the user&#039;s responsibility to release the memory space when it is no longer needed. See also <code>FREEMEM()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> <span class="kw6">C2X</span><span class="br0">&#40;</span>ALLOCMEM<span class="br0">&#40;</span><span class="nu0">1000</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 00050000
+<span class="kw1">SAY</span> <span class="kw6">C2X</span><span class="br0">&#40;</span>ALLOCMEM <span class="br0">&#40;</span><span class="nu0">1000</span>, <span class="st0">'00 01 00 0 1'</span>X<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 00228400
+<span class="coMULTI">/*1000 bytes of CLEAR Public memory*/</span> </pre>
+
+</div>
+
+<h2 class="sectionedit111" id="closeport">CLOSEPORT()</h2>
+<div class="level2">
+<pre class="code">CLOSEPORT(name)</pre>
+
+<p>
+Closes the message port specified by the name argument, which must have been allocated by a call to <code>OPENPORT()</code> within the current ARexx program. Any messages received but not yet REPLYed are automatically returned with the return code set to 10. See also <code>OPENPORT()</code>. For example:
+</p>
+<pre class="code rexx"><span class="kw1">CALL</span> CLOSEPORT myport </pre>
+
+</div>
+
+<h2 class="sectionedit112" id="freemem">FREEMEM()</h2>
+<div class="level2">
+<pre class="code">FREEMEM(address,length)</pre>
+
+<p>
+Releases a block of memory of the given length to the system free list. The address parameter is a four-byte string, typically obtained by a prior call to <code>ALLOCMEM()</code>. <code>FREEMEM()</code> cannot be used to release memory allocated using <code>GETSPACE()</code>, the ARexx internal memory allocator. The returned value is a Boolean success flag. See also <code>ALLOCMEM()</code>. For example:
+</p>
+<pre class="code rexx">MemoryRequest <span class="sy0">=</span> <span class="nu0">1024</span>
+MyMem <span class="sy0">=</span> ALLOCMEM<span class="br0">&#40;</span>MemoryRequest<span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="kw6">C2X</span><span class="br0">&#40;</span>MyMem<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> 07C987B0
+<span class="kw1">SAY</span> FREEMEM<span class="br0">&#40;</span>MyMem, MemoryRequest<span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span>
+<span class="coMULTI">/*Or: SAY FREEMEM('07C987B0'x,1024)*/</span></pre>
+<div class="wrap_info plugin_wrap">
+<p>
+Before your program terminates, you must use a matching <code>FREEMEM()</code> to release the exact amount of memory you allocated with each <code>ALLOCMEM()</code>. Otherwise, you may crash the system or leave memory unavailable until you reboot.
+</p>
+</div>
+</div>
+
+<h2 class="sectionedit115" id="getarg">GETARG()</h2>
+<div class="level2">
+<pre class="code">GETARG(packet[,n])</pre>
+
+<p>
+Extracts a command, function name or argument string from a message packet. The packet argument must be a four-byte address obtained from a prior call to <code>GETPKT()</code>. The optional <code>n</code> argument specifies the slot containing the string to be extracted and must be less than or equal to the actual argument count for the packet. Commands and function names are always in slot 0. Function packets my have argument strings in slots 1-15. For example:
+</p>
+<pre class="code rexx">command <span class="sy0">=</span> GETARG<span class="br0">&#40;</span>packet<span class="br0">&#41;</span>
+function <span class="sy0">=</span> GETARG<span class="br0">&#40;</span>packet,<span class="nu0">0</span><span class="br0">&#41;</span> <span class="coMULTI">/*name string*/</span>
+arg1 <span class="sy0">=</span> GETARG<span class="br0">&#40;</span>packet,<span class="nu0">1</span><span class="br0">&#41;</span> <span class="coMULTI">/*1st argument*/</span> </pre>
+
+</div>
+
+<h2 class="sectionedit116" id="getpkt">GETPKT()</h2>
+<div class="level2">
+<pre class="code">GETPKT(name)</pre>
+
+<p>
+Checks the message port specified by the name argument to see whether any messages are available. The named message port must have been opened by a prior call to <code>OPENPRT()</code> within the current ARexx program. The returned value is the four-byte address of the first message packet, or <code>&#039;0000 0000&#039;x</code> if no packets were available.
+</p>
+
+<p>
+The function returns immediately whether or not a packet is enqueued at the message port. Programs should never be designed to &quot;busy-loop&quot; on a message port. If there is no useful work to be done until the next message packet arrives, the program should call <code>WAITPKT()</code> and allow other tasks to proceed. See also <code>WAITPKT()</code>. For example:
+</p>
+<pre class="code rexx">packet <span class="sy0">=</span> GETPKT <span class="br0">&#40;</span><span class="st0">'MyPort'</span><span class="br0">&#41;</span> </pre>
+
+</div>
+
+<h2 class="sectionedit117" id="openport">OPENPORT()</h2>
+<div class="level2">
+<pre class="code">OPENPORT(name)</pre>
+
+<p>
+Creates a public message port with the given name. The returned Boolean value indicates whether the port was successfully opened. An initialization failure will occur if another port of the same name already exists or if a signal bit couldn&#039;t be allocated. The message port is allocated as a Port Resource node and is linked into the program&#039;s global data structure. Ports are automatically closed when the program exits and any pending messages are returned to the sender. See also <code>CLOSEPORT()</code>. For example:
+</p>
+<pre class="code rexx">success <span class="sy0">=</span> OPENPORT<span class="br0">&#40;</span><span class="st0">&quot;MyPort&quot;</span><span class="br0">&#41;</span> </pre>
+
+</div>
+
+<h2 class="sectionedit118" id="reply">REPLY()</h2>
+<div class="level2">
+<pre class="code">REPLY(packet,rc)</pre>
+
+<p>
+Returns a message packet to the sender, with the primary result field set to the value given by the <code>rc</code> argument. The secondary result is cleared. The packet argument must be supplied as a four-byte address, and the <code>rc</code> argument must be a whole number. For example:
+</p>
+<pre class="code rexx"><span class="kw1">CALL</span> REPLY<span class="br0">&#40;</span>packet,<span class="nu0">10</span><span class="br0">&#41;</span> <span class="coMULTI">/*Error return*/</span> </pre>
+
+</div>
+
+<h2 class="sectionedit119" id="showdir">SHOWDIR()</h2>
+<div class="level2">
+<pre class="code">SHOWDIR(directory[,&#039;ALL&#039;|&#039;FILE&#039;|&#039;DIR&#039;][,pad])</pre>
+
+<p>
+Returns the contents of the specified directory as a string of names separated by blanks. The second parameter is an option keyword that selects whether all entries, only files, or only subdirectories, will be included. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> SHOWDIR<span class="br0">&#40;</span><span class="st0">'SYS:REXXC'</span>, <span class="st0">'f'</span>, <span class="st0">';'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> WaitForPort;TS;TE;TCO;RXSET;RXLIB;RXC;RX;HI</pre>
+
+</div>
+
+<h2 class="sectionedit120" id="showlist">SHOWLIST()</h2>
+<div class="level2">
+<pre class="code">SHOWLIST({&#039;A&#039; | &#039;D&#039; | &#039;H&#039; | &#039;T&#039; | &#039;L&#039; | &#039;M&#039; | &#039;P&#039; | &#039;R&#039; | &#039;S&#039; | &#039;T&#039; | &#039;V&#039; | &#039;W&#039;}[,name][,pad])</pre>
+
+<p>
+An argument is entered using its initial letter. The arguments are:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>A</code> - ASSIGNS and Assigned Device</div>
+</li>
+<li class="level1"><div class="li"> <code>D</code> - Device Drivers</div>
+</li>
+<li class="level1"><div class="li"> <code>H</code> - Handlers</div>
+</li>
+<li class="level1"><div class="li"> <code>I</code> - Interrupts</div>
+</li>
+<li class="level1"><div class="li"> <code>L</code> - Libraries</div>
+</li>
+<li class="level1"><div class="li"> <code>M</code> - Memory List Items</div>
+</li>
+<li class="level1"><div class="li"> <code>P</code> - Ports</div>
+</li>
+<li class="level1"><div class="li"> <code>R</code> - Resources</div>
+</li>
+<li class="level1"><div class="li"> <code>S</code> - Semaphores</div>
+</li>
+<li class="level1"><div class="li"> <code>T</code> - Tasks (Ready)</div>
+</li>
+<li class="level1"><div class="li"> <code>V</code> - Volume Names</div>
+</li>
+<li class="level1"><div class="li"> <code>W</code> - Waiting Tasks</div>
+</li>
+</ul>
+
+<p>
+If only one argument is supplied, <code>SHOWLIST()</code> returns a string separated by blanks: If a pad character is supplied, names will be separated by the pad rather than by blanks. If the name parameter is supplied. <code>SHOWLIST()</code> returns a Boolean value which indicates if the specified list contains that name. Names are case-sensitive. To provide an accurate snapshot of the current list, task switching is forbidden when the list is scanned.
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> SHOWLIST<span class="br0">&#40;</span><span class="st0">'P'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> REXX MyCon
+<span class="kw1">SAY</span> SHOWLIST<span class="br0">&#40;</span><span class="st0">'P'</span>,,<span class="st0">';'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> REXX;MyCon
+<span class="kw1">SAY</span> SHOWLIST<span class="br0">&#40;</span><span class="st0">'P'</span>, <span class="st0">'REXX'</span><span class="br0">&#41;</span> <span class="sy0">-&gt;</span> <span class="nu0">1</span> </pre>
+
+</div>
+
+<h2 class="sectionedit121" id="statef">STATEF()</h2>
+<div class="level2">
+<pre class="code">STATEF(filename)</pre>
+
+<p>
+Returns a string containing information about an external file. The string is formatted as:
+</p>
+<pre class="code">&quot;{DIR | FILE} length blocks protection days minutes ticks comment.&quot;</pre>
+
+<p>
+The length token gives the file length in bytes, and the block token specifies the file length in blocks. For example:
+</p>
+<pre class="code rexx"><span class="kw1">SAY</span> STATEF<span class="br0">&#40;</span><span class="st0">&quot;LIBS:REXXSupport.library&quot;</span><span class="br0">&#41;</span>
+<span class="coMULTI">/*might give &quot;File 2524 5 ----RW-D 4866 817 2088*/</span> </pre>
+
+</div>
+
+<h2 class="sectionedit122" id="waitpkt">WAITPKT()</h2>
+<div class="level2">
+<pre class="code">WAITPKT(name)</pre>
+
+<p>
+Waits for a message to be received at the specified (named) port, which must have been opened by a call to <code>OPENPORT()</code> within the current ARexx program. The returned Boolean value indicates whether a message packet is available at the port. Normally the returned value will be 1 (True), since the function waits until an event occurs at the message port.
+</p>
+
+<p>
+The packet must then be removed by a call to <code>GETPKT()</code> and should be returned eventually using the <code>REPLY()</code> function. Any message packets received but not returned when an ARexx program exits are automatically REPLYed with the return code set to 10. For example:
+</p>
+<pre class="code rexx"><span class="kw1">CALL</span> WAITPKT <span class="st0">'MyPort'</span> <span class="coMULTI">/*Wait awhile*/</span> </pre>
+
+</div>
+
+<h1 class="sectionedit123" id="index1">Index</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_104804361662b5ef3751009" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="open"><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix?idx=fuss:amiga:arexx:manual:appendix" class="indexmenu_idx open">appendix</a></div>
+<ul class="idx">
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix/command_utilities" class="wikilink1" title="fuss:amiga:arexx:manual:appendix:command_utilities" data-wiki-id="fuss:amiga:arexx:manual:appendix:command_utilities">command_utilities</a></div></li>
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix/error_messages" class="wikilink1" title="fuss:amiga:arexx:manual:appendix:error_messages" data-wiki-id="fuss:amiga:arexx:manual:appendix:error_messages">error_messages</a></div></li>
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix/special_variables" class="wikilink1" title="fuss:amiga:arexx:manual:appendix:special_variables" data-wiki-id="fuss:amiga:arexx:manual:appendix:special_variables">special_variables</a></div></li>
+</ul>
+</li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/debugging" class="wikilink1" title="fuss:amiga:arexx:manual:debugging" data-wiki-id="fuss:amiga:arexx:manual:debugging">debugging</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/elements_of_arexx" class="wikilink1" title="fuss:amiga:arexx:manual:elements_of_arexx" data-wiki-id="fuss:amiga:arexx:manual:elements_of_arexx">elements_of_arexx</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions" class="wikilink1" title="fuss:amiga:arexx:manual:functions" data-wiki-id="fuss:amiga:arexx:manual:functions">functions</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started" class="wikilink1" title="fuss:amiga:arexx:manual:getting_started" data-wiki-id="fuss:amiga:arexx:manual:getting_started">getting_started</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/glossary" class="wikilink1" title="fuss:amiga:arexx:manual:glossary" data-wiki-id="fuss:amiga:arexx:manual:glossary">glossary</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/instructions" class="wikilink1" title="fuss:amiga:arexx:manual:instructions" data-wiki-id="fuss:amiga:arexx:manual:instructions">instructions</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/introducing_arexx" class="wikilink1" title="fuss:amiga:arexx:manual:introducing_arexx" data-wiki-id="fuss:amiga:arexx:manual:introducing_arexx">introducing_arexx</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/parsing" class="wikilink1" title="fuss:amiga:arexx:manual:parsing" data-wiki-id="fuss:amiga:arexx:manual:parsing">parsing</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/workbench_arexx_port" class="wikilink1" title="fuss:amiga:arexx:manual:workbench_arexx_port" data-wiki-id="fuss:amiga:arexx:manual:workbench_arexx_port">workbench_arexx_port</a></div></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_104804361662b5ef3751009 = new dTree('indexmenu_104804361662b5ef3751009','was.png');
+indexmenu_104804361662b5ef3751009.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_104804361662b5ef3751009.config.sepchar='/';
+indexmenu_104804361662b5ef3751009.config.toc=false;
+indexmenu_104804361662b5ef3751009.config.scorespace=true;
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual',0,-1,"manual",'fuss/amiga/arexx/manual');
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/appendix',1,0,"appendix",0,1,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/appendix/command_utilities',2,1,"command_utilities",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/appendix/error_messages',3,1,"error_messages",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/appendix/special_variables',4,1,"special_variables",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/debugging',5,0,"debugging",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/elements_of_arexx',6,0,"elements_of_arexx",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/functions',7,0,"functions",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/getting_started',8,0,"getting_started",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/glossary',9,0,"glossary",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/instructions',10,0,"instructions",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/introducing_arexx',11,0,"introducing_arexx",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/parsing',12,0,"parsing",0,0,0);
+indexmenu_104804361662b5ef3751009.add('fuss/amiga/arexx/manual/workbench_arexx_port',13,0,"workbench_arexx_port",0,0,0);
+document.write(indexmenu_104804361662b5ef3751009);
+jQuery(function(){indexmenu_104804361662b5ef3751009.init(1,0,"1",1,0);});
+//--><!]]>
+</script>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/amiga/arexx/manual/functions.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga" class="wikilink1" title="fuss:amiga" data-wiki-id="fuss:amiga">amiga</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx" class="wikilink1" title="fuss:amiga:arexx" data-wiki-id="fuss:amiga:arexx">arexx</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual" class="wikilink1" title="fuss:amiga:arexx:manual" data-wiki-id="fuss:amiga:arexx:manual">manual</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions" class="wikilink1" title="fuss:amiga:arexx:manual:functions" data-wiki-id="fuss:amiga:arexx:manual:functions">functions</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:amiga:arexx:manual:functions" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aamiga%3Aarexx%3Amanual%3Afunctions&amp;1657303882" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

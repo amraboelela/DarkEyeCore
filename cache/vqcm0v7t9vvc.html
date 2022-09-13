@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:postfix [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,postfix"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/postfix"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:postfix","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:postfix" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:postfix&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix" class="wikilink1" title="fuss:postfix" data-wiki-id="fuss:postfix">postfix</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:postfix</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#anti-spam">Anti-Spam</a></div></li>
+<li class="level1"><div class="li"><a href="#e-mail_size_limit">E-Mail Size Limit</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_ssltls_for_server-side_communication">Enable SSL / TLS for Server-Side Communication</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_alternate_ports">Enable Alternate Ports</a></div></li>
+<li class="level1"><div class="li"><a href="#purge_e-mails_from_the_postfix_queue">Purge E-mails from the Postfix Queue</a></div></li>
+<li class="level1"><div class="li"><a href="#create_blacklist">Create Blacklist</a></div></li>
+<li class="level1"><div class="li"><a href="#censor_sensitive_headers">Censor Sensitive Headers</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_per-home_directory_forwarding">Enable Per-Home Directory Forwarding</a></div></li>
+<li class="level1"><div class="li"><a href="#disable_poodle_and_freaklogjam">Disable POODLE and FREAK/Logjam</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#rotate_diffie-hellman_parameters">Rotate Diffie-Hellman Parameters</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#log_analysis">Log Analysis</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_forward_secrecy">Enable Forward Secrecy</a></div></li>
+<li class="level1"><div class="li"><a href="#delete_mail_from_queue_for_a_specific_user">Delete Mail from Queue for a Specific User</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="anti-spam">Anti-Spam</h1>
+<div class="level1">
+
+<p>
+The Debian wiki page on <a href="https://wiki.debian.org/Postfix" class="urlextern" title="https://wiki.debian.org/Postfix" rel="ugc nofollow">Postfix</a> suggests some additions to <code>/etc/postfix/main.cf</code> in order to filter out misbehaving <code>MTA</code>s. Nevertheless, one should be aware that the options on the Debian wiki are too restrictive and may end up filtering legitimate servers. This is because some <code>MTA</code>s, even popular ones are misconfigured. A <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/postfix/templates/2.10/restrictions" class="wikilink1" title="postfix:templates:2.10:restrictions" data-wiki-id="postfix:templates:2.10:restrictions">postfix restrictions template</a> for configuring postfix restrictions is available as well as tutorials on  <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/networking/postfix/sender_policy_framework" class="wikilink1" title="networking:postfix:sender_policy_framework" data-wiki-id="networking:postfix:sender_policy_framework">SPF</a>, <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/networking/postfix/domain_keys_identified_mail" class="wikilink1" title="networking:postfix:domain_keys_identified_mail" data-wiki-id="networking:postfix:domain_keys_identified_mail">DKIM</a> and <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/networking/postfix/greylisting" class="wikilink1" title="networking:postfix:greylisting" data-wiki-id="networking:postfix:greylisting">greylisting</a>.
+</p>
+
+</div>
+
+<h1 class="sectionedit2" id="e-mail_size_limit">E-Mail Size Limit</h1>
+<div class="level1">
+
+<p>
+By default, postfix has a <code>10MB</code> e-mail size limit, this can be changed by setting:
+</p>
+<pre class="code">message_size_limit = 25000000
+</pre>
+
+<p>
+that would extend the e-mail size limit to <code>25MB</code>. This limit is enforced if the kernel is patched with <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/linux/hardening/grsecurity" class="wikilink1" title="linux:hardening:grsecurity" data-wiki-id="linux:hardening:grsecurity">grsecurity</a>.
+</p>
+
+</div>
+
+<h1 class="sectionedit3" id="enable_ssltls_for_server-side_communication">Enable SSL / TLS for Server-Side Communication</h1>
+<div class="level1">
+
+<p>
+<code>postfix</code> is able to talk to servers over <code>SSL</code> or <code>TLS</code> but this functionality is left out from the default configuration and only the necessary setup is in-place to be able to authenticate via <code>SSL</code>. To enable this feature, you have to edit <code>/etc/postfix/main.cf</code> and make sure that the following lines are in place:
+</p>
+<pre class="code"># TLS parameters
+# These should already be there on Debian. If not, you will have to generate certificates.
+smtpd_tls_cert_file=/etc/ssl/certs/ssl-cert-snakeoil.pem
+smtpd_tls_key_file=/etc/ssl/private/ssl-cert-snakeoil.key
+smtpd_tls_session_cache_database = btree:${data_directory}/smtpd_scache
+smtp_tls_session_cache_database = btree:${data_directory}/smtp_scache
+
+# Enable TLS and offer TLS option to connections.
+smtpd_use_tls = yes
+smtp_use_tls = yes
+smtp_tls_note_starttls_offer = yes
+
+# The CA for the certificates above. On Debian, this is at /etc/ssl/certs/ca-certificates.crt
+smtpd_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtp_tls_CAfile = $smtpd_tls_CAfile
+
+# Enable TLSv1 and SSLv3, offer them when receiving not only authentication.
+smtpd_tls_received_header = yes
+smtpd_tls_mandatory_protocols = SSLv3, TLSv1
+smtpd_tls_mandatory_ciphers = medium
+smtpd_tls_auth_only = no
+smtpd_tls_loglevel = 1
+
+# Source of randomness.
+tls_random_source = dev:/dev/urandom</pre>
+
+</div>
+
+<h1 class="sectionedit4" id="enable_alternate_ports">Enable Alternate Ports</h1>
+<div class="level1">
+
+<p>
+Since many <code>ISP</code>s block outgoing port <code>25</code>, it is helpful to have <code>postfix</code> (or any other mail server) listening on an alternate port, alongside port <code>25</code>. This is an easy task, just edit <code>/etc/postfix/master.cnf</code> and enable <code>submission</code> (port <code>587</code>) and <code>smtps</code> (port <code>465</code>):
+</p>
+<pre class="code">submission inet n       -       -       -       -       smtpd
+smtps     inet  n       -       -       -       -       smtpd</pre>
+
+<p>
+Remember to correctly port-forward these ports as you do for port <code>25</code>. Provided that your publicly accessible <code>SMTP</code> server has the domain name <code>smtp.domain.com</code>, you can now tell your users to set their clients to use:
+</p>
+<pre class="code">smtp.domain.com:465</pre>
+
+<p>
+or:
+</p>
+<pre class="code">smtp.domain.com:587</pre>
+
+<p>
+as their outgoing mail server.
+</p>
+
+</div>
+
+<h1 class="sectionedit5" id="purge_e-mails_from_the_postfix_queue">Purge E-mails from the Postfix Queue</h1>
+<div class="level1">
+
+<p>
+Using <code>postqueue</code> we can print the current e-mail queue:
+</p>
+<pre class="code bash">postqueue <span class="re5">-p</span></pre>
+
+<p>
+which will list the e-mails in the queue referenced by their <code>ID</code>:
+</p>
+<pre class="code">1643B4D8687* 1783520 Mon Jun  1 01:30:17  office@mail.com
+                                         me@hotmail.com
+
+9354B4F82A6* 1735720 Tue Jun  3 08:36:53  office@mail.com
+                                         me@hotmail.com</pre>
+
+<p>
+where the first column indicates the mail <code>ID</code>s. The e-mails can now be removed from the queue using <code>postsuper</code>:
+</p>
+<pre class="code bash">postsuper <span class="re5">-d</span> 1643B4D8687</pre>
+
+<p>
+to delete the first e-mail and:
+</p>
+<pre class="code bash">postsuper <span class="re5">-d</span> 9354B4F82A6</pre>
+
+<p>
+to delete the second e-mail.
+</p>
+
+</div>
+
+<h1 class="sectionedit6" id="create_blacklist">Create Blacklist</h1>
+<div class="level1">
+
+<p>
+Considering that postfix is set-up correctly, create a file called <code>/etc/postfix/blacklist</code> which contains a list of e-mail addresses and <code>REJECT</code> as the predicate, line-by-line:
+</p>
+<pre class="code">test@gmail.com REJECT
+some.one@yahoo.com REJECT</pre>
+
+<p>
+After that, hash the file using:
+</p>
+<pre class="code bash">postmap hash:<span class="sy0">/</span>etc<span class="sy0">/</span>postfix<span class="sy0">/</span>blacklist</pre>
+
+<p>
+and you will notice that a new file appeared called <code>/etc/postfix/blacklist.db</code>. This is the file that postfix will use internally to filter the e-mail addresses.
+</p>
+
+<p>
+The last step consists in adding the hash file to the postfix configuration. This can be done by editing <code>/etc/postfix/main.cf</code> and adding the list to <code>smtpd_recipient_restrictions</code>:
+</p>
+<pre class="code">smtpd_recipient_restrictions = permit_mynetworks,
+    # ... the rest of the stuff here ...
+    check_sender_access hash:/etc/postfix/blacklist,
+    permit</pre>
+
+<p>
+Now the list will take effect when postfix reloads the configuration:
+</p>
+<pre class="code bash">postfix reload</pre>
+
+<p>
+or by restarting postfix:
+</p>
+<pre class="code bash"><span class="sy0">/</span>etc<span class="sy0">/</span>init.d<span class="sy0">/</span>postfix restart</pre>
+
+</div>
+
+<h1 class="sectionedit7" id="censor_sensitive_headers">Censor Sensitive Headers</h1>
+<div class="level1">
+
+<p>
+E-mail clients sometimes bundle a bunch of information in their outgoing headers. Thunderbird, for example, bundles the local IP address of the e-mail client in the header, as well as other information. If you inspect the outgoing e-mails, you will see something like:
+</p>
+<pre class="code">Received: from host.local (host.local [192.168.1.12]) (using TLSv1 with cipher ECDHE-RSA-AES256-SHA (256/256 bits)) (No client certificate requested) by mailerhost.com (Postfix) with ESMTPSA id 2B8361FD29 for &lt;garbage@gmail.com&gt;; Sun, 03 Aug 2014 11:20:31 +0000 (UTC)</pre>
+
+<p>
+To eliminate such headers, edit <code>/etc/postfix/main.cf</code> and add the lines:
+</p>
+<pre class="code"># Clean the headers
+mime_header_checks = regexp:/etc/postfix/clean_headers
+header_checks = regexp:/etc/postfix/clean_headers</pre>
+
+<p>
+then create the file <code>/etc/postfix/clean_headers</code> and add the following lines:
+</p>
+<pre class="code">/^Received:.*with ESMTPSA/	IGNORE
+/^X-Originating-IP:/	IGNORE
+/^X-Mailer:/	IGNORE
+/^User-Agent:/	IGNORE
+</pre>
+
+<p>
+Then, use <code>postmap</code> to hash the file:
+</p>
+<pre class="code bash">postmap <span class="sy0">/</span>etc<span class="sy0">/</span>postfix<span class="sy0">/</span>clean_headers</pre>
+
+<p>
+and reload the postfix configuration with:
+</p>
+<pre class="code bash">postfix reload</pre>
+
+</div>
+
+<h1 class="sectionedit8" id="enable_per-home_directory_forwarding">Enable Per-Home Directory Forwarding</h1>
+<div class="level1">
+
+<p>
+Add the line:
+</p>
+<pre class="code">allow_mail_to_commands = alias,forward,include</pre>
+
+<p>
+to <code>/etc/postfix/main.cf</code>.
+</p>
+
+<p>
+After that postfix should pick-up the <code>.forward</code> files in the user home directories.
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="disable_poodle_and_freaklogjam">Disable POODLE and FREAK/Logjam</h1>
+<div class="level1">
+
+<p>
+Edit <code>/etc/postfix/main.cf</code> and amend the lines:
+</p>
+<pre class="code"># POODLE / FREAK/Logjam
+smtpd_tls_mandatory_protocols=!SSLv2,!SSLv3
+smtp_tls_mandatory_protocols=!SSLv2,!SSLv3
+smtpd_tls_protocols=!SSLv2,!SSLv3
+smtp_tls_protocols=!SSLv2,!SSLv3
+smtpd_tls_exclude_ciphers = aNULL, eNULL, EXPORT, DES, RC4, MD5, PSK, aECDH, EDH-DSS-DES-CBC3-SHA, EDH-RSA-DES-CDC3-SHA, KRB5-DE5, CBC3-SHA
+smtpd_tls_dh1024_param_file = ${config_directory}/dh_1024.pem
+smtpd_tls_dh512_param_file = ${config_directory}/dh_512.pem</pre>
+
+<p>
+After that generate a DH group file <code>dh_1024.pem</code> in the postfix configuration directory (<code>${config_directory}</code>) with:
+</p>
+<pre class="code bash">openssl dhparam <span class="re5">-out</span> dh_1024.pem <span class="nu0">1024</span></pre>
+
+<p>
+as well as:
+</p>
+<pre class="code bash">openssl dhparam <span class="re5">-out</span> dh_512.pem <span class="nu0">512</span></pre>
+
+<p>
+and reload the postfix configuration.
+</p>
+
+</div>
+
+<h2 class="sectionedit10" id="rotate_diffie-hellman_parameters">Rotate Diffie-Hellman Parameters</h2>
+<div class="level2">
+
+<p>
+You can rotate the diffie-hellman keys if you so wish - it would actually be recommended and has no adverse effects using a crontab script. For instance, drop the following script in, say, <code>/etc/cron.weekly/</code>:
+</p>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/postfix?codeblock=23" title="Download Snippet" class="mediafile mf_sh">postfix-rotate-diffie-hellman.sh</a></dt>
+<dd><pre class="code file bash"><span class="co0">#!/bin/sh</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">##  Copyright (C) Wizardry and Steamworks 2017 - License: GNU GPLv3      ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0"># A script to rotate the Diffie-Hellman keys that can be called through   #</span>
+<span class="co0"># crontab periodically.                                                   #</span>
+<span class="co0">#                                                                         #</span>
+<span class="co0"># This script would require the following postfix configuration keys to   #</span>
+<span class="co0"># be set:                                                                 #</span>
+<span class="co0">#                                                                         #</span>
+<span class="co0"># smtpd_tls_dh1024_param_file = ${config_directory}/dh_1024.pem           #</span>
+<span class="co0"># smtpd_tls_dh512_param_file = ${config_directory}/dh_512.pem             #</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0">###########################################################################</span>
+<span class="co0">#                             CONFIGURATION                               #</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0"># Set this to the directory corresponding to the result of expanding the </span>
+<span class="co0"># Postfix ${config_directory} variable - commonly, /etc/postfix.</span>
+<span class="re2">POSTFIX_CONFIG_DIRECTORY</span>=<span class="sy0">/</span>etc<span class="sy0">/</span>postfix
+&nbsp;
+<span class="co0">###########################################################################</span>
+<span class="co0">#                                INTERNALS                                #</span>
+<span class="co0">###########################################################################</span>
+<span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-d</span> <span class="st0">&quot;<span class="es2">$POSTFIX_CONFIG_DIRECTORY</span>&quot;</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+    <span class="co0"># Re-create Diffie-Hellman parameters.</span>
+    openssl dhparam <span class="re5">-out</span> <span class="st0">&quot;<span class="es2">$POSTFIX_CONFIG_DIRECTORY</span>/dh_1024.pem&quot;</span> <span class="nu0">1024</span>
+    openssl dhparam <span class="re5">-out</span> <span class="st0">&quot;<span class="es2">$POSTFIX_CONFIG_DIRECTORY</span>/dh_512.pem&quot;</span> <span class="nu0">512</span>
+    <span class="co0"># Reload Postfix to pick-up the newly generated keys.</span>
+    postfix reload
+<span class="kw1">fi</span></pre>
+</dd></dl>
+
+</div>
+
+<h1 class="sectionedit11" id="log_analysis">Log Analysis</h1>
+<div class="level1">
+
+<p>
+The following command will count all the E-Mails coming to <code>server.tld</code> and then sort the entries in descending order:
+</p>
+<pre class="code bash"><span class="kw2">grep</span> <span class="st0">&quot;to=.*@server\.tld&quot;</span> <span class="sy0">/</span>var<span class="sy0">/</span>log<span class="sy0">/</span>mail.log <span class="sy0">|</span> <span class="kw2">grep</span> 127.0.0.1 <span class="sy0">|</span><span class="kw2">cut</span> <span class="re5">-d</span> <span class="st0">&quot;=&quot;</span> <span class="re5">-f</span> <span class="nu0">2</span> <span class="sy0">|</span><span class="kw2">cut</span> <span class="re5">-d</span> <span class="st0">&quot;&gt;&quot;</span> <span class="re5">-f</span> <span class="nu0">1</span> <span class="sy0">|</span><span class="kw2">cut</span> <span class="re5">-d</span> <span class="st0">&quot;&lt;&quot;</span> <span class="re5">-f</span> <span class="nu0">2</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="re5">-n</span> <span class="sy0">|</span><span class="kw2">uniq</span> <span class="re5">-ci</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="re5">-n</span> <span class="re5">-r</span></pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>server\.tld</code> is the name of the local E-Mail server,</div>
+</li>
+<li class="level1"><div class="li"> <code>/var/log/mail.log</code> is the file to which the E-Mail server logs to,</div>
+</li>
+<li class="level1"><div class="li"> <code>127.0.0.1</code> is the IP address of the local E-Mail server</div>
+</li>
+</ul>
+
+<p>
+The following command will count all E-Mails sent through the mail server and then sort the entries in descending order:
+</p>
+<pre class="code bash"><span class="kw2">grep</span> <span class="re5">-E</span> <span class="st0">&quot;status=sent&quot;</span> <span class="sy0">/</span>var<span class="sy0">/</span>log<span class="sy0">/</span>mail.log <span class="sy0">|</span> <span class="kw2">cut</span> <span class="re5">-d</span> <span class="st0">&quot;=&quot;</span> <span class="re5">-f</span> <span class="nu0">2</span> <span class="sy0">|</span><span class="kw2">cut</span> <span class="re5">-d</span> <span class="st0">&quot;&gt;&quot;</span> <span class="re5">-f</span> <span class="nu0">1</span> <span class="sy0">|</span><span class="kw2">cut</span> <span class="re5">-d</span> <span class="st0">&quot;&lt;&quot;</span> <span class="re5">-f</span> <span class="nu0">2</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="re5">-n</span> <span class="sy0">|</span><span class="kw2">uniq</span> <span class="re5">-ci</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="re5">-n</span> <span class="re5">-r</span></pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>/var/log/mail.log</code> is the file to which the E-Mail server logs to,</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit12" id="enable_forward_secrecy">Enable Forward Secrecy</h1>
+<div class="level1">
+
+<p>
+To enable forward secrecy on Postfix 2.6 and above, edit <code>/etc/postfix/main.cf</code> and add the line:
+</p>
+<pre class="code">smtpd_tls_dh1024_param_file = ${config_directory}/dh_1024.pem
+smtpd_tls_dh512_param_file = ${config_directory}/dh_512.pem
+smtpd_tls_eecdh_grade = strong
+tls_preempt_cipherlist = yes</pre>
+
+<p>
+You will need to generate the Diffie-Hellman files. This can be done with <code>openssl</code>. For the 1024 key issue:
+</p>
+<pre class="code bash">openssl gendh <span class="re5">-out</span> <span class="sy0">/</span>etc<span class="sy0">/</span>postfix<span class="sy0">/</span>dh_1024.pem <span class="re5">-2</span> <span class="nu0">1024</span></pre>
+
+<p>
+and for the 512 key:
+</p>
+<pre class="code bash">openssl gendh <span class="re5">-out</span> <span class="sy0">/</span>etc<span class="sy0">/</span>postfix<span class="sy0">/</span>dh_512.pem <span class="re5">-2</span> <span class="nu0">512</span></pre>
+
+<p>
+and then reload postfix:
+</p>
+<pre class="code bash">postfix reload</pre>
+
+<p>
+To check that it is working, issue on the command line:
+</p>
+<pre class="code bash">openssl s_client <span class="re5">-starttls</span> smtp server.tld:<span class="nu0">25</span></pre>
+
+<p>
+where <code>server.tld</code> is the server to check. Amongst other things, you should see in the cipher SSL section:
+</p>
+<pre class="code">Cipher    : ECDHE...</pre>
+
+</div>
+
+<h1 class="sectionedit13" id="delete_mail_from_queue_for_a_specific_user">Delete Mail from Queue for a Specific User</h1>
+<div class="level1">
+
+<p>
+The following command will delete all e-mails in the queue for the user <code>hill</code>:
+</p>
+<pre class="code bash">mailq <span class="sy0">|</span> <span class="kw2">fgrep</span> hill<span class="sy0">@</span>domain\.tld <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{ print $1 }'</span> <span class="sy0">|</span> postsuper <span class="re5">-d</span> -</pre>
+
+<p>
+this works by filtering out all the e-mails by <code>hill@domain.tld</code>, piping the output to <code>awk</code> that filters out the first column of E-Mail queue IDs and then pipes the result to <code>postsuper</code> that deletes the e-mails by taking the E-Mail queue IDs as input.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/postfix.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix" class="wikilink1" title="fuss:postfix" data-wiki-id="fuss:postfix">postfix</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:postfix" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/postfix"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Apostfix&amp;1657306123" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

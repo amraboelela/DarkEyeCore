@@ -1,0 +1,3617 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Google Feud: Home of Autocomplete</title>
+  <meta name="description"
+    content="Home of the world's most popular autocomplete games, including Google Feud. Order 'Autocomplete: The Book' today!" />
+  <meta name="keywords"
+    content="google games, google trivia, feud, fued, google game, google search game, autocomplete, auto complete, funny, google suggest, autocorrect, autocompete, app, let's play, @midnight, chris hardwick, pewdiepie, smosh, webbys" />
+  <meta name="author" content="Justin Hook" />
+  <meta name="robots" content="index, nofollow" />
+  <meta name="twitter:url" content="https://www.googlefeud.com/" />
+  <meta name="twitter:card" content="photo" />
+  <meta name="twitter:image" content="https://www.googlefeud.com/logo.jpg" />
+  <meta name="twitter:image:width" content="800" />
+  <meta name="twitter:image:height" content="508" />
+  <meta name="twitter:title"
+    content="Home of the world's most popular autocomplete games, including Google Feud. Order 'Autocomplete: The Book' today!" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.googlefeud.com/" />
+  <meta property="og:title" content="Google Feud: Home of Autocomplete" />
+  <meta property="og:image" content="https://www.googlefeud.com/logo.jpg" />
+  <meta property="og:description"
+    content="Home of the world's most popular autocomplete games, including Google Feud. Order 'Autocomplete: The Book' today!" />
+
+  <link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="apple-mobile-web-app-title" content="Google Feud">
+  <meta name="application-name" content="Google Feud">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#d0d2d3">
+  <link rel="manifest" href="/manifest.json">
+
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+  <link rel="dns-prefetch" href="https://www.gstatic.com" />
+  <link rel="dns-prefetch" href="https://resources.infolinks.com" />
+ 
+
+  <style>
+    html {
+      font-size: 8px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, 'Helvetica Neue', 'Open Sans', Roboto, 'Segoe UI', Oxygen, Ubuntu, Cantarell, -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #FFF;
+      color: #212121;
+    }
+
+    the_window {
+      width: 60rem;
+      position: absolute;
+      overflow: hidden;
+      border-bottom: .1rem solid #d0d2d3;
+      z-index: 99;
+      background-color: #FFF;
+    }
+
+    high_score {
+      display: block;
+      font-size: 2rem;
+      letter-spacing: .05rem;
+      font-weight: bold;
+      margin: 2rem 0;
+    }
+
+    h1 {
+      text-align: center;
+      width: 50rem;
+      margin: 3rem auto;
+      position: relative;
+    }
+
+    h1 img {
+      width: 50rem;
+    }
+
+    wrapper,
+    h1,
+    title_bar,
+    content,
+    description,
+    icons,
+    section,
+    games {
+      display: block;
+    }
+
+    the_window,
+    email_form {
+      display: none;
+    }
+
+    section {
+      margin-bottom: 4rem;
+    }
+
+    icons {
+      width: 66rem;
+      text-align: center;
+      margin: 0 auto 4rem;
+      padding: 0 2rem;
+    }
+
+    scoreboard {
+      text-align: center;
+      display: block;
+      margin: 0 auto;
+    }
+
+    title_bar {
+      width: 100%;
+      background-color: #d0d2d3;
+      height: 4rem;
+      border-radius: .5rem .5rem 0 0;
+      cursor: move;
+    }
+
+    title_bar div {
+      float: left;
+      margin: 1rem 0 0 2rem;
+      height: 2rem;
+      width: 2rem;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #attribution {
+      margin-top: 1rem;
+      display: block;
+      cursor: pointer;
+      color: #666;
+    }
+
+    #att {
+      margin-top: 1rem;
+      display: block;
+      width: 50%;
+      margin-left: 25%;
+    }
+
+    #minimize {
+      background-color: #fae238;
+    }
+
+    #maximize {
+      background-color: #7a9958;
+    }
+
+    #close {
+      background-color: #d14135;
+    }
+
+    content {
+      text-align: center;
+      font-size: 2rem;
+      background-color: #FFF;
+      height: auto;
+      border: .1rem solid #d0d2d3;
+      border-bottom: 0;
+      padding: 2rem;
+    }
+
+    #content_img {
+      max-width: 56rem;
+      /* max-height: 26rem; */
+      margin-bottom: 2rem;
+    }
+
+    #img_wrapper {
+      position: relative;
+    }
+
+    h3 {
+      font-size: 2rem;
+      border: .1rem #d0d2d3 solid;
+      padding: 1rem 2rem;
+      border-radius: 3rem;
+      margin-bottom: 2rem;
+      font-weight: 100;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+
+    h3 b {
+      font-weight: bold;
+    }
+
+    section {
+      width: 100%;
+      text-align: left;
+    }
+
+    icon {
+      display: inline-block;
+      font-size: 1.5rem;
+      width: 13rem;
+      padding-top: 14rem;
+      margin: 0 2rem 2rem 1rem;
+      vertical-align: top;
+      text-align: center;
+      background-position: center 40%;
+      background-repeat: no-repeat;
+      background-size: 50%;
+      cursor: pointer;
+      background-image: url("/autocomplete/icons/loader.png");
+
+    }
+
+    icon:hover {
+      text-decoration: underline;
+    }
+
+    description {
+      width: 50rem;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    footer {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 1.5rem;
+
+    }
+
+    footer div {
+      margin-top: 1rem
+    }
+
+    footer a:link,
+    footer a:visited,
+    footer a:active {
+      color: #666;
+    }
+
+    footer a:hover {
+      text-decoration: none;
+    }
+
+    games {
+      position: relative;
+    }
+
+    /* TOp ROW */
+
+    .loaded,
+    #autocomplete_games icon {
+      background-position: top center;
+      background-size: 100%;
+    }
+
+    #classic {
+      background-image: url("/autocomplete/icons/google_feud.png");
+
+    }
+
+    #qotd {
+      background-image: url("/autocomplete/icons/question.svg");
+      background-size: 80% !important;
+      background-position: center 25% !important;
+
+    }
+
+    #touch {
+      background-image: url("/autocomplete/icons/touch.png");
+    }
+
+    #photobomber {
+      background-image: url("/autocomplete/icons/photocomplete.png");
+    }
+
+    #switchlang {
+      background-image: url("/autocomplete/icons/global.svg?0");
+      background-size: 80% !important;
+      background-position: center 25% !important;
+
+    }
+
+    #basher {
+      background-image: url("/autocomplete/icons/basher.jpg?1");
+    }
+
+    /* Not Top row */
+
+    #press.loaded {
+      background-image: url("/autocomplete/icons/news.svg");
+    }
+
+    #mailing_list.loaded {
+      background-image: url("/autocomplete/icons/message.svg");
+    }
+
+    #switchlang.loaded {
+      background-image: url("/autocomplete/icons/google_feud.png");
+    }
+
+    #store.loaded {
+      background-image: url("/autocomplete/icons/new_store.jpg");
+    }
+
+    #bots.loaded {
+      background-image: url("/autocomplete/icons/messenger.svg");
+    }
+
+    #alexa.loaded {
+      background-image: url("/autocomplete/icons/amazon.svg");
+    }
+
+    #game.loaded {
+      background-image: url("/autocomplete/icons/game.jpg");
+    }
+
+    #autocompete.loaded {
+      background-image: url("/autocomplete/icons/autocompete.png");
+    }
+
+    #youtube.loaded {
+      background-image: url("/autocomplete/icons/youtube.svg");
+    }
+
+    #instagram.loaded {
+      background-image: url("/autocomplete/icons/instagram.svg");
+    }
+
+    #book.loaded {
+      background-image: url("/autocomplete/icons/book.png");
+    }
+
+    #trump.loaded {
+      background-image: url("/autocomplete/icons/trump.png");
+    }
+
+    #starbucks.loaded {
+      background-image: url("/autocomplete/icons/starbucks.png");
+    }
+
+    #fake_news.loaded {
+      background-image: url("/autocomplete/icons/fake_news.jpg");
+    }
+
+    #beat-the-internet.loaded {
+      background-image: url("/autocomplete/icons/beat-the-internet.png");
+    }
+
+    #facebook.loaded {
+      background-image: url("/autocomplete/icons/facebook.svg");
+    }
+
+    #instathumb.loaded {
+      background-image: url("/autocomplete/icons/thumbnail.png");
+    }
+
+    classic,
+    photobomber,
+    touch {
+      text-align: center;
+    }
+
+    photobomber,
+    touch {
+      display: none;
+
+    }
+
+    photobomber {
+      min-height: 42rem;
+    }
+
+    /* Photobomber stuff */
+
+    #hint {
+      /* font-size: 1.5rem; */
+      margin: 2rem 0;
+    }
+
+    img {
+      outline: none;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+    #main {
+      font-size: 3rem;
+      text-align: center;
+      height: 32.0rem;
+      display: inline-block;
+      cursor: default;
+      text-transform: lowercase;
+    }
+
+    #main img {
+      vertical-align: middle;
+      z-index: 10;
+      max-height: 39rem;
+    }
+
+    .unanswered .results {
+      display: none;
+    }
+
+    .results {
+      float: right;
+      margin-right: 1rem;
+    }
+
+    .correct .results {
+      font-weight: bold;
+    }
+
+    .resultwrap {
+      display: inline-block;
+      position: relative;
+      width: 25rem;
+      margin: 0 2rem;
+      overflow: visible;
+    }
+
+    #resulttext0,
+    #resulttext1,
+    #resulttext2 {
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      vertical-align: middle;
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      text-transform: lowercase;
+      border: 0;
+      z-index: 10;
+      text-align: center;
+      outline: none;
+      cursor: text;
+      font-size: 3rem;
+    }
+
+    #bombwrapper {
+      position: relative;
+      width: 100%;
+      text-align: center;
+      text-transform: uppercase;
+      display: none;
+    }
+
+    .loading {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      margin-top: -1.5rem;
+      text-align: center;
+      color: #CCC;
+      /*   font-size: 1.5rem; */
+      z-index: -1;
+    }
+
+    #bombwrapper img {
+      display: inline-block;
+    }
+
+    #category {
+      margin-left: 3rem;
+    }
+
+    #select {
+      display: none;
+      position: absolute;
+      background: #000;
+      list-style-type: none;
+      padding: 0;
+      margin: .1rem 0 0 -.1rem;
+      z-index: 99;
+      font-weight: bold;
+    }
+
+    #select li {
+      padding: .2rem 0;
+      cursor: pointer;
+      border: thin #CCC solid;
+      border-top: none;
+      width: 11.5rem;
+    }
+
+    #catmenu {
+      width: 11.5rem;
+      cursor: pointer;
+      margin-left: .3rem;
+      border: thin #CCC solid;
+      font-weight: bold;
+    }
+
+    #catname {
+      text-align: center;
+      padding-left: .2rem;
+      width: .90rem;
+    }
+
+    #gameover {
+      font-weight: bold;
+      color: red;
+    }
+
+    #correct {
+      font-weight: bold;
+      color: limegreen;
+    }
+
+    .bombclass {
+      cursor: move;
+      width: 5.5rem;
+      height: 5.5rem;
+      padding-left: .5rem;
+    }
+
+    input[type="text"]:disabled {
+      color: #000;
+    }
+
+    #subcat {
+      text-align: left;
+      padding-left: .1rem;
+      cursor: pointer;
+      color: green;
+    }
+
+    .clickspan {
+      cursor: pointer;
+      display: inline-block;
+    }
+
+       .highlight {
+      box-shadow: 0 0 .20rem black;
+    }
+
+    #points {
+      font-size: 24.0rem;
+      width: 100%;
+      padding-top: .20rem;
+      text-align: center;
+      display: none;
+      font-weight: bold;
+      color: #000;
+      position: absolute;
+      z-index: 99;
+    }
+
+    .recenter {
+      text-align: center;
+      width: .95rem;
+    }
+
+    #instructions {
+      margin: -.5rem 0 3rem 0;
+      font-size: 1rem;
+    }
+
+    #r {
+      font-weight: bold;
+      margin-left: .2rem;
+    }
+
+    #catinfo {
+      margin-top: -.2rem;
+    }
+
+    #arrow {
+      width: .15rem;
+      right: .2rem;
+      position: relative;
+      top: -.1rem;
+      color: #CCC;
+    }
+
+    a:link,
+    a:visited,
+    a:hover,
+    a:active {
+      color: #999;
+      text-decoration: none;
+    }
+
+    #photoby0,
+    #photoby1,
+    #photoby2 {
+      position: absolute;
+      width: 100%;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    /* Classic */
+
+    #totalgames,
+    a:active,
+    a:link,
+    a:visited {
+      color: #498bf3;
+    }
+
+    #wholething,
+    #wholething_touch {
+      display: inline-block;
+      text-align: left;
+    }
+
+    #queryspan {
+      display: block;
+      float: left;
+    }
+
+    #rebox {
+      float: right;
+    }
+
+    #message,
+    #guess,
+    #wrapper {
+      text-align: center;
+    }
+
+    #reveal_div,
+    body,
+    input[type=text][disabled] {
+      background-color: #FFF;
+    }
+
+    #queryspan,
+    #queryspan_touch,
+    #rebox,
+    #table1,
+    #table2 {
+      text-transform: lowercase;
+    }
+
+    #guess,
+    .caties {
+      cursor: pointer;
+    }
+
+    #___plusone_0 {
+      position: relative;
+      top: .2rem;
+    }
+
+    #gamesplayed a:link {
+      text-decoration: none;
+    }
+
+    #gamesplayed a:hover {
+      text-decoration: underline;
+    }
+
+    #gamesplayed {
+      margin: -.5rem 0 2.0rem;
+      font-size: 1.8rem;
+      /* 12pt */
+    }
+
+    .very_long_answer .revealed_answers {
+      margin-top: -.75rem;
+
+    }
+
+    .long_answer .revealed_answers {
+      font-size: smaller;
+      height: 2.4rem;
+   
+
+    }
+
+    #totalgames {
+      font-weight: 700;
+    }
+
+    #preresults,
+    h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      text-transform: uppercase;
+    }
+
+    h2_wrapper {
+      height: 4rem;
+      display: block;
+    }
+
+    h2 {
+      position: relative;
+      top: -1rem;
+    }
+
+#email,
+    #queryspan,
+    #rebox {
+      font-size: 2rem;
+      line-height: 3.45rem;
+      /*23 pt */
+      padding: 0;
+      margin: 0;
+      border: 0;
+    }
+
+    #querydiv {
+      float: left;
+    }
+
+    #email,
+    #querydiv {
+      border: thin solid #CCCCCC;
+      
+      padding: 1rem 2rem;
+      overflow: hidden;
+      border-radius: 3rem;
+      position: relative;
+    }
+
+    #email:hover,
+#querydiv:hover {
+  box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+}
+
+    #rebox {
+      font-weight: 700;
+      width: 18.0rem;
+
+      margin-right: 3rem; 
+    }
+
+    #rebox:focus {
+      outline-width: 0;
+    }
+
+    #failures,
+    #highscore,
+    #roundnumber,
+    #score {
+      color: #498bf3;
+      font-size: 2rem;
+      display: inline-block;
+      clear: right;
+      width: 17.0rem;
+    }
+
+    scoreboard span {
+      font-weight: 700;
+      font-size: 4.2rem;
+    }
+
+    #message,
+    #guess {
+      margin-left: 1.0rem;
+      margin-top: .4rem;
+    }
+
+    #logo {
+      display: block;
+      width: 50.0rem;
+      height: 14.4rem;
+      margin: -1.0rem auto -2.0rem auto;
+      position: relative;
+      left: -.5rem;
+    }
+
+    .revealed_answers,
+    .score {
+      display: inline-block;
+
+    }
+
+    #reveal_div {
+      width: 100%;
+      height: 4.2rem;
+      line-height: 4.2rem;
+      position: relative;
+    }
+
+    .preanswer {
+      background-color: #498bf3;
+    }
+
+    .score {
+      float: right;
+      color: #498bf3;
+      margin-right: .8rem;
+    }
+
+    .revealed_answers {
+      float: left;
+      max-width: 26.0rem;
+      text-align: left;
+      margin-left: 1.0rem;
+    }
+
+    .revealed_answers a {
+      text-decoration: none;
+      color: #212121;
+    }
+
+    .revealed_answers a:hover {
+      text-decoration: underline;
+    }
+
+    #answerkey {
+      width: 70.0rem;
+      margin: 0 auto 3.0rem;
+    }
+
+    #table1,
+    #table2 {
+      width: 35.0rem;
+      float: left;
+      clear: right;
+      border-collapse: collapse;
+      border-left: thin #CCC solid;
+      border-right: thin #CCC solid;
+      font-size: 2rem;
+      ;
+    }
+
+    #table1 td,
+    #table2 td {
+      border-bottom: thin #CCC solid;
+      border-top: thin #CCC solid;
+      height: 4.2rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .answered {
+      font-weight: 700;
+    }
+
+    .unanswered {
+      margin: 0;
+    }
+
+    .oval {
+      text-align: center;
+      margin: auto;
+      line-height: 4.2rem;
+      font-size: 5.0rem;
+      font-weight: bold;
+      color: #e4e4e4;
+      overflow: hidden;
+    }
+
+    .left {
+      text-align: left;
+    }
+
+    .right {
+      text-align: right;
+    }
+
+    #gf_categories {
+      text-align: center;
+      margin-left: 1.5rem;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    #starter {
+      display: none;
+    }
+
+    button {
+      font-weight: normal;
+      background-image: -moz-linear-gradient(top, #f5f5f5, #f1f1f1);
+      -moz-border-radius: .2rem;
+      -moz-user-select: none;
+      background-color: #f2f2f2;
+      border: .1rem solid #f2f2f2;
+      border-radius: .4rem;
+      color: #5F6368;
+      cursor: pointer;
+      font-family: arial, sans-serif;
+      font-size: 1.6rem;
+      margin: 1.1rem .4rem;
+      min-width: 5.4rem;
+      padding: 0 1.6rem;
+      text-align: center;
+      height: 3.6rem;
+      line-height: 2.7rem;
+      display: block;
+      margin: 2rem auto;
+      min-width: 15rem;
+    }
+
+    button:hover {
+      background-image: -moz-linear-gradient(top, #f8f8f8, #f1f1f1);
+      -moz-box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.1);
+      background-color: #f8f8f8;
+      background-image: linear-gradient(top, #f8f8f8, #f1f1f1);
+      background-image: -o-linear-gradient(top, #f8f8f8, #f1f1f1);
+      border: .1rem solid #c6c6c6;
+      box-shadow: 0 .1rem .1rem rgba(0, 0, 0, 0.1);
+      color: #222
+    }
+
+    #cats button {
+      display: inline-block;
+      margin: 0 2rem 0 0;
+    }
+
+    #cats button:last-child {
+      margin-right: 0;
+    }
+
+    #guessdiv {
+      float: right;
+    }
+
+    #flag {
+      margin-top: -4.0rem;
+      position: relative;
+      text-indent: 45.0rem
+    }
+
+    .botimg {
+      margin: 1.5rem;
+      width: 7.0rem
+    }
+
+    #querydiv_touch,
+    #answerkey_touch .answers {
+      display: block;
+      width: 50rem;
+      color: #212121;
+      font-size: 1.5rem;
+      text-align: left;
+      margin: 0 auto;
+      padding: .5rem 1rem .5rem 2rem;
+      border-left: .1rem solid #d0d2d3;
+      border-right: .1rem solid #d0d2d3;
+      background-color: #d0d2d3;
+    }
+
+    #querydiv_touch,
+    #answerkey_touch .unanswered {
+      background-color: #FFF;
+    }
+
+    #answerkey_touch .unanswered:hover {
+      background-color: #EEE;
+    }
+
+    #answerkey_touch .correct {
+      background-color: #498bf3;
+      color: #FFF;
+    }
+
+    touch:hover #answer0,
+    touch:hover #answer1,
+    touch:hover #answer2,
+    touch:hover #answer3,
+    touch:hover #answer4 {
+      box-shadow: 0 .4rem .6rem 0 rgba(32, 33, 36, 0.28);
+    }
+
+    #answerkey_touch #answer4 {
+      border-bottom: .1rem solid #d0d2d3;
+      border-bottom-right-radius: 2.4rem;
+      border-bottom-left-radius: 2.4rem;
+      padding-bottom: 1rem;
+    }
+
+    #querydiv_touch,
+    #answerkey_touch {
+      cursor: pointer;
+    }
+
+    #querydiv_touch {
+      border-top: .1rem solid #d0d2d3;
+      border-top-right-radius: 2.4rem;
+      border-top-left-radius: 2.4rem;
+      display: flex;
+      flex-direction: row;
+      padding-bottom: 0;
+      position: relative;
+    }
+
+    #catwrap,
+    #catwrap_touch {
+      height: 8.5rem;
+    }
+
+    h2 {
+      text-align: center;
+    }
+
+    touch {
+      margin: 3rem 0;
+    }
+
+    #queryspan_touch {
+      flex-basis: 100%;
+      padding: 1rem 0;
+      border-bottom: .1rem solid #d0d2d3;
+    }
+
+    #next {
+      margin-top: 4rem;
+      display: none;
+    }
+
+    #catname {
+      margin-top: 2rem;
+      text-transform: uppercase;
+    }
+
+    .search {
+      width: 3rem;
+      margin-right: .5rem;
+      fill: #4285f4;
+      cursor: pointer;
+      position: absolute;
+      right: 1rem;
+      top: 1.25rem;
+    }
+
+    #scoreboard_wrapper {
+      
+      width: 100%;
+      position: relative;
+      margin-top: 5rem;
+      text-align: center;
+    }
+
+    #googlefeud {
+      display: none;
+      width: 90rem;
+      height: 70rem;
+      border: 0;
+      outline: 0;
+      margin: 0 auto 4rem;
+      overflow: hidden;
+    }
+
+    #youtube_iframe {
+      width: 56.0rem;
+      height: 31.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h1 {
+      height: 10rem;
+    }
+
+    #skip_wrapper {
+      margin-top: 7rem;
+      position: absolute;
+      width: 100%;
+    }
+
+    wrapper {
+      margin-top: 5rem;
+    }
+
+    #autocomplete_the_book {
+      font-size: 2rem;
+    }
+
+    .book_buttons {
+      text-align: center;
+      margin-top: 2rem;
+    }
+
+    .book_buttons button {
+      margin: 1rem;
+      display: inline-block;
+    }
+
+    #autocomplete_the_book img {
+      display: block;
+      margin: 0 auto;
+      width: 59rem;
+    }
+
+    #email {
+      margin-top: 2rem;
+      width: 50%;
+    }
+
+    #bots_div {
+      text-align: center;
+    }
+
+    #current_region,
+    #qotd_percentile {
+      font-weight: bold;
+    }
+
+    #switch_lang_buttons {
+      text-align: center;
+    }
+
+    #switch_lang_buttons button {
+      display: inline-block;
+      margin: 2rem;
+
+    }
+
+    #queryspan {
+        margin-right: .6rem;
+      }
+
+#bomb1{
+      display: none;
+}
+
+ ul#press,
+ ul#press li,
+ ul#press ul li {
+   margin:0;
+   padding: 0;
+   text-indent: 0;
+   list-style-type: none;
+}
+ul#press li::before {
+  content: "\25B6"; 
+  color: #666;
+  font-weight: bold; 
+  display: inline-block; 
+  width: 1em; 
+  margin-right:1rem;
+}
+
+ul#press {
+  margin-top: 1rem;
+
+}
+ul#press li {
+  
+  margin-top: 1rem;
+}
+ul#press li:hover{
+  font-weight: bold;
+}
+
+touch .search {
+        margin-top: -.25rem;
+      }
+
+#autocomplete_sponsor h3 {
+        display: none;
+  }
+
+  #flickr {
+    display: inline-block;
+    height: 2rem;
+    margin-left: 1rem;
+  }
+
+    @media screen and (max-width:45rem) {
+
+      #email {
+
+      width: 80%;
+    }
+
+      #querydiv_touch,
+    #answerkey_touch .answers {
+      width: 80%;
+    }
+
+      h2_wrapper {
+        height: auto;
+        margin-bottom: 1rem;
+      }
+
+      h2 {
+        width: 80%;
+        margin-left: 10%;
+      }
+
+      #wholething {
+        width: 70%; /* 50 */
+      }
+
+      #message,
+      button {
+        height: 6rem;
+      }
+
+      button {
+
+        min-width: 16rem;
+
+      }
+
+      icon {
+        width: 10rem;
+      }
+
+      body {
+        max-width: 100%;
+        overflow-x: hidden;
+      }
+
+      input[type="text"] {
+        padding: .5rem 0;
+        font-size: 2rem;
+      }
+
+      /*Photobomber */
+      photobomber {
+        margin-bottom: 3rem 0;
+      }
+
+      #skip_wrapper {
+        margin-top: 5rem;
+        position: relative;
+      }
+
+      #header {
+        position: fixed;
+        z-index: 95;
+        top: 0;
+        left: 0;
+        height: .92rem;
+      }
+
+      #main {
+        height: auto;
+        min-height: 32.0rem;
+      }
+
+      .resultwrap {
+        display: block;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        min-height: 1rem;
+      }
+
+      #line {
+        display: none;
+      }
+
+      scoreboard {
+        margin-top: 4rem;
+      }
+
+      #arrow {
+        width: .12rem;
+      }
+
+      .recenter {
+        width: .72rem;
+      }
+
+      /*Not Photobomber */
+      games {
+        text-align: center;
+
+      }
+
+      #bomb1 {
+
+        float: left;
+        margin: 0 1rem 0 0;
+      }
+
+      #googlefeud {
+        height: 100rem;
+        width: 100%;
+      }
+
+      #cats button {
+        margin: 1rem;
+      }
+
+      high_score {
+        font-size: 4rem;
+      }
+
+      h3 {
+        width: 90%;
+      }
+
+      #content_img {
+        max-width: 90%;
+      }
+
+      icons {
+        width: 100%;
+      }
+
+      icon {
+        font-size: 1.85rem;
+      }
+
+      description {
+        font-size: 3rem;
+        width: auto;
+      }
+
+      #querydiv {
+        width: 100%;
+        float: none;
+        margin: 0 2rem 0 -2rem;
+      }
+
+      the_window button {
+        margin: 2rem 0;
+      }
+
+      classic .search {
+        margin-top: .5rem;
+      }
+
+      content {
+        text-align: left;
+      }
+
+      footer {
+        font-size: 2rem;
+      }
+
+      the_window {
+        left: 5% !important;
+        width: 90% !important;
+      }
+
+      #youtube_iframe {
+        width: 100%;
+        height: auto;
+      }
+
+      title_bar {
+        height: 6rem;
+      }
+
+      title_bar div {
+        width: 4rem;
+        height: 4rem;
+        margin: 1.2rem 0 0 4rem;
+      }
+
+      #close {
+        margin-left: 2rem;
+      }
+
+      #wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        min-width: 32.0rem;
+      }
+
+      #logo {
+        width: 90%;
+        max-height: 5.5rem;
+        margin: 1.0rem 7%;
+      }
+
+      #table1,
+      #table2 {
+        float: none;
+        margin: 0 auto;
+      }
+
+     .revealed_answers {
+        padding-top: 0;
+        margin-left: .5rem;
+      }
+
+      .score {
+        padding: 0;
+        margin-right: .5rem;
+      }
+
+      #guess,
+      body {
+        margin: 0;
+      }
+
+      #message,
+      #guess {
+        padding: 0;
+        width: 8.7rem;
+        height: 3.6rem;
+        line-height: 3.6rem;
+      }
+
+      #table1,
+      #table2 {
+        font-size: 2rem;
+        width: 80%;
+      }
+
+      #catwrap,
+      #catwrap_touch {
+        height: auto;
+      }
+
+      #guessdiv {
+        margin-top: 2rem;
+        width: 100%;
+        text-align: center;
+      }
+
+      #queryspan,
+      #rebox {
+
+        float: left;
+
+      }
+
+      #queryspan_touch {
+        border-bottom: .1rem solid #d0d2d3;
+        flex-basis: 100%;
+        padding: .5rem 0 1rem;
+      }
+
+      #failures,
+      #highscore,
+      #roundnumber,
+      #score {
+        font-size: 2rem;
+        float: left;
+        margin-right: 1.2rem;
+        width: inherit;
+      }
+
+      #gf_categories {
+        max-width: 90%;
+        margin: 0 auto;
+      }
+
+      .caties {
+        margin-bottom: 1.0rem;
+        margin-right: .1rem;
+        margin-left: .1rem;
+        line-height: 2.85rem;
+        width: 6.5rem;
+        height: 2.4rem;
+      }
+
+      #score {
+        margin-right: 0;
+      }
+
+      #answerkey {
+        margin-bottom: 0;
+        width: auto;
+      }
+
+      scoreboard {
+        display: inline-block;
+        margin-bottom: 2.0rem;
+      }
+
+      #sharebuttons {
+        padding: 0;
+        width: auto;
+        margin-right: -2.0rem;
+      }
+
+      #scoreboard_wrapper {
+        margin-top: 0;
+      }
+
+      #cats button:last-child {
+        margin-right: 1rem;
+      }
+
+      h1 {
+        height: auto;
+      }
+
+      #autocomplete_the_book img {
+        width: 100%;
+        margin: 0 0 0 -2rem;
+      }
+
+      #autocomplete_the_book div {
+        margin-left: -4rem;
+      }
+
+      #autocomplete_the_book p {
+        padding-right: 4rem;
+      }
+
+      button {
+        font-size: 2rem;
+      }
+
+      .book_buttons {
+        margin-left: 0;
+      }
+
+      h1 {
+        width: 100%;
+      }
+
+      h1 img {
+        width: 90%;
+        max-height: 11rem;
+      }
+
+      h3 {
+        margin-left: -1rem;
+        margin-bottom: 3rem;
+      }
+
+      #message {
+        margin-left: auto;
+      }
+
+      #cats {
+        margin-bottom: 1rem;
+      }
+
+      wrapper {
+        width: 100%;
+      }
+
+      icons {
+        margin-left: 3rem;
+        width: auto;
+      }
+
+      .search {
+        top: auto;
+      }
+    }
+
+    .ui-draggable-handle{-ms-touch-action:none;touch-action:none}
+
+  </style>
+
+</head>
+
+<body>
+  <base target="_blank">
+
+  <h1>
+    <a href="/" id="h1_a" target="_self">
+      <img id="h1_img" alt="Google Feud" src="/autocomplete/headers/google_feud.svg" />
+    </a>
+
+  </h1>
+
+  <h2_wrapper>
+    <h2><b>Choose A Category</b></h2>
+  </h2_wrapper>
+
+  <games>
+
+    <classic>
+
+      <div id="catwrap">
+        <div id="gf_categories">
+          <div id="cats">
+          <button onclick="startGame('culture')">Culture</button><button onclick="startGame('people')">People</button> <span style="white-space: nowrap"><button onclick="startGame('names')">Names</button> <button onclick="startGame('questions')">Questions</button></span>
+          </div>
+        </div>
+
+        <div id="starter">
+
+          <div id="wholething">
+
+            <div id="querydiv">
+              <span id="queryspan"></span>
+
+              <svg class="search" onclick="getresults()" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"> </path>
+              </svg>
+              <input id="rebox" type="text" spellcheck="true" name="rebox" maxlength="40" tabindex="1"
+                onkeydown="if (event.keyCode==13) getresults()" />
+            </div>
+
+            <div id="guessdiv">
+
+            </div>
+
+          </div>
+
+          <!--wholething-->
+
+        </div>
+        <!--starter-->
+
+      </div>
+      <!--cat wrap-->
+
+      <div id="answerkey">
+        <table id="table1"><tr><td class="unanswered q1"><div class="oval">1</div></td></tr><tr><td class="unanswered q2"><div class="oval">2</div></td></tr><tr><td class="unanswered q3"><div class="oval">3</div></td></tr><tr><td class="unanswered q4"><div class="oval">4</div></td></tr><tr><td class="unanswered q5"><div class="oval">5</div></td></tr></table><table id="table2"><tr><td class="unanswered q6"><div class="oval">6</div></td></tr><tr><td class="unanswered q7"><div class="oval">7</div></td></tr><tr><td class="unanswered q8"><div class="oval">8</div></td></tr><tr><td class="unanswered q9"><div class="oval">9</div></td></tr><tr><td class="unanswered q10"><div class="oval">10</div></td></tr></table><div style="clear:both;"></div>
+      </div>
+
+    </classic>
+
+    <touch>
+
+      <div id="querydiv_touch">
+        <div id="queryspan_touch"></div>
+        <svg class="search" focusable="false" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+          </path>
+        </svg>
+
+      </div>
+
+      <div id="answerkey_touch"></div>
+
+      <button id="next" onclick="newRoundTouch()">Next Round</button>
+
+    </touch>
+
+    <photobomber>
+
+      <div class="num" id="points">0</div>
+
+      <div id="main">
+
+        <div id="clue"></div>
+
+      </div>
+
+      <div id="skip_wrapper"> <button id="skipdiv" onclick="skip()">Start</button>
+      </div>
+
+    </photobomber>
+
+  </games>
+
+  <the_window>
+
+    <title_bar>
+      <div id="close"></div>
+
+      <div id="minimize"></div>
+
+      <div id="maximize"></div>
+
+    </title_bar>
+
+    <content>
+      <div id="img_wrapper">
+        <img alt="More Google Feud Fun" id="content_img" />
+      </div>
+
+      <div id="iframe_goes_here"></div>
+
+      <description> </description>
+      <email_form id="emailform">
+        <form action="" method="" id="newsletter">
+          <input type="hidden" name="VerificationCodeX" value="" />
+          <input type="hidden" name="list[2]" value="signup">
+          <input type="hidden" name="listname[2]" value="Google Feud Updates" />
+          <input type="hidden" name="makeconfirmed" value="0">
+          <input type="hidden" name="htmlemail" value="1" />
+          <input type="hidden" name="subscribe" value="yes">
+
+          <input type="text" size="20" value="" name="email" id="email" />
+
+        </form>
+
+        <button type="button" onclick="sub()">Sign Up</button>
+
+      </email_form>
+
+    </content>
+
+  </the_window>
+
+  <div id="scoreboard_wrapper">
+    <scoreboard>
+
+      <div id="roundnumber">ROUND<br /><span id="roundnumberspan">1/3</span></div>
+      <div id="failures">GUESSES<br /><span id="failuresspan">4</span></div>
+
+      <img src="/autocomplete/icons/bomb.svg" id="bomb1" alt="Bomb" class="bombclass" alt="Refresh Photo" />
+
+      <div id="highscore">HIGH SCORE<br /><span id="highscorespan">0</span></div>
+      <div id="score">SCORE<br /><span id="scorespan">0</span></div>
+
+    </scoreboard>
+  </div>
+
+  <wrapper>
+
+    <icons>
+
+      <section id="autocomplete_games">
+        <h3>autocomplete <b>games</b></h3>
+
+        <icon id="classic" />Classic</icon>
+        <icon id="touch">Multiple Choice</icon>
+        <icon id="photobomber">Photo </icon>
+       <!--  <icon id="qotd">Query of the Day </icon> -->
+        <icon id="basher">Basher!</icon>
+        <icon id="switchlang">Switch Region</icon>
+      </section>
+
+      <section id="autocomplete_the_book">
+
+        <a id="the_book"></a>
+        <h3>autocomplete <b>the book</b></h3>
+        <a href="https://amzn.to/2LIeSn4"><img alt="Buy Autocomplete: The Book on Amazon"
+            src="/autocomplete/headers/book.jpg" />
+        </a>
+
+        <p id="int0"></p>
+
+        <div class="book_buttons">
+          <button onclick="window.open('https://amzn.to/2LIeSn4')">Amazon</button>
+          <button
+            onclick="window.open('https://www.barnesandnoble.com/w/autocomplete-justin-hook/1129475780?ean=9781452177618#/')">Barnes
+            and Noble</button>
+          <button onclick="window.open('https://www.indiebound.org/book/9781452177618')">IndieBound</button>
+          <button onclick="$('#int2').toggle()">International Retailers...</button>
+
+          <div id="int2" style="display: none;">
+
+            <button
+              onclick="window.open('https://www.amazon.co.uk/Autocomplete-Book-Justin-Hook/dp/1452177619/ref=sr_1_1?ie=UTF8&qid=1553619138&sr=8-1&keywords=9781452177618')">Buy
+              on Amazon (UK)</button><button
+              onclick="window.open('https://www.waterstones.com/book/autocomplete-the-book/justin-hook/9781452177618')">Buy
+              on Waterstones (UK)</button>
+            <button onclick="window.open('https://wordery.com/autocomplete-the-book-justin-hook-9781452177618')">Buy on
+              Wordery (UK)</button><button
+              onclick="window.open('https://www.amazon.ca/Autocomplete-Book-Justin-Hook/dp/1452177619/ref=sr_1_4?keywords=autocomplete&qid=1553617936&s=gateway&sr=8-4')">Buy
+              on Amazon (Canada)</a><button
+                onclick="window.open('https://www.chapters.indigo.ca/en-ca/books/autocomplete-the-book/9781452177618-item.html')">Buy
+                on Indigo (Canada)</button>
+              <button
+                onclick="window.open('https://www.amazon.com.au/Autocomplete-Book-Justin-Hook/dp/1452177619/ref=sr_1_2?ie=UTF8&qid=1553618289&sr=8-2&keywords=autocomplete')">Buy
+                on Amazon (Australia)</button>
+
+          </div>
+        </div>
+      </section>
+
+      <section id="autocomplete_sponsor">
+        <h3>autocomplete <b>sponsor</b></h3>
+        <input type="hidden" name="IL_IN_ARTICLE" />      
+      </section>
+
+      <section id="autocomplete_media">
+        <h3>autocomplete <b>media</b></h3>
+        <icon class="lazy" id="book">Autocomplete: The&nbsp;Book</icon>
+        <icon class="lazy" id="game">Autocomplete: The&nbsp;Game</icon>
+        <icon class="lazy" id="beat-the-internet">Beat&nbsp;The&nbsp;Internet (UK/Australia)</icon>
+        <icon class="lazy" id="store">Merch</icon>
+      </section>
+
+      <section id="autocomplete_togo">
+        <h3>autocomplete <b>to go</b></h3>
+        <icon class="lazy" id="autocompete">iOS/Android</icon>
+        <icon class="lazy" id="bots">Bots</icon>
+        <icon class="lazy" id="alexa">Alexa</icon>
+      </section>
+
+      <section id="other_games">
+        <h3>other <b>games</b></h3>
+        <icon class="lazy" id="trump">Push Trump Off A Cliff Again!</icon>
+        <icon class="lazy" id="starbucks">What's My Starbucks Name?</icon>
+        <icon class="lazy" id="fake_news">The Fake News Generator</icon>
+        <!-- <icon class="lazy" id="instathumb">Instathumb</icon> -->
+        <icon class="lazy" id="book_promo" style="display: none">Book Promo</icon>
+      </section>
+
+      <section id="join_us">
+        <h3>autocomplete <b>social</b></h3>
+        <icon class="lazy" id="mailing_list">Mailing List</icon>
+        <icon class="lazy" id="facebook">Facebook</icon>
+        <icon class="lazy" id="youtube">YouTube</icon>
+        <icon class="lazy" id="press">Press</icon>
+      </section>
+
+      <section>
+        <input type="hidden" name="IL_IN_ARTICLE" /> 
+      </section>
+
+    </icons>
+
+    <footer>
+
+      <div>&copy; 2013 - 2020 <a href="https://justinhook.com">Justin Hook</a></div>
+
+      <div><a href="https://www.iubenda.com/privacy-policy/7969789">Privacy</a> &bull; <a href="https://www.iubenda.com/privacy-policy/7969789/cookie-policy">Cookies</a> &bull; <a href="https://gfunblocked.justinhook.com">Google Feud Unblocked</a> &bull; <a href="http://lkqx6qn7whctpdjhcoohpoyi6ahtrveuii7kq2m647ssvo5skqp7ioad.onion">GoogleFeud.onion (Tor)</a></div>
+      
+     <!-- <a id="attribution" onclick="$('#att').toggle()">Attribution</a> -->
+      <div id="att">
+        Google and the Google logo are registered trademarks of Google Inc. Icons made by&nbsp;<a
+          href="https://www.freepik.com/" title="Freepik">Freepik</a> from&nbsp;<a href="https://www.flaticon.com/"
+          title="Flaticon">Flaticon</a>. <a href="https://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC&nbsp;3.0&nbsp;BY</a>.
+      </div>
+
+    </footer>
+
+  </wrapper>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/autocomplete/js/jquery-ui.min.js?2"></script>
+  <script src="/autocomplete/js/puzzles.js"></script>
+  <script>
+   
+  window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>');
+    const pitch_string = '<b>On sale!</b> Buy <i>Autocomplete: The Book</i>—a curious collection that showcases the very best of the often strange yet 100% real autocomplete suggestions offered up by popular search engines, compiling them into one hilarious, fascinating, and mildly disturbing volume! Each page contains one search and its 10 best autocomplete suggestions, including the most and least common, from "Why is Ryan Gosling...eating cereal?" to "If the Earth is round...why are shoes flat?" With easy-to-read spreads and playful black-and-white line art throughout, <i>Autocomplete</i> provides a nearly unfiltered look at what people actually search for when they think no one\'s watching.';
+    const classic_h2_default = "<label for=\"rebox\">How does Google <b>autocomplete</b> this&nbsp;search?</label>";
+    const answerkey_default = '<table id="table1"><tr><td class="unanswered q1"><div class="oval">1</div></td></tr><tr><td class="unanswered q2"><div class="oval">2</div></td></tr><tr><td class="unanswered q3"><div class="oval">3</div></td></tr><tr><td class="unanswered q4"><div class="oval">4</div></td></tr><tr><td class="unanswered q5"><div class="oval">5</div></td></tr></table><table id="table2"><tr><td class="unanswered q6"><div class="oval">6</div></td></tr><tr><td class="unanswered q7"><div class="oval">7</div></td></tr><tr><td class="unanswered q8"><div class="oval">8</div></td></tr><tr><td class="unanswered q9"><div class="oval">9</div></td></tr><tr><td class="unanswered q10"><div class="oval">10</div></td></tr></table><div style="clear:both;"></div>';
+    const qotd_default = "<b>Query&nbsp;of&nbsp;the&nbsp;day:</b> " + classic_h2_default;
+    const touch_h2_default = "What is Google's #1 <strong>autocomplete</strong> for this&nbsp;search?";
+    const photo_h2_default = 'Complete the phrase using the most searched photos on<img src="flickr.gif" id="flickr" />';
+    const choose_default = "<b>Choose a Category</b>";
+    const answer_reveal_delay = 1000;
+    const shake_parameters = { direction: "down", distance: "5", times: "3" };
+    const current_region = { "txt": "", "js": "" };
+    const window_width = 600;
+    const window_margin = 40;
+
+    var lang_packs = {};
+    var classic_h2 = choose_default;
+    var touch_h2 = touch_h2_default;
+    var photo_h2 = photo_h2_default;
+
+    var maximized = minimized = qotd =  current_game = window.user = false;
+    var firstrun_touch = firstrun_classic = firstrun_pb = lang_firstrun = pb_firstrun = true;
+    var midpoint = mouseX = mouseY = touchX = touchY = failcount = 0;
+
+    window.today = Math.floor((new Date() - new Date(new Date().getFullYear(), 0, 0)) / (86400000))-50;
+  
+        
+    const region = {
+
+      "en": "United States",
+      "uk": "United Kingdom",
+      "tl": "Philippines",
+      "hi": "India",
+      "fr": "France",
+      "de": "Germany",
+      "sv": "Sweden",
+      "it": "Italy"
+
+    };
+
+    const window_data = {
+
+      "book": {
+        "i": "book.jpg",
+        "d": pitch_string + "<div class=\"book_buttons\"><button onclick=\"window.open('https://amzn.to/2LIeSn4')\">Amazon</button><button onclick=\"window.open('https://www.barnesandnoble.com/w/autocomplete-justin-hook/1129475780?ean=9781452177618#/')\">Barnes and Noble </button><button onclick=\"window.open('https://www.indiebound.org/book/9781452177618')\">IndieBound</button><button onclick=\"$('#int').toggle()\">International Retailers...</button><div id=\"int\" style=\"display: none;\"><button onclick=\"window.open('https://www.amazon.co.uk/Autocomplete-Book-Justin-Hook/dp/1452177619/ref=sr_1_1?ie=UTF8&qid=1553619138&sr=8-1&keywords=9781452177618')\">Buy on Amazon (UK)</button><button onclick=\"window.open('https://www.waterstones.com/book/autocomplete-the-book/justin-hook/9781452177618')\">Buy on Waterstones (UK)</button><button onclick=\"window.open('https://wordery.com/autocomplete-the-book-justin-hook-9781452177618')\">Buy on Wordery (UK)</button><button onclick=\"window.open('https://www.amazon.ca/Autocomplete-Book-Justin-Hook/dp/1452177619/ref=sr_1_4?keywords=autocomplete&qid=1553617936&s=gateway&sr=8-4')\">Buy on Amazon (Canada)</a><button onclick=\"window.open('https://www.chapters.indigo.ca/en-ca/books/autocomplete-the-book/9781452177618-item.html')\">Buy on Indigo (Canada)</button><button onclick=\"window.open('https://www.amazon.com.au/Autocomplete-Book-Justin-Hook/dp/1452177619/ref=sr_1_2?ie=UTF8&qid=1553618289&sr=8-2&keywords=autocomplete')\">Buy on Amazon (Australia)</button></div>"
+      },
+
+      "youtube": {
+        "i": "youtube.jpg",
+        "d": "Watch today's top YouTubers playing the world's top Autocomplete game, Google Feud! <button onclick=\"play('youtube')\">Watch on YouTube</button >",
+        "u": "https://www.youtube.com/playlist?list=PLw93tUkRXMLIi_Q3K4FD6GDqfd58D5ktd"
+      },
+      "autocompete": {
+        "i": "autocompete.png",
+        "d": "Challenge your Facebook friends with Autocompete for iOS and Android.<button onclick=\"window.open('https://play.google.com/store/apps/details?id=com.AC.autoCompete')\">Download for Android</button><button onclick=\"window.open('https://itunes.apple.com/us/app/autocompete-from-makers-google/id1168328616')\">Download for iOS</button>"
+      },
+      "trump": {
+        "i": "trump.png",
+        "d": "Take out your frustrations with the President of the United States with this zen game.<button onclick=\"play('trump')\">Push!</button>",
+        "u": "https://www.pushtrumpoffacliffagain.com"
+      },
+      "starbucks": {
+        "i": "starbucks.png",
+        "d": "How will a barista mispell your name?<button onclick=\"play('starbucks')\">Find out!</button>",
+        "u": "https://www.whatsmystarbucksname.com"
+      },
+      "game": {
+        "i": "game.jpg",
+        "d": "<b>Autocomplete the Game</b> is in stores now! Bring home <i>Google Feud</i> in a nice box!<button onclick=\"play('game')\">Order Now!</button>",
+        "u": "https://amzn.to/2SJJTaK"
+      },
+      "fake_news": {
+        "i": "fake_news.png",
+        "d": "Make a fake news story to share on social media and fool your friends! <button onclick=\"play('fake_news')\">Be Part of the Problem!</button>",
+        "u": "https://www.thefakenewsgenerator.com"
+      },
+
+      "book_promo": {
+        "i": "game.jpg",
+        "d": "Take home <i>Autocomplete: The Game</i> today for 35% off plus free shipping! Just use code GIVEBOOKS at the Chronicle Books store.<button onclick=\"play('book_promo')\">Take Google Feud Home!</button>",
+        "u": "https://www.chroniclebooks.com/titles/autocomplete-the-game.html"
+      },
+
+      "beattheinternet": {
+        "i": "beattheinternet.jpg",
+        "d": "The UK's hit autocomplete game show.<button onclick=\"play('fake_news')\">Go Watch!</button>",
+        "u": "https://uktvplay.uktv.co.uk/shows/beat-the-internet/"
+      },
+      "alexa": {
+        "i": "alexa_banner.png",
+        "d": "Play Google Feud with your voice.<button onclick=\"play('alexa')\">Enable Alexa Skill</button>",
+        "u": "https://www.amazon.com/AutoCompete/dp/B01N5DIWPF"
+      },
+      "mailing_list": {
+        "i": "google_feud.svg",
+        "d": "<label for=\"email\">Enter your <span id=\"emailred\">email</span> to get the latest updates!</label> We send very few emails and will never share your address."
+      },
+      "press": {
+        "i": "midnight.jpg?0",
+        "d": '<b>Press for Google Feud:</b><ul id="press">' +
+            '<li><a href="https://twitter.com/fallontonight/status/578147636542251008" target="_blank"><em>The Tonight Show starring Jimmy Fallon</em></a></li>'+
+            '<li><a href="http://www.cc.com/video-clips/vm38gu/-midnight-with-chris-hardwick-rapid-refresh---it-s-time-to-play--google-feud-" target="_blank">Excerpt from <em>@midnight with Chris Hardwick</em></a></li>'+
+            '<li><a href="http://time.com/3745641/google-family-feud/" target="_blank">"The online game we didn’t know we were waiting for... Your new addiction." - <em>TIME</em></a></li>'+
+            '<li><a href="http://www.avclub.com/article/survey-says-mixing-family-feud-google-autocomplete-216452" target="_blank">"The most depressing fun you have all week." - <em>The Onion AV Club</em></a></li>'+
+            '<li><a href="http://www.slate.com/articles/technology/users/2015/03/google_autocomplete_not_as_weird_dark_or_fun_as_it_used_to_be.html" target="_blank">"An unfiltered look at our fellow citizens’ most unmentionable thoughts." - <em>Slate</em></a></li>'+
+            '<li><a href="http://www.foxnews.com/entertainment/2015/03/16/family-feud-style-game-google-feud-hits-web/" target="_blank">"Steve Harvey has some competition." - <em>FOX News</em></a></li>'+
+            '<li><a href="http://www.popularmechanics.com/technology/a14582/google-feud/" target="_blank">"Your afternoon timewaster... ingenious." - <em>Popular Mechanics</em></a></li>'+
+            '<li><a href="http://www.cnet.com/news/google-feud-online-game-search-results-i-think-my-dad-is-dracula/" target="_blank">"Pretty addictive, so make sure you\'ve got some free hours." - <em>CNET</em></a></li>'+
+            '<li><a href="http://techcrunch.com/2015/03/14/this-game-turns-google-autocomplete-into-a-game-of-family-feud/" target="_blank">"A damn fun way to kill a few minutes." - <em>TechCrunch</em></a></li>'+
+            '<li><a href="http://mashable.com/2015/03/15/google-feud/" target="_blank">"The Google Autocomplete game we\'ve been searching for." - <em>Mashable</em></a></li>'+
+            '<li><a href="http://www.huffingtonpost.ca/2015/03/13/google-feud-game_n_6865462.html" target="_blank">"Our New Favourite Game To Play Online" - <em>Huffington Post CA</em></a></li>'+
+            '<li><a href="http://www.vice.com/alps/read/google-feud-122" target="_blank">"Too damn addictive and informative." - <em>VICE Alps</em></a></li>'+
+            '<li><a href="http://www.engadget.com/2015/03/16/google-feud/" target="_blank">"A fun way to demonstrate your search savviness to your friends" - <em>Engadget (AOL)</em></a></li>'+
+            '<li><a href="http://happyplace.someecards.com/google/test-your-knowledge-of-bizarre-google-searches-with-the-google-feud-game/" target="_blank">"If Steve Harvey were involved, it would be perfect." - <em>Someecards</em></a></li>'+
+            '<li><a href="http://www.vox.com/2015/3/17/8232159/google-feud" target="_blank">"Can take you to dark, sometimes hilarious places." - <em>VOX</em></a></li>'+
+            '<li><a href="http://hellogiggles.com/google-feud-is-our-obsession/" target="_blank">"This is your new obsession." - <em>Hello Giggles</em></a></li>'+
+            '<li><a href="http://www.cbc.ca/news/google-autocomplete-meets-family-feud-in-the-internet-s-new-favourite-thing-ever-of-the-day-1.2992828" target="_blank">"The Internet\'s new favourite-thing-ever-of-the-day." - <em>CBC News</em></a></li>'+
+            '<li><a href="http://www.businessinsider.com/google-feud-online-game-2015-3" target="_blank">"A new game that trivialises autocomplete on Google Search." - <em>Business Insider</em></a></li>'+
+            '<li><a href="http://www.buzzfeed.com/samimain/can-you-beat-google-feud" target="_blank">"[Jennifer Lawrence GIF] [cat GIF]" - <em>Buzzfeed</em></a></li>'+
+        "</ul>"
+      },
+      "switchlang": {
+        "i": "google_feud.svg",
+        "d": '<b>Experimental:</b> Try Google Feud with English-language results from your region. Current region: <span id="current_region"></span>.<div id="switch_lang_buttons"><button  id="lang_en" onclick="switchLanguage(\'en\')">United States<\/button><button  id="lang_de" onclick="switchLanguage(\'de\')">Germany<\/button><button  id="lang_fr" onclick="switchLanguage(\'fr\')">France<\/button><button  id="lang_uk" onclick="switchLanguage(\'uk\')">United Kingdom<\/button><button id="lang_sv" onclick="switchLanguage(\'sv\')">Sweden<\/button><button id="lang_it" onclick="switchLanguage(\'it\')">Italy<\/button><button id="lang_tl" onclick="switchLanguage(\'tl\')">Philippines<\/button><button  id="lang_hi" onclick="switchLanguage(\'hi\')">India<\/button></div>'
+      },
+      "store": {
+        "i": "store.jpg?1",
+        "d": "Get your favorite autocomplete on a t-shirt or a mug.<button onclick=\"play('store')\">Shop!</button>",
+        "u": "https://teespring.com/stores/googlefeud"
+      },
+      "facebook": {
+        "i": "facebook.jpg",
+        "d": "Follow us on Facebook for the lastest updates!<button onclick=\"play('facebook')\">Follow Us!</button>",
+        "u": "https://facebook.com/GoogleFeud/"
+      },
+      "beat-the-internet": {
+        "i": "beat-the-internet.jpg",
+        "d": "Watch us on UKTV!<button onclick=\"play('beat-the-internet')\">Watch Us (UK Only)</button>",
+        "u": "https://uktvplay.uktv.co.uk/shows/beat-the-internet/watch-online"
+      },
+      "basher": {
+        "i": "basher.png",
+        "d": "Write one word and pass it on. Pretty soon you'll be the co-author of a short story. Will it be great literature or total nonsense?<button onclick=\"play('basher')\">Write!</button>",
+        "u": "https://basher.app"
+      },
+      "instathumb": {
+        "i": "logo.jpg",
+        "d": "The only way to post Instagram images on Twitter.<button onclick=\"play('instathumb')\">Make A Post!</button>",
+        "u": "https://instathumb.com"
+      },
+
+      "bots": {
+        "i": "google_feud.svg",
+        "d": 'Play Google Feud with our dedicated chat bot on these platforms!' +
+
+          '<div id="bots_div">' +
+          '<a href="https://www.messenger.com/t/701152103337241"><img alt="Messenger" src="/autocomplete/icons/facebook.png" class="botimg"></a>' +
+          '<a href="https://bots.kik.com/#/autocompete"><img alt="Kik" src="/autocomplete/icons/kik.png" class="botimg"></a>' +
+          '<a href="https://join.skype.com/bot/1bd06027-2491-4709-ba31-01d101f57e2d"><img alt="Skype" src="/autocomplete/icons/skype.png" class="botimg"></a><br />' +
+          /* '<a href="https://slack.com/apps/A3D5JSFC3-autocompete"><img src="/autocomplete/icons/slack.png" alt="Slack" class="botimg"></a>' + */
+          '<a href="https://groupme.botframework.com/?botId=autoCompeteBot"><img src="/autocomplete/icons/groupme.png" alt="GroupMe" class="botimg"></a>' +
+          '<a href="https://telegram.me/GoogleFeudBot"><img src="/autocomplete/icons/telegram.png" alt="Telegram" class="botimg"></a>' +
+          '</div>',
+        "u": "https://uktvplay.uktv.co.uk/shows/beat-the-internet/watch-online"
+      }
+
+    };
+
+    function finish_lang_switch(lang, cached) {
+
+      console.log("loading " + lang + ((cached) ? " from cache" : " from JS"));
+
+      current_region.txt = region[lang];
+      current_region.js = lang;
+
+      $("#current_region").html(region[lang]);
+
+      window.localStorage.lang = lang;
+
+      window.categories = lang_packs[lang];
+
+      if (lang_firstrun) {
+        lang_firstrun = false;
+
+//        if (window.localStorage["qotd_" + window.today])
+          play("classic");
+ //       else
+ //         play("qotd");
+        
+        window.autocomplete_game = window.categories["culture"].concat(window.categories["people"], window.categories["questions"]);
+        startTouchMode();
+      }
+
+    }
+
+    function switchLanguage(lang) {
+
+      if (!lang_firstrun && lang === current_region.js)
+        return;
+
+      if (lang in lang_packs) {
+             finish_lang_switch(lang, true);
+      }
+      else {
+
+        $.ajax({
+          cache: ((lang == "en") ? true : false),
+          url: "/autocomplete/js/questions-" + lang + ".json",
+          dataType: "json",
+          success: function (data) {
+
+            lang_packs[lang] = data;
+
+            finish_lang_switch(lang, false);
+
+            gtag('event', 'loaded ' + lang);
+
+          }
+        });
+
+      }
+
+    }
+
+    switchLanguage(window.localStorage.lang || "en");
+
+       $(document).on("mouseup touch", function (e) {
+     
+      if (!$("the_window").is(e.target) && $("the_window").has(e.target).length === 0)
+      $("the_window").hide();
+      
+    });
+
+    function sub() {
+
+      if (failcount > 2) {
+        $("description").html("");
+        document.getElementById("emailform").innerHTML = "Please try again later.";
+        return;
+      }
+
+      var booking_email = $('input[name=email]').val();
+
+      if (/.+@.+/.test(booking_email)) {
+
+        $.ajax({
+          type: 'GET',
+          cache: true,
+          data: {
+            "email": encodeURIComponent(booking_email)
+          },
+          url: 'autocomplete/emailcheck.php',
+          dataType: 'text',
+          success: function (passed) {
+
+            if (passed == "TRUE") {
+
+              $.ajax({
+                type: 'POST',
+                cache: true,
+                data: $('#newsletter').serialize(),
+                url: 'mailinglist/?p=subscribe&id=2',
+                success: function (msg) {
+                  $("description").html("");
+                  window.localStorage.got_email = true;
+                  document.getElementById("emailform").innerHTML = "Thanks! Check your email for confirmation.";
+
+                }
+              });
+
+            } else {
+              document.getElementById("emailred").style.fontWeight = "bold";
+              document.getElementById("emailred").style.color = "red";
+
+              failcount++;
+
+            }
+
+          }
+        });
+
+      } else {
+        document.getElementById("emailred").style.fontWeight = "bold";
+        document.getElementById("emailred").style.color = "red";
+      }
+    }
+
+    function play(game) {
+
+      if (game == current_game)
+        return;
+
+      current_game = game;
+
+      if (game == "photobomber" || game == "touch" || game == "classic" || game == "classic" || game == "qotd") {
+
+        $("photobomber,touch,classic").hide();
+
+        if (game == "photobomber")
+          $("#bomb1,photobomber").show();
+        else
+          $("#bomb1").hide();
+
+        if (game == "touch")
+          $("touch").show();
+        if (game == "classic" || game == "qotd")
+          $("classic").show();
+
+        window.scrollTo(0, 0);
+
+      }
+
+      if (game == "touch") {
+
+        $("scoreboard").show();
+
+        $("#roundnumberspan").text(window.gameDataTouch.round);
+        $("#failures").html('GUESSES<br /><span id="failuresspan">' + (number_of_guesses - window.gameDataTouch.wrong) + '</span>');
+        $("#scorespan").text(window.gameDataTouch.score.toLocaleString());
+        $("#highscorespan").text(window.gameDataTouch.highscore.toLocaleString());
+
+        $("h2").html(touch_h2);
+        $("#h1_img").attr("src", "/autocomplete/headers/autocomplete.svg");
+
+      } else if (game == "classic" || game == "qotd") {
+        $("scoreboard").show();
+
+        $("#failures").html('GUESSES<br /><span id="failuresspan">' + (4 - window.gameData.wrong) + '</span>');
+        $("#scorespan").text(window.gameData.score.toLocaleString());
+        $("#highscorespan").text(window.gameData.highscore.toLocaleString());
+
+        $("#h1_img").attr("src", "/autocomplete/headers/google_feud.svg");
+
+        if (game == "qotd") {
+
+          window.gameData.round = 1;
+          window.gameData.score = 0;
+
+          gtag('event', 'new qotd round');
+
+          window.gameData.cat = "qotd";
+          nextround(true);
+
+        }
+        else if (window.needs_reset) {
+          window.needs_reset = false;
+
+          classic_h2 = choose_default;
+
+          window.gameData.round = 1;
+          window.gameData.score = 0;
+
+          nextround();
+        }
+        else
+          $("#roundnumberspan").text(window.gameData.round + "/3");
+
+        // Always
+
+        $("h2").html(classic_h2); // console.log("1");
+
+      } else if (game == "photobomber") {
+
+        if (pb_firstrun)
+          newround_photobomber();
+
+        $("scoreboard").show();
+        $("h2").html(photo_h2);
+        $("#roundnumberspan").text(roundnum);
+        $("#failures").html('SKIPS<br /><span id="failuresspan">' + skips + '</span>');
+        $("#scorespan").text(pb_score.toLocaleString());
+        $("#highscorespan").text(pb_highscore.toLocaleString());
+        $("#h1_img").attr("src", "/autocomplete/headers/photocomplete.png");
+        $("#bomb1").show();
+
+      } else {
+
+        window.open(window_data[game].u, '_blank');
+
+      }
+
+      $("#scoreboard_wrapper").css("visibility", "visible");
+
+    }
+
+    // Window Shit
+
+    $("the_window").draggable({
+      containment: 'document',
+      handle: 'title_bar'
+    });
+    $("#minimize").on('click touchstart', function () {
+      $("content").toggle();
+      if (maximized) {
+        if (minimized) {
+          $("the_window").css("height", "100%");
+          minimized = false;
+        } else {
+          $("the_window").css("height", "auto");
+          minimized = true;
+        }
+      }
+      $("the_window").css("height", "auto");
+    });
+    $("#close").on('click touchstart', function () {
+      $("the_window").hide();
+      if (maximized) {
+
+        $("the_window").css({ width: "60rem", height: "auto" });
+
+        $("the_window").css({ top: $(document).scrollTop() + 40, left: "4rem" });
+        $("the_window").draggable({
+          disabled: false,
+          handle: 'title_bar'
+        });
+        $("title_bar").css("cursor", "move");
+        maximized = false;
+      }
+    });
+    $("#maximize").on('click touchstart', function () {
+
+      window.scrollTo(0, 0);
+      $("content").show();
+
+      if (maximized) {
+        $("the_window").css({ width: "60rem", height: "auto" });
+        $("the_window").draggable({
+          disabled: false,
+          handle: 'title_bar'
+        });
+        $("title_bar").css("cursor", "move");
+        maximized = false;
+      } else {
+        $("the_window").css({ position: absolute, top: 0, left: 0 });
+        $("the_window").draggable({
+          disabled: true,
+          handle: 'title_bar'
+        });
+        $("title_bar").css({ cursor: "auto", width: "100%", height: "100%" });
+        maximized = true;
+      }
+    });
+
+    $("icon").on('click touchstart', function (event) {
+
+      var game = $(this).attr('id');
+
+      if (game == "classic") {
+        play("classic");
+        return;
+      }
+      else if (game == "touch") {
+        play("touch");
+        return;
+      }
+      else if (game == "photobomber") {
+        play("photobomber");
+        return;
+      }
+      else if (game == "qotd") {
+        play("qotd");
+        return;
+      }
+
+      if (touchX !== 0)
+        mouseX = touchX;
+
+      // If you click and touch it'll fuck up
+
+      $("the_window").css("height", "auto");
+
+      $("content").show();
+
+      if (event.pageX < midpoint) {
+
+        if (mouseX + 40 + window_width > midpoint * 2)
+          $("the_window").css("left", (midpoint * 2 - window_width - window_margin));
+        else
+          $("the_window").css("left", mouseX + window_margin);
+        //   console.log("X right: " + (mouseX + 40));
+      } else {
+        if (mouseX - window_width + 100 < 0)
+          $("the_window").css("left", window_margin);
+        else
+          $("the_window").css("left", (mouseX - window_width + 100));
+        // console.log("X left: " + (mouseX - window_width + 100));
+      };
+
+      $("the_window").css("top", $(document).scrollTop() + 40);
+
+      if (game == "youtube") {
+        $("#content_img").hide();
+        $("#iframe_goes_here").html('<iframe id="youtube_iframe" src="https://www.youtube.com/embed/?listType=playlist&list=PLw93tUkRXMLIi_Q3K4FD6GDqfd58D5ktd" frameborder="0" allowfullscreen></iframe>');
+        $("#iframe_goes_here,the_window").show();
+      } else {
+        $("#iframe_goes_here").hide();
+        $("#content_img").attr("src", "/autocomplete/headers/" + window_data[game].i);
+        $('#content_img').on('load', function () {
+          $("#content_img,the_window").show();
+        });
+
+      }
+
+      $("content description").html(window_data[game].d);
+
+      if (game == "mailing_list")
+        $("email_form").show();
+      else
+        $("email_form").hide();
+
+      if (game == "classic") {
+        $("high_score").html("HIGH SCORE: " + window.gameData.highscore.toLocaleString());
+
+      } else if (game == "touch") {
+        $("high_score").html("HIGH SCORE: " + window.gameDataTouch.highscore.toLocaleString());
+
+      } else if (game == "photobomber") {
+        $("high_score").html("HIGH SCORE: " + pb_highscore.toLocaleString());
+
+      } else if (game === "switchlang")
+        $("#current_region").html(current_region.txt);
+
+    });
+
+    /* Classic */
+
+    window.gameData = {
+      "score": 0,
+      "totalscore": 0,
+      "wrong": 0,
+      "round": 1,
+      "highscore": parseInt(window.localStorage.classic_high_score) || 0,
+      playedQuestions: {
+        "people": [], "culture": [], "names": [], "questions": [], "qotd": [], "amazon": []
+      }
+    };
+
+    function startGame(cat) {
+
+      if (!window.categories)
+      return;
+
+      window.gameData.cat = cat;
+
+      if (cat == "qotd") {
+
+        window.gameData.qNumber = window.today;
+        window.needs_reset = true;
+
+      }
+      else {
+        window.gameData.qNumber = Math.floor(Math.random() * categories[cat].length);
+
+        while (window.gameData.playedQuestions[cat].indexOf(window.gameData.qNumber) > -1) {
+          window.gameData.qNumber = Math.floor(Math.random() * categories[cat].length);
+        }
+
+        window.gameData.playedQuestions[cat].push(window.gameData.qNumber);
+
+        if (window.gameData.playedQuestions[cat].length == categories[cat].length)
+          window.gameData.playedQuestions[cat].length = 0;
+      }
+
+      window.gameData.prompt = window.categories[cat][window.gameData.qNumber] || "";
+
+      encodedurl = window.gameData.prompt.toLowerCase();
+
+      window.gameData.googleResults = window.categories.allanswers[encodedurl];
+
+      $("#gf_categories").hide();
+      $("#answerkey").html(answerkey_default);
+
+      if (cat === "qotd")
+        classic_h2 = qotd_default;
+      else
+        classic_h2 = classic_h2_default;
+
+      $("h2").html(classic_h2); // console.log("1");
+
+      $("#queryspan").html(window.gameData.prompt);
+      $("#starter").show();
+      $("#rebox").focus();
+
+    }
+
+    function longestWord(string) {
+      var str = string.split(" ");
+      var longest = 0;
+      var word = null;
+      for (let i = 0; i < str.length; i++) {
+        if (longest <= str[i].length) {
+          longest = str[i].length;
+          word = str[i];
+        }
+      }
+      // console.log("word:" + word);
+      return word;
+
+    }
+
+    function processGuess(guess, filter_punc) {
+
+      guess = guess.toLowerCase();
+
+      if (filter_punc)
+        guess = guess.replace(/[^\w\s]|(.)(?=\1)/gi, '');
+
+      if (guess.substr(0, 2) == "a ")
+        guess = guess.substr(2);
+      if (guess.substr(0, 3) == "an ")
+        guess = guess.substr(3);
+      if (guess.substr(0, 3) == "my ")
+        guess = guess.substr(3);
+      if (guess.substr(0, 3) == "of ")
+        guess = guess.substr(3);
+      if (guess.substr(0, 3) == "so ")
+        guess = guess.substr(3);
+      if (guess.substr(0, 4) == "the ")
+        guess = guess.substr(4);
+      if (guess.substr(0, 4) == "too ")
+        guess = guess.substr(4);
+
+      if (guess.substr(-9) == " pdf")
+        guess = guess.substr(0, guess.length - 4);
+
+      if (guess.substr(-9) == " in space")
+        guess = guess.substr(0, guess.length - 9);
+
+      if (guess.substr(-2) == "es") {
+        guess = guess.substr(0, guess.length - 2);
+      } else {
+        if (guess.substr(-1) == "s")
+          guess = guess.substr(0, guess.length - 1);
+      }
+
+      // new
+      if (guess.substr(0, 3) == "mr ")
+        guess = "mister " + guess.substr(3);
+
+      if (guess.substr(0, 3) == "ms ")
+        guess = "miss " + guess.substr(3);
+
+      if (guess.substr(0, 3) == "mrs ")
+        guess = "misses " + guess.substr(4);
+
+      if (guess.substr(0, 3) == "dr ")
+        guess = "doctor " + guess.substr(3);
+
+      var longest = longestWord(guess) || "";
+
+      if (longest.length > 4)
+        guess = longest;
+      //  console.log("guess/answer:" + guess);
+
+      return guess;
+    }
+
+    function getresults() {
+
+      var promptToTest = $('#rebox').val().replace(/[^\w\s]|(.)(?=\1)/gi, '');
+
+      if (promptToTest == '')
+        return;
+
+      $('#rebox').val('');
+      $("#rebox").prop("disabled", true);
+
+      promptToTest = processGuess(promptToTest);
+      $("#rebox").focus();
+      var win = false;
+
+      for (let i = 0; i < window.gameData.googleResults.length; i++) {
+
+        if (processGuess(window.gameData.googleResults[i], true) == promptToTest) {
+
+          if ($('.q' + (i + 1)).hasClass('unanswered')) {
+            window.gameData.score += ((10 - i) * 1000);
+
+            window.gameData.correct++;
+          }
+          if (window.gameData.googleResults[i].length > 25) {
+            $('.q' + (i + 1)).parent().addClass('long_answer');
+            if (window.gameData.googleResults[i].length > 35) 
+            $('.q' + (i + 1)).parent().addClass('very_long_answer');
+          }
+
+          $('.q' + (i + 1)).parent().addClass('answered');
+          $('.q' + (i + 1)).removeClass('unanswered').addClass('preanswer').html('<div id="reveal_div" style="display:none"><span class="revealed_answers">' + window.gameData.googleResults[i] + '</span><span class="score">' + (10 - i) + ',000</span></div>');
+          $(".q" + (i + 1) + " #reveal_div").show("blind", { direction: "horizontal", easing: "easeInExpo"}, answer_reveal_delay);
+          $("#scorespan").text(window.gameData.score.toLocaleString());
+          $("#rebox").prop("disabled", false);
+          $("#rebox").focus();
+
+          win = true;
+
+        }
+      }
+
+      if (!win) {
+
+        window.gameData.wrong++;
+        $('#failuresspan').text((4 - window.gameData.wrong));
+
+        $("#queryspan").effect("shake", shake_parameters);
+
+        if (window.gameData.wrong == 4) {
+          $('.preanswer').removeClass('preanswer');
+
+          for (let i = 0; i < window.gameData.googleResults.length; i++) {
+
+            if (window.gameData.googleResults[i].length > 25) {
+              $('.q' + (i + 1)).parent().addClass('long_answer');
+              if (window.gameData.googleResults[i].length > 35) 
+            $('.q' + (i + 1)).parent().addClass('very_long_answer');
+            }
+
+            $('.q' + (i + 1)).html('<span class="revealed_answers"> <a href="https://www.google.com/#q=' + encodeURIComponent(window.gameData.prompt.toLowerCase() + " " + window.gameData.googleResults[i]) + '" >' + window.gameData.googleResults[i] + '</a></span><span class="score">' + (10 - i) + ',000</span>');
+
+          }
+
+          $('#failuresspan').css("color", "#FF0000");
+
+          newround_classic();
+        } else {
+
+          $("#rebox").prop("disabled", false);
+          $("#rebox").focus();
+
+        }
+      }
+
+      if (window.gameData.correct == window.gameData.googleResults.length)
+        newround_classic();
+      
+    }
+
+    function newround_classic() {
+
+      gtag('event', 'new round classic mode');
+
+      window.gameData.round++;
+      $("#rebox").prop("disabled", true);
+
+      if (window.gameData.cat == "qotd") {
+
+        window.localStorage["qotd_" + today] = true;
+
+        $("#guessdiv").html('<button id="message" onclick="nextround()">New Game</button>');
+
+        if (window.gameData.score > 0) {
+          $("h2").html('<strong>You did better than <span id="qotd_percentile">...</span></strong>');
+
+          db.collection("qotd").doc("day_" + window.gameData.qNumber).collection("tallies").doc(window.gameData.score.toString()).get().then((doc) => {
+
+            var data = (doc.exists) ? doc.data().percentile : "0.0";
+
+            $("#qotd_percentile").html(data + "% of players" + ((data > 0) ? "! Nice!" : ". Try again tomorrow!"));
+
+          });
+
+        }
+        else{
+
+          $("h2").html("<b>Oh well. Try again tomorrow!</b>");
+
+          db.collection("qotd").doc("day_" + window.gameData.qNumber).get().then((doc) => {
+
+console.log(doc.data().average);
+
+});
+
+        }
+
+        if (window.user) {
+
+          db.collection("users").doc(window.user).collection("qotd").doc("day_" + window.gameData.qNumber).set({
+            "score": window.gameData.score
+          }).then(() => {
+
+            window.user = false;
+
+          });
+        }
+
+        window.gameData.round = 1;
+        window.gameData.score = 0;
+
+        $("#guessdiv").html('<button id="message" onclick="nextround()">New Game</button>');
+
+      } else if (window.gameData.round > 3) {
+
+        if (window.gameData.score > window.gameData.highscore) {
+          window.gameData.highscore = window.gameData.score;
+          window.localStorage.classic_high_score = window.gameData.highscore;
+
+          classic_h2 = "<strong>You've set a new personal high score!</strong>";
+          $("h2").html(classic_h2); // console.log("1");
+
+        }
+
+        $("#guessdiv").html('<button id="message" onclick="nextround()">New Game</button>');
+
+        window.gameData.round = 1;
+        window.gameData.score = 0;
+
+      } else {
+
+        $("#guessdiv").html('<button id="message" onclick="nextround()">Next Round</button>');
+
+      }
+
+    }
+
+    function nextround(qotd) {
+
+      if (!qotd)
+        current_game = "classic";
+
+      window.gameData.correct = 0;
+      window.gameData.wrong = 0;
+
+      $("#roundnumberspan").text(window.gameData.round + "/3");
+      $("#rebox").prop("disabled", false);
+      $('#failuresspan').text('4');
+      $("#scorespan").text(window.gameData.score.toLocaleString());
+      $("#highscorespan").text(window.gameData.highscore.toLocaleString());
+      $('#failuresspan').css("color", "#498bf3");
+
+      $("#starter").hide();
+
+      if (qotd) {
+        classic_h2 = qotd_default;
+
+        $("#roundnumberspan").text("QOTD");
+        startGame("qotd");
+
+      }
+      else if (window.gameData.round == 1) {
+
+        classic_h2 = classic_h2_default;
+
+        $("#answerkey").html(answerkey_default);
+        $("#gf_categories").show();
+
+        classic_h2 = choose_default;
+
+             }
+      else
+        startGame(window.gameData.cat);
+
+      $("#guessdiv").html('');
+
+      $("h2").html(classic_h2); // console.log("1");
+
+    }
+
+    /* TOUCH MODE */
+
+    var correct_answer, touch_answers, used, answered, pause, is_gameover;
+    const number_of_options = 5;
+    const number_of_guesses = 4;
+
+    window.gameDataTouch = {
+      score: 0, totalscore: 0, wrong: 0, round: 1, playedQuestions: [], highscore: parseInt(window.localStorage.touch_high_score) || 0
+    };
+
+    function startTouchMode() {
+
+      used = [];
+      touch_answers = [];
+      touch_rank = [];
+      correct_answer = -1;
+      answered = [];
+      pause = is_gameover = false;
+
+      window.gameDataTouch.qNumber = Math.floor(Math.random() * window.autocomplete_game.length);
+
+      while (window.gameDataTouch.playedQuestions.indexOf(window.gameDataTouch.qNumber) > -1) {
+        window.gameDataTouch.qNumber = Math.floor(Math.random() * window.autocomplete_game.length);
+      }
+
+      window.gameDataTouch.playedQuestions.push(window.gameDataTouch.qNumber);
+
+      if (window.gameDataTouch.playedQuestions.length == window.autocomplete_game.length)
+        window.gameDataTouch.playedQuestions.length = 0;
+
+      window.gameDataTouch.prompt = window.autocomplete_game[window.gameDataTouch.qNumber];
+
+      encodedurl = window.gameDataTouch.prompt.toLowerCase();
+
+      window.gameDataTouch.googleResults = window.categories.allanswers[encodedurl];
+
+      for (i = 0; i < number_of_options; i++) {
+
+        if (correct_answer == -1 && (Math.floor(Math.random() * number_of_options) == i || i == (number_of_options - 1))) {
+          touch_answers[i] = window.gameDataTouch.googleResults[0];
+          touch_rank[i] = 1;
+          correct_answer = i;
+        } else {
+
+          var o = Math.floor(Math.random() * (window.gameDataTouch.googleResults.length - 3)) + 3;
+          while (used.indexOf(o) > -1) {
+            o = Math.floor(Math.random() * (window.gameDataTouch.googleResults.length - 3)) + 3;
+          }
+
+          used.push(o);
+
+          touch_answers[i] = window.gameDataTouch.googleResults[o];
+          touch_rank[i] = o + 1;
+
+        }
+      }
+
+      $("#answerkey_touch").html('<span class="answers unanswered" id="answer0" onclick="getresults_touch(0)">' + window.gameDataTouch.prompt + " <b>" + touch_answers[0] + '</b><span class="results">#' + touch_rank[0] + '</span></span><span class="answers unanswered" id="answer1" onclick="getresults_touch(1)">' + window.gameDataTouch.prompt + " <b>" + touch_answers[1] + '</b><span class="results">#' + touch_rank[1] + '</span></span><span class="answers unanswered"  id="answer2" onclick="getresults_touch(2)">' + window.gameDataTouch.prompt + " <b>" + touch_answers[2] + '</b><span class="results">#' + touch_rank[2] + '</span></span><span class="answers unanswered"  id="answer3" onclick="getresults_touch(3)">' + window.gameDataTouch.prompt + " <b>" + touch_answers[3] + '</b><span class="results">#' + touch_rank[3] + '</span></span><span class="answers unanswered"  id="answer4" onclick="getresults_touch(4)">' + window.gameDataTouch.prompt + " <b>" + touch_answers[4] + '</b><span class="results">#' + touch_rank[4] + '</span></span>');
+      $("#queryspan_touch").html(window.gameDataTouch.prompt);
+
+    }
+
+    function getresults_touch(guess) {
+
+      if (answered.indexOf(guess) > -1 || pause || is_gameover)
+        return;
+
+      answered.push(guess);
+
+      $('#answer' + guess).removeClass("unanswered");
+
+      $("#respan").html(touch_answers[guess]);
+
+      pause = true;
+
+      if (guess == correct_answer) {
+
+        $('#answer' + guess).addClass("correct");
+
+        window.gameDataTouch.score += ((10 - i) * 1000);
+
+        window.gameDataTouch.correct++;
+        $("#scorespan").text(window.gameDataTouch.score.toLocaleString());
+
+        // Correct Effect
+
+        touch_h2 = "<b>Correct!</b>";
+        $("h2").html(touch_h2);
+
+        $(".results,#next").show();
+
+      } else {
+
+        window.gameDataTouch.wrong++;
+        $('#failuresspan').text((number_of_guesses - window.gameDataTouch.wrong));
+
+        touch_h2 = "<b>Incorrect</b>";
+        $("h2").html(touch_h2);
+
+        setTimeout(function () {
+
+          $("#respan").html("");
+          pause = false;
+
+        }, answer_reveal_delay);
+
+       // $("#querydiv_touch").effect("shake", shake_parameters);
+
+        $("#querydiv_touch,#answerkey_touch").css("cursor", "default");
+
+        if (window.gameDataTouch.wrong == number_of_guesses) {
+
+          $('#failuresspan').css("color", "#FF0000");
+          gameover();
+
+        } else {
+          setTimeout(function () {
+
+            touch_h2 = touch_h2_default;
+            $("h2").html(touch_h2);
+            $("#querydiv_touch,#answerkey_touch").css("cursor", "pointer");
+
+          }, answer_reveal_delay);
+        }
+
+      }
+
+    }
+
+    function gameover() {
+
+      is_gameover = true;
+
+      if (window.gameDataTouch.score > window.gameDataTouch.highscore) {
+        window.gameDataTouch.highscore = window.gameDataTouch.score;
+       window.localStorage.touch_high_score = window.gameDataTouch.highscore;       
+        $("h2").html(touch_h2 = "<strong>You've set a new personal high score!</strong>");
+      } else        
+        $("h2").html(touch_h2 = "<strong>Game Over!</strong>");
+
+      $(".results,#next").show();
+      $("#next").html("New Game?");
+
+    }
+
+    function newRoundTouch() {
+
+      gtag('event', 'new round choice mode');
+
+      $("#next,.results").hide();
+
+      window.gameDataTouch.round++;
+      
+      $("h2").html(touch_h2 = touch_h2_default);
+      $("#querydiv_touch,#answerkey_touch").css("cursor", "pointer");
+
+      if (is_gameover) {
+
+        $("#next").html("Next Round");
+        window.gameDataTouch.round = 1;
+        window.gameDataTouch.score = 0;
+        is_gameover = false;
+
+      }
+
+      window.gameDataTouch.correct = 0;
+      window.gameDataTouch.wrong = 0;
+
+      $("#roundnumberspan").text(window.gameDataTouch.round);
+      $('#failuresspan').text(number_of_guesses);
+      $("#scorespan").text(window.gameDataTouch.score.toLocaleString());
+      $("#highscorespan").text(window.gameDataTouch.highscore.toLocaleString());
+      $('#failuresspan').css("color", "#498bf3");
+
+      startTouchMode();
+
+    };
+
+    $(document).ready(function () {
+
+      midpoint = $(window).width() / 2;
+
+      $(document).on("mousemove", function (event) {
+
+        mouseX = event.pageX;
+        mouseY = event.pageY;
+
+      });
+
+      $(document).on("touchstart", function (event) {
+
+        touchX = event.touches[0].pageX;
+        touchY = event.touches[0].pageY;
+       
+      });
+
+      $(document).on("touchmove", function (event) {
+
+        touchX = event.touches[0].pageX;
+        touchY = event.touches[0].pageY;
+     
+      });
+
+      if (!window.localStorage.got_email)
+        $("#mailing_list").trigger("click");
+
+      // Photobomber
+
+      $(".bombclass").draggable({
+        revert: true,
+        helper: 'clone',
+        drop: function (event, ui) {
+          $(this).hide("explode");
+        }
+      });
+
+      $("photobomber input").keyup(
+        function () {
+          setTransparency();
+        });
+
+    });
+
+    $("#highscorespan").text(window.gameData.highscore.toLocaleString());
+     $("#int0").html(pitch_string);
+
+    // PHOTOBOMBER
+    // Initialization
+
+    var roundnum = 1;
+    var skips = 3;
+    var bombs_per = 1;
+    const maxresults = 15;
+    var counter = counter0 = counter1 = counter2 = Math.floor(Math.random() * maxresults);
+   
+    var allhashtags = {};
+    var preloadarray = [];
+    var isnewgame = isgameover = true;
+
+    const answers = movies.concat(books, music, phrases);
+    var answerkey = [];
+    var pb_score = 0;
+
+    var greenlight = gaveup = false;
+    var pb_highscore = parseInt(window.localStorage.pb_highscore) || 0;
+
+    // Functions 
+
+    function setTransparency() {
+
+      if (document.getElementById("resulttext0").value.length > 0)
+        document.getElementById("resultdiv0").style.opacity = "0.5";
+      else
+        if (!$("#resulttext0").is(":focus"))
+          document.getElementById("resultdiv0").style.opacity = "1";
+
+      if (answers[qnum].length > 2) {
+
+        if (document.getElementById("resulttext1").value.length > 0)
+          document.getElementById("resultdiv1").style.opacity = "0.5";
+        else {
+          if (!$("#resulttext1").is(":focus"))
+            document.getElementById("resultdiv1").style.opacity = "1";
+        }
+      }
+
+      if (answers[qnum].length > 3) {
+
+        if (document.getElementById("resulttext2").value.length > 0)
+          document.getElementById("resultdiv2").style.opacity = "0.5";
+        else {
+          if (!$("#resulttext2").is(":focus"))
+            document.getElementById("resultdiv2").style.opacity = "1";
+        }
+      }
+
+    }
+
+    function fetch(hashtag, num) {
+
+      if (num == 0) {
+        counter0++;
+        if (counter0 == maxresults)
+          counter0 = 0;
+        counter = counter0;
+      }
+      if (num == 1) {
+        counter1++;
+        if (counter1 == maxresults)
+          counter1 = 0;
+        counter = counter1;
+      }
+      if (num == 2) {
+        counter2++;
+        if (counter2 == maxresults)
+          counter2 = 0;
+        counter = counter2;
+      }
+
+      var counterp = counter + 1;
+      if (counterp == maxresults)
+        counterp = 0;
+
+      preloadarray[num] = new Image();
+
+      if (!(hashtag in allhashtags)) {
+
+        var searchterm = encodeURIComponent(hashtag);
+
+        var tagurl = "/autocomplete/photobomber/" + searchterm + ".json";
+
+        $.getJSON(tagurl, function (data) {
+
+          allhashtags[hashtag] = data["photos"]["photo"];
+
+          var flickr = allhashtags[hashtag][counter];
+
+          var flurl = 'https://farm' + flickr["farm"] + '.staticflickr.com/' + flickr["server"] + '/' + flickr["id"] + '_' + flickr["secret"] + '_c.jpg';
+          $("#photoby" + num).html('by <a class="photobya" href="https://www.flickr.com/people/' + flickr["owner"] + '">' + flickr["ownername"] + '</a>');
+          var flickr2 = allhashtags[hashtag][counterp];
+          preloadarray[num].src = 'https://farm' + flickr2["farm"] + '.staticflickr.com/' + flickr2["server"] + '/' + flickr2["id"] + '_' + flickr2["secret"] + '_c.jpg';
+
+          $("#results" + num).on("load", function () {
+            $("#photoby" + num).show("fade", 1200);
+            $("#results" + num).show("fade", 1200, function () {
+              $("#photoby" + num).show("fade", 1200);
+              if ((num == 0) && (highlight)) {
+                $("#resulttext0").focus();
+                highlight = false;
+              }
+
+            });
+          }).attr("src", flurl);
+
+        });
+
+      } else {
+
+        var flickr = allhashtags[hashtag][counter];
+        var flurl = 'https://farm' + flickr["farm"] + '.staticflickr.com/' + flickr["server"] + '/' + flickr["id"] + '_' + flickr["secret"] + '_c.jpg';
+        $("#photoby" + num).html('by <a class="photobya" href="https://www.flickr.com/people/' + flickr["owner"] + '">' + flickr["ownername"] + '</a>');
+        var flickr2 = allhashtags[hashtag][counterp];
+        preloadarray[num].src = 'https://farm' + flickr2["farm"] + '.staticflickr.com/' + flickr2["server"] + '/' + flickr2["id"] + '_' + flickr2["secret"] + '_c.jpg';
+
+        $("#results" + num).on("load", function () {
+
+          $("#photoby" + num).show("fade", 1200);
+          $("#results" + num).show("fade", 1200, function () {
+
+            if ((num == 0) && (highlight)) {
+              $("#resulttext0").focus();
+              highlight = false;
+            }
+
+          });
+        }).attr("src", flurl);
+
+      }
+
+    };
+
+    function newround_photobomber() {
+
+      gtag('event', 'new round photo mode');
+
+      pb_firstrun = false;
+
+      var bomb0 = bomb1 = bomb2 = 0;
+
+      $("#highscorespan").html(pb_highscore.toLocaleString());
+      photo_h2 = photo_h2_default;
+      $("h2").html(photo_h2);
+
+      greenlight = false;
+      window.qnum = 0;
+      // nextround = 0;
+      highlight = true;
+      if ((skips > 0) && (!(isnewgame)))
+        $("#skipdiv").html('Skip');
+      if (skips == 0)
+        $("#skipdiv").html("Give Up");
+
+      counter = counter0 = counter1 = counter2 = Math.floor(Math.random() * maxresults);
+
+      xstring = "";
+
+      qnum = Math.floor(Math.random() * answers.length);
+     
+      while (answerkey.indexOf(qnum) > -1) {
+        qnum = Math.floor(Math.random() * answers.length);
+     
+      }
+
+      answerkey.push(qnum);
+
+     if (answerkey.length = answers.length)
+     answerkey.length = 0;
+
+      if (qnum < movies.length) {
+        photo_h2 = "Movies";
+        
+        selectedcat = "movies";
+      }
+      if ((qnum > movies.length - 1) && (qnum < (movies.length + books.length))) {
+        photo_h2 = "Books";
+        
+        selectedcat = "books";
+      }
+      if ((qnum > movies.length + books.length - 1) && (qnum < (movies.length + books.length + music.length))) {
+        photo_h2 = "Music";
+        
+        selectedcat = "music";
+      }
+      if ((qnum > movies.length + books.length + music.length - 1)) {
+        photo_h2 = "Phrases";
+        
+        selectedcat = "phrases";
+      }
+
+      photo_h2 = "<b>CATEGORY:</b> " + photo_h2;
+
+      if (firstrun_pb) {
+        photo_h2 = photo_h2_default;
+        firstrun_pb = false;
+      }
+
+      $("h2").html(photo_h2);      
+
+      window.fulltext = answers[qnum][0].split(new RegExp(answers[qnum].slice(1).join("|")));
+
+      v1 = v2 = v3 = "";
+
+      if (isnewgame) {
+        v1 = answers[qnum][1];
+        v2 = answers[qnum][2] || null;
+        v3 = answers[qnum][3] || null;
+      }
+
+      var allofit =
+        '<img src="/autocomplete/whiteline.gif" width="1" height="310" id="line" />' + fulltext[0].trim() + '<div class="resultwrap"><input type="text" id="resulttext0" value="' + v1 + '" tabindex="1" /><div class="resultdiv" id="resultdiv0"><div class="loading">loading...</div><img id="results0" alt="Clue #1" width="200" /></div><div id="photoby0" style="display: none;"></div></div>';
+      if (answers[qnum].length > 2) {
+        allofit += fulltext[1].trim() + '<div class="resultwrap"><input type="text" id="resulttext1" tabindex="2" value="' + v2 + '" /><div class="resultdiv" id="resultdiv1"><div class="loading">loading...</div><img id="results1" width="200" alt="Clue #2" /></div><div id="photoby1" style="display: none;"></div></div>'
+      }
+      if (answers[qnum].length > 3) {
+        allofit += fulltext[2].trim() + '<div class="resultwrap"><input type="text" id="resulttext2" tabindex="3" value="' + v3 + '" /><div class="resultdiv" id="resultdiv2"><div class="loading">loading...</div><img id="results2" width="200"  alt="Clue #3" /></div><div id="photoby2" style="display: none;"></div></div>'
+      }
+
+      if (fulltext[fulltext.length - 1] != answers[qnum][answers[qnum].length - 1])
+        allofit += fulltext[fulltext.length - 1].trim();
+
+      document.getElementById("clue").innerHTML = allofit;
+
+      for (i = 1; i < answers[qnum].length; i++) {
+        fetch(answers[qnum][i], (i - 1));
+      }
+
+      if (isnewgame) {
+        $("#resulttext0").prop('disabled', true);
+        document.getElementById("resultdiv0").style.opacity = "0.5";
+
+        if (answers[qnum].length > 2) {
+          $("#resulttext1").prop('disabled', true);
+          document.getElementById("resultdiv1").style.opacity = "0.5";
+        }
+        if (answers[qnum].length > 3) {
+          $("#resulttext2").prop('disabled', true);
+          document.getElementById("resultdiv2").style.opacity = "0.5";
+        }
+
+      } else {
+        $("#results0").droppable({
+          hoverClass: "highlight",
+          drop: function (event, ui) {
+            if (bomb0 >= bombs_per) {
+
+              return;
+            }
+
+            bomb0++;
+
+            $("#photoby0").hide("fade", 600);
+
+            $(this).hide("fade", 600, function () {
+              fetch(answers[qnum][1], 0);
+
+            });
+
+            ui.draggable.draggable('option', 'revert', false);
+            $(".ui-draggable-dragging").hide('explode');
+
+          }
+        });
+
+        $("#results1").droppable({
+          hoverClass: "highlight",
+          drop: function (event, ui) {
+
+            if (bomb1 >= bombs_per) {
+
+              return;
+            }
+
+            bomb1++;
+
+            $("#photoby1").hide("fade", 600);
+            $(this).hide("fade", 600, function () {
+              fetch(answers[qnum][2], 1);
+
+            });
+            ui.draggable.draggable('option', 'revert', false);
+            $(".ui-draggable-dragging").hide('explode');
+
+          }
+        });
+
+        $("#results2").droppable({
+          hoverClass: "highlight",
+          drop: function (event, ui) {
+
+            if (bomb2 >= bombs_per) {
+
+              return;
+            }
+
+            bomb2++;
+
+            $("#photoby2").hide("fade", 600);
+
+            $(this).hide("fade", 600, function () {
+              fetch(answers[qnum][3], 2);
+
+            });
+            ui.draggable.draggable('option', 'revert', false);
+
+            $(".ui-draggable-dragging").hide('explode');
+
+          }
+        });
+
+        $("#resulttext0").focus(function () {
+          $("#resultdiv0").css("opacity", ".5");
+        });
+
+        $("#resulttext1").focus(function () {
+          $("#resultdiv1").css("opacity", ".5");
+        });
+
+        $("#resulttext2").focus(function () {
+          $("#resultdiv2").css("opacity", ".5");
+        });
+
+        $("#resulttext0,#resulttext1,#resulttext2").focusout(function () {
+          setTransparency();
+        });
+
+        $('input').bind('input propertychange', function () {
+
+          greenlight = false;
+
+          if (answers[qnum].length == 2) {
+            var ilength = $("#resulttext0").val();
+            if (ilength.length > 0)
+              greenlight = true;
+          }
+
+          if (answers[qnum].length == 3) {
+            var ilength = $("#resulttext0").val();
+            var i2length = $("#resulttext1").val();
+
+            if ((ilength.length > 0) && (i2length.length > 0))
+              greenlight = true;
+
+          }
+
+          if (answers[qnum].length == 4) {
+            var ilength = $("#resulttext0").val();
+            var i2length = $("#resulttext1").val();
+            var i3length = $("#resulttext2").val();
+
+            if ((ilength.length > 0) && (i2length.length > 0) && (i3length.length > 0))
+              greenlight = true;
+
+          }
+
+          if (greenlight)
+            guess();
+
+        });
+
+        $("#results0,#results1,#results2").hide();
+        $("#clue").show();
+
+      }
+
+    }
+
+    function guess() {
+
+      if (!greenlight)
+        return;
+
+      greenlight = false;
+
+      if (answers[qnum].length == 2) {
+        if (document.getElementById("resulttext0").value.toLowerCase().replace(" ", "") == answers[qnum][1])
+          youwin(true);
+
+      }
+
+      if (answers[qnum].length == 3) {
+        if ((document.getElementById("resulttext0").value.toLowerCase().replace(" ", "") == answers[qnum][1]) && (document.getElementById("resulttext1").value.toLowerCase().replace(" ", "") == answers[qnum][2]))
+          youwin(true);
+
+      }
+
+      if (answers[qnum].length == 4) {
+        if ((document.getElementById("resulttext0").value.toLowerCase().replace(" ", "") == answers[qnum][1]) && (document.getElementById("resulttext1").value.toLowerCase().replace(" ", "") == answers[qnum][2]) && (document.getElementById("resulttext2").value.toLowerCase().replace(" ", "") == answers[qnum][3]))
+          youwin(true);
+
+      }
+
+    }
+
+    function skip() {
+
+      if (isgameover) {
+
+        isnewgame = false;
+        isgameover = false;
+        roundnum = 0;
+        skips = 3;
+
+        $("#failuresspan").html(skips);
+
+        $("#clue").hide("fade", 600, function () {
+
+          $("#photoby0,#photoby1,#photoby2").hide();
+
+          $("#roundnumberspan").html("1");
+          $("#points").html("1");
+
+          proceed();
+
+        });
+
+        return;
+      }
+
+      if (gaveup) {
+
+        proceed();
+
+      } else {
+
+        fill_the_answers();
+
+        if (skips == 0) {
+
+          isgameover = true;
+
+          youlose();
+        } else {
+          $("#skipdiv").html("Next Round");
+
+          skips--;
+          $("#failuresspan").html(skips);
+        }
+        gaveup = true;
+      }
+
+    }
+
+    function proceed() {
+
+      $("#resulttext0,#resulttext1,#resulttext2").prop('disabled', true);
+
+      if (!isnewgame)
+        roundnum++;
+
+      $("#roundnumberspan").html(roundnum);
+      $("#points").html(roundnum);
+      $("#scorespan").html(pb_score.toLocaleString());
+
+      $("#skipdiv").hide();
+      $("h2").hide("fade", 600);
+
+      $("#clue").hide("fade", 600, function () {
+        $("#photoby0,#photoby1,#photoby2").hide();
+        $("#resulttext0,#resulttext1,#resulttext2").prop('disabled', false);
+        $("#points").show("fade", 600, function () {
+          $("#points").hide("fade", 1200, function () {
+
+            $("h2").show("fade", 600);
+            if (gaveup) {
+              $("#skipdiv").html("Skip");
+              gaveup = false;
+            }
+            $("#skipdiv").show();
+
+            newround_photobomber();
+
+          });
+        });
+      });
+
+    }
+
+    function youwin() {
+
+      pb_score += answers[qnum].length * 1000;
+      proceed();
+
+    }
+
+    function fill_the_answers() {
+      $("#resulttext0").val(answers[qnum][1]);
+      $("#resulttext0").prop('disabled', true);
+      document.getElementById("resultdiv0").style.opacity = "0.5";
+      if (answers[qnum].length > 2) {
+        $("#resulttext1").val(answers[qnum][2]);
+        $("#resulttext1").prop('disabled', true);
+        document.getElementById("resultdiv1").style.opacity = "0.5";
+      }
+      if (answers[qnum].length > 3) {
+        $("#resulttext2").val(answers[qnum][3]);
+        $("#resulttext2").prop('disabled', true);
+        document.getElementById("resultdiv2").style.opacity = "0.5";
+      }
+
+      gaveup = true;
+
+    }
+
+    function youlose() {
+
+      greenlight = false;
+
+      fill_the_answers();
+
+      isnewgame = true;
+
+      $("#skipdiv").html("New Game");
+
+      if (pb_score > pb_highscore) {
+
+        pb_highscore = pb_score;
+
+        photo_h2 = "You got <b>" + pb_score.toLocaleString() + "</b> points. A new personal high score!";
+        $("h2").html(photo_h2);
+
+        window.localStorage.pb_highscore = pb_highscore;
+
+      } else {
+        photo_h2 = "You got <b>" + pb_score.toLocaleString() + "</b> points. Can you beat that?";
+        $("h2").html(photo_h2);
+
+      }
+
+      pb_score = 0;
+
+    }
+
+    // Lazy Loading
+
+    var ad_h3 = true;
+
+    document.addEventListener("DOMContentLoaded", function () {
+      let lazyImages = [].slice.call(document.querySelectorAll(".lazy"));
+      let active = false;
+
+      const lazyLoad = function () {
+        if (!active) {
+          active = true;
+
+          setTimeout(function () {
+            lazyImages.forEach(function (lazyImage) {
+              if ((lazyImage.getBoundingClientRect().top <= window.innerHeight && lazyImage.getBoundingClientRect().bottom >= 0) && getComputedStyle(lazyImage).display !== "none") {
+
+                lazyImage.classList.add("loaded");
+
+                lazyImages = lazyImages.filter(function (image) {
+                  return image !== lazyImage;
+                });
+
+                if (ad_h3 && $(".IL_BASE").is(":visible")){
+                    $("#autocomplete_sponsor h3").show();
+                    ad_h3 = false;
+                  }
+
+                if (lazyImages.length === 0) {
+                  document.removeEventListener("scroll", lazyLoad);
+                  window.removeEventListener("resize", lazyLoad);
+                  window.removeEventListener("orientationchange", lazyLoad);
+                }
+              }
+            });
+
+            active = false;
+          }, 200);
+        }
+      };
+
+      document.addEventListener("scroll", lazyLoad);
+      window.addEventListener("resize", lazyLoad);
+      window.addEventListener("orientationchange", lazyLoad);
+    });
+  </script>
+
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.8.1/firebase-firestore.js"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-40452726-1"></script>
+
+  <script>
+
+    firebase.initializeApp({
+      apiKey: "AIzaSyCgh_IDfpDegy4zLxuPKc6M66aG86lw0bA",
+      authDomain: "maximal-ace-92605.firebaseapp.com",
+      databaseURL: "https://maximal-ace-92605.firebaseio.com",
+      projectId: "maximal-ace-92605",
+      appId: "1:882989654358:web:f5b15ad5f33e7d9f3a36f7",
+      measurementId: "G-WC7B5PH61P"
+    });
+
+    const db = firebase.firestore();
+
+    firebase.auth().signInAnonymously();
+
+    firebase.auth().onAuthStateChanged((user) => {
+
+      if (user)
+        window.user = user.uid;
+
+    });
+
+    $('#emailform').keypress(function (event) {
+      if (event.keyCode === 10 || event.keyCode === 13) {
+        event.preventDefault();
+        sub();
+      }
+    });
+
+       /*!
+   * jQuery UI Touch Punch 0.2.3
+   * Copyright 2011–2014, Dave Furfero
+   * Dual licensed under the MIT or GPL Version 2 licenses.
+   */
+
+   ! function (a) {
+      function f(a, b) {
+        if (!(a.originalEvent.touches.length > 1)) {
+          a.preventDefault();
+          var c = a.originalEvent.changedTouches[0],
+            d = document.createEvent("MouseEvents");
+          d.initMouseEvent(b, !0, !0, window, 1, c.screenX, c.screenY, c.clientX, c.clientY, !1, !1, !1, !1, 0, null), a.target.dispatchEvent(d)
+        }
+      }
+      if (a.support.touch = "ontouchend" in document, a.support.touch) {
+        var e, b = a.ui.mouse.prototype,
+          c = b._mouseInit,
+          d = b._mouseDestroy;
+        b._touchStart = function (a) {
+          var b = this;
+          !e && b._mouseCapture(a.originalEvent.changedTouches[0]) && (e = !0, b._touchMoved = !1, f(a, "mouseover"), f(a, "mousemove"), f(a, "mousedown"))
+        }, b._touchMove = function (a) {
+          e && (this._touchMoved = !0, f(a, "mousemove"))
+        }, b._touchEnd = function (a) {
+          e && (f(a, "mouseup"), f(a, "mouseout"), this._touchMoved || f(a, "click"), e = !1)
+        }, b._mouseInit = function () {
+          var b = this;
+          b.element.bind({
+            touchstart: a.proxy(b, "_touchStart"),
+            touchmove: a.proxy(b, "_touchMove"),
+            touchend: a.proxy(b, "_touchEnd")
+          }), c.call(b)
+        }, b._mouseDestroy = function () {
+          var b = this;
+          b.element.unbind({
+            touchstart: a.proxy(b, "_touchStart"),
+            touchmove: a.proxy(b, "_touchMove"),
+            touchend: a.proxy(b, "_touchEnd")
+          }), d.call(b)
+        }
+      }
+    }(jQuery);
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+    gtag('config', 'UA-40452726-1');
+    /*   gtag('config', 'AW-745652484'); */
+
+    if (window.self !== window.top) {
+
+      if (gtag || false) {
+        gtag('event', 'Iframe Load', {
+          'event_category': 'Tracking Iframe Plays',
+          'non_interaction': true
+        });
+      }
+
+      window.location = "https://poki.com/en/g/google-feud";
+
+    }
+
+    if ("serviceWorker" in navigator) {
+      if (navigator.serviceWorker.controller) {
+        console.log("[PWA Builder] active service worker found, no need to register");
+      } else {
+      
+        navigator.serviceWorker
+          .register("pwabuilder-sw.js", {
+            scope: "./"
+          })
+          .then(function (reg) {
+            console.log("[PWA Builder] Service worker has been registered for scope: " + reg.scope);
+          });
+      }
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+  // Stash the event so it can be triggered later.
+  prompt(e);
+
+});
+
+
+var infolinks_pid = 3238913;
+var infolinks_wsid = 0;
+
+
+  </script>
+
+<script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js" async></script>
+
+</body>
+
+</html>

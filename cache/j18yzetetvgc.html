@@ -1,0 +1,2995 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/arepa/ - Magna Arepa</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=arepa"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Actualizar</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=arepa">
+    <div>
+      <p id="labelName">/arepa/ - Magna Arepa</p>
+    </div>
+    <p id="labelDescription">REFUGIO</p>
+	<span class="boardLinks">
+		<a href="catalog.html">Catálogo</a>
+		<a id="archiveLinkBoard">Archivar</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Modo: Hilo</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="arepa"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      <div id="flagsDiv">
+        <select name="flag" id="flagCombobox"><option>Sin bandera</option><option value="629880fecd94c5191a7e23d4">Caracas</option><option value="629880ff7655835ec61eb6c3">Estado Anzoategui</option><option value="629880ff7655835ec61eb6c6">Estado Apure</option><option value="62988100cd94c5191a7e23da">Estado Aragua</option><option value="629881007655835ec61eb6c9">Estado Barinas</option><option value="6298810172adbf35fcee6f50">Estado Bolivar</option><option value="62988101cd94c5191a7e23e0">Estado Carabobo</option><option value="62988101cd94c5191a7e23e3">Estado Cojedes</option><option value="629881027655835ec61eb6cc">Estado Delta amacuro</option><option value="629881027655835ec61eb6cf">Estado Falcon bien</option><option value="629881037655835ec61eb6d2">Estado Guarico</option><option value="629881047655835ec61eb6d8">Estado Lara</option><option value="6298810472adbf35fcee6f56">Estado Merida</option><option value="6298810472adbf35fcee6f59">Estado Miranda</option><option value="62988105a04125b3ed4b14a2">Estado Monagas</option><option value="6298810572adbf35fcee6f5c">Estado Nueva Esparta</option><option value="6298810672adbf35fcee6f5f">Estado Portuguesa</option><option value="62988106a04125b3ed4b14a8">Estado Sucre</option><option value="629881077655835ec61eb6de">Estado Tachira</option><option value="629881077655835ec61eb6e1">Estado Trujillo</option><option value="629881077655835ec61eb6e7">Estado Vargas</option><option value="62988108cd94c5191a7e23ef">Estado Yaracuy</option><option value="62988108cd94c5191a7e23f5">Estado Zulia</option><option value="629880ff7655835ec61eb6c0">Estado amazonas</option><option value="6298810372adbf35fcee6f53">Estado falcon Feo</option><option value="629881097655835ec61eb6ed">Guerra a muerte</option></select>
+        <img class="flagPreview">
+      </div>
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Recuerda leer las
+          <a href="rules.html" class="localPageLink">reglas</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage"><a href="https://8chan.moe/.static/pages/globalRules.html">Reglas Globales</a>
+<a href="https://pastebin.com/raw/ksKDGZMA">Traducción</a>
+
+Otros tablones:
+<a href="/esp">esp</a>/<a href="/col">col</a>/<a href="/mex">mex</a>
+<a href="/hisrol">hisrol</a>/<a href="/ac">ac</a>/<a href="/vt">vt</a>/<a href="/hispol">hispol</a>/<a href="/hispatec">hispatec</a>
+<a href="/hispachan">hispachan</a>
+
+Contacto:
+magnarepa@cock.li</div>
+  </div>
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="arepa" id="432"><hr>
+<div class="innerOP">
+  
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-432">
+    <span class="labelSubject">HILO META</span>
+    <a class="linkName  noEmailName" >nadie</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/01/2022 (Mie) 14:43:48</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/arepa/res/432.html#432">№</a>
+    <a class="linkQuote" href="/arepa/res/432.html#q432">432</a>
+    <a class="linkReply" href="/arepa/res/432.html">[Responder]</a>
+    <a class="linkLast" href="/arepa/last/432.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo para discutir todo lo relacionado con /arepa/.</div>
+  
+  
+  <div class="labelLastEdit">Editado por última vez por emirror en 06/04/2022 (Sab) 08:53:04.</div>
+  <div class="labelOmission">263 posts y 30 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9320"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-432-9320">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-es" src="/.static/flags/es.png" title="Spain"> 
+    <span class="labelCreated">07/08/2022 (Vie) 16:58:26</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5327d6">5327d6</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/432.html#9320">№</a>
+    <a class="linkQuote" href="/arepa/res/432.html#q9320">9320</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2eb448cbe0c7407e8a4ec7b7521531103e685884dbee1d7064012748fdb42860.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">17.84 KB</span> <span class="dimensionLabel">457x396</span>
+  <a class="originalNameLink" href="/.media/2eb448cbe0c7407e8a4ec7b7521531103e685884dbee1d7064012748fdb42860.jpg" download="sad dante.jpg">sad dante.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2eb448cbe0c7407e8a4ec7b7521531103e685884dbee1d7064012748fdb42860.jpg" data-filewidth="457" data-fileheight="396" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="195" src="/.media/t_2eb448cbe0c7407e8a4ec7b7521531103e685884dbee1d7064012748fdb42860"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/432.html#9210">&gt;&gt;9210</a>
+Otra vez venezuela se queda sin mundial.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="8608"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/89b1a2a002388e799d7bd5109517a217faedaf29cb852acf146a076e81c8367c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">248.96 KB</span> <span class="dimensionLabel">1455x980</span>
+  <a class="originalNameLink" href="/.media/89b1a2a002388e799d7bd5109517a217faedaf29cb852acf146a076e81c8367c.jpg" download="5dejulio.jpg">5dejulio.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/89b1a2a002388e799d7bd5109517a217faedaf29cb852acf146a076e81c8367c.jpg" data-filewidth="1455" data-fileheight="980" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="152" src="/.media/t_89b1a2a002388e799d7bd5109517a217faedaf29cb852acf146a076e81c8367c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8608">
+    <span class="labelSubject">Feliz 5 de julio anons</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 04:49:26</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #20274e">20274e</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/8608.html#8608">№</a>
+    <a class="linkQuote" href="/arepa/res/8608.html#q8608">8608</a>
+    <a class="linkReply" href="/arepa/res/8608.html">[Responder]</a>
+    <a class="linkLast" href="/arepa/last/8608.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Lo del título</div>
+  
+  
+  
+  <div class="labelOmission">51 posts y 9 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9356"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8608-9356">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 19:26:02</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a0b7af">a0b7af</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8608.html#9356">№</a>
+    <a class="linkQuote" href="/arepa/res/8608.html#q9356">9356</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8608.html#9351">&gt;&gt;9351</a>
+<a class="quoteLink" href="/arepa/res/8608.html#9352">&gt;&gt;9352</a>
+Así es, compadres. Necesitamos eliminar el Estado. Solo en Anarquismo nos puede llevar a la evolución como sociedad. Todo lo que toque el Estado es automáticamente malo. La gente tiene que vivir en ranchos porque el pobre es pobre porque quiere. Todo lo que sea público es parasitario. Una empresa estadal es incapaz de funcionar bien, así que todo eso de que MPJ estaba pagando la deuda externa cada año debe ser una mentira inventada por esos fascistas zurdos. Es imposible que un Estado pague una deuda. Así que necesitamos absoluto anarquismo. Que todos hagan lo que les dé la gana. El hombre prospera automáticamente con solo darle libertad, así viva en un rancho donde no tiene electricidad, agua, Internet y es analfabeta. ¡Qué viva la libertad carajo! ¡Viva Javier Milei! ¡Sin patria, anarquismo y muerte al Estado, No volverán!</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9357"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8608-9357">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 19:30:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #b4f4df">b4f4df</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8608.html#9357">№</a>
+    <a class="linkQuote" href="/arepa/res/8608.html#q9357">9357</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ae5fc27837a2fe917a7c166a1626630a8aac45992fdc839133f1e3e317ec15f7.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">37.96 KB</span> <span class="dimensionLabel">594x496</span>
+  <a class="originalNameLink" href="/.media/ae5fc27837a2fe917a7c166a1626630a8aac45992fdc839133f1e3e317ec15f7.png" download="1657143675739.png">1657143675739.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ae5fc27837a2fe917a7c166a1626630a8aac45992fdc839133f1e3e317ec15f7.png" data-filewidth="594" data-fileheight="496" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="188" src="/.media/t_ae5fc27837a2fe917a7c166a1626630a8aac45992fdc839133f1e3e317ec15f7"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8608.html#9356">&gt;&gt;9356</a>
+Esto pero solo si despues me dan chance de organizar un ejercito de campesinos y con el gobernar de forma despotica a venezuela por treinta años. Los dejare tranquilos haciendo sus negocios si me dejan matar indios relajao</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9405"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8608-9405">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:17:02</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7172f3">7172f3</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8608.html#9405">№</a>
+    <a class="linkQuote" href="/arepa/res/8608.html#q9405">9405</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8608.html#9338">&gt;&gt;9338</a>
+Las banderitas gringa son las señoras del shitposting.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9388"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b70f07b866a9de906a12ac779ec75a010f434bb89092c8153780c53ce262326b.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">274.46 KB</span> <span class="dimensionLabel">648x364</span>
+  <a class="originalNameLink" href="/.media/b70f07b866a9de906a12ac779ec75a010f434bb89092c8153780c53ce262326b.mp4" download="ezgif-4-f528d80d87.mp4">ezgif-4-f528d80d87.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b70f07b866a9de906a12ac779ec75a010f434bb89092c8153780c53ce262326b.mp4" data-filewidth="648" data-fileheight="364" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_b70f07b866a9de906a12ac779ec75a010f434bb89092c8153780c53ce262326b"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9388">
+    <span class="labelSubject">Soy adicto</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 21:20:10</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #5d2ef5">5d2ef5</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9388.html#9388">№</a>
+    <a class="linkQuote" href="/arepa/res/9388.html#q9388">9388</a>
+    <a class="linkReply" href="/arepa/res/9388.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">a la paja no lo puedo dejar den consejos</div>
+  
+  
+  
+  <div class="labelOmission">9 posts y 6 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9402"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9388-9402">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:13:32</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2a0198">2a0198</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9388.html#9402">№</a>
+    <a class="linkQuote" href="/arepa/res/9388.html#q9402">9402</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">El problema no es la paja, es la adicción que tienes al porno que te tiene loco.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9403"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9388-9403">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:14:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #bbc731">bbc731</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9388.html#9403">№</a>
+    <a class="linkQuote" href="/arepa/res/9388.html#q9403">9403</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9388.html#9396">&gt;&gt;9396</a>
+MANDALO PA DELTA AMACURO MOD</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9404"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9388-9404">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:14:46</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6575d4">6575d4</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9388.html#9404">№</a>
+    <a class="linkQuote" href="/arepa/res/9388.html#q9404">9404</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9388.html#9393">&gt;&gt;9393</a>
+A mi me empezó a dar confianza al día 6 por la noche. Además que me crecían las uñas, el pelo más rapido y tenía la piel mejor. Yo creo que esa mierda te crece la testosterona.
+Ya después estaba con esa actitud estable, los únicos que no creen que es real son adictos al porno, que por mi parte me da igual sus opiniones.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9259"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/fb2a39ecb4c80e2dd5aec8002c8679b0e2ca6eea690fa2ddd26fa2db945ace73.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">80.15 KB</span> <span class="dimensionLabel">644x975</span>
+  <a class="originalNameLink" href="/.media/fb2a39ecb4c80e2dd5aec8002c8679b0e2ca6eea690fa2ddd26fa2db945ace73.jpg" download="FXID4MPX0AE86Qw.jpeg">FXID4MPX0AE86Qw.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/fb2a39ecb4c80e2dd5aec8002c8679b0e2ca6eea690fa2ddd26fa2db945ace73.jpg" data-filewidth="644" data-fileheight="975" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="149" height="225" src="/.media/t_fb2a39ecb4c80e2dd5aec8002c8679b0e2ca6eea690fa2ddd26fa2db945ace73"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9259">
+    <span class="labelSubject">Nadie se atreve</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:18:13</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #47ed06">47ed06</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9259.html#9259">№</a>
+    <a class="linkQuote" href="/arepa/res/9259.html#q9259">9259</a>
+    <a class="linkReply" href="/arepa/res/9259.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Acaban de jorgear al ex-primer ministro del país de los hikikomori. Aquí debe haber más jorgitos dispuestos, si literalmente Madara hace encuentros rodeados de miguelitos
+¿Es por el gen de la sumisión zambo como dijo kalergi?</div>
+  
+  
+  
+  <div class="labelOmission">21 posts y 4 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9370"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9259-9370">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-us" src="/.static/flags/us.png" title="United States of 'Murica"> 
+    <span class="labelCreated">07/08/2022 (Vie) 20:26:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #8eabaf">8eabaf</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9259.html#9370">№</a>
+    <a class="linkQuote" href="/arepa/res/9259.html#q9370">9370</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9259.html#9327">&gt;&gt;9327</a>
+no se leer japones pero ahi dice que eres virgen y aun vez comiquitas siendo adulto</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9398"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9259-9398">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-us" src="/.static/flags/us.png" title="United States of 'Murica"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:03:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5b75ed">5b75ed</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9259.html#9398">№</a>
+    <a class="linkQuote" href="/arepa/res/9259.html#q9398">9398</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9259.html#9358">&gt;&gt;9358</a>
+De que hablas mongolico esta confirmado que posteo en 2chan</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9399"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9259-9399">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:10:05</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #65b7e1">65b7e1</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9259.html#9399">№</a>
+    <a class="linkQuote" href="/arepa/res/9259.html#q9399">9399</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">No entiendo porque borran los post.
+<a class="quoteLink" href="/arepa/res/9259.html#9297">&gt;&gt;9297</a>
+Podrá haber matado a un político siendo enano pero con esa altura no tiene mi respeto.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9302"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/262f744eb5b89786561af03311b273734544b8b37f59ef6e2af76dd7fc3b0da7.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">113.28 KB</span> <span class="dimensionLabel">700x500</span>
+  <a class="originalNameLink" href="/.media/262f744eb5b89786561af03311b273734544b8b37f59ef6e2af76dd7fc3b0da7.jpg" download="164947044157.jpg">164947044157.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/262f744eb5b89786561af03311b273734544b8b37f59ef6e2af76dd7fc3b0da7.jpg" data-filewidth="700" data-fileheight="500" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="161" src="/.media/t_262f744eb5b89786561af03311b273734544b8b37f59ef6e2af76dd7fc3b0da7"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9302">
+    <span class="labelSubject">Tecnicos de cantv echaitos pa lante o una averia comun?</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 15:21:44</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #ea4641">ea4641</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9302.html#9302">№</a>
+    <a class="linkQuote" href="/arepa/res/9302.html#q9302">9302</a>
+    <a class="linkReply" href="/arepa/res/9302.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Negros desde hace varios dias tengo el mismo problema, el internet dura todo el dia jodido y no levanta señal porque el led de DSL se apaga y se prende pero cuando llega la noche como aproximadamente a las 7:00 PM el internet vuelve, tengo internet ABA CANTV.
+
+Nunca tuve este problema anteriormente y se me hace muy extraño hasta el punto de pensar que algun tecnico mamaguevo empato a algun webon a mi linea (no se si esto sea posible) y esa persona en cuanto deja de utilizar el internet a las 7:00 PM se me devuelve a la señal a mi, lo curioso es que ese es el el horario de cierre de algunos comercios cercanos que cierran a esa hora especifica lo cual me hace sospechar mas.
+
+Porfavor si alguien sabe del tema y me puede orientar como joder a esos tecnicos me serviria de mucho o explicarme como resolverlo, ¿se supone que si estamos cruzados de cierta manera en cuanto a señal yo pudiera ver el trafico de red de la otra persona y descubrir quien es ?. No se mucho del tema negros por eso me ayudaria mucho saber si esto es algo comun en cuanto a alguna averia o si de verdad me jodieron.</div>
+  
+  
+  
+  <div class="labelOmission">22 posts y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9386"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9302-9386">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 21:13:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #304504">304504</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9302.html#9386">№</a>
+    <a class="linkQuote" href="/arepa/res/9302.html#q9386">9386</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9302.html#9382">&gt;&gt;9382</a>
+Es para forzar el pulso en el cable segun. Llamas a quien sea varias veces y hasta duras hablando que si 10 minutos y esperas la hora antes de prender el modem.  No he visto otra forma de cambiar la ip kek.
+
+<a class="quoteLink" href="/arepa/res/9302.html#9383">&gt;&gt;9383</a>
+hay peos si o si de lineas. Fijate que en la otra linea que tengo en la sala de la casa hay veces que no puedo llamar a ningun lado, lo peor es que es el unico donde tengo el 0 kek.  Y si es que no puedo llamar, tengo es el peo de que ya ni tono tiene y toca llamarlo desde el celular</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9391"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9302-9391">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 21:29:26</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7c9acb">7c9acb</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9302.html#9391">№</a>
+    <a class="linkQuote" href="/arepa/res/9302.html#q9391">9391</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9302.html#9386">&gt;&gt;9386</a>
+A mi desde hace unos meses antes de que se jodiera completamente me pasaba que si alguien llamaba a la casa o contestaba el telefono el internet se caia similar al peo que habia en los 90&apos;s/2000&apos;s con el internet que si utilizabas la linea de la casa se caia la señal, nojoda negros ya me tiene arrecho cantv voy a cambiarme a algun proveedor de fibra óptica.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9397"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9302-9397">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:03:42</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #55e8d1">55e8d1</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9302.html#9397">№</a>
+    <a class="linkQuote" href="/arepa/res/9302.html#q9397">9397</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9302.html#9391">&gt;&gt;9391</a>
+Lo que pasaba con dial up es que si lo prendias para usar internet al que llamara le caia ocupado y si alguien levantaba el telefono en la casa no iba a poder llamar, sonaba era la bulla esa en vez de tono. Pero no recuerdo que se cayera sino que uno lo tenia que apagar para que la familia pudiera usar el telefono. 
+
+<a class="quoteLink" href="/arepa/res/9302.html#9383">&gt;&gt;9383</a>
+Tienen años sin expandir esa red. Quizas el peo ra que no hay suficientes ips para asignar</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9244"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/004e26b048633dc5cd8e4b570b6a5713d4ec10a821ecd7f3c1f1ce73b279b7a5.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">227.66 KB</span> <span class="dimensionLabel">1080x1920</span>
+  <a class="originalNameLink" href="/.media/004e26b048633dc5cd8e4b570b6a5713d4ec10a821ecd7f3c1f1ce73b279b7a5.jpg" download="belenc&#95;08&#95;291861674&#95;164535336087358&#95;3664651940202134743&#95;n.jpg">belenc&#95;08&#95;291861674&#95;164535336087358&#95;3664651940202134743&#95;n.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/004e26b048633dc5cd8e4b570b6a5713d4ec10a821ecd7f3c1f1ce73b279b7a5.jpg" data-filewidth="1080" data-fileheight="1920" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="127" height="225" src="/.media/t_004e26b048633dc5cd8e4b570b6a5713d4ec10a821ecd7f3c1f1ce73b279b7a5"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9244">
+    <span class="labelSubject">¿Qué comieron hoy mis negros?</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-pe" title="Peru" src="/.static/flags/pe.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 05:36:45</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #b2ae60">b2ae60</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9244.html#9244">№</a>
+    <a class="linkQuote" href="/arepa/res/9244.html#q9244">9244</a>
+    <a class="linkReply" href="/arepa/res/9244.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Pregunta seria.
+Detalles y posible precio de cada comida mis negritos, <span class="moeText">tengo mucho interés. </span></div>
+  
+  
+  
+  <div class="labelOmission">31 posts y 4 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9381"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9244-9381">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 20:58:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #72ba66">72ba66</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9244.html#9381">№</a>
+    <a class="linkQuote" href="/arepa/res/9244.html#q9381">9381</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9244.html#9379">&gt;&gt;9379</a>
+Coño mano sera porque me da corte decirle a mi papa que no cocine mas nunca cuando igual le tengo que dar para su comida?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9384"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9244-9384">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 21:07:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #b289f2">b289f2</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9244.html#9384">№</a>
+    <a class="linkQuote" href="/arepa/res/9244.html#q9384">9384</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9244.html#9375">&gt;&gt;9375</a>
+Aqui te tengo tu platano para esta noche</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9385"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9244-9385">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 21:10:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #c05051">c05051</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9244.html#9385">№</a>
+    <a class="linkQuote" href="/arepa/res/9244.html#q9385">9385</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9244.html#9384">&gt;&gt;9384</a>
+Pero sacatelo maldito marico, las vainas se hacen no se dicen como la propia loquita pelabola del oeste kek
+
+<a class="quoteLink" href="/arepa/res/9244.html#9381">&gt;&gt;9381</a>
+Por eso mejor ser directo aunque se vea mal kek</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9298"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2e49082928372878f5d05ccaed5cadad4a34fabcc2fd0fe1f31027d888fa49c6.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">122.09 KB</span> <span class="dimensionLabel">632x897</span>
+  <a class="originalNameLink" href="/.media/2e49082928372878f5d05ccaed5cadad4a34fabcc2fd0fe1f31027d888fa49c6.jpg" download="semo demon.jpg">semo demon.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2e49082928372878f5d05ccaed5cadad4a34fabcc2fd0fe1f31027d888fa49c6.jpg" data-filewidth="632" data-fileheight="897" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="159" height="225" src="/.media/t_2e49082928372878f5d05ccaed5cadad4a34fabcc2fd0fe1f31027d888fa49c6"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/697dc44f114a97c29b0d944650ecec4dbec3f2fe7ff998ca3c0a822f01dd21a1.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">509.26 KB</span> <span class="dimensionLabel">710x993</span>
+  <a class="originalNameLink" href="/.media/697dc44f114a97c29b0d944650ecec4dbec3f2fe7ff998ca3c0a822f01dd21a1.png" download="2022-07-07 18&#95;29&#95;12-6404c1c8e70bd8994caf2014003bf0ae.webp (836×1200).png">2022-07-07 18&#95;29&#95;12-6404c1c8e70bd8994caf2014003bf0ae.webp (836×1200).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/697dc44f114a97c29b0d944650ecec4dbec3f2fe7ff998ca3c0a822f01dd21a1.png" data-filewidth="710" data-fileheight="993" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="161" height="225" src="/.media/t_697dc44f114a97c29b0d944650ecec4dbec3f2fe7ff998ca3c0a822f01dd21a1"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/752a0cc3870a56c488e1d65f4b802fbba8577531115ebc3e8d5c62bc666966d3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">498.99 KB</span> <span class="dimensionLabel">700x992</span>
+  <a class="originalNameLink" href="/.media/752a0cc3870a56c488e1d65f4b802fbba8577531115ebc3e8d5c62bc666966d3.png" download="2022-07-07 18&#95;29&#95;28-cb4d445278847e8c537375bb2cd8a20d.webp (836×1200).png">2022-07-07 18&#95;29&#95;28-cb4d445278847e8c537375bb2cd8a20d.webp (836×1200).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/752a0cc3870a56c488e1d65f4b802fbba8577531115ebc3e8d5c62bc666966d3.png" data-filewidth="700" data-fileheight="992" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="159" height="225" src="/.media/t_752a0cc3870a56c488e1d65f4b802fbba8577531115ebc3e8d5c62bc666966d3"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/92a90065f56fa5040a93d71cbdf1c2a6f0d2c4b96771d6a5bf4471b0df97acb4.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">519.92 KB</span> <span class="dimensionLabel">700x979</span>
+  <a class="originalNameLink" href="/.media/92a90065f56fa5040a93d71cbdf1c2a6f0d2c4b96771d6a5bf4471b0df97acb4.png" download="2022-07-07 18&#95;33&#95;42-4b4a96575767e162b8c6013ec6712d40.webp (836×1200).png">2022-07-07 18&#95;33&#95;42-4b4a96575767e162b8c6013ec6712d40.webp (836×1200).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/92a90065f56fa5040a93d71cbdf1c2a6f0d2c4b96771d6a5bf4471b0df97acb4.png" data-filewidth="700" data-fileheight="979" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="161" height="225" src="/.media/t_92a90065f56fa5040a93d71cbdf1c2a6f0d2c4b96771d6a5bf4471b0df97acb4"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c77d6efe978e781a477401a6739d45f139606e09f3d649863b498baf5de2f8ef.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">518.71 KB</span> <span class="dimensionLabel">703x990</span>
+  <a class="originalNameLink" href="/.media/c77d6efe978e781a477401a6739d45f139606e09f3d649863b498baf5de2f8ef.png" download="2022-07-07 18&#95;33&#95;16-8985de41b73040302bb4b2bcd20c6989.webp (836×1200).png">2022-07-07 18&#95;33&#95;16-8985de41b73040302bb4b2bcd20c6989.webp (836×1200).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c77d6efe978e781a477401a6739d45f139606e09f3d649863b498baf5de2f8ef.png" data-filewidth="703" data-fileheight="990" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="160" height="225" src="/.media/t_c77d6efe978e781a477401a6739d45f139606e09f3d649863b498baf5de2f8ef"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9298">
+    <span class="labelSubject">que pipeta me recomiendan para gatos?</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 14:03:16</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #e0e67d">e0e67d</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9298.html#9298">№</a>
+    <a class="linkQuote" href="/arepa/res/9298.html#q9298">9298</a>
+    <a class="linkReply" href="/arepa/res/9298.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Por ahi vi la frontline a 12, bravetoc 25 y  la power a 8 como 9 dolares.
+
+pics no related</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9315"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9298-9315">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 16:51:42</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #93aec7">93aec7</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9298.html#9315">№</a>
+    <a class="linkQuote" href="/arepa/res/9298.html#q9315">9315</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9298.html#9298">&gt;&gt;9298</a>
+¿En donde se puede reclamar que las pics no se expanden bien cuando se postean varias?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9319"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9298-9319">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-es" src="/.static/flags/es.png" title="Spain"> 
+    <span class="labelCreated">07/08/2022 (Vie) 16:57:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #ef10d3">ef10d3</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9298.html#9319">№</a>
+    <a class="linkQuote" href="/arepa/res/9298.html#q9319">9319</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9298.html#9315">&gt;&gt;9315</a>
+En el meta de /site/.
+De todas maneras, si la abres en una pestaña diferente, se expanden a su tamaño original.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9362"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9298-9362">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 20:07:44</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #e0e67d">e0e67d</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9298.html#9362">№</a>
+    <a class="linkQuote" href="/arepa/res/9298.html#q9362">9362</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6a16105cc90130095e43543f87bc6f888aada8652de359908deedc0cdb0eef8b.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">363.40 KB</span> <span class="dimensionLabel">1203x529</span>
+  <a class="originalNameLink" href="/.media/6a16105cc90130095e43543f87bc6f888aada8652de359908deedc0cdb0eef8b.png" download="xx.png">xx.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6a16105cc90130095e43543f87bc6f888aada8652de359908deedc0cdb0eef8b.png" data-filewidth="1203" data-fileheight="529" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="99" src="/.media/t_6a16105cc90130095e43543f87bc6f888aada8652de359908deedc0cdb0eef8b"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8953836f5bc5781d4492cc09283cfbb77c1f5de25f81b5816878dac3868d809e.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">152.83 KB</span> <span class="dimensionLabel">1057x522</span>
+  <a class="originalNameLink" href="/.media/8953836f5bc5781d4492cc09283cfbb77c1f5de25f81b5816878dac3868d809e.png" download="x.png">x.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8953836f5bc5781d4492cc09283cfbb77c1f5de25f81b5816878dac3868d809e.png" data-filewidth="1057" data-fileheight="522" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="111" src="/.media/t_8953836f5bc5781d4492cc09283cfbb77c1f5de25f81b5816878dac3868d809e"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Compre pic related son las que habian, compre la adam para probarla en el gato blanco y negro kek.  Mañana busco en catia la frontline para la gatita negra.  
+
+Y valen 8, no a ese precio donde las vi.   
+
+<span class="greenText">&gt;Tambien para que pudiera aguantar hoy y mañana  la gata, asi como echarlo en varios lugares, compre el talco rintin pero no se si es mejor que el Kental que no sirve pa culo o si no hay peos en usarlo para gatos pero es lo que habia.</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9095"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/de3566ee17026125743e109c83fcebe5b3d616ca1bf54520dcb92d5d2c14b0ca.webp"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">11.74 KB</span> <span class="dimensionLabel">423x530</span>
+  <a class="originalNameLink" href="/.media/de3566ee17026125743e109c83fcebe5b3d616ca1bf54520dcb92d5d2c14b0ca.webp" download="1a83e85396c0134e56ae2ae5aea22a5f.webp">1a83e85396c0134e56ae2ae5aea22a5f.webp</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/de3566ee17026125743e109c83fcebe5b3d616ca1bf54520dcb92d5d2c14b0ca.webp" data-filewidth="423" data-fileheight="530" data-filemime="image/webp">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="180" height="225" src="/.media/t_de3566ee17026125743e109c83fcebe5b3d616ca1bf54520dcb92d5d2c14b0ca"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9095">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 15:32:19</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #ee7e5a">ee7e5a</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9095.html#9095">№</a>
+    <a class="linkQuote" href="/arepa/res/9095.html#q9095">9095</a>
+    <a class="linkReply" href="/arepa/res/9095.html">[Responder]</a>
+    <a class="linkLast" href="/arepa/last/9095.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Negros, por qué en Venezuela nunca hemos tenido una artista internacional de la talla de Shakira, Selena Quintanilla, Rocío Durcal o Ana Gabriel?
+Soy muy fan de Ana Gabriel y me hice esta pregunta a mí mismo.
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;F07ngnis2ig&amp;ab&#95;channel&#61;AnaGabrielVEVO">https://www.youtube.com/watch?v&#61;F07ngnis2ig&amp;ab&#95;channel&#61;AnaGabrielVEVO</a>
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;PGOfNrIIRPU&amp;ab&#95;channel&#61;EINERGUZM%C3%81NCORBACHO">https://www.youtube.com/watch?v&#61;PGOfNrIIRPU&amp;ab&#95;channel&#61;EINERGUZM%C3%81NCORBACHO</a></div>
+  
+  
+  
+  <div class="labelOmission">45 posts y 12 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9245"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9095-9245">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 05:59:18</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a71449">a71449</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9095.html#9245">№</a>
+    <a class="linkQuote" href="/arepa/res/9095.html#q9245">9245</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9095.html#9102">&gt;&gt;9102</a>
+Yo conoci a cancerbero cuando se suicido que en mi liceo andaban a todo volumen, leugo fue que esuche la musixca de cancerbero y me dicuenta que tiene unas pavita,s como LLOVIA o la que habla de mamarle la cuca a la jeva o algo asi, creo que es querer quererrnos</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9250"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9095-9250">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 06:28:32</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9b4e94">9b4e94</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9095.html#9250">№</a>
+    <a class="linkQuote" href="/arepa/res/9095.html#q9250">9250</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Los Amigos Invisibles <s>son</s> eran muy escuchados, con el disco de Comercial sonaron mucho con los yanquis pero ironicamente dejaron de ser transmitidos tan seguido despues de eso</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9303"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9095-9303">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 15:40:32</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #8e60c4">8e60c4</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9095.html#9303">№</a>
+    <a class="linkQuote" href="/arepa/res/9095.html#q9303">9303</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9095.html#9250">&gt;&gt;9250</a>
+¿eres veneco o eres cucaracho?</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9080"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/22f607edcae600b9b3043a5acd1551f4478404fca7ccab499f6690cec7e16b97.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">21.32 KB</span> <span class="dimensionLabel">450x405</span>
+  <a class="originalNameLink" href="/.media/22f607edcae600b9b3043a5acd1551f4478404fca7ccab499f6690cec7e16b97.jpg" download="pepe jugito.jpg">pepe jugito.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/22f607edcae600b9b3043a5acd1551f4478404fca7ccab499f6690cec7e16b97.jpg" data-filewidth="450" data-fileheight="405" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="203" src="/.media/t_22f607edcae600b9b3043a5acd1551f4478404fca7ccab499f6690cec7e16b97"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9080">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+     
+    <span class="labelCreated">07/07/2022 (Jue) 14:13:52</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #86899f">86899f</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9080.html#9080">№</a>
+    <a class="linkQuote" href="/arepa/res/9080.html#q9080">9080</a>
+    <a class="linkReply" href="/arepa/res/9080.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">*ting ting*
+AHEM
+<span class="greenText">&gt;el pobre es pobre porque quiere:si no quisiera ser pobre ,dejaria de masturbarse.</span></div>
+  
+  
+  
+  <div class="labelOmission">17 posts y 4 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9293"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9080-9293">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ro" src="/.static/flags/ro.png" title="Romania"> 
+    <span class="labelCreated">07/08/2022 (Vie) 13:22:09</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2d8b86">2d8b86</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9080.html#9293">№</a>
+    <a class="linkQuote" href="/arepa/res/9080.html#q9293">9293</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9080.html#9290">&gt;&gt;9290</a>
+Nunca dije que la indicada fuera a solo para satisfacción sexual ya muy bien dices es alguien con quien comparte buenos como malos momento y está ahí y la quieres a pesar de todo y respeta un poco (sin llegar a ser un huele cuca),   lo de las putas es que si eres soltero tienes rial, pero no mojas el chistris por ningún medio sea betismo puro el pagarte por una putas no lo veo necesariamente mal, ya si piensas que es caer bajo como hombre o los verdaderos Chad 100% serios no paga por mujeres y con 2 palabras car cualquier cuca más las virginales ya bueno mala suerte no eres (o si lo eres) ese tipo, pero no te niegues la oportunidad de probar una cuca de vez en cuando y tener algo de conocimiento del tema para saber llevar la rienda cuando toca tirar</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9299"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9080-9299">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 14:23:51</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #ee2217">ee2217</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9080.html#9299">№</a>
+    <a class="linkQuote" href="/arepa/res/9080.html#q9299">9299</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9080.html#9290">&gt;&gt;9290</a>
+diosmio la salsa por favor</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9300"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9080-9300">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 14:54:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6be072">6be072</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9080.html#9300">№</a>
+    <a class="linkQuote" href="/arepa/res/9080.html#q9300">9300</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2b0df9cc5197c6ccb8cabd054ff1594029b0e99b119e0d89190797235e9b5d6c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">282.52 KB</span> <span class="dimensionLabel">1250x1748</span>
+  <a class="originalNameLink" href="/.media/2b0df9cc5197c6ccb8cabd054ff1594029b0e99b119e0d89190797235e9b5d6c.jpg" download="2b0df9cc5197c6ccb8cabd054ff1594029b0e99b119e0d89190797235e9b5d6c.jpg">2b0df9cc5197c6ccb8cabd054ff1594029b0e99b119e0d89190797235e9b5d6c.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2b0df9cc5197c6ccb8cabd054ff1594029b0e99b119e0d89190797235e9b5d6c.jpg" data-filewidth="1250" data-fileheight="1748" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="161" height="225" src="/.media/t_2b0df9cc5197c6ccb8cabd054ff1594029b0e99b119e0d89190797235e9b5d6c"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9080.html#9293">&gt;&gt;9293</a>
+Estoy contigo, negro. Mucho incel acomplejado en todos lados, pero en especial en la Novus Arepa.
+<a class="quoteLink" href="/arepa/res/9080.html#9299">&gt;&gt;9299</a>
+Kanabun, mi negro.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9204"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5aba66ad929780cc20a6a53767fb43739d59dd63ac2b82d2dc0e08aa2beaa60c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">117.30 KB</span> <span class="dimensionLabel">1080x1080</span>
+  <a class="originalNameLink" href="/.media/5aba66ad929780cc20a6a53767fb43739d59dd63ac2b82d2dc0e08aa2beaa60c.jpg" download="Harina-PAN-Foto-Harina-PAN.jpg">Harina-PAN-Foto-Harina-PAN.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5aba66ad929780cc20a6a53767fb43739d59dd63ac2b82d2dc0e08aa2beaa60c.jpg" data-filewidth="1080" data-fileheight="1080" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_5aba66ad929780cc20a6a53767fb43739d59dd63ac2b82d2dc0e08aa2beaa60c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9204">
+    <span class="labelSubject">Odio la arepa</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:23:18</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #62d494">62d494</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9204.html#9204">№</a>
+    <a class="linkQuote" href="/arepa/res/9204.html#q9204">9204</a>
+    <a class="linkReply" href="/arepa/res/9204.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Negros, estoy harto de comer carbohidratos todos los santos días. Sé que soy un mantenido neet que no aporta nada al hogar, solo vengo a ahogar mis penas.
+Tengo la desgracia de desayunar, almorzar, cenar pasta, arroz, pan, arepa. Toda esa mierda me cae mal, me siento inflado cada santo día. A veces sigo la keto que es llenadera y fácil de cocinar, pero no hay plata para hacer esa gracia todos los días</div>
+  
+  
+  
+  <div class="labelOmission">21 posts y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9258"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9204-9258">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-es" src="/.static/flags/es.png" title="Spain"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:11:20</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #77be29">77be29</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9204.html#9258">№</a>
+    <a class="linkQuote" href="/arepa/res/9204.html#q9258">9258</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9204.html#9254">&gt;&gt;9254</a>
+Kek la mamá de ope está llevando gang Bang de obreros</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9268"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9204-9268">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 10:44:46</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #fec912">fec912</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9204.html#9268">№</a>
+    <a class="linkQuote" href="/arepa/res/9204.html#q9268">9268</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9204.html#9242">&gt;&gt;9242</a>
+Es lo que te digo negro, al final ganaron los que le metieron plata al principio y los que tuvieron suerte como que tú.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9274"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9204-9274">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-us" src="/.static/flags/us.png" title="United States of 'Murica"> 
+    <span class="labelCreated">07/08/2022 (Vie) 12:06:00</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #ce2115">ce2115</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9204.html#9274">№</a>
+    <a class="linkQuote" href="/arepa/res/9204.html#q9274">9274</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><span class="greenText">&gt;no soy capaz de variar mis comidas.</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="9189"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/3a5a0a9f295ed97b983e889404242594802f6dcdb4033ab0d65ceb89c4ecd4b0.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">69.33 KB</span> <span class="dimensionLabel">747x686</span>
+  <a class="originalNameLink" href="/.media/3a5a0a9f295ed97b983e889404242594802f6dcdb4033ab0d65ceb89c4ecd4b0.png" download="1525139323130.png">1525139323130.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/3a5a0a9f295ed97b983e889404242594802f6dcdb4033ab0d65ceb89c4ecd4b0.png" data-filewidth="747" data-fileheight="686" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="207" src="/.media/t_3a5a0a9f295ed97b983e889404242594802f6dcdb4033ab0d65ceb89c4ecd4b0"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9189">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 23:41:41</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #054d7f">054d7f</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/9189.html#9189">№</a>
+    <a class="linkQuote" href="/arepa/res/9189.html#q9189">9189</a>
+    <a class="linkReply" href="/arepa/res/9189.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Negros, ustedes son mi bebito fiu fiu</div>
+  
+  
+  
+  <div class="labelOmission">6 posts y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9209"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9189-9209">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:32:06</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a3d36c">a3d36c</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9189.html#9209">№</a>
+    <a class="linkQuote" href="/arepa/res/9189.html#q9209">9209</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9189.html#9189">&gt;&gt;9189</a>
+Caramelo de chocolate... Empapame así...</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9262"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9189-9262">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:27:41</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #004a2f">004a2f</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9189.html#9262">№</a>
+    <a class="linkQuote" href="/arepa/res/9189.html#q9262">9262</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/d12c4c6383b8d8b18434a567442c7fc2ee95db1788151e5858e89b1f611a0849.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">92.11 KB</span> <span class="dimensionLabel">259x194</span>
+  <a class="originalNameLink" href="/.media/d12c4c6383b8d8b18434a567442c7fc2ee95db1788151e5858e89b1f611a0849.png" download="d12c4c6383b8d8b18434a567442c7fc2ee95db1788151e5858e89b1f611a0849.png">d12c4c6383b8d8b18434a567442c7fc2ee95db1788151e5858e89b1f611a0849.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/d12c4c6383b8d8b18434a567442c7fc2ee95db1788151e5858e89b1f611a0849.png" data-filewidth="259" data-fileheight="194" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="169" src="/.media/t_d12c4c6383b8d8b18434a567442c7fc2ee95db1788151e5858e89b1f611a0849"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9189.html#9209">&gt;&gt;9209</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9272"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-9189-9272">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 11:56:08</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #49c19f">49c19f</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/9189.html#9272">№</a>
+    <a class="linkQuote" href="/arepa/res/9189.html#q9272">9272</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2ddd853c897e13648b62a69e7ca510749fb9e67ecad22d515c3e76e40473a792.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">59.42 KB</span> <span class="dimensionLabel">640x688</span>
+  <a class="originalNameLink" href="/.media/2ddd853c897e13648b62a69e7ca510749fb9e67ecad22d515c3e76e40473a792.jpg" download="1646469163925.jpg">1646469163925.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2ddd853c897e13648b62a69e7ca510749fb9e67ecad22d515c3e76e40473a792.jpg" data-filewidth="640" data-fileheight="688" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="209" height="225" src="/.media/t_2ddd853c897e13648b62a69e7ca510749fb9e67ecad22d515c3e76e40473a792"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/9189.html#9195">&gt;&gt;9195</a>
+En Perú esta vaina seguramente es un manjar tascla</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="8337"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/cdfcf928d75e5d3f3822da1832cc87f4b3a4d2625e82b0714a08b4840967424a.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">5.77 MB</span> <span class="dimensionLabel">432x324</span>
+  <a class="originalNameLink" href="/.media/cdfcf928d75e5d3f3822da1832cc87f4b3a4d2625e82b0714a08b4840967424a.mp4" download="y2mate.com - Krippyzilla CanaimaStyle Prod PromiseOnTheBeat&#95;360p.mp4">y2mate.com - Krippyzilla CanaimaStyle Prod PromiseOnTheBeat&#95;360p.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/cdfcf928d75e5d3f3822da1832cc87f4b3a4d2625e82b0714a08b4840967424a.mp4" data-filewidth="432" data-fileheight="324" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="169" src="/.media/t_cdfcf928d75e5d3f3822da1832cc87f4b3a4d2625e82b0714a08b4840967424a"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8337">
+    <span class="labelSubject">Hilo de apreciacion a las canaimas</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/04/2022 (Lun) 16:08:06</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #8fb14f">8fb14f</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/8337.html#8337">№</a>
+    <a class="linkQuote" href="/arepa/res/8337.html#q8337">8337</a>
+    <a class="linkReply" href="/arepa/res/8337.html">[Responder]</a>
+    <a class="linkLast" href="/arepa/last/8337.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Experiencias, consejos, modificaciones, etc</div>
+  
+  
+  
+  <div class="labelOmission">34 posts y 4 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9246"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8337-9246">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 06:03:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cbb524">cbb524</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8337.html#9246">№</a>
+    <a class="linkQuote" href="/arepa/res/8337.html#q9246">9246</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8337.html#8477">&gt;&gt;8477</a>
+<span class="greenText">&gt;Yo recomiendo lo que uso, que es Arch</span>
+<span class="greenText">&gt;postea lolis</span>
+todo en orden</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9248"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8337-9248">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 06:22:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cbb524">cbb524</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8337.html#9248">№</a>
+    <a class="linkQuote" href="/arepa/res/8337.html#q9248">9248</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2829a09418469859e7e78c98e75bb77a0105ceb7d2ab8dcfcfa411c641d2d449.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">130.52 KB</span> <span class="dimensionLabel">527x516</span>
+  <a class="originalNameLink" href="/.media/2829a09418469859e7e78c98e75bb77a0105ceb7d2ab8dcfcfa411c641d2d449.png" download="1639603278849.png">1639603278849.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2829a09418469859e7e78c98e75bb77a0105ceb7d2ab8dcfcfa411c641d2d449.png" data-filewidth="527" data-fileheight="516" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="220" src="/.media/t_2829a09418469859e7e78c98e75bb77a0105ceb7d2ab8dcfcfa411c641d2d449"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8337.html#8690">&gt;&gt;8690</a>
+Mano si estas pelando bola solo dilo, aqui hay gente que tambien la ha pasado rudo en sus casas, no hace falta engañarse asi de feo
+
+<a class="quoteLink" href="/arepa/res/8337.html#8740">&gt;&gt;8740</a>
+De que trabajas? haciendo calculos de excel? documentos de word? Una pc puede servir para programar, dibujar, diseño 3d, autocad, edicion de video, edicion musical, necesitas esa potencia para poder terminar rapido con lo que tengas que hacer. Si te gusta andar perdiendo tiempo con chatarra lenta me parece fino, pero no vengas querer mojonearnos con el &quot;no hace falta gegege&quot;  porque en el fondo tu sabes que si hace falta.
+
+<a class="quoteLink" href="/arepa/res/8337.html#9117">&gt;&gt;9117</a>
+Para mi se debe comprar lo mejor de lo mejor para que te dure años, imagina tener que estar comprando siempre el pentium del año porque el que tienes ya no sirve para un coño en lugar de comprar un i7 o un i9 y tener pc para los proximos 10 años o incluso mas, que capaz hoy mismo no le vas a dar un uso tan exigente? es posible pero quien sabe si el dia de mañana necesitas hacer algo que si requiera toda esa potencia.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9256"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8337-9256">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-es" src="/.static/flags/es.png" title="Spain"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:08:10</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #63e43a">63e43a</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8337.html#9256">№</a>
+    <a class="linkQuote" href="/arepa/res/8337.html#q9256">9256</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Yo estaba pensado adquirir las nuevas Canaima letras rojas
+<a target="&#95;blank" href="https://www.amazon.es/Acer-Nitro-AN515-44-Ordenador-Operativo/dp/B09Q3FHZQX/">https://www.amazon.es/Acer-Nitro-AN515-44-Ordenador-Operativo/dp/B09Q3FHZQX/</a>
+O está 
+<a target="&#95;blank" href="https://www.amazon.es/ASUS-TUF-Gaming-F15-FX506LH-HN042/dp/B09MJGMH6N/">https://www.amazon.es/ASUS-TUF-Gaming-F15-FX506LH-HN042/dp/B09MJGMH6N/</a>
+Aunque viendo debería de esperar por las que tenga la rtx 3050 y empiecen ya con la serie 6000 de Ryzen y/o 12va gen de Intel en laptop.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="8730"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/f1a3516a974bdd264dbcdea112cfaadd99836357ab16a164eac57bb42cdcce4f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">5.42 KB</span> <span class="dimensionLabel">167x303</span>
+  <a class="originalNameLink" href="/.media/f1a3516a974bdd264dbcdea112cfaadd99836357ab16a164eac57bb42cdcce4f.jpg" download="download (1).jpeg">download (1).jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/f1a3516a974bdd264dbcdea112cfaadd99836357ab16a164eac57bb42cdcce4f.jpg" data-filewidth="167" data-fileheight="303" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="124" height="225" src="/.media/t_f1a3516a974bdd264dbcdea112cfaadd99836357ab16a164eac57bb42cdcce4f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8730">
+    <span class="labelSubject">me meti en el gimnasio y ahora soy hombre</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 20:38:40</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #a8760e">a8760e</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/8730.html#8730">№</a>
+    <a class="linkQuote" href="/arepa/res/8730.html#q8730">8730</a>
+    <a class="linkReply" href="/arepa/res/8730.html">[Responder]</a>
+    <a class="linkLast" href="/arepa/last/8730.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Negros, mi ex apoyada por un &quot;amigo&quot; que teniamos en comun (el bicho fue sendo zamuro siempre) me anda funando en distintas redes sociales, videos incluidos. 
+
+Nunca me ha gustado exponer mi vida en esas mierdas, asi que si admito que se me ardio el culito, sé que con ella no tengo vida, pero me gustaria cobrarmelas con ese pajuo, no se si es el rush de estos 6 meses de gimnasio que me tiene asi pero quiero partirle la jeta al flaco ese, ya estoy mamado de ser el guebon que se rie de la gracia y ya, quiero tomar acciones y aprovechar que sé donde se la pasa el pajúo ese y sé que habrá pocos o nulos testigos, ¿han estado en una situación similar? ¿debería dejarme llevar y hacerlo mis negros? el bicho ese es presa fácil, tiene cuerpo de jeva.</div>
+  
+  
+  
+  <div class="labelOmission">95 posts y 14 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9201"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8730-9201">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-es" src="/.static/flags/es.png" title="Spain"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:15:51</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #172cf9">172cf9</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8730.html#9201">№</a>
+    <a class="linkQuote" href="/arepa/res/8730.html#q9201">9201</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8730.html#9184">&gt;&gt;9184</a>
+¿De donde coño sacaste ese proxy de Eslovaquia?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9202"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8730-9202">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:17:03</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7da41e">7da41e</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8730.html#9202">№</a>
+    <a class="linkQuote" href="/arepa/res/8730.html#q9202">9202</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8730.html#9196">&gt;&gt;9196</a>
+pero pon fotoculo</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9212"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8730-9212">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:55:02</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #da4bb0">da4bb0</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8730.html#9212">№</a>
+    <a class="linkQuote" href="/arepa/res/8730.html#q9212">9212</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8730.html#9184">&gt;&gt;9184</a>
+El mod te protege mamaguevito... Matate a ver si reencarnas humano maldito incel.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="8831"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9392b35c0bca56b6b1e865a73b658b74034b31d834b1b5a9862ba4e3d2b1e508.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">4.39 KB</span> <span class="dimensionLabel">300x168</span>
+  <a class="originalNameLink" href="/.media/9392b35c0bca56b6b1e865a73b658b74034b31d834b1b5a9862ba4e3d2b1e508.jpg" download="qepd.jpg">qepd.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9392b35c0bca56b6b1e865a73b658b74034b31d834b1b5a9862ba4e3d2b1e508.jpg" data-filewidth="300" data-fileheight="168" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_9392b35c0bca56b6b1e865a73b658b74034b31d834b1b5a9862ba4e3d2b1e508"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8831">
+    <span class="labelSubject">La muerte del anonimato...</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 03:36:36</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #39551f">39551f</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/8831.html#8831">№</a>
+    <a class="linkQuote" href="/arepa/res/8831.html#q8831">8831</a>
+    <a class="linkReply" href="/arepa/res/8831.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">El anonimato es la mas grande fuente de la libertad de expresion
+Los chanes usan el anonimato para fomentar la libertad de expresion
+Es la libertad de expresion lo que da a los chanes su mas grande poder...
+
+ Por que entonces..
+ Doxxean a las personas con las que no estan de acuerdo
+ Doxxean a las personas que opinan distinto
+
+ Por que entonces atentan contra la libertad de expresion?
+ Por que entonces atentan contra el proposito de existir de un Chan?
+
+ Si es el anonimato los que nos trajo aqui...
+
+ A todos los que me Doxxearon les pido
+ Reflexionen...
+ Si...</div>
+  
+  
+  
+  <div class="labelOmission">13 posts y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9188"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8831-9188">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/07/2022 (Jue) 23:39:31</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #62c966">62c966</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8831.html#9188">№</a>
+    <a class="linkQuote" href="/arepa/res/8831.html#q9188">9188</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c1d90387ed6da4495219b42ded427886ffeb6576cb8c2e1b93e8cc6d533cc857.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">174.17 KB</span> <span class="dimensionLabel">413x434</span>
+  <a class="originalNameLink" href="/.media/c1d90387ed6da4495219b42ded427886ffeb6576cb8c2e1b93e8cc6d533cc857.png" download="155772561358.png">155772561358.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c1d90387ed6da4495219b42ded427886ffeb6576cb8c2e1b93e8cc6d533cc857.png" data-filewidth="413" data-fileheight="434" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="214" height="225" src="/.media/t_c1d90387ed6da4495219b42ded427886ffeb6576cb8c2e1b93e8cc6d533cc857"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8831.html#8831">&gt;&gt;8831</a>
+<span class="greenText">&gt;todo ese lloriqueo y esa verborrea pomposa</span>
+<span class="greenText">&gt;todo esa redaccion melodramatica</span>
+Asco.
+La cultura anonima lleva moribunda desde hace tiempo, pero no es por su naturaleza debido a la &quot;ooohhh libertad de expresiooooon&quot; o &quot;gegege puedo decir lo que yo quieraaaaaa&quot;, sino porque su estructura y naturaleza se han mantenido paralizada en el tiempo mientras el internet y las redes sociales evolucionaron y se volvieron mas cosa del comun entre las personas. El anonimato estaba en su gloria para cuando internet era cosa niche cuando las redes sociales no eran la norma ni siquiera dentro de la internet, menos en la sociedad fuera de ella, ahora que la internet y las redes sociales se han vuelto mainstream en la internet y la sociedad, mientras que el anonimato se quedo como niche, sus usuarios cambian y por consecuencia va muriendo.
+No es que critique el anonimato, personalmente creo que siendo un niche como lo es ahora es lo mejor que pudiese ser, por mas que sus usuarios no sean lo que fueron en su era dorada.
+
+<span class="greenText">&gt;also</span>
+<span class="greenText">&gt;A todos los que me Doxxearon les pido</span>
+Cual doxxeo, carajito el coño, deja de larpear y seguirle dando comidilla a los mariquitos con el drama rancio forzado.
+<span class="greenText">&gt;p-p-pero son ellos los que se andan forz-</span>
+Telajeta, mariquito, mas poder es el que le dan a un avatarfag del que en realidad tiene, bien podria aparecerse un fulano, ser kekeante por un rato y ya, pero ustedes prefieren apuntar y forzar el nombre hacia alguien mientras lo llaman avatarfag y lo fuerzan arrechamente incluso contra la voluntad del mismo avatarfag.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9198"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8831-9198">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-us" src="/.static/flags/us.png" title="United States of 'Murica"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:08:13</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4ef6be">4ef6be</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8831.html#9198">№</a>
+    <a class="linkQuote" href="/arepa/res/8831.html#q9198">9198</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9e0af1adfa8d45d8b5ee17403758dbcaf292cd5c0756369b4184c0b1d9a7f667.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">137.22 KB</span> <span class="dimensionLabel">1100x1000</span>
+  <a class="originalNameLink" href="/.media/9e0af1adfa8d45d8b5ee17403758dbcaf292cd5c0756369b4184c0b1d9a7f667.jpg" download="11ea2d8475af76b6c512c7af80ae9a9895a477fd0f6de5818f72d4c4b1a80999.jpg">11ea2d8475af76b6c512c7af80ae9a9895a477fd0f6de5818f72d4c4b1a80999.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9e0af1adfa8d45d8b5ee17403758dbcaf292cd5c0756369b4184c0b1d9a7f667.jpg" data-filewidth="1100" data-fileheight="1000" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="205" src="/.media/t_9e0af1adfa8d45d8b5ee17403758dbcaf292cd5c0756369b4184c0b1d9a7f667"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8831.html#9188">&gt;&gt;9188</a>
+<span class="greenText">&gt;todo ese lloriqueo y esa verborrea pomposa</span>
+<span class="greenText">&gt;todo esa redaccion melodramatica</span>
+<span class="pinkText">&lt;procede a lanzar un tl:dr de justamente eso</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9211"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8831-9211">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/08/2022 (Vie) 00:41:51</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #62c966">62c966</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8831.html#9211">№</a>
+    <a class="linkQuote" href="/arepa/res/8831.html#q9211">9211</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8831.html#9198">&gt;&gt;9198</a>
+<span class="greenText">&gt;gegege no lei un coño asi que procedo a sacarme implicaciones porque muh texto de mas de dos linea</span>
+<span class="greenText">&gt;imagen sin relacion para parecer inteligente</span>
+matate.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="8741"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c852a5dbe37110e7bf471c73b8a58decc5d6b8d87006f32ca99c2ba1d3f5369c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">16.22 KB</span> <span class="dimensionLabel">180x205</span>
+  <a class="originalNameLink" href="/.media/c852a5dbe37110e7bf471c73b8a58decc5d6b8d87006f32ca99c2ba1d3f5369c.jpg" download="145421416813.jpg">145421416813.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c852a5dbe37110e7bf471c73b8a58decc5d6b8d87006f32ca99c2ba1d3f5369c.jpg" data-filewidth="180" data-fileheight="205" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="180" height="205" src="/.media/c852a5dbe37110e7bf471c73b8a58decc5d6b8d87006f32ca99c2ba1d3f5369c.jpg"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8741">
+    <span class="labelSubject">Lost Media Chanero</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 20:55:31</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #ac92c3">ac92c3</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/8741.html#8741">№</a>
+    <a class="linkQuote" href="/arepa/res/8741.html#q8741">8741</a>
+    <a class="linkReply" href="/arepa/res/8741.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Alguien tendra el audio que grabaron hablando de una invitacion al cajero del san ignacio? Lo tenia hace años pero el HDD se daño y perdi un vainero.</div>
+  
+  
+  
+  <div class="labelOmission">25 posts y 6 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9173"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8741-9173">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag" src="/arepa/flags/629880fecd94c5191a7e23d4" title="Caracas"> 
+    <span class="labelCreated">07/07/2022 (Jue) 22:50:18</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #68abd0">68abd0</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8741.html#9173">№</a>
+    <a class="linkQuote" href="/arepa/res/8741.html#q9173">9173</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8741.html#9141">&gt;&gt;9141</a>
+El que no vio nunca una cuca y un culo es usted esa la totona, no el culo por qué esta algo más abajo y de paso que está usando un condón en la mortadela así que está difícil que contraiga una infección por la totona.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9175"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8741-9175">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/07/2022 (Jue) 23:03:08</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5a5470">5a5470</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8741.html#9175">№</a>
+    <a class="linkQuote" href="/arepa/res/8741.html#q9175">9175</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8741.html#9173">&gt;&gt;9173</a>
+la verdadera pregunta es aun esta la grapa de hierro del lado metido de la mortadela?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9177"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8741-9177">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag" src="/arepa/flags/629880fecd94c5191a7e23d4" title="Caracas"> 
+    <span class="labelCreated">07/07/2022 (Jue) 23:06:43</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f1e337">f1e337</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8741.html#9177">№</a>
+    <a class="linkQuote" href="/arepa/res/8741.html#q9177">9177</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8741.html#9175">&gt;&gt;9175</a>
+Bueno si no quería contaminar la mortadela para darle otro uso como preparar el desayuno de los niños al día siguiente probablemente debieron de quitarla para que no se rompiera el condón.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="arepa" id="8620"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/34701597fba30754c9ef3a383d919f31cc8614196ac47db7d87776fe7bb50720.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">48.36 KB</span> <span class="dimensionLabel">500x500</span>
+  <a class="originalNameLink" href="/.media/34701597fba30754c9ef3a383d919f31cc8614196ac47db7d87776fe7bb50720.jpg" download="image0-3.jpg">image0-3.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/34701597fba30754c9ef3a383d919f31cc8614196ac47db7d87776fe7bb50720.jpg" data-filewidth="500" data-fileheight="500" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_34701597fba30754c9ef3a383d919f31cc8614196ac47db7d87776fe7bb50720"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8620">
+    <span class="labelSubject">estoy en caracas y soy muy pegado para comprar weed</span>
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" title="Venezuela" src="/.static/flags/ve.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 05:45:15</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #339ebc">339ebc</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/arepa/res/8620.html#8620">№</a>
+    <a class="linkQuote" href="/arepa/res/8620.html#q8620">8620</a>
+    <a class="linkReply" href="/arepa/res/8620.html">[Responder]</a>
+    <a class="linkLast" href="/arepa/last/8620.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">soy un caraqueño sheltered, no se donde coño comprar marihuana y necesito, ninguno de mis amigos tiene contactos y no se donde ir que no sea a pedirle a un malandro por ahi! 
+
+donde hay un lugar recomendable tanto como en la calidad de la hierba como precio y seguridad.</div>
+  
+  
+  
+  <div class="labelOmission">46 posts y 7 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="arepa" id="9129"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8620-9129">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/07/2022 (Jue) 17:28:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #36de93">36de93</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8620.html#9129">№</a>
+    <a class="linkQuote" href="/arepa/res/8620.html#q9129">9129</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8620.html#9090">&gt;&gt;9090</a>
+Si, es toda verga mezclada toda junta. Por eso viene en ladrillos prensados y no en cogollo integros.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9149"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8620-9149">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/07/2022 (Jue) 19:57:32</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #74ea24">74ea24</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8620.html#9149">№</a>
+    <a class="linkQuote" href="/arepa/res/8620.html#q9149">9149</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8620.html#9081">&gt;&gt;9081</a>
+Es el loot box de la marijuana, aquí la gente es muy marginal como para catalogar o investigar lo que venden.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="arepa" id="9163"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="arepa-8620-9163">
+    
+    <a class="linkName  noEmailName" >Arepana</a>
+    <img class="imgFlag flag-us" src="/.static/flags/us.png" title="United States of 'Murica"> 
+    <span class="labelCreated">07/07/2022 (Jue) 21:39:28</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #33557e">33557e</span></span>
+    
+    <a class="linkSelf" href="/arepa/res/8620.html#9163">№</a>
+    <a class="linkQuote" href="/arepa/res/8620.html#q9163">9163</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/arepa/res/8620.html#9149">&gt;&gt;9149</a>
+por otro lado, es bastante barata, la última que compre hace unos años fue como un dolar el gramo, en España costaba como 8 euros esa misma cantidad.</div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a><a href="2.html">2</a><a href="3.html">3</a><a href="4.html">4</a><a href="5.html">5</a><a href="6.html">6</a><a href="7.html">7</a><a href="8.html">8</a><a href="9.html">9</a><a href="10.html">10</a><a href="11.html">11</a><a href="12.html">12</a><a href="13.html">13</a><a href="14.html">14</a><a href="15.html">15</a><a href="16.html">16</a><a href="17.html">17</a></span> <a id="linkNext" class="coloredIcon" href="2.html"></a> ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=arepa">Administrar Tablón</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=arepa">Moderar Tablón</a>
+          <a id="linkMod" href="/mod.js?boardUri=arepa&amp;page=1">Moderar Hilo</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">Acerca de</a>
+    •
+    <a href="/site/res/27.html#">Comentarios</a>
+    •
+    <a href="/.static/pages/globalRules.html">Reglas Globales</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contacto</a>
+    •
+    <a href="/.static/pages/donate.html">Donar</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">№</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[Historial del Post]</a>
+    <a class="linkFileHistory">[Historial de Archivos]</a>
+    <a class="linkOffenseRecord">[Historial de Infracciones]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Pequeña Gama (1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Amplia Gama (3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Desvincular]</a>
+  <a class="unlinkAndDeleteLink">[Desvincular y Borrar]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

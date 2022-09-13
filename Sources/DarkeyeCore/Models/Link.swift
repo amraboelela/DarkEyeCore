@@ -156,7 +156,6 @@ public struct Link: Codable, Equatable, Sendable {
                         result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if let href = anchor["href"], href.range(of: "#") == nil {
                                 if !Link.allowed(url: href) {
-                                    //Link.remove(url: href)
                                     return nil
                                 }
                                 var refinedHref = href

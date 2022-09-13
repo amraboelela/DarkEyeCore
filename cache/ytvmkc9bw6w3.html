@@ -1,0 +1,1492 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.1.1">Jekyll</generator><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/feed.xml" rel="self" type="application/atom+xml" /><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/" rel="alternate" type="text/html" /><updated>2020-12-26T11:45:52-05:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/feed.xml</id><title type="html">Coarse Enigma</title><subtitle>Echo's from the aether</subtitle><entry><title type="html">(Tr|b)ash - Thoughts on Unix Scripting</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/thoughts-on-bash-scripting.html" rel="alternate" type="text/html" title="(Tr|b)ash - Thoughts on Unix Scripting" /><published>2020-12-25T00:00:00-05:00</published><updated>2020-12-25T00:00:00-05:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Thoughts-On-Bash</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/thoughts-on-bash-scripting.html">&lt;p&gt;Shell Scripting. The long and short of it is that bash is available for Unix systems, is relatively powerful, and for the most part, unchanging, scripting environment. Old Solaris Boxes, BSD machines, and every Linux box has bash available. Unlike python, if you have and older version of bash available, you are unlikely to even notice. So outside of a few people concerned with POSIX compliant shell scripting ( P1003.2 ) , you are probably doing your scripting in bash - its quite portable.&lt;/p&gt;
+
+&lt;p&gt;The Unix shell generally is quite powerful. A Unix shell is a macro processor than executes programs. Most, including bash, come with relatively sophisticated string processing, in bash including left and right hand striping, tokenizing, and even regular expressions. Special features for working with files including redirection and globbing, as well as building tests for file attributes (writable?, directory? into the conditional test builtin. (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[[ -e $FILE ]]&lt;/code&gt;) . Finally, the pipelined model of data flow made possible by pipes, allows chaining commands to produce something arbitrarily complex. All of this power, presented simply, and incrementally, tends to encourage the creation of casual scripts, which empowers the user. So in brief, the shells strengths are its simplicity, pipes, and string manipulation.&lt;/p&gt;
+
+&lt;p&gt;Historically, there has been no effective competitor to the Unix CLI. Microsoft Windows CMD.exe command processor is harder to understand, and not even close to as capable. For instance, named pipes are impossible owing to limitations of the windows platform. Regular Expression or serious globing are not available. Woe to anyone learning “Batch”.&lt;/p&gt;
+
+&lt;p&gt;But, Bash is severely limited, and there are several new competitors for the doublet of shells and scripting languages on *nix. How do Python and Powershell stack up?&lt;/p&gt;
+
+&lt;h2 id=&quot;bash-is-trash&quot;&gt;Bash is Trash&lt;/h2&gt;
+&lt;p&gt;But, bash sucks.&lt;/p&gt;
+
+&lt;h3 id=&quot;no-return-values&quot;&gt;No Return Values&lt;/h3&gt;
+
+&lt;p&gt;Bash has functions and its functions imitate the interface of commands - they are called like any normal Unix command, and there arguments are processed like any normal Unix command. This was a design decision that is simple and beautiful - that also cripples functions. Unix commands don’t have return values like a normal programming language - they return an unsigned 8 bit status code. As you can imagine, the vast majority of useful functions want to return something else.&lt;/p&gt;
+
+&lt;p&gt;Bash has a couple of different hacks for this. You can return via standard output by printing your return value, and capturing it at the caller - the method I find most convenient. Return is effectively done via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;printf&lt;/code&gt;, and captured &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;RET=$(fn arg arg arg)&lt;/code&gt;. This obviously has the disadvantage of preventing the function from producing standard output - something relatively easy to live with.&lt;/p&gt;
+
+&lt;p&gt;Another choice is returning via Global Variable. This is generally frowned upon in procedural programming because it can create debugging nightmares, and debugging is not even close to a strength of bash - specially because bash tends to fail silently. In addition, global variables can couple your program tightly - All functions end up using the same globals, and not being usable in other scripts, or having to have serious integration done. Bash doesn’t worry much about this, because it doesn’t have namespaces or modules. Your supposed to use a real programming language at that point. God forbid your function call a function that ends up modifying its global to create a new function call. Globals are just a bad choice, but bash will happily allow you to do this.&lt;/p&gt;
+
+&lt;p&gt;You can also pass variables by name. Passing by name is something like a pointer in C. You can pass a reference to the variable, its name, and then modify the variable this way. I find that many functions want to return anonymous values, that are used in other calculations. Creating names for each variable used in a calculation is a pain in the ass.&lt;/p&gt;
+
+&lt;p&gt;No return values becomes a bigger deal when combined with the way arguments to bash functions are handled.&lt;/p&gt;
+
+&lt;h3 id=&quot;no-real-argument-handling-types-or-data-structures&quot;&gt;No real argument handling, types or data structures&lt;/h3&gt;
+
+&lt;p&gt;Because of bash’s design decision to treat functions like commands, there are no argument types, or even fixed number of arguments. Unix commands receive an array of strings as arguments and that isn’t negotiable. Functions in programming languages generally don’t. Bash makes life as simple as possible by almost transparently converting between strings and numeric types in the correct contexts, but this isn’t really enough. Imagine that you want to pass an array to a function - normal enough behavior in a real program. There isn’t actually any kind of array, arguments are just passed as a long string, which you can parse into an array. This becomes problematic with more than one array. Bash will allow you to solve this problem via correct quoting, but this seems like a hack.&lt;/p&gt;
+
+&lt;p&gt;Really, the number of arguments and there types are not really fixed, and while that can be advantageous and easy to work with in some cases, it can be nightmarish in others. Effectively, you have to flatten and re-parse arrays through each function call.&lt;/p&gt;
+
+&lt;h3 id=&quot;no-libraries--modules--namespaces&quot;&gt;No Libraries / Modules / Namespaces&lt;/h3&gt;
+
+&lt;p&gt;Given that bash doesn’t have real argument handling, or return values for functions, its not all that surprising that it doesn’t have any kind of import, modules, libraries, or namespaces kind of functionality available. Bash scripts aren’t really meant to grow to beyond single file complexity. Functions are meant to return via globals, and be tightly coupled to the script.&lt;/p&gt;
+
+&lt;p&gt;Bash does afford two small luxuries here: local scoping, and sourcing. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;local&lt;/code&gt; builtin allows you to ensure that your functions use of a variable doesn’t overwrite some global somewhere with the same name. This is exactly inverse to python which requires you opt-in to using a global rather than default assuming so. Although, we can’t have namespaces, our functions can have local variables. 
+Although we can’t have libraries or modules to import, we can just run arbitrary bash code. Bash has a builtin called ‘source’ which allows use to run bash code in the current process, allowing use to keep functions in alternative files. Sourcing code dumps it all into the global namespace. You can mitigate this upfront by giving your functions long names that include a namespace identifier.&lt;/p&gt;
+
+&lt;h3 id=&quot;bash-fails-silently&quot;&gt;Bash Fails Silently&lt;/h3&gt;
+
+&lt;p&gt;Bash is a nightmare to debug. There isn’t a debugger, but, you can run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bash -x&lt;/code&gt; to have bash print debugging information for each line of the script it runs. What really makes debugging bash difficult, is that bash tends to fail silently. Bash doesn’t require you declare variables, and mistyping a variable name will result often result invalid commands that don’t do what you expect. Undefined variables default to an empty string or zero in numeric contexts - this can be disastrous for comparisons.&lt;/p&gt;
+
+&lt;h3 id=&quot;syntax--benefit-or-drawback&quot;&gt;Syntax : Benefit or Drawback?&lt;/h3&gt;
+
+&lt;p&gt;Bash has a(n) (in)famous syntax. The syntax isn’t intuitive, but is minimal. This turns out to be important for a shell. In accord with “Powershell In Action” description of Powershell’s “Elastic Syntax” feature, a shell should have syntax optimized for writing. Most shell commands are issued by the author for single use, and long term intelligibility are not worth trading for efficiency. Further, in accord with the Unix philosophy, targeting expert efficiency has more return, specially now with a lack of general users, for the Unix command line.&lt;/p&gt;
+
+&lt;p&gt;Bash’s syntax is minimal and efficient. This has draw backs for writing larger scripts where readability and maintenance are more important.&lt;/p&gt;
+
+&lt;h2 id=&quot;powershell-is-awesome&quot;&gt;Powershell is Awesome&lt;/h2&gt;
+
+&lt;p&gt;Powershell is a Microsoft’s attempt at replicating and improving on the success of the Unix CLI. As Microsoft has tried to expand into the server market, it has realized how the CLI allows automation in administration that is essential. Microsoft has tried to enable this automation by building its own command line environment called Powershell.  Powershell is now open source, but a Microsoft product. Powershell aims to be both a shell and scripting language, and the syntax is inspired by bash. Powershell tends to resolve many of the problems with bash, by offers its own problems for Unix.&lt;/p&gt;
+
+&lt;h3 id=&quot;elastic-syntax-shell-like-syntax&quot;&gt;Elastic Syntax, Shell like syntax&lt;/h3&gt;
+
+&lt;p&gt;In my opinion, the killer feature of Powershell is “Elastic Syntax”. The idea is that the syntax and verbosity expands or contracts according to the users needs : When using Powershell interactively as a shell, a user will likely want more abbreviations and less syntax. Implicitness and flexibility are a benefit. When using power shell as a scripting language, more syntax, more explicitness is desirable. For instance, variable typing allows type checking. In Powershell, variable types are optional features.&lt;/p&gt;
+
+&lt;p&gt;Powershell also unifies argument handling, names arguments. These names can be omitted, or abbreviated, for a minimal syntax, or made explicit to optimize an experience for reading and maintenance.&lt;/p&gt;
+
+&lt;p&gt;Elastic Syntax offers a way to transition a shell to a scripting language incrementally, feature by feature, as needed.&lt;/p&gt;
+
+&lt;h3 id=&quot;typed-programming-language--real-argument-handling&quot;&gt;Typed Programming Language / Real Argument Handling&lt;/h3&gt;
+
+&lt;p&gt;Powershell is a typed programming language, and allows passing arrays explicitly to functions. Parameters can be specified by name, and the number of arguments and there types is easily controllable. No flattening and re-parsing ever need be done. Powershell can also ensure that calls make sense by type checking and argument checking.&lt;/p&gt;
+
+&lt;h3 id=&quot;the-pipeline&quot;&gt;The Pipeline&lt;/h3&gt;
+
+&lt;p&gt;Powershell’s most famous trick is its pipeline. Unlike bash which creates separate processes and passes data via argv, stdin and stdout, Powershell runs all its cmdlets inside the same process, and passes Objects between cmdlets. This is interesting because the objects come with the ability to invoke their methods and access there members. This makes tricks like filtering not require regular expressions, but just like accessing members by name.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Get-Process | Where-Object Name -like 'cmd.exe' | ForEach $_.kill() &lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Note, this isn’t the most efficient way to do this, just a demonstration of the pipeline passing objects. You can actually run arbitrary blocks of code on each process including multiple cmdlets, to ultimately determine what happens to the process. Because the process is an object, we don’t lose information by having to parse some specific bit of it out and act on it in a filter, we are free to use any of its member’s and methods no matter where in the pipeline it appears.&lt;/p&gt;
+
+&lt;h3 id=&quot;real-modularity&quot;&gt;Real Modularity&lt;/h3&gt;
+
+&lt;p&gt;Powershell also has a namespace and module system.&lt;/p&gt;
+
+&lt;h3 id=&quot;good-command-names&quot;&gt;Good Command Names&lt;/h3&gt;
+
+&lt;p&gt;Since Microsoft was intentionally top down designing an ecosystem with retrospect on the past, they got to design the command names consistently. Although this is imperfectly done, Microsoft has chosen the convention of verb-noun for the command Names. There are commands like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Get-Process&lt;/code&gt;, which allow you to predict commands like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Get-Service&lt;/code&gt; exist, or from the two predict and the existence of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Start-Service&lt;/code&gt; predict the existence of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Start-Process&lt;/code&gt; probably exists. Microsoft has tried to a produce a convention for naming cmdlets that is intuitive.&lt;/p&gt;
+
+&lt;h3 id=&quot;good-process-model&quot;&gt;Good Process Model&lt;/h3&gt;
+
+&lt;p&gt;Microsoft Windows doesn’t have a process model that allows processes to have typed arguments either. So, cmdlets accepting typed arguments is an indication that something else is going on. Effectively, all Powershell commands are builtins, that run in the same process. This is quite unlike bash, which runs plenty of sub-processes. Powershell’s cmdlet model is far more efficient. Efficiency isn’t terribly important for scripts, many of which will be dependent on Network IO anyway, but is nice to have.&lt;/p&gt;
+
+&lt;h2 id=&quot;powershell-is-terrible&quot;&gt;Powershell is Terrible&lt;/h2&gt;
+
+&lt;h3 id=&quot;written-in-netmono&quot;&gt;Written in .NET/MONO&lt;/h3&gt;
+
+&lt;p&gt;Powershell is written in Microsoft’s .NET / Mono .  Mono/.NET is a competitor to java, a byte code driven VM provides the runtime on which the code runs. Microsoft calls this “managed” code, because garbage collection and memory management are done by the runtime. Most libraries and applications on *nix are written in C , and bindings for .NET/MONO don’t exist. .NET ,however, one of many visions Microsoft ha(s|d) for the future - Alternates include Modern Apps, and many Windows administration primitives are available via .NET. Although performance of scripts probably doesn’t matter, at least at the level between native and runtime code, MONO adds yet another layer of abstraction, if only to support Windows Libraries and APIs.&lt;/p&gt;
+
+&lt;p&gt;Powershell allows accessing .NET libraries via script, and this is amazingly flexible on the Windows platform, and also a security risk, because a user can effectively write new code. If you don’t install compilers on production machines because you don’t want attackers compiling code, the Powershell isn’t for you. Also, if your on Windows, you don’t have a choice.&lt;/p&gt;
+
+&lt;h3 id=&quot;shitty-command-names&quot;&gt;Shitty Command Names&lt;/h3&gt;
+
+&lt;p&gt;Although syntax, including for calling functions, is inspired by bash, Microsoft happily dumped the &lt;em&gt;sacred&lt;/em&gt; convention that command names be lowercase and produced a bunch of hyphenated monstrosity names.  These names can be abbreviated via aliases, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Get-ChildItem&lt;/code&gt; -&amp;gt; &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gci&lt;/code&gt; which is much more respectable. Further, Does the name &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Get-ChildItem&lt;/code&gt; actually allow you to predict the the output will list directory contents? To be sure, it can do more, but a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gci&lt;/code&gt; call is something like a replacement for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;microsoft-sucks&quot;&gt;Microsoft Sucks&lt;/h3&gt;
+
+&lt;p&gt;Microsoft Sucks. Microsoft is a giant corporation with a rich history of wishing evil to open source if not causing it. Microsoft is a direct competitor to *nix, and the command line is really far to important for Microsoft to own. Its true that Powershell is open source, and it could be forked, allowing Microsoft to define the shell and extensions to favour its own platform is an undesirable place for Linux to be.&lt;/p&gt;
+
+&lt;p&gt;Powershell is also bad for privacy - by default Powershell collects Telemetry. Powershell requires you to explicitly opt out of Powershell each time you run it by creating an environment variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;POWERSHELL_TELEMETRY_OPTOUT&lt;/code&gt; and setting the value to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;1&lt;/code&gt;. To be sure this can be automated, and I am sure this is trivially patched out of the source, but, do you really want your shell collecting Telemetry? Telemetry isn’t why I choose Linux. Also, telemetry exists on various open source Projects including Firefox.&lt;/p&gt;
+
+&lt;h2 id=&quot;python-sucks&quot;&gt;Python Sucks&lt;/h2&gt;
+
+&lt;p&gt;An obvious candidate for administration and automation on Linux is Python. Python is so well known, that no deep analysis is required. Plenty of bindings exist, but python isn’t a great shell due to the Syntax. Its simply not designed as a shell. Python doesn’t have a minimal syntax, or pipeline like data-flow for passing data. Even invoking every single command as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls()&lt;/code&gt; would get tiring. The syntax of python just isn’t suited to use as a shell.&lt;/p&gt;
+
+&lt;p&gt;Aquiring data isn’t like bash &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat | &lt;/code&gt; , but requires more subtely, and handles more complexity. Not suitable to a shell.&lt;/p&gt;
+
+&lt;p&gt;Further, python isn’t trivial to get started with like the shell. After learning interactive use of a variety of Unix commands, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; and its arguments doesn’t transfer into python where &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;os.listdir()&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;os.walk()&lt;/code&gt; might be what you want depending on your needs.&lt;/p&gt;
+
+&lt;p&gt;Xonsh is an interesting attempt to merge Python and the shell by effectively just having the parser decide if you meant python or shell depending on your context. IMO, a true shell/scripting hybrid requires special integration with the FS akin to globbing and ease of running sub-processes, and collecting an manipulating the data. Ironically, shell utilities being able to output JSON, might fix this, parsing this into python dictionaries might make working with native utilities easy and provide an experience similiar to powershell objects (sem methods).&lt;/p&gt;
+
+&lt;p&gt;Powershell’s and Bash are far more suitable shells than python at this point but the future is open.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-illustration-of-the-problems&quot;&gt;An Illustration of the Problems.&lt;/h2&gt;
+
+&lt;p&gt;Here is a simple thought experiment to illustrate these conclusions a bit. While viewing rendition infosecs jobs page, I observed a challenge to sort IP addresses numerically from a file in ascending order for each octet.&lt;/p&gt;
+
+&lt;p&gt;To do this in bash, we just use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sort -V &lt;/code&gt;. That actually feels like cheating because we are supposed to write the program. Well, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sort -n&lt;/code&gt; wont exactly work. We can sort on sub-fields with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sort -k&lt;/code&gt; but we can only sort on a single sub-field. The answer I ultimately selected was encoding the IP Addresses as they actually are, 4 byte numbers sorting like normal numbers than decoding. I did this with the filter pipeline model.&lt;/p&gt;
+
+&lt;p&gt;This solution is somewhat unsatisfactory because if we are going to use sort, why not just use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sort -V&lt;/code&gt; ? Well, writing the sort ourselves is non-trivial. I wrote a function to compare to address and return -1,0,1 similar to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;strcmp()&lt;/code&gt;, which effectively orders IP addresses. In any sane programming language, this is actually enough, and plugging this into a sort algorithm will produce a result. Bash has no mechanism to do that. I could write a merge sort implementation in bash, but remember, that bash doesn’t have any real way to pass arrays between functions. What a pain in the ass.&lt;/p&gt;
+
+&lt;p&gt;Bash does make getting the data, and operating on it in a pipeline easy. It doesn’t provide many data structures or algorithms.&lt;/p&gt;
+
+&lt;p&gt;Meanwhile, Powershell will allow all of the same approaches as bash, and allow me to plug my comparison function into a sort algorithm. And if I want to define a sort algorithm, it will let me pass arrays between functions.&lt;/p&gt;
+
+&lt;p&gt;Python is a full featured programming language that makes acquiring the data relatively difficult for a one off, I have to open the file and read the data. I will have to parse the data and explicitly convert to numbers and some kind of representation, then I can use a built in sort algorithm or define my own in a trivial way, because python supports passing data structures between functions. The python file will be longer and have more characters.&lt;/p&gt;
+
+&lt;p&gt;The bash solution is only acceptable because I was able to make my algorithm work in a pipelined data flow model.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Bash is severally limited as a scripting language but useful as a shell. Python is extremely useful as a scripting language, but impossible to use sanely as a shell. Powershell is an attempt to blend both but dumps Unix culture, C, and hands control of the shell to Microsoft. Part of why powershell does so well in this consideration is that it was designed as a modern shell and scripting language comobo. Asking the question this way is inheritantly choosing to exclude python. Perhaps a seperate scripting language and shell are fine.&lt;/p&gt;</content><author><name></name></author><summary type="html">Bash sucks. Lets get into Scripting on Linux</summary></entry><entry><title type="html">Introduction to DNS</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/introduction-to-dns.html" rel="alternate" type="text/html" title="Introduction to DNS" /><published>2020-11-30T00:00:00-05:00</published><updated>2020-11-30T00:00:00-05:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Creating-Namecheap-Glue-Records</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/introduction-to-dns.html">&lt;p&gt;The Domain Name System is one of the most basic, and oldest, infrastructure components the internet. DNS is a decentralized, hierarchical database that maps keys to values, kind of like a dictionary. This store is primarily used to map names, say &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lainchan.org&lt;/code&gt; to an IP Address &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;107.161.19.243&lt;/code&gt;. This is essential to the internet because routers are able to get data to IP Addresses, but not domain names. So, a computer makes a DNS Request to translate the a name to a machine usable number. To start this process off, your computer has the IP Address of a DNS server to start with - This is normally assigned by the network you are connected to (via DHCP), and a point of contention lately: ISPs have been fighting to retain control of your DNS server as its a common point of commercial surveillance. This has played out in Comcast lobbying the government to intervene in DNS over HTTPS, ATT Routers preventing you from setting DNS, Mobile ISPs blocking DNS requests to alternate servers, and Mobile OSs not even allowing you to set DNS. More articles on DNS and privacy are to follow.&lt;/p&gt;
+
+&lt;p&gt;Interestingly, DNS has alternative applications than just mapping IP Addresses and Domain Names. The DNS system can also map a service type for a domain to a host with service records (SRV), and has been used to map companies to contact information. Currently, since SMTP has no built in authentication to verify messages sent to a yahoo SMTP server from a google SMTP actually come from google, out of band mechanisms involving DNS have been created including SPF, DMARC and DKIM. DNS is also used to verify ownership of domains for the purpose of issuing SSL certificates by projects like &lt;a href=&quot;LetsEncrypt&quot;&gt;https://letsencrypt.org&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;DNS uses a Tree Structure to make lookups fast and that Tree is decentralized via delegation. Owners of some portion of the namespace can delegate sub-portions to alternate owners. The DNS namespace begins at the root “.” and portions of the root namespace are delegated as  “Top Level Domains” or “TLDs”. Popular TLDs include “com”, “net”, “org”, And so the top portion of the contains the following (incomplete) tree:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	.
+      / | \
+     /  |  \
+   com net org
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The root is owned by “ICANN”, a Yankee corporation formed for the purpose, and Domain Registrars assign people portions of the namespace below “TLDs” for a fee. For instance “lainchan.org” is really “.”-&amp;gt;”org”-&amp;gt;”lainchan” . Each of these parts of the namespace has a set of “authoritative” DNS servers which own a portion of the namespace and respond to requests for their portion. The DNS root servers control the root, and delegate control of TLDs, we can see this here using the dig command - a tool to preform DNS lookups. Here, we query a root server, f.root-servers.net. (“.”-&amp;gt;”net”-&amp;gt;”root-servers”-&amp;gt;”f”) for com. (“.”-&amp;gt;”com”).&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @f.root-servers.net com.
+...
+;; AUTHORITY SECTION:
+com.                    172800  IN      NS      a.gtld-servers.net.
+com.                    172800  IN      NS      b.gtld-servers.net.
+com.                    172800  IN      NS      c.gtld-servers.net.
+com.                    172800  IN      NS      d.gtld-servers.net.
+com.                    172800  IN      NS      e.gtld-servers.net.
+com.                    172800  IN      NS      f.gtld-servers.net.
+com.                    172800  IN      NS      g.gtld-servers.net.
+com.                    172800  IN      NS      h.gtld-servers.net.
+com.                    172800  IN      NS      i.gtld-servers.net.
+com.                    172800  IN      NS      j.gtld-servers.net.
+com.                    172800  IN      NS      k.gtld-servers.net.
+com.                    172800  IN      NS      l.gtld-servers.net.
+com.                    172800  IN      NS      m.gtld-servers.net.
+
+;; ADDITIONAL SECTION:
+a.gtld-servers.net.     172800  IN      A       192.5.6.30
+a.gtld-servers.net.     172800  IN      AAAA    2001:503:a83e::2:30
+b.gtld-servers.net.     172800  IN      A       192.33.14.30
+b.gtld-servers.net.     172800  IN      AAAA    2001:503:231d::2:30
+c.gtld-servers.net.     172800  IN      A       192.26.92.30
+c.gtld-servers.net.     172800  IN      AAAA    2001:503:83eb::30
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here we see that the root servers delegate the com. TLD to various servers who later in the tree have names under gtld-servers.net. An interesting question you might have is, how do the root servers know the address of “a.gtld-servers.net” which comes later in the tree? This is actually done through “glue records”. You can view the Root DNS Zone &lt;a href=&quot;Here&quot;&gt;https://www.internic.net/domain/root.zone&lt;/a&gt;. And if you look, you see that “com.” is controlled by “a.gtld-servers.net” with the following line:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;com.			172800	IN	NS	a.gtld-servers.net.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;But you also see the following line in the file&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;a.gtld-servers.net.	172800	IN	A	192.5.6.30
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So, a Owner of the namespace that delegates (via NS record) must know the address of who he delegates too. How could it work otherwise. You delegate to a name, but as “glue” include the address of the name you delegate too.&lt;/p&gt;
+
+&lt;p&gt;Lets follow the Tree now for lainchan.org as an experiment:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @a.root-servers.net org.
+org.                    172800  IN      NS      d0.org.afilias-nst.org.
+org.                    172800  IN      NS      a0.org.afilias-nst.info.
+org.                    172800  IN      NS      c0.org.afilias-nst.info.
+org.                    172800  IN      NS      a2.org.afilias-nst.info.
+org.                    172800  IN      NS      b0.org.afilias-nst.org.
+org.                    172800  IN      NS      b2.org.afilias-nst.org.
+...
+dig @d0.org.afilias-nst.org lainchan.org
+lainchan.org.           86400   IN      NS      dns1.registrar-servers.com.
+lainchan.org.           86400   IN      NS      dns2.registrar-servers.com.
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So, we see that lainchan.org has DNS servers registrar-servers.com responsible for it. Finally, We can query the official, authoritative DNS server for lainchan.org to make lookups in its space.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @dns1.registrar-servers.com lainchan.org
+...
+lainchan.org.           1800    IN      A       107.161.19.243
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is actually a lot of DNS requests to make for a single lookup, and this is also widely inefficient. Instead, ordinary users use caching DNS servers - shared DNS servers that remember lookups therefore keeping all there users from querying the root servers, and therefore overloading it. These caching servers will preform “recursive lookups” for you - or in one shot taking an arbitarily deep and potentially unseen hostname a.subdomain.domain.tld and preforming all lookups necessary and using whatever is cached to return a result. This is actually necessary, because the “resolvers” built into computer programs that use DNS, usually through the c libraries gethostbyname() function, cannot use a non-recursive server.&lt;/p&gt;
+
+&lt;p&gt;So, you might naturally wonder, what does a non-recursive server do when queried for some portion of the namespace it doesn’t own. Lets find out:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig @f.root-servers.net lainchan.org
+
+; &amp;lt;&amp;lt;&amp;gt;&amp;gt; DiG 9.11.24-RedHat-9.11.24-2.fc32 &amp;lt;&amp;lt;&amp;gt;&amp;gt; @f.root-servers.net lainchan.org
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; -&amp;gt;&amp;gt;HEADER&amp;lt;&amp;lt;- opcode: QUERY, status: NOERROR, id: 25171
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 13
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1472
+;; QUESTION SECTION:
+;lainchan.org.			IN	A
+
+;; AUTHORITY SECTION:
+org.			172800	IN	NS	a0.org.afilias-nst.info.
+org.			172800	IN	NS	a2.org.afilias-nst.info.
+org.			172800	IN	NS	b0.org.afilias-nst.org.
+org.			172800	IN	NS	b2.org.afilias-nst.org.
+org.			172800	IN	NS	c0.org.afilias-nst.info.
+org.			172800	IN	NS	d0.org.afilias-nst.org.
+
+;; ADDITIONAL SECTION:
+a0.org.afilias-nst.info. 172800	IN	A	199.19.56.1
+a0.org.afilias-nst.info. 172800	IN	AAAA	2001:500:e::1
+a2.org.afilias-nst.info. 172800	IN	A	199.249.112.1
+a2.org.afilias-nst.info. 172800	IN	AAAA	2001:500:40::1
+b0.org.afilias-nst.org.	172800	IN	A	199.19.54.1
+b0.org.afilias-nst.org.	172800	IN	AAAA	2001:500:c::1
+b2.org.afilias-nst.org.	172800	IN	A	199.249.120.1
+b2.org.afilias-nst.org.	172800	IN	AAAA	2001:500:48::1
+c0.org.afilias-nst.info. 172800	IN	A	199.19.53.1
+c0.org.afilias-nst.info. 172800	IN	AAAA	2001:500:b::1
+d0.org.afilias-nst.org.	172800	IN	A	199.19.57.1
+d0.org.afilias-nst.org.	172800	IN	AAAA	2001:500:f::1
+
+;; Query time: 48 msec
+;; SERVER: 192.5.5.241#53(192.5.5.241)
+;; WHEN: Sun Dec 06 13:07:16 EST 2020
+;; MSG SIZE  rcvd: 443
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;I have included the whole output this time, and we observe here, the root-servers, which are under heavy load, are unwilling to recurse. We see in this in these lines:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 13
+;; WARNING: recursion requested but not available
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;There was a query made, but No answers. We did however, receive additional information. The root server helpfully “referred” us to the authoritative servers for the org domain. We could now continue as above, querying say a0.org.afilias-nst.info (199.19.56.1) for  lainchan.org and receiving another referral. As mentioned, the ordinary DNS code used by applications cannot handle this sequence of responses and new requests, nor would this be efficient, but a DNS server can. DNS servers that will issues as many requests as needed to return a response to a client are called “recursive” or support “recursion”. Ordinarily, these are run by ISPs. You must use a recursive resolver for your DNS server settings in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/resolv.conf&lt;/code&gt; or on Windows “IPv4 Settings”.&lt;/p&gt;
+
+&lt;h1 id=&quot;dns-caching--ttls&quot;&gt;DNS Caching : TTLs&lt;/h1&gt;
+
+&lt;p&gt;DNS records are actually quite volatile and can change. For instance, if you use a dynamic DNS service provider, like afraid.org, to map your constantly changing home IP address to a human memorable name, you might want your DNS record to change quite frequently - requiring less caching, and more queries to the authoritative name server who has the instantly correct value. Other more stable services, might have less need for change, and more caching might be desirable to reduce the number of queries that the name server receives. After all, less caching means checking more often with the original server. This trade off is controlled by the owner of the DNS record through a “Time to Live” feature, where how long the record should be cached is set. A typical time is an hour, but as long as week might be used. You might be shocked at this value, but, should a server go down, having your DNS record cached at all major ISPs as one value, when your IP address has changed to a new value, might be quite frustrating.&lt;/p&gt;
+
+&lt;h1 id=&quot;what-kinds-of-dns-records-are-there&quot;&gt;What kinds of DNS Records Are there&lt;/h1&gt;
+
+&lt;p&gt;So, we now understand the structure of DNS - there are root servers who delegate downward to other authoritative servers, and then their are recursive resolvers run by ISPs and other organizations for end users to use. What kind of lookups are possible?&lt;/p&gt;
+
+&lt;p&gt;Obviously, a Host Name to IP Address lookup is possible. For an IPv4 host, this is an “A” record. The lainchan.org record we looked up before was an A record. We see this below in the format used in popular DNS Server, BIND ( Berkeley Internet Name Daemon ) for its databases or “zones”.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;lainchan.org.           1800    IN      A       107.161.19.243
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We see that lainchan.org has a TTL of 1800 seconds (30 minutes), has a class of Internet (as compared to other dead classes like choasnet), and its A record (mapping lainchan.org to a host name) has the value 107.161.19.243.&lt;/p&gt;
+
+&lt;p&gt;We can also do this backward with PTR records, which turn an IP Address into a hostname. Our dig invocation now is to our caching name server, and we request the PTR record. Note the format of the request has the IP address backward reflecting the structure “arpa-&amp;gt;in-addr-&amp;gt;107-&amp;gt;161-&amp;gt;19-&amp;gt;243” or essentially a tree like structure traversed most significant octet first, allowing us to group IP address by All 107.X.X.X (107.0.0.0/8) into a zone rather than all IP address that end in 243 (X.X.X.243). Because this is a pain in the ass to type, dig has the special syntax &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;dig -x [ip]&lt;/code&gt; to make this simple. The long form is provided here only for demonstration.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dig 243.19.161.107.in-addr.arpa PTR
+...
+243.19.161.107.in-addr.arpa. 86400 IN	PTR	lainchan.org.
+...
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Also note here, the less important PTR record has a much longer cache time.&lt;/p&gt;
+
+&lt;h1 id=&quot;ipv6&quot;&gt;IPv6&lt;/h1&gt;
+
+&lt;p&gt;Host name to IPv6 lookups are done with AAAA records. Separate records are provided because software expects A records to occupy a specific number of bytes, and be of a specific format. Also, the IPv6 rollout is still incomplete, and not all clients can handle equally an IPv6 or IPv4 address. IPv6 lookups can be requested with AAAA records.&lt;/p&gt;
+
+&lt;p&gt;We have already seen queries containing these results:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;d0.org.afilias-nst.org.	172800	IN	AAAA	2001:500:f::1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;more-records&quot;&gt;More records&lt;/h1&gt;
+
+&lt;p&gt;There are actually a wide variety of DNS records, that we will get into over time here. MX records make internet mail work, mapping domain names to mail servers that accept mail for them. TXT records that provide a generic storage used at one point to make Wikipedia articles available, verify domain ownership, or  shoehorn authentication onto SMTP out of band (SPF,DKIM). NS records are used to delegate portions of the namespace. We will get into all of these over time.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusions&quot;&gt;Conclusions&lt;/h1&gt;
+
+&lt;p&gt;By reading this document, you should have learned how to collect information from the DNS system via dig and about the structure and type of DNS servers including Authoritative vs Caching name servers, who runs caching servers, how delegation is done, and about the Tree like structure of DNS. Upcoming will be an article explaining security and privacy surrounding DNS.&lt;/p&gt;</content><author><name></name></author><category term="IT" /><summary type="html">The Domain Name System is one of the most basic, and oldest, infrastructure components the internet. DNS is a decentralized, hierarchical database that maps keys to values, kind of like a dictionary. This store is primarily used to map names, say lainchan.org to an IP Address 107.161.19.243. This is essential to the internet because routers are able to get data to IP Addresses, but not domain names. So, a computer makes a DNS Request to translate the a name to a machine usable number. To start this process off, your computer has the IP Address of a DNS server to start with - This is normally assigned by the network you are connected to (via DHCP), and a point of contention lately: ISPs have been fighting to retain control of your DNS server as its a common point of commercial surveillance. This has played out in Comcast lobbying the government to intervene in DNS over HTTPS, ATT Routers preventing you from setting DNS, Mobile ISPs blocking DNS requests to alternate servers, and Mobile OSs not even allowing you to set DNS. More articles on DNS and privacy are to follow.</summary></entry><entry><title type="html">Converting Writers Cafe Documents to Plaintext</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/converting-writers-cafe-documents-to-plaintext.html" rel="alternate" type="text/html" title="Converting Writers Cafe Documents to Plaintext" /><published>2020-11-23T00:00:00-05:00</published><updated>2020-11-23T00:00:00-05:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Converting-Writers-Cafe-Documents-Reverse-Engineering</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/converting-writers-cafe-documents-to-plaintext.html">&lt;p&gt;I have some documents in a strange format, how hard is it to convert them to plain text? This story covers some basic analysis of a fileformat, and some use of WxPython.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-setup&quot;&gt;The Setup:&lt;/h1&gt;
+
+&lt;p&gt;I have some old documents laying around, in the Writers Cafe ( www.writerscafe.co.uk ) format, “.wcd”. The software is somewhat ancient, and I would like to convert these documents to plaintext. Lets work through the quite simple process of “reverse engineering” the format.&lt;/p&gt;
+
+&lt;h1 id=&quot;the-file-&quot;&gt;The File :&lt;/h1&gt;
+
+&lt;p&gt;The obvious thing do to is check immeadately, if the file is in anyknown format, using the file command.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;file a.wcd
+a.wcd : data
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The file command spits back a generic, binary data, result. So, the data isn’t in any recognized, common format. Lets take a look to see if the file contains anything useful with a hex editor, xxd.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;xxd a.wcd
+00000000: 1100 0000 7763 6a6f 7572 6e61 6c64 6179  ....wcjournalday
+00000010: 2d75 7466 3840 0098 f5c2 8f5c 28f8 000a  -utf8@.....\(...
+00000020: 0000 0070 6167 652d 636f 756e 7401 0000  ...page-count...
+00000030: 0001 0000 0003 0000 0045 4e44 0300 0000  .........END....
+00000040: 0300 0000 454e 4413 0000 0070 6167 652d  ....END....page-
+00000050: 7072 6f70 6572 7479 2d63 6f75 6e74 0100  property-count..
+00000060: 0000 0400 0000 0300 0000 454e 4403 0000  ..........END...
+00000070: 0003 0000 0045 4e44 0d00 0000 7072 6f70  .....END....prop
+00000080: 6572 7479 2d6e 616d 6503 0000 0009 0000  erty-name.......
+00000090: 0070 6167 652d 6e61 6d65 1500 0000 7072  .page-name....pr
+000000a0: 6f70 6572 7479 2d76 616c 7565 2d73 7472  operty-value-str
+000000b0: 696e 6703 0000 000d 0000 006a 6f75 726e  ing........journ
+000000c0: 616c 2d65 6e74 7279 0300 0000 454e 4403  al-entry....END.
+000000d0: 0000 0003 0000 0045 4e44 0d00 0000 7072  .......END....pr
+000000e0: 6f70 6572 7479 2d6e 616d 6503 0000 000a  operty-name.....
+000000f0: 0000 0070 6167 652d 7661 6c75 6515 0000  ...page-value...
+00000100: 0070 726f 7065 7274 792d 7661 6c75 652d  .property-value-
+00000110: 7374 7269 6e67 0300 0000 6418 0000 3c3f  string....d...&amp;lt;?
+00000120: 786d 6c20 7665 7273 696f 6e3d 2231 2e30  xml version=&quot;1.0
+00000130: 2220 656e 636f 6469 6e67 3d22 5554 462d  &quot; encoding=&quot;UTF-
+00000140: 3822 3f3e 0a3c 7269 6368 7465 7874 2076  8&quot;?&amp;gt;.&amp;lt;richtext v
+00000150: 6572 7369 6f6e 3d22 312e 302e 302e 3022  ersion=&quot;1.0.0.0&quot;
+00000160: 2078 6d6c 6e73 3d22 6874 7470 3a2f 2f77   xmlns=&quot;http://w
+00000170: 7777 2e77 7877 6964 6765 7473 2e6f 7267  ww.wxwidgets.org
+00000180: 223e 0a20 203c 7061 7261 6772 6170 686c  &quot;&amp;gt;.  &amp;lt;paragraphl
+00000190: 6179 6f75 7420 7465 7874 636f 6c6f 723d  ayout textcolor=
+000001a0: 2223 3331 3337 3339 2220 666f 6e74 7369  &quot;#313739&quot; fontsi
+000001b0: 7a65 3d22 3130 2220 666f 6e74 7374 796c  ze=&quot;10&quot; fontstyl
+000001c0: 653d 2239 3022 2066 6f6e 7477 6569 6768  e=&quot;90&quot; fontweigh
+000001d0: 743d 2239 3022 2066 6f6e 7475 6e64 6572  t=&quot;90&quot; fontunder
+....
+....
+00001940: 6f20 736c 6565 702e 3c2f 7465 7874 3e0a  content.&amp;lt;/text&amp;gt;.
+00001950: 2020 2020 3c2f 7061 7261 6772 6170 683e      &amp;lt;/paragraph&amp;gt;
+00001960: 0a20 203c 2f70 6172 6167 7261 7068 6c61  .  &amp;lt;/paragraphla
+00001970: 796f 7574 3e0a 3c2f 7269 6368 7465 7874  yout&amp;gt;.&amp;lt;/richtext
+00001980: 3e0a 0300 0000 454e 4403 0000 0003 0000  &amp;gt;.....END.......
+00001990: 0045 4e44 0d00 0000 7072 6f70 6572 7479  .END....property
+000019a0: 2d6e 616d 6503 0000 000d 0000 0070 6167  -name........pag
+000019b0: 652d 706f 7369 7469 6f6e 1500 0000 7072  e-position....pr
+000019c0: 6f70 6572 7479 2d76 616c 7565 2d73 7472  operty-value-str
+000019d0: 696e 6703 0000 0004 0000 0032 3233 3003  ing........2230.
+000019e0: 0000 0045 4e44 0300 0000 0300 0000 454e  ...END........EN
+000019f0: 440d 0000 0070 726f 7065 7274 792d 6e61  D....property-na
+00001a00: 6d65 0300 0000 0b00 0000 7061 6765 2d65  me........page-e
+00001a10: 7869 7374 7315 0000 0070 726f 7065 7274  xists....propert
+00001a20: 792d 7661 6c75 652d 7374 7269 6e67 0300  y-value-string..
+00001a30: 0000 0300 0000 7965 7303 0000 0045 4e44  ......yes....END
+00001a40: 0300 0000 0300 0000 454e 44              ........END
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;And so, we see the the file format is something like a collection of named properties and values. We could spent time guessing the meaning and observing the delimters, but the only property I care about is ‘page-value’, which appears to contain an XML formated schema containing my content. Rather than continuing to reverse engineer the file format, we can simply extract this xml with a regular expression.&lt;/p&gt;
+
+&lt;p&gt;Python supports byte regular expressions via the re module. We choose to cut “&amp;lt;?xml” until “&amp;lt;/richtext&amp;gt;”. A simple regular expression for this is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rb&quot;&amp;lt;\?xml(.*)&amp;lt;\/richtext&amp;gt;&quot;&lt;/code&gt; which we use with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;re.search()&lt;/code&gt; to avoid requiring the match to appear at the begining of the line. Also, to match multiline content, we require the re.DOTALL option, to allow &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(.*)&lt;/code&gt; to match newlines.&lt;/p&gt;
+
+&lt;p&gt;This the following python should match our content:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;match = re.search(rb&quot;\&amp;lt;\?xml(.*)&amp;lt;\/richtext&amp;gt;&quot;,raw_wcd,re.DOTALL);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;the-xml&quot;&gt;The XML&lt;/h1&gt;
+
+&lt;p&gt;Having aquired our content, We have to ask, what is it? Luckily, it comes with an XML Schema for wxwidgets.org richtext. Looking into this, we find, that this is a Wx Toolkit Richtext Control XML format. The format is unique to  Wx , and I haven’t found anything that will open the raw XML if I wrote it to a file.&lt;/p&gt;
+
+&lt;p&gt;An obvious approach is use to use an XML parser to collect the contents of the tags as. This is actually trivial, infact, this could be done even without an XML parser. In the book Cybersecurity Ops with Bash, this is done with regular expressions and awk.&lt;/p&gt;
+
+&lt;p&gt;An alternate, slightly more complex, and not more useful option, is to consider using the WxWidgets Toolkit. There is actually &lt;em&gt;VERY&lt;/em&gt; Little documentation of the use of the toolkit online, and that is why I decided to present this option.&lt;/p&gt;
+
+&lt;h1 id=&quot;wxwidgets&quot;&gt;WxWidgets&lt;/h1&gt;
+
+&lt;p&gt;WxWidget ‘s has convient python bindings called WxPython. The classes we are intrested fall in a heirarchy &lt;a href=&quot;https://wxpython.org/Phoenix/docs/html/wx.richtext.1moduleindex.html&quot;&gt;wx.richtext&lt;/a&gt; . A Rich Text Control &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wx.richtext.RichTextCtrl&lt;/code&gt; provides the GUI Control to render richtext, and is capable of rendering our XML. But, we arn’t exactly intrested in rendering, just exporting. The RichTextCtrl has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wx.richtext.RichTextBuffer&lt;/code&gt; that actually holds the content. The documentation isn’t specially clear here, but a RichTextBuffer has handlers, added with RichTextBuffer.AddHandler() , that control saving and loading files. We call buffer.LoadFile() and Buffer.SaveFile() to “convert” our document. However, handlers for the type we are saving to must exist. (In?)Conviently, there are handlers for HTML, XML, and Text.&lt;/p&gt;
+
+&lt;p&gt;So, converting should look something like the following:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Buffer = wx.richtext.RichTextBuffer()
+Buffer.AddHandler(wx.richtext.RichTextXMLHandler())
+Buffer.AddHandler(wx.richtext.RichTextPlainTextHandler())
+Buffer.LoadFile(path_as_string, wx.richtext.RICHTEXT_TYPE_XML); #Temp file with content from extracted XML above
+Buffer.SaveFile(path_as_string, wx.richtext.RICHTEXT_TYPE_TEXT);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Also, somewhat undocumented, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wx.App(False)&lt;/code&gt; must be run, to initialize the python bindings.&lt;/p&gt;
+
+&lt;h1 id=&quot;putting-it-togther--a-simple-script&quot;&gt;Putting it togther : A simple script&lt;/h1&gt;
+
+&lt;p&gt;Here is a simple script that puts the idea togther:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;
+#!/usr/bin/env python3
+import wx
+import wx.richtext
+import sys
+import re
+import tempfile
+
+# Required for Init !!
+app = wx.App(False);
+# 
+class WxConverter():
+    def __init__(self,handler1, type1, handler2, type2):
+        self.buffer = wx.richtext.RichTextBuffer();
+        self.buffer.AddHandler(handler1);
+        self.buffer.AddHandler(handler2);
+        self.type1 = type1;
+        self.type2 = type2;
+    def load(self,fpath):
+        self.buffer.LoadFile(fpath, self.type1);
+    def save(self,fpath):
+        self.buffer.SaveFile(fpath, self.type2);
+    def convert(self, fpin,fpout):
+        self.load(fpin);
+        self.save(fpout);
+
+class WxXML2Txt(WxConverter):
+    def __init__(self):
+        super().__init__(wx.richtext.RichTextXMLHandler(),wx.richtext.RICHTEXT_TYPE_XML, wx.richtext.RichTextPlainTextHandler(), wx.richtext.RICHTEXT_TYPE_TEXT)
+    
+class WXXML2HTML(WxConverter):
+    def __init__(self):
+        super().__init__(wx.richtext.RichTextXMLHandler(),wx.richtext.RICHTEXT_TYPE_XML, wx.richtext.RichTextHTMLHandler(), wx.richtext.RICHTEXT_TYPE_HTML)
+
+class WCD2TXT(WxXML2Txt):
+    def __init__(self):
+        super().__init__();
+    def convert(self, fpin, fpout):
+        #make a tempfile
+        with tempfile.NamedTemporaryFile(mode='w') as fp:
+            with open(fpin,'rb') as fin:
+                raw_wcd = fin.read();
+                match = re.search(rb&quot;\&amp;lt;\?xml(.*)&amp;lt;\/richtext&amp;gt;&quot;,raw_wcd,re.DOTALL);
+                if(match):
+                    xml = match[0].decode();
+                    fp.write(xml + &quot;\n&quot;)
+                    fp.flush();
+            super().convert(fp.name, fpout);
+                
+def main():
+    converter = WCD2TXT();
+    converter.convert(sys.argv[1], sys.argv[2]);
+main();
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h1 id=&quot;conclusions&quot;&gt;Conclusions:&lt;/h1&gt;
+
+&lt;p&gt;Reverse Engineering a file format doesn’t have as high a barrier as you might initially think. This file format was made exceptionally easy based upon the fact that it uses highly structed, plaintext, XML data, with a documented schema, from an Open Source Project. As a result of this, we are able to effectively use the same open source libraries that wrote the content to convert the content. This blog functions as a a sort of guide post for others intrested in WxPython ‘s wx.richtext functionality and people intrested in converting Writers Cafe Documents. Perhaps next time, we can continue reverse engineering the file format, or at least add error checking to the code.&lt;/p&gt;</content><author><name></name></author><category term="IT" /><summary type="html">I have some documents in a strange format, how hard is it to convert them to plain text? This story covers some basic analysis of a fileformat, and some use of WxPython.</summary></entry><entry><title type="html">Containers: FreeBSD Jails</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/containers-freebsd-jails.html" rel="alternate" type="text/html" title="Containers: FreeBSD Jails" /><published>2020-10-19T00:00:00-04:00</published><updated>2020-10-19T00:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Containers-FreeBSD-Jails</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/containers-freebsd-jails.html">&lt;p&gt;Containers are the latest thing, but they are also an tried and true sysadmin tradition. Lets consider what containers are, how they are used, and what FreeBSD has to offer in this space.&lt;/p&gt;
+
+&lt;h2 id=&quot;chroot--the-first-containers&quot;&gt;Chroot : The first Containers.&lt;/h2&gt;
+
+&lt;p&gt;Containerization is a lightweight way to isolate an application from the system. Historically, this has provided convenient security properties but this is now being used to provide convenient availability properties as well by devops practitioners. Containerization on **nix begins with “chroot”, or “Change Root”. This system call allowed a process and all its children to be restricted to some portion of the filesystem called “the chroot jail”, to the process, this directory would appear as root (“/”). By limiting processes in this way, a system admin could be a little more sure that an exploited web server or DNS server , wouldn’t be reading /etc/shadow or other sensitive data without additional privilege escalation bugs. Chroot is incredibly low cost, resource wise, costing practically nothing, the processes in the chroot share the same memory, and kernel as the rest of the system, and neither hardware nor a whole operating system need to be emulated. The cost of chroot was often disk space in the form of duplicate copies of essential system files that the application required to run, a quite minimal cost. However, determining what files an application required to run in a chroot was non-trivial. Extensive tutorials have been posted on how to run commonly used, and exploited servers like bind in a chroot. Sometimes, an application would come prepackaged as a chroot’d or normal variant to ease this complexity. Chroots offered a security improvement, but at the cost of some complexity.&lt;/p&gt;
+
+&lt;h1 id=&quot;visualization--more-security-but-at-what-cost&quot;&gt;Visualization : More Security, but at What Cost?&lt;/h1&gt;
+
+&lt;p&gt;Chroots also suffered from not providing enough isolation for containerized applications: Only the file system was isolated. Views of processes, ability to listen on network ports, sniff traffic, etc, are not. This is why the FreeBSD handbook declares that chroots are not designed to provide security - because a privilege escalation vulnerability in userspace could an attacker to escape the chroot. Virtualization eliminates most of the security disadvantages of chroots by providing complete isolation (subject to side channels and VM escapes), between containers by providing separate kernels and separate OS instances for each virtual machine. This can be quite costly in resources though. For isolating a Web Server from a DNS server, we are now emulating two sets of hardware, two operating systems kernels, two init systems, and all the base processes associated with the Operating System instance. This can be somewhat mitigated by paravirtualization, in which the amount of hardware emulated can be limited by customizing the kernel running to understand its virtualized and offload work to the hypervisor (“host”) rather than slower, more resource intensive, emulated hardware. Even so, we are still running two OS instances and kernels. Virtual Machines provide the additional benefit of enhanced availability, because they can be migrated, and there configuration and deployment has been heavily automated. Additionally, software packages like bind do not need to be custom configured for the virtual machine, because it emulates an entire OS in full fidelity.&lt;/p&gt;
+
+&lt;h1 id=&quot;containerization--a-medium-solution&quot;&gt;Containerization : A medium solution.&lt;/h1&gt;
+
+&lt;p&gt;Containerization has evolved and a variety of options with a variety of capabilities is out there now. FreeBSD offers a type of Container called a “Jail” that has enhanced isolation between containers by limiting the view of processes running, the ability to create device nodes, raw sockets to sniff and send custom traffic, or even listen on addresses not configured at startup, while limiting the view of the filesystem to a preconfigured folder. These jails are like lightweight enhanced chroots. Because FreeBSD Jails do not emulate a separate kernel instance, you cannot run Linux or another operating system in a Jail (you can however, use FreeBSD’s linuxulator with a Linux userspace). FreeBSD provides automation to make the use of jails easy, and gives them the appearance of a being a complete virtualized system if desired.  For instance, arbitrary FreeBSD packages can be installed in a jail without customization. Jailing bind is as easy as creating a jail, then installing bind. Jails are also flexible, a complete FreeBSD runtime can be emulated by running the init system in the jail, or a single process can be run in the jail. Jails are lightweight enough that 10s or 100s can be run on a single machine, compared to perhaps 10 virtual machines. This blog is currently run out of a low end VM multiplex with multiple jails. FreeBSD jails also require manual, and machine specific integration with the host - Rules for NAT, and interfaces must be created on the host. This state is not kept with the jail and makes moving a jail between machines this much tougher.&lt;/p&gt;
+
+&lt;p&gt;Docker is an alternative containerization solution, with limited FreeBSD support. Docker has a rich ecosystem that allows the automation of the creation images, and the intelligent scheduling and scaling of docker images across clusters of machines for high availability. FreeBSD jails are unfortunately, not quite this flexible, and no mechanism exists for migrating jails between machines, nor is automated building of jails as easy as docker.&lt;/p&gt;
+
+&lt;p&gt;To summarize, Containerization is a lightweight alternative to Virtualization that can provide security boundaries between machines, and logical separation, while minimizing costs in additional memory and CPU. This technology is so lightweight, that even a low end VM can support multiple containers. Interestingly, this debate between containers and VMs is playing out in Desktop operating systems as Qubes (VMs) vs SubgraphOS (containers).&lt;/p&gt;
+
+&lt;h3 id=&quot;building-a-jail&quot;&gt;Building a Jail&lt;/h3&gt;
+&lt;p&gt;A FreeBSD jail is a collection of files in a directory that represents a FreeBSD system. Any way that you can build an ordinary FreeBSD system you can build a jail - We can build from source and install into a jail, or we can use packages. The minimum requirements for building a jail is the base.tgz set of files. We can manually untar this to a directory, or we can use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bsdinstall&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;Lets build a jail in /jail/example . Lets do this by creating a zfs dataset so that we can take snapshots and set quotas.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;zfs create zroot/jail
+zfs set mountpoint=/jail zroot/jail
+zfs create zroot/jail/example
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This creates a /jail dataset so that we can limit top level storage for all jails, if we desire, and a dataset for our VM, so, we can create a separate quote for it.&lt;/p&gt;
+
+&lt;p&gt;We now, install the base system, here using bsdinstall. Note, you can control which version of FreeBSD is installed by pointing to a directory containing the base.tgz file with the following environment variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;BSDINSTALL_DISTDIR&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bsdinstall jail /jail/example
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So now, a complete but basic FreeBSD system exists in /jail/example/ . We must now create an interface for the jail to use. The jail can share the hosts network adapters, but we are going to create a loopback adapter with a private internal address. The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/rc.conf&lt;/code&gt; file has a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloned_interfaces&lt;/code&gt; directive that will create an additional loopback adapter for us with the following line:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cloned_interfaces=&quot;lo1&quot;&lt;/code&gt;. Add give the host an address on our internal network in the rc.conf file with the line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ifconfig_lo1=&quot;inet 192.168.70.1 netmask 255.255.255.0&quot;&lt;/code&gt;Running the command &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service netif restart lo1&lt;/code&gt; should bring up the new adapter. We should be able to ping it from the host with `ping 192.168.70.1”.&lt;/p&gt;
+
+&lt;p&gt;We must now enable a NAT for our internal network so that we can reach the internet. Here we use pf. The following &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/pf.conf&lt;/code&gt; file contains a basic NAT for our device:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;EXT_IF=em0
+scrub out
+scrub in
+nat on $EXT_IF from 192.168.70.0/24 to any -&amp;gt; ($EXT_IF)
+block out quick on $EXIT_IF from 192.168.70.0/24 to any
+pass in 
+pass out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Obviously, make sure to set $EXT_IF to your out going interface. Set this configuration with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl -f /etc/pf.conf&lt;/code&gt; and make sure to enable it on restart with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysrc -e pf_enable=yes&lt;/code&gt; We now must enable packet forwarding with the following line in /etc/sysctl.conf &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;net.inet.ip.forwarding=1&lt;/code&gt;. Enable this now with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysctl -w net.inet.ip.forwarding=1&lt;/code&gt;. Our BSD box is now acting as a route for our internal network.&lt;/p&gt;
+
+&lt;p&gt;We can finally configure the jail. FreeBSD jails are configured from &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/jail.conf&lt;/code&gt;. Jails have a particular syntax&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;name {
+	var1 = value;
+	var2 = value;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;To use our jail, we must configure the name, path, networking information, and what runs when the jail is started.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;example {
+	host.hostname = &quot;example&quot;;
+	ip4.addr = lo1|192.168.70.2;
+	path = &quot;/jail/example&quot;;
+	exec.start = &quot;/bin/sh /etc/rc&quot;;
+	exec.stop  = &quot;/bin/sh /etc/rc.shutdown&quot;;
+	mount.devfs;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This actually should provide everything we need to run the jail. However, we are going to want to make some changes to the jail first. To prevent the jail from passing arbitrary traffic to the hosts loopback adapter, to which all jails are connected, FreeBSD will not allow the jail to bind to 127.0.0.1. This address is automatically translated to the address in the above configuration. So many system daemons that listen locally, might suddenly be listening on the network. We inhibit this behavior by telling some of these daemons not to listen. Edit the jails rc.conf (/jail/example/etc/rc.conf) to contain the following lines:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;sshd_enable=&quot;YES&quot;
+syslogd_flags=&quot;-ss&quot;
+ifconfig_lo1=&quot;inet 192.168.70.2 netmask 255.255.255.0&quot;
+sendmail_enable=&quot;NO&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We now edit the hosts rc.conf (/etc/rc.conf) , to enable the jail on startup by placing the following lines:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;jail_enable=&quot;YES&quot;
+jail_list=&quot;example&quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now start the jail by running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service jail start example&lt;/code&gt;. We can manually start the jail with the jail command as follows:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jail -n example /jail/example example lo1|192.168.70.2 'sh /etc/rc'&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Verify the jail is running with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jls&lt;/code&gt; which should give you the id.&lt;/p&gt;
+
+&lt;p&gt;You can view processes running the jail with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ps -J [id]&lt;/code&gt;. Create new processes with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jexec&lt;/code&gt; like so &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jexec example /bin/sh&lt;/code&gt;
+You can manage packages in the jail with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkg&lt;/code&gt; command on the host. Just use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-j&lt;/code&gt; switch to specify the jail. Services can be configured like normal from the jail’s rc.conf.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-jail-with-ezjail&quot;&gt;Creating a Jail with ezjail&lt;/h3&gt;
+
+&lt;p&gt;The Above process was a manual way to create a jail
+You can manage packages in the jail with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkg&lt;/code&gt; command on the host. Just use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-j&lt;/code&gt; switch to specify the jail. Services can be configured like normal from the jail’s rc.conf.&lt;/p&gt;
+
+&lt;h3 id=&quot;creating-a-jail-with-ezjail-1&quot;&gt;Creating a Jail with ezjail&lt;/h3&gt;
+
+&lt;p&gt;The Above process was a manual way to create a jail. We used commands like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jail&lt;/code&gt; to create jail, and bsdinstall to build it. This process can be somewhat modified using the ezjail framework. ezjail is a package that creates jails automatically from a template. Ezjail also uses nullfs to share the base.tgz set between machines to reduce disk space usage. Ezjail also supports customization of created jails through ‘flavours’.&lt;/p&gt;
+
+&lt;p&gt;The ezjail admin framework isn’t able to automate the customization of the host side of things: Ezjail doesn’t create the NAT rules, nor the additional interfaces. This configuration is host specific and makes jails far less portable than competing container products like docker.&lt;/p&gt;
+
+&lt;p&gt;Ezjail is operated through the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ezjail-admin&lt;/code&gt; command. Before we create jails, we must create the base template image. We do this with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ezjail-admin install&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;We can now create containers like so:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ezjail-admin create example2 'lo1|192.168.70.3' 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Customize your new hosts rc.conf as above, make sure NAT and cloned interfaces are set as above, and start the jail:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ezjail-admin start example2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We can get a console with the following:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ezjail-admin console example2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Ezjail admin isn’t a different backend. So commands like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jexec&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;jls&lt;/code&gt; will still show your jail. You can still install packages with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkg -j&lt;/code&gt;. ezjail stores jails by default in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/jails&lt;/code&gt;. The slick feature that ezjail seems to offer is primarily in sharing the base system via nullfs to save space.&lt;/p&gt;
+
+&lt;h2 id=&quot;whats-the-point&quot;&gt;Whats the point?&lt;/h2&gt;
+&lt;p&gt;Jails are a lighter-weight alternative to virtualization. This might allow you to turn a single VPS into a few VPSs, and allow you to provide some isolation between your applications. This has personally saved me some money.&lt;/p&gt;</content><author><name></name></author><category term="IT" /><summary type="html">Containers are the latest thing, but they are also an tried and true sysadmin tradition. Lets consider what containers are, how they are used, and what FreeBSD has to offer in this space.</summary></entry><entry><title type="html">Reading OpenBSD Source : cat.c</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/reading-openbsd-source-cat.c.html" rel="alternate" type="text/html" title="Reading OpenBSD Source : cat.c" /><published>2020-09-20T00:00:00-04:00</published><updated>2020-09-20T00:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Reading-OpenBSD-Source-cat.c</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/reading-openbsd-source-cat.c.html">&lt;p&gt;You should be reading source code. Reading source code is an excellent way to expand your programming ability and come into contact with new idioms, methods , and style. Today, we are going to read a basic program in the C Programming language , the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat&lt;/code&gt; program. This is a good start because the behavior of the cat program is familiar, easy to verify, and the program weighs in at only 249 lines of code.&lt;/p&gt;
+
+&lt;p&gt;The OpenBSD project uses a CVS repository for their code, but there is a github mirror for convineince. We are going to read commit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;3aaa63eb46949490a39db9c6d82aacc8ee5d8551&lt;/code&gt; on Jun 28th, 2019. A copy of the source code can be found &lt;a href=&quot;https://github.com/openbsd/src/blob/3aaa63eb46949490a39db9c6d82aacc8ee5d8551/bin/cat/cat.c&quot;&gt;here&lt;/a&gt;, corrisponding to version 1.27.&lt;/p&gt;
+
+&lt;p&gt;First, we observe the license, on lines 1-34 inclusive, demonstrating the copyright is owned by the University of California, where the program was originally developed by Kevin Fall at UC Berkeley. UC Berkeley lead the Computer Systems Research Group (CSRG) that was responsible for the creation of the Berkeley Software Distribution (BSD) of AT&amp;amp;T UNIX, forming the basis of all *BSDs today.&lt;/p&gt;
+
+&lt;p&gt;Following the license, we observe serveral compiler directives which begin with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#&lt;/code&gt; character. First lines 36 through 46 inclusive :&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;#include &amp;lt;sys/types.h&amp;gt;
+#include &amp;lt;sys/stat.h&amp;gt;
+
+#include &amp;lt;ctype.h&amp;gt;
+#include &amp;lt;err.h&amp;gt;
+#include &amp;lt;errno.h&amp;gt;
+#include &amp;lt;fcntl.h&amp;gt;
+#include &amp;lt;stdio.h&amp;gt;
+#include &amp;lt;stdlib.h&amp;gt;
+#include &amp;lt;string.h&amp;gt;
+#include &amp;lt;unistd.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;which make use of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#include&lt;/code&gt; compiler directive. This directive is similiar in purpose to a python &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;import&lt;/code&gt; statement. The process by which this is done in C is different though. In C, these &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#include&lt;/code&gt; statements insert the contents of the file inplace of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#include&lt;/code&gt; statement before the file is compiled. This stage of the compilation process is called ‘pre-processing’, and these directives are sometimes called ‘pre-processing’ directives.&lt;/p&gt;
+
+&lt;p&gt;Each of these items is included by the use of the system include path, by denoting the name of the file inside angle brackets &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;...&amp;gt;&lt;/code&gt;. The system include path can be determined when using the GNU GCC compiler by running the c pre-processor manually, with no input:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[user@host ~]$ cpp -v &amp;lt;/dev/null
+...
+ignoring nonexistent directory &quot;/usr/lib/gcc/x86_64-redhat-linux/10/include-fixed&quot;
+ignoring nonexistent directory &quot;/usr/lib/gcc/x86_64-redhat-linux/10/../../../../x86_64-redhat-linux/include&quot;
+#include &quot;...&quot; search starts here:
+#include &amp;lt;...&amp;gt; search starts here:
+ /usr/lib/gcc/x86_64-redhat-linux/10/include
+ /usr/local/include
+ /usr/include
+End of search list.
+...
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;So, on my demo system, I can see the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;&amp;lt;sys/types.h&amp;gt;&lt;/code&gt;, will be found as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/include/sys/types.h&lt;/code&gt;. The contents of this file will be dumped directly into my source code. These files ending in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.h&lt;/code&gt; are called headers, and typically only include declarations, later, the linker will connect the correct bits to the code in the library files necessary to use what they declare.&lt;/p&gt;
+
+&lt;p&gt;After, on line 48, we observe a macro:
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;#define MAXIMUM(a, b) (((a) &amp;gt; (b)) ? (a) : (b))&lt;/code&gt;
+The define pre-processor directive is used to create macros which are textually substitued where they occur in source code. This is as close as C can get to meta-programing. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;a&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;b&lt;/code&gt; are place-holders that are captured by the macro match and substituted into the expression. Thus when the expression &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;MAXIMUM(3,2)&lt;/code&gt; is found in the source code, it is replaced by the preprocessor with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;(((3) &amp;gt; (2)) ? (3) : (2))&lt;/code&gt;.  This expression is called the ternary operator, and it works like an if-else statement. The condition before the question mark is evaluated, if its true, the first expression is yeilded, here (a), and if false, the expression after the colon, here (b) is yielded.&lt;/p&gt;
+
+&lt;p&gt;The parens are written around everything so that expressions including operators are interopolated correctly: Because the strings are just interpolated, insertion of strings containing operators could cause operator precidence to become relevant in a confusing way. This wrapping of the macro, isolating each expression from one another will help prevent difficult to troubleshoot problems from occuring later.&lt;/p&gt;
+
+&lt;p&gt;Line 49 is a declaration of a variable &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;extern char *__progname;&lt;/code&gt;. The extern qualifer explains that the variable will be a symbol handled by the linker, and not defined by any source code included. This string (char*) __progname is non-standard, and is the name the program is run under (ARGV[0]).&lt;/p&gt;
+
+&lt;p&gt;Following this, we have some additional declarations of global variables. Each one is preceded by the type. Here we also see how to declare mutliple variables in one line.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int bflag, eflag, nflag, sflag, tflag, vflag;
+int rval;
+char *filename;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Now, we have some questions. What are these flag variables? What is rval? What is filename? To learn more, we will have to read deeper. Lets see if we can answer these questions.&lt;/p&gt;
+
+&lt;p&gt;Finally, some of the initially most puzzling lines of the file, some function declarations with very intresting names:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void cook_args(char *argv[]);
+void cook_buf(FILE *);
+void raw_args(char *argv[]);
+void raw_cat(int);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;What do these functions do? What is the differnce between raw_args and cook_args ?&lt;/p&gt;
+
+&lt;p&gt;Finally, we can get into the main show. The entry point of a C program is the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;main()&lt;/code&gt; function.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int
+main(int argc, char *argv[])
+{
+	int ch;
+
+	if (pledge(&quot;stdio rpath&quot;, NULL) == -1)
+		err(1, &quot;pledge&quot;);
+
+	while ((ch = getopt(argc, argv, &quot;benstuv&quot;)) != -1)
+		switch (ch) {
+		case 'b':
+			bflag = nflag = 1;	/* -b implies -n */
+			break;
+		case 'e':
+			eflag = vflag = 1;	/* -e implies -v */
+			break;
+		case 'n':
+			nflag = 1;
+			break;
+		case 's':
+			sflag = 1;
+			break;
+		case 't':
+			tflag = vflag = 1;	/* -t implies -v */
+			break;
+		case 'u':
+			setvbuf(stdout, NULL, _IONBF, 0);
+			break;
+		case 'v':
+			vflag = 1;
+			break;
+		default:
+			(void)fprintf(stderr,
+			    &quot;usage: %s [-benstuv] [file ...]\n&quot;, __progname);
+			return 1;
+		}
+	argv += optind;
+
+	if (bflag || eflag || nflag || sflag || tflag || vflag)
+		cook_args(argv);
+	else
+		raw_args(argv);
+	if (fclose(stdout))
+		err(1, &quot;stdout&quot;);
+	return rval;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;After another, declaration we see an if statement that looks interesting:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	if (pledge(&quot;stdio rpath&quot;, NULL) == -1)
+		err(1, &quot;pledge&quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This if statement checks the result of the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pledge()&lt;/code&gt; function. A common convention is functions that fail return -1, here we seem to be checking if the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pledge()&lt;/code&gt; function fails. What is this? Pledge is an OpenBSD specific syscall that limits what kinds of syscalls a program can make later. This is a kind of built in security, limiting the ability of the cat program to do things. This is a kind of programmer enabled MAC system, comparable to AppArmor except that the programmer specifies the restrictions. More information about pledge() can be found with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;man pledge&lt;/code&gt; on a OpenBSD system or online &lt;a href=&quot;https://man.openbsd.org/pledge.2&quot;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Following this, we see an intresting while loop. The while loop calls &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getopt()&lt;/code&gt; and ensures the value returned isn’t -1. getopt() (man 3 getopt), is a function used to parse arguments, the list of possible switches, is specified in a domain specific language, but the above string “benstuv” is actually really easy to interpret. Each letter corrisponds to a single switch. getopt() is called repeatedly, keeping its own state through global variables, until -1 is returned, indicating the end of switch processing.&lt;/p&gt;
+
+&lt;p&gt;The body of the while loop has a kind of if-else statement called a switch-case statement. Here we test the value of the switch observed to the possible options listed above. If no match is found, the ‘default’ clause is run, printing an error message of standard error via fprintf().&lt;/p&gt;
+
+&lt;p&gt;Here we also observe the value of the flag variables.. vflag is set to True, or 1, when observed by getopt() and so on. Each of these switches sets the corrisponding flag.&lt;/p&gt;
+
+&lt;p&gt;The one unique case is the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-u&lt;/code&gt; switch which calls setvbuf(). &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;man setvbuf&lt;/code&gt; tells use this functions prototype is 
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;int setvbuf(FILE *stream, char *buf, int mode, size_t size);&lt;/code&gt;. This function is used to set the buffering mode on the FILE* object. There are three types of allowable buffering mode:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Unbuffered&lt;/li&gt;
+  &lt;li&gt;Line Buffered&lt;/li&gt;
+  &lt;li&gt;Fully Buffered&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Buffering controls when writes actually occur. If the file is unbuffered, writes occur immeadately. If the file has a buffer, writes occur to the buffer first, and are written when the buffer is in a process called “flushing the buffer”. Presumably, a line buffered file would be written when a write includes a newline, and fully buffered would be written when the buffer is full. The cat program &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-u&lt;/code&gt; switch apparantly causes the file to be placed in unbufferd mode (_IONBF) .&lt;/p&gt;
+
+&lt;p&gt;After this line we see the line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;argv += optind&lt;/code&gt; . This line is designed to skip forward several items to the next item to process in the ARGV array by leveraging pointer arthimatic in C. In C, when you add an integer to a pointer, the interger is first multiplied by the size of a memory address. This is done to skip forward by optind items (one per memory address) in argv. optind, presumably, then is some kind of count of how many options have been read by the switch parsing while loop, plus 1 to get to the next item. A read of getopt()’s manual page will confirm this. Arguments are counted starting at 1 rather than zero, to make this work.&lt;/p&gt;
+
+&lt;p&gt;Next, The following if statement occurs:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	if (bflag || eflag || nflag || sflag || tflag || vflag)
+		cook_args(argv);
+	else
+		raw_args(argv);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This statement checks if any of some select flags are true &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-b&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-e&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-n&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-s&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-t&lt;/code&gt;, and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-v&lt;/code&gt; are set. If they are true, we do a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cook_args(), otherwise, we do a raw_args(). Do you know what these switches have in common that make them special vs say no switches, or &lt;/code&gt;-u` ?&lt;/p&gt;
+
+&lt;p&gt;Finally, we close standard out - its good practice, it flushes the buffers, and return rval - which notice we haven’t yet set. So apparantly, something called by these functions cook_args() and raw_args() must set rval.&lt;/p&gt;
+
+&lt;p&gt;So, we see that main mostly does argument parsing, specially switches. Lets now consult raw_args().&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void
+raw_args(char **argv)
+{
+	int fd;
+
+	fd = fileno(stdin);
+	filename = &quot;stdin&quot;;
+	do {
+		if (*argv) {
+			if (!strcmp(*argv, &quot;-&quot;))
+				fd = fileno(stdin);
+			else if ((fd = open(*argv, O_RDONLY, 0)) == -1) {
+				warn(&quot;%s&quot;, *argv);
+				rval = 1;
+				++argv;
+				continue;
+			}
+			filename = *argv++;
+		}
+		raw_cat(fd);
+		if (fd != fileno(stdin))
+			(void)close(fd);
+	} while (*argv);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Raw args appears to do some initialization where it sets a variable fd, short for “file descriptor” to the File Descriptor number of stdin, and the filename variable to stdin. A POSIX like kernel tracks which file operations to preform operations on a small integer called a file descriptor. Every opened file has a file descriptor number, and on Linux, these descriptors can be view for a process under &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/proc/[PID of Process]/fd/[descriptor]&lt;/code&gt;. Each of these files is symlink to the actual file opened. Usually, Standard Input is descriptor 0, Standard Output 1, Standard Error 2. This is where ‘2&amp;gt;[file]’ comes from in bash. The fileno function returns the file descriptor associated with a FILE*, in this case stdin.&lt;/p&gt;
+
+&lt;p&gt;Next we see a do while loop. The do while loop appears to iterate through ARGV, the remaining non-switches, as long as the next argument isn’t null but at least once. If there is no argument, since the loop is a do while it will still run once. If there is no argument, the *argv is false, since its a null pointer (all zeros), and we run raw_cat() with stdin’s file descriptor. After the run, provided the file descriptor isn’t stdin’s, we close it.&lt;/p&gt;
+
+&lt;p&gt;If we do have arguments, the following occurs:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;			if (!strcmp(*argv, &quot;-&quot;))
+				fd = fileno(stdin);
+			else if ((fd = open(*argv, O_RDONLY, 0)) == -1) {
+				warn(&quot;%s&quot;, *argv);
+				rval = 1;
+				++argv;
+				continue;
+			}
+			filename = *argv++;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We compare the the next argument to process to “-“. Confusingly, strcmp() will return 0, False, if the strings match, so we invert this to check for an exact match. If the next argument is ‘-‘, we set the file descriptor to standard input. This is generally a convention. Programs that accept file names typically accept ‘-‘ for standard input/output. Note, that we must set this, because this is in the body of the loop, and other arguments may have altered fd already.&lt;/p&gt;
+
+&lt;p&gt;Provided the next argument isn’t standard input (“-“), we attempt to open it read only as a file. If this fails, by returning -1 for failure, we write a warning to standard error via the warn() function (man 3 warn) with the file name, and set the return value to 1, we skip the argument and continue.&lt;/p&gt;
+
+&lt;p&gt;Provided the file opened successfully, we set filename to *argv, and advance argv to the next argument. This syntax, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filename = *argv++;&lt;/code&gt; is concise for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;filename = *argv; argv = argv + 1;&lt;/code&gt;. Because of how concise it is, some authors recommend against this &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;++&lt;/code&gt; notation.&lt;/p&gt;
+
+&lt;p&gt;Finally, raw_cat() is called with a file descriptor for the file, and filename pointing to the current file’s name in argv.&lt;/p&gt;
+
+&lt;p&gt;So, the raw_args() function appears to iterated through the arguments as filenames, opening each one and setting filename before calling raw_cat(). If no arguments are provided, raw_cat() is called on stdin.&lt;/p&gt;
+
+&lt;p&gt;Lets checkout raw_cat() now.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void
+raw_cat(int rfd)
+{
+	int wfd;
+	ssize_t nr, nw, off;
+	static size_t bsize;
+	static char *buf = NULL;
+	struct stat sbuf;
+
+	wfd = fileno(stdout);
+	if (buf == NULL) {
+		if (fstat(wfd, &amp;amp;sbuf) == -1)
+			err(1, &quot;stdout&quot;);
+		bsize = MAXIMUM(sbuf.st_blksize, BUFSIZ);
+		if ((buf = malloc(bsize)) == NULL)
+			err(1, &quot;malloc&quot;);
+	}
+	while ((nr = read(rfd, buf, bsize)) != -1 &amp;amp;&amp;amp; nr != 0)
+		for (off = 0; nr; nr -= nw, off += nw)
+			if ((nw = write(wfd, buf + off, (size_t)nr)) == 0 ||
+			     nw == -1)
+				err(1, &quot;stdout&quot;);
+	if (nr == -1) {
+		warn(&quot;%s&quot;, filename);
+		rval = 1;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;We see some initialization like in other functions. Some of these declarations are “static”.  Static means the variable is preserved across function calls. Lets see why this is done. Recall, this function is called once per argument.&lt;/p&gt;
+
+&lt;p&gt;Lets begin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;wfd = fileno(stdout)&lt;/code&gt;. Apparantly, wfd must be something like Write File Descriptor. This is likely to be set as 1, but this is the correct way to set this.&lt;/p&gt;
+
+&lt;p&gt;After we see a check if the buffer &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buf&lt;/code&gt; is unallocated, that is, a null pointer. If the buffer is unallocated the following block executes:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;		if (fstat(wfd, &amp;amp;sbuf) == -1)
+			err(1, &quot;stdout&quot;);
+		bsize = MAXIMUM(sbuf.st_blksize, BUFSIZ);
+		if ((buf = malloc(bsize)) == NULL)
+			err(1, &quot;malloc&quot;);
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here we see an fstat syscall be doing done. This retreives information about a file in a structure called a stat. Documentation of this structure and function can be found in man fstat . This function call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fstat(wfd, &amp;amp;sbuf)&lt;/code&gt; sets sbuf as a stat structure contianing details about the output file descriptor - likely a terminal, possible a file on disk depending on the invocation. The if statement above, verifies that the call is sucessful or dies with an error message.&lt;/p&gt;
+
+&lt;p&gt;bsize is now set with our macro to the larger of the block size on the file we are writing to &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sbuf.st_blksize&lt;/code&gt; (see man fstat) , OR BUFSIZ - a macro defined in &lt;stdio.h&gt;. You can verify this by searching the include paths like so `grep -Ri '#define BUFSIZ' /usr/include`.  On My system, this is 8Kib.&lt;/stdio.h&gt;&lt;/p&gt;
+
+&lt;p&gt;This next part is where all the magic happens:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;while ((nr = read(rfd, buf, bsize)) != -1 &amp;amp;&amp;amp; nr != 0)
+		for (off = 0; nr; nr -= nw, off += nw)
+			if ((nw = write(wfd, buf + off, (size_t)nr)) == 0 ||
+			     nw == -1)
+				err(1, &quot;stdout&quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Read (man 2 read) , is a syscall that reads bytes from a file identified by a file descriptor. Like other syscalls, the error condition for this returning a -1. The read syscall will return the number of bytes read, which here is stored in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nr&lt;/code&gt;. An obvious question then, is how we we signal completion of the read, that we have read all the bytes the file has to offer? &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; will return 0 when there are no bytes remaining to be read.&lt;/p&gt;
+
+&lt;p&gt;So we see the condition for the loop is that &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt; doesn’t error out, and there are additional bytes to read.&lt;/p&gt;
+
+&lt;p&gt;After we have read the bytes, into buf, We have to write them. The problem is ,however, that like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;read()&lt;/code&gt;, the syscall the writes the bytes , &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;write()&lt;/code&gt;, isn’t actually garanteed to write the whole buffer, analogous to how read isn’t garanteed to fill the whole buffer, even if additional bytes remain in the file.&lt;/p&gt;
+
+&lt;p&gt;So, another loop is done, tracking the offset at which to start writing bytes from the buffer in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;off&lt;/code&gt;. Each time we write, add the number written &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nw&lt;/code&gt; to the offset, and subtract the number written &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nw&lt;/code&gt; from the total we need to write, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nr&lt;/code&gt;. The condition that we continue is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nr !=0&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nr&lt;/code&gt; in the code. This is a little subtle.&lt;/p&gt;
+
+&lt;p&gt;Each call to write, we attempt to write from the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;buf + off&lt;/code&gt; addrress, the entire number of remaining bytes &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nr&lt;/code&gt;.  This is garanteed to be allowable, because &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nr&lt;/code&gt; must be less than the size of the buffer, and is decremented as much as offset is incremented.&lt;/p&gt;
+
+&lt;p&gt;The conditional statement checks is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;write()&lt;/code&gt; fails, or doesn’t actually write at all (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nw = 0&lt;/code&gt;) to error out.&lt;/p&gt;
+
+&lt;p&gt;Finally, We havea check if a read failed, if so, we set &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;rval&lt;/code&gt; to a falure condition.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;	if (nr == -1) {
+		warn(&quot;%s&quot;, filename);
+		rval = 1;
+	}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;So, this actually completes the call stack for invocations without options. The calls stack is as below:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;main() - Argument Parsing and decision for raw or cooked modes&lt;/li&gt;
+  &lt;li&gt;raw_args() - Opening files, calling raw_cat&lt;/li&gt;
+  &lt;li&gt;raw_cat()  - The actual reading and writing of bytes via read()/write() syscalls.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;Naturally, we could now consider the alternate case, where options dicate we go through the cook_args tree.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void
+cook_args(char **argv)
+{
+	FILE *fp;
+
+	fp = stdin;
+	filename = &quot;stdin&quot;;
+	do {
+		if (*argv) {
+			if (!strcmp(*argv, &quot;-&quot;))
+				fp = stdin;
+			else if ((fp = fopen(*argv, &quot;r&quot;)) == NULL) {
+				warn(&quot;%s&quot;, *argv);
+				rval = 1;
+				++argv;
+				continue;
+			}
+			filename = *argv++;
+		}
+		cook_buf(fp);
+		if (fp == stdin)
+			clearerr(fp);
+		else
+			(void)fclose(fp);
+	} while (*argv);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cook_args()&lt;/code&gt; function has an almost identical structure to raw_args, except rather than calling &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;open()&lt;/code&gt; producing a file descriptor, its calling &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fopen()&lt;/code&gt; producing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;FILE*&lt;/code&gt;. Why? Lets find out. Rather than raw_cat(), cook_buf() is called on each file. Lets examine &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cook_buf()&lt;/code&gt; to learn more.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;void
+cook_buf(FILE *fp)
+{
+	int ch, gobble, line, prev;
+
+	line = gobble = 0;
+	for (prev = '\n'; (ch = getc(fp)) != EOF; prev = ch) {
+		if (prev == '\n') {
+			if (sflag) {
+				if (ch == '\n') {
+					if (gobble)
+						continue;
+					gobble = 1;
+				} else
+					gobble = 0;
+			}
+			if (nflag) {
+				if (!bflag || ch != '\n') {
+					(void)fprintf(stdout, &quot;%6d\t&quot;, ++line);
+					if (ferror(stdout))
+						break;
+				} else if (eflag) {
+					(void)fprintf(stdout, &quot;%6s\t&quot;, &quot;&quot;);
+					if (ferror(stdout))
+						break;
+				}
+			}
+		}
+		if (ch == '\n') {
+			if (eflag &amp;amp;&amp;amp; putchar('$') == EOF)
+				break;
+		} else if (ch == '\t') {
+			if (tflag) {
+				if (putchar('^') == EOF || putchar('I') == EOF)
+					break;
+				continue;
+			}
+		} else if (vflag) {
+			if (!isascii(ch)) {
+				if (putchar('M') == EOF || putchar('-') == EOF)
+					break;
+				ch = toascii(ch);
+			}
+			if (iscntrl(ch)) {
+				if (putchar('^') == EOF ||
+				    putchar(ch == '\177' ? '?' :
+				    ch | 0100) == EOF)
+					break;
+				continue;
+			}
+		}
+		if (putchar(ch) == EOF)
+			break;
+	}
+	if (ferror(fp)) {
+		warn(&quot;%s&quot;, filename);
+		rval = 1;
+		clearerr(fp);
+	}
+	if (ferror(stdout))
+		err(1, &quot;stdout&quot;);
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The big structure of note here is the loop. Here, we seem to be iterating over each character (byte) in the file with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;getc()&lt;/code&gt;, We iteratate until the file ends. The previous character is recorded in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prev&lt;/code&gt; so that we can tell when we start a newline. The state machine is primed with the notion we starting a newline &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prev = '\n'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The first conditional statement in the loop checks if we are begining a newline (&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prev = '\n'&lt;/code&gt;). If we are then the sflag and nflags are potentially relevant.&lt;/p&gt;
+
+&lt;p&gt;The sflag conditional is a small state machine that allows two blank lines to pass, but not a third or more, in a row. A second blank line sets a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gobble&lt;/code&gt; flag, and any additional occurances are skipped with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;continue;&lt;/code&gt; statement. Any non-blankline character resets the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gobble&lt;/code&gt; flag. Of the two newline’s in a row, the first ends the previous line, the next leaves a single blank line. 2 or more blank lines in a row are effecitvely forbidden by the sflag.&lt;/p&gt;
+
+&lt;p&gt;The nflag conditional appears to deal with number lines. The first conditional inside it, has a confusing condition, that is better rewritten with demoragans law as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if !(bflag &amp;amp;&amp;amp; ch = '\n')&lt;/code&gt;, in otherwords, number the line unless its blank and bflag is set. (bflag prevents the numbering of blanklines). The actual number is accomplished with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;fprintf()&lt;/code&gt;, and the line number is stored in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;line&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The other condition, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;else if (eflag)&lt;/code&gt; will only occur if the original is false, or nflag is set, bflag is set, ch is ‘\n’ and eflag is set. If this is so, write six spaces and a tab.  We will have to observe why in a minute.&lt;/p&gt;
+
+&lt;p&gt;If we are writing a newline, but not necessarily at the begining of a line, the next conditonal applies. &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;if (ch == '\n')&lt;/code&gt;. Here, if the eflag is set, we write a ‘$’ character. So, eflag is used to display line endings with ‘$’.&lt;/p&gt;
+
+&lt;p&gt;If the character is a tab, if tflag is set, we display ‘^I’. So, tflag controls writing tabs specially. Notice the continue statement here but not above - ‘\t’ is translated to ‘^I’ and no other characters are written, we skip to the next character. Above, we write ‘$’ and continue to write the newline, breaking the line.&lt;/p&gt;
+
+&lt;p&gt;Next, we do vflag processing. For non-ascii characters, we write M- prefix, and map the character to the ascii range with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;toascii()&lt;/code&gt; function. Notice we continue processing.&lt;/p&gt;
+
+&lt;p&gt;If the character is a control character, We write the prefix ‘^’ and then we have a curious teriary statement
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ch == '\177' ? '?' : ch | 0100&lt;/code&gt; which is then written. This is analogous to the following:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if( ch == '\177')
+{
+	return '?';
+}
+else
+{
+	return ch | 0100;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This is somewhat arcane. The escape sequence \177 is an octal ascii code for DEL (man ascii). If the character is DEL then write ‘?’ (making ^?). If not alter character by setting a setting a bit. What does this bit do? Most control characters are low numbered in the ascii table. By setting this bit, we map the low order control characters to alphabetic characters and printable symbols EXCEPT for ‘\177’ delete, which wouldn’t change it - the bit is set in delete already. So, we see, this is a strategy for converting an unprintable character into a printable character, and that vflag maps unprintable control characters to ‘^X’ where X is some character represented by ch | 0100. By the way, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;0100&lt;/code&gt; is octal as well. Any int literal with a leading zero in C is octal.&lt;/p&gt;
+
+&lt;p&gt;Finally, we print the character. Meaning our ‘$’ gets a newline, an ‘M-‘ gets a charcater as well. Any non-special character is also simple printed.&lt;/p&gt;
+
+&lt;p&gt;So now, we have a relatively complete understanding of OpenBSDs cat program.&lt;/p&gt;
+
+&lt;h2 id=&quot;bonus--compiling-it-for-linux&quot;&gt;Bonus : Compiling it for Linux&lt;/h2&gt;
+&lt;p&gt;You should have noticed, all of this is standard C/*Nix stuff except for &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pledge()&lt;/code&gt;. We can simply remove this conditional:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;if (pledge(&quot;stdio rpath&quot;, NULL) == -1)
+		err(1, &quot;pledge&quot;);
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And compile with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gcc cat.c -o cat&lt;/code&gt; command. And have a working cat binary.&lt;/p&gt;</content><author><name></name></author><summary type="html">You should be reading source code. Reading source code is an excellent way to expand your programming ability and come into contact with new idioms, methods , and style. Today, we are going to read a basic program in the C Programming language , the cat program. This is a good start because the behavior of the cat program is familiar, easy to verify, and the program weighs in at only 249 lines of code.</summary></entry><entry><title type="html">GPG : Introduction to Public Key Methods</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/gpg-2.html" rel="alternate" type="text/html" title="GPG : Introduction to Public Key Methods" /><published>2020-09-13T00:00:00-04:00</published><updated>2020-09-13T00:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/GPG-Public-Key-Intro</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/gpg-2.html">&lt;h2 id=&quot;introduction&quot;&gt;Introduction&lt;/h2&gt;
+&lt;p&gt;This article will cover the theoretical underpinnings of Public Key cryptography and practical use of GPG for public key cryptography. Its a little longer than usual, but the material is essential.&lt;/p&gt;
+&lt;h2 id=&quot;publicprivate-key-cryptography&quot;&gt;Public/Private key Cryptography&lt;/h2&gt;
+
+&lt;p&gt;You will recall arisu, in the previous post on symmetric key cryptography in GPG [1]  , we discussed the problem of Key Exchange. That is, in order to communicate securely with Symmetric Cryptography, you have to have a secure means to exchange a secret key, up front, with the party you communicate with. For a long time, this problem was solved by distributing “code books” ahead of time to soldiers at war. Capturing these code books could cost blood, and governments told soldiers to die fighting to protect the cryptographic equipment and materials that kept their brothers safe. This logistical mechanism is unsatisfying, because an ordinary person cannot achieve it - imagine carrying code books to each party you wished to communicate with, and because it requires upfront interaction - You must meet ahead of time to exchange material “out of band” or in the physical world.&lt;/p&gt;
+
+&lt;p&gt;Another problem that symmetric key cryptography has, is you have to have a secret key for each person you wish to communicate with that must be different from all these others. This means if n people wish communicate securely, you must have something like n^2 keys. This might be fine for a few people, but doesn’t work for millions of people, say buying from thousands of stores online securely.&lt;/p&gt;
+
+&lt;p&gt;However, a totally new form of cryptography was discovered by Williamson and Cocks of the British GHCQ (who couldn’t understand the value), and later by proto-cypherpunks Whitfield Diffie and Martin Helman, whose stories are told in a history all cypherpunks should read [2], that would totally remove the requirement to exchange keys up front. This new set of cryptography methods is called “Public Key” or “Asymmetric Cryptography”.&lt;/p&gt;
+
+&lt;p&gt;With Asymmetric Cryptography each party has two “asymmetric” keys : “public” and “private”. Unlike like symmetric cryptography, the same key is not used to encrypt and decrypt, thus its asymmetric. What is encrypted with the “public” key cannot be decrypted with the public key , but only the private. What is encrypted by the private key cannot be decrypted by the private key but only the public. Each undoes the other. This it turns out we can make very useful system out of.&lt;/p&gt;
+
+&lt;p&gt;We publish as publicly as possible the public key and anything encrypted with it can only be undone by the private key. Provided we keep the private key a secret known only to ourselves, then only we can decrypt anything sent to us.&lt;/p&gt;
+
+&lt;p&gt;Interesting enough, we can get more than this. If we encrypted with the private key, anyone with the public key, “everyone”, can decrypt, verifying that someone with the private key encrypted - us. This property is used to construct a digital signature that can verify us. This property of being able to sign a document such that receivers have a guarantee the holder of the private key sent it is called “non-repudiation” because the sender cannot “repudiate” or deny it.&lt;/p&gt;
+
+&lt;p&gt;Amazingly, public key cryptography also solves our scaling problem - Each person only needs to have the others public key. For n people to communicate securely, we only need N public keys.&lt;/p&gt;
+
+&lt;p&gt;For a more in-depth discussion of these ideas see chapter 2 of The GNU Privacy Handbook [3] .&lt;/p&gt;
+
+&lt;h2 id=&quot;a-new-problem--key-verification&quot;&gt;A New Problem : Key Verification&lt;/h2&gt;
+&lt;p&gt;Now that public keys are public, and anyone can publish a key, what stops someone from impersonating someone they are not? What stops a “man in the middle” from impersonating you to someone else, and someone else to you?&lt;/p&gt;
+
+&lt;p&gt;Lets take the classic scenario of Alice and Bob trying to communicate, and Eve trying to intercept. What stops Eve from creating a public key labeled “alice” and giving it to bob, and one labeled “bob” to give to alice. If they accept these keys, any information bob sends to alice with eve’s “alice” key can be decrypted by her, and then since Alice’s true key is public, rencrypted and sent to alice. Will observe an encrypted message that she can decode from the “bob” key. This attack is called a “man in the middle”. Its conceivable to automate it in a monstrous way too: Imagine that when you post your public key on the internet, a “public” key is posted instead by a malicious ISP. Everytime you view the key, the malicious ISP sends your true key, but whenever, anyone does, they get a a false key. This active man in the middle attack” is horrifying.&lt;/p&gt;
+
+&lt;p&gt;With symmetric key cryptography, we never worried about verifying identity, because presumably, whoever had the key was authorized to decrypt. We “authenticated” their identity when we exchanged keys “out of band”. In the past, out of band might have looked like a phone call - with deep fakes today, a phone call might not be sufficient to verify identity, and an active MITM with a deep fake could potential cause similar problems to the above. Even a physical meeting could have someone show up to impersonate the other party. These scenarios seem some how less likely than active MITM over the internet - which is easier to pull off, although still terribly complicated.&lt;/p&gt;
+
+&lt;p&gt;So how do we verify public keys belong to the person they claim to belong to?&lt;/p&gt;
+&lt;h2 id=&quot;web-of-trust-and-90s-crypto&quot;&gt;Web Of Trust and 90’s crypto&lt;/h2&gt;
+&lt;p&gt;The out of band answer is always possible. We can always meet up and verify that the public key does in fact belong to who it claims. This is done with a ‘finger print’ or kind of identifying sequences of characters for the key. The hold of public key can verify the finger print of the key matches what the receiver of the key received by meeting in person. But, this is almost as bad as just meeting up and exchanging symmetric keys - except we don’t have to do it once per conversation.&lt;/p&gt;
+
+&lt;p&gt;Instead, a System called a “Web Of Trust” was created solve this problem. The Web of Trust (WOT) is something like the web’s Certificate Authority Program, except everyone is a Certificate Authority - its a decentralized trust network. Lets get into what that means. Every user is allowed to verify the identity of another user by signing the others public key. Since we can be sure a signature can’t be forged, then we can be sure that its presence means according to the signer, this public key does in fact belong to the claimed identity. This allows your ‘friends’ to verify for you the identity of others. This is advantageous and dangerous depending on the judgment of your friends. GPG allows you to configure this with trust levels, where you can allow or disallow friends to verify the identity of others.&lt;/p&gt;
+
+&lt;p&gt;The idea of the Web of Trust is that out of natural human social networks, you will be able to verify the identity of anyone. As the network gets larger, it becomes more likely that someone you trust verified someone eles’ key, or due to lessor levels of trust assigned to people validated by trusted friends, that you can have some lessor assurance of the validity of an identity these new parties validated. You can adjust the requirements to consider an identity valid. Do you consider friends of validated friends able to validate? This allows trust to propagate through the network in a user configurable way.&lt;/p&gt;
+
+&lt;p&gt;For this system to work, all of this data &lt;em&gt;must&lt;/em&gt; be public. This has serious downsides. Each signature is a record of associate between people. The 1990’s apparently didn’t envision this as a problem. These public associates are what help trust propagate through the network and thus helpful, but associations can have real world negative impacts that we are more inclined to understand in today’s disillusioned and authoritarian world. For instance, here is a quote from the GNU Privacy Handbook [2] on why you should add multiple “identity’s” or emails and names to a single PGP public key:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Additional user IDs are useful when you need multiple identities. For example, you may have an identity for your job and an identity for your work as a political activist. Coworkers will know you by your work user ID. Coactivists will know you by your activist user ID. Since those groups of people may not overlap, though, each group may not trust the other user ID. Both user IDs are therefore necessary.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;By labeling your key like so, you are crossing compartments in your life. This is positive for the web of trust, and allows political activists the ability to validate the identity of corporate employees where they otherwise might not be able to, but it also exposes your dual identity to the world. In many cases, the benefits are not worth the OPSEC costs of spilling compartments like this.&lt;/p&gt;
+
+&lt;p&gt;In fact, generally, a big part of of asymmetric key cryptography in PGP is about establishing and maintaining an identity. Things like key verification by out of band meet-ups are probably not things that Darknet users want to do. A more realistic model for Darknet users is “trust on first use”, TOFU,  which just assumes an identity is valid the first time its used. If you understood the MITM attack above, you probably understand the limitation of this model.&lt;/p&gt;
+
+&lt;h2 id=&quot;gpg-public-key-usage&quot;&gt;GPG Public Key usage:&lt;/h2&gt;
+&lt;p&gt;Now that you actually understand public key cryptography, lets get down to actually using GPG to do it. We generate a key pair with the default settings with the following:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --gen-key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;What should follow is a prompt for a Name and Email to use for the identity and a request for a passphrase. The name and email values are supposed to be used in the WOT, and &lt;em&gt;they will appear to anyone that you provide the public key to&lt;/em&gt;. You should choose a secure passphrase because a passphrase is the weakest link in the chain. Without a passphrase, anyone with access to your computer can use your key. Bear in mind, that you may not always been in physical control of your machine.&lt;/p&gt;
+
+&lt;p&gt;You can actually have finer grained control over things like key-size with&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --full-generate-key
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&quot;sharing-keys&quot;&gt;Sharing Keys&lt;/h1&gt;
+&lt;p&gt;Having now produced a public key, we need to provide it to people. We can do this with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--export&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg -armor --output publickey.asc --export &amp;lt;email&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;For example, here is a public key for this website:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+mQGNBF9eNlMBDACkdoBF2DZcE/9FBoC2oT8wUn8f/gG+QRieWOFlWVLhtiOBs0xT
+5/+mmjODR+37Td9aKzg84B5BREClTVOJrNdMty1WvQmAwyZwhHESPdBqzLFavYg6
+p27dedOewvs4qHt8mWCMpoEa0CIdf7PZ+0e1rBJzMZL/UmU0W4oqccRRJ9WQTz4B
++psXZJ1VlfnouIlpN2kQaZWXib8SlBwBONNeaAmc6s+h0q+6ToEEyIt2C8t9/rkS
+7l5rxRqudvwBA8NI5zV4zhje8rUAWlbNu2Btyi3LGhLt+oc6T7I6+y86dGwCHQBF
+eZazT6c4fsTywzH8J2ALTLcTRfl4KM46VhA7dwKIxqXyyLzVI0nt1jZnSuNHo89v
+G4APZxtjQk/oTjEQEZ3rq89nEb2jZGR4aWxDvLUE/P4UtTtBJlCA8wDqETEcQr+Y
+CEaz2f5wKhein9oaR28VITKvmDnmJ629Do4jW29weV+JqCFerTcvysME4N495Xwg
+0At2RG/yeUmLtHMAEQEAAbSpQ29hcnNlIEVuaWdtYSAoRGVtbyBLZXkgZm9yIGh0
+dHA6Ly9jZ2p6a3lzeGE0cnU1cmhydHI2cmFmY2toZXhiaXNidHh3ZzJmZzc0M2Nq
+dW1pb3lzbWlyaGRhZC5vbmlvbikgPGFkbWluQGNnanpreXN4YTRydTVyaHJ0cjZy
+YWZja2hleGJpc2J0eHdnMmZnNzQzY2p1bWlveXNtaXJoZGFkLm9uaW9uPokBzgQT
+AQoAOBYhBL8GE2ihTnIn6r4IdFyjlxOTmLOXBQJfXjZTAhsDBQsJCAcCBhUKCQgL
+AgQWAgMBAh4BAheAAAoJEFyjlxOTmLOXbz8L/2lXozpUvxYp3FW9VZ3KdgwqNwZd
+9g495nPjhnXb7MLW/or1H0Hwk3b9k2/GxlCdKIysWg0ahrde+YPRvDCZ+sSudzFQ
+DYgP9+7B9J2dOLQOt4w0HjuH2SavOya+XzO/Xjf69yHMqHAugPdRP+Sj2EhdNQ2M
+V9SzwgUsb/iZZ6JL63wpFbvElHhQIurFT4PaSvESOjOsHv/5Zeln5JBZ2HrPcIXM
+nGPKmrSoMmNpkYUC5J6Nwjxk9u4jDNzzikWQp9eGpSOFPYbh0pB2VuLqNNxtJ8pA
+T50FHOA9YJaNyd3jZAMz0PESAUstFJHVWvwj+erpoCQkncvqY4xYqr7bvJ6+MWyV
+DQpu5yRekkK9Yidad/608ShsQR6ozIO0b/uSZ7Rb83OGTbzgdNwYhoN1YRPc6Smw
+DPie/4RZ+VXxmPJMFz0T1xKrcvLCV46I+2HCuuTYW7lDeFJ9f/QeYrmMa3Mf8wdm
+dP6zOeWI3cZ4E5u+saNdULDEt/4U7fwpYSQzwrkBjQRfXjZTAQwAtEPuzrBDlQSz
+dVHI7xW2DyRvhcTej5JTs4SlCa3OYvJPHqy5BbnqY2SxBU1ImhNS2d9Y+FBa+q0P
+A0IcQGEeDX0+VF/tQIaKVv8dQQNcn4ftrjHzkKStdIategka/4TLZJImwA3ln3mh
+1cItuTXPj8a2hbICZ0FU2onvSgoDlFUzY31XAv3WV3KAnmG2bX5GwMmmJ77BrAir
+mYlGGHUqs5xYS5D7B9R/iBnjvXOi1FSArX+3iYWTgJNJ2aVxCvsueyIacOdvuD4h
+vk31GkKFyJ0H6i7OxxAYzzo8C0W3/713/BYjioMpdq3pzMbqWjtypTEYMXTr5Y59
+6iuSU8/RGEbI1NZjPxrXpFuiUvLEB3piWEPANoccoXEHGXe9UnhCFfkcPJVrgpUE
+y9AgU1Y/pu3oB3VE09itjnFeaJwR5Duz4/2/yia/kngVUVH1G7RgkCx08B92jPhy
+tXcDZzpcbotdY72ttp17Kh9+8Cf+o4VH1iVdsKc9GR3d2oFmVWJPABEBAAGJAbYE
+GAEKACAWIQS/BhNooU5yJ+q+CHRco5cTk5izlwUCX142UwIbDAAKCRBco5cTk5iz
+l4bLDACVFPubdezVoksY8VRKISyBGlCmKHuTvMd4NC/kxnUYA3A3HdzzF2+BKCu5
+zt5HgKC5cbDw2xvQmRPc9ksSCJQJvlg+EjkKTfmtaNCs4wyD3EifRhoA+wBYSqVK
+9oQVHVDVnryNmkUBg2g1ZiAhHmgynCpXBOMJ1J3IRGdetC0MCbV4ZR3ujRG/laLa
+cYX+dGJA3kH/q1GanFyWZx5J7XarijyWfnOavmdCZvie/C+uSx5kQCKRvH/FzaY+
+GAf9LtJREdk6/lvmm/FuCwQCwF6ri7V1qeSl4+TnumdnzNIwUIaAJQoUDRn+9c6Z
+Hg39euQTPngTCIAd2rd6X6kWq4gLEZXJcn5xk1zTsX1brncMroBTpRADGZlFxSym
+1O9QHgqaSKC3d9khd/9MPeUuzIHiV38XMsC3rvcS5Omy7JO5DlmcX41+EQq9Da/Z
+CVarYurbnFJvAtWYEnWwBjgqe/6XXGBsZZbi7Z6nBUCNhTV4WBxwF15Be6vYNS0R
+FzRTXIg=
+=AyXc
+-----END PGP PUBLIC KEY BLOCK-----
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This key would be imported into the library of keys, called “public key ring” with the following:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --import file_you_made.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;You should be aware, having this public key doesn’t allow you to do anything except: 1.) Check the signatures on it confirming my associations 2.) encrypt messages to me or 3.) Verify my signatures. With the exception of 1, this doesn’t provide you any privileged information.&lt;/p&gt;
+
+&lt;p&gt;You can verify that you imported the key by viewing your public key ring. Use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--list-keys&lt;/code&gt; option&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --list-keys
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here is some example output:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;user@host:~$ gpg --list-keys
+/home/user/.gnupg/pubring.kbx
+-----------------------------
+pub   rsa3072 2020-09-13 [SC]
+      BF061368A14E7227EABE08745CA397139398B397
+uid           [ultimate] Coarse Enigma (Demo Key for http://cgjzkysxa4ru5rhrtr6rafckhexbisbtxwg2fg743cjumioysmirhdad.onion) &amp;lt;admin@cgjzkysxa4ru5rhrtr6rafckhexbisbtxwg2fg743cjumioysmirhdad.onion&amp;gt;
+sub   rsa3072 2020-09-13 [E]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Above we see Public key in RSA format with 3072bits. We see a creation date, and the long string beginning with ‘BF06…’ is the key ID. We will use this below:&lt;/p&gt;
+&lt;h3 id=&quot;key-servers&quot;&gt;Key Servers&lt;/h3&gt;
+&lt;p&gt;Exporting an importing keys manually is somewhat annoying. You can automate this process by using PGP key-servers. Key servers are servers designed to distribute public keys. The GPG program integrates with them to make your life simple. You can send keys with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--send-keys&lt;/code&gt; option to publish your key&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --send-keys [keyid]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and receive a key with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--recv-keys&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --recv-keys [keyid]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;A Question you might have is, how do I know which key ID to receive If I don’t have the key? This should actually come out of band. Your party should tell you which key to request. Anyone can publish a key with any email. Searching by e-mail isn’t secure. Nonetheless, keyserver.pgp.com and pgp.mit.edu with both let you search their website for keys by email. If you do use this option, make sure to use it with the WOT.&lt;/p&gt;
+
+&lt;h1 id=&quot;encryption-and-decryption&quot;&gt;Encryption and Decryption&lt;/h1&gt;
+&lt;p&gt;Now, lets get into the actual use of PGP. You encrypt messages with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--encrypt&lt;/code&gt; option. You must specify the recipients, because their public keys are used to encrypt the session key. If you don’t list yourself, you will not be able to decrypt the message. You can add as many recipients as you wish.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --armor --encrypt --recipient 'Coarse Enigma' file.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This will produce &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;file.txt.asc&lt;/code&gt; containing the encrypted contents.
+You decrypt with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--decrypt&lt;/code&gt; option, which will by default output to the terminal. You probably don’t want this, because the contents might be binary.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --output file.txt --decrypt file.txt.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&quot;signatures&quot;&gt;Signatures&lt;/h1&gt;
+&lt;p&gt;Signatures can be done two ways with GPG: Clear Sign or Detached. Clear signatures place the signature inline with the contents and are suitable to interrupted reading. Here is an example:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA512
+
+This is some text that I have clearsigned alice.
+
+I might have several paragraphis in here, and this would be much more readable. 
+
+In fact if the whole article were in here, you almost wouldn't even notice this signature
+
+until the end....
+
+Its a little unwiedly for small mounts of text.
+-----BEGIN PGP SIGNATURE-----
+
+iQGzBAEBCgAdFiEEvwYTaKFOcifqvgh0XKOXE5OYs5cFAl9eTxQACgkQXKOXE5OY
+s5ewkQv/WNbM0CgCdCmCHhWqzgHT9vDpEZ1iEPNxrOUHCTimHt1Ct/3K9KY4k5xz
+gBTbqEFhBnZ831cg9Ynt81lhrn1+jjqKrluH7RL+gixlkKLvWctgoddPZy7iBNmE
+LnY3npDpuOVkkDdUpqOCTt8u15dvw9uiF2KqguS6oeySYbG9HDiBI9QQaNZe1kzc
+ukrmNixcp+HaLODRiNNTGWbm7ycIWBRPeVdccGW5dxRyt+JjIlLSo0YRq5N8cNWQ
+Ec7SXBOg6NZuERYd28jP665zF00psVEgJah7LN/802YkpjhOrd7s1/lWbXmKmKae
+lfZQdVjkdp21VT2BHBUS75mwpszMWfHg+CzbjYHYU8fWJ4W5F0UO83eSsqq+JdXh
+Fcec+mSM90LSS4W4BL++sDY9h42QWD2ip6QWNvbrNleXZC0B+QHLCAm+uNT7bKGS
+IGSb2lR78/qsTswwGxMXb0Opog6eKp2T1f6UGBTXITiCHLHFCNzIJVoL79Y7oF88
+bK1VvW+F
+=oqNO
+-----END PGP SIGNATURE-----
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Clear signing is only suitable for text. You can’t just append arbitrary data to the begining and end of files. A detached signature is what is used for files like ISOs. These are separate &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.asc&lt;/code&gt; files that contain the signature.
+Clear sign with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--clearsign&lt;/code&gt; option:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --clearsign file.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Notice we didn’t have to put &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--armor&lt;/code&gt; here! That’s because clear-sign is only suitable for text, and produces ASCII encoded output Everytime.
+We verify this signature with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--verify&lt;/code&gt; option&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --verify file.txt.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Next lets try a detached signature with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--detach-sig&lt;/code&gt; option:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --armor --detach-sign [file.txt]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This will produce a detached signature file ending in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.asc&lt;/code&gt;
+We verify signatures with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--verify&lt;/code&gt; option:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --verify [asc_sig] [file_to_verify]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;You can also sign and encrypt files&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --armor --sign --encrypt --recipient 'Coarse Enigma' file.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;When doing this, a single file will be created, file.txt.asc containing the encrypted contents and signature. The decrypt option will decode the file, and output the result of the signature check:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --output [newfile] --decrypt file.txt.asc
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&quot;revoking-keys&quot;&gt;Revoking Keys&lt;/h1&gt;
+&lt;p&gt;If for some reason you ever lose control of your private key - say your computer was taken from you. You need a way to inform others not to trust your signatures anymore. A PGP revocation certificate does this for you; By keeping a separate revocation certificate someone secure, if you lose access to your computer or someone forces your hand to gain access to the key, you can publish the certificate invalidating the key. This is much more powerful when used with automated distribution mechanisms like key-servers - where anyone will observe your revocation in real time.&lt;/p&gt;
+
+&lt;p&gt;Generate the revocation certificate like so:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --gen-revoke -a --output revoke.key '[email]'
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;By publishing the contents of this file, anyone can invalidate your key. You should probably keep this somewhere separate from your key so that if your key is seized you can invalidate it.&lt;/p&gt;
+&lt;h1 id=&quot;next-steps&quot;&gt;Next Steps&lt;/h1&gt;
+&lt;p&gt;Try to verify the clear signed message above. Send me an encrypted message on Lainchan or 8chan/cyber/ . Go Read about Crypto Parties [4] and attend a key-signing event so you can expand the WOT. Remember not to use privileged identities / break compartments when doing this. Most Crypto-Parties / Key-Signing events require a user to use their legal identity.&lt;/p&gt;
+
+&lt;p&gt;[0] - &lt;a href=&quot;https://gnupg.org&quot;&gt;GNUPG&lt;/a&gt;&lt;br /&gt;
+[1] - &lt;a href=&quot;/blog/gpg-1.html&quot;&gt;GPG : Protect Your Privacy&lt;/a&gt; &lt;br /&gt;
+[2] - Crypto: How Code Rebels Beat the Government - Saving Privacy in the Digital Age - Steven Levy&lt;br /&gt;
+[3] - &lt;a href=&quot;https://gnupg.org/documentation/guides.html&quot;&gt;The GNU Privacy Handbook&lt;/a&gt; - John Michael Ashley&lt;br /&gt;
+[4] - &lt;a href=&quot;http://crypty22ijtotell.onion/handbook/&quot;&gt;Crypto Party Handbook&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="Privacy" /><summary type="html">Introduction This article will cover the theoretical underpinnings of Public Key cryptography and practical use of GPG for public key cryptography. Its a little longer than usual, but the material is essential. Public/Private key Cryptography</summary></entry><entry><title type="html">GPG - Protect Your Privacy : Introduction and Symmetric Encryption</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/gpg-1.html" rel="alternate" type="text/html" title="GPG - Protect Your Privacy : Introduction and Symmetric Encryption" /><published>2020-09-06T00:00:00-04:00</published><updated>2020-09-06T00:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/OpenPGP-Protect-Your-Privacy</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/gpg-1.html">&lt;h2 id=&quot;what-is-openpgp&quot;&gt;What is OpenPGP&lt;/h2&gt;
+&lt;p&gt;If you are reading this blog, there is little reason that you shouldn’t be encrypting your personal email with OpenPGP based encryption every time.  This series of blog posts will attempt to explain what OpenPGP is, and why and how you should use it.&lt;/p&gt;
+
+&lt;p&gt;OpenPGP is a IETF standard format, RFC 4880 [0], for providing encryption and digital signatures for &lt;em&gt;any&lt;/em&gt; content. OpenPGP is quite flexible, and, although it is used most commonly with E-mail, OpenPGP can be used anywhere that text or files can be exchanged. OpenPGP compliant programs turn data into an ASCII or Binary data that can be copy/paste into files, or put in files directly.&lt;/p&gt;
+
+&lt;p&gt;GPG [1], The GNU Privacy Guard, is a FOSS implementation of OpenPGP. This is somewhat ironic, because the original PGP code written by Zimmerman was open source, but not libre. Over the years, the code has been extended and owned by a variety of actors - This is perhaps the best example of how open source != libre. This is not the only implementation of OpenPGP: Multiple chrome extensions including one by google [2] and OpenPGP.js by Protonmail exist to preform OpenPGP manipulations from a web browser for web-mail, an Apache module, mod_openpgp exists to sign web pages, and various email client extensions like Enigmail to simply the process.&lt;/p&gt;
+
+&lt;p&gt;This blog post, the first in the series, is going to explain how to use the GPG command line to preform basic encryption and decryption.&lt;/p&gt;
+
+&lt;h2 id=&quot;symmetric-encryption---encryption-for-insiders&quot;&gt;Symmetric Encryption - Encryption for Insiders.&lt;/h2&gt;
+
+&lt;p&gt;Symmetric encryption is perhaps the simplest type of encryption, and the kind the makes sense to the average person: Encryption with a password. You provide a password, you get the contents of the file. No certificates or identity are in play here. GPG uses the ‘–symmetric’ option to preform symmetric encryption.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --symmetric [file]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Doing this will result in the creation of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[file].gpg&lt;/code&gt; which is the encrypted file. The original will not be touched. We can effect the name of the file using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--output&lt;/code&gt; option like so&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --symmetric --output [newname] [file]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Running the file command, we can see that the file is AES encrypted by default:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[newname]: GPG symmetrically encrypted data (AES cipher)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;We can actually view further details with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--list-packets&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --list-packets [newfile]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;which yields the voluminous output&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;[user@host ~]$ gpg --list-packets [newfile]
+gpg: AES encrypted data
+gpg: encrypted with 1 passphrase
+# off=0 ctb=8c tag=3 hlen=2 plen=13
+:symkey enc packet: version 4, cipher 7, s2k 3, hash 2
+        salt F99B17B7C36EECB2, count 30408704 (237)
+# off=15 ctb=d2 tag=18 hlen=2 plen=0 partial new-ctb
+:encrypted data packet:
+        length: unknown
+        mdc_method: 2
+# off=36 ctb=a3 tag=8 hlen=1 plen=0 indeterminate
+:compressed packet: algo=1
+# off=38 ctb=ad tag=11 hlen=3 plen=5515
+:literal data packet:
+        mode b (62), created 1599521025, name=&quot;[file]&quot;,
+        raw data: 5494 bytes
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Here we can observe, the original file name and size are recorded in the encrypted file as cryptographic metadata. So, if disclose the secrets through file name, your secrets are disclosed. Be aware of this when you encrypt ‘love_letter_to_mrs_brown.txt’. We also observe, the cipher used is “cipher 7”. We can look this up in the standard in section 9.2&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ID Algorithm 
+-- --------- 
+0 - Plaintext or unencrypted data 
+1 - IDEA [IDEA] 
+2 - TripleDES (DES-EDE, [SCHNEIER] [HAC] - 168 bit key derived from 192) 
+3 - CAST5 (128 bit key, as per [RFC2144]) 
+4 - Blowfish (128 bit key, 16 rounds) [BLOWFISH] 
+5 - Reserved 
+6 - Reserved 
+7 - AES with 128-bit key [AES] 
+8 - AES with 192-bit key 
+9 - AES with 256-bit key 
+10 - Twofish with 256-bit key [TWOFISH] 
+100 to 110 - Private/Experimental algorithm 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and so we see, the algorithm used is AES-128, which was also denoted [AES] by file, and the standard.
+PGP gracefully allows use to control this with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--cipher-algo&lt;/code&gt; option. Lets try 256 bit camellia, a modern cipher with as much protection as AES.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --symmetric --cipher-algo camellia256 [file]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;That option isn’t listed by the standard.. We can determine what cryptographic primitives, including ciphers, GPG supports by running&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;h1 id=&quot;binary-and-ascii---how-do-i-post-on-forums&quot;&gt;Binary and ASCII  : How do I post on forums&lt;/h1&gt;
+&lt;p&gt;Printable ASCII data is a series of bytes/numbers that happen to be interpreted as printable characters by software like web forums. This is only interesting because there are bytes/numbers that are not printable. Trying to paste the contents of a GPG encrypted file in binary format, the default, used above, is going to result in chaos that is not copy-pastable by the recipient - Some characters might not get rendered by the forums/text editors, others can modify/remove characters. Thankfully, OpenPGP has an ASCII only mode that generates files that can be copy paste. For this we use the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--armor&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --symmetric --armor [file]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This produces as &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.asc&lt;/code&gt; file that contains only letters than you can copy and paste anywhere that letters are accepted. Here is a demo of what that the files content looks like.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;-----BEGIN PGP MESSAGE-----
+
+jA0EBwMC9F4ypBiTvw/t0ogBLUu6G3BXTFqEpW0VQ9i2rh2c3PAWvND7D5yURQ6g
+QmAXK+cgLDaUiUQpFK8e3Ojy0G/57ZpijESfXBJiC+dWAlRch4I6hFmreJ/f87Wa
+6ThRVuyJvf5ZrbTmu6y1iVasf0JnjkE+0KXQ5E/76fmU0k6RCRVNO0qq2D06iQtN
+EeIMkC1GWptK
+=X+Pf
+-----END PGP MESSAGE-----
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;An alternate, but not as common method of encoding binary data as ASCII so that it can be rendered by text editors/forums is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;base64&lt;/code&gt;. GPG doesn’t automatically understand base64 encoded files, and its not as obvious the file is GPG encrypted. This doesn’t really provide &lt;em&gt;any&lt;/em&gt; security, but makes for a game commonly played by neophytes.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;base64 [binary_file] &amp;gt; [filename]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This can be decoded with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;-d&lt;/code&gt; switch.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;base64 -d [file_name] &amp;gt; [binary_file]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;In a pinch, you could use this to obfuscate binary files, or even just make them transmissible over forums without encryption. This is most commonly seen as a tactic in CTFs to confuse newbies.&lt;/p&gt;
+&lt;h2 id=&quot;symmetric-decryption--give-me-my-data-back&quot;&gt;Symmetric Decryption : Give me my data back!&lt;/h2&gt;
+&lt;p&gt;So, one obvious question you might have now that you have encrypted all your files is, “how do I decrypt them”. GPG can do that too, with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--decrypt&lt;/code&gt; option. By default, the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--decrypt&lt;/code&gt; option will output to standard out, or the terminal. You probably want to change this by using the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--output&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;gpg --decrypt --output [newname] [file]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Interestingly, GPG doesn’t make use of the filename in the cryptographic metadata, and as far as I can see, this feature cannot be disabled.&lt;/p&gt;
+
+&lt;h2 id=&quot;why-use-symmetric-encryption&quot;&gt;Why use Symmetric Encryption&lt;/h2&gt;
+&lt;h1 id=&quot;the-problem-of-key-exchange&quot;&gt;The Problem of Key Exchange&lt;/h1&gt;
+&lt;p&gt;Symmetric Encryption requires all parties agree on a password securely. One objection that you might raise is, “If I can get you the password securely, why not just pass the data instead?” This objection is deeper than it sounds, and has concerned governments, militarys, and cryptographers for a &lt;em&gt;long&lt;/em&gt; time. The problem is called “Key Exchange”. Symmetric Encryption algorithms like AES, CAMELLIA, don’t handle ensuring the people decrypting the file have the password/key. The good news is, there are cryptographic ways to do Key Exchange securely, but lets consider for now, why would anyone use Symmetric Encryption algorithms?&lt;/p&gt;
+
+&lt;h1 id=&quot;limitations-of-full-disk-encryption-and-layers-of-security&quot;&gt;Limitation’s of Full Disk Encryption and Layers of Security&lt;/h1&gt;
+&lt;p&gt;One obvious use is when there is no key exchange, IE. the encryptor is the only party. You can use GPG to encrypt your own files and data transfers. Of course, full disk encryption exists, and applying GPG to each file before use is a pain in the dick (READ: Not scalable) - so its not a drop in replacement for FDE. However, an important consideration is that FDE actually only protects data at rest that is to say, files on a hard disk spun down with encryption key not in memory, and computer powered off. If your computer is running when attacked, all bets are off. For a real life example of this, see Ulbrict Ross [3],  Dread Pirate Roberts , whose laptop was seized running. One thing you might do to provide an additional layer of protection to your device is encrypted a few special files when not in use, even with the full disk encrypted. This is actually what the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pass&lt;/code&gt; [4] password manager does.&lt;/p&gt;
+
+&lt;h1 id=&quot;encrypting-data-transfers&quot;&gt;Encrypting Data Transfers&lt;/h1&gt;
+&lt;p&gt;If your an admin, you have likely transferred data insecurely with netcat. Don’t do this, GPG is installed on almost all Linux machines by default. You can encrypt netcat data transfers without cryptocat or the annoyance of SSL certificates for ncat by using GPG.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;cat [secret data] | gpg --symmetric --passphrase &quot;lol_this_is_in_history&quot; --batch | nc -lp [port]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;nc [host] [port] | gpg --decrypt --passphrase &quot;lol_this_is_in_history&quot; --batch &amp;gt; [secret_data]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;If you are a regular human being, you probably use e-mail as a way to send yourself files. You’d be pleasantly surprised to learn then, that OpenPGP software is available for virtually every platform including Andriod, IOS, Windows, Linux and MacOS. Don’t send secure data insecurely.&lt;/p&gt;
+&lt;h1 id=&quot;no-identity-and-repudiation&quot;&gt;No Identity and Repudiation&lt;/h1&gt;
+&lt;p&gt;Perhaps another interesting facet of symmetric encryption, is there is &lt;em&gt;no&lt;/em&gt; identity requirements. No certificates, little metadata. So publicly posting symmetrically encrypted data would allow a group insiders to access content together without revealing &lt;em&gt;who&lt;/em&gt; can access that content, or even who encrypted it to begin with… Anyone with the password could have. This might provide you with plausible deniability, and anonymity. However, reusing the same key for an extended period of time is a bad idea. And you have to have a way to securely change and exchange the key.&lt;/p&gt;
+
+&lt;h1 id=&quot;distribution-of-easily-decrypted-content&quot;&gt;Distribution of Easily decrypted content&lt;/h1&gt;
+&lt;p&gt;Finally, also of interest, The shadow brokers distributed archives of symmetrically encrypted files with PGP, so that they could make public the passphrase at a later date as kind of insurance against the files getting taken down. Wikileaks and other organizations have similarly been known to post insurance files with unknown passphrases.&lt;/p&gt;
+&lt;h1 id=&quot;challenge&quot;&gt;Challenge&lt;/h1&gt;
+&lt;p&gt;Decrypt the demo above by placing the contents in a file and running gpg against the file. The password is &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;password&lt;/code&gt;. For bonus points check the original file name using the cryptographic metadata with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;--list-packets&lt;/code&gt; option, and see if I accidentally disclosed a secret. If you successfully complete the above, than we have exchanged data using simply a webpage. I could have printed this out and mailed it to you, and we could have securely exchanged data this way as well. Anywhere you can post text, you can exchange encrypted data now.&lt;/p&gt;
+
+&lt;p&gt;For further reading you should consult Micahel W. Lucas’ awesome book [2] on the topic.&lt;/p&gt;
+
+&lt;p&gt;[0] - https://www.rfcreader.com/#rfc4880&lt;br /&gt;
+[1] - https://gnupg.com/&lt;br /&gt;
+[2] - PGP &amp;amp; GPG Email for the Practical Paranoid  - Michael W. Lucas&lt;br /&gt;
+[3] - https://freeross.org&lt;br /&gt;
+[4] - https://www.passwordstore.org&lt;/p&gt;</content><author><name></name></author><category term="Privacy" /><category term="Privacy" /><summary type="html">What is OpenPGP If you are reading this blog, there is little reason that you shouldn’t be encrypting your personal email with OpenPGP based encryption every time. This series of blog posts will attempt to explain what OpenPGP is, and why and how you should use it.</summary></entry><entry><title type="html">Blacklistd : The FreeBSD Brute Force Ban Hammer</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/blacklistd-the-freebsd-bruteforce-banhammer.html" rel="alternate" type="text/html" title="Blacklistd : The FreeBSD Brute Force Ban Hammer" /><published>2020-08-30T00:00:00-04:00</published><updated>2020-08-30T00:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Blacklistd-FreeBSD-BruteForce-BanHammer</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/blacklistd-the-freebsd-bruteforce-banhammer.html">&lt;h1 id=&quot;overview&quot;&gt;Overview&lt;/h1&gt;
+&lt;p&gt;If you run a server that has authentication, its going to be brute forced. Even if you have strong authentication requirements in place, this still wastes resources, and encourages attackers to continue trying. The Coarse Enigma article “&lt;a href=&quot;/blog/dark-arts-brute-forcing-and-defense.html&quot;&gt;Dark Arts : An overview of Brute Forcing and Defense&lt;/a&gt;” provides an overview of types of Brute Force attacks and policy defense mechanisms. Briefly, use don’t use passwords, don’t use common usernames, monitor for breached passwords (if you have users), and Ban Brute Forcers. In this article, we are going to discuss the last technique, Banning Abusive IPs.&lt;/p&gt;
+
+&lt;p&gt;Both Linux and FreeBSD have different preferred methods to accomplish this. FreeBSD uses the blacklistd suite, which integrates directly into the authenticating program while Fail2ban on Linux monitors logs to issue bans. Both of these approach have different strengths.&lt;/p&gt;
+
+&lt;p&gt;Fail2ban is configurable by the user, a list of regexps for log entries can be provided so that anything logged with an IP address can cause a ban. Fail2ban doesn’t require any changes to the application being protected, making it trivial to add new applications. As a result, there is a very wide spectrum of applications that Fail2ban can protect.&lt;/p&gt;
+
+&lt;p&gt;Blacklistd is less configurable, and therefore simpler to configure. By integrating into the application being protected, the application’s authors, who likely have more expertise in this area, get to decide what counts as a failed authentication attempt. However, integration into the application requires upstream support, and changes to the source code, making blacklistd less supported.&lt;/p&gt;
+
+&lt;p&gt;This article will consider the deployment of blacklistd on FreeBSD, with the example service of SSH. Briefly, this process will consist of:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Creating a Firewall,&lt;/li&gt;
+  &lt;li&gt;Configuring Blacklistd,&lt;/li&gt;
+  &lt;li&gt;Enabling Blacklistd Service, and&lt;/li&gt;
+  &lt;li&gt;Configuring SSH.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;After, we will consider how to use and monitor blacklistd. For further reference, see Michael W. Lucas’s book “Absolute FreeBSD” [2].&lt;/p&gt;
+&lt;h1 id=&quot;creating-a-firewall&quot;&gt;Creating a Firewall&lt;/h1&gt;
+&lt;p&gt;Banning IPs is a type of packet filtering, and unsurprisingly, to do this blacklistd integrates into your hosts firewall, or it would, iF yOu HaD oNe. FreeBSD uses, or at least you should be using, the pf firewall.&lt;/p&gt;
+
+&lt;p&gt;Pf is an OpenBSD project that was imported into FreeBSD due to its loved syntax and capability. Pf can do QoS, NAT, pretty much anything a modern firewall can do, including most importantly, dynamic rule-sets. Pf is configured with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/pf.conf&lt;/code&gt; file, and interacted with by the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl&lt;/code&gt; command.&lt;/p&gt;
+
+&lt;p&gt;So, lets setup a dummy firewall that will simply allow blacklistd integration. A null firewall would look like this in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/pf.conf&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrub in
+pass in
+pass out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Pf works differently than most filters, by applying the last matching line rather than the first matching line. This has the effect of generic lines like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pass in&lt;/code&gt; appearing first setting the default policy whereas this same ordering in IP Tables/ IOS access lists would cause the firewall to have no effect or deny all packets. For pf, valid actions are &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pass&lt;/code&gt; or &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;block&lt;/code&gt; (but &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;block&lt;/code&gt; is configurable as either drop or ICMP responses). The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;scrub&lt;/code&gt; line normalizes traffic by reassembling fragments. Instructions for configuring pf to filter can be found in the PF Users Guide [1] .&lt;/p&gt;
+
+&lt;p&gt;Pf allows the addition of dynamic rules through anchors. Anchors are lists of rules and tables of IP addresses that are applied where the anchor line occurs in the pf.conf. So having set the policy, above, we now add the ‘anchor’ rule. Our anchor will be for blacklistd, which will create anchors with the name blacklistd/[port], for instance &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blacklistd/22&lt;/code&gt;. Below, we apply all the rules in &lt;em&gt;any&lt;/em&gt; blacklistd/* rule on incoming packets.&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;scrub in
+pass in
+anchor &quot;blacklistd/*&quot; in
+pass out
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;This small configuration is actually sufficient to run blacklistd. Future articles will likely include a more comprehensive configuration of pf. Ideally, your firewall should actually be default deny, and explicitly white list services. The above firewall is not a best security practice, but sufficient to get started protecting SSH if you don’t yet have a firewall.&lt;/p&gt;
+
+&lt;p&gt;This firewall would be activated with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl -f /etc/pf.conf&lt;/code&gt;. You can verify the file has loaded by dumping the rule-set with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl -sr&lt;/code&gt;. The firewall is enabled on start-up with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysrc pf_enable=yes&lt;/code&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;enable-blacklistd&quot;&gt;Enable Blacklistd&lt;/h1&gt;
+&lt;p&gt;Blacklistd is installed by default on FreeBSD and configured in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/blacklistd.conf&lt;/code&gt; . Sensible default entries already exist, and the format of the file is relatively understandable. We actually don’t have to make any changes. There are two types of rules for blacklistd, local and remote. Remote rules are specific rules that apply to specific remote IP addresses - you would use these to make exceptions like don’t ban known good sysadmin IPs. Local rules apply if I remote rule doesn’t.&lt;/p&gt;
+
+&lt;p&gt;The format of a local rule is listed in the commented out header:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# adr/mask:port type    proto   owner           name    nfail   disable
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;adr/mask:port&lt;/code&gt; column allows you to specify what port you are protecting. Symbols like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; are looked up in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/services&lt;/code&gt;. If your service uses a non-default port, you could put a numeric value here. Specifying addresses before the port allows you to apply different rules to different interfaces. Since we are going to protect ssh on the default port, 22, for all interfaces, we will place &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ssh&lt;/code&gt; in this column.&lt;/p&gt;
+
+&lt;p&gt;The type field requires use to specify a socket type. This would be &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stream&lt;/code&gt; for TCP services and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;datagram&lt;/code&gt; for UDP. SSH uses TCP transport, so we place ‘stream’. You can learn more about socket types with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;man socket&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;The proto field allows us to specify which transport exactly we use including versions of IP. TCP for ipv6 only is denoted &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcp6&lt;/code&gt; , while &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;tcp&lt;/code&gt; denotes IPv4. We use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt; to accept either.&lt;/p&gt;
+
+&lt;p&gt;Owner allows us to specify the user that owns the process (EUID). This would allow us to distinguish between multiple instances of a process, but will not be necessary for us here. We choose &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;The name field allows use to rename the anchor for pf. This would require additional administrative overhead, and there is little reason to do this. Placing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt; here accepts the default, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blacklistd/[port]&lt;/code&gt;. As a strange quirk, placing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/[mask]&lt;/code&gt; here would allow to block a subnet instead of an IP. For instance &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/24&lt;/code&gt; would block any IP address with the first three octets the same as the attackers. Since we won’t know the size of the attackers network, and most Brute Forcing boxes are VPSs on a larger provider network uncontrolled by the attacker anyway, this option won’t make much sense to use.&lt;/p&gt;
+
+&lt;p&gt;Finally, the fields we might be most interested in configuring occur: nfail and disable. nfail sets the number of times a client can fail before we ban. I choose 3. You can configure this as it makes sense to you. The disable field gives the time period for which to ban an attacker. Since most Brute Forcers are VPSs, IP will rotate frequently. It doesn’t make much sense to ban for an extended period of time. banning to many IPs will make your firewall slower, and provide little benefit anyway: Attackers will move on when banned, and after a while will rotate VPSs anyway. I choose to ban for 24h. You can specify time in increments of minutes (m), hours (h), days(d) or by placing a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;*&lt;/code&gt; forever.&lt;/p&gt;
+
+&lt;p&gt;A complete line looks as follows:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;# adr/mask:port type    proto   owner           name    nfail   disable
+ssh		stream	*	*		*	3	24h
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;More information about configuring blacklistd can be read in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;man blacklistd.conf&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;We now must enable blacklistd for start-up with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sysrc blacklistd_enable=yes&lt;/code&gt;. We start the service with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;service blacklistd start&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h1 id=&quot;configure-sshd&quot;&gt;Configure SSHD&lt;/h1&gt;
+&lt;p&gt;Blacklistd is now configured (Well, it actually was by default, but now the admin understands the configuration) but, SSH isn’t actually configured to use blacklistd. Since blacklistd integrates directly into the application code, we need to enable the feature. This is done with the line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;UseBlacklist yes&lt;/code&gt; in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/etc/ssh/sshd_config&lt;/code&gt;. Its that simple. SIGHUP the process to cause it reread its configuration, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkill -HUP sshd&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;monitoring-with-blacklistctl&quot;&gt;Monitoring with blacklistctl&lt;/h1&gt;
+&lt;p&gt;That’s it. We are all configured and running. Don’t take my word for it. Monitor yourself with  &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blacklistctl&lt;/code&gt;. We can view banned IPs with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blacklistctl dump -b&lt;/code&gt;. After a while, on any internet facing host, there should be a lot. We can view failed attempts but not yet banned with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;blacklistctl dump -a&lt;/code&gt;. Don’t fret if you see numbers like 6. Due to a quirk of how blacklistd works, ssh will allow 3 authentication attempts before closing the connection and reporting to blacklistd. If you see numbers higher than 6, your anchors aren’t working.&lt;/p&gt;
+
+&lt;h1 id=&quot;unbanning-and-details-of-the-firewall&quot;&gt;Unbanning and details of the firewall&lt;/h1&gt;
+&lt;p&gt;Lets take a look at how blacklistd blocks IPs from pf’s perspective. We can view rules attached to an anchor with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl -a [anchor] -s rules&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useraccount@host:~ % sudo pfctl -a blacklistd/22 -s  rules #you use sudo right?
+block drop in quick proto tcp from &amp;lt;port22&amp;gt; to any port = ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;And so, we see that packets are dropped if they are going to ssh from “&lt;port22&gt;&quot;. What is &quot;&lt;port22&gt;&quot;? Confusingly, &quot;from &lt;port22&gt;&quot; denotes inside the table &quot;port22&quot; inside the anchor we are in &quot;blacklistd/22&quot;. Using pfctl, we preform table operations with &quot;-t [name]&quot;, and &quot;-T [operation]&quot;. For example, to view our currently banned IPs from pf's perspective use the show operation.&lt;/port22&gt;&lt;/port22&gt;&lt;/port22&gt;&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;useraccount@host:~ % sudo pfctl -a blacklistd/22 -t port22 -T show
+  5.9.89.209
+   78.46.46.131
+   78.47.166.111
+   85.239.35.130
+   94.242.26.158
+   107.175.95.101
+   141.98.9.31
+   141.98.9.32
+   141.98.9.33
+   141.98.9.34
+   141.98.9.35
+   141.98.9.36
+   176.9.111.138
+   193.105.134.45
+   193.228.91.123
+   194.87.138.137
+   195.3.147.47
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Unsurprisingly, many of the hosts use the same permissive VPSs hosts.&lt;/p&gt;
+
+&lt;p&gt;To ban an IP address add it to the table with the add operation: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl -a blacklistd/22 -t port22 -T add [ip]&lt;/code&gt;
+We can also unban an IP address by removing it from the table: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pfctl -a blacklistd/22 -t port22 -T delete [ip]&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&quot;counter-measures--working-around-ip-bans&quot;&gt;Counter Measures : Working around IP Bans.&lt;/h1&gt;
+&lt;p&gt;If you want to conduct a Brute Force Attack against a machine that is IP Banning, you are going to fail. The only tactic you have is having a massive amount of IP addresses available to you. Probably through an IOT botnet. Since the largest botnets can reach millions or even ten of million hosts, it is conceivable to parallelize the work, and effectively negate the IP Ban. Bandwidth considerations would still limit how many passwords could be tried per day. This kind of attack is not available generally, as it requires control over a large botnet. To Defend against this, you still need to use strong authentication. A combination of passwordless authentication and IP Bans should protect you against &lt;em&gt;any&lt;/em&gt; brute force attempt.&lt;/p&gt;
+
+&lt;h1 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h1&gt;
+&lt;p&gt;This has been a relatively long post for how to simply enable blacklistd. Very little actually needs to be done. The default configuration of blacklistd will actually work out of the box. We have to add a minimal firewall, make a config change to sshd, and enable pf and blacklistd in rc.conf (with sysrc above). The meat of this article has been an overview of the blacklistd config file and the some how pf works. Although this may seem like a lot of information, a similarly in-depth overview of fail2ban would require getting into far more information including the kinds of log entries sshd produces. Perhaps this will be a topic for another day. Blacklistd is relatively simple tool that prevents brute force with a high degree of certainty. Counter measures are not easy.&lt;/p&gt;
+
+&lt;p&gt;Happy Hacking.&lt;/p&gt;
+
+&lt;p&gt;[1] PF Users Guide - https://www.openbsd.org/faq/pf/filter.html
+[2] Absolute FreeBSD: Chapter 19 Advanced Security Features S. Blacklistd (p470) - Michael W. Lucas&lt;/p&gt;</content><author><name></name></author><category term="Cybersecurity" /><summary type="html">Overview If you run a server that has authentication, its going to be brute forced. Even if you have strong authentication requirements in place, this still wastes resources, and encourages attackers to continue trying. The Coarse Enigma article “Dark Arts : An overview of Brute Forcing and Defense” provides an overview of types of Brute Force attacks and policy defense mechanisms. Briefly, use don’t use passwords, don’t use common usernames, monitor for breached passwords (if you have users), and Ban Brute Forcers. In this article, we are going to discuss the last technique, Banning Abusive IPs.</summary></entry><entry><title type="html">Unprivileged Tor Monitoring on FreeBSD</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/unpriviliged-tor-monitoring-freebsd.html" rel="alternate" type="text/html" title="Unprivileged Tor Monitoring on FreeBSD" /><published>2020-08-22T20:00:00-04:00</published><updated>2020-08-22T20:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Unpriviliged-Tor-Monitoring</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/unpriviliged-tor-monitoring-freebsd.html">&lt;p&gt;You should be running a tor node, its a great opportunity to &lt;a href=&quot;/blog/run-a-tor-node-learn-by-doing.html&quot;&gt;learn while providing defending privacy and human rights&lt;/a&gt;. And if your running it, you should be monitoring it.&lt;/p&gt;
+
+&lt;h2 id=&quot;nyx&quot;&gt;Nyx&lt;/h2&gt;
+
+&lt;p&gt;The Tor Project actually has an official monitoring dashboard called &lt;a href=&quot;https://nyx.torproject.org&quot;&gt;nyx&lt;/a&gt;. Nyx provides an ncurses, terminal driven monitoring dashboard that includes configurable graph of incoming and outgoing connection data, as well service logs. This is the schway unixporn look that you want at your terminal when you are hacking.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/nyx_front.png&quot; alt=&quot;Nyx Screen Shot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;nyx-and-root--why-not-&quot;&gt;Nyx and root : Why not ?&lt;/h2&gt;
+&lt;p&gt;Running nyx as an unprivileged user will generally just give and error. To solve this problem, many users just run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;sudo nyx&lt;/code&gt;. This results in the message:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;[NYX_NOTICE] Nyx is currently running with root permissions. This isn’t a good idea, nor should it be necessary.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;This isn’t exactly a problem, depending on your goals. Unnecessary permissions are never ‘a good idea’ (cf “Principal of Least Privilege”), but there are some important things to remember: First, nyx is only running locally, and not listening on the network. The only input that nyx is going to accept is input through the console/ptty - your input and tor log files/statistics. If you have Tor Admin Roles, that need to monitor tor, but don’t require more access, you might worry that a Tor Admin could exploit nyx to gain root, if run as root by sudo (and all other bins are denied)(cf. GTFO Bins). The other, far more remote risk, is  that the tor process will exploit nyx to obtain root privileges by sending malformed logs/data or that a network user will get data to nyx through the Tor process by crafted packets. The former risk likely doesn’t apply to you, the latter risk is so remote as to make accepting the risk a viable response.&lt;/p&gt;
+
+&lt;p&gt;However, any serious organization running non-tor services, like say www , will have WWW-admins that can monitor without superuser access. Think of this as an opportunity to learn how to monitor &lt;em&gt;the right way&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-nyx-connects&quot;&gt;How nyx connects&lt;/h2&gt;
+&lt;p&gt;Tor is controlled via a TCP socket (tcp/9051), which means it can be controlled over the network without SSH, however, this socket by default listens only locally. The Tor Control socket has two different methods of authentication : Cookie Based, and Password Based. Password based authentication is &lt;a href=&quot;/blog/dark-arts-brute-forcing-and-defense.html&quot;&gt;insecure&lt;/a&gt; and we will Cookie Based authentication, which is enabled by default with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CookieAuthentication True&lt;/code&gt; line.&lt;/p&gt;
+
+&lt;p&gt;Tor Cookie Authentication validates ability to control Tor by requesting the contents of the Cookie File. Nyx attempts to read the cookie file on opening to authenticate, so we need to ensure our unprivileged user has read ability on this file.&lt;/p&gt;
+
+&lt;h2 id=&quot;tor-on-freebsd&quot;&gt;Tor on FreeBSD&lt;/h2&gt;
+&lt;p&gt;Tor is configured with the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/usr/local/etc/tor/torrc&lt;/code&gt; on FreeBSD. If we were unsure, we could find this out by checking what files are in the Tor package with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkg info -l tor&lt;/code&gt;. By default stores its data in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/db/tor&lt;/code&gt; directory, this is configured with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DataDirectory&lt;/code&gt; option in your torrc, and here the file &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;/var/db/tor/control_auth_cookie&lt;/code&gt; is the actual file that we need to provide read permission on to our unprivileged users.&lt;/p&gt;
+
+&lt;p&gt;We actually have a couple of options here on what to do. We can use sudo, while limiting tor-admins to running nyx as _tor or we can use a common group and grant the group the permissions to read. The use of sudo is actually a far easier approach and probably a better practice. Instead, for the purposes of learning, we are going to use the unprivileged existing group _tor . This will prevent tor monitoring commands from being audited and showing up in sudo logs, which you may desire or not depending on your logging preference.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-setup&quot;&gt;The Setup&lt;/h2&gt;
+&lt;p&gt;By default, The Tor DataDirectory is not group readable. We set this with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DataDirectoryGroupReadable 1&lt;/code&gt; in torrc. We actually do not need read permission, just execute, which is called ‘search’ on a directory, to allow use to read a file who’s name we know, and permissions allow us to read. However, Tor will check the DataDirectories permissions each start-up and adjust them to what it believes is correct. So This is what we can do.&lt;/p&gt;
+
+&lt;p&gt;Now we set permissions on the file with the following torrc line &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CookieAuthFileGroupReadable 1&lt;/code&gt;, which makes our cookie readable. Unpleasantly, for this line to work, Tor requires us to explicitly name the CookieAuthFile with a path, here we choose the default: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;CookieAuthFile /var/db/tor/control_auth_cookie&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Finally, if we want to see connection data, we need to add the following line to our torrc &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;DisableDebuggerAttachment 0&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;This makes our complete list of changes:&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;DataDirectoryGroupReadable 1
+CookieAuthFileGroupReadable 1
+CookieAuthFile /var/db/tor/control_auth_cookie
+DisableDebuggerAttachment 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now reload the tor configuration with: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pkill -HUP tor&lt;/code&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;running-nyx&quot;&gt;Running nyx&lt;/h2&gt;
+&lt;p&gt;Now any user in the _tor group should be able to run nyx without any additional privilege. Add a user to the _tor group in FreeBSD with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;pw group mod _tor -m &amp;lt;user&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now, logout and back in to obtain your new group privileges, or run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;newgrp _tor&lt;/code&gt; to create a shell with your new privilege and running &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;nyx&lt;/code&gt;, without sudo, should work.&lt;/p&gt;
+
+&lt;h2 id=&quot;how2nyx&quot;&gt;How2nyx?&lt;/h2&gt;
+&lt;p&gt;Nyx by default displays useful information including your Platform, Tor Version, IP Address, flags, fingerprint, and resource usage. Nyx is divided into 5 pages accessed through a menu system or by use of left and right arrow keys:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Graph / Log&lt;/li&gt;
+  &lt;li&gt;Connection&lt;/li&gt;
+  &lt;li&gt;Quick Config&lt;/li&gt;
+  &lt;li&gt;Torrc&lt;/li&gt;
+  &lt;li&gt;Interpreter&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The menu is accessed with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;m&lt;/code&gt; key.&lt;/p&gt;
+
+&lt;p&gt;The graph is configurable and display bandwidth usage by default. You can configure this with the Graph menu item. The graph can be set to display Connections, Bandwidth or Resources.&lt;/p&gt;
+
+&lt;p&gt;Below is a list of log entries.&lt;/p&gt;
+
+&lt;p&gt;Viewing the Graph / Log screen allows you to quickly get a sense of your Node. Is it up and working? Has anything serious occurred in the log?&lt;/p&gt;
+
+&lt;p&gt;SIGHUP can be sent to tor by pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;x&lt;/code&gt; twice. Quiting nyx can be done by pressing &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;q&lt;/code&gt; twice.&lt;/p&gt;
+
+&lt;p&gt;Happy Hacking.&lt;/p&gt;</content><author><name></name></author><category term="Privacy" /><summary type="html">So your running a Tor Node, and you want to monitor it, but how?</summary></entry><entry><title type="html">Dark Arts : An overview of Brute Forcing and Defense</title><link href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/dark-arts-brute-forcing-and-defense.html" rel="alternate" type="text/html" title="Dark Arts : An overview of Brute Forcing and Defense" /><published>2020-08-22T00:00:00-04:00</published><updated>2020-08-22T00:00:00-04:00</updated><id>http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/Brute-Force-Overview</id><content type="html" xml:base="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/dark-arts-brute-forcing-and-defense.html">&lt;h2 id=&quot;anatomy-of-the-dark-side&quot;&gt;Anatomy of the Dark Side&lt;/h2&gt;
+&lt;p&gt;If you run a service with authentication, your servers will be targeted with &lt;a href=&quot;https://attack.mitre.org/techniques/T1110/&quot;&gt;brute force attempts&lt;/a&gt;. There are a couple of interesting attacks here that we will explain, and cover controls for including&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Standard Brute Force,&lt;/li&gt;
+  &lt;li&gt;Wordlists,&lt;/li&gt;
+  &lt;li&gt;Targeted Wordlists and&lt;/li&gt;
+  &lt;li&gt;Credential Stuffing.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;brute-force-and-password-entropy&quot;&gt;Brute Force and Password Entropy&lt;/h4&gt;
+&lt;p&gt;An actual brute force attack involves iteratively/repetitively generating possible passwords. Think ‘A’, ‘B’, … ‘AA’, ‘AB’, … and so on. This kind of attack is unlikely to occur over network due to the number of attempts expected to succeed. Although, theoretically, this could ultimately break any password, the network is too slow to try this. For instance, a week password of just 5 characters would like ~(95)^5 about 7 Billion passwords. Trying passwords randomly, we expect a 50% chance of success after covering 50% the space or 3.5 Billion. At 10 passwords per second this would take 4,000 years. This tactic simply isn’t viable. Traditional brute forcing is used mostly for offline password cracking where millions of attempts per second can be had.&lt;/p&gt;
+
+&lt;p&gt;To deal with this problem of limited numbers of guesses, attackers must control the passwords they want to guess out of the “keyspace”. This is a good tactic because humans don’t generally choose random passwords. Some are far more likely than others.&lt;/p&gt;
+
+&lt;h4 id=&quot;wordlists--controlling-the-keyspace&quot;&gt;Wordlists : Controlling the Keyspace&lt;/h4&gt;
+&lt;p&gt;Mostly commonly, untargeted attacks with try commonly used and default credentials to computers or services using specially designed &lt;a href=&quot;/blog/SSH-Brute-Force-Metasploit-Nmap-THCHydra.html&quot;&gt;programs&lt;/a&gt;. Think (admin/password), (rot/toor) combinations. These combinations are placed on a list called a “Wordlist”. This kind of attack is as old as passwords, and used in the movie the 1995 movie “Hackers”. As sad as it is, attackers do this because it works, and your server will be a target. If you are reading this, this attack is unlikely to succeed against your admin accounts, but it can still clutter logs, waste disk space, network bandwidth, and processor power, and you may have users.&lt;/p&gt;
+
+&lt;h4 id=&quot;targeted-attacks-with-custom-wordlists&quot;&gt;Targeted Attacks with Custom Wordlists&lt;/h4&gt;
+&lt;p&gt;A more targeted attack might use a wordlist customized to your footprint by taking into account content you have posted (wordhound), a website (ceWL) or other details about likely account usernames and passwords from (OSINT), and / or by clever construction of possible possible passwords with rules (hashcat), or prince attack to align with ways users, including possibly you, generate passwords. You are much less likely to be a victim of this kind of attack, if only, because the targeting requires more effort.&lt;/p&gt;
+
+&lt;h4 id=&quot;credential-stuffing-with-breach-data&quot;&gt;Credential Stuffing with Breach Data&lt;/h4&gt;
+&lt;p&gt;Finally, attackers may use “Breach Data” - data taken from other, less protected services, and attempt to reuse credentials. This is an attacker obtaining passwords you or your uses might be likely to use on your service, by leveraging a list of passwords that you or your users have used on other services which have been broken into. This technique assumes password reuse. This technique is likely to be of little value for an admin account on a server (although it might work!), but increases in value as the number of users increases.&lt;/p&gt;
+
+&lt;h2 id=&quot;an-overview-of-defense&quot;&gt;An Overview of Defense&lt;/h2&gt;
+&lt;h4 id=&quot;passwordless-authentication--more-entropy&quot;&gt;Passwordless Authentication : More Entropy&lt;/h4&gt;
+&lt;p&gt;The number one best defense you can have against password brute forcing is simply not having passwords. If your service supports alternative authentication methods USE THEM. For instance, SSH , which this article was written with in mind, and is most commonly brute forced, supports Public-Key Authentication. Choosing an SSH key gives you 256 to 512 bits of &lt;em&gt;real&lt;/em&gt; entropy from the signature used to authenticate you, equivalent to an actually random 38 character password whereas humans choose passwords that appear on wordlists with far higher frequency due to requirement to memorize. Don’t use passwords. SSH, and many other UNIX services support a wide variety of authentication methods through PAM (Pluggable Authentication Modules).&lt;/p&gt;
+
+&lt;h5 id=&quot;compensating-controls-for-passwords-if-you-must&quot;&gt;Compensating Controls for Passwords if you must&lt;/h5&gt;
+&lt;p&gt;If you must use password, consider compensating controls like 2 Factor Authentication where more than simply guessing a password is required. You can also make passwords harder to guess by enforcing password complexity requirements. However, you should be aware that password complexity requirements usually result in users writing down passwords - which may not be undesirable.&lt;/p&gt;
+
+&lt;h4 id=&quot;dont-use-common-usernames&quot;&gt;Don’t Use Common Usernames&lt;/h4&gt;
+&lt;p&gt;An important thing to consider, is does your username actually have to be public. Although usernames are not passwords, they do represent 50% of authentication information, and by refusing to use commonly used accounts, you can deny low-skill attackers/ untargeted attacks the ability to even get started. Don’t enable root login via ssh. Don’t use the username admin.&lt;/p&gt;
+&lt;h4 id=&quot;monitoring-breach-data&quot;&gt;Monitoring Breach Data&lt;/h4&gt;
+&lt;p&gt;If you have users, as it is unlikely the reader of this does, given the nature of where this is published, consider monitoring for breach data. If you have users, there is a very reasonable chance that they are reusing passwords. Force users to reset passwords after a breach occurs weather the password is an exact match or not; Any information on a users password allows refining the keyspace. Monitoring for breach data can is an OSINT discipline.&lt;/p&gt;
+&lt;h4 id=&quot;reducing-attempts-instead-of-entropy&quot;&gt;Reducing Attempts instead of Entropy&lt;/h4&gt;
+&lt;p&gt;All of the above defenses, passwordless authentication, not using commonly used usernames, 2 Factor Authentication[1] and password complexity, try to make the keyspace larger by adding additional entropy. 2 Factor Authentication is famously difficult to implement at scale, password complexity policies frustrate users, Breach Monitoring is labour intensive. Another type of control focuses limiting the ability to attempt authentication: IP Blacklisting and account lockouts. By limiting the number of attempts a party can make, we can make even low entropy authentication methods impossible to brute force. Imagine trying to guess a 5 digit password with three attempts per day. Although this cannot prevent default credentials from working on the first attempt, it can limit an attackers ability to explore the keyspace in any real way at all. Either you have the password, or you don’t get in. This can be effected by locking users out of their accounts, which predictably results in angry users, and support costs OR by limiting the number of attempts at the IP level.&lt;/p&gt;
+
+&lt;p&gt;[1] - Actually, 2 Factor Authentication might be out of band signaling, and doesn’t solely have to relay on a one-time code entered in the same channel.&lt;/p&gt;</content><author><name></name></author><category term="Cybersecurity" /><summary type="html">If you run a service with authentication, your servers will be targeted...</summary></entry></feed>

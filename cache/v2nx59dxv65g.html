@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:lsl:cryptography:cyphers:enigma [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,lsl,cryptography,cyphers,enigma"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:lsl:cryptography:cyphers"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/lsl/cryptography/cyphers/enigma"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:lsl:cryptography:cyphers';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:lsl:cryptography:cyphers:enigma","namespace":"fuss:lsl:cryptography:cyphers","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:lsl:cryptography:cyphers:enigma" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:lsl:cryptography:cyphers:enigma&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl" class="wikilink1" title="fuss:lsl" data-wiki-id="fuss:lsl">lsl</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/start" class="wikilink2" title="fuss:lsl:cryptography:start" rel="nofollow" data-wiki-id="fuss:lsl:cryptography:start">cryptography</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/start" class="wikilink2" title="fuss:lsl:cryptography:cyphers:start" rel="nofollow" data-wiki-id="fuss:lsl:cryptography:cyphers:start">cyphers</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma" class="wikilink1" title="fuss:lsl:cryptography:cyphers:enigma" data-wiki-id="fuss:lsl:cryptography:cyphers:enigma">enigma</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:lsl:cryptography:cyphers:enigma</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    
+<h1 class="sectionedit1" id="enigma_encryption">Enigma Encryption</h1>
+<div class="level1">
+
+<p>
+Enigma is a symmetric substitution cypher that uses a set of keys (a set of rotors, a set of plugboard settings and a reflector) in order to encrypt or decrypt a message. The Wizardry and Steamworks implementation deviates from the standard Enigma by having the rotors step each time during encryption and decryption.
+</p>
+
+<p>
+In order to encrypt the message <code>Good day!</code>, you would call:
+</p>
+<pre class="code lsl2"><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> encrypted <span class="sy0">=</span> wasENIGMA<span class="br0">&#40;</span>
+    <span class="st0">&quot;Good day!&quot;</span>, <span class="co1">// message to encrypt</span>
+    <span class="br0">&#91;</span> <span class="st0">&quot;1&quot;</span>, <span class="st0">&quot;3&quot;</span>, <span class="st0">&quot;2&quot;</span>, <span class="st0">&quot;8&quot;</span>, <span class="st0">&quot;b&quot;</span> <span class="br0">&#93;</span>, <span class="co1">// selection of rotors</span>
+    <span class="br0">&#91;</span> <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;p&quot;</span> <span class="br0">&#93;</span>, <span class="co1">// selection of plugboard settings for the rotors</span>
+    <span class="st0">&quot;c&quot;</span> <span class="co1">// the reflector</span>
+<span class="br0">&#41;</span></pre>
+
+<p>
+after which the variable <code>encrypted</code> will contain <code>Bbyx qgo!</code>
+</p>
+
+<p>
+Decryption is symmetric, so in order to decrypt the message <code>Bbyx qgo!</code>, you would call:
+</p>
+<pre class="code lsl2"><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> decrypted <span class="sy0">=</span> wasENIGMA<span class="br0">&#40;</span>
+    <span class="st0">&quot;Bbyx qgo!&quot;</span>, <span class="co1">// message to decrypt</span>
+    <span class="br0">&#91;</span> <span class="st0">&quot;1&quot;</span>, <span class="st0">&quot;3&quot;</span>, <span class="st0">&quot;2&quot;</span>, <span class="st0">&quot;8&quot;</span>, <span class="st0">&quot;b&quot;</span> <span class="br0">&#93;</span>, <span class="co1">// selection of rotors</span>
+    <span class="br0">&#91;</span> <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;p&quot;</span> <span class="br0">&#93;</span>, <span class="co1">// selection of plugboard settings for the rotors</span>
+    <span class="st0">&quot;c&quot;</span> <span class="co1">// the reflector</span>
+<span class="br0">&#41;</span></pre>
+
+<p>
+after which the variable <code>decrypted</code> will contain <code>Good day!</code>.
+</p>
+
+<p>
+This implementation features the possible rotors: <code>1</code>, <code>2</code>, <code>3</code>, <code>4</code>, <code>5</code>, <code>6</code>, <code>7</code>, <code>8</code>, <code>9</code>, <code>b</code>, <code>g</code> and the reflectors: <code>B</code>, <code>b</code>, <code>C</code>, <code>c</code>. Any number of rotors, in any order, can be selected provided that you have the same number of plugboard settings for each rotor. Only a single reflector from the list of possible reflectors can be picked.
+</p>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/lsl/cryptography/cyphers/enigma?codeblock=2" title="Download Snippet" class="mediafile mf_lsl">ENIGMA.lsl</a></dt>
+<dd><pre class="code file lsl2"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2011 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> wasListReverse<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> lst<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetListLength"><span class="kw5">llGetListLength</span></a><span class="br0">&#40;</span>lst<span class="br0">&#41;</span> <span class="sy0">&lt;=</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="kw1">return</span> lst;
+    <span class="kw1">return</span> wasListReverse<span class="br0">&#40;</span>
+        <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>
+            lst, 
+            <span class="nu0">1</span>, 
+            <a href="http://wiki.secondlife.com/wiki/llGetListLength"><span class="kw5">llGetListLength</span></a><span class="br0">&#40;</span>lst<span class="br0">&#41;</span>
+        <span class="br0">&#41;</span>
+    <span class="br0">&#41;</span> <span class="sy0">+</span> <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>lst, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> wasForwardPermuteListElements<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> input, <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> times<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>times <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="kw1">return</span> input;
+    <span class="kw1">return</span> wasForwardPermuteListElements<span class="br0">&#40;</span>
+         <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>input, <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="sy0">+</span> <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>input, <span class="nu0">0</span>, <span class="sy0">-</span><span class="nu0">2</span><span class="br0">&#41;</span>, 
+        <span class="sy0">--</span>times
+    <span class="br0">&#41;</span>;
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> wasIsUpper<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> a<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>a <span class="sy0">==</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">FALSE</span>;
+    <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> x <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llBase64ToInteger"><span class="kw5">llBase64ToInteger</span></a><span class="br0">&#40;</span><span class="st0">&quot;AAAA&quot;</span> <span class="sy0">+</span> 
+        <a href="http://wiki.secondlife.com/wiki/llStringToBase64"><span class="kw5">llStringToBase64</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetSubString"><span class="kw5">llGetSubString</span></a><span class="br0">&#40;</span>a, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;
+    <span class="kw1">return</span> x <span class="sy0">&gt;=</span> <span class="nu0">65</span> <span class="sy0">&amp;&amp;</span> x <span class="sy0">&lt;=</span> <span class="nu0">90</span>;
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> wasIsAlpha<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> a<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>a <span class="sy0">==</span> <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="kw2">FALSE</span>;
+    <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> x <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llBase64ToInteger"><span class="kw5">llBase64ToInteger</span></a><span class="br0">&#40;</span><span class="st0">&quot;AAAA&quot;</span> <span class="sy0">+</span> 
+        <a href="http://wiki.secondlife.com/wiki/llStringToBase64"><span class="kw5">llStringToBase64</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetSubString"><span class="kw5">llGetSubString</span></a><span class="br0">&#40;</span>a, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;
+    <span class="kw1">return</span> <span class="br0">&#40;</span>x <span class="sy0">&gt;=</span> <span class="nu0">65</span> <span class="sy0">&amp;&amp;</span> x <span class="sy0">&lt;=</span> <span class="nu0">90</span><span class="br0">&#41;</span> <span class="sy0">||</span> <span class="br0">&#40;</span>x <span class="sy0">&gt;=</span> <span class="nu0">97</span> <span class="sy0">&amp;&amp;</span> x <span class="sy0">&lt;=</span> <span class="nu0">122</span><span class="br0">&#41;</span>;
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> wasListPermuteToElement<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> rot, <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> ring<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>ring <span class="sy0">==</span> <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>rot, <span class="nu0">0</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="kw1">return</span> rot;
+    <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> i <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span>rot, <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span>ring<span class="br0">&#41;</span>;
+    <span class="kw1">return</span> ring <span class="sy0">+</span> 
+        <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>
+            <a href="http://wiki.secondlife.com/wiki/llDeleteSubList"><span class="kw5">llDeleteSubList</span></a><span class="br0">&#40;</span>
+                rot, 
+                i, 
+                i
+            <span class="br0">&#41;</span>, 
+            i, 
+            <span class="sy0">-</span><span class="nu0">1</span>
+        <span class="br0">&#41;</span>  <span class="sy0">+</span> 
+        <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>
+            <a href="http://wiki.secondlife.com/wiki/llDeleteSubList"><span class="kw5">llDeleteSubList</span></a><span class="br0">&#40;</span>
+                rot, 
+                i<span class="sy0">+</span><span class="nu0">1</span>, 
+                <span class="sy0">-</span><span class="nu0">1</span>
+            <span class="br0">&#41;</span>, 
+            <span class="nu0">0</span>, 
+            i<span class="sy0">-</span><span class="nu0">1</span>
+        <span class="br0">&#41;</span>;
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">// Symmetrically encrypts or decrypts a message using the Enigma cypher</span>
+<span class="co1">// using the Wizardry and Steamworks variation of the Enigma machine.</span>
+<span class="co1">//</span>
+<span class="co1">// Parameters:</span>
+<span class="co1">// message - a message to encrypt or decrypt.</span>
+<span class="co1">// These two lists have to be of equal length:</span>
+<span class="co1">//     rotors - a list of rotors which can contain any selection of: 1, 2, </span>
+<span class="co1">//              3, 4, 5, 6, 7, 8, b or g in any order.</span>
+<span class="co1">//     plugs - the initial plugs settings, a list of letters of the </span>
+<span class="co1">//             alphabet for every selected rotor.</span>
+<span class="co1">// reflector - a single letter reflector, can be either: B, b, C, c</span>
+<span class="co1">//</span>
+<span class="co1">// Example; llOwnerSay(</span>
+<span class="co1">//              wasEngima(</span>
+<span class="co1">//                  &quot;Good day!&quot;, // message to encrypt or decrypt</span>
+<span class="co1">//                  [&quot;3&quot;, &quot;g&quot;, &quot;1&quot;], // rotors 3, g and 1</span>
+<span class="co1">//                  [&quot;z&quot;, &quot;p&quot;, &quot;q&quot;], // plugs z, p and q</span>
+<span class="co1">//                  b // reflector b</span>
+<span class="co1">//              )</span>
+<span class="co1">//          );</span>
+<a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> wasENIGMA<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> message, <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> rotors, <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> plugs, <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> reflector<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// Ten rotors in total: 1 2 3 4 5 6 7 8 b g</span>
+    <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> def_rotors <span class="sy0">=</span> <span class="br0">&#91;</span> 
+        <span class="st0">&quot;1&quot;</span>, 
+            <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;l&quot;</span>,
+            <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;z&quot;</span>,
+            <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;y&quot;</span>,
+            <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;p&quot;</span>,
+            <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;c&quot;</span>,
+            <span class="st0">&quot;j&quot;</span>,
+        <span class="st0">&quot;2&quot;</span>,
+            <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;s&quot;</span>,
+            <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;b&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;m&quot;</span>,
+            <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;n&quot;</span>,
+            <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;o&quot;</span>,
+            <span class="st0">&quot;e&quot;</span>,
+        <span class="st0">&quot;3&quot;</span>,
+            <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;j&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;t&quot;</span>,
+            <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;y&quot;</span>,
+            <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;a&quot;</span>,
+            <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;q&quot;</span>,
+            <span class="st0">&quot;o&quot;</span>,
+        <span class="st0">&quot;4&quot;</span>,
+            <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;p&quot;</span>,
+            <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;q&quot;</span>,
+            <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;x&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;g&quot;</span>,
+            <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;w&quot;</span>,
+            <span class="st0">&quot;b&quot;</span>,
+        <span class="st0">&quot;5&quot;</span>,
+            <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;g&quot;</span>,
+            <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;p&quot;</span>,
+            <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;l&quot;</span>,
+            <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;j&quot;</span>,
+            <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;c&quot;</span>,
+            <span class="st0">&quot;k&quot;</span>,
+        <span class="st0">&quot;6&quot;</span>,
+            <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;o&quot;</span>,
+            <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;q&quot;</span>,
+            <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;z&quot;</span>,
+            <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;s&quot;</span>,
+            <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;t&quot;</span>,
+            <span class="st0">&quot;w&quot;</span>,
+        <span class="st0">&quot;7&quot;</span>,
+            <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;g&quot;</span>,
+            <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;y&quot;</span>,
+            <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;u&quot;</span>,
+            <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;l&quot;</span>,
+            <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;d&quot;</span>,
+            <span class="st0">&quot;t&quot;</span>,
+        <span class="st0">&quot;8&quot;</span>,
+            <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;t&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;b&quot;</span>,
+            <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;z&quot;</span>,
+            <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;w&quot;</span>,
+            <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;g&quot;</span>,
+            <span class="st0">&quot;v&quot;</span>,
+        <span class="st0">&quot;b&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;v&quot;</span>,
+            <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;w&quot;</span>,
+            <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;d&quot;</span>,
+            <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;z&quot;</span>,
+            <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;o&quot;</span>,
+            <span class="st0">&quot;s&quot;</span>,
+        <span class="st0">&quot;g&quot;</span>,
+            <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;a&quot;</span>,
+            <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;h&quot;</span>,
+            <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;y&quot;</span>,
+            <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;p&quot;</span>,
+            <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;j&quot;</span>,
+            <span class="st0">&quot;d&quot;</span>
+    <span class="br0">&#93;</span>;
+&nbsp;
+    <span class="co1">// Four reflectors: B C b c</span>
+    <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> def_reflectors <span class="sy0">=</span> <span class="br0">&#91;</span> 
+        <span class="st0">&quot;B&quot;</span>,
+            <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;h&quot;</span>,
+            <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;p&quot;</span>,
+            <span class="st0">&quot;j&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;z&quot;</span>,
+            <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;w&quot;</span>,
+        <span class="st0">&quot;C&quot;</span>,
+            <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;v&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;j&quot;</span>,
+            <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;r&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;q&quot;</span>,
+            <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;u&quot;</span>,
+        <span class="st0">&quot;b&quot;</span>,
+            <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;q&quot;</span>,
+            <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;y&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;j&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;x&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;z&quot;</span>,
+            <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;v&quot;</span>,
+        <span class="st0">&quot;c&quot;</span>,
+            <span class="st0">&quot;a&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;b&quot;</span>, <span class="st0">&quot;d&quot;</span>, <span class="st0">&quot;c&quot;</span>, <span class="st0">&quot;o&quot;</span>, <span class="st0">&quot;e&quot;</span>, <span class="st0">&quot;j&quot;</span>,
+            <span class="st0">&quot;f&quot;</span>, <span class="st0">&quot;n&quot;</span>, <span class="st0">&quot;g&quot;</span>, <span class="st0">&quot;t&quot;</span>, <span class="st0">&quot;h&quot;</span>, <span class="st0">&quot;k&quot;</span>, <span class="st0">&quot;i&quot;</span>, <span class="st0">&quot;v&quot;</span>,
+            <span class="st0">&quot;l&quot;</span>, <span class="st0">&quot;m&quot;</span>, <span class="st0">&quot;p&quot;</span>, <span class="st0">&quot;w&quot;</span>, <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;z&quot;</span>, <span class="st0">&quot;s&quot;</span>, <span class="st0">&quot;x&quot;</span>,
+            <span class="st0">&quot;u&quot;</span>, <span class="st0">&quot;y&quot;</span>
+    <span class="br0">&#93;</span>;
+&nbsp;
+&nbsp;
+    <span class="co1">// Set-up rotors from plugs settings</span>
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> rotor <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llToLower"><span class="kw5">llToLower</span></a><span class="br0">&#40;</span>
+            <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>
+                rotors, 
+                <span class="nu0">0</span>
+            <span class="br0">&#41;</span>
+        <span class="br0">&#41;</span>;
+        <span class="co1">// Determine which rotor is used.</span>
+        <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> i <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span>
+            <a href="http://wiki.secondlife.com/wiki/llList2ListStrided"><span class="kw5">llList2ListStrided</span></a><span class="br0">&#40;</span>
+                def_rotors, 
+                <span class="nu0">0</span>, 
+                <span class="sy0">-</span><span class="nu0">1</span>, 
+                <span class="nu0">27</span>
+            <span class="br0">&#41;</span>, 
+            <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span>rotor
+        <span class="br0">&#41;</span>;
+        <span class="co1">// And permute to the plugs setting.</span>
+        def_rotors <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListReplaceList"><span class="kw5">llListReplaceList</span></a><span class="br0">&#40;</span>
+            def_rotors, 
+            wasListPermuteToElement<span class="br0">&#40;</span>
+                <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>
+                    def_rotors, 
+                    i<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">1</span>, 
+                    i<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">26</span>
+                <span class="br0">&#41;</span>, 
+                <a href="http://wiki.secondlife.com/wiki/llToLower"><span class="kw5">llToLower</span></a><span class="br0">&#40;</span>
+                    <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>
+                        plugs, 
+                        <span class="nu0">0</span>
+                    <span class="br0">&#41;</span>
+                <span class="br0">&#41;</span>
+            <span class="br0">&#41;</span>, 
+            i<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">1</span>, 
+            i<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">26</span>
+        <span class="br0">&#41;</span>;
+        <span class="co1">// We do not need rings anymore so discard the list</span>
+        plugs <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDeleteSubList"><span class="kw5">llDeleteSubList</span></a><span class="br0">&#40;</span>plugs, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+        <span class="co1">// We still need rotors so permute them</span>
+        rotors <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDeleteSubList"><span class="kw5">llDeleteSubList</span></a><span class="br0">&#40;</span>rotors, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+        rotors <span class="sy0">+=</span> rotor;
+    <span class="br0">&#125;</span> <span class="kw1">while</span> <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetListLength"><span class="kw5">llGetListLength</span></a><span class="br0">&#40;</span>plugs<span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="nu0">0</span><span class="br0">&#41;</span>;
+&nbsp;
+    <span class="co1">// Setjmp :-)</span>
+    <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> setjmp;
+&nbsp;
+    <span class="co1">// Now encrypt or decrypt.</span>
+    <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> result <span class="sy0">=</span> <span class="st0">&quot;&quot;</span>;
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        <span class="co1">// Get a character.</span>
+        <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> c <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llGetSubString"><span class="kw5">llGetSubString</span></a><span class="br0">&#40;</span>message, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+        <span class="co1">// If it is not an alphabetic character, add it to the result and continue.</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>wasIsAlpha<span class="br0">&#40;</span>c<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            result <span class="sy0">+=</span> c;
+            <span class="kw1">jump</span> input;
+        <span class="br0">&#125;</span>
+        <span class="co1">// Convert the character to lower case.</span>
+        <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> r <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llToLower"><span class="kw5">llToLower</span></a><span class="br0">&#40;</span>c<span class="br0">&#41;</span>;
+&nbsp;
+        <span class="co1">// Forward pass through the Enigma</span>
+        setjmp <span class="sy0">=</span> <span class="st0">&quot;forward&quot;</span>;
+        <span class="kw1">jump</span> longjmp;
+@forward;
+&nbsp;
+        <span class="co1">// Reflect</span>
+        <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> j <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llList2ListStrided"><span class="kw5">llList2ListStrided</span></a><span class="br0">&#40;</span>def_reflectors, <span class="nu0">0</span>, <span class="sy0">-</span><span class="nu0">1</span>, <span class="nu0">27</span><span class="br0">&#41;</span>, <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span>reflector<span class="br0">&#41;</span>;
+        <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> reflector <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>def_reflectors, j<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">1</span>, j<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">26</span><span class="br0">&#41;</span>;
+        <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> a <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span>reflector, <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span>r<span class="br0">&#41;</span>;
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="br0">&#40;</span>a<span class="sy0">+</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">%</span>2 <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            r <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>reflector, a <span class="sy0">-</span> <span class="nu0">1</span><span class="br0">&#41;</span>;
+            <span class="kw1">jump</span> reflect;
+        <span class="br0">&#125;</span>
+        r <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>reflector, a <span class="sy0">+</span> <span class="nu0">1</span><span class="br0">&#41;</span>;
+&nbsp;
+@reflect;
+&nbsp;
+        <span class="co1">// Reverse the rotors.</span>
+        rotors <span class="sy0">=</span> wasListReverse<span class="br0">&#40;</span>rotors<span class="br0">&#41;</span>;
+        <span class="co1">// Reverse pass through the Enigma</span>
+        setjmp <span class="sy0">=</span> <span class="st0">&quot;reverse&quot;</span>;
+        <span class="kw1">jump</span> longjmp;
+@reverse;
+&nbsp;
+        <span class="kw1">if</span> <span class="br0">&#40;</span>wasIsUpper<span class="br0">&#40;</span>c<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            r <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llToUpper"><span class="kw5">llToUpper</span></a><span class="br0">&#40;</span>r<span class="br0">&#41;</span>;
+        <span class="br0">&#125;</span>
+        result <span class="sy0">+=</span> r;
+&nbsp;
+@input;
+        message <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDeleteSubString"><span class="kw5">llDeleteSubString</span></a><span class="br0">&#40;</span>message, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+        <span class="kw1">jump</span> continue;
+&nbsp;
+@longjmp;
+        <span class="co1">// Rotor pass through the Enigma.</span>
+        <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> i <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llGetListLength"><span class="kw5">llGetListLength</span></a><span class="br0">&#40;</span>rotors<span class="br0">&#41;</span> <span class="sy0">-</span> <span class="nu0">1</span>;
+        <span class="kw1">do</span> <span class="br0">&#123;</span>
+            <span class="co1">// Determine the first rotor.</span>
+            <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> p <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llToLower"><span class="kw5">llToLower</span></a><span class="br0">&#40;</span>
+                <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>
+                    rotors, 
+                    <span class="nu0">0</span>
+                <span class="br0">&#41;</span>
+            <span class="br0">&#41;</span>;
+            <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> n <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span>
+                <a href="http://wiki.secondlife.com/wiki/llList2ListStrided"><span class="kw5">llList2ListStrided</span></a><span class="br0">&#40;</span>
+                    def_rotors, 
+                    <span class="nu0">0</span>, 
+                    <span class="sy0">-</span><span class="nu0">1</span>, 
+                    <span class="nu0">27</span>
+                <span class="br0">&#41;</span>, 
+                <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span>p
+            <span class="br0">&#41;</span>;
+            <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> rotor <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>
+                def_rotors, 
+                n<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">1</span>, 
+                n<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">26</span>
+            <span class="br0">&#41;</span>;
+            <span class="co1">// Rotate the rotor.</span>
+            def_rotors <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListReplaceList"><span class="kw5">llListReplaceList</span></a><span class="br0">&#40;</span>
+                def_rotors, 
+                wasForwardPermuteListElements<span class="br0">&#40;</span>
+                    rotor, 
+                    <span class="nu0">1</span>
+                <span class="br0">&#41;</span>, 
+                n<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">1</span>, 
+                n<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">26</span>
+            <span class="br0">&#41;</span>;
+            <span class="kw1">if</span><span class="br0">&#40;</span>i <span class="sy0">!=</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="co1">// Get the index of the character.</span>
+                <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> x <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span>
+                    rotor, 
+                    <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span>r
+                <span class="br0">&#41;</span>;
+                <span class="co1">// Determine the second rotor.</span>
+                n <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llListFindList"><span class="kw5">llListFindList</span></a><span class="br0">&#40;</span>
+                    <a href="http://wiki.secondlife.com/wiki/llList2ListStrided"><span class="kw5">llList2ListStrided</span></a><span class="br0">&#40;</span>
+                        def_rotors, 
+                        <span class="nu0">0</span>, 
+                        <span class="sy0">-</span><span class="nu0">1</span>, 
+                        <span class="nu0">27</span>
+                    <span class="br0">&#41;</span>, 
+                    <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a><span class="br0">&#41;</span><a href="http://wiki.secondlife.com/wiki/llToLower"><span class="kw5">llToLower</span></a><span class="br0">&#40;</span>
+                        <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>
+                            rotors, 
+                            <span class="nu0">1</span>
+                        <span class="br0">&#41;</span>
+                    <span class="br0">&#41;</span>
+                <span class="br0">&#41;</span>;
+                <span class="co1">// Set the index.</span>
+                r <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a><span class="br0">&#40;</span>
+                    <a href="http://wiki.secondlife.com/wiki/llList2List"><span class="kw5">llList2List</span></a><span class="br0">&#40;</span>
+                        def_rotors, 
+                        n<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">1</span>, 
+                        n<span class="sy0">*</span><span class="nu0">27</span><span class="sy0">+</span><span class="nu0">26</span>
+                    <span class="br0">&#41;</span>, 
+                    x
+                <span class="br0">&#41;</span>;
+            <span class="br0">&#125;</span>
+            <span class="co1">// Permute rotors</span>
+            rotors <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDeleteSubList"><span class="kw5">llDeleteSubList</span></a><span class="br0">&#40;</span>rotors, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+            rotors <span class="sy0">+=</span> p;
+            <span class="sy0">--</span>i;
+        <span class="br0">&#125;</span> <span class="kw1">while</span> <span class="br0">&#40;</span>i <span class="sy0">&gt;</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span>;
+        <span class="co1">// jump table</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span>setjmp <span class="sy0">==</span> <span class="st0">&quot;forward&quot;</span><span class="br0">&#41;</span> <span class="kw1">jump</span> forward;
+        <span class="kw1">if</span><span class="br0">&#40;</span>setjmp <span class="sy0">==</span> <span class="st0">&quot;reverse&quot;</span><span class="br0">&#41;</span> <span class="kw1">jump</span> reverse;
+&nbsp;
+@continue;
+    <span class="br0">&#125;</span> <span class="kw1">while</span> <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llStringLength"><span class="kw5">llStringLength</span></a><span class="br0">&#40;</span>message<span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="nu0">0</span><span class="br0">&#41;</span>;
+&nbsp;
+    <span class="kw1">return</span> result;
+&nbsp;
+<span class="br0">&#125;</span>
+&nbsp;
+<a href="http://wiki.secondlife.com/wiki/default"><span class="kw5">default</span></a> <span class="br0">&#123;</span>
+    <a href="http://wiki.secondlife.com/wiki/state_entry"><span class="kw3">state_entry</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+        <a href="http://wiki.secondlife.com/wiki/llOwnerSay"><span class="kw5">llOwnerSay</span></a><span class="br0">&#40;</span>
+            wasENIGMA<span class="br0">&#40;</span>
+                wasENIGMA<span class="br0">&#40;</span>
+                    <span class="st0">&quot;Good day, how are you?&quot;</span>,
+                    <span class="br0">&#91;</span> <span class="st0">&quot;1&quot;</span>, <span class="st0">&quot;3&quot;</span>, <span class="st0">&quot;b&quot;</span>  <span class="br0">&#93;</span>, 
+                    <span class="br0">&#91;</span> <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;z&quot;</span> <span class="br0">&#93;</span>,
+                    <span class="st0">&quot;c&quot;</span>
+                <span class="br0">&#41;</span>,
+                <span class="br0">&#91;</span> <span class="st0">&quot;1&quot;</span>, <span class="st0">&quot;3&quot;</span>, <span class="st0">&quot;b&quot;</span>  <span class="br0">&#93;</span>, 
+                <span class="br0">&#91;</span> <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;z&quot;</span> <span class="br0">&#93;</span>,
+                <span class="st0">&quot;c&quot;</span>
+            <span class="br0">&#41;</span>
+        <span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+</dd></dl>
+
+<p>
+Although the implementation has been tested with over <code>1500</code> characters and could possibly take more, keep in mind that the Enigma was usually used to encrypt up to <code>100</code> characters. The shorter the string to encrypt, the less likely it is to be broken. Also note that <code>llOwnerSay</code> can only support up <code>1024</code> characters.
+</p>
+
+<p>
+The Wizardry and Steamworks implementation tries to use constant memory: for each character to encrypt, the input character is replaced.
+</p>
+
+</div>
+
+<h1 class="sectionedit2" id="benchmark">Benchmark</h1>
+<div class="level1">
+
+<p>
+The following results show the time taken by the Wizardry and Steamworks implementation of the Enigma given three input rotors and varying the input from <code>1</code> to <code>512</code> characters:
+</p>
+<pre class="code lsl2">        <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> input <span class="sy0">=</span> <span class="st0">&quot;/* 512 characters (the repeated Latin alphabet) */&quot;</span>;
+&nbsp;
+        <span class="kw1">do</span> <span class="br0">&#123;</span>
+            <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> t1 <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llGetAndResetTime"><span class="kw5">llGetAndResetTime</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>;
+            wasENIGMA<span class="br0">&#40;</span>
+                input,
+                <span class="br0">&#91;</span> <span class="st0">&quot;1&quot;</span>, <span class="st0">&quot;3&quot;</span>, <span class="st0">&quot;b&quot;</span>  <span class="br0">&#93;</span>, 
+                <span class="br0">&#91;</span> <span class="st0">&quot;q&quot;</span>, <span class="st0">&quot;r&quot;</span>, <span class="st0">&quot;z&quot;</span> <span class="br0">&#93;</span>,
+                <span class="st0">&quot;c&quot;</span>
+            <span class="br0">&#41;</span>;
+            <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> t2 <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llGetAndResetTime"><span class="kw5">llGetAndResetTime</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>;
+            <a href="http://wiki.secondlife.com/wiki/llOwnerSay"><span class="kw5">llOwnerSay</span></a><span class="br0">&#40;</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a><span class="br0">&#41;</span><span class="br0">&#40;</span>t2<span class="sy0">-</span>t1<span class="br0">&#41;</span> <span class="sy0">+</span> <span class="st0">&quot; &quot;</span> <span class="sy0">+</span> <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a><span class="br0">&#41;</span><a href="http://wiki.secondlife.com/wiki/llStringLength"><span class="kw5">llStringLength</span></a><span class="br0">&#40;</span>input<span class="br0">&#41;</span><span class="br0">&#41;</span>;
+            input <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDeleteSubString"><span class="kw5">llDeleteSubString</span></a><span class="br0">&#40;</span>input, <span class="nu0">0</span>, <span class="nu0">0</span><span class="br0">&#41;</span>;
+        <span class="br0">&#125;</span> <span class="kw1">while</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llStringLength"><span class="kw5">llStringLength</span></a><span class="br0">&#40;</span>input<span class="br0">&#41;</span> <span class="sy0">!=</span> <span class="nu0">0</span><span class="br0">&#41;</span>; </pre>
+
+<p>
+and plotted the results:
+</p>
+
+<p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/plot/f29419e83e54d44c6673382e8124f46d.png?id=fuss%3Alsl%3Acryptography%3Acyphers%3Aenigma" class="media" title="plot:f29419e83e54d44c6673382e8124f46d.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/plot/f29419e83e54d44c6673382e8124f46d.png" class="media" alt="" /></a>
+</p>
+
+</p>
+
+<p>
+From the plot and the data, we have observed and calculated that:
+</p>
+<ul>
+<li class="level1"><div class="li"> the progression is something between linear and logarithmic.</div>
+</li>
+<li class="level1"><div class="li"> the mean difference gives us an average increase of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img93b780a827cde78e11909b832c93f26f.png" class="latex_inline" alt="$0.225632481s$" title="Math" /> per character.</div>
+</li>
+<li class="level1"><div class="li"> the average time taken (to encrypt, or decrypt) <code>1</code> to <code>512</code> characters is <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5ba168f705b1bf6cbd33eb9d25e62b22.png" class="latex_inline" alt="$5.510400557s$" title="Math" /> and the standard deviation is <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img76c0e1467cbcf97c9bc5f199dbc91065.png" class="latex_inline" alt="$6.604655214s$" title="Math" /></div>
+</li>
+</ul>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/lsl/cryptography/cyphers/enigma.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl" class="wikilink1" title="fuss:lsl" data-wiki-id="fuss:lsl">lsl</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/start" class="wikilink2" title="fuss:lsl:cryptography:start" rel="nofollow" data-wiki-id="fuss:lsl:cryptography:start">cryptography</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/start" class="wikilink2" title="fuss:lsl:cryptography:cyphers:start" rel="nofollow" data-wiki-id="fuss:lsl:cryptography:cyphers:start">cyphers</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma" class="wikilink1" title="fuss:lsl:cryptography:cyphers:enigma" data-wiki-id="fuss:lsl:cryptography:cyphers:enigma">enigma</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:lsl:cryptography:cyphers:enigma" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/cryptography/cyphers/enigma"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Alsl%3Acryptography%3Acyphers%3Aenigma&amp;1657305415" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

@@ -1,0 +1,1207 @@
+<!DOCTYPE html><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="Pragma" content="no-cache"><meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0"><meta http-equiv="expires" content="0"><meta name="referrer" content="no-referrer"><title>The Underground Railroad</title><style type="text/css">body{background-color:#000000;color:#FFFFFF;font-size:14px;text-align:center;} body .rooms {background-color: transparent !important;}a:visited{color:#B33CB4;} a:active{color:#FF0033;} a:link{color:#0000FF;} #messages{word-wrap:break-word;} input,select,textarea{color:#FFFFFF;background-color:#000000;} .messages a img{width:15%} .messages a:hover img{width:35%} .error{color:#FF0033;text-align:left;} .delbutton{background-color:#660000;} .backbutton{background-color:#004400;} #exitbutton{background-color:#AA0000;} .setup table table,.admin table table,.profile table table{width:100%;text-align:left} .alogin table,.init table,.destroy_chat table,.delete_account table,.sessions table,.filter table,.linkfilter table,.notes table,.approve_waiting table,.del_confirm table,.profile table,.admin table,.backup table,.setup table{margin-left:auto;margin-right:auto;} .setup table table table,.admin table table table,.profile table table table{border-spacing:0px;margin-left:auto;margin-right:unset;width:unset;} .setup table table td,.backup #restoresubmit,.backup #backupsubmit,.admin table table td,.profile table table td,.login td+td,.alogin td+td{text-align:right;} .init td,.backup #restorecheck td,.admin #clean td,.admin #regnew td,.session td,.messages,.inbox,.approve_waiting td,.choose_messages,.greeting,.help,.login td,.alogin td{text-align:left;} .messages #chatters{max-height:100px;overflow-y:auto;} .messages #chatters a{text-decoration-line:none;} .messages #chatters table{border-spacing:0px;} .messages #chatters th,.messages #chatters td,.post #firstline{vertical-align:top;} .approve_waiting #action td:only-child,.help #backcredit,.login td:only-child,.alogin td:only-child,.init td:only-child{text-align:center;} .sessions td,.sessions th,.approve_waiting td,.approve_waiting th{padding: 5px;} .sessions td td{padding: 1px;} .messages #bottom_link{position:fixed;top:0.5em;right:0.5em;} .messages #top_link{position:fixed;bottom:0.5em;right:0.5em;} .post table,.controls table,.login table{border-spacing:0px;margin-left:auto;margin-right:auto;} .login table{border:2px solid;} .controls{overflow-y:none;} #manualrefresh{display:block;position:fixed;text-align:center;left:25%;width:50%;top:-200%;animation:timeout_messages 160s forwards;z-index:2;background-color:#500000;border:2px solid #ff0000;} @keyframes timeout_messages{0%{top:-200%;} 99%{top:-200%;} 100%{top:0%;}} .notes textarea{height:80vh;width:80%;}iframe{width:100%;height:100%;margin:0;padding:0;border:none}</style><link rel="shortcut icon" href="https://cdn.onionz.dev/global/images/favicon.svg"><style type="text/css">body{background-color:#000000;color:#ffffff;} .login #frontpagetext{
+    
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    text-align: left;
+
+    font-family: Helvetica;
+    font-size: 1em;
+    font-weight:bold;
+    color: white;
+    text-shadow:    1px 1px 2px black, 0 0 1em black,
+                    1px 0 1px #000, 
+                    0 1px 1px #000, 
+                    -1px 0 1px #000, 
+                    0 -1px 1px #000;
+}
+
+.sessions td{
+ border-bottom: 1px dashed #363636;
+
+} 
+
+/* Start of fantasms css for the links page*/
+.link_title{
+    background-color:#131927;
+    margin: auto;
+    width: 70%;
+    border: 2px solid #5060EE;
+    border-radius: 4px;
+    text-align: center;
+} 
+
+#links h2 {
+    
+    color:#444; margin:0px; font-size:40pt;
+    font-family: "Arimo", sans-serif;
+    text-shadow: 2px 2px 2px #ffff80;
+
+}
+
+#links a {
+  text-decorations: none;
+  color: var(--accent);
+}
+/* End of fantasms css for the links page*/
+
+/*Start of css for the gallery*/
+.gallery h1 {
+    
+    color:#444; margin:0px; font-size:40pt;
+    font-family: "Arimo", sans-serif;
+    text-shadow: 2px 2px 2px #ffff80;
+
+}
+
+.gallery a {
+  text-decorations: none;
+  color: var(--accent);
+}
+
+#gallery_navigation_table td{
+        vertical-align: bottom;
+}
+
+#gallery_navigation_table{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.imgdiv img{
+   max-width: 100%;
+   max-height: 500px;
+}
+
+.imgdiv{
+   display:none;
+}
+
+.imgdiv:target{
+   display:block;
+}
+
+#live_gallery_table{
+    border-collapse: collapse;
+    margin-left:auto; 
+    margin-right:auto;
+
+}
+
+#live_gallery_table td{
+ 
+  border: 1px dashed grey;
+}
+
+#current_site_button{
+   border:none;
+}
+
+#pagination_controls_table{
+    margin-left:auto; 
+    margin-right:auto;
+    
+}
+
+#pagination_controls_table td{
+     vertical-align:middle;
+}
+/* End of css for the gallery*/
+
+
+#table_lastlogins td{
+    padding: 10px;
+}
+
+#table_lastlogins{
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+.lastlogin{
+    text-align: center;
+}
+
+
+.delbutton_inline_removable:hover{
+   color:black;
+   background-color:#FF0000;
+}
+
+
+.delbutton_inline_removable{
+        
+        font-weight: normal;
+        font-size: 12px;
+        color:#888888;
+        background-color:#000000;
+        border: 1px solid #888888;
+    border-radius: 0px;
+        padding: 2px;
+
+
+}
+
+
+
+.login:before { 
+  content: ' ';
+  display: block;
+  /* height: 140px; */
+}
+
+.login #changelang{
+    font-family: Helvetica;
+    font-size: 1em;
+    font-weight:bold;
+    color: white;
+    text-shadow:    1px 1px 2px black, 0 0 1em black,
+                    1px 0 1px #000, 
+                    0 1px 1px #000, 
+                    -1px 0 1px #000, 
+                    0 -1px 1px #000;
+}
+
+.login #changelang:before { 
+  content: ' ';
+  display: block;
+  height: 120px;
+}
+
+
+
+
+
+#chatname{
+    font-family: Helvetica;
+    color: DeepSkyBlue;
+    text-shadow:    1px 1px 2px black, 0 0 1em black,
+                    1px 0 1px #000, 
+                    0 1px 1px #000, 
+                    -1px 0 1px #000, 
+                    0 -1px 1px #000;
+}
+
+#forum_link:hover
+#emoji_link:hover {
+   color:black;
+   background-color:#ff0;
+}
+
+#forum_link
+#emoji_link{
+
+    border: 1px solid #FFFFFF;
+    border-radius: 7px;
+    padding: 3px;
+
+}
+
+
+/*css for banner begin*/ 
+.banner_cshout{
+    margin: auto;
+    width: 70%;
+    border: 2px solid;
+            color: 
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_cshout_headline{
+    color: 
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_cshout_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.banner_shout{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #FF0000;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+.banner_shout{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #FF0000;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_shout_headline{
+    color: #FF0000;
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_shout_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.banner_links{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #FFFF00;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_links_headline{
+    color: #FFFF00;
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_links_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.banner_rules{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #FF0000;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_rules_headline{
+    color: #FF0000;
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_rules_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.banner_warning{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #FF9900;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_warning_headline{
+    color: #FF9900;
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_warning_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.banner_information{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #03FF00;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_information_headline{
+    color: #03FF00;
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_information_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.banner_welcome{
+    margin: auto;
+    width: 70%;
+    border: 2px solid #03CDFF;
+    border-radius: 7px;
+    padding: 10px;
+    text-align: center;
+    /*background-color: rgba(105, 105, 105, 0.5);*/
+}
+
+.banner_welcome_headline{
+    color: #03CDFF;
+    font-weight:bold;
+    font-style: normal;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+
+.banner_welcome_text{
+    color: #FFFFFF;
+    font-style: normal;
+    font-weight: normal;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/*css for banner end*/
+
+
+.login #topic:after { 
+  content: ' ';
+  display: block;
+  height: 25px;
+}
+
+
+.login #chatters{
+    font-family: Helvetica;
+    font-size: 1em;
+    /*font-weight:bold;*/
+    color: white;
+    text-shadow:    1px 1px 2px black, 0 0 1em black,
+                    1px 0 1px #000, 
+                    0 1px 1px #000, 
+                    -1px 0 1px #000, 
+                    0 -1px 1px #000;
+}
+
+
+.login #topic{
+    margin: auto; /* centers the div */
+    width:80%;
+    font-family: Helvetica;
+    font-size: 1.5em;
+    font-weight:bold;
+    color: DeepSkyBlue;
+    text-shadow:    1px 1px 2px black, 0 0 1em black,
+                    1px 0 1px #000, 
+                    0 1px 1px #000, 
+                    -1px 0 1px #000, 
+                    0 -1px 1px #000;
+}
+ 
+#rules{
+    margin: auto; /* centers the div */
+    width:60%;
+    height:100%;
+    background-color: rgba(105, 105, 105, 0.5);
+    border: 2px solid #FFFFFF;
+    border-radius: 7px;
+    padding: 5px;
+    text-align: left;
+}
+
+.login table{
+    border: 2px solid #FFFFFF;
+    border-radius: 7px;
+    padding: 10px;
+    background-color: rgba(105, 105, 105, 0.5);
+}
+
+
+.messages #chatters{
+   position: relative; 
+   background-image: url(backgrounds/background2.png);
+   background-size:contain;
+   background-color: black;
+   background-repeat: no-repeat;
+   background-position: center top;
+   z-index:-4;
+}
+
+.messages #chatters::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0);
+    z-index:-3;
+}
+
+body.messages{
+    position:relative;
+    background-image: url(backgrounds/background1.png);
+    background-size:80%;
+    background-color: black;
+    min-height:100%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position:relative;
+    z-index:-6;
+}
+body.messages::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    background-color: rgba(0,0,0,0.2);
+    z-index: -5;
+}
+
+body.login h1{font-family: Helvetica;font-size: 3.0em;font-weight:bold;color: rgb(255, 61, 00);text-shadow: 1px 1px 2px black, 0 0 1em black,
+1px 0 1px #000, 
+0 1px 1px #000, 
+-1px 0 1px #000, 
+0 -1px 1px #000;
+
+}
+
+body.login table.center-table{margin-left:auto;margin-right:auto;text-align:center;
+background: -moz-linear-gradient(-45deg,  rgba(138,149,161,0.8) 0%, rgba(234,235,239,0.5) 50%, rgba(138,149,161,0.75) 75%, rgba(234,235,239,0.65) 100%);*/
+background: -moz-linear-gradient(-45deg,  rgba(240,183,161,0.8) 0%, rgba(140,51,16,0.5) 50%, rgba(117,34,1,0.75) 75%, rgba(191,110,78,0.65) 100%);
+
+
+
+border-radius:2.0em; border: rgba(69,75,80,0.5) 2px double;
+padding: 1.0em;
+box-shadow: 20px 15px 10px 5px rgba(0, 0, 0, .65);
+margin:20px
+}
+
+
+a:visited{color:#999950;filter: unset; text-decoration: underline dotted #999950} a:active{color:#FF7733;filter: unset; text-decoration: underline dotted #FF7733} a:link{color:#ffff80; filter: unset; text-decoration: underline dotted #ffff80} input,select,textarea{color:#FFFFFF;background-color:#000000;} .error{color:#FF0033;} .delbutton{background-color:#660000;} .backbutton{background-color:#004400;} #exitbutton{background-color:#AA0000;} .center-table{margin-left:auto;margin-right:auto;} body{text-align:center;} .left-table{width:100%;text-align:left;} .right{text-align:right;} .left{text-align:left;} .right-table{border-spacing:0px;margin-left:auto;} .padded{padding:5px;} 
+
+.msg {padding: 0.3em 0; border-bottom: 1px dashed #363636;background-color: rgba(0, 0, 0, 0);z-index:5;}
+input, select, textarea, button {padding: 0.2em; border: 1px solid #ffffff; border-radius: 0.5em}
+/*input, select, textarea, button {padding: 0.2em; border: 1px solid #00FFFF; border-radius: 0.5em}*/
+#messages small {color: #989898}
+#messages {display: block; width: 79%;Background-image: url(background.gif)}
+
+.messages #topic {
+
+display: block; width: 79%;
+text-align: center;font-family: Helvetica;font-size: 12pt;font-weight:bold;color: rgb(149, 151, 116);
+text-shadow: 1px 1px 2px darkgreen, 0.1em 0.1em 1em silver,
+1px 0 1px black, 
+0 1px 1px black, 
+-1px 0 1px black, 
+0 -1px 1px black;
+filter: saturate(130%) sepia(30%) contrast(200%);
+padding-bottom:1.0em;
+}
+
+/*modified for rooms */
+.messages #chatters {display: block; float:left; width: 20%; overflow-y: auto; position:fixed; right:0px; max-height:100%; bottom:2em; top:7em;}
+
+.rooms #roomblock {display: block; width: 100%; overflow:none;}
+.rooms #roomblock h4 {margin-bottom:1em;}
+.rooms #roomblock select{font-size:75%;width:50%;text-align: center;margin-right:1em;}
+.rooms #roomblock option{font-size:100%;text-align: center;}
+.rooms #roomblock input{font-size:85%;text-align: center;}
+
+.messages #rooms {display: block; width: 20%; overflow-y: auto; position:fixed; right:-30px; bottom:40px;}
+.messages #rooms h4 {margin-bottom:1em;}
+.messages #rooms select{font-size:75%;width:50%;text-align: center;margin-right:1em;}
+.messages #rooms option{font-size:100%;text-align: center;}
+.messages #rooms input{font-size:85%;text-align: center;}
+.inroom{text-decoration:none;}
+
+.messages #chatters td, #chatters tr, #chatters th{display: table-row; width: 100%!important;}
+.messages #chatters table a \{\par
+display: inline-block; float:left; margin-right:5px;\par
+/*display: table-row; line-height: 0;*/\}\par
+
+a.channel_toall_link{text-decoration:none;color: rgb(49, 151, 116);font-size: 0.8em;}
+a.channel_to_members_link{text-decoration:none;color: rgb(89, 151, 116);font-size: 0.8em;}
+a.channel_to_stuff_link{text-decoration:none;color: rgb(129, 151, 116);font-size: 0.8em;}
+a.channel_to_admin_link{text-decoration:none;color: rgb(169, 151, 116);font-size: 0.8em;}
+div.chanel_div{padding:6px;}
+
+
+img.logo_badge_img{position:fixed;right:2em;top:3em;height:100px;z-index: -1
+}
+img.member_badge_img{position:relative;top:3px;height:25px;}
+img.guest_badge_img{height:25px;}
+img.status_badge_img{height:13px; padding-right:5px}
+
+div.section1{display:inline-block;
+text-align: center;font-family: Helvetica;font-size: 14pt;font-weight:bold;color: rgb(49, 151, 116);
+text-shadow: 1px 1px 2px black, 0 0 2em rgb(49, 151, 116),
+1px 0 1px #000, 
+0 1px 1px #000, 
+-1px 0 1px #000, 
+0 -1px 1px #000;
+}
+div.section2{display:inline-block;
+text-align: center;font-family: Helvetica;font-size: 14pt;font-weight:bold;color: rgb(149, 151, 116);
+text-shadow: 1px 1px 2px black, 0 0 1em gold,
+1px 0 1px #000, 
+0 1px 1px #000, 
+-1px 0 1px #000, 
+0 -1px 1px #000;
+filter: saturate(50%) sepia(60%) contrast(200%);
+}
+div.section3{display:inline-block;
+text-align: center;font-family: Helvetica;font-size: 14pt;font-weight:bold;color: rgb(249, 151, 116);
+text-shadow: 1px 1px 2px black, 0 0 1em orange,
+1px 0 1px #000, 
+0 1px 1px #000, 
+-1px 0 1px #000, 
+0 -1px 1px #000;
+filter: saturate(50%) sepia(60%) contrast(200%);
+}
+
+span.all_mark{color: rgb(49, 151, 116);}
+span.member_mark{color: rgb(109, 151, 116);}
+span.stuff_mark{color: rgb(149, 151, 116);}
+span.admin_mark{color: rgb(209, 151, 116);}
+
+body.login {Background-image: url(backgrounds/bg9.jpg);background-size:100%;background-color: black;min-height:100%;background-repeat: no-repeat;background-attachment: fixed;background-position: top center;z-index:-6;}
+
+span.img_poster{font-family: Helvetica;font-size: 1.0em;font-weight:bold;color: rgb(149, 151, 116);
+text-shadow: 1px 1px 2px black, 0 0 1em gold,
+1px 0 1px black, 
+0 1px 1px black, 
+-1px 0 1px black, 
+0 -1px 1px black;
+filter: saturate(50%) sepia(60%) contrast(200%);
+}
+
+span.guest_badge{font-size: 12pt;font-weight:bold;padding-right:5px;color: rgb(255, 0, 0)}
+div.chatter_guest_div{float:left;padding:5px 3px 5px 3px}
+div.chatter_member_div{float:left;padding:3px 3px 0px 3px}
+a.chatter_guest_link{text-decoration:none;}
+a.chatter_member_link{text-decoration:none;}
+span.chatter_inbox{text-decoration:none;padding-top:15px;font-family: Helvetica;font-size: 0.75em;font-weight:bold;color: rgb(49, 151, 116);}
+span.chatter_inbox a{text-decoration:none;}
+div.links_buton{float:left;}
+
+/*modifications for clickable nicknaes: do not style links with class nicklink*/
+div.msg a:not(.nicklink){text-decoration:none;font-family: Helvetica;font-size: 0.85em;font-weight:bold}
+div.msg a.nicklink{text-decoration:none;}
+div.msg a.nicklink:visited{text-decoration:none;}
+div.msg a.nicklink:active{text-decoration:none;}
+
+.messages #pulse1 {     -webkit-animation: pulse 10s linear infinite;   animation: pulse 10s linear infinite;   font-weight: bold;      color: color: #F00;  }
+@-webkit-keyframes pulse { 
+0% { color: #ed25e3; }
+25% { color: #9e2f03; }
+50% { color: #aaa208; }
+75% { color: #9e2f03; }
+100% { color: #ed25e3; }
+} 
+@keyframes pulse {
+0% { color: #ed25e3; }
+25% { color: #9e2f03; }
+50% { color: #aaa208; }
+75% { color: #9e2f03; }
+100% { color: #ed25e3; }
+} 
+
+
+.help #JavaScriptCheck{display:none;}
+.help h2:nth-of-type(1){display:none;}
+.login h2:nth-of-type(1){display:none;}
+
+.rulesbox {
+display:inline-block;
+padding: 10px;
+border-radius: 20px;
+box-shadow: 6px 5px 4px 3px rgba(0, 0, 0, .65);
+margin: 5px;
+background-color: rgba(0,0,0,0.5);
+border: 2px solid #00FFFF;}
+
+.delbutton:hover { color:black; background-color:#ff0; }
+/*label:hover,input[type="checkbox"]:hover,*/ input[type="submit"]:hover { color:white; background-color:#000099; }
+#exitbutton:hover { color:black; background-color:#ff0; }
+
+/* ↓  for filters (begin) ↓ */
+
+.alarm-chr {
+    color: red;
+    vertical-align: sup;
+    animation: blinker 0.5s linear infinite;
+} @keyframes blinker {  
+  50% { opacity: 0; }}
+
+.alarm-msg {
+    font-weight: bold;
+    color: red;
+    background-color: black;
+    size: small;
+    position: fixed;
+    bottom: 0.5em;
+    right: 10%;
+    animation: blinker 2s linear infinite;
+} @keyframes blinker {
+  50% { opacity: 0; }}
+
+
+.hl-clear-fhosts-name {
+    color:white;
+}
+
+.hl-clear-fhosts-delim {
+    color:gold;
+}
+
+.hl-tor-fhosts-name {
+    color:white;
+}
+
+.hl-tor-fhosts-delim {
+    color:gold;
+}
+
+.hl-tor-ihosts-name {
+    color:white;
+}
+
+.hl-tor-ihosts-delim {
+    color:gold;
+}
+
+.hl-tor-imgbrd-name {
+    color:white;
+}
+
+.hl-tor-imgbrd-delim {
+    color:gold;
+}
+
+.all-hosts {
+text-align:center;
+}
+
+.all-hosts .big-container {
+display:inline-block;
+border-radius: 30px;
+background-color: DarkSlateGray;
+color: #333366;
+border: 1px solid Aqua;
+padding: 4px;
+font-size: 1em;
+}
+
+.all-hosts .image-hosts-container,
+.all-hosts .file-hosts-container {
+display:inline-block;
+margin:10px;
+vertical-align:top;
+}
+
+
+.all-hosts .image-hosts-table,
+.all-hosts .file-hosts-table {
+    /*border: 1px solid;
+    border-color:yellow;
+    border-style: inset;*/
+ }
+
+.all-hosts .image-hosts-table td,
+.all-hosts .file-hosts-table td {
+    border: 1px solid;
+    border-style: dotted;
+    border-color: Aqua;
+    padding: 3px;
+    text-align:center;
+    color:white;
+    text-decoration:underline;
+}
+
+.all-hosts .note {
+color:#00FF66;
+}
+
+.all-hosts .blink {
+    animation: blink 2s linear infinite;
+    font-weight: bold;
+    color: #00FF33; }
+     @keyframes blink {
+         0% { color: #00FF33; }
+        50% { color: #FFFFFF; }
+        100% { color: #00FF33; }
+}
+
+.fixed-hosts {
+position: fixed;
+top: 2px;
+right:4%;
+}
+
+.fixed-hosts table {
+border: 1px solid;
+border-color:orange;
+border-style: inset;
+}
+
+
+.fixed-hosts table tr {
+text-align:center;
+}
+
+.fixed-hosts table td {
+border: 1px solid;
+border-style: inset;
+border-color:orange;
+}
+
+.fixed-hosts .category {
+color:#00FF33;
+font-size:xx-small;
+font-style:italic;
+}
+
+.fixed-hosts .hostlink {
+font-size:xx-small;
+}
+
+
+.fixed-hosts-note {
+color:#00FF66;
+}
+
+.info-chr {
+    size: small;
+    animation: blinker 1.5s linear infinite;
+} @keyframes blinker {  
+  50% { opacity: 0; }}
+
+.hl-clear-unknown {
+    color:red;
+}
+
+.hl-tor-unknown {
+    color:green;
+}
+
+.info-announcement {
+    font-weight: bold;
+    font-size: medium;
+    color: green;
+    animation: info-blinker 2s linear infinite;
+} @keyframes info-blinker {
+         0% { color: #00FF33; }
+        50% { color: #FFFFFF; }
+        100% { color: #00FF33; }}
+
+
+.warning-announcement {
+    font-weight: bold;
+    font-size: medium;
+    color: red;
+    animation: warning-blinker 2s linear infinite;
+} @keyframes warning-blinker {
+    0% { color: #FF0000; }
+    50% { color: #FFFFFF; }
+    100% { color: #FF0000; }}
+
+.announcement-outer {
+margin-left: 12%;
+margin-right: 12%;
+text-align:center;
+}
+
+.announcement-outer .announcement {
+display:inline-block;
+border: 1px solid Aqua;
+border-radius: 30px;
+padding: 10px;
+color: White;
+background-color: DarkSlateGray;
+font-family: fantasy;
+font-weight: normal;
+font-style: normal;
+font-size: small;
+text-shadow: none;
+}
+
+div.banner-outer {
+text-align:center;
+}
+
+div.banner-table-container {
+display:inline-table;
+/*background: -moz-linear-gradient(left,  rgba(0,0,0,1) 0%, rgba(47,79,79,1) 100%);*/
+background: -moz-linear-gradient(left,  #000 0%, #0f1a1a 40%, #2f4f4f 100%);
+100%);
+font-family: serif;
+font-weight: normal;
+font-style: normal;
+color: white;
+border: 1px solid Aqua;
+border-radius: 30px;
+}
+
+table.banner-table {
+
+}
+
+table.banner-table td {
+width: 25%;
+font-style:italic;
+font-size: small;
+padding-bottom: 10px;
+}
+
+table.banner-table th {
+font-size: large;
+padding-left: 5px;
+padding-right: 5px;
+vertical-align: middle;
+padding-bottom: 10px;
+white-space: nowrap;
+}
+
+table.banner-table caption {
+font-size: xx-large;
+}
+
+blink {
+        animation: blinker 0.6s linear infinite;
+       }
+      @keyframes blinker {  
+        50% { opacity: 0; }
+       }
+       .blink-one {
+         animation: blinker-one 1s linear infinite;
+       }
+       @keyframes blinker-one {  
+         0% { opacity: 0; }
+       }
+       .blink-two {
+         animation: blinker-two 1.4s linear infinite;
+       }
+       @keyframes blinker-two {  
+         100% { opacity: 0; }
+       }
+
+
+/* ↑  for filters (end)  ↑ */
+
+
+@import url("style.css") !important;
+
+.controls input[type="submit"] {
+display: block;
+padding: 0.8em;
+text-decoration: none;
+white-space: nowrap;
+border-radius: 0px;
+color: var(--accent);
+overflow-y: auto;
+font-family: Arial, Helvetica, sans-serif;
+}
+
+.controls input[type="submit"]:hover {
+color: var(--accent2);
+background: var(--accent);
+cursor: pointer;
+}
+
+#exitbutton {
+background-color: var(--red);
+color: #ddd;
+}
+
+#exitbutton:hover {
+background-color: var(--red-hover);
+}
+
+.delbutton_inline_removable {
+background-color: var(--accent2);
+padding: 0.3em;
+font-family: Arial, Helvetica, sans-serif;
+border: solid #ddd;
+border-radius: 0.2em;
+border-width: 0.1em;
+color: var(--button-text-col);
+transition: background-color, color, 0.3s;
+    transition-timing-function: ease, ease, ease;
+transition-timing-function: ease-in-out;
+}
+
+.delbutton_inline_removable:hover {
+   cursor: pointer !important;
+   background-color: var(--red);
+padding: 0.3em;
+font-family: Arial, Helvetica, sans-serif;
+border: solid #ffffff;
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+border-radius: 0.2em;
+border-width: 0.1em;
+color: #ffffff;
+}
+
+.messages #rooms input, .rooms #roomblock input {
+  background-color: var(--accent2);
+padding: 0.3em;
+font-family: Arial, Helvetica, sans-serif;
+border: solid #ddd;
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+border-radius: 0.2em;
+border-width: 0.1em;
+color: var(--button-text-col);
+transition: background-color, color, 0.3s;
+    transition-timing-function: ease, ease, ease;
+transition-timing-function: ease-in-out;
+}
+
+.messages #rooms input:hover, .rooms #roomblock input:hover {
+  background-color: var(--accent);
+padding: 0.3em;
+font-family: Arial, Helvetica, sans-serif;
+border: solid #ffffff;
+    border-top-width: medium;
+    border-right-width: medium;
+    border-bottom-width: medium;
+    border-left-width: medium;
+border-radius: 0.2em;
+border-width: 0.1em;
+color: var(--accent2);
+}
+
+.messages #rooms select, .rooms #roomblock select {
+background-color: var(--accent);
+color: var(--accent2);
+padding: 0.3em;
+text-align: left;
+font-family: Arial, Helvetica, sans-serif;
+border: solid var(--accent);
+border-radius: 0.2em;
+border-width: 0.1em;
+}
+
+.messages #rooms select:hover, .rooms #roomblock select:hover {
+padding: 0.3em;
+text-align: left;
+color: var(--accent);
+background-color: var(--accent2);
+font-family: Arial, Helvetica, sans-serif;
+border: solid var(--accent);
+border-radius: 0.2em;
+border-width: 0.1em;
+}
+
+body.controls {
+overflow-y: hidden !important;
+}
+
+body {
+background-color: black;
+}
+
+body.rooms{
+background-color: transparent;
+}
+
+.messages #chatters div.listchatters {
+ width: 20% !important;
+}
+
+.rank.g { background-image: url('rank/gues.png'); }
+.rank.ra { background-image: url('rank/jmem.png'); }
+.rank.m { background-image: url('rank/smem.png'); }
+.rank.mod { background-image: url('rank/rmod.png'); }
+.rank.sm { background-image: url('rank/smod.png'); }
+.rank.a { background-image: url('rank/radm.png'); }
+.rank.sa { background-image: url('rank/sadm.png'); }
+
+body.post {
+ /* display: none !important; */
+}</style><link rel="preload" href="style.css" as="style"><link rel="stylesheet" type="text/css" href="style.css"><link rel="stylesheet" type="text/css" href="style.css"><meta http-equiv="onion-location" content="http://cboxkuuxrtulkkxhod2pxo3la25tztcp4cdjmc75wc5airqqliq2srad.onion" /></head><body class="login">
+	<div class="navbartitle"><a href="#" style="text-decoration: none; color: #fff;">The Underground Railroad</a></div>
+	<nav class="topnav">
+	<ul class="topnav">
+	<li><a href="#ABOUT" target="_self">About</a></li>
+	<li><a href="#CNGLOG" target="_self">Changelog and News</a></li>
+	<li><a href="#LINKS" target="_self">Links</a></li>
+	<li><a href="http://dnkgitith76l6ljojzoxzadhvgvj74vl6os6ft4wnef4gxhfbc2ghzad.onion/dasho/chatterbox/releases" target="_blank">Source</a></li>
+	<a class="wgbtn" href="#logincbox">Login</a><a class="wgbtn" href="http://dnkhostduos5t3k66ye52waphqx7vk23ict2viojwny354lawjn4lzqd.onion/" target="_blank">Hosting</a>
+	</ul> </nav><div id="logincbox" class="overlaycbx"><div class="popupcbx"><h2>Login</h2><a class="closecbx" href="#">&times;</a><div class="contentcbx"><form action="/index.php" enctype="multipart/form-data" method="post" target="_parent"><input type="hidden" name="lang" value="en"><input type="hidden" name="nc" value="226901"><input type="hidden" name="action" value="login"><table><tr><td>Nickname:</td><td><input type="text" name="nick" size="15" autofocus></td></tr><tr><td>Password:</td><td><input type="password" name="pass" size="15"></td></tr><tr id="captcha"><td><span class="centerWrap sprite-decaptcha-logo-night"></span> <img class="captchalogincbox" width="55" height="24" src="data:image/gif;base64,R0lGODdhNwAYAIAAAAQCBPz+/CwAAAAANwAYAAACaoSPqcvtD6OctNqLs968+w+GV0CWgUEi6bGq5be+gDzTNXp2sSnvuPto3YC/lDFXRA4bwqbyeHMupwvpDwiVWpnPnPCa5J2yymqXCo6ed18zblxOQ1neuuR15MnhxJpRBBgoOEhYaHgoUgAAOw=="></td><td><input type="hidden" name="challenge" value="1906882699"><input type="text" name="captcha" size="15" autocomplete="off"></td></tr><tr><td colspan="2">Guests, choose a color:<br><select name="colour"><option value="">* Random Color *</option><option value="F5F5DC" style="color:#F5F5DC;">Beige</option><option value="8A2BE2" style="color:#8A2BE2;">Blue violet</option><option value="A52A2A" style="color:#A52A2A;">Brown</option><option value="00FFFF" style="color:#00FFFF;">Cyan</option><option value="00BFFF" style="color:#00BFFF;">Sky blue</option><option value="FFD700" style="color:#FFD700;">Gold</option><option value="808080" style="color:#808080;">Grey</option><option value="008000" style="color:#008000;">Green</option><option value="FF69B4" style="color:#FF69B4;">Hot pink</option><option value="ADD8E6" style="color:#ADD8E6;">Light blue</option><option value="90EE90" style="color:#90EE90;">Light green</option><option value="32CD32" style="color:#32CD32;">Lime green</option><option value="FF00FF" style="color:#FF00FF;">Magenta</option><option value="808000" style="color:#808000;">Olive</option><option value="FFA500" style="color:#FFA500;">Orange</option><option value="FF4500" style="color:#FF4500;">Orange red</option><option value="FF0000" style="color:#FF0000;">Red</option><option value="4169E1" style="color:#4169E1;">Royal blue</option><option value="2E8B57" style="color:#2E8B57;">Sea green</option><option value="A0522D" style="color:#A0522D;">Sienna</option><option value="C0C0C0" style="color:#C0C0C0;">Silver</option><option value="D2B48C" style="color:#D2B48C;">Tan</option><option value="008080" style="color:#008080;">Teal</option><option value="EE82EE" style="color:#EE82EE;">Violet</option><option value="FFFFFF" style="color:#FFFFFF;">White</option><option value="FFFF00" style="color:#FFFF00;">Yellow</option><option value="9ACD32" style="color:#9ACD32;">Yellow green</option></select></td></tr><tr><td colspan="2"><input type="submit" value="Enter Chat" ></td></tr></table></form><br><div id="chatters">Currently 1 chatter(s) in room<br><span style="color:#00FFFF;">Sariell</span> &nbsp; </div></table></div></div></div><div class="odiv"><div class="splash"><h2><strong>Welcome to The Underground Railroad</strong></h2><div class="splashcard"><br>
+	<h3><ins>Shocking News</ins>: New Updates!!!! Check the Changelog. Please. Do it .... go on!!!</h3><br>
+	<strong>Welcome to The Underground Railroad - <em>The most over-compensating chat on tor</em>.</strong>
+	<br>Are you looking for a fun - stress free, user friendly - totally secret awesome badass cool darkweb chat? That's such a coincidence, because that's what this is. All you have to do is press the <strong>Login</strong> button in the top right hand corner, enter your credentials, and start chatting. If you want to chat anonymously, just enter any nickname press <strong>Enter Chat</strong> straight away and get at it. We hope you have fun!
+	<br><br>
+	<div class="callout alert" style="background: none; border: 2px; border-style: solid; border-color: #ffff80; border-radius: 0.5em; padding: 1em; color: white; margin-left: 10%; margin-right: 10%;">  <p style="color: white; text-align: center"><center>The <span style="color: #ffff80;">Underground</span> Rules</center></p><hr><ol>  <li><span style="color: #f4e80c;">No CP, Zoophilia, other Pornography, or Gore.</span></li>  <li>Freedom of speech is welcomed, but be nice.</li>  <li>Please <span style="color: #f4e80c;">be respectful</span> to other chatters</li>  <li>Please <span style="color: #f4e80c;">use meaningful</span> and <span style="color: #f4e80c;">non-offensive nicknames</span>. No pedo nicks.</li>  <li>Please <span style="color: #f4e80c;">use English</span> in the Main Chat please.</li>  <li>Please <span style="color: #f4e80c;">no advertising</span> with out staff approval .</li>  <li>No drug or gun endorsements, or endorsements of other illegal markets.</li></ol> <hr /></div>
+	<br><br>
+	</div><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<div class="tip" style="position: fixed; bottom : 0; width: 100%"><h4 style="color:white;">~ Dasho ~</h4></div>
+	</div><br><br><br>
+	<div class="idiv" id="LINKS"><div class="idivs1">&nbsp;</div>
+        
+        <div class="idivc">
+        
+        <div style="text-align:center"><h3><a name="Links">Some Useful Links</a></h3></div>
+        <br>
+        <h4>Important Contacts:</h4>
+        <ul style="list-style-type: &quot; &quot;">
+          <li><a href="mailto:dasho@onionz.dev" class="ImContact" title="dasho@onionz.dev">@Dasho</a> - Hosting person thing ..? (F**KEN GENIUS)</li>
+          <ul style="list-style-type: &quot; &#10150; &quot;"><li><a href="http://sonarmsng5vzwqezlvtu2iiwwdn3dxkhotftikhowpfjuzg7p3ca5eid.onion/contact/Dasho" class="ImContact" title="Sonar" target="_blank">Sonar</a></li><li><a href="https://keybase.io/d_a_s_h_o" class="ImContact" title="Keybase" target="_blank">Keybase</a></li>
+
+         </ul>
+        </ul>
+		<h4>Others from The Onionz Project:</h4>
+		<ul style="list-style-type: &quot; &rarr; &quot;">
+		  <li><a target="_blank" href="https://hub.onionz.dev/">hub@onionz (clearnet@Onionz)</a> - Command Ops for The Onionz Project <span class="clearnetlink"><strong>WWW</strong></span></li>
+		  <li><a target="_blank" href="https://app.onionz.dev/">app@Onionz (clearnet@Onionz)</a> - Dasho's center for managing the project<span class="clearnetlink"><strong>WWW</strong></span></li>
+          <li><a target="_blank" href="http://dnkhostduos5t3k66ye52waphqx7vk23ict2viojwny354lawjn4lzqd.onion/">Dashed Droplets (darknet@Onionz)</a> - Free onion hosting with only some limitations<span class="onionlink"><strong>TOR</strong></span></li>
+          <li><a target="_blank" href="http://dnkgitith76l6ljojzoxzadhvgvj74vl6os6ft4wnef4gxhfbc2ghzad.onion/">Code Curiosity (darknet@Onionz)</a> - Free Anonymous Git Solution <strong>(NEW)</strong><span class="onionlink"><strong>TOR</strong></span></li>
+		  <li><a target="_blank" href="http://jndqdjrmicijxrpehjy7phmzizxjh3fr4wdmfwzuzz2blrvrvzi2tqid.onion/">Dashed Uploads (darknet@Onionz)</a> - A powerful pastebin and file-hosting solution for darknet <strong>(NEW)</strong><span class="onionlink"><strong>TOR</strong></span></li>
+		  <li><a target="_blank" href="https://dnk.onionz.dev/share">Pastebin (clearnet@Onionz)</a> - The official DNK pastebin for clearnet<span class="clearnetlink"><strong>WWW</strong></span></li>
+		</ul>
+        <h4>Other Links:</h4>
+		<ul>
+          <li><a target="_blank" href="http://danschat356lctri3zavzh6fbxg2a7lo6z3etgkctzzpspewu7zdsaqd.onion/">DansChat</a>  - A popular chatroom<span class="onionlink"><strong>TOR</strong></span></li>
+          <li><a target="_blank" href="http://blkhatjxlrvc5aevqzz5t6kxldayog6jlx5h7glnu44euzongl4fh5ad.onion/">Black Hat Chat</a> - <span class="line">A popular chatroom</span> <span class="line">for cybersecurity enthusiasts</span><span class="onionlink"><strong>TOR</strong></span></li>
+          <li><a target="_blank" href="http://index-of.es/">Index Of</a> - <span class="line">A repository of exploits and guides</span><span class="clearnetlink"><strong>WWW</strong></span></li>
+          <li><a target="_blank" href="http://mixedbody2ymkgze.onion/test/ggggggg.html">NETWORKZ</a> - <span class="line">A site analysing and</span> <span class="line">explaing various forms of networking</span><span class="onionlink"><strong>TOR</strong></span></li>
+          <li><a target="_blank" href="https://irc.evilcorp.ga/">EvilCorp</a> - <span class="line">A popular IRC server</span> <span class="line">and webclient</span><span class="clearnetlink"><strong>WWW</strong></span></li>
+          <li><a target="_blank" href="http://kx5thpx2olielkihfyo4jgjqfb7zx7wxr3sd4xzt26ochei4m6f7tayd.onion/">Imperial Library</a> - <span class="line">Free ebook library</span><span class="onionlink"><strong>TOR</strong></span></li>
+          <li><a target="_blank" href="http://qubesosfasa4zl44o4tws22di6kepyzfeqv3tg4e3ztknltfxqrymdad.onion/">Qubes OS</a> - <span class="line">A reasonably</span> <span class="line">secure operating system</span><span class="onionlink"><strong>TOR</strong></span></li>
+          <li><a target="_blank" href="http://www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/">Whonix</a> - <span class="line">Software that can anonymize</span> <span class="line">everything you do online</span><span class="onionlink"><strong>TOR</strong></span></li>
+		  <li><a target="_blank" href="http://galaxy3bhpzxecbywoa2j4tg43muepnhfalars4cce3fcx46qlc6t3id.onion/">Galaxy 3</a> - A popular social network<span class="onionlink"><strong>TOR</strong></span></li>
+		  <li><a target="_blank" href="http://fam2pl7s2lao2ixp3wxoprhw5mxrkcjfpckfz33vqwvbssow6wa566yd.onion/">Postor</a> - A popular social network<span class="onionlink"><strong>TOR</strong></span></li>
+		  <li><a target="_blank" href="http://dreadytofatroptsdj6io7l3xptbet6onoyno2yv7jicoxknyazubrad.onion/">Dread</a> - A reddit tor alternative<span class="onionlink"><strong>TOR</strong></span></li>
+        </ul>
+		</div><div class="idivs2">&nbsp;</div><br>
+		<br><br><br></div>
+	<div class="idiv" id="CNGLOG">
+	<div class="idivs1">&nbsp;</div><div class="idivc"><br>
+	
+	<div style="text-align:center"><h3><a name="Links">Changelog and News</a></h3></div>
+	<br>
+	<div style="text-align:center">(Yes, it's literally the changelog and news. Like just that.)</div>
+	<h5>Changelog</h5>
+	 <p>This is a record of improvements or milestones of the Chat. It could be very detailed, but only big things will be listed.</p> <div class="scrollbox"><div class="sbc"><pre>
+	 <code> 2021-06-17: - The Chatterbox has been updated to -&gt; The Underground Railroad, in respect to the G2 update.</code><br>
+	 <code> 2021-01-06: - The Chatterbox source code has been released <a href="https://git.onionz.dev/dasho/chatterbox" target="_blank">here</a>.</code><br>
+	 <code> 2021-01-01: - Happy New Year!!!!</code><br>
+	 <code> 2020-12-28: - Server Updates and New Improvements.</code><br>
+	 <code> 2020-11-19: - Chatterbox v2 is coming soon with a all new built in (and JS free) git solution. Also, a new version of the Dashed Hosting is now in use with bug fixes and better configuration. Existing hostees can request an upgrade either here or via <a href="http://sonarmsng5vzwqezlvtu2iiwwdn3dxkhotftikhowpfjuzg7p3ca5eid.onion/contact/Dasho" target="_blank">Sonar</a> (make sure to include your project codename).</code><br />
+	 <code> 2020-10-27: - Chatterbox v1 is officially out!</code><br>
+	 <code> 2020-10-18: - Site in progress</code></pre></div></div>
+	
+	<h5>News</h5>
+	<div class="insb"> - May 2021: The initiative of the G2 update began.</div>
+	<div class="insb"> - Apr 2021: Curious Hosting updated to Dashed Droplets (Dashed Hosting)</div>
+	<div class="insb"> - Mar 2021: Absolutly nothing interesting to share.</div>
+	<div class="insb"> - Feb 2021: Absolutly nothing interesting to share.</div>
+	<div class="insb"> - Jan 2021: <span style="color:#ff0000"><strong>Curious</strong></span> has a new alias ---&gt; <span style="color:rgb(255,0,0);"><strong>Dasho</strong></span>.</div>
+	<div class="insb"> - Dec 2020: Second major update for Curious Hosting.</div>
+	<div class="insb"> - Nov 2020: More Exciting News... Chat is released, and Curious Hosting has not only been released, but has also undergone it's first major update!!!</div>
+	<div class="insb"> - Oct 2020: Exciting News... Chat is almost ready for release, and Curious Hosting is being released also!!!</div>
+	<div class="insb"> - Sep 2020: Absolutly nothing interesting to share.</div>
+	<div class="insb"> - Aug 2020: <span style="color:#ff0000"><strong>Curious</strong></span> has a new alias ---&gt; <span style="color:rgb(255,0,128);">Sokka</span>.</div>
+	<div class="insb"> - Jul 2020: Absolutly nothing interesting to share.</div>
+	<div class="insb"> - Jun 2020: Absolutly nothing interesting to share.</div>
+	<div class="insb"> - May 2020: Absolutly nothing interesting to share.</div>
+	<br><br>
+	</div>
+	<div class="idivs2">&nbsp;</div><br><br><br></div>
+	<div class="idiv" id="ABOUT"><div class="idivs1">&nbsp;</div>
+        
+        <div class="idivc">
+        
+        <div style="text-align:center"><h3><a name="Links">About The Chat</a></h3></div>
+        <br><br>
+	<div class="insb">Spread the word</div>
+	<br>
+	If you are passionate about promoting this chat, why not put a link to the site/chat in your regular forum profile signature? Go to your signature edit box and use something like this:<br><br>
+	<div class="scrollbox"><div class="sbc"><pre><code>[b][size=100][bgcolor=#121525][color=#166FA6][/color][color=#F7F7F7]The Underground Railroad:[/color][color=#166FA6] [/color][/bgcolor][/size] [size=100][bgcolor=#C13B5B][color=#F7F7F7]The dopest chat of darkweb.[/color][color=#C13B5B][/color][/bgcolor][/size][/b]</code></pre></div></div> <br>
+	
+	<div class="insb">Ideas and to-do's that need your input</div>
+	<br>
+	If you have theme ideas for the chat - or other improvements you'd like to see implemented, just contact a member of staff. Your feedback is highly appreciated.<br><br>
+        </div><div class="idivs2">&nbsp;</div><br>
+	</div></div>	<style>
+.ua_solidarity {
+  background: linear-gradient(to top,#ffd700 0%,#ffd700 50%,#0057b8 50%, #0057b8 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 99999;
+  animation: entry 5s;
+  -moz-animation: entry 5s;
+  -webkit-animation: entry 5s;
+  -o-animation: entry 5s;
+}
+
+@keyframes entry {
+  0% {opacity: 1;}
+  85% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@-moz-keyframes entry {
+  0% {opacity: 1;}
+  85% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@-webkit-keyframes entry {
+  0% {opacity: 1;}
+  85% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+@-o-keyframes entry {
+  0% {opacity: 1;}
+  85% {opacity: 1;}
+  100% {opacity: 0;}
+}
+</style>
+<div class="ua_solidarity">
+<h1 style="color: white; height: 90%; font-family: verdana; width:100%; display:flex; align-items: center; justify-content: center;">We Stand with Ukraine</h1>
+</div>
+
+	</body></html>

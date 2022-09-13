@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset=utf-8>
+<title>Easy Image Upload</title>
+<style type="text/css">
+html, body {
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-color:#ccc;
+    overflow: hidden;
+    font-family:sans-serif,Helvetica,Arial;
+}
+#content {
+    transform: translate(-50%, -50%);
+    text-align: center;
+    line-height: 1.5em;
+}
+#center {
+    position: absolute;
+    height: 0px;
+    left: 50%;
+    top: 50%;
+    z-index: 10;
+}
+#notice{
+    margin-top: 1em;
+}
+#imglabel {
+    margin-top: 1em;
+    display: block;
+}
+#fileselector {
+    min-width: 35em;
+}
+.upload-button {
+    transition-duration: 0.4s;
+    display: inline-block;
+    border: none;
+    text-align: center;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+    padding: .5rem 1em;
+    background-color: #4CAF50;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.upload-button:hover {
+    color: #4CAF50;
+    background-color: white;
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+#fileselector,
+#uploadlinks {
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+#fileselector:hover,
+#uploadlinks:hover {
+   box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+/*  */
+</style>
+</head>
+<body>
+<div id="center">
+<div id="content">
+<form id="form-upload" action="/upload/share" enctype="multipart/form-data" method="post">
+<label class="uploadfile">Image Upload:
+<input id="fileselector" name="file" type="file" multiple="multiple" accept="image/jpeg,image/png,image/gif,image/webp" />
+</label>
+<input type="submit" value="Upload" class="upload-button" />
+<div id="notice">Allowed <strong>JPEG</strong>,<strong>GIF</strong>,<strong>WebP</strong> and <strong>PNG</strong>. Multiple files upload is supported.<br />  Total upload size up to <strong>50MB</strong></div>
+</form></div>
+</div>
+</body>
+</html>

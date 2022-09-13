@@ -1,0 +1,274 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>8chan Community</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeader"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> </span>
+</nav>
+
+  <div class="titleWrapper" id="indexWrapper">
+	<fieldset class="titleFieldset" id="welcomeMessage">
+		<div id="logoBox" class="title">
+		  <div class="logoImg"> </div>
+		</div>
+
+        <p>
+		<i>Welcome to 8chan!</i>
+		<br><br>
+		The boundless horizon where anyone can make their own imageboard. We are commited to free speech and welcome all looking to build a community, including those  deplatformed or marginalized. Please see our <a href="/.static/pages/globalRules.html">Global Rules</a>  and <a href="/.static/pages/legal.html">Terms of Service</a>.
+		<br><br><br>
+		<span class="tagLine">Embrace the moé!</span>   <a href="/.static/pages/posting.html">[Get Started]</a>
+	</p>
+	</fieldset>
+
+	<fieldset class="titleFieldset">
+		<div id="dynamicLinks"><a href="/logs.js" class="coloredIcon" id="linkGlobalLogs"></a>
+<span>•</span>
+<a href="//archive.today/http://8chan.moe/*" class="coloredIcon" id="linkArchives"></a>
+<span>•</span>
+<a href="/graphs.js" class="coloredIcon" id="linkGraphs"></a>
+<span>•</span>
+<a href="/.static/pages/globalRules.html" class="coloredIcon" id="linkGlobalRules"></a>
+<span>•</span>
+<a href="/.static/pages/links.html" class="coloredIcon" id="linkLinks"></a>
+<span>•</span>
+<a href="/.static/pages/about.html" class="coloredIcon" id="linkAbout"></a>
+<span>•</span>
+<a href="/.static/pages/contact.html" class="coloredIcon" id="linkContact"></a>
+<span>•</span>
+<a href="/.static/pages/donate.html" class="coloredIcon" id="linkDonate"></a>
+<span>•</span>
+<a href="/account.js" class="coloredIcon" id="linkAccount"></a>
+</div>
+	</fieldset>
+
+	<fieldset class="titleFieldset">
+		<div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+	</fieldset>
+
+	<fieldset class="titleFieldset">
+	<legend>Stats</legend>
+    <div id="divStats">
+      <span>Total posts: <span id="labelTotalPosts">3204504</span></span>
+      <span>Posts in last hour: <span id="labelTotalPPH">167</span></span>
+      <span>Unique recent IPs: <span id="labelTotalIps">993</span></span>
+      <span>Total boards: <span id="labelTotalBoards">339</span></span>
+      <span>Media files stored: <span id="labelTotalFiles">632594</span></span>
+      <span>Total media size: <span id="labelTotalSize">791.93 GB</span></span>
+    </div>
+	</fieldset>
+
+	<fieldset class="titleFieldset">
+	<legend>Top Boards</legend>
+    <div id="divBoards" class="topBoards title"><a href="/v/">/v/ - Video Games</a><a href="/hispachan/">/hispachan/ - Hispachan</a><a href="/arepa/">/arepa/ - Magna Arepa</a><a href="/av/">/av/ - Animanga y videojuegos</a><a href="/tkr/">/tkr/ - Tickling Refuge</a><a href="/mex/">/mex/ - /tacos/</a><a href="/abdl/">/abdl/ - Adult Baby - Diaper Lover</a><a href="/hisrol/">/hisrol/ - Hispa Rol</a><a href="/arte/">/arte/ - Bellas Artes</a><a href="/b/">/b/ - Random</a><a href="/ac/">/ac/ - Animación y Cómics</a><a href="/vore1/">/vore1/ - Vore</a><a href="/digi/">/digi/ - Net Hangout</a><a href="/vt/">/vt/ - Vtubers-General</a><a href="/delicious/">/delicious/ - Cake</a><a href="/col/">/col/ - Colombia</a><a href="/interracial/">/interracial/ - Interracial</a><a href="/site/">/site/ - Site Meta</a><a href="/co/">/co/ - Comics & Cartoons</a></div>
+	</fieldset>
+
+	<div class="splitField">
+		<fieldset class="titleFieldset">
+		<legend>Latest Images</legend>
+			<div id="divLatestImages"><a href="/v/res/631196.html#638207"><img loading="lazy" height="auto" width="auto" src="/.media/t_5bb75b8e71cfae2030b5a63602d0c107923bd71586a4b30740ad5779638543d7"></a><a href="/ac/res/3977.html#4019"><img loading="lazy" height="auto" width="auto" src="/.media/t_382846eda22c61ea5456f975ab804d90cce6b5640cf8e898c75e111397026a85"></a><a href="/v/res/553005.html#638212"><img loading="lazy" height="auto" width="auto" src="/.media/t_9c6053a8c8f593cc734230cefe2388e87f3811c63e4ddbb71f655b9a4a4ddbd5"></a><a href="/v/res/637911.html#638213"><img loading="lazy" height="auto" width="auto" src="/.media/t_27ba7da753fe982232db68a17d52153e302e01dc9dc0b670db1c2765d8f028a8"></a><a href="/v/res/637911.html#638226"><img loading="lazy" height="auto" width="auto" src="/.media/t_60515d2310eb75232f44a9cec1ac623e7bf56075cd24c40210c972670fcb3553"></a><a href="/v/res/637911.html#638226"><img loading="lazy" height="auto" width="auto" src="/.media/t_d280675bd1eec2433f78764f4d1e44102ccd4356c89890785fbb039cfbdaf8db"></a><a href="/site/res/5423.html#6267"><img loading="lazy" height="auto" width="auto" src="/.media/t_688304dee1cdee12aa363e406cbe3bc73a7466e6945f0b11947ac8cfe6416c57"></a><a href="/v/res/637911.html#638237"><img loading="lazy" height="auto" width="auto" src="/.media/t_402e0c93d9982ff50fbd1f23f36cccca9e9e700cfa65b7384a088524b1135260"></a><a href="/v/res/637911.html#638237"><img loading="lazy" height="auto" width="auto" src="/.media/t_07e89f775c2afc09f4b8de0b1e6e7a644f1bfed82dd9d0a216e4bd3a87d34fec"></a><a href="/hisrol/res/57601.html#59951"><img loading="lazy" height="auto" width="auto" src="/hisrol/custom.spoiler"></a><a href="/v/res/637911.html#638247"><img loading="lazy" height="auto" width="auto" src="/.media/t_b5b31ca4202ecfe87183015e0d65ac6823d6d5ac9ad468975ca1e34db03a244e"></a><a href="/digi/res/8979.html#9941"><img loading="lazy" height="auto" width="auto" src="/.media/t_00692cd1ec36960da2965ffc705c1d3845ee1ed072a21fda3f169c98db1e4908"></a><a href="/vhs/res/21.html#1341"><img loading="lazy" height="auto" width="auto" src="/.media/t_a7ce30a4aafb352d807abd4034fecea1127eeefaa2c46f5fba2d4f75b805f2e4"></a><a href="/vhs/res/21.html#1341"><img loading="lazy" height="auto" width="auto" src="/.media/t_def04b69e6fd45470015e834ffc0a1efd525512168f26790c2d58cea23aae98b"></a><a href="/vhs/res/21.html#1341"><img loading="lazy" height="auto" width="auto" src="/.media/t_4d9761c9409350aeb4936552f9bd861b381be79616e10d3515485b0ce124b7e8"></a><a href="/v/res/637911.html#638276"><img loading="lazy" height="auto" width="auto" src="/.media/t_230d0fed551400e934903ec25c0349c2680ec9d6504f7964a7fe7a06b2abb5e3"></a><a href="/v/res/637911.html#638278"><img loading="lazy" height="auto" width="auto" src="/.media/t_1eac9d7db4417d7e9a5f9cb7f126fe0d8959d6c0a691a3e296cf17d2aeecf5d3"></a><a href="/digi/res/8979.html#9943"><img loading="lazy" height="auto" width="auto" src="/digi/custom.spoiler"></a><a href="/hisrol/res/57601.html#59953"><img loading="lazy" height="auto" width="auto" src="/.media/t_a932231ce3a78bbd85d8f9f556d96472cad41df5fb3751de1c4260c2ba3f9855"></a><a href="/v/res/631196.html#638283"><img loading="lazy" height="auto" width="auto" src="/.media/t_b7147bc84fb7a30e544419cec979cb36e7f09d17e04b85cde8f33f21e1832141"></a><a href="/v/res/637911.html#638286"><img loading="lazy" height="auto" width="auto" src="/.media/t_b17a65105c41d391d0de8ba7ab10950de7c0e41a644a1cbd5892eadacde02959"></a><a href="/v/res/637911.html#638286"><img loading="lazy" height="auto" width="auto" src="/.media/t_fd06c3adc9a1d3793c9bbaac217a9b58ecc9d3c73028c76eddf2db54e6994329"></a><a href="/v/res/637911.html#638286"><img loading="lazy" height="auto" width="auto" src="/.media/t_ac727893ca4ca10edb9ae1e8f50a7b0a38c68992b55a364f5fb20b685fdb0076"></a><a href="/v/res/637911.html#638286"><img loading="lazy" height="auto" width="auto" src="/.media/t_b785b7c9deb31fbe6c0cf0e8e3dc66923da7d3ab01c92344b2ef957a0fa78562"></a><a href="/v/res/637911.html#638290"><img loading="lazy" height="auto" width="auto" src="/.media/t_45820f32cd43a1b5bcf9108837acfc4047e08f8ec956c4e608accf0ae1b2c58b"></a><a href="/v/res/637911.html#638294"><img loading="lazy" height="auto" width="auto" src="/.media/t_d63251a8f6231b93ba80010d8916f01aa8840d4bd7f594b42ffbf6010c21db10"></a><a href="/v/res/637911.html#638299"><img loading="lazy" height="auto" width="auto" src="/.media/t_40654b6e7f6bef5eaf197de3e366ffdda8a5f91a0d201898c1f29dc31453b2d9"></a><a href="/hisrol/res/57728.html#59956"><img loading="lazy" height="auto" width="auto" src="/.media/t_1e8993ff1609919fc5a43c66ab0fd0a162fb6e9df298fbe3f437052c848943b9"></a><a href="/v/res/637911.html#638304"><img loading="lazy" height="auto" width="auto" src="/.media/t_56b17dfade8ded6ebb03b1e4c81762cdf60f273de645ba515e240c147d94eecb"></a><a href="/v/res/637911.html#638310"><img loading="lazy" height="auto" width="auto" src="/.media/t_817d0b4b62975f17a5323fa081c454917ea5e8b00d82f46323bc0e52e1a485f1"></a></div>
+		</fieldset> 
+		<div></div>
+		<fieldset class="titleFieldset">
+		<legend>Latest Postings</legend>
+			<div id="divLatestPosts"><div class="latestPostCell"><a class="linkPost title" href="/hisrol/res/59578.html#59957">>>/hisrol/59957</a>
+<span class="labelPreview">&gt;&gt;59952
+Por como op describió las cosas incluso si los molestará mi personaje ya no sería mi personaje, pasaría de una bully a </span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637911.html#638310">>>/v/638310</a>
+<span class="labelPreview">&gt;&gt;638304
+&gt;Fuck you Luciano.
+That&apos;s not the resident monkey.</span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/24790.html#26214">>>/hispachan/26214</a>
+<span class="labelPreview">&gt;&gt;24888
+&gt;&gt;25977
+confirmado a los argentinosnled gusta la pija, es parte de su herencia eurocuck</span></div><div class="latestPostCell"><a class="linkPost title" href="/site/res/5423.html#6268">>>/site/6268</a>
+<span class="labelPreview">&gt;&gt;6264
+&gt;I love lolis because they&apos;re based on real children.
+FTFY</span></div><div class="latestPostCell"><a class="linkPost title" href="/mex/res/2010.html#2073">>>/mex/2073</a>
+<span class="labelPreview">&gt;&gt;2015
+muérete porfis</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/633432.html#638309">>>/v/638309</a>
+<span class="labelPreview">&gt;&gt;638289
+&gt;You can&apos;t slap optics that isn&apos;t a rifle though
+I was mixing up mods and vanilla again, some mods do have a handful </span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637579.html#638308">>>/v/638308</a>
+<span class="labelPreview">I don&apos;t see the difference if I go to a park to record bird singing or if I go to the internet and watch random video and record</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/461935.html#638307">>>/v/638307</a>
+<span class="labelPreview">https://youtu.be/KLKsTWFpj-s
+Well guys Misa from Japanese Ammo is apparently a degenerate freak. Damn shame, I learned basic se</span></div><div class="latestPostCell"><a class="linkPost title" href="/esp/res/273.html#277">>>/esp/277</a>
+<span class="labelPreview">&gt;&gt;276
+Lo de Madrid es para ponerle un monumento a Ayuso, cómo se nota cuando una comunidad está bien gobernada. No entiendo cóm</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637911.html#638306">>>/v/638306</a>
+<span class="labelPreview">&gt;&gt;638299
+Lowering AoC is such a cuck move anyway, when its clear that the whole concept itself is fucking retarded to begin wit</span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/25638.html#26213">>>/hispachan/26213</a>
+<span class="labelPreview">&gt;&gt;26205
+Pero el dolar viene a ser un medidor de inflacion, por lo que si sube, suben todas las cosas, pero al meter el fernet t</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/228459.html#638305">>>/v/638305</a>
+<span class="labelPreview">&gt;&gt;638300
+Have any caps/archives of your posts?
+This is why you should use a dynamic VPN</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637911.html#638304">>>/v/638304</a>
+<span class="labelPreview">&gt;&gt;638299
+Read the fourth image, last paragraph.  Instantly proven wrong.  Fuck you Luciano.
+
+&gt;&gt;638301
+I don&apos;t give a shit, y</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637579.html#638303">>>/v/638303</a>
+<span class="labelPreview">&gt;&gt;637677
+&gt;Not getting caught when you do it. Alter it enough and it&apos;s yours.
+Legally, yes.
+What about ethics?</span></div><div class="latestPostCell"><a class="linkPost title" href="/ac/res/3918.html#4020">>>/ac/4020</a>
+<span class="labelPreview">&gt;&gt;4018
+Esto. también ocurre cuando estimulas la próstata...</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/228459.html#638302">>>/v/638302</a>
+<span class="labelPreview">&gt;&gt;638300
+Mark has a jewcy hole</span></div><div class="latestPostCell"><a class="linkPost title" href="/hisrol/res/57728.html#59956">>>/hisrol/59956</a>
+<span class="labelPreview">&gt;&gt;59948
+&gt;&gt;59835
+
+**por número de aciertos el rayo bikinizador no debería de afectarnos, pero meh**
+
+&quot;Pero es que ahora amba</span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/24790.html#26212">>>/hispachan/26212</a>
+<span class="labelPreview">&gt;&gt;25977
+&gt;terminé
+Haz sido cuckeado por tí mismo</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637911.html#638301">>>/v/638301</a>
+<span class="labelPreview">&gt;&gt;638297
+Retarded nigger, I showed you the definition *before* jews changed it. You are literally the jew trying to change the </span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/22639.html#26211">>>/hispachan/26211</a>
+<span class="labelPreview">&gt;&gt;26210
+Ya mataron al /v/ de hispachan precisamente ese grupo, y  aquí causaron una revuelta por andar mismoputeando y causando</span></div><div class="latestPostCell"><a class="linkPost title" href="/404/res/13843.html#13876">>>/404/13876</a>
+<span class="labelPreview">&gt;&gt;13869
+parents dont understand</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/228459.html#638300">>>/v/638300</a>
+<span class="labelPreview">&gt;&gt;637887
+Mark banned me for talking about Witcher 1 and wiped my post history. Then when I asked him why he banned me and delet</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637911.html#638299">>>/v/638299</a>
+<span class="labelPreview">&gt;&gt;638286
+Anon, read the third image you just posted. It says,
+&gt;substitute a Federal, sex-neutral definition of the offense &apos;&apos;&apos;</span></div><div class="latestPostCell"><a class="linkPost title" href="/hispol/res/675.html#691">>>/hispol/691</a>
+<span class="labelPreview">La Unión Europea, a través de un comunicado de la oficina del Alto Representante para la Política Exterior, ha manifestado su ap</span></div><div class="latestPostCell"><a class="linkPost title" href="/arepa/res/8691.html#9154">>>/arepa/9154</a>
+<span class="labelPreview">&gt;&gt;8691
+No es que nadie &quot;quiera&quot; irse a Perú. De hecho en Venezuela todos piensan que los peruanos son feos y medio retrasados m</span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/638298.html#638298">>>/v/638298</a>
+<span class="labelPreview">Post your webms and mp4&apos;s ladyboys and gentlemen, it&apos;s been a long while since we&apos;ve had one of these.</span></div><div class="latestPostCell"><a class="linkPost title" href="/tkr/res/23288.html#24504">>>/tkr/24504</a>
+<span class="labelPreview">Finally tried my hand at one of these from the previous thread. Hope you like, it&apos;s not my best but hey it was like 30 minutes, </span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/22639.html#26210">>>/hispachan/26210</a>
+<span class="labelPreview">&gt;&gt;26208
+No, las VNs sean porno o no, está bien que se queden allí, es un board de juegos y las VN lo son.</span></div><div class="latestPostCell"><a class="linkPost title" href="/b/res/417761.html#418451">>>/b/418451</a>
+<span class="labelPreview">I was already born so why should I care about abortion. I got mine. Your mom doesn&apos;t want you? Damn that sucks, better you than </span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/22639.html#26209">>>/hispachan/26209</a>
+<span class="labelPreview">&gt;&gt;26181
+&gt;Revisa el hilo de javs.
+El tema con ese hilo no es por el porno en si, sino por la temática que es de actrices japone</span></div><div class="latestPostCell"><a class="linkPost title" href="/arepa/res/8730.html#9153">>>/arepa/9153</a>
+<span class="labelPreview">&gt;&gt;9151
+
+&gt;deberia ser
+
+ Mi jeva tiene 24 y yo 21 top clap</span></div><div class="latestPostCell"><a class="linkPost title" href="/av/res/10.html#2892">>>/av/2892</a>
+<span class="labelPreview">&gt;&gt;10
+Negros pasen animaciones de dragon ball hechas por fans. Yo empiezo
+https://youtu.be/1JKLM45aIik
+Legend - A Dragon ball </span></div><div class="latestPostCell"><a class="linkPost title" href="/v/res/637911.html#638297">>>/v/638297</a>
+<span class="labelPreview">&gt;&gt;638293
+&gt;&gt;638294
+I really don&apos;t give a shit how you jew up definitions, changing definitions is the jew&apos;s forte.  You switch </span></div><div class="latestPostCell"><a class="linkPost title" href="/hispachan/res/22639.html#26208">>>/hispachan/26208</a>
+<span class="labelPreview">&gt;&gt;26196
+¿Porque no hacer un tablon porno y listo?
+Asi mandan a las VNs alli tambien y se puede usar AV sin lidiar con 7 hilos </span></div></div>
+		</fieldset>
+	</div>
+
+  </div>
+
+  <footer id="dynamicFooter"><div id="footer">
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine" href="http://gitgud.io/LynxChan/LynxChan"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+
+
+
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+
+</body></html>

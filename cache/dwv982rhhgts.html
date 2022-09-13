@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:php [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,php"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/php"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:php","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:php" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:php&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php" class="wikilink1" title="fuss:php" data-wiki-id="fuss:php">php</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:php</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#wizardry_and_steamworks_javascript_libraries">Wizardry and Steamworks JavaScript Libraries</a></div></li>
+<li class="level1"><div class="li"><a href="#latitude_longitude_and_mercator_coordinates">Latitude Longitude and Mercator Coordinates</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#latitude_longitude_to_pixel">Latitude Longitude to Pixel</a></div></li>
+<li class="level2"><div class="li"><a href="#pixel_to_latitude_and_longitude">Pixel to Latitude and Longitude</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#get_client_ip">Get Client IP</a></div></li>
+<li class="level1"><div class="li"><a href="#get_server_ip">Get Server IP</a></div></li>
+<li class="level1"><div class="li"><a href="#remove_empty_strings_from_array">Remove Empty Strings From Array</a></div></li>
+<li class="level1"><div class="li"><a href="#re-index_array">Re-Index Array</a></div></li>
+<li class="level1"><div class="li"><a href="#json_like_javascript_wrapper">JSON like Javascript Wrapper</a></div></li>
+<li class="level1"><div class="li"><a href="#create_uuid">Create UUID</a></div></li>
+<li class="level1"><div class="li"><a href="#format_current_time_to_mysql_datetime_format">Format Current Time to MySQL DateTime Format</a></div></li>
+<li class="level1"><div class="li"><a href="#change_owner_and_group_recursively">Change Owner and Group Recursively</a></div></li>
+<li class="level1"><div class="li"><a href="#prepared_statements">Prepared Statements</a></div></li>
+<li class="level1"><div class="li"><a href="#print_unicode_characters">Print Unicode Characters</a></div></li>
+<li class="level1"><div class="li"><a href="#using_database_transactions">Using Database Transactions</a></div></li>
+<li class="level1"><div class="li"><a href="#recursively_pretty-print_node_names_and_values">Recursively Pretty-Print Node Names and Values</a></div></li>
+<li class="level1"><div class="li"><a href="#atomic_read_and_write">Atomic Read and Write</a></div></li>
+<li class="level1"><div class="li"><a href="#permute_array_elements">Permute Array Elements</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#reverse">Reverse</a></div></li>
+<li class="level2"><div class="li"><a href="#forward">Forward</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#cryptographic_functions">Cryptographic Functions</a></div></li>
+<li class="level1"><div class="li"><a href="#map_a_value_in_a_given_range_to_a_different_range">Map a Value in a Given Range to a Different Range</a></div></li>
+<li class="level1"><div class="li"><a href="#array_stride">Array Stride</a></div></li>
+<li class="level1"><div class="li"><a href="#convert_hexadecimal_color_string_to_rgb">Convert Hexadecimal Color string to RGB</a></div></li>
+<li class="level1"><div class="li"><a href="#create_color_from_string">Create Color from String</a></div></li>
+<li class="level1"><div class="li"><a href="#resize_png_image">Resize PNG Image</a></div></li>
+<li class="level1"><div class="li"><a href="#add_png_image_border">Add PNG Image Border</a></div></li>
+<li class="level1"><div class="li"><a href="#stack">Stack</a></div></li>
+<li class="level1"><div class="li"><a href="#queue">Queue</a></div></li>
+<li class="level1"><div class="li"><a href="#y-combinator">Y-Combinator</a></div></li>
+<li class="level1"><div class="li"><a href="#set_perl-compatible_regular_expressions_pcre_recursion_limit">Set Perl-Compatible Regular Expressions (PCRE) Recursion Limit</a></div></li>
+<li class="level1"><div class="li"><a href="#pretty-print_variable_dump">Pretty-Print Variable Dump</a></div></li>
+<li class="level1"><div class="li"><a href="#zip_directory_and_download">Zip Directory and Download</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="wizardry_and_steamworks_javascript_libraries">Wizardry and Steamworks JavaScript Libraries</h1>
+<div class="level1">
+<div class="table sectionedit2"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign"> Name       </th><th class="col1"> Link </th><th class="col2"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> <code>was.php</code> </td><td class="col1"> <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/php/composer/packages/was.php" class="wikilink1" title="php:composer:packages:was.php" data-wiki-id="php:composer:packages:was.php">was.php</a> </td><td class="col2"> General Purpose Library </td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit3" id="latitude_longitude_and_mercator_coordinates">Latitude Longitude and Mercator Coordinates</h1>
+<div class="level1">
+
+<p>
+The following snippets, adapted from <a href="http://blogs.msdn.com/greg_schechter" class="urlextern" title="http://blogs.msdn.com/greg_schechter" rel="ugc nofollow">Greg Schechter&#039;s MSN Blog</a> can be used to convert between Latitude and Longitude and mercator coordinates. This can be used with a mercator projection map such as the following map:
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/fuss_php_world_mercator_projection.png?id=fuss%3Aphp" class="media" title="fuss:fuss_php_world_mercator_projection.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/fuss_php_world_mercator_projection.png?w=512&amp;tok=17df77" class="media" title="Mercator projection map. " alt="Mercator projection map. " width="512" /></a>
+</p>
+
+</div>
+
+<h2 class="sectionedit4" id="latitude_longitude_to_pixel">Latitude Longitude to Pixel</h2>
+<div class="level2">
+
+<p>
+The function <code>wasGeoToMercatorPoint</code> takes as input:
+</p>
+<ul>
+<li class="level1"><div class="li"> latitude</div>
+</li>
+<li class="level1"><div class="li"> longitude</div>
+</li>
+<li class="level1"><div class="li"> map width</div>
+</li>
+<li class="level1"><div class="li"> map height</div>
+</li>
+<li class="level1"><div class="li"> left-most map (<code>0</code> if  using the whole map of the world)</div>
+</li>
+<li class="level1"><div class="li"> right-most map (<code>0</code> if  using the whole map of the world)</div>
+</li>
+</ul>
+
+<p>
+and returns an array containing the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7392a8cd69b275fa1798ef94c839d2e0.png" class="latex_inline" alt="$(x,y)$" title="Math" /> map coordinate.
+</p>
+<pre class="code php"><span class="kw2">function</span> wasGeoToMercatorPoint<span class="br0">&#40;</span><span class="re0">$latitude</span><span class="sy0">,</span> <span class="re0">$longitude</span><span class="sy0">,</span> <span class="re0">$mapWidth</span><span class="sy0">,</span> <span class="re0">$mapHeight</span><span class="sy0">,</span> <span class="re0">$mapLeft</span><span class="sy0">=</span><span class="nu0">0</span><span class="sy0">,</span> <span class="re0">$mapTop</span><span class="sy0">=</span><span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$x</span> <span class="sy0">=</span> <span class="re0">$mapLeft</span> <span class="sy0">+</span> <span class="br0">&#40;</span><span class="re0">$longitude</span> <span class="sy0">+</span> <span class="nu0">180</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="re0">$mapWidth</span> <span class="sy0">/</span> <span class="nu0">360</span><span class="sy0">;</span>
+  <span class="re0">$y</span> <span class="sy0">=</span> <span class="re0">$mapTop</span> <span class="sy0">+</span> <span class="br0">&#40;</span><span class="re0">$mapHeight</span><span class="sy0">/</span><span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">-</span><span class="br0">&#40;</span><a href="http://www.php.net/log"><span class="kw3">log</span></a><span class="br0">&#40;</span><a href="http://www.php.net/tan"><span class="kw3">tan</span></a><span class="br0">&#40;</span><a href="http://www.php.net/deg2rad"><span class="kw3">deg2rad</span></a><span class="br0">&#40;</span><span class="re0">$latitude</span><span class="br0">&#41;</span><span class="sy0">/</span><span class="nu0">2</span> <span class="sy0">+</span> M_PI<span class="sy0">/</span><span class="nu0">4</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">/</span> M_PI<span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="re0">$x</span><span class="sy0">,</span> <span class="re0">$y</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h2 class="sectionedit5" id="pixel_to_latitude_and_longitude">Pixel to Latitude and Longitude</h2>
+<div class="level2">
+
+<p>
+The function <code>wasGeoToMercatorPoint</code> takes as input:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>x</code> - pixel location</div>
+</li>
+<li class="level1"><div class="li"> <code>y</code> - pixel location</div>
+</li>
+<li class="level1"><div class="li"> map width</div>
+</li>
+<li class="level1"><div class="li"> map height</div>
+</li>
+<li class="level1"><div class="li"> left-most map (<code>0</code> if  using the whole map of the world)</div>
+</li>
+<li class="level1"><div class="li"> right-most map (<code>0</code> if  using the whole map of the world)</div>
+</li>
+</ul>
+
+<p>
+and returns the latitude and longitude corresponding to the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7392a8cd69b275fa1798ef94c839d2e0.png" class="latex_inline" alt="$(x,y)$" title="Math" /> pixel on the map.
+</p>
+<pre class="code php"><span class="kw2">function</span> wasMercatorPointToGeo<span class="br0">&#40;</span><span class="re0">$x</span><span class="sy0">,</span> <span class="re0">$y</span><span class="sy0">,</span> <span class="re0">$mapWidth</span><span class="sy0">,</span> <span class="re0">$mapHeight</span><span class="sy0">,</span> <span class="re0">$mapLeft</span><span class="sy0">=</span><span class="nu0">0</span><span class="sy0">,</span> <span class="re0">$mapTop</span><span class="sy0">=</span><span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$f</span> <span class="sy0">=</span> <span class="br0">&#40;</span><span class="br0">&#40;</span><span class="re0">$x</span><span class="sy0">-</span><span class="re0">$mapLeft</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="nu0">360</span> <span class="sy0">/</span> <span class="re0">$mapWidth</span><span class="br0">&#41;</span> <span class="sy0">-</span> <span class="nu0">180</span><span class="sy0">;</span>
+  <span class="re0">$l</span> <span class="sy0">=</span> <a href="http://www.php.net/rad2deg"><span class="kw3">rad2deg</span></a> <span class="br0">&#40;</span><span class="nu0">2</span> <span class="sy0">*</span> <a href="http://www.php.net/atan"><span class="kw3">atan</span></a> <span class="br0">&#40;</span> <a href="http://www.php.net/exp"><span class="kw3">exp</span></a> <span class="br0">&#40;</span> M_PI <span class="sy0">*</span> <span class="br0">&#40;</span><span class="nu0">1</span> <span class="sy0">-</span> <span class="nu0">2</span> <span class="sy0">*</span> <span class="br0">&#40;</span><span class="re0">$y</span><span class="sy0">-</span><span class="re0">$mapTop</span><span class="br0">&#41;</span><span class="sy0">/</span><span class="re0">$mapHeight</span> <span class="br0">&#41;</span> <span class="br0">&#41;</span> <span class="br0">&#41;</span> <span class="sy0">-</span> M_PI<span class="sy0">/</span><span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="kw1">return</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="re0">$l</span><span class="sy0">,</span> <span class="re0">$f</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit6" id="get_client_ip">Get Client IP</h1>
+<div class="level1">
+
+<p>
+The variable:
+</p>
+<pre class="code php"><span class="re0">$_SERVER</span><span class="br0">&#91;</span><span class="st_h">'REMOTE_ADDR'</span><span class="br0">&#93;</span></pre>
+
+<p>
+contains the address that the client connects from.
+</p>
+
+<p>
+The variable:
+</p>
+<pre class="code php"><span class="re0">$_SERVER</span><span class="br0">&#91;</span><span class="st_h">'HTTP_X_FORWARDED_FOR'</span><span class="br0">&#93;</span></pre>
+
+<p>
+contains the IP, if the client is using a proxy server.
+</p>
+
+</div>
+
+<h1 class="sectionedit7" id="get_server_ip">Get Server IP</h1>
+<div class="level1">
+
+<p>
+The variable:
+</p>
+<pre class="code php"><span class="re0">$_SERVER</span><span class="br0">&#91;</span><span class="st_h">'SERVER_ADDR'</span><span class="br0">&#93;</span></pre>
+
+<p>
+contains the IP address that the server is listening on.
+</p>
+
+</div>
+
+<h1 class="sectionedit8" id="remove_empty_strings_from_array">Remove Empty Strings From Array</h1>
+<div class="level1">
+
+<p>
+Filter the array through the built-in <code>strlen</code> function:
+</p>
+<pre class="code php"><span class="re0">$clean_array</span> <span class="sy0">=</span> <a href="http://www.php.net/array_filter"><span class="kw3">array_filter</span></a><span class="br0">&#40;</span><span class="re0">$dirty_array</span><span class="sy0">,</span> <span class="st_h">'strlen'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit9" id="re-index_array">Re-Index Array</h1>
+<div class="level1">
+<pre class="code php"><span class="re0">$clean_array</span> <span class="sy0">=</span> <a href="http://www.php.net/array_values"><span class="kw3">array_values</span></a><span class="br0">&#40;</span><span class="re0">$dirty_array</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit10" id="json_like_javascript_wrapper">JSON like Javascript Wrapper</h1>
+<div class="level1">
+<pre class="code php"><span class="co2">#colin.mollenhour.com
+</span><span class="kw2">function</span> json_decode_nice<span class="br0">&#40;</span><span class="re0">$json</span><span class="sy0">,</span> <span class="re0">$assoc</span> <span class="sy0">=</span> <span class="kw4">FALSE</span><span class="br0">&#41;</span><span class="br0">&#123;</span> 
+    <span class="re0">$json</span> <span class="sy0">=</span> <a href="http://www.php.net/str_replace"><span class="kw3">str_replace</span></a><span class="br0">&#40;</span><a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st0">&quot;<span class="es1">\n</span>&quot;</span><span class="sy0">,</span><span class="st0">&quot;<span class="es1">\r</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st0">&quot;&quot;</span><span class="sy0">,</span><span class="re0">$json</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    <span class="re0">$json</span> <span class="sy0">=</span> <a href="http://www.php.net/preg_replace"><span class="kw3">preg_replace</span></a><span class="br0">&#40;</span><span class="st_h">'/([{,]+)(\s*)([^&quot;]+?)\s*:/'</span><span class="sy0">,</span><span class="st_h">'$1&quot;$3&quot;:'</span><span class="sy0">,</span><span class="re0">$json</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+    <span class="kw1">return</span> <a href="http://www.php.net/json_decode"><span class="kw3">json_decode</span></a><span class="br0">&#40;</span><span class="re0">$json</span><span class="sy0">,</span><span class="re0">$assoc</span><span class="br0">&#41;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span> </pre>
+
+</div>
+
+<h1 class="sectionedit11" id="create_uuid">Create UUID</h1>
+<div class="level1">
+<pre class="code php"><span class="kw2">&lt;?php</span>
+<span class="kw2">class</span> UUID <span class="br0">&#123;</span>
+  <span class="co4">/**
+   * Generates version 1: MAC address
+   */</span>
+  <span class="kw2">public</span> static <span class="kw2">function</span> v1<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/function_exists"><span class="kw3">function_exists</span></a><span class="br0">&#40;</span><span class="st_h">'uuid_create'</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="kw1">return</span> <span class="kw4">false</span><span class="sy0">;</span>
+&nbsp;
+    uuid_create<span class="br0">&#40;</span><span class="sy0">&amp;</span><span class="re0">$context</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_make<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_MAKE_V1<span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_export<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_FMT_STR<span class="sy0">,</span> <span class="sy0">&amp;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <a href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="co4">/**
+   * Generates version 3 UUID: MD5 hash of URL
+   */</span>
+  <span class="kw2">public</span> static <span class="kw2">function</span> v3<span class="br0">&#40;</span><span class="re0">$i_url</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/function_exists"><span class="kw3">function_exists</span></a><span class="br0">&#40;</span><span class="st_h">'uuid_create'</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="kw1">return</span> <span class="kw4">false</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="re0">$i_url</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="re0">$i_url</span> <span class="sy0">=</span> <span class="kw2">self</span><span class="sy0">::</span><span class="me2">v1</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    uuid_create<span class="br0">&#40;</span><span class="sy0">&amp;</span><span class="re0">$context</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_create<span class="br0">&#40;</span><span class="sy0">&amp;</span><span class="re0">$namespace</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    uuid_make<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_MAKE_V3<span class="sy0">,</span> <span class="re0">$namespace</span><span class="sy0">,</span> <span class="re0">$i_url</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_export<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_FMT_STR<span class="sy0">,</span> <span class="sy0">&amp;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <a href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="co4">/**
+   * Generates version 4 UUID: random
+   */</span>
+  <span class="kw2">public</span> static <span class="kw2">function</span> v4<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/function_exists"><span class="kw3">function_exists</span></a><span class="br0">&#40;</span><span class="st_h">'uuid_create'</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="kw1">return</span> <span class="kw4">false</span><span class="sy0">;</span>
+&nbsp;
+    uuid_create<span class="br0">&#40;</span><span class="sy0">&amp;</span><span class="re0">$context</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    uuid_make<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_MAKE_V4<span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_export<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_FMT_STR<span class="sy0">,</span> <span class="sy0">&amp;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <a href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <span class="co4">/**
+   * Generates version 5 UUID: SHA-1 hash of URL
+   */</span>
+  <span class="kw2">public</span> static <span class="kw2">function</span> v5<span class="br0">&#40;</span><span class="re0">$i_url</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/function_exists"><span class="kw3">function_exists</span></a><span class="br0">&#40;</span><span class="st_h">'uuid_create'</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="kw1">return</span> <span class="kw4">false</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="re0">$i_url</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+      <span class="re0">$i_url</span> <span class="sy0">=</span> <span class="kw2">self</span><span class="sy0">::</span><span class="me2">v1</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    uuid_create<span class="br0">&#40;</span><span class="sy0">&amp;</span><span class="re0">$context</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_create<span class="br0">&#40;</span><span class="sy0">&amp;</span><span class="re0">$namespace</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    uuid_make<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_MAKE_V5<span class="sy0">,</span> <span class="re0">$namespace</span><span class="sy0">,</span> <span class="re0">$i_url</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    uuid_export<span class="br0">&#40;</span><span class="re0">$context</span><span class="sy0">,</span> UUID_FMT_STR<span class="sy0">,</span> <span class="sy0">&amp;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <a href="http://www.php.net/trim"><span class="kw3">trim</span></a><span class="br0">&#40;</span><span class="re0">$uuid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+<span class="sy1">?&gt;</span></pre>
+
+</div>
+
+<h1 class="sectionedit12" id="format_current_time_to_mysql_datetime_format">Format Current Time to MySQL DateTime Format</h1>
+<div class="level1">
+<pre class="code php"><span class="re0">$mysqldate</span> <span class="sy0">=</span> <a href="http://www.php.net/date"><span class="kw3">date</span></a><span class="br0">&#40;</span> <span class="st_h">'Y-m-d H:i:s'</span> <span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit13" id="change_owner_and_group_recursively">Change Owner and Group Recursively</h1>
+<div class="level1">
+<pre class="code php"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="kw2">function</span> wasChown<span class="br0">&#40;</span><span class="re0">$path</span><span class="sy0">,</span> <span class="re0">$uid</span><span class="sy0">,</span> <span class="re0">$gid</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                                     
+  <span class="kw1">switch</span><span class="br0">&#40;</span><a href="http://www.php.net/filetype"><span class="kw3">filetype</span></a><span class="br0">&#40;</span><span class="re0">$path</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>                                                
+    <span class="kw1">case</span> <span class="st_h">'dir'</span><span class="sy0">:</span>                                                            
+      <span class="kw1">if</span><span class="br0">&#40;</span><span class="br0">&#40;</span><span class="re0">$dir</span> <span class="sy0">=</span> <a href="http://www.php.net/opendir"><span class="kw3">opendir</span></a><span class="br0">&#40;</span><span class="re0">$path</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">====</span> <span class="kw4">false</span><span class="br0">&#41;</span> <span class="kw1">break</span><span class="sy0">;</span>                         
+      <span class="kw1">while</span><span class="br0">&#40;</span><span class="kw4">false</span> <span class="sy0">!==</span> <span class="br0">&#40;</span><span class="re0">$file</span> <span class="sy0">=</span> <a href="http://www.php.net/readdir"><span class="kw3">readdir</span></a><span class="br0">&#40;</span><span class="re0">$dir</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$file</span> <span class="sy0">==</span> <span class="st_h">'.'</span> <span class="sy0">||</span> <span class="re0">$file</span> <span class="sy0">==</span> <span class="st_h">'..'</span><span class="br0">&#41;</span> <span class="kw1">continue</span><span class="sy0">;</span>
+        wasChown<span class="br0">&#40;</span><span class="re0">$path</span><span class="sy0">.</span><span class="st_h">'/'</span><span class="sy0">.</span><span class="re0">$file</span><span class="sy0">,</span> <span class="re0">$uid</span><span class="sy0">,</span> <span class="re0">$gid</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="br0">&#125;</span>
+    <span class="kw1">case</span> <span class="st_h">'file'</span><span class="sy0">:</span>
+      <a href="http://www.php.net/chown"><span class="kw3">chown</span></a><span class="br0">&#40;</span><span class="re0">$path</span><span class="sy0">,</span> <span class="re0">$uid</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+      <a href="http://www.php.net/chgrp"><span class="kw3">chgrp</span></a><span class="br0">&#40;</span><span class="re0">$path</span><span class="sy0">,</span> <span class="re0">$gid</span><span class="br0">&#41;</span><span class="sy0">;</span>  
+      <span class="kw1">break</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit14" id="prepared_statements">Prepared Statements</h1>
+<div class="level1">
+
+<p>
+Prepared statements are preferable where users can otherwise inject arbitrary code. In <code>PHP</code>, <code>PDO</code> is a good library that can be used to created prepared statements and thereby alleviate the need to sanitise user-input.
+</p>
+
+<p>
+The following example for <code>PHP</code> and <code>MySQL</code> will insert a record into a table <code>profile</code> with the structure such as:
+</p>
+<div class="table sectionedit15"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign"> <code>Killer</code>      </th><th class="col1 leftalign"> <code>ID</code>     </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> <code>Chris Myass</code> </td><td class="col1"> <code>372453</code> </td>
+	</tr>
+</table></div>
+
+<p>
+The varaibles <code>DATABASE</code>, <code>HOST</code>, <code>USERNAME</code> and <code>PASSWORD</code> have to be defined and the variables <code>killer</code> and <code>id</code> have to be sent via POST:
+</p>
+<pre class="code php"><span class="re0">$db</span> <span class="sy0">=</span> <span class="kw2">new</span> PDO<span class="br0">&#40;</span><span class="st_h">'mysql:dbname=DATABASE;host=HOST'</span><span class="sy0">,</span> USERNAME<span class="sy0">,</span> PASSWORD<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">setAttribute</span><span class="br0">&#40;</span>PDO<span class="sy0">::</span><span class="me2">ATTR_ERRMODE</span><span class="sy0">,</span> PDO<span class="sy0">::</span><span class="me2">ERRMODE_EXCEPTION</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+try <span class="br0">&#123;</span>
+    <span class="re0">$q</span> <span class="sy0">=</span> <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">prepare</span><span class="br0">&#40;</span><span class="st0">&quot;INSERT INTO Profile(Killer, ID) VALUES(:killer, :id)&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$q</span><span class="sy0">-&gt;</span><span class="me1">execute</span><span class="br0">&#40;</span>
+        <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span>
+            <span class="st_h">':killer'</span> <span class="sy0">=&gt;</span> <span class="re0">$_POST</span><span class="br0">&#91;</span><span class="st_h">'killer'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+            <span class="st_h">':name'</span> <span class="sy0">=&gt;</span> <span class="re0">$_POST</span><span class="br0">&#91;</span><span class="st_h">'id'</span><span class="br0">&#93;</span>
+        <span class="br0">&#41;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span> catch <span class="br0">&#40;</span>PDOException <span class="re0">$e</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://www.php.net/die"><span class="kw3">die</span></a><span class="br0">&#40;</span><span class="re0">$e</span><span class="sy0">-&gt;</span><span class="me1">getMessage</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Upon a failure to insert the row, the <code>catch</code> block triggers and the script dies while printing out the error message.
+</p>
+
+</div>
+
+<h1 class="sectionedit16" id="print_unicode_characters">Print Unicode Characters</h1>
+<div class="level1">
+
+<p>
+There are several variants to print unicode characters using <code>PHP</code>, one of them is to use:
+</p>
+<pre class="code php"><a href="http://www.php.net/mb_convert_encoding"><span class="kw3">mb_convert_encoding</span></a><span class="br0">&#40;</span><span class="st_h">'&amp;#x2665;'</span><span class="sy0">,</span> <span class="st_h">'UTF-8'</span><span class="sy0">,</span> <span class="st_h">'HTML-ENTITIES'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+where <code>&amp;#x2665;</code> is the html entity corresponding to a <code>♥</code> character.
+</p>
+
+<p>
+Another variant is to use:
+</p>
+<pre class="code php"><a href="http://www.php.net/html_entity_decode"><span class="kw3">html_entity_decode</span></a><span class="br0">&#40;</span><span class="st_h">'&amp;#x2665;'</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="st_h">'UTF-8'</span><span class="br0">&#41;</span></pre>
+
+<p>
+which will also print the <code>♥</code> character.
+</p>
+
+<p>
+A very fast, yet ugly method of printing unicode characters is to use JSON:
+</p>
+<pre class="code php"><span class="re0">$unicodeChar</span> <span class="sy0">=</span> <span class="st_h">'\u2665'</span><span class="sy0">;</span>
+<span class="kw1">echo</span> <a href="http://www.php.net/json_decode"><span class="kw3">json_decode</span></a><span class="br0">&#40;</span><span class="st_h">'&quot;'</span><span class="sy0">.</span><span class="re0">$unicodeChar</span><span class="sy0">.</span><span class="st_h">'&quot;'</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+which is fast compared to the previous variants.
+</p>
+
+</div>
+
+<h1 class="sectionedit17" id="using_database_transactions">Using Database Transactions</h1>
+<div class="level1">
+
+<p>
+Transactions ensure <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/databases#acid" class="wikilink1" title="fuss:databases" data-wiki-id="fuss:databases">ACID properties</a>.
+</p>
+<pre class="code php">try <span class="br0">&#123;</span>
+    <span class="co1">// Set the error mode to exceptions.</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">setAttribute</span><span class="br0">&#40;</span>PDO<span class="sy0">::</span><span class="me2">ATTR_ERRMODE</span><span class="sy0">,</span> PDO<span class="sy0">::</span><span class="me2">ERRMODE_EXCEPTION</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// Begin the transaction</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">beginTransaction</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// A set of queries; if one fails, an exception should be thrown.</span>
+    <span class="co1">// The transaction guarantees the atomicity of multiple queries.</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st_h">'first query'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st_h">'second query'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">query</span><span class="br0">&#40;</span><span class="st_h">'third query'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co1">// If we arrive here, it means that no exception was thrown</span>
+    <span class="co1">// i.e. no query has failed, and we can commit the transaction</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">commit</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span> catch <span class="br0">&#40;</span>Exception <span class="re0">$e</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// An exception has been thrown so we rollback the transaction.</span>
+    <span class="re0">$db</span><span class="sy0">-&gt;</span><span class="me1">rollback</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit18" id="recursively_pretty-print_node_names_and_values">Recursively Pretty-Print Node Names and Values</h1>
+<div class="level1">
+
+<p>
+Using DOM we can traverse an entire XML structure and print out the nodes and their values in PHP.
+</p>
+<pre class="code php"><span class="co2"># recurse over all nodes
+</span><span class="kw2">function</span> traverse<span class="br0">&#40;</span>DomNode <span class="re0">$node</span><span class="sy0">,</span> <span class="re0">$level</span> <span class="sy0">=</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co2"># print the current node
+</span>    print_node<span class="br0">&#40;</span><span class="re0">$node</span><span class="sy0">,</span> <span class="re0">$level</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co2"># if there are sub-nodes
+</span>    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">hasChildNodes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co2"># for each sub-node
+</span>        <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">childNodes</span> <span class="kw1">as</span> <span class="re0">$child</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="co2"># if it is a node
+</span>            <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$child</span><span class="sy0">-&gt;</span><span class="me1">nodeType</span> <span class="sy0">==</span> XML_ELEMENT_NODE<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="co2"># recurse all sub-nodes
+</span>                traverse<span class="br0">&#40;</span><span class="re0">$child</span><span class="sy0">,</span> <span class="re0">$level</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co2"># determine if a node has children
+</span><span class="kw2">function</span> hasChild<span class="br0">&#40;</span><span class="re0">$parent</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$parent</span><span class="sy0">-&gt;</span><span class="me1">hasChildNodes</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$parent</span><span class="sy0">-&gt;</span><span class="me1">childNodes</span> <span class="kw1">as</span> <span class="re0">$child</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$child</span><span class="sy0">-&gt;</span><span class="me1">nodeType</span> <span class="sy0">==</span> XML_ELEMENT_NODE<span class="br0">&#41;</span>
+                <span class="kw1">return</span> <span class="kw4">true</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="kw4">false</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co2"># print the node with indenting
+</span><span class="kw2">function</span> print_node<span class="br0">&#40;</span>DomNode <span class="re0">$node</span><span class="sy0">,</span> <span class="re0">$level</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co2"># print indenting
+</span>    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        <span class="kw1">print</span> <span class="st0">&quot;<span class="es1">\t</span>&quot;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">while</span> <span class="br0">&#40;</span><span class="sy0">--</span><span class="re0">$level</span> <span class="sy0">&gt;</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co2"># print tag name
+</span>    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">nodeType</span> <span class="sy0">==</span> XML_ELEMENT_NODE<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">print</span> <span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">tagName</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><span class="sy0">!</span>hasChild<span class="br0">&#40;</span><span class="re0">$node</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">print</span> <span class="st0">&quot; -&gt; &quot;</span><span class="sy0">;</span>
+            <span class="kw1">print</span> <span class="re0">$node</span><span class="sy0">-&gt;</span><span class="me1">nodeValue</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">print</span> <span class="st0">&quot;<span class="es1">\n</span>&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co2"># create a new DOM document
+</span><span class="re0">$doc</span> <span class="sy0">=</span> <span class="kw2">new</span> DomDocument<span class="br0">&#40;</span><span class="st0">&quot;1.0&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co2"># load an XML file
+</span><span class="re0">$doc</span><span class="sy0">-&gt;</span><span class="me1">loadXML</span><span class="br0">&#40;</span><a href="http://www.php.net/file_get_contents"><span class="kw3">file_get_contents</span></a><span class="br0">&#40;</span><span class="st_h">'Corrade.ini'</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="co2"># the root is the first child
+</span><span class="re0">$root</span> <span class="sy0">=</span> <span class="re0">$doc</span><span class="sy0">-&gt;</span><span class="me1">firstChild</span><span class="sy0">;</span>
+<span class="co2"># traverse the XML
+</span>traverse<span class="br0">&#40;</span><span class="re0">$root</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit19" id="atomic_read_and_write">Atomic Read and Write</h1>
+<div class="level1">
+
+<p>
+Since file-operations are generally not atomic operations, we can encase read and write operations using <code>flock</code>. Thus, we obtain the equivalent of <code>file_put_contents</code>:
+</p>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> atomized_put_contents<span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">,</span> <span class="re0">$data</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$fp</span> <span class="sy0">=</span> <a href="http://www.php.net/fopen"><span class="kw3">fopen</span></a><span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">,</span> <span class="st0">&quot;w+&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/flock"><span class="kw3">flock</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="sy0">,</span> LOCK_EX<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <a href="http://www.php.net/fwrite"><span class="kw3">fwrite</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="sy0">,</span> <span class="re0">$data</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <a href="http://www.php.net/fflush"><span class="kw3">fflush</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <a href="http://www.php.net/flock"><span class="kw3">flock</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="sy0">,</span> LOCK_UN<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <a href="http://www.php.net/fclose"><span class="kw3">fclose</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+and the equivalent of <code>file_get_contents</code>:
+</p>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> atomized_get_contents<span class="br0">&#40;</span><span class="re0">$file</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$fp</span> <span class="sy0">=</span> <a href="http://www.php.net/fopen"><span class="kw3">fopen</span></a><span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">,</span> <span class="st0">&quot;r+&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$ct</span> <span class="sy0">=</span> <span class="st_h">''</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/flock"><span class="kw3">flock</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="sy0">,</span> LOCK_SH<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/filesize"><span class="kw3">filesize</span></a><span class="br0">&#40;</span><span class="re0">$file</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$ct</span> <span class="sy0">=</span> <a href="http://www.php.net/fread"><span class="kw3">fread</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="sy0">,</span> <a href="http://www.php.net/filesize"><span class="kw3">filesize</span></a><span class="br0">&#40;</span><span class="re0">$file</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <a href="http://www.php.net/flock"><span class="kw3">flock</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="sy0">,</span> LOCK_UN<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <a href="http://www.php.net/fclose"><span class="kw3">fclose</span></a><span class="br0">&#40;</span><span class="re0">$fp</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$ct</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Note that <code>atomized_get_contents</code> is used like a generator function (requires PHP 5.5 where generators were introduced) and that whilst the functions are not atomic, the atomicity of the read and write operations is guaranteed provided the underlying system respects the file locks.
+</p>
+
+</div>
+
+<h1 class="sectionedit20" id="permute_array_elements">Permute Array Elements</h1>
+<div class="level1">
+
+<p>
+Given an array of elements these functions permute the array a certain number of times in both forward and reverse directions.
+</p>
+
+</div>
+
+<h2 class="sectionedit21" id="reverse">Reverse</h2>
+<div class="level2">
+
+<p>
+The <code>wasReversePermuteArrayElements</code> function permutes the elements of an array in reverse.
+</p>
+
+<p>
+Given an array containing the elements:
+</p>
+<pre class="code">a b c</pre>
+
+<p>
+and calling the <code>wasReversePermuteArrayElements</code> function with the <code>times</code> parameter set to <code>1</code>, we obtain an array containing the elements:
+</p>
+<pre class="code">b c a</pre>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasReversePermuteArrayElements<span class="br0">&#40;</span><span class="re0">$input</span><span class="sy0">,</span> <span class="re0">$times</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$times</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="re0">$input</span><span class="sy0">;</span>
+    <span class="kw1">return</span> wasReversePermuteArrayElements<span class="br0">&#40;</span>
+        <a href="http://www.php.net/array_merge"><span class="kw3">array_merge</span></a><span class="br0">&#40;</span>
+            <a href="http://www.php.net/array_slice"><span class="kw3">array_slice</span></a><span class="br0">&#40;</span>
+                <span class="re0">$input</span><span class="sy0">,</span>
+                <span class="nu0">1</span>
+            <span class="br0">&#41;</span><span class="sy0">,</span>
+            <a href="http://www.php.net/array_slice"><span class="kw3">array_slice</span></a><span class="br0">&#40;</span>
+                <span class="re0">$input</span><span class="sy0">,</span>
+                <span class="nu0">0</span><span class="sy0">,</span>
+                <span class="nu0">1</span>
+            <span class="br0">&#41;</span>
+        <span class="br0">&#41;</span><span class="sy0">,</span>
+    <span class="sy0">--</span><span class="re0">$times</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h2 class="sectionedit22" id="forward">Forward</h2>
+<div class="level2">
+
+<p>
+The <code>wasForwardPermuteArrayElements</code> function permutes the elements of an array forward.
+</p>
+
+<p>
+Given a array string containing the elements:
+</p>
+<pre class="code">a b c</pre>
+
+<p>
+and calling <code>wasForwardPermuteArrayElements</code> function with the <code>times</code> parameter set to <code>1</code>, we obtain the elements:
+</p>
+<pre class="code">c a b</pre>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasForwardPermuteArrayElements<span class="br0">&#40;</span><span class="re0">$input</span><span class="sy0">,</span> <span class="re0">$times</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$times</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="re0">$input</span><span class="sy0">;</span>
+    <span class="kw1">return</span> wasForwardPermuteArrayElements<span class="br0">&#40;</span>
+        <a href="http://www.php.net/array_merge"><span class="kw3">array_merge</span></a><span class="br0">&#40;</span>
+            <a href="http://www.php.net/array_slice"><span class="kw3">array_slice</span></a><span class="br0">&#40;</span>
+                <span class="re0">$input</span><span class="sy0">,</span>
+                <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">,</span>
+                <span class="nu0">1</span>
+            <span class="br0">&#41;</span><span class="sy0">,</span>
+            <a href="http://www.php.net/array_slice"><span class="kw3">array_slice</span></a><span class="br0">&#40;</span>
+                <span class="re0">$input</span><span class="sy0">,</span>
+                <span class="nu0">0</span><span class="sy0">,</span>
+                <span class="sy0">-</span><span class="nu0">1</span>
+            <span class="br0">&#41;</span>
+        <span class="br0">&#41;</span><span class="sy0">,</span>
+        <span class="sy0">--</span><span class="re0">$times</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit23" id="cryptographic_functions">Cryptographic Functions</h1>
+<div class="level1">
+
+<p>
+The following is a list of cyphers implemented in PHP by Wizardry and Steamworks:
+</p>
+
+<div><div id="nojs_indexmenu_173840665462b989ffecf48" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php/cryptography/cyphers/vigenere" class="wikilink1" title="fuss:php:cryptography:cyphers:vigenere" data-wiki-id="fuss:php:cryptography:cyphers:vigenere">vigenere</a></div></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_173840665462b989ffecf48 = new dTree('indexmenu_173840665462b989ffecf48','was.png');
+indexmenu_173840665462b989ffecf48.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_173840665462b989ffecf48.config.sepchar='/';
+indexmenu_173840665462b989ffecf48.config.toc=false;
+indexmenu_173840665462b989ffecf48.config.scorespace=true;
+indexmenu_173840665462b989ffecf48.add('fuss/php/cryptography/cyphers',0,-1,"cyphers");
+indexmenu_173840665462b989ffecf48.add('fuss/php/cryptography/cyphers/vigenere',1,0,"vigenere",0,0,0);
+document.write(indexmenu_173840665462b989ffecf48);
+jQuery(function(){indexmenu_173840665462b989ffecf48.init(1,0,"",1,0);});
+//--><!]]>
+</script>
+
+<p>
+that can be used to encrypt and decrypt data.
+</p>
+
+</div>
+
+<h1 class="sectionedit24" id="map_a_value_in_a_given_range_to_a_different_range">Map a Value in a Given Range to a Different Range</h1>
+<div class="level1">
+
+<p>
+The <code>mapValueToRange</code> takes as input a <code>value</code> with a range between <code>xMin</code> and <code>xMax</code> and scales the <code>value</code> in a range given by <code>yMin</code> and <code>yMax</code>:
+</p>
+<pre class="code php"><span class="co2">##########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> mapValueToRange<span class="br0">&#40;</span><span class="re0">$value</span><span class="sy0">,</span> <span class="re0">$xMin</span><span class="sy0">,</span> <span class="re0">$xMax</span><span class="sy0">,</span> <span class="re0">$yMin</span><span class="sy0">,</span> <span class="re0">$yMax</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="re0">$yMin</span> <span class="sy0">+</span> <span class="br0">&#40;</span>
+        <span class="br0">&#40;</span>
+            <span class="re0">$yMax</span> <span class="sy0">-</span> <span class="re0">$yMin</span>
+        <span class="br0">&#41;</span> 
+        <span class="sy0">*</span>
+        <span class="br0">&#40;</span>
+            <span class="re0">$value</span> <span class="sy0">-</span> <span class="re0">$xMin</span>
+        <span class="br0">&#41;</span>
+        <span class="sy0">/</span>
+        <span class="br0">&#40;</span>
+            <span class="re0">$xMax</span> <span class="sy0">-</span> <span class="re0">$xMin</span>
+        <span class="br0">&#41;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+As an example, you can map an RGB component in the interval <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img408cfa4dc2c7578d79497ff3c9a310e6.png" class="latex_inline" alt="$[0, 255]$" title="Math" /> to a <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge88c070a4a52572ef1d5792a341c0900.png" class="latex_inline" alt="$[0, 1]$" title="Math" /> range by issuing:
+</p>
+<pre class="code php"><span class="kw1">echo</span> mapValueToRange<span class="br0">&#40;</span><span class="nu0">128</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">255</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+which will return approximately <code>0.50196078431373</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit25" id="array_stride">Array Stride</h1>
+<div class="level1">
+
+<p>
+One of the problems in programming is frequently the need to return a indexed sub-set of elements from a given set. For example, given the set <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge257acd1ccbe7fcb654708f1a866bfe9.png" class="latex_inline" alt="$S$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img555a42debd62673fa2519dbad9ebd956.png" class="latex_displayed" alt="\begin{eqnarray*}
+S &amp;=&amp; {1, 2, 3, 4, 5}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+we want to obtain the sub-set <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6f9bad7347b91ceebebd3ad7e6f6f2d1.png" class="latex_inline" alt="$s$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge483352ef4042b390596e73e1dbc4d7d.png" class="latex_displayed" alt="\begin{eqnarray*}
+s &amp;=&amp; \{x|x=i+s,i \in \mathbb{N} \}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img77a3b857d53fb44e33b53e4c8b68351a.png" class="latex_inline" alt="$i$" title="Math" /> is the index of the current element</div>
+</li>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6f9bad7347b91ceebebd3ad7e6f6f2d1.png" class="latex_inline" alt="$s$" title="Math" /> is a given stride offset.</div>
+</li>
+</ul>
+
+<p>
+This can be elegantly accomplished in PHP with the function <code>wasArrayStride</code>:
+</p>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasArrayStride<span class="br0">&#40;</span><span class="re0">$a</span><span class="sy0">,</span> <span class="re0">$s</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <a href="http://www.php.net/array_filter"><span class="kw3">array_filter</span></a><span class="br0">&#40;</span><span class="re0">$a</span><span class="sy0">,</span> 
+        <span class="kw2">function</span><span class="br0">&#40;</span><span class="re0">$e</span><span class="sy0">,</span> <span class="re0">$i</span><span class="br0">&#41;</span> <span class="kw2">use</span><span class="br0">&#40;</span><span class="re0">$s</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="re0">$i</span> <span class="sy0">%</span> <span class="re0">$s</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="sy0">,</span>
+        ARRAY_FILTER_USE_BOTH
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+As an example, running:
+</p>
+<pre class="code php"><span class="re0">$a</span> <span class="sy0">=</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="st0">&quot;a&quot;</span><span class="sy0">,</span> <span class="st0">&quot;b&quot;</span><span class="sy0">,</span> <span class="st0">&quot;c&quot;</span><span class="sy0">,</span> <span class="st0">&quot;d&quot;</span><span class="sy0">,</span> <span class="st0">&quot;e&quot;</span><span class="sy0">,</span> <span class="st0">&quot;f&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/var_dump"><span class="kw3">var_dump</span></a><span class="br0">&#40;</span>wasArrayStride<span class="br0">&#40;</span><span class="re0">$a</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+will return:
+</p>
+<pre class="code">a c e</pre>
+
+<p>
+Note that if you wanted to obtain every third element, as in the sequence:
+</p>
+<pre class="code">c f</pre>
+
+<p>
+then you would call something like:
+</p>
+<pre class="code php"><a href="http://www.php.net/var_dump"><span class="kw3">var_dump</span></a><span class="br0">&#40;</span>
+    wasArrayStride<span class="br0">&#40;</span>
+        <a href="http://www.php.net/array_slice"><span class="kw3">array_slice</span></a><span class="br0">&#40;</span>
+            <span class="re0">$a</span><span class="sy0">,</span> 
+            <span class="nu0">2</span>
+        <span class="br0">&#41;</span><span class="sy0">,</span> 
+        <span class="nu0">3</span>
+    <span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit26" id="convert_hexadecimal_color_string_to_rgb">Convert Hexadecimal Color string to RGB</h1>
+<div class="level1">
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasHexToRGB<span class="br0">&#40;</span><span class="re0">$hexStr</span><span class="sy0">,</span> <span class="re0">$toString</span> <span class="sy0">=</span> <span class="kw4">false</span><span class="sy0">,</span> <span class="re0">$seperator</span> <span class="sy0">=</span> <span class="st_h">','</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$hexStr</span> <span class="sy0">=</span> <a href="http://www.php.net/preg_replace"><span class="kw3">preg_replace</span></a><span class="br0">&#40;</span><span class="st0">&quot;/[^0-9A-Fa-f]/&quot;</span><span class="sy0">,</span> <span class="st_h">''</span><span class="sy0">,</span> <span class="re0">$hexStr</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$rgbArray</span> <span class="sy0">=</span> <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">switch</span><span class="br0">&#40;</span><a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="re0">$hexStr</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="nu0">6</span><span class="sy0">:</span>
+            <span class="re0">$colorVal</span> <span class="sy0">=</span> <a href="http://www.php.net/hexdec"><span class="kw3">hexdec</span></a><span class="br0">&#40;</span><span class="re0">$hexStr</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$rgbArray</span><span class="br0">&#91;</span><span class="st_h">'red'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu12">0xFF</span> <span class="sy0">&amp;</span> <span class="br0">&#40;</span><span class="re0">$colorVal</span> <span class="sy0">&gt;&gt;</span> <span class="nu12">0x10</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$rgbArray</span><span class="br0">&#91;</span><span class="st_h">'green'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu12">0xFF</span> <span class="sy0">&amp;</span> <span class="br0">&#40;</span><span class="re0">$colorVal</span> <span class="sy0">&gt;&gt;</span> <span class="nu12">0x8</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$rgbArray</span><span class="br0">&#91;</span><span class="st_h">'blue'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="nu12">0xFF</span> <span class="sy0">&amp;</span> <span class="re0">$colorVal</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">case</span> <span class="nu0">3</span><span class="sy0">:</span>
+            <span class="re0">$rgbArray</span><span class="br0">&#91;</span><span class="st_h">'red'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a href="http://www.php.net/hexdec"><span class="kw3">hexdec</span></a><span class="br0">&#40;</span>
+                <a href="http://www.php.net/str_repeat"><span class="kw3">str_repeat</span></a><span class="br0">&#40;</span><a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$hexStr</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$rgbArray</span><span class="br0">&#91;</span><span class="st_h">'green'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a href="http://www.php.net/hexdec"><span class="kw3">hexdec</span></a><span class="br0">&#40;</span>
+                <a href="http://www.php.net/str_repeat"><span class="kw3">str_repeat</span></a><span class="br0">&#40;</span><a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$hexStr</span><span class="sy0">,</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="re0">$rgbArray</span><span class="br0">&#91;</span><span class="st_h">'blue'</span><span class="br0">&#93;</span> <span class="sy0">=</span> <a href="http://www.php.net/hexdec"><span class="kw3">hexdec</span></a><span class="br0">&#40;</span>
+                <a href="http://www.php.net/str_repeat"><span class="kw3">str_repeat</span></a><span class="br0">&#40;</span><a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$hexStr</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">break</span><span class="sy0">;</span>
+        <span class="kw1">default</span><span class="sy0">:</span>
+            <span class="kw1">return</span> <span class="kw4">false</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> <span class="re0">$toString</span> ? <a href="http://www.php.net/implode"><span class="kw3">implode</span></a><span class="br0">&#40;</span><span class="re0">$seperator</span><span class="sy0">,</span> <span class="re0">$rgbArray</span><span class="br0">&#41;</span> <span class="sy0">:</span> <span class="re0">$rgbArray</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+You can then make a call such as:
+</p>
+<pre class="code php"><a href="http://www.php.net/var_dump"><span class="kw3">var_dump</span></a><span class="br0">&#40;</span>hex2RGB<span class="br0">&#40;</span>wasColorHash<span class="br0">&#40;</span><span class="st0">&quot;Kira Komarov&quot;</span><span class="br0">&#41;</span><span class="sy0">,</span> <span class="kw4">true</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit27" id="create_color_from_string">Create Color from String</h1>
+<div class="level1">
+
+<p>
+Sometimes one needs to create a color to represent some data - for instance, to assign an unique color to a name. One very simple way to do that is to hash the string using some algorithm such as MD5 or SHA and then extract three pairs of two hexadecimal numbers from the hash. A good position is the start, the middle and the end which is what the <code>wasColorHash</code> function does:
+</p>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2015 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasColorHash<span class="br0">&#40;</span><span class="re0">$a</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="re0">$hash</span> <span class="sy0">=</span> <a href="http://www.php.net/sha1"><span class="kw3">sha1</span></a><span class="br0">&#40;</span><span class="re0">$a</span><span class="br0">&#41;</span><span class="sy0">;</span>
+  <span class="re0">$size</span> <span class="sy0">=</span> <a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="re0">$hash</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+  <span class="kw1">return</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$hash</span><span class="sy0">,</span> <span class="nu0">0</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">.</span>
+         <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$hash</span><span class="sy0">,</span> <span class="re0">$size</span><span class="sy0">/</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">.</span>
+         <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$hash</span><span class="sy0">,</span> <span class="re0">$size</span><span class="sy0">-</span><span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+This gives us a total of <code>16777215</code> possible variations and, given a good hash, that would mean a <code>0.000005960465%</code> probability to select an unique color from the range.
+</p>
+
+</div>
+
+<h1 class="sectionedit28" id="resize_png_image">Resize PNG Image</h1>
+<div class="level1">
+
+<p>
+The <code>wasResizePNG</code> function resizes a PNG image with <code>libgd</code> given:
+</p>
+<ul>
+<li class="level1"><div class="li"> an existing image passed to the parameter <code>$img</code>,</div>
+</li>
+<li class="level1"><div class="li"> the width to resize the image to passed to the parameter <code>$w</code>,</div>
+</li>
+<li class="level1"><div class="li"> the height to resize the image to passed to the parameter <code>$h</code>.</div>
+</li>
+</ul>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2016 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasResizePNG<span class="br0">&#40;</span><span class="re0">$img</span><span class="sy0">,</span> <span class="re0">$w</span><span class="sy0">,</span> <span class="re0">$h</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$width</span> <span class="sy0">=</span> <a href="http://www.php.net/imagesx"><span class="kw3">imagesx</span></a><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$height</span> <span class="sy0">=</span> <a href="http://www.php.net/imagesy"><span class="kw3">imagesy</span></a><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$new</span> <span class="sy0">=</span> <a href="http://www.php.net/imagecreatetruecolor"><span class="kw3">imagecreatetruecolor</span></a><span class="br0">&#40;</span><span class="re0">$w</span><span class="sy0">,</span> <span class="re0">$h</span><span class="br0">&#41;</span><span class="sy0">;</span>
+	<a href="http://www.php.net/imagecolortransparent"><span class="kw3">imagecolortransparent</span></a><span class="br0">&#40;</span>
+		<span class="re0">$new</span><span class="sy0">,</span>
+		<a href="http://www.php.net/imagecolorallocate"><span class="kw3">imagecolorallocate</span></a><span class="br0">&#40;</span>
+			<span class="re0">$new</span><span class="sy0">,</span>
+			<span class="nu0">0</span><span class="sy0">,</span>
+			<span class="nu0">0</span><span class="sy0">,</span>
+			<span class="nu0">0</span>
+		<span class="br0">&#41;</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>
+	<a href="http://www.php.net/imagecopyresampled"><span class="kw3">imagecopyresampled</span></a><span class="br0">&#40;</span>
+		<span class="re0">$new</span><span class="sy0">,</span>
+		<span class="re0">$img</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="re0">$w</span><span class="sy0">,</span>
+		<span class="re0">$h</span><span class="sy0">,</span>
+		<span class="re0">$width</span><span class="sy0">,</span> 
+		<span class="re0">$height</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>
+	<a href="http://www.php.net/imagedestroy"><span class="kw3">imagedestroy</span></a><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="re0">$new</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit29" id="add_png_image_border">Add PNG Image Border</h1>
+<div class="level1">
+
+<p>
+The <code>wasAddBorderPNG</code> adds a border to an existing image with a given size and color. The <code>wasAddBorderPNG</code> function takes as parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> an existing PNG image passed as parameter <code>$img</code>,</div>
+</li>
+<li class="level1"><div class="li"> the size of the border in pixels passed as parameter <code>$size</code>,</div>
+</li>
+<li class="level1"><div class="li"> the color of the border passed as an associative array of <code>red</code>, <code>green</code>, <code>blue</code> to values in the range <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0a25b1e47860d36f5c90aa9afd07243d.png" class="latex_inline" alt="$0..255$" title="Math" />.</div>
+</li>
+</ul>
+<pre class="code php"><span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2016 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span><span class="kw2">function</span> wasAddBorderPNG<span class="br0">&#40;</span><span class="re0">$img</span><span class="sy0">,</span> <span class="re0">$size</span><span class="sy0">,</span> <span class="re0">$color</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$width</span> <span class="sy0">=</span> <a href="http://www.php.net/imagesx"><span class="kw3">imagesx</span></a><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$height</span> <span class="sy0">=</span> <a href="http://www.php.net/imagesy"><span class="kw3">imagesy</span></a><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$img_adj_width</span> <span class="sy0">=</span> <span class="re0">$width</span> <span class="sy0">+</span> <span class="br0">&#40;</span><span class="nu0">2</span> <span class="sy0">*</span> <span class="re0">$size</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$img_adj_height</span> <span class="sy0">=</span> <span class="re0">$height</span> <span class="sy0">+</span> <span class="br0">&#40;</span><span class="nu0">2</span> <span class="sy0">*</span> <span class="re0">$size</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="re0">$new</span> <span class="sy0">=</span> <a href="http://www.php.net/imagecreatetruecolor"><span class="kw3">imagecreatetruecolor</span></a><span class="br0">&#40;</span>
+		<span class="re0">$img_adj_width</span><span class="sy0">,</span>
+		<span class="re0">$img_adj_height</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>     
+	<a href="http://www.php.net/imagecolortransparent"><span class="kw3">imagecolortransparent</span></a><span class="br0">&#40;</span>
+		<span class="re0">$new</span><span class="sy0">,</span>
+		<a href="http://www.php.net/imagecolorallocate"><span class="kw3">imagecolorallocate</span></a><span class="br0">&#40;</span>
+			<span class="re0">$new</span><span class="sy0">,</span>
+			<span class="nu0">0</span><span class="sy0">,</span>
+			<span class="nu0">0</span><span class="sy0">,</span>
+			<span class="nu0">0</span>
+		<span class="br0">&#41;</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+	<span class="re0">$color</span> <span class="sy0">=</span> <a href="http://www.php.net/imagecolorallocate"><span class="kw3">imagecolorallocate</span></a><span class="br0">&#40;</span>
+		<span class="re0">$new</span><span class="sy0">,</span>
+		<span class="re0">$color</span><span class="br0">&#91;</span><span class="st_h">'red'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+		<span class="re0">$color</span><span class="br0">&#91;</span><span class="st_h">'green'</span><span class="br0">&#93;</span><span class="sy0">,</span>
+		<span class="re0">$color</span><span class="br0">&#91;</span><span class="st_h">'blue'</span><span class="br0">&#93;</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.php.net/imagefilledrectangle"><span class="kw3">imagefilledrectangle</span></a><span class="br0">&#40;</span>
+		<span class="re0">$new</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="re0">$img_adj_width</span><span class="sy0">,</span>
+		<span class="re0">$img_adj_height</span><span class="sy0">,</span>
+		<span class="re0">$color</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.php.net/imagecopyresized"><span class="kw3">imagecopyresized</span></a><span class="br0">&#40;</span>
+		<span class="re0">$new</span><span class="sy0">,</span>
+		<span class="re0">$img</span><span class="sy0">,</span>
+		<span class="re0">$size</span><span class="sy0">,</span>
+		<span class="re0">$size</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+		<span class="nu0">0</span><span class="sy0">,</span>
+    	<span class="re0">$width</span><span class="sy0">,</span>
+		<span class="re0">$height</span><span class="sy0">,</span>
+		<span class="re0">$width</span><span class="sy0">,</span>
+		<span class="re0">$height</span>
+	<span class="br0">&#41;</span><span class="sy0">;</span>
+	<a href="http://www.php.net/imagedestroy"><span class="kw3">imagedestroy</span></a><span class="br0">&#40;</span><span class="re0">$img</span><span class="br0">&#41;</span><span class="sy0">;</span>
+	<span class="kw1">return</span> <span class="re0">$new</span><span class="sy0">;</span>
+&nbsp;
+<span class="br0">&#125;</span></pre>
+
+<p>
+An example call is the following:
+</p>
+<pre class="code php"><span class="re0">$img</span> <span class="sy0">=</span> <a href="http://www.php.net/imagecreatefrompng"><span class="kw3">imagecreatefrompng</span></a><span class="br0">&#40;</span><span class="st_h">'was.png'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co2"># Add a red 5-pixel border around the image.
+</span><span class="re0">$img</span> <span class="sy0">=</span> wasAddBorderPNG<span class="br0">&#40;</span>
+    <span class="re0">$img</span><span class="sy0">,</span>
+    <span class="nu0">5</span><span class="sy0">,</span>
+    <a href="http://www.php.net/array"><span class="kw3">array</span></a><span class="br0">&#40;</span>
+        <span class="st0">&quot;red&quot;</span> <span class="sy0">=&gt;</span> <span class="nu0">255</span><span class="sy0">,</span> 
+        <span class="st0">&quot;green&quot;</span> <span class="sy0">=&gt;</span> <span class="nu0">0</span><span class="sy0">,</span> 
+        <span class="st0">&quot;blue&quot;</span> <span class="sy0">=&gt;</span> <span class="nu0">0</span>
+    <span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit30" id="stack">Stack</h1>
+<div class="level1">
+
+<p>
+A stack implementation in PHP can be found on the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php/data_structures/stacks" class="wikilink1" title="fuss:php:data_structures:stacks" data-wiki-id="fuss:php:data_structures:stacks">PHP stack data-structure page</a>.
+</p>
+
+</div>
+
+<h1 class="sectionedit31" id="queue">Queue</h1>
+<div class="level1">
+
+<p>
+A queue implementation in PHP can be found on the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php/data_structures/queues" class="wikilink1" title="fuss:php:data_structures:queues" data-wiki-id="fuss:php:data_structures:queues">PHP queue data-structure page</a>.
+</p>
+
+</div>
+
+<h1 class="sectionedit32" id="y-combinator">Y-Combinator</h1>
+<div class="level1">
+
+<p>
+By expressing the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img91aac9730317276af725abd8cef04ca9.png" class="latex_inline" alt="$Y$" title="Math" /> combinator using the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgae4fb5973f393577570881fc24fc2054.png" class="latex_inline" alt="$\omega$" title="Math" /> combinator <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus#implementing_the_y-combinator" class="wikilink1" title="fuss:lambda_calculus" data-wiki-id="fuss:lambda_calculus">as explained</a>, the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img91aac9730317276af725abd8cef04ca9.png" class="latex_inline" alt="$Y$" title="Math" /> combinator can be implemented in PHP.
+</p>
+<pre class="code php"><span class="kw2">&lt;?php</span>
+<span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2016 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span>
+<span class="re0">$w</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="re0">$f</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="re0">$f</span><span class="br0">&#40;</span><span class="re0">$f</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="re0">$Y</span> <span class="sy0">=</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="re0">$g</span><span class="br0">&#41;</span> <span class="kw2">use</span> <span class="br0">&#40;</span><span class="re0">$w</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="re0">$w</span><span class="br0">&#40;</span>
+        <span class="kw2">function</span><span class="br0">&#40;</span><span class="re0">$f</span><span class="br0">&#41;</span> <span class="kw2">use</span> <span class="br0">&#40;</span><span class="re0">$g</span><span class="sy0">,</span> <span class="re0">$w</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="re0">$g</span><span class="br0">&#40;</span>
+                <span class="kw2">function</span> <span class="br0">&#40;</span><span class="re0">$x</span><span class="br0">&#41;</span> <span class="kw2">use</span> <span class="br0">&#40;</span><span class="re0">$f</span><span class="sy0">,</span> <span class="re0">$w</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                    <span class="re0">$f</span> <span class="sy0">=</span> <span class="re0">$w</span><span class="br0">&#40;</span><span class="re0">$f</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                    <span class="kw1">return</span> <span class="re0">$f</span><span class="br0">&#40;</span><span class="re0">$x</span><span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="br0">&#125;</span>
+            <span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span><span class="sy0">;</span></pre>
+
+<p>
+An example call, to calculate the factorial of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img327c36301dc71617dc7032f8ce30b236.png" class="latex_inline" alt="$6$" title="Math" />, would be:
+</p>
+<pre class="code php"><span class="re0">$factorial</span> <span class="sy0">=</span> <span class="re0">$Y</span><span class="br0">&#40;</span>
+    <span class="kw2">function</span><span class="br0">&#40;</span><span class="re0">$f</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">return</span> <span class="kw2">function</span><span class="br0">&#40;</span><span class="re0">$n</span><span class="br0">&#41;</span> <span class="kw2">use</span><span class="br0">&#40;</span><span class="re0">$f</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">return</span> <span class="re0">$n</span> <span class="sy0">&lt;=</span> <span class="nu0">1</span> ? <span class="nu0">1</span> <span class="sy0">:</span> <span class="re0">$n</span> <span class="sy0">*</span> <span class="re0">$f</span><span class="br0">&#40;</span><span class="re0">$n</span> <span class="sy0">-</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">echo</span> <span class="re0">$factorial</span><span class="br0">&#40;</span><span class="nu0">6</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit33" id="set_perl-compatible_regular_expressions_pcre_recursion_limit">Set Perl-Compatible Regular Expressions (PCRE) Recursion Limit</h1>
+<div class="level1">
+
+<p>
+You might get errors similar to:
+</p>
+<pre class="code">php5-fpm[12598]: segfault at 7ffd38fdfff8 ip 00007fe1ec22ad8d sp 00007ffd38fdfe50 error 6 in libpcre.so.3.13.1[7fe1ec217000+6c000]</pre>
+
+<p>
+in which case, you should set a PCRE recursion limit. This can be achieved by editing your PHP configuration (<code>php.ini</code>) and setting <code>pcre.recursion_limit</code> to some value:
+</p>
+<pre class="code">pcre.recursion_limit=100</pre>
+
+</div>
+
+<h1 class="sectionedit34" id="pretty-print_variable_dump">Pretty-Print Variable Dump</h1>
+<div class="level1">
+
+<p>
+This can be accomplished using <code>var_export</code> instead of <code>var_dump</code>:
+</p>
+<pre class="code php"><span class="kw1">echo</span> <span class="st_h">'&lt;pre&gt;'</span> <span class="sy0">.</span> <a href="http://www.php.net/var_export"><span class="kw3">var_export</span></a><span class="br0">&#40;</span><span class="re0">$data</span><span class="sy0">,</span> <span class="kw4">true</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">'&lt;/pre&gt;'</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit35" id="zip_directory_and_download">Zip Directory and Download</h1>
+<div class="level1">
+
+<p>
+The following script will create a zip file from the directory specified in the configuration section by the variable <code>ZIP_DIRECTORY</code> and will force the browser to download the file with the filename specified by <code>ZIP_FILE_NAME</code>.
+</p>
+<pre class="code php"><span class="kw2">&lt;?php</span>
+<span class="co2">###########################################################################
+</span><span class="co2">##  Copyright (C) Wizardry and Steamworks 2017 - License: GNU GPLv3      ##
+</span><span class="co2">###########################################################################
+</span>
+<span class="co2">###########################################################################
+</span><span class="co2">#                            CONFIGURATION                                #
+</span><span class="co2">###########################################################################
+</span>
+<span class="co2"># The directory to compress.
+</span><span class="re0">$ZIP_DIRECTORY</span> <span class="sy0">=</span> <a href="http://www.php.net/getcwd"><span class="kw3">getcwd</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">.</span><span class="st_h">'/data/'</span><span class="sy0">;</span>
+<span class="co2"># The downloaded Zip file name.
+</span><span class="re0">$ZIP_FILE_NAME</span> <span class="sy0">=</span> <span class="st_h">'Corrade-'</span><span class="sy0">.</span><a href="http://www.php.net/basename"><span class="kw3">basename</span></a><span class="br0">&#40;</span>__DIR__<span class="br0">&#41;</span><span class="sy0">.</span><span class="st_h">'.zip'</span><span class="sy0">;</span>
+&nbsp;
+<span class="co2">###########################################################################
+</span><span class="co2">#                              INTERNALS                                  #
+</span><span class="co2">###########################################################################
+</span>
+<span class="co2"># Create temporary directory.
+</span><span class="kw2">function</span> tempdir<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="re0">$tempfile</span> <span class="sy0">=</span> <a href="http://www.php.net/tempnam"><span class="kw3">tempnam</span></a><span class="br0">&#40;</span><a href="http://www.php.net/sys_get_temp_dir"><span class="kw3">sys_get_temp_dir</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">,</span><span class="st_h">''</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="co2"># you might want to reconsider this line when using this snippet.
+</span>    <span class="co2"># it &quot;could&quot; clash with an existing directory and this line will
+</span>    <span class="co2"># try to delete the existing one. Handle with caution.
+</span>    <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/file_exists"><span class="kw3">file_exists</span></a><span class="br0">&#40;</span><span class="re0">$tempfile</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <a href="http://www.php.net/unlink"><span class="kw3">unlink</span></a><span class="br0">&#40;</span><span class="re0">$tempfile</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.php.net/mkdir"><span class="kw3">mkdir</span></a><span class="br0">&#40;</span><span class="re0">$tempfile</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span><a href="http://www.php.net/is_dir"><span class="kw3">is_dir</span></a><span class="br0">&#40;</span><span class="re0">$tempfile</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="kw1">return</span> <span class="re0">$tempfile</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="re0">$tempDir</span> <span class="sy0">=</span> tempdir<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.php.net/empty"><span class="kw3">empty</span></a><span class="br0">&#40;</span><span class="re0">$tempDir</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <a href="http://www.php.net/exit"><span class="kw3">exit</span></a><span class="br0">&#40;</span><span class="st_h">'Could not create temporary directory'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="re0">$tempFile</span> <span class="sy0">=</span> <span class="re0">$tempDir</span><span class="sy0">.</span><span class="st_h">'/'</span><span class="sy0">.</span><span class="re0">$ZIP_FILE_NAME</span><span class="sy0">;</span>
+&nbsp;
+<span class="co2"># Initialize archive object
+</span><span class="re0">$zip</span> <span class="sy0">=</span> <span class="kw2">new</span> ZipArchive<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="re0">$zip</span><span class="sy0">-&gt;</span><span class="me1">open</span><span class="br0">&#40;</span><span class="re0">$tempFile</span><span class="sy0">,</span> 
+  ZipArchive<span class="sy0">::</span><span class="me2">CREATE</span> <span class="sy0">|</span> ZipArchive<span class="sy0">::</span><span class="me2">OVERWRITE</span> <span class="sy0">|</span> ZipArchive<span class="sy0">::</span><span class="me2">CHECKCONS</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co2"># Create recursive directory iterator
+</span><span class="co4">/** @var SplFileInfo[] $files */</span>
+<span class="re0">$files</span> <span class="sy0">=</span> <span class="kw2">new</span> RecursiveIteratorIterator<span class="br0">&#40;</span>
+    <span class="kw2">new</span> RecursiveDirectoryIterator<span class="br0">&#40;</span><span class="re0">$ZIP_DIRECTORY</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    RecursiveIteratorIterator<span class="sy0">::</span><span class="me2">LEAVES_ONLY</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$files</span> <span class="kw1">as</span> <span class="re0">$name</span> <span class="sy0">=&gt;</span> <span class="re0">$file</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co2"># Skip directories (they would be added automatically)
+</span>    <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">-&gt;</span><span class="me1">isDir</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="kw1">continue</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co2"># Get real and relative path for current file
+</span>    <span class="re0">$filePath</span> <span class="sy0">=</span> <span class="re0">$file</span><span class="sy0">-&gt;</span><span class="me1">getRealPath</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="re0">$relativePath</span> <span class="sy0">=</span> <a href="http://www.php.net/substr"><span class="kw3">substr</span></a><span class="br0">&#40;</span><span class="re0">$filePath</span><span class="sy0">,</span> <a href="http://www.php.net/strlen"><span class="kw3">strlen</span></a><span class="br0">&#40;</span><span class="re0">$ZIP_DIRECTORY</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="co2"># Add current file to archive
+</span>    <span class="re0">$zip</span><span class="sy0">-&gt;</span><span class="me1">addFile</span><span class="br0">&#40;</span><span class="re0">$filePath</span><span class="sy0">,</span> <span class="re0">$relativePath</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="co2"># Zip archive will be created only after closing object
+</span><span class="re0">$zip</span><span class="sy0">-&gt;</span><span class="me1">close</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">!</span><a href="http://www.php.net/file_exists"><span class="kw3">file_exists</span></a><span class="br0">&#40;</span><span class="re0">$tempFile</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <a href="http://www.php.net/exit"><span class="kw3">exit</span></a><span class="br0">&#40;</span><span class="st_h">'Zip file was not created.'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co2"># Set headers and send file.
+</span><a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Pragma: public'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Expires: 0'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Cache-Control: must-revalidate, post-check=0, pre-check=0'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Last-Modified: '</span> <span class="sy0">.</span> <a href="http://www.php.net/gmdate"><span class="kw3">gmdate</span></a><span class="br0">&#40;</span><span class="st_h">'D, d M Y H:i:s'</span><span class="sy0">,</span> <a href="http://www.php.net/filemtime"><span class="kw3">filemtime</span></a><span class="br0">&#40;</span><span class="re0">$tempFile</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">.</span> <span class="st_h">' GMT'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Type: application/force-download'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Disposition: inline; filename=&quot;'</span><span class="sy0">.</span><span class="re0">$ZIP_FILE_NAME</span><span class="sy0">.</span><span class="st_h">'&quot;'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Transfer-Encoding: binary'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Content-Length: '</span> <span class="sy0">.</span> <a href="http://www.php.net/filesize"><span class="kw3">filesize</span></a><span class="br0">&#40;</span><span class="re0">$tempFile</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/header"><span class="kw3">header</span></a><span class="br0">&#40;</span><span class="st_h">'Connection: close'</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<a href="http://www.php.net/readfile"><span class="kw3">readfile</span></a><span class="br0">&#40;</span><span class="re0">$tempFile</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="co2"># Remove temporary directory and contents.
+</span><span class="re0">$files</span> <span class="sy0">=</span> <span class="kw2">new</span> RecursiveIteratorIterator<span class="br0">&#40;</span>
+    <span class="kw2">new</span> RecursiveDirectoryIterator<span class="br0">&#40;</span><span class="re0">$tempDir</span><span class="sy0">,</span>
+        RecursiveDirectoryIterator<span class="sy0">::</span><span class="me2">SKIP_DOTS</span><span class="br0">&#41;</span><span class="sy0">,</span>
+    RecursiveIteratorIterator<span class="sy0">::</span><span class="me2">CHILD_FIRST</span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">foreach</span><span class="br0">&#40;</span><span class="re0">$files</span> <span class="kw1">as</span> <span class="re0">$name</span> <span class="sy0">=&gt;</span> <span class="re0">$file</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  <span class="kw1">if</span><span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">-&gt;</span><span class="me1">isDir</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <a href="http://www.php.net/rmdir"><span class="kw3">rmdir</span></a><span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">-&gt;</span><span class="me1">getRealPath</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+      <span class="kw1">continue</span><span class="sy0">;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <a href="http://www.php.net/unlink"><span class="kw3">unlink</span></a><span class="br0">&#40;</span><span class="re0">$file</span><span class="sy0">-&gt;</span><span class="me1">getRealPath</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<a href="http://www.php.net/rmdir"><span class="kw3">rmdir</span></a><span class="br0">&#40;</span><span class="re0">$tempDir</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+This script is used to create zip files from the various releases to be found in the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/secondlife/scripted_agents/corrade" class="wikilink1" title="secondlife:scripted_agents:corrade" data-wiki-id="secondlife:scripted_agents:corrade">Corrade</a> Stitch repository.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/php.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php" class="wikilink1" title="fuss:php" data-wiki-id="fuss:php">php</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:php" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/php"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aphp&amp;1657306036" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

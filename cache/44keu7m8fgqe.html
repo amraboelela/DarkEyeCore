@@ -1,0 +1,2670 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/col/ - Colombia</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=col"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Actualizar</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=col">
+    <div>
+      <p id="labelName">/col/ - Colombia</p>
+    </div>
+    
+	<span class="boardLinks">
+		<a href="catalog.html">Catálogo</a>
+		<a id="archiveLinkBoard">Archivar</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Modo: Hilo</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  <tr id="divName">
+    <th>Name</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldName" name="name"></td>
+  </tr>
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="col"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Recuerda leer las
+          <a href="rules.html" class="localPageLink">reglas</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage">Hermanos: <a href="/hispachan">hispachan</a> / <a href="/arepa">arepa</a> / <a href="/esp">esp</a> / <a href="/hisrol">hisrol</a> / <a href="/vt">vt</a> / <a href="/hispol">hispol</a> / <a href="/mex">mex</a> / <a href="/pe">pe</a> / <a href="/cc">cc</a> / <a href="/ac">ac</a> / <a href="/hispatec">hispatec</a>
+
+<a href="https://github.com/Hisparefugio/Hisparefugio/">index</a></div>
+  </div>
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="col" id="807"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/a8948a4e470bbf8856afcdc5794ebff486bc075ebcd5f21759e725c4526e7740.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">6.98 KB</span> <span class="dimensionLabel">194x259</span>
+  <a class="originalNameLink" href="/.media/a8948a4e470bbf8856afcdc5794ebff486bc075ebcd5f21759e725c4526e7740.jpg" download="qwe&#95;download.jpg">qwe&#95;download.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/a8948a4e470bbf8856afcdc5794ebff486bc075ebcd5f21759e725c4526e7740.jpg" data-filewidth="194" data-fileheight="259" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="169" height="225" src="/.media/t_a8948a4e470bbf8856afcdc5794ebff486bc075ebcd5f21759e725c4526e7740"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-807">
+    <span class="labelSubject">Banners</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/25/2022 (Sab) 02:17:06</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/col/res/807.html#807">№</a>
+    <a class="linkQuote" href="/col/res/807.html#q807">807</a>
+    <a class="linkReply" href="/col/res/807.html">[Responder]</a>
+    <a class="linkLast" href="/col/last/807.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><span class="doomText">Hilo para banners</span>
+
+Recuerden que:
+El tamaño máximo del archivo es de <span class="redText">1MB</span>
+Las dimensiones deben ser <span class="redText">300x100</span>
+El formato puede ser: jpeg, png, o gif</div>
+  
+  
+  
+  <div class="labelOmission">37 posts y 33 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1120"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-807-1120">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-ve" src="/.static/flags/ve.png" title="Venezuela"> 
+    <span class="labelCreated">07/07/2022 (Jue) 19:20:20</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/807.html#1120">№</a>
+    <a class="linkQuote" href="/col/res/807.html#q1120">1120</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/785d3a3fa6f7c02c1ad6c02271bd6da142236d1e9bf282f68b69ae8615534577.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">231.89 KB</span> <span class="dimensionLabel">480x480</span>
+  <a class="originalNameLink" href="/.media/785d3a3fa6f7c02c1ad6c02271bd6da142236d1e9bf282f68b69ae8615534577.png" download="born to kill.png">born to kill.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/785d3a3fa6f7c02c1ad6c02271bd6da142236d1e9bf282f68b69ae8615534577.png" data-filewidth="480" data-fileheight="480" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_785d3a3fa6f7c02c1ad6c02271bd6da142236d1e9bf282f68b69ae8615534577"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/col/res/807.html#947">&gt;&gt;947</a>
+<a class="quoteLink" href="/col/res/807.html#958">&gt;&gt;958</a>
+Yo reafirmo, también le dí de mi negro y gigantezco guabo a esa puta de la madre del anon</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b6b2cf1151eb4b0047b1ea1cb7b22e808dcc598ed35f7959b63516c97feb518f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">4.07 KB</span> <span class="dimensionLabel">999x666</span>
+  <a class="originalNameLink" href="/.media/b6b2cf1151eb4b0047b1ea1cb7b22e808dcc598ed35f7959b63516c97feb518f.png" download="Flag&#95;of&#95;Colombia.png">Flag&#95;of&#95;Colombia.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b6b2cf1151eb4b0047b1ea1cb7b22e808dcc598ed35f7959b63516c97feb518f.png" data-filewidth="999" data-fileheight="666" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="150" src="/.media/t_b6b2cf1151eb4b0047b1ea1cb7b22e808dcc598ed35f7959b63516c97feb518f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1">
+    <span class="labelSubject">Bienvenidos</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">05/30/2022 (Lun) 14:07:15</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/col/res/1.html#1">№</a>
+    <a class="linkQuote" href="/col/res/1.html#q1">1</a>
+    <a class="linkReply" href="/col/res/1.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Tras la muerte de Hispachan decidí crear este tablón para preservar la comunidad chanera colombiana.
+
+Este tablon es para discusión de /col/ especificamente para discusión de /his/ general pueden ir a alguno de los siguientes:
+<a target="&#95;blank" href="https://8chan.moe/hispachan/">https://8chan.moe/hispachan/</a>
+<a target="&#95;blank" href="https://krautchan.rip/hs">https://krautchan.rip/hs</a>
+
+Repo con los tablones de la comuniadad:
+<a target="&#95;blank" href="https://github.com/Hisparefugio/Hisparefugio/">https://github.com/Hisparefugio/Hisparefugio/</a></div>
+  
+  
+  <div class="labelLastEdit">Editado por última vez por Alex en 06/02/2022 (Jue) 17:46:21.</div>
+  <div class="labelOmission">31 posts y 2 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="915"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1-915">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag" src="/.static/flags/unknown.png" title="Unknown"> 
+    <span class="labelCreated">06/28/2022 (Mar) 04:31:08</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1.html#915">№</a>
+    <a class="linkQuote" href="/col/res/1.html#q915">915</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><span class="redText">8CHAN HA SIDO ACTUALIZADO CON NUEVOS TEMAS Y MÁS</span>
+Como habrán notado, 8chan acaba de ser actualizado a la versión 2.8, y entre los cambios y novedades están:
+– 3 nuevos temas inspirados en los temas de Hispachan (Hispita, Hispaperro e HispaSexy) + 4 nuevos temas secretos.
+– Traducción (parcial) al Español. Los BO pueden cambiar el idioma de sus tablónes en los ajustes de los mismos.
+– Diseño mejor adaptado a pantallas pequeñas, ideal para aquellos que visitan el sitio desde el teléfono.
+– Soporte de archivos .swf gracias al proyecto Ruffle.
+– Posibilidad de cambiar el URI de los tablones.
+– El filtro R9K finalmente funciona por hilo.
+
+Pasen a <a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;&gt;/site/5978</a> para ver una lista detallada (en Inglés) de los cambios y novedades, y para reportar cualquier posible error que encuentren.
+
+<strong>NOTA:</strong> Dado que las actualizaciones cambian muchas cosas del sitio, se recomienda enormemente que borren su caché de 8chan y recargen todas las páginas activas.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1087"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5026aa57d0f38356c1e95b72281ce2b1cb06738b92cc51bfc79935d51ddc5589.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">45.78 KB</span> <span class="dimensionLabel">680x358</span>
+  <a class="originalNameLink" href="/.media/5026aa57d0f38356c1e95b72281ce2b1cb06738b92cc51bfc79935d51ddc5589.jpg" download="FWwn-i-WYAAwtE9.jpeg">FWwn-i-WYAAwtE9.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5026aa57d0f38356c1e95b72281ce2b1cb06738b92cc51bfc79935d51ddc5589.jpg" data-filewidth="680" data-fileheight="358" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="118" src="/.media/t_5026aa57d0f38356c1e95b72281ce2b1cb06738b92cc51bfc79935d51ddc5589"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1087">
+    <span class="labelSubject">Petrenorrea</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 01:51:19</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1087.html#1087">№</a>
+    <a class="linkQuote" href="/col/res/1087.html#q1087">1087</a>
+    <a class="linkReply" href="/col/res/1087.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">El gobierno izquierdista ya empezó, ahora con una tributaria preparada contra personas naturales, los mismos hijueputa que votaron por Petre quedaremos hechos, ahí tienen su vivir sabroso hijueputa, mientras ponen a comer mierda a todos con hiperinflacion e impuestos Petre y Rancia se estarán gastando esa platica, país de hijueputas retrasados</div>
+  
+  
+  
+  <div class="labelOmission">12 posts y 4 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1117"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1087-1117">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/07/2022 (Jue) 15:27:23</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1087.html#1117">№</a>
+    <a class="linkQuote" href="/col/res/1087.html#q1117">1117</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1087.html#1112">&gt;&gt;1112</a>
+Los godos, los Conservadores ganaron, hasta ahora se entera que están apoyando a Petro kek.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1124"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1087-1124">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 09:01:42</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1087.html#1124">№</a>
+    <a class="linkQuote" href="/col/res/1087.html#q1124">1124</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7e47016ba144e20a61821c83c74321e5ffc67ca6d7b2687680950301622d009d.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">166.08 KB</span> <span class="dimensionLabel">480x854</span>
+  <a class="originalNameLink" href="/.media/7e47016ba144e20a61821c83c74321e5ffc67ca6d7b2687680950301622d009d.png" download="222.png">222.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7e47016ba144e20a61821c83c74321e5ffc67ca6d7b2687680950301622d009d.png" data-filewidth="480" data-fileheight="854" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="126" height="225" src="/.media/t_7e47016ba144e20a61821c83c74321e5ffc67ca6d7b2687680950301622d009d"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1087.html#1117">&gt;&gt;1117</a>
+Imagina ser así de retrasado. Kek</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1129"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1087-1129">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 22:12:34</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1087.html#1129">№</a>
+    <a class="linkQuote" href="/col/res/1087.html#q1129">1129</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1087.html#1124">&gt;&gt;1124</a>
+Mal bocho, hace varios días que el partido conservador anunció su apoyo a Petro, no sé que quiere forzar</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1074"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5479b5b59438894d326b1d8e725288fbb2062a347bc3d2b6ac0e6757c98e513c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">77.39 KB</span> <span class="dimensionLabel">851x851</span>
+  <a class="originalNameLink" href="/.media/5479b5b59438894d326b1d8e725288fbb2062a347bc3d2b6ac0e6757c98e513c.jpg" download="32864670&#95;10155218694305771&#95;1714451511775330304&#95;n.jpg">32864670&#95;10155218694305771&#95;1714451511775330304&#95;n.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5479b5b59438894d326b1d8e725288fbb2062a347bc3d2b6ac0e6757c98e513c.jpg" data-filewidth="851" data-fileheight="851" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_5479b5b59438894d326b1d8e725288fbb2062a347bc3d2b6ac0e6757c98e513c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1074">
+    <span class="labelSubject">Pa esto voté por mi lord petrosky</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 18:37:14</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1074.html#1074">№</a>
+    <a class="linkQuote" href="/col/res/1074.html#q1074">1074</a>
+    <a class="linkReply" href="/col/res/1074.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Pa que acabe con las eps´s que tanto mal le han hecho a mi pais.
+
+<span class="greenText">&gt;Una de las posiciones más conocidas, pero también de las más criticadas de la nueva ministra de Salud, tiene que ver con la eliminación de las Entidades Promotoras de Salud (EPS). Precisamente, en un texto que publicó a finales de mayo en la Revista Sur -de la Corporación Latinoamericana Sur, la cual preside- , después de la primera vuelta presidencial, la nueva jefe de la cartera, defendió la eliminación de la “intermediación financiera y administrativa de las EPS”.</span>
+
+<a target="&#95;blank" href="https://www.elespectador.com/salud/quien-es-carolina-corcho-la-ministra-de-salud-de-gustavo-petro/">https://www.elespectador.com/salud/quien-es-carolina-corcho-la-ministra-de-salud-de-gustavo-petro/</a></div>
+  
+  
+  
+  <div class="labelOmission">19 posts y 4 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1125"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1074-1125">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 09:06:04</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1074.html#1125">№</a>
+    <a class="linkQuote" href="/col/res/1074.html#q1125">1125</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1074.html#1118">&gt;&gt;1118</a>
+<a class="quoteLink" href="/col/res/1074.html#1115">&gt;&gt;1115</a>
+<a class="quoteLink" href="/col/res/1074.html#1113">&gt;&gt;1113</a>
+Ahí están pintadas lo perras, brutas, oportunistas y regaladas que son los godos. Un puto culto a la ignorancia y el abrir las patas al mayor postor. Kek</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1127"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1074-1127">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 14:02:50</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1074.html#1127">№</a>
+    <a class="linkQuote" href="/col/res/1074.html#q1127">1127</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1074.html#1125">&gt;&gt;1125</a>
+Estos hijueputas uribustas ya ganaron las elecciones y siguen floodeando, tremendo circo que tienen montando atacandose a si mismos</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1128"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1074-1128">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 16:54:46</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1074.html#1128">№</a>
+    <a class="linkQuote" href="/col/res/1074.html#q1128">1128</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1074.html#1127">&gt;&gt;1127</a>
+Secundo el verdadero candidato de Uribe era Petre</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1016"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/04a277c339a4ee333a88463dac84d51f0b9ef892b963402f175da6783fd30d6c.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">7.32 KB</span> <span class="dimensionLabel">300x168</span>
+  <a class="originalNameLink" href="/.media/04a277c339a4ee333a88463dac84d51f0b9ef892b963402f175da6783fd30d6c.png" download="descarga.png">descarga.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/04a277c339a4ee333a88463dac84d51f0b9ef892b963402f175da6783fd30d6c.png" data-filewidth="300" data-fileheight="168" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_04a277c339a4ee333a88463dac84d51f0b9ef892b963402f175da6783fd30d6c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1016">
+    <span class="labelSubject">AMA a negro que esta estudiando MisionTIC</span>
+    <a class="linkName  noEmailName" >MisionTIC</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/03/2022 (Dom) 16:03:29</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1016.html#1016">№</a>
+    <a class="linkQuote" href="/col/res/1016.html#q1016">1016</a>
+    <a class="linkReply" href="/col/res/1016.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Lo del titulo negros, hagan sus preguntas sobre el programa o el area de programacion en general hare lo posible por responderlas.</div>
+  
+  
+  
+  <div class="labelOmission">21 posts y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1121"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1016-1121">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 01:31:30</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1016.html#1121">№</a>
+    <a class="linkQuote" href="/col/res/1016.html#q1121">1121</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Ese diplomado si suma valor a la hoja de vida?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1122"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1016-1122">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 02:40:31</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1016.html#1122">№</a>
+    <a class="linkQuote" href="/col/res/1016.html#q1122">1122</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1016.html#1121">&gt;&gt;1121</a>
+disque diplomado kek
+esa mierda es nada mas que un programa pedorro para justificar los gastos de presupuesto de ese ministerio, le servira para limpiarse el culo.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1126"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1016-1126">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 12:34:23</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1016.html#1126">№</a>
+    <a class="linkQuote" href="/col/res/1016.html#q1126">1126</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1016.html#1121">&gt;&gt;1121</a>
+Negro, todo lo que estudies y te de un certificado SUMA A TU HOJA DE VIDA por el simple hecho que te da una ventaja competitiva frente a otro candidato que no tenga certificados, en especial si son sobre una tecnologia en particular que use la empresa a la cual postulaste tu CV, otra cosa es que si solo con este diplmado te basta para conseguir un empleo.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1119"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">286.56 KB</span> <span class="dimensionLabel">853x480</span>
+  <a class="originalNameLink" href="/.media/b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1.png" download="infinity cup committee.png">infinity cup committee.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1.png" data-filewidth="853" data-fileheight="480" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1119">
+    <span class="labelSubject">Infinity Cup</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/07/2022 (Jue) 16:32:42</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1119.html#1119">№</a>
+    <a class="linkQuote" href="/col/res/1119.html#q1119">1119</a>
+    <a class="linkReply" href="/col/res/1119.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hola anónimos, 
+¿te gustaría participar en nuestro torneo de fútbol? Si no sabes lo que es, es un torneo que se lleva a cabo en <a target="&#95;blank" href="https://anon.cafe/icup/">https://anon.cafe/icup/</a> donde juegan todos los grandes tableros para ver cuál es el mejor. Si lo deseas, puedes participar haciendo un hilo allí.</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1123"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1119-1123">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 08:06:16</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1119.html#1123">№</a>
+    <a class="linkQuote" href="/col/res/1119.html#q1123">1123</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1119.html#1119">&gt;&gt;1119</a>
+<span class="greenText">&gt;IF YOUR COMPUTER CAN RUN PES 2017 AND YOU CAN HOST MATCHES, PLEASE CONTACT US IN THE INFINITY CUP ORGANIZATION THREAD!</span>
+Te faltó mecionar eso OPirobo</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="986"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1e3630aab8952d25e10ee3b3ea5845978df37b1034ef0e7cf7e6419661477f4d.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">131.06 KB</span> <span class="dimensionLabel">1183x739</span>
+  <a class="originalNameLink" href="/.media/1e3630aab8952d25e10ee3b3ea5845978df37b1034ef0e7cf7e6419661477f4d.jpg" download="Sin título.jpg">Sin título.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1e3630aab8952d25e10ee3b3ea5845978df37b1034ef0e7cf7e6419661477f4d.jpg" data-filewidth="1183" data-fileheight="739" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="141" src="/.media/t_1e3630aab8952d25e10ee3b3ea5845978df37b1034ef0e7cf7e6419661477f4d"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-986">
+    <span class="labelSubject">¿Es Mercadomierda un lavadero de plata?</span>
+    <a class="linkName  noEmailName" >Rainbow666</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/02/2022 (Sab) 00:50:58</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/986.html#986">№</a>
+    <a class="linkQuote" href="/col/res/986.html#q986">986</a>
+    <a class="linkReply" href="/col/res/986.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Negritos desde hace tiempo tengo la teoría de que esta web argentina, -que no hace sino poner obstáculos a los vendedores pequeños-, es un lavadero de plata por que uno no se explica, como una mierda de repetidor vale casi 1/2 palo, siendo que es un aparato de hace más de 10 años y solo tiene 2g, aparte de eso dicen que ya han vendido 4 y no es estafa, seguramente es una forma que se ha encontrado para lavar dinero ¿Uds. qué opinan de esto&apos; ¿Qué opinan en general de esta plataforma?</div>
+  
+  
+  
+  <div class="labelOmission">11 posts y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1006"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-986-1006">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 01:12:37</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/986.html#1006">№</a>
+    <a class="linkQuote" href="/col/res/986.html#q1006">1006</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/986.html#1004">&gt;&gt;1004</a>
+béseme pero mi monda gran hijueputa</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1025"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-986-1025">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 18:30:24</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/986.html#1025">№</a>
+    <a class="linkQuote" href="/col/res/986.html#q1025">1025</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/986.html#986">&gt;&gt;986</a>
+<span class="greenText">&gt;mercadorrible es un lavadero de plata?</span>
+quien sabe...siempre he pensado que es mas probable que rappi lo sea, ya que se la pasan regalando cosas a los que tienen la app y no la usan tanto, y puede uno conseguir un precio demasiado optimo en ciertas cosas mientras en la propia tienda seria super caro
+<a class="quoteLink" href="/col/res/986.html#992">&gt;&gt;992</a>
+he comprado infinidad de cosas en mercadorrible y llega lo que compro. seguramente los vendedores de dildos de dragon que usted pide si son estafadores</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1092"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-986-1092">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/06/2022 (Mie) 06:35:27</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/986.html#1092">№</a>
+    <a class="linkQuote" href="/col/res/986.html#q1092">1092</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/986.html#1025">&gt;&gt;1025</a>
+Negro eso de que plataforma como Rappi o Ifood regalen cupones no sirve de a mucho, ya que si los usa es muy probable que te den una comida ni mala ni buena o muy mala es entendible te regalan algo pero esa gente se ahorra plata en ingredientes pensando que recibiras algo de calidad.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1071"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9377fb7e76535120bd3b844c4e96e91e56f5be4126102b5b0d44eb65734e3832.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">152.61 KB</span> <span class="dimensionLabel">820x759</span>
+  <a class="originalNameLink" href="/.media/9377fb7e76535120bd3b844c4e96e91e56f5be4126102b5b0d44eb65734e3832.jpg" download="313-3135586&#95;204kib-1018x763-pepe-hug-happy-pepe-hug-png.png">313-3135586&#95;204kib-1018x763-pepe-hug-happy-pepe-hug-png.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9377fb7e76535120bd3b844c4e96e91e56f5be4126102b5b0d44eb65734e3832.jpg" data-filewidth="820" data-fileheight="759" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="208" src="/.media/t_9377fb7e76535120bd3b844c4e96e91e56f5be4126102b5b0d44eb65734e3832"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1071">
+    
+    <a class="linkName  noEmailName" >Soy feliz negros</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 15:40:35</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1071.html#1071">№</a>
+    <a class="linkQuote" href="/col/res/1071.html#q1071">1071</a>
+    <a class="linkReply" href="/col/res/1071.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">No me importa la política colombiana pero he de admitir que ver el ardor anal de los uribestias especialmente en este tablón es magnifico negros, ya no hay tantos post de Petroputas y los uribestias solo lloran y lloran, eso me hace muy feliz.
+
+/Col/ esta moribundo y todos se burlan de los hilos de política negando la realidad, ¿te quieres ir del país negro? adelante, si es que puedes hacerlo porque sinceramente no creo que ningún negro quejumbroso y sobre todo marica pueda hacerlo, solo te queda quejarte y quejarte hasta morir, no saben lo feliz que soy al ver su desconformidad y ardor anal.
+
+Sigan así negros, nunca dejen de quejarse, los quiero mucho.</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1073"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1071-1073">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 17:15:33</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1071.html#1073">№</a>
+    <a class="linkQuote" href="/col/res/1071.html#q1073">1073</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1071.html#1071">&gt;&gt;1071</a>
+Callese petrista hijueputa usted está ardido porque no votamos por Petre y sabemos como destruirá la economía hijueputa</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1076"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1071-1076">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 20:14:14</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1071.html#1076">№</a>
+    <a class="linkQuote" href="/col/res/1071.html#q1076">1076</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1071.html#1073">&gt;&gt;1073</a>
+<span class="greenText">&gt;el italiano me dejó el culo ensangrentado</span>
+Eso leí.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1083"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1071-1083">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/06/2022 (Mie) 00:54:07</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1071.html#1083">№</a>
+    <a class="linkQuote" href="/col/res/1071.html#q1083">1083</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1071.html#1076">&gt;&gt;1076</a>
+<span class="greenText">&gt;el italiano me violo y me pego la gonorrea </span>
+Eso leí</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1072"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c23f404bec16133d1dd98e4af98d291b87a874f716387f961aa4b99f5562f825.webm"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.59 MB</span> <span class="dimensionLabel">320x320</span>
+  <a class="originalNameLink" href="/.media/c23f404bec16133d1dd98e4af98d291b87a874f716387f961aa4b99f5562f825.webm" download="109AE387-92B3-4ADF-9DD0-0E5AEE0F9AA1.webm">109AE387-92B3-4ADF-9DD0-0E5AEE0F9AA1.webm</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c23f404bec16133d1dd98e4af98d291b87a874f716387f961aa4b99f5562f825.webm" data-filewidth="320" data-fileheight="320" data-filemime="video/webm">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_c23f404bec16133d1dd98e4af98d291b87a874f716387f961aa4b99f5562f825"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1072">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-us" title="United States of 'Murica" src="/.static/flags/us.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 16:30:45</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1072.html#1072">№</a>
+    <a class="linkQuote" href="/col/res/1072.html#q1072">1072</a>
+    <a class="linkReply" href="/col/res/1072.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo de webms?</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1081"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1072-1081">
+    
+    <a class="linkName  noEmailName" >Rainbow666</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 20:58:45</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1072.html#1081">№</a>
+    <a class="linkQuote" href="/col/res/1072.html#q1081">1081</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c337690979cb22c1875a8a7b8143da521f92618ed57aa8aa7b885fb47cf55ed9.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">12.10 MB</span> <span class="dimensionLabel">202x360</span>
+  <a class="originalNameLink" href="/.media/c337690979cb22c1875a8a7b8143da521f92618ed57aa8aa7b885fb47cf55ed9.mp4" download="164183718539.mp4">164183718539.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c337690979cb22c1875a8a7b8143da521f92618ed57aa8aa7b885fb47cf55ed9.mp4" data-filewidth="202" data-fileheight="360" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="126" height="225" src="/.media/t_c337690979cb22c1875a8a7b8143da521f92618ed57aa8aa7b885fb47cf55ed9"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1072.html#1072">&gt;&gt;1072</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1082"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1072-1082">
+    
+    <a class="linkName  noEmailName" >Rainbow666</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 20:59:19</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1072.html#1082">№</a>
+    <a class="linkQuote" href="/col/res/1072.html#q1082">1082</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">La maracucha en el 2026</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1066"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/44ffc2340a6adc8bf00692b34d18e093295ceee595f16509efaf413c28c49f2f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">8.03 KB</span> <span class="dimensionLabel">181x278</span>
+  <a class="originalNameLink" href="/.media/44ffc2340a6adc8bf00692b34d18e093295ceee595f16509efaf413c28c49f2f.jpg" download="MARICON.jpeg">MARICON.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/44ffc2340a6adc8bf00692b34d18e093295ceee595f16509efaf413c28c49f2f.jpg" data-filewidth="181" data-fileheight="278" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="146" height="225" src="/.media/t_44ffc2340a6adc8bf00692b34d18e093295ceee595f16509efaf413c28c49f2f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1066">
+    <span class="labelSubject">Negritos, porqué a los godos les gusta que les den por el culo?</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/05/2022 (Mar) 06:23:25</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1066.html#1066">№</a>
+    <a class="linkQuote" href="/col/res/1066.html#q1066">1066</a>
+    <a class="linkReply" href="/col/res/1066.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Desde su líder máximo, hasta Polo Polo, todos son unos sodomitas entregados a que le sofrezca más. SIn ideales, sin fortaleza. Es eso una propiedad innata de su ideología? Ser putas? (favor, no confirmar su debilidad contestando con &quot;whataboutisms&quot;</div>
+  
+  
+  
+  <div class="labelOmission">1 post omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1068"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1066-1068">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 07:37:29</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1066.html#1068">№</a>
+    <a class="linkQuote" href="/col/res/1066.html#q1068">1068</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1066.html#1067">&gt;&gt;1067</a>
+Y el Peruanito miserable confirma que los conservadores lo único que hacen es pensar en verga. Kek Así o más patético?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1069"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1066-1069">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 15:15:43</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1066.html#1069">№</a>
+    <a class="linkQuote" href="/col/res/1066.html#q1069">1069</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1066.html#1066">&gt;&gt;1066</a>
+Los izquierdistas siempre roban y suben impuestos para robar más, las maricotas son los petristas, hijueputa Petro los va a poner a pagar una reforma tributaria peor que cualquiera anterior, tanto que se quejaban de carrasquilla y este hijueputa Petro nos va a poner a vivir sabroso a punta de impuestos hijueputa</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1070"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1066-1070">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 15:35:28</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1066.html#1070">№</a>
+    <a class="linkQuote" href="/col/res/1066.html#q1070">1070</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">No sé negro pero que circo de locas se montaron los godos en el congreso, seguro hacen orgías gay y trencito, haciendole gang Bang a su líder, Petro.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1056"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6704b5b84d657227c6615dea08d421a96685f014f13aa7f55fedb8d40da912ba.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">10.02 KB</span> <span class="dimensionLabel">300x300</span>
+  <a class="originalNameLink" href="/.media/6704b5b84d657227c6615dea08d421a96685f014f13aa7f55fedb8d40da912ba.jpg" download="1607128074271.jpg">1607128074271.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6704b5b84d657227c6615dea08d421a96685f014f13aa7f55fedb8d40da912ba.jpg" data-filewidth="300" data-fileheight="300" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_6704b5b84d657227c6615dea08d421a96685f014f13aa7f55fedb8d40da912ba"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1056">
+    <span class="labelSubject">Muchos robados en la marcha marica</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-fr" title="France" src="/.static/flags/fr.png"> 
+    <span class="labelCreated">07/04/2022 (Lun) 05:55:08</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1056.html#1056">№</a>
+    <a class="linkQuote" href="/col/res/1056.html#q1056">1056</a>
+    <a class="linkReply" href="/col/res/1056.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Tengo conocidas de mi hermana que fueron a la marcha marica y reportan que estuvieron robando mucho en esa marcha. Eso les pasa por ir a esas mierdas de maricas. Ojalá las hubieran robado más.</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1062"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1056-1062">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/04/2022 (Lun) 14:52:24</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1056.html#1062">№</a>
+    <a class="linkQuote" href="/col/res/1056.html#q1062">1062</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Kek, pasó algo parecido en una marcha de apoyo al proceso de paz en 2016, unos compañeros de la universidad se fueron a Bogotá para participar en esa mierda, gastaron un montón de plata y de los 4 que fueron a 3 les robaron el celular</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1065"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1056-1065">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 01:43:05</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1056.html#1065">№</a>
+    <a class="linkQuote" href="/col/res/1056.html#q1065">1065</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1056.html#1056">&gt;&gt;1056</a>
+muy basados esos ladrones</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1077"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1056-1077">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/05/2022 (Mar) 20:17:20</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1056.html#1077">№</a>
+    <a class="linkQuote" href="/col/res/1056.html#q1077">1077</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1056.html#1056">&gt;&gt;1056</a>
+<span class="greenText">&gt;mi hermana</span>
+<span class="pinkText">&lt;no hay pictura relatada</span>
+Este no es el futuro que elegí, negros.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="214"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b61030ca1c25eae50a73ceb00a778c2f20d5ccdc09e07dfbe24c481948ded744.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">141.82 KB</span> <span class="dimensionLabel">500x281</span>
+  <a class="originalNameLink" href="/.media/b61030ca1c25eae50a73ceb00a778c2f20d5ccdc09e07dfbe24c481948ded744.png" download="lewd.png">lewd.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b61030ca1c25eae50a73ceb00a778c2f20d5ccdc09e07dfbe24c481948ded744.png" data-filewidth="500" data-fileheight="281" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_b61030ca1c25eae50a73ceb00a778c2f20d5ccdc09e07dfbe24c481948ded744"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-214">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">06/13/2022 (Lun) 05:13:21</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/214.html#214">№</a>
+    <a class="linkQuote" href="/col/res/214.html#q214">214</a>
+    <a class="linkReply" href="/col/res/214.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">alguien quiere probar un juego? al menos creo que esta mejor hecho que los del negro de godot...lo habia hecho hace un tiempo, pero no sabia que hacer con el o donde ponerlo, pueden descargarlo de aqui:
+
+<a target="&#95;blank" href="https://ufile.io/4lzhr60f">https://ufile.io/4lzhr60f</a>
+
+el juego trata de interpretar a un gordo bastardo y sus breves aventuras, se mueve con las flechas y guarda en la casita. lo hice con texto en ingles pues pensaba hacerle una pagina web</div>
+  
+  
+  
+  <div class="labelOmission">5 posts y 3 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1010"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-214-1010">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 05:32:18</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/214.html#1010">№</a>
+    <a class="linkQuote" href="/col/res/214.html#q1010">1010</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/214.html#979">&gt;&gt;979</a>
+<span class="greenText">&gt;de preferencia junto con el código fuente</span>
+lo hice en el muy potente <span class="spoiler">game maker</span>, si les gusta puedo subir el archivo y lo editan para añadirle guarrerias adicionales si usan windows y consiguen una copia <span class="spoiler">crackeada</span> del game maker.
+actualmente el juego tiene:
+-pase para no ser arrestado
+-creacion de loli personalizada
+-entrada a <span class="spoiler">la isla de epstein</span> el club</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1018"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-214-1018">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/03/2022 (Dom) 16:59:00</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/214.html#1018">№</a>
+    <a class="linkQuote" href="/col/res/214.html#q1018">1018</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">necesitan artista grafico?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1063"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-214-1063">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-ar" src="/.static/flags/ar.png" title="Argentina"> 
+    <span class="labelCreated">07/04/2022 (Lun) 16:28:34</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/214.html#1063">№</a>
+    <a class="linkQuote" href="/col/res/214.html#q1063">1063</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/d2ed33635bf13f6f505199401f967aa13972aed16c5b62519b775335cb6b49b4.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">32.35 KB</span> <span class="dimensionLabel">1200x962</span>
+  <a class="originalNameLink" href="/.media/d2ed33635bf13f6f505199401f967aa13972aed16c5b62519b775335cb6b49b4.jpg" download="7&#95;1.jpg">7&#95;1.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/d2ed33635bf13f6f505199401f967aa13972aed16c5b62519b775335cb6b49b4.jpg" data-filewidth="1200" data-fileheight="962" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="180" src="/.media/t_d2ed33635bf13f6f505199401f967aa13972aed16c5b62519b775335cb6b49b4"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/col/res/214.html#994">&gt;&gt;994</a>
+Mierda negro, me llamo un poco la atención, me voy a dormir y cuando me levante lo pruebo.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1029"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/39e7e52f70c9e925fb09840032b4fcbfb8e30fc868735bc6f00a188fea145f91.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">72.20 KB</span> <span class="dimensionLabel">924x960</span>
+  <a class="originalNameLink" href="/.media/39e7e52f70c9e925fb09840032b4fcbfb8e30fc868735bc6f00a188fea145f91.jpg" download="FB&#95;IMG&#95;1656608222407.jpg">FB&#95;IMG&#95;1656608222407.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/39e7e52f70c9e925fb09840032b4fcbfb8e30fc868735bc6f00a188fea145f91.jpg" data-filewidth="924" data-fileheight="960" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="217" height="225" src="/.media/t_39e7e52f70c9e925fb09840032b4fcbfb8e30fc868735bc6f00a188fea145f91"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1029">
+    <span class="labelSubject">Petro nunca va a salir del poder</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/03/2022 (Dom) 18:53:32</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1029.html#1029">№</a>
+    <a class="linkQuote" href="/col/res/1029.html#q1029">1029</a>
+    <a class="linkReply" href="/col/res/1029.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Con esto me refiero a que solo saldrá por muerte natural y seguro dejará a su sucesor.
+<span class="greenText">&gt;Ya aceptaron esto</span>
+<span class="greenText">&gt;¿Se van a quedar para luchar contra la corriente?</span>
+<span class="greenText">&gt;¿Se irán a otro país para seguir viviendo jodidos?</span></div>
+  
+  
+  
+  <div class="labelOmission">6 posts omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1055"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1029-1055">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/04/2022 (Lun) 05:04:25</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1029.html#1055">№</a>
+    <a class="linkQuote" href="/col/res/1029.html#q1055">1055</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1029.html#1044">&gt;&gt;1044</a>
+a su mama se la culea un astrologo hijueputa</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1057"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1029-1057">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/04/2022 (Lun) 06:29:46</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1029.html#1057">№</a>
+    <a class="linkQuote" href="/col/res/1029.html#q1057">1057</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1029.html#1029">&gt;&gt;1029</a>
+<span class="greenText">&gt;uribistas especulan que petro va a ser un uribe pero de izquierda</span>
+like pottery
+<a class="quoteLink" href="/col/res/1029.html#1042">&gt;&gt;1042</a>
+<span class="greenText">&gt;ellos escogieron a Petro por fanatismo a la figura</span>
+dijo el uribista
+<span class="greenText">&gt;quien votó por su plan de gobierno es un retrasado mental, esa mierda no tenía sentido por ningún lado y ahora le clavará una reforma tributaria a la clase media y baja</span>
+dijo el fiquista que se volvio rodolfista...</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1061"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1029-1061">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/04/2022 (Lun) 14:48:48</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1029.html#1061">№</a>
+    <a class="linkQuote" href="/col/res/1029.html#q1061">1061</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1029.html#1057">&gt;&gt;1057</a>
+<span class="greenText">&gt;Yo no voté por Petro gonorrea</span>
+Eso leí</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="956"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/3730d7a23abd1d8b0509b7f196f00df722485ac3565835303b0dc4f7781ac3fd.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">13.99 MB</span> <span class="dimensionLabel">270x480</span>
+  <a class="originalNameLink" href="/.media/3730d7a23abd1d8b0509b7f196f00df722485ac3565835303b0dc4f7781ac3fd.mp4" download="VID&#95;20220629&#95;151918&#95;693.mp4">VID&#95;20220629&#95;151918&#95;693.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/3730d7a23abd1d8b0509b7f196f00df722485ac3565835303b0dc4f7781ac3fd.mp4" data-filewidth="270" data-fileheight="480" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="127" height="225" src="/.media/t_3730d7a23abd1d8b0509b7f196f00df722485ac3565835303b0dc4f7781ac3fd"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-956">
+    <span class="labelSubject">Pa los negros que piensan que yendose a los unites van a arreglar sus puercas vidas.</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">06/29/2022 (Mie) 20:23:43</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/956.html#956">№</a>
+    <a class="linkQuote" href="/col/res/956.html#q956">956</a>
+    <a class="linkReply" href="/col/res/956.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Están peor que nosotros.</div>
+  
+  
+  
+  <div class="labelOmission">5 posts y 2 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1020"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-956-1020">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 17:05:52</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/956.html#1020">№</a>
+    <a class="linkQuote" href="/col/res/956.html#q1020">1020</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/956.html#1017">&gt;&gt;1017</a>
+<span class="greenText">&gt;Kek, yo estuve en españistan 3 mese dando culo y chupando polla de viejito por los leuros en los balnearios y en los baños de la estación de atocha, hacerse la plata por allá es muy facíl, mas cuando uno ya tiene esos gustos.</span>
+
+Eso leimos, negro cacorro.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1021"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-956-1021">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 18:01:50</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/956.html#1021">№</a>
+    <a class="linkQuote" href="/col/res/956.html#q1021">1021</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/956.html#1020">&gt;&gt;1020</a>
+Ayyy mi negro envidioso, lo que lo haga sentir mejor. En mi caso, aquí soy graduado y es irónico que sea en mi propia nación en donde tenga que dar culo y chupar pene de viejo para vivir &quot;bien&quot;. Y ni así se puede, este año me han robado dos bicis la cicla, y eso que no eran las más costosas. En ese caso, prefiero dar culo afuera y tener seguridad que dar culo aquí y morir por la bala de un ñero. Quédese aquí con sus peleas de Uribestias y Petroñeros, que eso es lo que le gusta.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1022"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-956-1022">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 18:05:38</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/956.html#1022">№</a>
+    <a class="linkQuote" href="/col/res/956.html#q1022">1022</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/956.html#1020">&gt;&gt;1020</a>
+Ayyy mi negro envidioso, lo que lo haga sentir mejor. En mi caso, aquí soy graduado y es irónico que sea en mi propia nación en donde tenga que dar culo y chupar pene de viejo para vivir &quot;bien&quot;. Y ni así se puede, este año me han robado dos bicis la cicla, y eso que no eran las más costosas. En ese caso, prefiero dar culo afuera y tener seguridad que dar culo aquí y morir por la bala de un ñero. Quédese aquí con sus peleas de Uribestias y Petroñeros, que eso es lo que le gusta.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="1007"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/45e47c0e468094f743414295c655ed0a77d58deae213725be6393eb11a6a4245.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">8.25 KB</span> <span class="dimensionLabel">300x168</span>
+  <a class="originalNameLink" href="/.media/45e47c0e468094f743414295c655ed0a77d58deae213725be6393eb11a6a4245.jpg" download="282828.jpeg">282828.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/45e47c0e468094f743414295c655ed0a77d58deae213725be6393eb11a6a4245.jpg" data-filewidth="300" data-fileheight="168" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_45e47c0e468094f743414295c655ed0a77d58deae213725be6393eb11a6a4245"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-1007">
+    <span class="labelSubject">Así me gusta,calladitas se ven mejor godas prostitutas</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">07/03/2022 (Dom) 02:06:37</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/1007.html#1007">№</a>
+    <a class="linkQuote" href="/col/res/1007.html#q1007">1007</a>
+    <a class="linkReply" href="/col/res/1007.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Creen en amigos imaginarios en el cielo kek Perdieron las elecciones, las mujeres no se les acercan ni por casualidad, defienden a aquellos que los explotan, y encima, su idolo maximo se le ha entregado arrodillado a darle culo a su archirival. Hay algo mas putamente patetico en este mundo que ser godo? KEKAZOOOO HIJUEPUTAAAAAAAAAA</div>
+  
+  
+  
+  <div class="labelOmission">2 posts omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="1011"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1007-1011">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 05:54:10</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1007.html#1011">№</a>
+    <a class="linkQuote" href="/col/res/1007.html#q1011">1011</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/db801ad42c71a982522382ce11f22ebd8acac658e6af9dbb07a85f7ecc24c54f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">236.28 KB</span> <span class="dimensionLabel">634x650</span>
+  <a class="originalNameLink" href="/.media/db801ad42c71a982522382ce11f22ebd8acac658e6af9dbb07a85f7ecc24c54f.png" download="654646.png">654646.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/db801ad42c71a982522382ce11f22ebd8acac658e6af9dbb07a85f7ecc24c54f.png" data-filewidth="634" data-fileheight="650" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="219" height="225" src="/.media/t_db801ad42c71a982522382ce11f22ebd8acac658e6af9dbb07a85f7ecc24c54f"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1007.html#1008">&gt;&gt;1008</a>
+<a class="quoteLink" href="/col/res/1007.html#1009">&gt;&gt;1009</a>
+Kek que no se note el ardor LOLOLOLOOOOL</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1012"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1007-1012">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 13:25:02</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1007.html#1012">№</a>
+    <a class="linkQuote" href="/col/res/1007.html#q1012">1012</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1007.html#1007">&gt;&gt;1007</a>
+Negro tonto, en único que se ha arrodillado a entregar culo ha sido Petro, aún ganando se alió con todos sus opositores, mientras sus votantes bien jodidos, les va a zampar una reforma tributaria 4 veces más grande que la de carrasquilla y en lugar de ser a la clase alta como la de carrasquilla será a la clase media y baja, turboaustimo.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1013"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-1007-1013">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/03/2022 (Dom) 13:52:23</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/1007.html#1013">№</a>
+    <a class="linkQuote" href="/col/res/1007.html#q1013">1013</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/1007.html#1012">&gt;&gt;1012</a>
+Soy otro negro. Me atrevo a agregar que esa reforma más grande no está apuntada a solucionar ningún desbalance fiscal, si no para dar gibs gratis y aumentar el gasto a largo plazo creando empleos artificiales, darles aún más cosas gratis a venecos y pagando cirugías a trannies.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="col" id="665"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/bcba76908a5cf214db9f9080246bd0d2948c81647bd0d4f6b324134c10833466.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">113.51 KB</span> <span class="dimensionLabel">960x1600</span>
+  <a class="originalNameLink" href="/.media/bcba76908a5cf214db9f9080246bd0d2948c81647bd0d4f6b324134c10833466.jpg" download="E2r85oaUUAEpw37.jpg">E2r85oaUUAEpw37.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/bcba76908a5cf214db9f9080246bd0d2948c81647bd0d4f6b324134c10833466.jpg" data-filewidth="960" data-fileheight="1600" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="135" height="225" src="/.media/t_bcba76908a5cf214db9f9080246bd0d2948c81647bd0d4f6b324134c10833466"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="col-665">
+    <span class="labelSubject">¿Qué fue lo que realmente pasó con chispita?</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" title="Colombia" src="/.static/flags/co.png"> 
+    <span class="labelCreated">06/22/2022 (Mie) 17:56:27</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/col/res/665.html#665">№</a>
+    <a class="linkQuote" href="/col/res/665.html#q665">665</a>
+    <a class="linkReply" href="/col/res/665.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Es una pregunto que me invade cada vez que entro a este sitio. ¿Por que si llevaba una década funcionando lo dejaron morir? ¿Por qué si muchos lo querían (entre ellos programadores) lo dejaron morir? ¿Pasará lo mismo que en el 2018?. También quería preguntarles si el tablón w/ lo encuentro acá en el 8</div>
+  
+  
+  
+  <div class="labelOmission">5 posts omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="col" id="978"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-665-978">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-ar" src="/.static/flags/ar.png" title="Argentina"> 
+    <span class="labelCreated">07/01/2022 (Vie) 14:11:26</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/665.html#978">№</a>
+    <a class="linkQuote" href="/col/res/665.html#q978">978</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/665.html#753">&gt;&gt;753</a>
+<span class="greenText">&gt;La reunión de /mex/ no tuvo nada que ver con esto.</span>
+Pues no es lo que dicen en <a class="quoteLink" href="/mex/res/212.html#212">&gt;&gt;&gt;/mex/212</a>.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="981"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-665-981">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/01/2022 (Vie) 20:17:10</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/665.html#981">№</a>
+    <a class="linkQuote" href="/col/res/665.html#q981">981</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/665.html#665">&gt;&gt;665</a>
+Zeta ya se había cansado de administrar así que le paso el mando al marica perratencional de loan, pero este también se canso por lo que decidió cerrar el chan, se desconoce si no encontró a alguien a quien darle la batuta o simplemente por inmaduro perratencional no le dio oportunidad  a nadie mas de administrar en su lugar. Por cierto, eso de muh problemas económicos fue solo una excusa para matar el chan.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="col" id="1001"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="col-665-1001">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+    <img class="imgFlag flag-co" src="/.static/flags/co.png" title="Colombia"> 
+    <span class="labelCreated">07/02/2022 (Sab) 20:31:43</span> 
+    
+    
+    <a class="linkSelf" href="/col/res/665.html#1001">№</a>
+    <a class="linkQuote" href="/col/res/665.html#q1001">1001</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/col/res/665.html#981">&gt;&gt;981</a>
+<a class="quoteLink" href="/col/res/665.html#743">&gt;&gt;743</a>
+Hubo en veneco que parecía iba en serio con lo de comprar el chon, la excusa mierdera de loan era que &quot;no quería dejarlo en manos de alguien que no conocía el chan&quot; cuando el veneco marica era respaldado por otros venecos como un usuario de hace más de 7 años.</div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a><a href="2.html">2</a><a href="3.html">3</a><a href="4.html">4</a><a href="5.html">5</a><a href="6.html">6</a><a href="7.html">7</a></span> <a id="linkNext" class="coloredIcon" href="2.html"></a> ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=col">Administrar Tablón</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=col">Moderar Tablón</a>
+          <a id="linkMod" href="/mod.js?boardUri=col&amp;page=1">Moderar Hilo</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">Acerca de</a>
+    •
+    <a href="/site/res/27.html#">Comentarios</a>
+    •
+    <a href="/.static/pages/globalRules.html">Reglas Globales</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contacto</a>
+    •
+    <a href="/.static/pages/donate.html">Donar</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">№</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[Historial del Post]</a>
+    <a class="linkFileHistory">[Historial de Archivos]</a>
+    <a class="linkOffenseRecord">[Historial de Infracciones]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Pequeña Gama (1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Amplia Gama (3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Desvincular]</a>
+  <a class="unlinkAndDeleteLink">[Desvincular y Borrar]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

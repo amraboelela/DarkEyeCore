@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:physics:mechanics [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,physics,mechanics"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:physics"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/physics/mechanics"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:physics';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:physics:mechanics","namespace":"fuss:physics","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:physics:mechanics" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:physics:mechanics&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/start" class="wikilink2" title="fuss:physics:start" rel="nofollow" data-wiki-id="fuss:physics:start">physics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics" class="wikilink1" title="fuss:physics:mechanics" data-wiki-id="fuss:physics:mechanics">mechanics</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:physics:mechanics</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#parallelogram_rule_for_addition_of_forces">Parallelogram Rule for Addition of Forces</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#analytical">Analytical</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#vector_angle_to_axis">Vector Angle to Axis</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#example">Example</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#unit_vector_between_two_points">Unit Vector Between Two Points</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#example1">Example</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#universal_attraction_of_masses">Universal Attraction of Masses</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#simulating_in_second_life">Simulating in Second Life</a></div></li>
+<li class="level2"><div class="li"><a href="#orbits">Orbits</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#centripetal_force">Centripetal Force</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#simulating_in_second_life1">Simulating in Second Life</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="parallelogram_rule_for_addition_of_forces">Parallelogram Rule for Addition of Forces</h1>
+<div class="level1">
+<div class="wrap_box wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc50d1e86f9eec6677240a2880b92d08b.png" class="latex_inline" alt="
+\begin{tikzpicture}
+
+  % grid
+  \draw[help lines] (-4,-4) grid (4,4);
+  
+  % mass
+  \node [square,minimum size=20mm] at (0, 0) [draw] (O) [lightgray,fill,text=black] node [anchor=south east] {$O$};
+  
+  % coordinates
+  \coordinate (O) at (0,0);
+  \drawpoint{O}{.5mm}{black}
+  \coordinate (F1) at (3,2.5);
+  \coordinate (F2) at (-0.5,-3);
+  \coordinate (YM1) at (0, -4);
+  \coordinate (YM2) at (2.5,-4);
+  \coordinate (YM3) at (3,-4);
+  
+  % forces
+  \draw [&gt;=latex,draw=blue,fill=blue,-&gt;] (0,0) -- (F1) node[anchor=south east] {$A$};
+  \draw [&gt;=latex,draw=blue,fill=blue,-&gt;] (0,0) -- (F2) node[anchor=south east] {$B$};
+  
+  % guides
+  \draw [dotted,black] (O) -- (0,-4);
+  \draw [dotted,black] (F1) -- (3,-4);
+  \draw [dotted,black] (F2) -- (4,-3);
+  
+  % angles
+  \markangle{O}{F2}{YM1}{7mm}{9mm}{$\alpha$}{red}{west}
+  \markangle{F1}{YM2}{YM3}{7mm}{9mm}{$\alpha$}{red}{west}
+  
+  % paralleles
+  \draw [densely dashed,black,name path=f1 parallel] (F1) -- (2.5,-4);
+  \draw [densely dashed,black,name path=f2 parallel] (F2) -- (4,0);
+  \draw [densely dashed,black,name path=vector line] (F1) -- (F2);
+  
+  % intersection resultant
+  \path [name intersections={of = f1 parallel and f2 parallel}];
+  \coordinate (R) at (intersection-1);
+  \drawpoint{R}{.5mm}{black}
+  
+  % resultant
+  \draw [&gt;=latex,draw=green,fill=blue,-&gt;,name path=resultant line] (0,0) -- (R) node[anchor=south east] {$F$};
+  
+  % intersection vectors
+  \path [name intersections={of = vector line and resultant line}];
+  \coordinate[label={[black]above:$M$}] (M) at (intersection-1);
+  \drawpoint{M}{.5mm}{black}
+
+\end{tikzpicture}
+
+" title="LaTeX" />
+</p>
+</div>
+<p>
+Suppose we have a coordinate system with two points <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8b66019eded1bd76f85fdf6f43101511.png" class="latex_inline" alt="$A=(A_{x}, A_{y}, A_{z})$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img77d04e0a6f5423a36214bd1155f51376.png" class="latex_inline" alt="$B=(B_{x}, B_{y}, B_{z})$" title="Math" /> and the origin <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd1b02ed31e4d6ef76746d5cf2ddaadc8.png" class="latex_inline" alt="$O=(O_{x}, O_{y}, O_{z})$" title="Math" />, then the length of the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf540e45c4e348ed42bc8a3d2fb7645d.png" class="latex_inline" alt="$\overrightarrow{OA}$" title="Math" /> defines the magnitude of the force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img56c5a16c36f8b2fb551d2e9d06c16bc6.png" class="latex_inline" alt="$F_{1}$" title="Math" /> given by the scalar value of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img56c5a16c36f8b2fb551d2e9d06c16bc6.png" class="latex_inline" alt="$F_{1}$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4da5f2a22128bf0433fdc604657042fa.png" class="latex_displayed" alt="\begin{eqnarray*}
+|F_{1}|&amp;=&amp;\sqrt{(A_{x}-O_{x})^{2}+(A_{y}-O_{y})^2+(A_{z}-O_{z})^2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+symmetrically the length of the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf540e45c4e348ed42bc8a3d2fb7645d.png" class="latex_inline" alt="$\overrightarrow{OA}$" title="Math" /> defines the magnitude of the force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4b657ad34c36f966c3f4b5df39e658a.png" class="latex_inline" alt="$F_{2}$" title="Math" /> given by the scalar value of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4b657ad34c36f966c3f4b5df39e658a.png" class="latex_inline" alt="$F_{2}$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img2c4c9dbad92368026e5af76b777d1fda.png" class="latex_displayed" alt="\begin{eqnarray*}
+|F_{2}|&amp;=&amp;\sqrt{(B_{x}-O_{x})^{2}+(B_{y}-O_{y})^2+(B_{z}-O_{z})^2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+The sum of the two forces <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img56c5a16c36f8b2fb551d2e9d06c16bc6.png" class="latex_inline" alt="$F_{1}$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4b657ad34c36f966c3f4b5df39e658a.png" class="latex_inline" alt="$F_{2}$" title="Math" /> applied in the point-mass <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9afe6a256a9817c76b579e6f5db9a578.png" class="latex_inline" alt="$O$" title="Math" /> can be computed from the sum of the segments that define them.
+</p>
+
+<p>
+Let <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0aaa51f5dbdaa40b3793179f49162dc6.png" class="latex_inline" alt="$F_{1}=A-O$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img35d5dd748bb233c12458ac2e1388ef9f.png" class="latex_inline" alt="$F_{2}=B-O$" title="Math" />, then the sum of the two vectors is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcb87faa44fe15f00a8cbcbb2d35e82cc.png" class="latex_displayed" alt="\begin{eqnarray*}
+F_{resultant}&amp;=&amp;F_{1} + F_{2} \\
+&amp;=&amp; A - O + B - O \\
+&amp;=&amp; 2 * (\frac{A+B}{2}-O) \\
+&amp;=&amp; 2 * (M-O)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfb97d38bcc19230b0acd442e17db879c.png" class="latex_inline" alt="$M$" title="Math" /> is the midpoint of the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img98f18a589e25985312eb9436c7b8db65.png" class="latex_inline" alt="$\overline{AB}$" title="Math" />. Thus the resulting force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb8bc815b5e9d5177af01fd4d3d3c2f10.png" class="latex_inline" alt="$F$" title="Math" /> is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0578d9a58e86ed1cc01e22259ddc2645.png" class="latex_displayed" alt="\begin{eqnarray*}
+\overrightarrow{F}&amp;=&amp;\overrightarrow{FO}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+The scalar value of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb8bc815b5e9d5177af01fd4d3d3c2f10.png" class="latex_inline" alt="$F$" title="Math" /> is given by:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8d7eb4ebc3ab710decba7bd1bed06760.png" class="latex_displayed" alt="\begin{eqnarray*}
+|F|&amp;=&amp;\sqrt{(F_{x}-O_{x})^{2}+(F_{y}-O_{y})^2+(F_{z}-O_{z})^2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+Note that in the illustration shows an ideal case where the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf93ce33e511096ed626b4719d50f17d2.png" class="latex_inline" alt="$z$" title="Math" /> component is zero and forces are applied from the origin (point-mass force).
+</p>
+
+</div>
+
+<h2 class="sectionedit4" id="analytical">Analytical</h2>
+<div class="level2">
+
+<p>
+In Euclidian space <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd03c1e146df015e061405cc425738d83.png" class="latex_inline" alt="$\mathbb{R}^3$" title="Math" /> the resultant force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img63e6b37db128efdc41eba7d12ad0303e.png" class="latex_inline" alt="$\overrightarrow{F}$" title="Math" /> can be calculated as <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img60b60b159422add843766d887e52eae1.png" class="latex_inline" alt="$\overrightarrow{F_{1}}+\overrightarrow{F_{2}}$" title="Math" /> such that:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img74a759ee065a6f4a786ffa601fdafeef.png" class="latex_displayed" alt="\begin{eqnarray*}
+\overrightarrow{F}&amp;=&amp;(A_{x}+B_{x})e_{1}+(A_{y}+B_{y})e_{2}+(A_{z}+B_{z})e_{3}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8cd34385ed61aca950a6b06d09fb50ac.png" class="latex_inline" alt="$e$" title="Math" /> represents the basis vectors:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img481904bf6c7af18c519127358441d90f.png" class="latex_displayed" alt="\begin{eqnarray*}
+e_{1}&amp;=&amp;(1,0,0) \\
+e_{2}&amp;=&amp;(0,1,0) \\
+e_{3}&amp;=&amp;(0,0,1)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+this can be generalised to n-dimensional Euclidian space by extending the components of the vectors.
+</p>
+
+<p>
+The magnitude of the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img63e6b37db128efdc41eba7d12ad0303e.png" class="latex_inline" alt="$\overrightarrow{F}$" title="Math" /> is given by the scalar <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img92991de2a74552da6902a11d444ace8a.png" class="latex_inline" alt="$|F|$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img295dc48b4b558f0d5db75a26b36c6bc7.png" class="latex_displayed" alt="\begin{eqnarray*}
+|F|&amp;=&amp;\sqrt{(A_{x}+B_{x})^2+(A_{y}+B_{y})^2+(A_{z}+B_{z})^2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+</div>
+
+<h1 class="sectionedit5" id="vector_angle_to_axis">Vector Angle to Axis</h1>
+<div class="level1">
+<div class="wrap_box wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3ea83d4edea9352c17ae450d7518d31d.png" class="latex_inline" alt="
+\begin{tikzpicture}
+
+  % grid
+  \draw[help lines] (-4,-4) grid (4,4);
+  
+  % coordinates
+  \coordinate[label={[black]below left:$O$}] (O) at (0,0);
+  \drawpoint{O}{.5mm}{black}
+  \coordinate (F1) at (1.3,1.88);
+  \coordinate[label={[black]below:$P_{x}$}] (F1X) at (1.3,0);
+  \drawpoint{F1X}{.5mm}{black}  
+  \coordinate (F1Y) at (0,1.88);
+  \drawpoint{F1Y}{.5mm}{black};
+  
+  % forces
+  \draw [&gt;=latex,draw=blue,fill=blue,-&gt;] (0,0) -- (F1) node[anchor=south east] {$A$};
+  
+  % guides
+  \draw [dashed,black] (O) -- (0,-3);
+  \draw [solid,black,-&gt;] (O) -- (0,3) node[anchor=south] {$y$};
+  \draw [solid,black,-&gt;] (O) -- (3,0) node[anchor=south] {$x$};
+  \draw [dashed,black] (O) -- (-3,0);
+  
+  % projections
+  \draw [dashed,black] (F1) -- (1.3,0);
+  \draw [dashed,black] (F1) -- (0,1.88);
+  
+  % angles
+  \markangle{O}{F1}{F1X}{7mm}{9mm}{$\alpha$}{red}{west}
+  
+  % braces
+  \drawbrace{O}{F1X}{2mm}{black}{$a_{x}$}{0}{-4mm}{mirror}
+
+\end{tikzpicture}
+
+" title="LaTeX" />
+</p>
+</div>
+<p>
+For a vector in 2D defined as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge7f8a6a039787b3c6124fac10abe44e7.png" class="latex_displayed" alt="\begin{eqnarray*}
+\overrightarrow{OA}&amp;=&amp;a_{x}e_{1} + a_{y}e_{2} + a_{z}e_{3}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+with the basis vectors:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge04394ca7d99410570b7bb4b86aee538.png" class="latex_displayed" alt="\begin{eqnarray*}
+e_{1}&amp;=&amp;(1,0,0) \\
+e_{2}&amp;=&amp;(0,1,0) \\
+e_{3}&amp;=&amp;(0,0,0)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+in the triangle <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdd193f64adcf611e64935fe7f4f79265.png" class="latex_inline" alt="$\widehat{OP_{x}A}$" title="Math" /> we can write that:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0a6f4e41fa6d1757461395d9b862ff0f.png" class="latex_displayed" alt="\begin{eqnarray*}
+\cos{\alpha}&amp;=&amp;\frac{a_{x}}{\overline{OA}}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+due to the right angle formed by <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdd193f64adcf611e64935fe7f4f79265.png" class="latex_inline" alt="$\widehat{OP_{x}A}$" title="Math" />. Thus, we can deduce that the angle <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc745b9b57c145ec5577b82542b2df546.png" class="latex_inline" alt="$\alpha$" title="Math" /> (in radians) is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1e2dbfc35c529317a949f4057cb38432.png" class="latex_displayed" alt="\begin{eqnarray*}
+\alpha&amp;=&amp;\arccos{\frac{a_{x}}{\overline{OA}}}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+Note that the length of the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img73b92a080aaba935583fef7460f1f6e0.png" class="latex_inline" alt="$\overline{OA}$" title="Math" /> is given by the magnitude of the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf540e45c4e348ed42bc8a3d2fb7645d.png" class="latex_inline" alt="$\overrightarrow{OA}$" title="Math" /> and that <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcdf72d2aa61b7ab00c56a86aa8becbe0.png" class="latex_inline" alt="$a_{x}$" title="Math" /> represents the component of the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf540e45c4e348ed42bc8a3d2fb7645d.png" class="latex_inline" alt="$\overrightarrow{OA}$" title="Math" /> on the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" /> axis.
+</p>
+
+</div>
+
+<h2 class="sectionedit8" id="example">Example</h2>
+<div class="level2">
+
+<p>
+Let us take a real-world scenario. We want to calculate the direction of the wind in terms of bearing (<code>North</code>, <code>South</code>, <code>East</code>, <code>West</code>) and we know that the measured wind vector is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0ce3ff9ad4a813ed29b56fb734d8da87.png" class="latex_displayed" alt="\begin{eqnarray*}
+\overrightarrow{OA}&amp;=&amp;
+\begin{pmatrix} 
+5 \\
+0 \\
+0 
+\end{pmatrix}e_{1} + 
+\begin{pmatrix}
+0 \\
+8 \\
+0
+\end{pmatrix}e_{2} +
+\begin{pmatrix}
+0 \\
+0 \\
+0 \\
+\end{pmatrix}e_{3}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+For aesthetics, let us presume that the axis <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img42ab280f4c4fbc9c27276b564929ec9e.png" class="latex_inline" alt="$\overline{Oy}$" title="Math" /> represents <code>North</code> and that the axis <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgffa09fce0599dbbd1ef7cb37da8afa18.png" class="latex_inline" alt="$\overline{Ox}$" title="Math" /> represents <code>East</code> (with <code>West</code> and <code>South</code> in the respective inverse sense of the axis). Now we take the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf540e45c4e348ed42bc8a3d2fb7645d.png" class="latex_inline" alt="$\overrightarrow{OA}$" title="Math" /> and want to point in the direction of the wind. In order to do that, we perform the calculations above an obtain the angle <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc745b9b57c145ec5577b82542b2df546.png" class="latex_inline" alt="$\alpha$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img59b326c7b3c599e413ac021d4f833783.png" class="latex_displayed" alt="\begin{eqnarray*}
+\alpha&amp;=&amp;\arccos{\frac{a_{x}}{\overline{OA}}} \\
+&amp;=&amp;\arccos{\frac{5}{ \sqrt{(5-0)^{2}+(8-0)^2+(0-0)^2} }} \\
+&amp;\approx&amp;\arccos{\frac{5}{9.433}} \\
+&amp;\approx&amp;1.56549631\mbox{ }\text{radians}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and converting to degrees, we obtain:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1fd42f116bd111cf928e35246bcce3e8.png" class="latex_displayed" alt="\begin{eqnarray*}
+\alpha&amp;\approx&amp;89.69^{\circ}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+This means that we have to rotate an arrow, or a pointer, starting from the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgffa09fce0599dbbd1ef7cb37da8afa18.png" class="latex_inline" alt="$\overline{Ox}$" title="Math" /> axis, approximately <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img057e3012dd07453acedc84fc88a70157.png" class="latex_inline" alt="$89.69^{\circ}$" title="Math" /> towards the axis that we have decided represents <code>North</code>. The result makes sense if you think about it, because the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf540e45c4e348ed42bc8a3d2fb7645d.png" class="latex_inline" alt="$\overrightarrow{OA}$" title="Math" /> is in the first trigonometric quadrant (more than zero and less than <code>90</code> degrees). So, interpreting the result, the wind direction is approximately towards the <code>North-North East</code>. 
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="unit_vector_between_two_points">Unit Vector Between Two Points</h1>
+<div class="level1">
+
+<p>
+Given two points in cartesian space <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img052131c6f776cd54f7312b64233cd445.png" class="latex_inline" alt="$A(x,y,z)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc93daca2860e598bc616238bb356a14c.png" class="latex_inline" alt="$B(x,y,z)$" title="Math" />, we want to find the unit vector between those points. First, we establish from which point to which point the direction should be. 
+</p>
+
+<p>
+For example&#039;s sake, let us assume that we want to find the vector that points from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img61e84f854bc6258d4108d08d4c4a0852.png" class="latex_inline" alt="$B$" title="Math" />. In that case, the vector is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdfaa7b59328835bcc49cbb8806d1e05a.png" class="latex_displayed" alt="\begin{eqnarray*}
+$\overrightarrow{AB}$ &amp;=&amp; B - A
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+In order to find the unit vector, we dive the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img81d3bf7405d390ab87ea423c697e2b44.png" class="latex_inline" alt="$\overrightarrow{AB}$" title="Math" /> with its magnitude. In other words:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbb2923eae8c9a3e9bc252131e8abed1e.png" class="latex_displayed" alt="\begin{eqnarray*}
+$\overrightarrow{U_{AB}}$ &amp;=&amp; \frac{\overrightarrow{AB}}{|\overrightarrow{AB}|}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+In order to compute <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img81d3bf7405d390ab87ea423c697e2b44.png" class="latex_inline" alt="$\overrightarrow{AB}$" title="Math" /> we can use the cartesian notation of vectors using matrices, such that:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44dd440419d0ee8d68be664cc0a6f8a9.png" class="latex_displayed" alt="\begin{eqnarray*}
+$\overrightarrow{AB}$ &amp;=&amp; \begin{pmatrix} 
+x_{A} \\
+y_{A} \\
+z_{A} 
+\end{pmatrix} -
+\begin{pmatrix} 
+x_{B} \\
+y_{B} \\
+z_{B} 
+\end{pmatrix}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and the magnitude of the vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img81d3bf7405d390ab87ea423c697e2b44.png" class="latex_inline" alt="$\overrightarrow{AB}$" title="Math" /> is given by the scalar <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgaf1ad3809c690b744393dd7ad36d1f77.png" class="latex_inline" alt="$|\overrightarrow{AB}|$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img88df17acc6fa709f6a6d22e3c3a769a7.png" class="latex_displayed" alt="\begin{eqnarray*}
+|AB|&amp;=&amp;\sqrt{(A_{x}+B_{x})^2+(A_{y}+B_{y})^2+(A_{z}+B_{z})^2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+</div>
+
+<h2 class="sectionedit10" id="example1">Example</h2>
+<div class="level2">
+
+<p>
+Using <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/secondlife" class="wikilink1" title="secondlife" data-wiki-id="secondlife">Second Life</a>, Suppose we have two arbitrarily disposed masses in space, the red ball and the cyan ball:
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/physics/fuss_physics_mechanics_unit_vector_force.png?id=fuss%3Aphysics%3Amechanics" class="media" title="fuss:physics:fuss_physics_mechanics_unit_vector_force.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/physics/fuss_physics_mechanics_unit_vector_force.png" class="media" alt="" /></a>
+</p>
+
+<p>
+and that we want to apply an impulse to the red ball, such that it travels towards the cyan ball.
+</p>
+
+<p>
+In order to propel the red ball towards the the cyan ball, we apply the formulas above as a script inside the red ball. We perform the following calculations in succession:
+</p>
+<ul>
+<li class="level1"><div class="li"> First, determine <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img10ac2e08e6f3654104a31d690e87a224.png" class="latex_inline" alt="$\overrightarrow{RC} = C - R$" title="Math" />.</div>
+</li>
+<li class="level1"><div class="li"> Compute the unit vector <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img865a2e551cc350e8d253ca70fe997306.png" class="latex_inline" alt="$\overrightarrow{U_{RC}}$" title="Math" />.</div>
+</li>
+<li class="level1"><div class="li"> Apply a velocity as <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge94cc231e0e3428ea991730bf021b0bf.png" class="latex_inline" alt="$velocity * \overrightarrow{U_{RC}}$" title="Math" />.</div>
+</li>
+</ul>
+<pre class="code lsl2"><span class="co1">// velocity in m/s</span>
+<a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> velocity <span class="sy0">=</span> <span class="nu0">1</span>;
+&nbsp;
+<a href="http://wiki.secondlife.com/wiki/default"><span class="kw5">default</span></a> <span class="br0">&#123;</span>
+    <a href="http://wiki.secondlife.com/wiki/state_entry"><span class="kw3">state_entry</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// scan for an object named cyan</span>
+        <a href="http://wiki.secondlife.com/wiki/llSensor"><span class="kw5">llSensor</span></a><span class="br0">&#40;</span><span class="st0">&quot;cyan&quot;</span>, <span class="st0">&quot;&quot;</span>, <span class="kw2">ACTIVE</span><span class="sy0">|</span><span class="kw2">PASSIVE</span>, <span class="nu0">96</span>, <span class="kw2">TWO_PI</span><span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co1">// when the cyan ball is found</span>
+    <a href="http://wiki.secondlife.com/wiki/sensor"><span class="kw3">sensor</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> num<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// calculate the vector between the cyan ball and the red ball</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> f <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDetectedPos"><span class="kw5">llDetectedPos</span></a><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span> <span class="sy0">-</span> <a href="http://wiki.secondlife.com/wiki/llGetPos"><span class="kw5">llGetPos</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>;
+        <span class="co1">// calculate the unit vector</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> u <span class="sy0">=</span> <span class="br0">&#40;</span>f<span class="br0">&#41;</span><span class="sy0">*</span><span class="nu0">1</span><span class="sy0">/</span><a href="http://wiki.secondlife.com/wiki/llVecMag"><span class="kw5">llVecMag</span></a><span class="br0">&#40;</span>f<span class="br0">&#41;</span>;
+        <span class="co1">// apply an impulse to the red ball</span>
+        <a href="http://wiki.secondlife.com/wiki/llSetVelocity"><span class="kw5">llSetVelocity</span></a><span class="br0">&#40;</span>velocity <span class="sy0">*</span> u, <span class="kw2">FALSE</span><span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+The unit vector <code>u</code> gives us the direction and the scalar <code>velocity</code> gives us the speed. The reason for having an unit vector is that we leave it up to the scalar multiplier <code>u</code> to give us the velocity.
+</p>
+
+</div>
+
+<h1 class="sectionedit11" id="universal_attraction_of_masses">Universal Attraction of Masses</h1>
+<div class="level1">
+
+<p>
+The law for universal attraction of masses is given by the formula:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img99931980ab8bb409f88fd339f9a07a6a.png" class="latex_displayed" alt="\begin{eqnarray*}
+F &amp;=&amp; k * \frac{m * M}{d^{2}}  
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img63bb9849783d01d91403bc9a5fea12a2.png" class="latex_inline" alt="$k$" title="Math" /> is a gravitational constant, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb7f67aefdcacb82754e4676e422ea7ee.png" class="latex_inline" alt="$k \approx 6.67*10^{-11}$" title="Math" />,</div>
+</li>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0e51a2dede42189d77627c4d742822c3.png" class="latex_inline" alt="$m$" title="Math" /> is the mass of one object,</div>
+</li>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfb97d38bcc19230b0acd442e17db879c.png" class="latex_inline" alt="$M$" title="Math" /> is the mass of the other object, and</div>
+</li>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img2103f85b8b1477f430fc407cad462224.png" class="latex_inline" alt="$d$" title="Math" /> is the distance between the two masses.</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit12" id="simulating_in_second_life">Simulating in Second Life</h2>
+<div class="level2">
+
+<p>
+As a small application of our cyan and red balls, let us rename both balls to <code>mass</code> and size them so that their sizes are equal. Under these constraints, we can use the following script, placed in both balls to illustrate the universal attraction of masses:
+</p>
+<pre class="code lsl2"><a href="http://wiki.secondlife.com/wiki/default"><span class="kw5">default</span></a> <span class="br0">&#123;</span>
+    <a href="http://wiki.secondlife.com/wiki/state_entry"><span class="kw3">state_entry</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// scan for an object named mass</span>
+        <a href="http://wiki.secondlife.com/wiki/llSensorRepeat"><span class="kw5">llSensorRepeat</span></a><span class="br0">&#40;</span><span class="st0">&quot;mass&quot;</span>, <span class="st0">&quot;&quot;</span>, <span class="kw2">ACTIVE</span><span class="sy0">|</span><span class="kw2">PASSIVE</span>, <span class="nu0">96</span>, <span class="kw2">TWO_PI</span>, 1.175494351E<span class="sy0">-</span>38<span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co1">// when the cyan ball is found</span>
+    <a href="http://wiki.secondlife.com/wiki/sensor"><span class="kw3">sensor</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> num<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// calculate the vector between the cyan ball and the red ball</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> f <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDetectedPos"><span class="kw5">llDetectedPos</span></a><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span> <span class="sy0">-</span> <a href="http://wiki.secondlife.com/wiki/llGetPos"><span class="kw5">llGetPos</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>;
+        <span class="co1">// calculate the unit vector</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> u <span class="sy0">=</span> <span class="br0">&#40;</span>f<span class="br0">&#41;</span><span class="sy0">*</span><span class="nu0">1</span><span class="sy0">/</span><a href="http://wiki.secondlife.com/wiki/llVecMag"><span class="kw5">llVecMag</span></a><span class="br0">&#40;</span>f<span class="br0">&#41;</span>;
+        <span class="co1">// get the distance between the cyan ball and the red ball</span>
+        <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> d <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llVecDist"><span class="kw5">llVecDist</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llDetectedPos"><span class="kw5">llDetectedPos</span></a><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span>, <a href="http://wiki.secondlife.com/wiki/llGetPos"><span class="kw5">llGetPos</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;
+        <span class="co1">// the force is equal to the directional vector times the </span>
+        <span class="co1">// mass squared and divided by the distance between the masses</span>
+        <a href="http://wiki.secondlife.com/wiki/llSetForce"><span class="kw5">llSetForce</span></a><span class="br0">&#40;</span>u <span class="sy0">*</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetMass"><span class="kw5">llGetMass</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>, <span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">/</span>d, <span class="kw2">FALSE</span><span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Since we now know how to use the directional vector <code>u</code> from <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics#unit_vector_between_two_points" class="wikilink1" title="fuss:physics:mechanics" data-wiki-id="fuss:physics:mechanics">the previous section</a>, we can now set the force as the unit vector <code>u</code> times the force. Since we have said that we will consider the masses to be equal, we can just square the masses instead of doing <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img323c06284b37c099245f1085832d4d6b.png" class="latex_inline" alt="$m * M$" title="Math" /> and then divide with the distance between them. 
+</p>
+
+<p>
+The masses do not necessarily have to be the same, however, in Second Life, it is impossible to detect the mass of an object. A different restriction is the force is applied every <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb4399a8d0fb5d7284063ba4cd6e6523e.png" class="latex_inline" alt="$\approx 0.05s$" title="Math" /> which is roughly the resolution that <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/use_timers_for_lsl_events" class="wikilink1" title="opensim:server_patches:use_timers_for_lsl_events" data-wiki-id="opensim:server_patches:use_timers_for_lsl_events">events in Second Life are capable of</a>.
+</p>
+
+</div>
+
+<h2 class="sectionedit13" id="orbits">Orbits</h2>
+<div class="level2">
+
+<p>
+One consequence of the universal law of attraction is the creation of orbits. 
+</p>
+
+<p>
+<video class="media" width="420" height="240" controls="controls">
+<source src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/video/fuss_physics_orbits_attraction_of_masses.mp4" type="video/mp4" />
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/video/fuss_physics_orbits_attraction_of_masses.mp4?cache=" class="media mediafile mf_mp4" title="video:fuss_physics_orbits_attraction_of_masses.mp4 (228.4 KB)">fuss_physics_orbits_attraction_of_masses.mp4</a></video>
+
+</p>
+
+<p>
+Given two masses, the following observations can be made initially:
+</p>
+<ul>
+<li class="level1"><div class="li"> the two masses attract each other due to the universal law of attraction.</div>
+</li>
+<li class="level1"><div class="li"> due to centripetal forces, one of the masses may miss the other, thus going on a curvature in space.</div>
+</li>
+<li class="level1"><div class="li"> if we take the other mass as a reference point, due to the constant application of the universal law of attraction of masses, a continuous force will pull the mass on the curvature towards the mass of reference.</div>
+</li>
+</ul>
+
+<p>
+In the real world, given the lack of constant acceleration, the orbit decays. This can be explained by looking at the forces exerted upon the orbiting object.
+</p>
+<div class="wrap_box wrap_round wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img233df45e598c7e5c4453a501892fc1db.png" class="latex_inline" alt="
+\begin{tikzpicture}
+
+  % grid
+  \draw[help lines] (-3,-3) grid (3,3);
+  
+  % origin
+  \draw[red, line width=.1mm] (-0.1,-0.1) -- (0.1,0.1)
+    (0.1,-0.1) -- (-0.1,0.1);
+  \coordinate[label={[red]above left:$O$}] (O) at (0,0);
+  \coordinate[label={[red]above right:$A$}] (A) at ({0.05+cos(30)},{0.05+2*cos(30)});
+  \coordinate (C) at (2,1);
+  \coordinate (D) at ({cos(30)-0.5},{2*cos(30)-1});
+  \coordinate (R) at (1.4, 0.1);
+  
+  \drawpoint{A}{.5mm}{red};
+  
+  % alpha 
+  \markangle{A}{O}{R}{3mm}{3mm}{$\alpha$}{cyan}{north}
+  
+  % circle 
+  \draw [black, dotted] (0,0) circle [radius=2];
+  \draw [black, dotted] (A) -- (O);
+  \draw [blue,-&gt;] (A) -- (C) node [label={[blue]above right:$\overrightarrow{F_{c}}$}];
+  \draw [blue,-&gt;] (A) -- (D) node [label={[blue]above left:$\overrightarrow{F_{a}}$}];
+  \draw [blue,-&gt;] (A) -- (R) node [label={[blue]right:$\overrightarrow{R}$}];
+  \draw [black, dotted] (R) -- (C);
+  \draw [black, dotted] (R) -- (D);
+  
+  %\drawbrace{O}{A}{2mm}{blue}{$r$}{-4mm}{0}{};
+  
+\end{tikzpicture}
+
+" title="LaTeX" />
+</p>
+</div>
+<p>
+Suppose that the object is in <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" /> and that the initial force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4dcefffd8852d0055209949f62a527b5.png" class="latex_inline" alt="$\overrightarrow{F_{c}}$" title="Math" /> acts upon the object, that the force due to the universal attraction of masses is <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgef0f5332f743288e0db0c3fe159fc479.png" class="latex_inline" alt="$\overrightarrow{F_{a}}$" title="Math" /> and that the resultant is <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgab2dd077550a144c588355291c621ed5.png" class="latex_inline" alt="$\overrightarrow{R}$" title="Math" />. In the triangle formed by <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge2199679d7e3961e1b62615b43b4167b.png" class="latex_inline" alt="$\widehat{\overrightarrow{F_{a}}A\overrightarrow{R}}$" title="Math" /> we can write:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge665652241a5b31985a301910fb850d4.png" class="latex_displayed" alt="\begin{eqnarray*}
+\tan{\alpha} &amp;=&amp; \frac{|F_{c}|}{|F_{a}|} 
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and thus:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4067e6486848ae596fe11b0abedca7f8.png" class="latex_displayed" alt="\begin{eqnarray*}
+\alpha &amp;=&amp; \arctan{\frac{|F_{c}|}{|F_{a}|}} 
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and if the initial force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4dcefffd8852d0055209949f62a527b5.png" class="latex_inline" alt="$\overrightarrow{F_{c}}$" title="Math" /> is gradually diminished we observe that the angle <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc745b9b57c145ec5577b82542b2df546.png" class="latex_inline" alt="$\alpha$" title="Math" /> becomes smaller such that eventually:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7ab2812c26b3ac76e294be8996b515ef.png" class="latex_displayed" alt="\begin{eqnarray*}
+\lim_{F_{c} \mapsto 0}\alpha &amp;=&amp; \lim_{F_{c} \mapsto 0}{\arctan{\frac{|F_{c}|}{|F_{a}|}}} \\
+&amp;=&amp; 0
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+the angle will be <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img29632a9bf827ce0200454dd32fc3be82.png" class="latex_inline" alt="$0$" title="Math" />, thus pulling the object towards the object <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9afe6a256a9817c76b579e6f5db9a578.png" class="latex_inline" alt="$O$" title="Math" />. Object <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" />&#039;s orbit will decay and eventually collide with object <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9afe6a256a9817c76b579e6f5db9a578.png" class="latex_inline" alt="$O$" title="Math" />
+</p>
+
+</div>
+
+<h1 class="sectionedit16" id="centripetal_force">Centripetal Force</h1>
+<div class="level1">
+<div class="wrap_box wrap_round wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf0922f25535aeebc4669a2ecb9e59f16.png" class="latex_inline" alt="
+\begin{tikzpicture}
+
+  % grid
+  \draw[help lines] (-3,-3) grid (3,3);
+  
+  % origin
+  \draw[red, line width=.1mm] (-0.1,-0.1) -- (0.1,0.1)
+    (0.1,-0.1) -- (-0.1,0.1);
+  \coordinate[label={[red]above left:$O$}] (O) at (0,0);
+  \coordinate[label={[red]above right:$A$}] (A) at ({0.05+cos(30)},{0.05+2*cos(30)});
+  \coordinate (C) at (2,1);
+  \coordinate (D) at ({cos(30)-0.5},{2*cos(30)-1});
+  \coordinate (R) at (1.4, 0.1);
+  
+  \drawpoint{A}{.5mm}{red};
+  
+  % alpha 
+  %\markangle{A}{O}{R}{3mm}{3mm}{$\alpha$}{cyan}{north}
+  
+  % circle 
+  \draw [black, dotted] (0,0) circle [radius=2];
+  \draw [black, dotted] (A) -- (O);
+  \draw [blue,-&gt;] (A) -- (C) node [label={[blue]above right:$\overrightarrow{v}$}];
+  \draw [blue,-&gt;] (A) -- (D) node [label={[blue]above left:$\overrightarrow{F_{c}}$}];
+  %\draw [blue,-&gt;] (A) -- (R) node [label={[blue]right:$\overrightarrow{R}$}];
+  %\draw [black, dotted] (R) -- (C);
+  %\draw [black, dotted] (R) -- (D);
+  
+  %\drawbrace{O}{A}{2mm}{blue}{$r$}{-4mm}{0}{};
+  
+\end{tikzpicture}
+
+" title="LaTeX" />
+</p>
+</div>
+<p>
+The magnitude of the centripetal force of an object of mass <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0e51a2dede42189d77627c4d742822c3.png" class="latex_inline" alt="$m$" title="Math" /> moving at a tangential speed <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imga9a2dbad70b7afbe24ab063a09899fa2.png" class="latex_inline" alt="$\overrightarrow{v}$" title="Math" /> along a path with radius of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img89f2e0d2d24bcf44db73aab8fc03252c.png" class="latex_inline" alt="$r$" title="Math" /> is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6e11e0f885203ca75196e30cc55433a4.png" class="latex_displayed" alt="\begin{eqnarray*}
+F_{c}&amp;=&amp;ma_{c} \\
+&amp;=&amp;\frac{mv^{2}}{r}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+in terms of angular velocity <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgae4fb5973f393577570881fc24fc2054.png" class="latex_inline" alt="$\omega$" title="Math" />, the equation can be written as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfe112767af130b11342d9045cb1b7c35.png" class="latex_displayed" alt="\begin{eqnarray*}
+F_{c}&amp;=&amp;mr\omega^{2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where, in two dimensions:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9a80a6c3c2a1e67f2273949cdbede0db.png" class="latex_displayed" alt="\begin{eqnarray*}
+\omega = \frac{d\Phi}{dt}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgae4fb5973f393577570881fc24fc2054.png" class="latex_inline" alt="$\omega$" title="Math" /> is the change of angle in time.
+</p>
+
+</div>
+
+<h2 class="sectionedit19" id="simulating_in_second_life1">Simulating in Second Life</h2>
+<div class="level2">
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/physics/fuss_physics_mechanics_centripetal_force_ball_pole.png?id=fuss%3Aphysics%3Amechanics" class="media" title="fuss:physics:fuss_physics_mechanics_centripetal_force_ball_pole.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/physics/fuss_physics_mechanics_centripetal_force_ball_pole.png" class="media" alt="" /></a>
+</p>
+
+<p>
+Given a central pole, and a ball that must rotate around the pole at a given velocity (here <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img907d6581fbd7a3f970f3d570ca37f9ce.png" class="latex_inline" alt="$0.1 \frac{m}{s}$" title="Math" />), the following script will:
+</p>
+<ul>
+<li class="level1"><div class="li"> scan for the pole object (in <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb4399a8d0fb5d7284063ba4cd6e6523e.png" class="latex_inline" alt="$\approx 0.05s$" title="Math" />) intervals.</div>
+</li>
+<li class="level1"><div class="li"> calculate the unit vector between the ball and the pole.</div>
+</li>
+<li class="level1"><div class="li"> calculate and apply the centripetal force.</div>
+</li>
+<li class="level1"><div class="li"> calculate the tangential unit vector (<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9d33c4209d2a024a82f9fb5b24233699.png" class="latex_inline" alt="$90^{\circ}$" title="Math" /> rotation around the unit vector between the ball and the pole).</div>
+</li>
+<li class="level1"><div class="li"> calculate and apply the tangential velocity.</div>
+</li>
+</ul>
+<pre class="code lsl2"><a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> velocity <span class="sy0">=</span> <span class="nu0">0.1</span>;
+&nbsp;
+<a href="http://wiki.secondlife.com/wiki/default"><span class="kw5">default</span></a> <span class="br0">&#123;</span>
+    <a href="http://wiki.secondlife.com/wiki/state_entry"><span class="kw3">state_entry</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// scan for an object named mass</span>
+        <a href="http://wiki.secondlife.com/wiki/llSensorRepeat"><span class="kw5">llSensorRepeat</span></a><span class="br0">&#40;</span><span class="st0">&quot;pole&quot;</span>, <span class="st0">&quot;&quot;</span>, <span class="kw2">ACTIVE</span><span class="sy0">|</span><span class="kw2">PASSIVE</span>, <span class="nu0">96</span>, <span class="kw2">TWO_PI</span>, 1.175494351E<span class="sy0">-</span>38<span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+&nbsp;
+    <span class="co1">// when the object is found</span>
+    <a href="http://wiki.secondlife.com/wiki/sensor"><span class="kw3">sensor</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> num<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// get the position of the object</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> oPos <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llDetectedPos"><span class="kw5">llDetectedPos</span></a><span class="br0">&#40;</span><span class="nu0">0</span><span class="br0">&#41;</span>;
+        <span class="co1">// get our position</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> mPos <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llGetPos"><span class="kw5">llGetPos</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>;
+        <span class="co1">// calculate the vector between the object and us</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> f <span class="sy0">=</span> <span class="sy0">&lt;</span>oPos.x, oPos.y, <span class="nu0">0</span><span class="sy0">&gt;</span> <span class="sy0">-</span> <span class="sy0">&lt;</span>mPos.x, mPos.y, <span class="nu0">0</span><span class="sy0">&gt;</span>;
+        <span class="co1">// calculate the unit vector towards the object</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> u <span class="sy0">=</span> <span class="br0">&#40;</span>f<span class="br0">&#41;</span><span class="sy0">*</span><span class="nu0">1</span><span class="sy0">/</span><a href="http://wiki.secondlife.com/wiki/llVecMag"><span class="kw5">llVecMag</span></a><span class="br0">&#40;</span>f<span class="br0">&#41;</span>;
+        <span class="co1">// calcualte the unit vector rotated by 90 (tangential)</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> r <span class="sy0">=</span> u <span class="sy0">*</span> <a href="http://wiki.secondlife.com/wiki/llEuler2Rot"><span class="kw5">llEuler2Rot</span></a><span class="br0">&#40;</span><span class="sy0">&lt;</span><span class="nu0">0</span>, <span class="nu0">0</span>, <span class="nu0">90</span><span class="sy0">&gt;</span> <span class="sy0">*</span> <span class="kw2">DEG_TO_RAD</span><span class="br0">&#41;</span>;
+        <span class="co1">// get the distance between the object and us in the plane xOy</span>
+        <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> d <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llVecDist"><span class="kw5">llVecDist</span></a><span class="br0">&#40;</span><span class="sy0">&lt;</span>oPos.x, oPos.y, <span class="nu0">0</span><span class="sy0">&gt;</span>, <span class="sy0">&lt;</span>mPos.x, mPos.y, <span class="nu0">0</span><span class="sy0">&gt;</span><span class="br0">&#41;</span>;
+        <span class="co1">// compute the vector for the centripetal force</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> fc <span class="sy0">=</span> u <span class="sy0">*</span> <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetMass"><span class="kw5">llGetMass</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">*</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>velocity,<span class="nu0">2</span><span class="br0">&#41;</span><span class="sy0">/</span>d<span class="br0">&#41;</span>;
+        <span class="co1">// compute the vector for the velocity</span>
+        <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> v <span class="sy0">=</span> r <span class="sy0">*</span> velocity;
+        <span class="co1">// set the centripetal force</span>
+        <a href="http://wiki.secondlife.com/wiki/llSetForce"><span class="kw5">llSetForce</span></a><span class="br0">&#40;</span>fc, <span class="kw2">FALSE</span><span class="br0">&#41;</span>;
+        <span class="co1">// set the tangential velocity</span>
+        <a href="http://wiki.secondlife.com/wiki/llSetVelocity"><span class="kw5">llSetVelocity</span></a><span class="br0">&#40;</span>v, <span class="kw2">FALSE</span><span class="br0">&#41;</span>;
+&nbsp;
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+The velocity is favourably selected as being small <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgea3c36dc7237c813b896effeca059403.png" class="latex_inline" alt="$0.01 \frac{m}{s}$" title="Math" /> in order to counter the effect of the application of the centripetal force <code>fc</code> every <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb4399a8d0fb5d7284063ba4cd6e6523e.png" class="latex_inline" alt="$\approx 0.05s$" title="Math" />. In reality, the centripetal force <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge649002f7a751a48a7ba09af3c8911c9.png" class="latex_inline" alt="$F_{c}$" title="Math" /> is applied all the time and not in <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb4399a8d0fb5d7284063ba4cd6e6523e.png" class="latex_inline" alt="$\approx 0.05s$" title="Math" /> intervals, which, in the simulation&#039;s case, makes the ball gradually spiral away from the pole.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/physics/mechanics.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/start" class="wikilink2" title="fuss:physics:start" rel="nofollow" data-wiki-id="fuss:physics:start">physics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics" class="wikilink1" title="fuss:physics:mechanics" data-wiki-id="fuss:physics:mechanics">mechanics</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:physics:mechanics" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/physics/mechanics"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aphysics%3Amechanics&amp;1657306039" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

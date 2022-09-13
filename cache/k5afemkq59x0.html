@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>opensim:server_patches:disable_iar_passwords:0.7.6 [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="opensim,server_patches,disable_iar_passwords,0.7.6"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=opensim:server_patches:disable_iar_passwords"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/opensim/server_patches/disable_iar_passwords/0.7.6"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='opensim:server_patches:disable_iar_passwords';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"opensim:server_patches:disable_iar_passwords:0.7.6","namespace":"opensim:server_patches:disable_iar_passwords","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="opensim:server_patches:disable_iar_passwords:0.7.6" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=opensim:server_patches:disable_iar_passwords:0.7.6&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim" class="wikilink1" title="opensim" data-wiki-id="opensim">opensim</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches" class="wikilink1" title="opensim:server_patches" data-wiki-id="opensim:server_patches">server_patches</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords" class="wikilink1" title="opensim:server_patches:disable_iar_passwords" data-wiki-id="opensim:server_patches:disable_iar_passwords">disable_iar_passwords</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6" class="wikilink1" title="opensim:server_patches:disable_iar_passwords:0.7.6" data-wiki-id="opensim:server_patches:disable_iar_passwords:0.7.6">0.7.6</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>opensim:server_patches:disable_iar_passwords:0.7.6</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    
+<h1 class="sectionedit1" id="code">Code</h1>
+<div class="level1">
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/opensim/server_patches/disable_iar_passwords/0.7.6?codeblock=0" title="Download Snippet" class="mediafile mf_patch">iar_nopassword_0.7.6.patch</a></dt>
+<dd><pre class="code file diff"><span class="re3">--- ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/InventoryArchiverModule.cs.orig	2013-10-04 19:45:02.000000000 +0000</span>
+<span class="re4">+++ ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/InventoryArchiverModule.cs	2013-10-16 00:46:01.000000000 +0000</span>
+<span class="re6">@@ -114,20 +114,19 @@</span>
+&nbsp;
+                 scene.AddCommand<span class="br0">&#40;</span>
+                     &quot;Archiving&quot;, this, &quot;load iar&quot;,
+<span class="re7">-                    &quot;load iar <span class="br0">&#91;</span>-m|--merge<span class="br0">&#93;</span> &lt;first&gt; &lt;last&gt; &lt;inventory path&gt; &lt;password&gt; <span class="br0">&#91;</span>&lt;IAR path&gt;<span class="br0">&#93;</span>&quot;,</span>
+<span class="re8">+                    &quot;load iar <span class="br0">&#91;</span>-m|--merge<span class="br0">&#93;</span> &lt;first&gt; &lt;last&gt; &lt;inventory path&gt; <span class="br0">&#91;</span>&lt;IAR path&gt;<span class="br0">&#93;</span>&quot;,</span>
+                     &quot;Load user inventory archive <span class="br0">&#40;</span>IAR<span class="br0">&#41;</span>.&quot;,
+                     &quot;-m|--merge is an option which merges the loaded IAR with existing inventory folders where possible, rather than always creating new ones&quot;
+                     + &quot;&lt;first&gt; is user's first name.&quot; + Environment.NewLine
+                     + &quot;&lt;last&gt; is user's last name.&quot; + Environment.NewLine
+                     + &quot;&lt;inventory path&gt; is the path inside the user's inventory where the IAR should be loaded.&quot; + Environment.NewLine
+<span class="re7">-                    + &quot;&lt;password&gt; is the user's password.&quot; + Environment.NewLine</span>
+                     + &quot;&lt;IAR path&gt; is the filesystem path or URI from which to load the IAR.&quot;
+                     + string.Format<span class="br0">&#40;</span>&quot;  If this is not given then the filename <span class="br0">&#123;</span><span class="nu0">0</span><span class="br0">&#125;</span> in the current directory is used&quot;, DEFAULT_INV_BACKUP_FILENAME<span class="br0">&#41;</span>,
+                     HandleLoadInvConsoleCommand<span class="br0">&#41;</span>;
+&nbsp;
+                 scene.AddCommand<span class="br0">&#40;</span>
+                     &quot;Archiving&quot;, this, &quot;save iar&quot;,
+<span class="re7">-                    &quot;save iar <span class="br0">&#91;</span>-h|--home=&lt;url&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>--noassets<span class="br0">&#93;</span> &lt;first&gt; &lt;last&gt; &lt;inventory path&gt; &lt;password&gt; <span class="br0">&#91;</span>&lt;IAR path&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-c|--creators<span class="br0">&#93;</span> <span class="br0">&#91;</span>-e|--exclude=&lt;name/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-f|--excludefolder=&lt;foldername/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-v|--verbose<span class="br0">&#93;</span>&quot;,</span>
+<span class="re8">+                    &quot;save iar <span class="br0">&#91;</span>-h|--home=&lt;url&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>--noassets<span class="br0">&#93;</span> &lt;first&gt; &lt;last&gt; &lt;inventory path&gt; <span class="br0">&#91;</span>&lt;IAR path&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-c|--creators<span class="br0">&#93;</span> <span class="br0">&#91;</span>-e|--exclude=&lt;name/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-f|--excludefolder=&lt;foldername/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-v|--verbose<span class="br0">&#93;</span>&quot;,</span>
+                     &quot;Save user inventory archive <span class="br0">&#40;</span>IAR<span class="br0">&#41;</span>.&quot;,
+                     &quot;&lt;first&gt; is the user's first name.\n&quot;
+                     + &quot;&lt;last&gt; is the user's last name.\n&quot;
+<span class="re6">@@ -184,18 +183,18 @@</span>
+         <span class="br0">&#125;</span>
+&nbsp;
+         public bool ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-             Guid id, string firstName, string lastName, string invPath, string pass, Stream saveStream<span class="br0">&#41;</span></span>
+<span class="re8">+             Guid id, string firstName, string lastName, string invPath, Stream saveStream<span class="br0">&#41;</span></span>
+         <span class="br0">&#123;</span>
+<span class="re7">-            return ArchiveInventory<span class="br0">&#40;</span>id, firstName, lastName, invPath, pass, saveStream, new Dictionary&lt;string, object&gt;<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;</span>
+<span class="re8">+            return ArchiveInventory<span class="br0">&#40;</span>id, firstName, lastName, invPath, saveStream, new Dictionary&lt;string, object&gt;<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;</span>
+         <span class="br0">&#125;</span>
+&nbsp;
+         public bool ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-            Guid id, string firstName, string lastName, string invPath, string pass, Stream saveStream,</span>
+<span class="re8">+            Guid id, string firstName, string lastName, string invPath, Stream saveStream,</span>
+             Dictionary&lt;string, object&gt; options<span class="br0">&#41;</span>
+         <span class="br0">&#123;</span>
+             if <span class="br0">&#40;</span>m_scenes.Count &gt; <span class="nu0">0</span><span class="br0">&#41;</span>
+             <span class="br0">&#123;</span>
+<span class="re7">-                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName, pass<span class="br0">&#41;</span>;</span>
+<span class="re8">+                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName<span class="br0">&#41;</span>;</span>
+&nbsp;
+                 if <span class="br0">&#40;</span>userInfo != null<span class="br0">&#41;</span>
+                 <span class="br0">&#123;</span>
+<span class="re6">@@ -230,7 +229,7 @@</span>
+         <span class="br0">&#125;</span>
+&nbsp;
+         public bool ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-            Guid id, string firstName, string lastName, string invPath, string pass, string savePath,</span>
+<span class="re8">+            Guid id, string firstName, string lastName, string invPath, string savePath,</span>
+             Dictionary&lt;string, object&gt; options<span class="br0">&#41;</span>
+         <span class="br0">&#123;</span>
+ //            if <span class="br0">&#40;</span>!ConsoleUtil.CheckFileDoesNotExist<span class="br0">&#40;</span>MainConsole.Instance, savePath<span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="re6">@@ -238,7 +237,7 @@</span>
+&nbsp;
+             if <span class="br0">&#40;</span>m_scenes.Count &gt; <span class="nu0">0</span><span class="br0">&#41;</span>
+             <span class="br0">&#123;</span>
+<span class="re7">-                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName, pass<span class="br0">&#41;</span>;</span>
+<span class="re8">+                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName<span class="br0">&#41;</span>;</span>
+&nbsp;
+                 if <span class="br0">&#40;</span>userInfo != null<span class="br0">&#41;</span>
+                 <span class="br0">&#123;</span>
+<span class="re6">@@ -272,18 +271,18 @@</span>
+             return false;
+         <span class="br0">&#125;</span>
+&nbsp;
+<span class="re7">-        public bool DearchiveInventory<span class="br0">&#40;</span>string firstName, string lastName, string invPath, string pass, Stream loadStream<span class="br0">&#41;</span></span>
+<span class="re8">+        public bool DearchiveInventory<span class="br0">&#40;</span>string firstName, string lastName, string invPath, Stream loadStream<span class="br0">&#41;</span></span>
+         <span class="br0">&#123;</span>
+<span class="re7">-            return DearchiveInventory<span class="br0">&#40;</span>firstName, lastName, invPath, pass, loadStream, new Dictionary&lt;string, object&gt;<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;</span>
+<span class="re8">+            return DearchiveInventory<span class="br0">&#40;</span>firstName, lastName, invPath, loadStream, new Dictionary&lt;string, object&gt;<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;</span>
+         <span class="br0">&#125;</span>
+&nbsp;
+         public bool DearchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-            string firstName, string lastName, string invPath, string pass, Stream loadStream,</span>
+<span class="re8">+            string firstName, string lastName, string invPath, Stream loadStream,</span>
+             Dictionary&lt;string, object&gt; options<span class="br0">&#41;</span>
+         <span class="br0">&#123;</span>
+             if <span class="br0">&#40;</span>m_scenes.Count &gt; <span class="nu0">0</span><span class="br0">&#41;</span>
+             <span class="br0">&#123;</span>
+<span class="re7">-                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName, pass<span class="br0">&#41;</span>;</span>
+<span class="re8">+                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName<span class="br0">&#41;</span>;</span>
+&nbsp;
+                 if <span class="br0">&#40;</span>userInfo != null<span class="br0">&#41;</span>
+                 <span class="br0">&#123;</span>
+<span class="re6">@@ -326,12 +325,12 @@</span>
+         <span class="br0">&#125;</span>
+&nbsp;
+         public bool DearchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-             string firstName, string lastName, string invPath, string pass, string loadPath,</span>
+<span class="re8">+             string firstName, string lastName, string invPath, string loadPath,</span>
+              Dictionary&lt;string, object&gt; options<span class="br0">&#41;</span>
+         <span class="br0">&#123;</span>
+             if <span class="br0">&#40;</span>m_scenes.Count &gt; <span class="nu0">0</span><span class="br0">&#41;</span>
+             <span class="br0">&#123;</span>
+<span class="re7">-                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName, pass<span class="br0">&#41;</span>;</span>
+<span class="re8">+                UserAccount userInfo = GetUserInfo<span class="br0">&#40;</span>firstName, lastName<span class="br0">&#41;</span>;</span>
+&nbsp;
+                 if <span class="br0">&#40;</span>userInfo != null<span class="br0">&#41;</span>
+                 <span class="br0">&#123;</span>
+<span class="re6">@@ -383,24 +382,23 @@</span>
+&nbsp;
+                 List&lt;string&gt; mainParams = optionSet.Parse<span class="br0">&#40;</span>cmdparams<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re7">-                if <span class="br0">&#40;</span>mainParams.Count &lt; 6<span class="br0">&#41;</span></span>
+<span class="re8">+                if <span class="br0">&#40;</span>mainParams.Count &lt; 5<span class="br0">&#41;</span></span>
+                 <span class="br0">&#123;</span>
+                     m_log.Error<span class="br0">&#40;</span>
+<span class="re7">-                        &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: usage is load iar <span class="br0">&#91;</span>-m|--merge<span class="br0">&#93;</span> &lt;first name&gt; &lt;last name&gt; &lt;inventory path&gt; &lt;user password&gt; <span class="br0">&#91;</span>&lt;load file path&gt;<span class="br0">&#93;</span>&quot;<span class="br0">&#41;</span>;</span>
+<span class="re8">+                        &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: usage is load iar <span class="br0">&#91;</span>-m|--merge<span class="br0">&#93;</span> &lt;first name&gt; &lt;last name&gt; &lt;inventory path&gt; <span class="br0">&#91;</span>&lt;load file path&gt;<span class="br0">&#93;</span>&quot;<span class="br0">&#41;</span>;</span>
+                     return;
+                 <span class="br0">&#125;</span>
+&nbsp;
+                 string firstName = mainParams<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span>;
+                 string lastName = mainParams<span class="br0">&#91;</span><span class="nu0">3</span><span class="br0">&#93;</span>;
+                 string invPath = mainParams<span class="br0">&#91;</span><span class="nu0">4</span><span class="br0">&#93;</span>;
+<span class="re7">-                string pass = mainParams<span class="br0">&#91;</span><span class="nu0">5</span><span class="br0">&#93;</span>;</span>
+<span class="re7">-                string loadPath = <span class="br0">&#40;</span>mainParams.Count &gt; <span class="nu0">6</span> ? mainParams<span class="br0">&#91;</span><span class="nu0">6</span><span class="br0">&#93;</span> : DEFAULT_INV_BACKUP_FILENAME<span class="br0">&#41;</span>;</span>
+<span class="re8">+		string loadPath = <span class="br0">&#40;</span>mainParams.Count &gt; <span class="nu0">5</span> ? mainParams<span class="br0">&#91;</span><span class="nu0">5</span><span class="br0">&#93;</span> : DEFAULT_INV_BACKUP_FILENAME<span class="br0">&#41;</span>;</span>
+&nbsp;
+                 m_log.InfoFormat<span class="br0">&#40;</span>
+                     &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: Loading archive <span class="br0">&#123;</span><span class="nu0">0</span><span class="br0">&#125;</span> to inventory path <span class="br0">&#123;</span><span class="nu0">1</span><span class="br0">&#125;</span> for <span class="br0">&#123;</span><span class="nu0">2</span><span class="br0">&#125;</span> <span class="br0">&#123;</span><span class="nu0">3</span><span class="br0">&#125;</span>&quot;,
+                     loadPath, invPath, firstName, lastName<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re7">-                if <span class="br0">&#40;</span>DearchiveInventory<span class="br0">&#40;</span>firstName, lastName, invPath, pass, loadPath, options<span class="br0">&#41;</span><span class="br0">&#41;</span></span>
+<span class="re8">+                if <span class="br0">&#40;</span>DearchiveInventory<span class="br0">&#40;</span>firstName, lastName, invPath, loadPath, options<span class="br0">&#41;</span><span class="br0">&#41;</span></span>
+                     m_log.InfoFormat<span class="br0">&#40;</span>
+                         &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: Loaded archive <span class="br0">&#123;</span><span class="nu0">0</span><span class="br0">&#125;</span> for <span class="br0">&#123;</span><span class="nu0">1</span><span class="br0">&#125;</span> <span class="br0">&#123;</span><span class="nu0">2</span><span class="br0">&#125;</span>&quot;,
+                         loadPath, firstName, lastName<span class="br0">&#41;</span>;
+<span class="re6">@@ -444,10 +442,10 @@</span>
+&nbsp;
+             try
+             <span class="br0">&#123;</span>
+<span class="re7">-                if <span class="br0">&#40;</span>mainParams.Count &lt; 6<span class="br0">&#41;</span></span>
+<span class="re8">+                if <span class="br0">&#40;</span>mainParams.Count &lt; 5<span class="br0">&#41;</span></span>
+                 <span class="br0">&#123;</span>
+                     m_log.Error<span class="br0">&#40;</span>
+<span class="re7">-                        &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: save iar <span class="br0">&#91;</span>-h|--home=&lt;url&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>--noassets<span class="br0">&#93;</span> &lt;first&gt; &lt;last&gt; &lt;inventory path&gt; &lt;password&gt; <span class="br0">&#91;</span>&lt;IAR path&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-c|--creators<span class="br0">&#93;</span> <span class="br0">&#91;</span>-e|--exclude=&lt;name/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-f|--excludefolder=&lt;foldername/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-v|--verbose<span class="br0">&#93;</span>&quot;<span class="br0">&#41;</span>;</span>
+<span class="re8">+                        &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: save iar <span class="br0">&#91;</span>-h|--home=&lt;url&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>--noassets<span class="br0">&#93;</span> &lt;first&gt; &lt;last&gt; &lt;inventory path&gt; <span class="br0">&#91;</span>&lt;IAR path&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-c|--creators<span class="br0">&#93;</span> <span class="br0">&#91;</span>-e|--exclude=&lt;name/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-f|--excludefolder=&lt;foldername/uuid&gt;<span class="br0">&#93;</span> <span class="br0">&#91;</span>-v|--verbose<span class="br0">&#93;</span>&quot;<span class="br0">&#41;</span>;</span>
+                     return;
+                 <span class="br0">&#125;</span>
+&nbsp;
+<span class="re6">@@ -457,8 +455,7 @@</span>
+                 string firstName = mainParams<span class="br0">&#91;</span><span class="nu0">2</span><span class="br0">&#93;</span>;
+                 string lastName = mainParams<span class="br0">&#91;</span><span class="nu0">3</span><span class="br0">&#93;</span>;
+                 string invPath = mainParams<span class="br0">&#91;</span><span class="nu0">4</span><span class="br0">&#93;</span>;
+<span class="re7">-                string pass = mainParams<span class="br0">&#91;</span><span class="nu0">5</span><span class="br0">&#93;</span>;</span>
+<span class="re7">-                string savePath = <span class="br0">&#40;</span>mainParams.Count &gt; <span class="nu0">6</span> ? mainParams<span class="br0">&#91;</span><span class="nu0">6</span><span class="br0">&#93;</span> : DEFAULT_INV_BACKUP_FILENAME<span class="br0">&#41;</span>;</span>
+<span class="re8">+                string savePath = <span class="br0">&#40;</span>mainParams.Count &gt; <span class="nu0">5</span> ? mainParams<span class="br0">&#91;</span><span class="nu0">5</span><span class="br0">&#93;</span> : DEFAULT_INV_BACKUP_FILENAME<span class="br0">&#41;</span>;</span>
+&nbsp;
+                 m_log.InfoFormat<span class="br0">&#40;</span>
+                     &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: Saving archive <span class="br0">&#123;</span><span class="nu0">0</span><span class="br0">&#125;</span> using inventory path <span class="br0">&#123;</span><span class="nu0">1</span><span class="br0">&#125;</span> for <span class="br0">&#123;</span><span class="nu0">2</span><span class="br0">&#125;</span> <span class="br0">&#123;</span><span class="nu0">3</span><span class="br0">&#125;</span>&quot;,
+<span class="re6">@@ -467,7 +464,7 @@</span>
+                 lock <span class="br0">&#40;</span>m_pendingConsoleSaves<span class="br0">&#41;</span>
+                     m_pendingConsoleSaves.Add<span class="br0">&#40;</span>id<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re7">-                ArchiveInventory<span class="br0">&#40;</span>id, firstName, lastName, invPath, pass, savePath, options<span class="br0">&#41;</span>;</span>
+<span class="re8">+                ArchiveInventory<span class="br0">&#40;</span>id, firstName, lastName, invPath, savePath, options<span class="br0">&#41;</span>;</span>
+             <span class="br0">&#125;</span>
+             catch <span class="br0">&#40;</span>InventoryArchiverException e<span class="br0">&#41;</span>
+             <span class="br0">&#123;</span>
+<span class="re6">@@ -504,9 +501,8 @@</span>
+         /// &lt;/summary&gt;
+         /// &lt;param name=&quot;firstName&quot;&gt;&lt;/param&gt;
+         /// &lt;param name=&quot;lastName&quot;&gt;&lt;/param&gt;
+<span class="re7">-        /// &lt;param name=&quot;pass&quot;&gt;User password&lt;/param&gt;</span>
+         /// &lt;returns&gt;&lt;/returns&gt;
+<span class="re7">-        protected UserAccount GetUserInfo<span class="br0">&#40;</span>string firstName, string lastName, string pass<span class="br0">&#41;</span></span>
+<span class="re8">+        protected UserAccount GetUserInfo<span class="br0">&#40;</span>string firstName, string lastName<span class="br0">&#41;</span></span>
+         <span class="br0">&#123;</span>
+             UserAccount account
+                 = m_aScene.UserAccountService.GetUserAccount<span class="br0">&#40;</span>m_aScene.RegionInfo.ScopeID, firstName, lastName<span class="br0">&#41;</span>;
+<span class="re6">@@ -518,27 +514,7 @@</span>
+                     firstName, lastName<span class="br0">&#41;</span>;
+                 return null;
+             <span class="br0">&#125;</span>
+<span class="re7">-</span>
+<span class="re7">-            try</span>
+<span class="re7">-            <span class="br0">&#123;</span></span>
+<span class="re7">-                string encpass = Util.Md5Hash<span class="br0">&#40;</span>pass<span class="br0">&#41;</span>;</span>
+<span class="re7">-                if <span class="br0">&#40;</span>m_aScene.AuthenticationService.Authenticate<span class="br0">&#40;</span>account.PrincipalID, encpass, 1<span class="br0">&#41;</span> != string.Empty<span class="br0">&#41;</span></span>
+<span class="re7">-                <span class="br0">&#123;</span></span>
+<span class="re7">-                    return account;</span>
+<span class="re7">-                <span class="br0">&#125;</span></span>
+<span class="re7">-                else</span>
+<span class="re7">-                <span class="br0">&#123;</span></span>
+<span class="re7">-                    m_log.ErrorFormat<span class="br0">&#40;</span></span>
+<span class="re7">-                        &quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: Password for user <span class="br0">&#123;</span>0<span class="br0">&#125;</span> <span class="br0">&#123;</span>1<span class="br0">&#125;</span> incorrect.  Please try again.&quot;,</span>
+<span class="re7">-                        firstName, lastName<span class="br0">&#41;</span>;</span>
+<span class="re7">-                    return null;</span>
+<span class="re7">-                <span class="br0">&#125;</span></span>
+<span class="re7">-            <span class="br0">&#125;</span></span>
+<span class="re7">-            catch <span class="br0">&#40;</span>Exception e<span class="br0">&#41;</span></span>
+<span class="re7">-            <span class="br0">&#123;</span></span>
+<span class="re7">-                m_log.ErrorFormat<span class="br0">&#40;</span>&quot;<span class="br0">&#91;</span>INVENTORY ARCHIVER<span class="br0">&#93;</span>: Could not authenticate password, <span class="br0">&#123;</span><span class="nu0">0</span><span class="br0">&#125;</span>&quot;, e<span class="br0">&#41;</span>;</span>
+<span class="re7">-                return null;</span>
+<span class="re7">-            <span class="br0">&#125;</span></span>
+<span class="re8">+            return account;</span>
+         <span class="br0">&#125;</span>
+&nbsp;
+         /// &lt;summary&gt;
+<span class="re3">--- ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveTestCase.cs.orig	2013-10-16 00:52:58.000000000 +0000</span>
+<span class="re4">+++ ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveTestCase.cs	2013-10-16 00:53:29.000000000 +0000</span>
+<span class="re6">@@ -163,7 +163,7 @@</span>
+             scene.AddInventoryItem<span class="br0">&#40;</span>coaItem<span class="br0">&#41;</span>;            
+&nbsp;
+             archiverModule.ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, m_uaLL1.FirstName, m_uaLL1.LastName, &quot;/*&quot;, &quot;hampshire&quot;, archiveWriteStream<span class="br0">&#41;</span>;            </span>
+<span class="re8">+                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, m_uaLL1.FirstName, m_uaLL1.LastName, &quot;/*&quot;, archiveWriteStream<span class="br0">&#41;</span>;            </span>
+&nbsp;
+             m_iarStreamBytes = archiveWriteStream.ToArray<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+         <span class="br0">&#125;</span>
+<span class="re3">--- ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveLoadPathTests.cs.orig	2013-10-16 00:46:32.000000000 +0000</span>
+<span class="re4">+++ ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveLoadPathTests.cs	2013-10-16 01:01:58.000000000 +0000</span>
+<span class="re6">@@ -70,7 +70,7 @@</span>
+             UserAccountHelpers.CreateUserWithInventory<span class="br0">&#40;</span>scene, m_uaMT, &quot;meowfood&quot;<span class="br0">&#41;</span>;
+             UserAccountHelpers.CreateUserWithInventory<span class="br0">&#40;</span>scene, m_uaLL1, &quot;hampshire&quot;<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re7">-            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;/&quot;, &quot;meowfood&quot;, m_iarStream<span class="br0">&#41;</span>;            </span>
+<span class="re8">+            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;/&quot;, m_iarStream<span class="br0">&#41;</span>;            </span>
+             InventoryItemBase foundItem1
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>scene.InventoryService, m_uaMT.PrincipalID, m_item1Name<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re6">@@ -79,7 +79,7 @@</span>
+             // Now try loading to a root child folder
+             UserInventoryHelpers.CreateInventoryFolder<span class="br0">&#40;</span>scene.InventoryService, m_uaMT.PrincipalID, &quot;xA&quot;, false<span class="br0">&#41;</span>;
+             MemoryStream archiveReadStream = new MemoryStream<span class="br0">&#40;</span>m_iarStream.ToArray<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;
+<span class="re7">-            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;xA&quot;, &quot;meowfood&quot;, archiveReadStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;xA&quot;, archiveReadStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+             InventoryItemBase foundItem2
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>scene.InventoryService, m_uaMT.PrincipalID, &quot;xA/&quot; + m_item1Name<span class="br0">&#41;</span>;
+<span class="re6">@@ -88,7 +88,7 @@</span>
+             // Now try loading to a more deeply nested folder
+             UserInventoryHelpers.CreateInventoryFolder<span class="br0">&#40;</span>scene.InventoryService, m_uaMT.PrincipalID, &quot;xB/xC&quot;, false<span class="br0">&#41;</span>;
+             archiveReadStream = new MemoryStream<span class="br0">&#40;</span>archiveReadStream.ToArray<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;
+<span class="re7">-            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;xB/xC&quot;, &quot;meowfood&quot;, archiveReadStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;xB/xC&quot;, archiveReadStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+             InventoryItemBase foundItem3
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>scene.InventoryService, m_uaMT.PrincipalID, &quot;xB/xC/&quot; + m_item1Name<span class="br0">&#41;</span>;
+<span class="re6">@@ -110,7 +110,7 @@</span>
+             SceneHelpers.SetupSceneModules<span class="br0">&#40;</span>scene, serialiserModule, archiverModule<span class="br0">&#41;</span>;
+&nbsp;
+             UserAccountHelpers.CreateUserWithInventory<span class="br0">&#40;</span>scene, m_uaMT, &quot;password&quot;<span class="br0">&#41;</span>;
+<span class="re7">-            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;/Objects&quot;, &quot;password&quot;, m_iarStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+            archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;/Objects&quot;, m_iarStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+             InventoryItemBase foundItem1
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>
+<span class="re6">@@ -180,13 +180,13 @@</span>
+&nbsp;
+             mre.Reset<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+             archiverModule.ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;Objects&quot;, userPassword, archiveWriteStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;Objects&quot;, archiveWriteStream<span class="br0">&#41;</span>;</span>
+             mre.WaitOne<span class="br0">&#40;</span><span class="nu0">60000</span>, false<span class="br0">&#41;</span>;
+&nbsp;
+             // LOAD ITEM
+             MemoryStream archiveReadStream = new MemoryStream<span class="br0">&#40;</span>archiveWriteStream.ToArray<span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>;
+&nbsp;
+<span class="re7">-            archiverModule.DearchiveInventory<span class="br0">&#40;</span>userFirstName, userLastName, &quot;Scripts&quot;, userPassword, archiveReadStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+            archiverModule.DearchiveInventory<span class="br0">&#40;</span>userFirstName, userLastName, &quot;Scripts&quot;, archiveReadStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+             InventoryItemBase foundItem1
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>
+<span class="re3">--- ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveSaveTests.cs.orig	2013-10-16 00:48:52.000000000 +0000</span>
+<span class="re4">+++ ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveSaveTests.cs	2013-10-16 00:50:20.000000000 +0000</span>
+<span class="re6">@@ -110,7 +110,7 @@</span>
+&nbsp;
+             mre.Reset<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+             m_archiverModule.ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;/&quot;, userPassword, archiveWriteStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;/&quot;, archiveWriteStream<span class="br0">&#41;</span>;</span>
+             mre.WaitOne<span class="br0">&#40;</span><span class="nu0">60000</span>, false<span class="br0">&#41;</span>;
+&nbsp;
+             // Test created iar
+<span class="re6">@@ -179,7 +179,7 @@</span>
+&nbsp;
+             mre.Reset<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+             m_archiverModule.ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;f1&quot;, userPassword, archiveWriteStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;f1&quot;, archiveWriteStream<span class="br0">&#41;</span>;</span>
+             mre.WaitOne<span class="br0">&#40;</span><span class="nu0">60000</span>, false<span class="br0">&#41;</span>;
+&nbsp;
+             // Test created iar
+<span class="re6">@@ -267,7 +267,7 @@</span>
+&nbsp;
+             mre.Reset<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+             m_archiverModule.ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;Objects/&quot; + item1Name, userPassword, archiveWriteStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;Objects/&quot; + item1Name, archiveWriteStream<span class="br0">&#41;</span>;</span>
+             mre.WaitOne<span class="br0">&#40;</span><span class="nu0">60000</span>, false<span class="br0">&#41;</span>;
+&nbsp;
+             byte<span class="br0">&#91;</span><span class="br0">&#93;</span> archive = archiveWriteStream.ToArray<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+<span class="re6">@@ -364,7 +364,7 @@</span>
+&nbsp;
+             // When we're not saving assets, archiving is being done synchronously.
+             m_archiverModule.ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;Objects/&quot; + item1Name, userPassword, archiveWriteStream, options<span class="br0">&#41;</span>;</span>
+<span class="re8">+                Guid.NewGuid<span class="br0">&#40;</span><span class="br0">&#41;</span>, userFirstName, userLastName, &quot;Objects/&quot; + item1Name, archiveWriteStream, options<span class="br0">&#41;</span>;</span>
+&nbsp;
+             byte<span class="br0">&#91;</span><span class="br0">&#93;</span> archive = archiveWriteStream.ToArray<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+             MemoryStream archiveReadStream = new MemoryStream<span class="br0">&#40;</span>archive<span class="br0">&#41;</span>;
+<span class="re3">--- ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveLoadTests.cs.orig	2013-10-16 00:46:40.000000000 +0000</span>
+<span class="re4">+++ ./OpenSim/Region/CoreModules/Avatar/Inventory/Archiver/Tests/InventoryArchiveLoadTests.cs	2013-10-16 01:03:30.000000000 +0000</span>
+<span class="re6">@@ -72,7 +72,7 @@</span>
+ //            TestHelpers.EnableLogging<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+&nbsp;
+             UserAccountHelpers.CreateUserWithInventory<span class="br0">&#40;</span>m_scene, m_uaLL1, &quot;password&quot;<span class="br0">&#41;</span>;
+<span class="re7">-            m_archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaLL1.FirstName, m_uaLL1.LastName, &quot;/&quot;, &quot;password&quot;, m_iarStream<span class="br0">&#41;</span>;            </span>
+<span class="re8">+            m_archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaLL1.FirstName, m_uaLL1.LastName, &quot;/&quot;, m_iarStream<span class="br0">&#41;</span>;            </span>
+&nbsp;
+             InventoryItemBase coaItem
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>m_scene.InventoryService, m_uaLL1.PrincipalID, m_coaItemName<span class="br0">&#41;</span>;
+<span class="re6">@@ -107,7 +107,7 @@</span>
+&nbsp;
+             UserAccountHelpers.CreateUserWithInventory<span class="br0">&#40;</span>m_scene, m_uaLL1, &quot;meowfood&quot;<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re7">-            m_archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaLL1.FirstName, m_uaLL1.LastName, &quot;/&quot;, &quot;meowfood&quot;, m_iarStream<span class="br0">&#41;</span>;            </span>
+<span class="re8">+            m_archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaLL1.FirstName, m_uaLL1.LastName, &quot;/&quot;, m_iarStream<span class="br0">&#41;</span>;            </span>
+             InventoryItemBase foundItem1
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>m_scene.InventoryService, m_uaLL1.PrincipalID, m_item1Name<span class="br0">&#41;</span>;
+&nbsp;
+<span class="re6">@@ -171,7 +171,7 @@</span>
+ //            log4net.Config.XmlConfigurator.Configure<span class="br0">&#40;</span><span class="br0">&#41;</span>;
+&nbsp;
+             UserAccountHelpers.CreateUserWithInventory<span class="br0">&#40;</span>m_scene, m_uaMT, &quot;password&quot;<span class="br0">&#41;</span>;
+<span class="re7">-            m_archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;/&quot;, &quot;password&quot;, m_iarStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+            m_archiverModule.DearchiveInventory<span class="br0">&#40;</span>m_uaMT.FirstName, m_uaMT.LastName, &quot;/&quot;, m_iarStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+             InventoryItemBase foundItem1
+                 = InventoryArchiveUtils.FindItemByPath<span class="br0">&#40;</span>m_scene.InventoryService, m_uaMT.PrincipalID, m_item1Name<span class="br0">&#41;</span>;
+<span class="re3">--- ./OpenSim/Region/Framework/Interfaces/IInventoryArchiverModule.cs.orig	2013-10-16 00:55:45.000000000 +0000</span>
+<span class="re4">+++ ./OpenSim/Region/Framework/Interfaces/IInventoryArchiverModule.cs	2013-10-16 00:57:59.000000000 +0000</span>
+<span class="re6">@@ -59,7 +59,7 @@</span>
+         /// &lt;param name=&quot;invPath&quot;&gt;The inventory path in which to place the loaded folders and items&lt;/param&gt;
+         /// &lt;param name=&quot;loadStream&quot;&gt;The stream from which the inventory archive will be loaded&lt;/param&gt;
+         /// &lt;returns&gt;true if the first stage of the operation succeeded, false otherwise&lt;/returns&gt;
+<span class="re7">-        bool DearchiveInventory<span class="br0">&#40;</span>string firstName, string lastName, string invPath, string pass, Stream loadStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+        bool DearchiveInventory<span class="br0">&#40;</span>string firstName, string lastName, string invPath, Stream loadStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+         /// &lt;summary&gt;
+         /// Dearchive a user's inventory folder from the given stream
+<span class="re6">@@ -72,7 +72,7 @@</span>
+         /// the loaded IAR with existing folders where possible.&lt;/param&gt;
+         /// &lt;returns&gt;true if the first stage of the operation succeeded, false otherwise&lt;/returns&gt;
+         bool DearchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-            string firstName, string lastName, string invPath, string pass, Stream loadStream,</span>
+<span class="re8">+            string firstName, string lastName, string invPath, Stream loadStream,</span>
+             Dictionary&lt;string, object&gt; options<span class="br0">&#41;</span>;
+&nbsp;
+         /// &lt;summary&gt;
+<span class="re6">@@ -84,7 +84,7 @@</span>
+         /// &lt;param name=&quot;invPath&quot;&gt;The inventory path from which the inventory should be saved.&lt;/param&gt;
+         /// &lt;param name=&quot;saveStream&quot;&gt;The stream to which the inventory archive will be saved&lt;/param&gt;
+         /// &lt;returns&gt;true if the first stage of the operation succeeded, false otherwise&lt;/returns&gt;
+<span class="re7">-        bool ArchiveInventory<span class="br0">&#40;</span>Guid id, string firstName, string lastName, string invPath, string pass, Stream saveStream<span class="br0">&#41;</span>;</span>
+<span class="re8">+        bool ArchiveInventory<span class="br0">&#40;</span>Guid id, string firstName, string lastName, string invPath, Stream saveStream<span class="br0">&#41;</span>;</span>
+&nbsp;
+         /// &lt;summary&gt;
+         /// Archive a user's inventory folder to the given stream
+<span class="re6">@@ -97,7 +97,7 @@</span>
+         /// &lt;param name=&quot;options&quot;&gt;Archiving options.  Currently, there are none.&lt;/param&gt;
+         /// &lt;returns&gt;true if the first stage of the operation succeeded, false otherwise&lt;/returns&gt;
+         bool ArchiveInventory<span class="br0">&#40;</span>
+<span class="re7">-            Guid id, string firstName, string lastName, string invPath, string pass, Stream saveStream,</span>
+<span class="re8">+            Guid id, string firstName, string lastName, string invPath, Stream saveStream,</span>
+             Dictionary&lt;string, object&gt; options<span class="br0">&#41;</span>;
+     <span class="br0">&#125;</span>
+ <span class="br0">&#125;</span></pre>
+</dd></dl>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>opensim/server_patches/disable_iar_passwords/0.7.6.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim" class="wikilink1" title="opensim" data-wiki-id="opensim">opensim</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches" class="wikilink1" title="opensim:server_patches" data-wiki-id="opensim:server_patches">server_patches</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords" class="wikilink1" title="opensim:server_patches:disable_iar_passwords" data-wiki-id="opensim:server_patches:disable_iar_passwords">disable_iar_passwords</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6" class="wikilink1" title="opensim:server_patches:disable_iar_passwords:0.7.6" data-wiki-id="opensim:server_patches:disable_iar_passwords:0.7.6">0.7.6</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="opensim:server_patches:disable_iar_passwords:0.7.6" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/opensim/server_patches/disable_iar_passwords/0.7.6"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=opensim%3Aserver_patches%3Adisable_iar_passwords%3A0.7.6&amp;1657308154" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

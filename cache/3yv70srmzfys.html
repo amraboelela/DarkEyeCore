@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>İndex</title>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" crossorigin="anonymous"></script>
+	
+	
+    <!-- Font Awesome -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+	<!-- Bootstrap -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+
+	<!-- Datatables -->
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	
+	<script>
+		
+	debug = false
+	function logla(ne){
+		if (debug){
+			console.log(ne)
+		}
+		
+	}
+
+	function siteleri_getir(){
+		$("#table_siteler").dataTable().fnDestroy()
+		tbody_siteler = $("#tbody_siteler")
+		tbody_siteler.html("")
+		
+		$.getJSON("siteler.json", function(site_listesi) {
+			siteler_json = site_listesi["siteler"]
+			kalip = "<tr><th scope='row'>%no%</th><td>%site_ad%</td><td>%site_tur%</td><td>%site_aciklama%</td></tr>"
+			no = 0
+			$.each(siteler_json, function (site, site_node) {
+				logla(site_node)
+				logla("------------------------")				
+				site_ad = site_node["site_ad"]
+				site_tur = site_node["site_tur"]
+				if (site_ad !== ""){
+					no += 1
+					tr = kalip
+					tr = tr.replace("%no%", no)
+
+
+					scam_mi = site_ad.toLowerCase().includes("scam") || site_ad.toLowerCase().includes("dolandirici") || site_tur.toLowerCase().includes("scam") || site_tur.toLowerCase().includes("dolandirici") 
+					if (scam_mi){
+						site_ad = '<i class="fas fa-exclamation" style="color:red"></i>' + site_ad
+					}
+
+					if (site_ad.toLowerCase().includes("kapandı")){
+						site_ad = "<span style='color:gray; text-decoration: line-through;'>" + site_ad + "</span>"
+					}
+
+					site_ad_edited = "<a target='_blank' href='" + site_node["site_url"]  + "' style=''>" + site_ad + "</a>"
+					tr = tr.replace("%site_ad%", site_ad_edited)
+					tr = tr.replace("%site_tur%", site_tur)
+					tr = tr.replace("%site_aciklama%", site_node["site_aciklama"])
+					tbody_siteler.append(tr)
+				}
+
+			})
+			table_yi_datatables_e_cevir("table_siteler")
+		})
+		
+	}
+	
+data_table_tr_strings = {
+	"sDecimal":        ",",
+	"sEmptyTable":     "Tabloda herhangi bir kayıt mevcut değil",
+	"sInfo":           "_TOTAL_ kayıt",
+	"sInfoEmpty":      "Kayıt yok",
+	"sInfoFiltered":   "",
+	"sInfoPostFix":    "",
+	"sInfoThousands":  ".",
+	"sLengthMenu":     "_MENU_",
+	"sLoadingRecords": "Yükleniyor...",
+	"sProcessing":     "İşleniyor...",
+	"sSearch":         "Ara:",
+	"sZeroRecords":    "Eşleşen kayıt bulunamadı",
+	"oPaginate": {
+		"sFirst":    "İlk",
+		"sLast":     "Son",
+		"sNext":     ">",
+		"sPrevious": "<"
+	},
+	"oAria": {
+		"sSortAscending":  ": artan sütun sıralamasını aktifleştir",
+		"sSortDescending": ": azalan sütun sıralamasını aktifleştir"
+	},
+	"select": {
+		"rows": {
+			"_": "%d kayıt seçildi",
+			"0": "",
+			"1": "1 kayıt seçildi"
+		}
+	}
+}
+		
+	function table_yi_datatables_e_cevir(table_id){
+		$("#" + table_id).dataTable().fnDestroy()
+		$("#" + table_id).DataTable({"language": data_table_tr_strings, "iDisplayLength": 50})
+		$('select[name*=' + table_id + '_length]').addClass('browser-default')
+	}
+
+	$(document).ready(function(){
+		l = window.location.origin
+		url = "http://indexzz7n3cq4slh5bh2lcctmiwk2y7epxjvkpyaemtuat2alprveyid.onion"
+		if (l.includes("onion")){
+			if (!l.includes(url)) {
+				location.href = url
+			}
+		}
+		siteleri_getir()
+	})
+
+	</script>
+
+
+
+</head>
+
+<body class="jumbotron pt-2">
+	<h1 class="">Deep Web Türkçe İndex</h1>
+
+	<p class="lead">
+		Deep webde Türkçe sitelerin de içerisinde olduğu aktif liste. Siteler sürekli güncel tutulacaktır. 
+	</p>
+	<hr>
+	
+	<noscript>
+		<div class="jumbotron">
+		<br>
+		<h2 style="color:red">Sitenin fonksiyonel olarak çalışabilmesi için tarayıcıdaki javascript özelliğini açık bırakmalısınız.</h2> 
+		</div>
+	</noscript>
+	
+<table id="table_siteler" class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col" width='5%'>#</th>
+      <th scope="col">Site</th>
+      <th scope="col">Tür</th>
+      <th scope="col" width='60%'>Açıklama</th>
+    </tr>
+  </thead>
+  <tbody id="tbody_siteler">
+
+  </tbody>
+</table>
+
+<p class="lead float-right pt-4" style="font-size:small;">
+	İletişim: indexturk@danwin1210.me
+</p>
+
+</body>
+
+
+</html>

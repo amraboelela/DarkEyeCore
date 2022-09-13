@@ -1,0 +1,2734 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/mex/ - /tacos/</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=mex"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Actualizar</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=mex">
+    <div>
+      <p id="labelName">/mex/ - /tacos/</p>
+    </div>
+    <p id="labelDescription">México/Méjico</p>
+	<span class="boardLinks">
+		<a href="catalog.html">Catálogo</a>
+		<a id="archiveLinkBoard">Archivar</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Modo: Hilo</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  <tr id="divName">
+    <th>Name</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldName" name="name"></td>
+  </tr>
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="mex"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      <div id="flagsDiv">
+        <select name="flag" id="flagCombobox"><option>Sin bandera</option><option value="62aeb511f08168fc554c7695">Anahuac</option><option value="62aad2fcdc46778c88ce2d7e">Aridoamerica</option><option value="62aeb530de418e1ffbc3eb55">Atlas</option><option value="62ab507d560bb41993487b9a">Aztlan</option><option value="62aeb5314e6104974d1d10b5">Baja California Sur</option><option value="62aeb5314e6104974d1d10b8">Bandera Cristera</option><option value="62aeb5324e6104974d1d10be">Bandera Trigarante</option><option value="62aeb5566f0e83dfcb623bd8">CDMX</option><option value="62aeb557ed13a81410916aa5">Chivas</option><option value="62ab507c560bb41993487b94">Club América</option><option value="62aeb557ed13a81410916aab">Club Pachuca</option><option value="62aeb558651b3cd78fcfc982">Club Queretaro</option><option value="62aec953de418e1ffbc3f412">Club Tijuana</option><option value="62aeb559ed13a81410916aae">Comunismo</option><option value="62aeb559ed13a81410916ab1">Cruz Azul</option><option value="62aeb56979422636687f171d">Doliente Hidalgo</option><option value="62aeb56adb7026f43d793302">Durango</option><option value="62aeb579c79ef6494fdf94f2">Guerrero</option><option value="62aeb7aed4e6b04f040956ff">I Imperio mexicano</option><option value="62aeb7aed4e6b04f04095705">II Imperio mexicano</option><option value="62aad83de2d3b5af941befc5">Jalisco</option><option value="62ab507d560bb41993487b97">Judaismo Mesiánico</option><option value="62ab45378d4215e7d87bf157">Morena</option><option value="62aeb5c0f08168fc554c7740">Movimiento Ciudadano</option><option value="62aeb5c0f08168fc554c774c">Necaxa</option><option value="62aad83f8d4215e7d87bc709">Nueva España</option><option value="62aad83e8d4215e7d87bc706">PAN</option><option value="62aeb5c2ed13a81410916b11">PRI</option><option value="62aeb5c14a727777baea769a">Partido verde</option><option value="62aeb5c14a727777baea769d">Porfiriato</option><option value="62aeb5c2f08168fc554c7761">Pumas</option><option value="62aeb5c3f08168fc554c7764">Queretaro</option><option value="62aeb5c3ed13a81410916b14">Quintana Roo</option><option value="62aeb5c4ed13a81410916b1a">Santos Laguna</option><option value="62aeb5de7c83e0788fa18f29">Sinarquismo</option><option value="62aeb5df7c83e0788fa18f32">Tigres</option><option value="62aeb6819062000ebd7ccc82">Tlaxcala</option><option value="62aeb5df7c83e0788fa18f35">Yucatán</option><option value="62aad5398cf1609faff5e858">Zapatista</option></select>
+        <img class="flagPreview">
+      </div>
+      <div id="noFlagDiv">
+        <input type="checkbox" class="postingCheckbox postingInput" id="checkboxNoFlag" name="noFlag">
+        <label for="checkboxNoFlag"></label>
+      </div>
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Recuerda leer las
+          <a href="rules.html" class="localPageLink">reglas</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage">Tablones hermanos
+Regionales:
+<a href="/arepa">arepa</a>/<a href="/esp">esp</a>/<a href="/col">col</a>/<a href="/pe">pe</a>/<a href="/cc">cc</a>
+General:
+<a href="/hispachan">hispachan</a>/<a href="/hisrol">hisrol</a>/<a href="/ac">ac</a>/<a href="/vt">vt</a>/<a href="/hispatec">hispatec</a>
+NSFW:
+<a href="/sc">sc</a>/<a href="/arte">arte</a>/<a href="/av">av</a>/<a href="/hm">hm</a>/<a href="/hispol">hispol</a></div>
+  </div>
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="mex" id="1809"><hr>
+<div class="innerOP">
+  
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-1809">
+    <span class="labelSubject">Reglas del tablón</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> <span class="labelRole">Board owner</span>
+    <span class="labelCreated">07/02/2022 (Sab) 22:35:35</span>
+    
+    
+    <span class="lockIndicator" title="Locked"></span>
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/1809.html#1809">№</a>
+    <a class="linkQuote" href="/mex/res/1809.html#q1809">1809</a>
+    <a class="linkReply" href="/mex/res/1809.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">1.- No hacer Spam
+2.- Prohibido el CSEM o CP 
+3.- No hacer doxxeo 
+4.- Checa el catálogo antes de crear un nuevo hilo para evitar repetidos
+5.- No desviar los hilos del tema principal
+6.- No pasar links de comercio con contenido que resulte ilegal 
+7.- Poner Timestamp cuando hagas un AMA</div>
+  
+  
+  <div class="labelLastEdit">Editado por última vez por Anon8S en 07/02/2022 (Sab) 22:36:19.</div>
+  
+</div>
+<div class="divPosts"></div>
+</div><div class="opCell" data-boarduri="mex" id="633"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/a4fd33142a5a44734159b9432275207e8db43390640ca85777acd421a2ac9a92.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">62.76 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/a4fd33142a5a44734159b9432275207e8db43390640ca85777acd421a2ac9a92.jpg" download="maxresdefault.jpg">maxresdefault.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/a4fd33142a5a44734159b9432275207e8db43390640ca85777acd421a2ac9a92.jpg" data-filewidth="1280" data-fileheight="720" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_a4fd33142a5a44734159b9432275207e8db43390640ca85777acd421a2ac9a92"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-633">
+    <span class="labelSubject">META & Banderitas</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag" title="Judaismo Mesiánico" src="/mex/flags/62ab507d560bb41993487b97"> <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/16/2022 (Jue) 15:54:24</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    <span class="bumpLockIndicator" title="Bumplocked"></span>
+    
+    <a class="linkSelf" href="/mex/res/633.html#633">№</a>
+    <a class="linkQuote" href="/mex/res/633.html#q633">633</a>
+    <a class="linkReply" href="/mex/res/633.html">[Responder]</a>
+    <a class="linkLast" href="/mex/last/633.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><span class="doomText"> BIENVENIDOS REFUGIADOS DE KC </span>
+
+Lo del titulo negros. Nuevo hilo META. Den ideas para banners, reglas y más
+
+Agregue opción para escoger banderitas, hasta ahorita están:
+
+Fútbol: 
+<span class="greenText">&gt;Atlas</span>
+<span class="greenText">&gt;Chivas</span>
+<span class="greenText">&gt;Club Pachuca</span>
+<span class="greenText">&gt;Club Tijuana</span>
+<span class="greenText">&gt;Club Querétaro</span>
+<span class="greenText">&gt;Cruz Azul</span>
+<span class="greenText">&gt;Necaxa</span>
+<span class="greenText">&gt;Pumas</span>
+<span class="greenText">&gt;Club América</span>
+<span class="greenText">&gt;Santos Laguna</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/mex/res/633.html#633">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  <div class="labelLastEdit">Editado por última vez por Anon8S en 06/30/2022 (Jue) 04:35:54.</div>
+  <div class="labelOmission">67 posts y 61 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2094"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-633-2094">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-au" src="/.static/flags/au.png" title="Australia"> 
+    <span class="labelCreated">07/08/2022 (Vie) 11:41:34</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/633.html#2094">№</a>
+    <a class="linkQuote" href="/mex/res/633.html#q2094">2094</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/633.html#633">&gt;&gt;633</a>
+vatos</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2001"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/52e2ecf5299c0a3d3ed66bfb127e92d150095fb62e931cd3cc64eac1806d6e3f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.07 MB</span> <span class="dimensionLabel">1920x2203</span>
+  <a class="originalNameLink" href="/.media/52e2ecf5299c0a3d3ed66bfb127e92d150095fb62e931cd3cc64eac1806d6e3f.jpg" download="duende.jpg">duende.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/52e2ecf5299c0a3d3ed66bfb127e92d150095fb62e931cd3cc64eac1806d6e3f.jpg" data-filewidth="1920" data-fileheight="2203" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="196" height="225" src="/.media/t_52e2ecf5299c0a3d3ed66bfb127e92d150095fb62e931cd3cc64eac1806d6e3f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2001">
+    <span class="labelSubject">Hilo de chistes</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 19:20:29</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2001.html#2001">№</a>
+    <a class="linkQuote" href="/mex/res/2001.html#q2001">2001</a>
+    <a class="linkReply" href="/mex/res/2001.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><span class="greenText">&gt;En la noche un tipo se encuentra dormido en su cama, de repente se le aparece un duende y le pregunta:</span>
+<span class="greenText">&gt;Duende: ¿¡YA FUISTE A MEAR!?</span>
+<span class="greenText">&gt;Tipo: ¡NOOOOOOO! *Se orina encima*</span>
+<span class="greenText">&gt;El tipo se despierta todo meado. </span>
+<span class="greenText">&gt;A la noche siguiente, el tipo nuevamente dormido en su cama, se le vuelve a aparecer el duende y le pregunta:</span>
+<span class="greenText">&gt;Duende: ¿¡YA FUISTE A MEAR!?</span>
+<span class="greenText">&gt;Tipo: ¡NOOOOOOO! *Se orina encima*</span>
+<span class="greenText">&gt;Una vez más el tipo se despierta todo meado, al no poderlo soportar, el tipo va al psicólogo y le cuenta su sueño recurrente, a lo que el psicólogo le da una solución:</span>
+<span class="greenText">&gt;Psicólogo: Cuando se le vuelva a aparecer el duende y éste le pregunte -¿YA FUISTE A MEAR? usted solo contestele -Si ya fui a mear</span>
+<span class="greenText">&gt;Tipo: esta bien lo pondré en práctica esta noche</span>
+<span class="greenText">&gt;En la noche, el tipo se acuesta en su cama y se duerme, poco después se le aparece el duende y le pregunta:</span>
+<span class="greenText">&gt;Duende: ¿¡YA FUISTE A MEAR!?</span>
+<span class="greenText">&gt;Tipo: Si ya fui a mear</span>
+<span class="greenText">&gt;El duende piensa un momento y le pregunta:</span>
+<span class="greenText">&gt;Duende: ¿¡... Y A CAGAR!?</span>
+<span class="greenText">&gt;Tipo: ¡NOOOOOOO! *Se caga encima*</span></div>
+  
+  
+  
+  <div class="labelOmission">6 posts y 2 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2099"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2001-2099">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 18:50:36</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2001.html#2099">№</a>
+    <a class="linkQuote" href="/mex/res/2001.html#q2099">2099</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/396a2b9fe3d06d6b44bd5637e464b2d06a42356abdd3851b9530c24859e62a24.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">487.19 KB</span> <span class="dimensionLabel">460x344</span>
+  <a class="originalNameLink" href="/.media/396a2b9fe3d06d6b44bd5637e464b2d06a42356abdd3851b9530c24859e62a24.mp4" download="ilouviuo.mp4">ilouviuo.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/396a2b9fe3d06d6b44bd5637e464b2d06a42356abdd3851b9530c24859e62a24.mp4" data-filewidth="460" data-fileheight="344" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="168" src="/.media/t_396a2b9fe3d06d6b44bd5637e464b2d06a42356abdd3851b9530c24859e62a24"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Uno en ingles<span class="spoiler">aprende ingles, huevón</span> pero se entiende fácil</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2100"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2001-2100">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-br" src="/.static/flags/br.png" title="Brasil"> 
+    <span class="labelCreated">07/08/2022 (Vie) 18:57:49</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2001.html#2100">№</a>
+    <a class="linkQuote" href="/mex/res/2001.html#q2100">2100</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2001.html#2099">&gt;&gt;2099</a>
+Al chile tiene el humor bien verguiado pinches negros pendejos. Pongan algo con más creatividad</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2101"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2001-2101">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 20:43:35</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2001.html#2101">№</a>
+    <a class="linkQuote" href="/mex/res/2001.html#q2101">2101</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2001.html#2100">&gt;&gt;2100</a>
+<span class="greenText">&gt;Se queja, no aporta</span>
+Bueno, saca tu mejor calidad, gallo</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2028"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/4cab89f9364ef00ac0031ead4e7355e53c0c23c4ce73190226b324769df73c29.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">754.03 KB</span> <span class="dimensionLabel">693x1457</span>
+  <a class="originalNameLink" href="/.media/4cab89f9364ef00ac0031ead4e7355e53c0c23c4ce73190226b324769df73c29.png" download="1557787357417.png">1557787357417.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/4cab89f9364ef00ac0031ead4e7355e53c0c23c4ce73190226b324769df73c29.png" data-filewidth="693" data-fileheight="1457" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="107" height="225" src="/.media/t_4cab89f9364ef00ac0031ead4e7355e53c0c23c4ce73190226b324769df73c29"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2028">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 02:23:02</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2028.html#2028">№</a>
+    <a class="linkQuote" href="/mex/res/2028.html#q2028">2028</a>
+    <a class="linkReply" href="/mex/res/2028.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">¿Es esto cierto?</div>
+  
+  
+  
+  <div class="labelOmission">13 posts y 7 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2087"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2028-2087">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 03:41:55</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2028.html#2087">№</a>
+    <a class="linkQuote" href="/mex/res/2028.html#q2087">2087</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2028.html#2069">&gt;&gt;2069</a>
+<span class="greenText">&gt;intento #1903432094039 del nortindio para no aceptar que tiene el nopal bien marcado en la cara</span>
+Bien dicen que el incesto deja pendeja a la gente.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2088"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2028-2088">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 05:27:13</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2028.html#2088">№</a>
+    <a class="linkQuote" href="/mex/res/2028.html#q2088">2088</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2028.html#2072">&gt;&gt;2072</a>
+Surindios de nueva cuenta anexados en suicidio reloj</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2095"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2028-2095">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag" src="/mex/flags/62aeb511f08168fc554c7695" title="Anahuac"> 
+    <span class="labelCreated">07/08/2022 (Vie) 14:18:24</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2028.html#2095">№</a>
+    <a class="linkQuote" href="/mex/res/2028.html#q2095">2095</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/17a6ee8d0b465e335816c9909dc0735d6bf585b4cd54f87c4b52941f6b45043b.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">91.72 KB</span> <span class="dimensionLabel">560x1126</span>
+  <a class="originalNameLink" href="/.media/17a6ee8d0b465e335816c9909dc0735d6bf585b4cd54f87c4b52941f6b45043b.jpg" download="IMG&#95;20220708&#95;091147.jpg">IMG&#95;20220708&#95;091147.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/17a6ee8d0b465e335816c9909dc0735d6bf585b4cd54f87c4b52941f6b45043b.jpg" data-filewidth="560" data-fileheight="1126" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="112" height="225" src="/.media/t_17a6ee8d0b465e335816c9909dc0735d6bf585b4cd54f87c4b52941f6b45043b"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Si,la raza blanca siempre será inferior a la mongola</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="1508"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e07d69e7a57ffb962b2f4d2067fbffcd518fa869cf0b5fd284b75586956f9769.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">4.66 MB</span> <span class="dimensionLabel">540x960</span>
+  <a class="originalNameLink" href="/.media/e07d69e7a57ffb962b2f4d2067fbffcd518fa869cf0b5fd284b75586956f9769.mp4" download="Snaptik&#95;7112765172241927429&#95;renatto-solis-parra.mp4">Snaptik&#95;7112765172241927429&#95;renatto-solis-parra.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e07d69e7a57ffb962b2f4d2067fbffcd518fa869cf0b5fd284b75586956f9769.mp4" data-filewidth="540" data-fileheight="960" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="127" height="225" src="/.media/t_e07d69e7a57ffb962b2f4d2067fbffcd518fa869cf0b5fd284b75586956f9769"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-1508">
+    <span class="labelSubject">COMEDIA MEXICANA</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">06/28/2022 (Mar) 14:59:34</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/1508.html#1508">№</a>
+    <a class="linkQuote" href="/mex/res/1508.html#q1508">1508</a>
+    <a class="linkReply" href="/mex/res/1508.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">¿Se acuerdan cuando Eugenio Derbez si daba risa?</div>
+  
+  
+  
+  <div class="labelOmission">29 posts y 13 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2065"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1508-2065">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-pe" src="/.static/flags/pe.png" title="Peru"> 
+    <span class="labelCreated">07/07/2022 (Jue) 19:18:50</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1508.html#2065">№</a>
+    <a class="linkQuote" href="/mex/res/1508.html#q2065">2065</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1508.html#2064">&gt;&gt;2064</a>
+No confundir el cringe que da tu meme de tiktiki con el ardor anal (que probablemente estás proyectando)
+<span class="greenText">&gt;aldo</span>
+A tu jaula &gt;&gt;/tiktok/</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2066"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1508-2066">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 19:34:19</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1508.html#2066">№</a>
+    <a class="linkQuote" href="/mex/res/1508.html#q2066">2066</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1508.html#2065">&gt;&gt;2065</a>
+<span class="greenText">&gt;el &quot;argumento&quot; de la proyección</span>
+Awwwww solo eso sabe ladrar pinche otako, ese negro te jodió y lo sabes
+Hasta yo puedo oler tu culito tatemado</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2093"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1508-2093">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-pe" src="/.static/flags/pe.png" title="Peru"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:24:01</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1508.html#2093">№</a>
+    <a class="linkQuote" href="/mex/res/1508.html#q2093">2093</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1508.html#1556">&gt;&gt;1556</a>
+A mí me daba risa ese diablito jorge (de niño me daba miedo kek) y el longemoco</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2054"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">286.56 KB</span> <span class="dimensionLabel">853x480</span>
+  <a class="originalNameLink" href="/.media/b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1.png" download="infinity cup committee.png">infinity cup committee.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1.png" data-filewidth="853" data-fileheight="480" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_b57d1ddc03bc44a0459800ef2be350a890b84fca5abdaf645c18d44d9d06ecb1"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2054">
+    <span class="labelSubject">Infinity Cup</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-in" title="India" src="/.static/flags/in.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 16:36:47</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2054.html#2054">№</a>
+    <a class="linkQuote" href="/mex/res/2054.html#q2054">2054</a>
+    <a class="linkReply" href="/mex/res/2054.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hola anónimos, 
+¿te gustaría participar en nuestro torneo de fútbol? Si no sabes lo que es, es un torneo que se lleva a cabo en <a target="&#95;blank" href="https://anon.cafe/icup/">https://anon.cafe/icup/</a> donde juegan todos los grandes tableros para ver cuál es el mejor. Si lo deseas, puedes participar haciendo un hilo allí.</div>
+  
+  
+  
+  <div class="labelOmission">1 post y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2076"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2054-2076">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-it" src="/.static/flags/it.png" title="Italy"> 
+    <span class="labelCreated">07/07/2022 (Jue) 21:38:09</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2054.html#2076">№</a>
+    <a class="linkQuote" href="/mex/res/2054.html#q2076">2076</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2054.html#2059">&gt;&gt;2059</a>
+no it isn&apos;t, it&apos;s just an autist trying to invite you</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2079"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2054-2079">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 21:56:23</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2054.html#2079">№</a>
+    <a class="linkQuote" href="/mex/res/2054.html#q2079">2079</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/155caae115c460de5d56a31af3503a8d835023b8525455972301c3811f543b08.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">39.66 KB</span> <span class="dimensionLabel">678x452</span>
+  <a class="originalNameLink" href="/.media/155caae115c460de5d56a31af3503a8d835023b8525455972301c3811f543b08.jpg" download="images - 2022-07-07T155533.879.jpeg">images - 2022-07-07T155533.879.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/155caae115c460de5d56a31af3503a8d835023b8525455972301c3811f543b08.jpg" data-filewidth="678" data-fileheight="452" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="150" src="/.media/t_155caae115c460de5d56a31af3503a8d835023b8525455972301c3811f543b08"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2054.html#2054">&gt;&gt;2054</a>
+Me uno al torneo, pero solo si es futbolito de mesa :3</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2092"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2054-2092">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag" src="/mex/flags/62aeb5324e6104974d1d10be" title="Bandera Trigarante"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:23:16</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2054.html#2092">№</a>
+    <a class="linkQuote" href="/mex/res/2054.html#q2092">2092</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2054.html#2076">&gt;&gt;2076</a>
+Qué riatas dijiste de mi jefa hijo de tu perra bomba madre?</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2067"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/230866a0d864d32b705121ad5e4f04d4c3cbdd3140f8722a5893f01446d4288d.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">156.46 KB</span> <span class="dimensionLabel">1110x2048</span>
+  <a class="originalNameLink" href="/.media/230866a0d864d32b705121ad5e4f04d4c3cbdd3140f8722a5893f01446d4288d.jpg" download="1657217622316.jpg">1657217622316.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/230866a0d864d32b705121ad5e4f04d4c3cbdd3140f8722a5893f01446d4288d.jpg" data-filewidth="1110" data-fileheight="2048" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="122" height="225" src="/.media/t_230866a0d864d32b705121ad5e4f04d4c3cbdd3140f8722a5893f01446d4288d"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2067">
+    <span class="labelSubject">diPUTAdas</span>
+    <a class="linkName  noEmailName" >Anonimo</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 19:34:33</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2067.html#2067">№</a>
+    <a class="linkQuote" href="/mex/res/2067.html#q2067">2067</a>
+    <a class="linkReply" href="/mex/res/2067.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Alito tenía los “packs” de diputadas del PRI en su celular, seguramente para chantajearlas y extorcionarlas en caso de no obedecerlo, qué vergüenza! 
+
+(Si los tienen rolenlos)
+
+<a target="&#95;blank" href="https://formato7.com/2022/07/06/alito-moreno-tiene-el-pack-de-varias-diputadas-layda-sansores">https://formato7.com/2022/07/06/alito-moreno-tiene-el-pack-de-varias-diputadas-layda-sansores</a></div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2078"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2067-2078">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 21:52:21</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2067.html#2078">№</a>
+    <a class="linkQuote" href="/mex/res/2067.html#q2078">2078</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2067.html#2067">&gt;&gt;2067</a>
+¿O sea que Alito es un Alfa?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2091"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2067-2091">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 07:04:35</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2067.html#2091">№</a>
+    <a class="linkQuote" href="/mex/res/2067.html#q2091">2091</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/da2f0655923dd984308473c159d9d420b8f838f614f0a4cfe4e0b90824658355.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">17.70 KB</span> <span class="dimensionLabel">320x251</span>
+  <a class="originalNameLink" href="/.media/da2f0655923dd984308473c159d9d420b8f838f614f0a4cfe4e0b90824658355.jpg" download="158126013153.jpg">158126013153.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/da2f0655923dd984308473c159d9d420b8f838f614f0a4cfe4e0b90824658355.jpg" data-filewidth="320" data-fileheight="251" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="176" src="/.media/t_da2f0655923dd984308473c159d9d420b8f838f614f0a4cfe4e0b90824658355"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><span class="greenText">&gt;basado el alito</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2003"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/0980210a0f9253155a920053792609df92f2df4b6aea85fdaeecf44f9bbe3cde.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">78.83 KB</span> <span class="dimensionLabel">630x507</span>
+  <a class="originalNameLink" href="/.media/0980210a0f9253155a920053792609df92f2df4b6aea85fdaeecf44f9bbe3cde.jpg" download="163168059729.jpg">163168059729.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/0980210a0f9253155a920053792609df92f2df4b6aea85fdaeecf44f9bbe3cde.jpg" data-filewidth="630" data-fileheight="507" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="181" src="/.media/t_0980210a0f9253155a920053792609df92f2df4b6aea85fdaeecf44f9bbe3cde"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2003">
+    <span class="labelSubject">Esto fue lo que me aconteció y telotocuen</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag" title="Anahuac" src="/mex/flags/62aeb511f08168fc554c7695"> 
+    <span class="labelCreated">07/06/2022 (Mie) 19:24:31</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2003.html#2003">№</a>
+    <a class="linkQuote" href="/mex/res/2003.html#q2003">2003</a>
+    <a class="linkReply" href="/mex/res/2003.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Pues pasa y resulta que sábado y domingo estuvo viniendo un señor albañil a trabajar a mi casa para hacer unas adecuaciones. Era un don ya rondando sus cincuentas que le sabía a todo: albañilería, carpintería, plomería, electricidad, cerrajería, colocación de azulejos, etcétera.
+
+Yo estuve ahí viéndolo chambear muy contento con su Coca y su cigarro. Parecía que no necesitaba más (además de su paga, obviamente) para chingarle duro sin perder el buen ánimo. Observé sus manos y se ve que el cabrón efectivamente lleva casi 40 años chingándole. Uno de sus dedos índice se quedó para siempre doblado en 90° y el otro lo traía como vendado como con cinta de esa que parece masking tape de tela. No le pregunté qué le había pasado ni en uno ni en otro. Se ve que sus manos ya apenas se mueven, pero aún así estuvo dándole chingón al cincel, cortando con sierra con punta de diamante, soldando, y todo el pedo con esas manos madreadas de tanto trabajo. Me platicó un poco de su vida, que venía de Guajaka, que si la vida es cabrona, que si a veces ha estado a punto de morir subido en alguna madre para colocar algo a decenas de metros de altura, y todo con una sonrisa mientras fumaba y se chutaba su Coca.
+
+Yo en cambio soy un millenial de 33 años que, aunque tiene estudios universitarios, no sabe ni cambiar un apagador de la luz además de que tengo mis manitas suavecitas y cuidaditas. Lo más madreado que las he tenido fue cuando tuve las yemas de los dedos con callitos por tocar la guitarra eléctrica y sentirme bien jarcor. Aunque él es más chaparro y delgado que yo, carga cosas con las que yo me vería como un pendejo sin huevos. Me pregunto cómo será un día de descanso de ese don ya limpio y viendo sus manos madreadas por tanta chinga pesada. Nunca va a poder tocar una guitarra o jugar un bideogüejo con esos dedos madreados que ya casi no se mueven. Pero aún así parece ser alguien más feliz que uno con menos y siendo básicamente un animal de carga. Yo no me podría subir como chango a los lugares que él se sube sin miarme en mis calzones y terminar paralizado de miedo antes de la mitad. Pinches albañiles, la neta son cabrones pero también es cierto que nosotros nos hemos ido volviendo débiles y femeninos. Mientras les relato esto dudo seriamente en si debería de reconocer que ese señor es más hombre que yo ya que yo no estaría dispuesto a terminar con las manos así de madreadas ni en llevarme las chingas que él se lleva además de que si un día a él se le ocurriera llamarme &quot;putito&quot;, sabiendo él su propio camino recorrido, yo no tendría cómo decirle que no. ¿Es ese el precio a pagar para poder decir con toda la boca que se es un hombre? ¿Estarías dispuesto a pagarlo?</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2077"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2003-2077">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 21:42:24</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2003.html#2077">№</a>
+    <a class="linkQuote" href="/mex/res/2003.html#q2077">2077</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7442307d2ecb5bb7378d94798906f1f7e0789f7b4b82bcd224987d3425975a64.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">23.68 KB</span> <span class="dimensionLabel">407x419</span>
+  <a class="originalNameLink" href="/.media/7442307d2ecb5bb7378d94798906f1f7e0789f7b4b82bcd224987d3425975a64.jpg" download="164150182911.jpg">164150182911.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7442307d2ecb5bb7378d94798906f1f7e0789f7b4b82bcd224987d3425975a64.jpg" data-filewidth="407" data-fileheight="419" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="219" height="225" src="/.media/t_7442307d2ecb5bb7378d94798906f1f7e0789f7b4b82bcd224987d3425975a64"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Pinche murote de texto para decir que eres un afeminado huevón.
+
+Aldo, cuando fui más joven me valia verga, pero ahora que estoy mas grande trato de ayudarle a mi jefe en lo que se pueda y al mismo tiempo aprender lo que se pueda de el, pues sabe bastante. Por ejemplo gracias a mi jefe ahora que tengo mi carro ya se algo de mecanica basica, se cambiar aceite, bujias, etc seevicio basico, y obviame algo tan simple como cambiarle la llanta al carro si se queda ponchado. Entre mas sepas, mas te ahorras dinero y lo que no se trato de repararlo yo mismo viendo videos en jewtube, me han salvado de muchos pedos.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2089"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2003-2089">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 06:23:19</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2003.html#2089">№</a>
+    <a class="linkQuote" href="/mex/res/2003.html#q2089">2089</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><span class="greenText">&gt;Nunca va a poder tocar una guitarra</span>
+Padrino, ¿nunca oíste hablar de Tony Iommi?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2090"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2003-2090">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 06:46:11</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2003.html#2090">№</a>
+    <a class="linkQuote" href="/mex/res/2003.html#q2090">2090</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2003.html#2089">&gt;&gt;2089</a>
+No te vayas tan lejos, Django Reinhart era una bestia con la guitarra y el tipo le faltaban dedos y tenia artritis.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2085"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8bf235209108f19727150c4c8979919c78cf9e32691d6d2125e4dddb102bcb06.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">10.63 KB</span> <span class="dimensionLabel">390x280</span>
+  <a class="originalNameLink" href="/.media/8bf235209108f19727150c4c8979919c78cf9e32691d6d2125e4dddb102bcb06.jpg" download="images (3).jpeg">images (3).jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8bf235209108f19727150c4c8979919c78cf9e32691d6d2125e4dddb102bcb06.jpg" data-filewidth="390" data-fileheight="280" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="162" src="/.media/t_8bf235209108f19727150c4c8979919c78cf9e32691d6d2125e4dddb102bcb06"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2085">
+    <span class="labelSubject">Diganme cuales son las funeraria mas grandes de su ciudad</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/08/2022 (Vie) 02:32:29</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2085.html#2085">№</a>
+    <a class="linkQuote" href="/mex/res/2085.html#q2085">2085</a>
+    <a class="linkReply" href="/mex/res/2085.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Pues eso, negros, mi padre y yo hacemos feretros para las funerarias de mi ciudad y queremos expandernos, ¿me podrian decir cuales son las funerarias que mas atienden en donde viven?</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2086"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2085-2086">
+    <span class="labelSubject">Op</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/08/2022 (Vie) 02:33:25</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2085.html#2086">№</a>
+    <a class="linkQuote" href="/mex/res/2085.html#q2086">2086</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/55096f6e8823ba915b2f643cde5244416a04278967c4bbc14f694fe8d599e146.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">3.67 MB</span> <span class="dimensionLabel">4000x5505</span>
+  <a class="originalNameLink" href="/.media/55096f6e8823ba915b2f643cde5244416a04278967c4bbc14f694fe8d599e146.jpg" download="55096f6e8823ba915b2f643cde5244416a04278967c4bbc14f694fe8d599e146.jpg">55096f6e8823ba915b2f643cde5244416a04278967c4bbc14f694fe8d599e146.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/55096f6e8823ba915b2f643cde5244416a04278967c4bbc14f694fe8d599e146.jpg" data-filewidth="4000" data-fileheight="5505" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="163" height="225" src="/.media/t_55096f6e8823ba915b2f643cde5244416a04278967c4bbc14f694fe8d599e146"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Y op les paga con monaschina (token &#36;monachina)</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="1674"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1d1262f7e99535bf23bfac484536c00d5ccceea6e5d40261dfdc8c275e68ca9b.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">42.98 KB</span> <span class="dimensionLabel">475x646</span>
+  <a class="originalNameLink" href="/.media/1d1262f7e99535bf23bfac484536c00d5ccceea6e5d40261dfdc8c275e68ca9b.jpg" download="images (1).jpeg">images (1).jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1d1262f7e99535bf23bfac484536c00d5ccceea6e5d40261dfdc8c275e68ca9b.jpg" data-filewidth="475" data-fileheight="646" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="165" height="225" src="/.media/t_1d1262f7e99535bf23bfac484536c00d5ccceea6e5d40261dfdc8c275e68ca9b"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-1674">
+    
+    <a class="linkName  noEmailName" >Amo a natalia lafourcada</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">06/30/2022 (Jue) 16:10:05</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/1674.html#1674">№</a>
+    <a class="linkQuote" href="/mex/res/1674.html#q1674">1674</a>
+    <a class="linkReply" href="/mex/res/1674.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Es hermosa. Although he is already in his 40s, he looks very young for his age. I love her.</div>
+  
+  
+  
+  <div class="labelOmission">23 posts y 22 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2071"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1674-2071">
+    
+    <a class="linkName  noEmailName" >Anonimo</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 20:19:01</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1674.html#2071">№</a>
+    <a class="linkQuote" href="/mex/res/1674.html#q2071">2071</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ead874fe6e0232ac538fa77b34ee58aa071d5e968763948be7904500d7cefc42.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">102.78 KB</span> <span class="dimensionLabel">1301x613</span>
+  <a class="originalNameLink" href="/.media/ead874fe6e0232ac538fa77b34ee58aa071d5e968763948be7904500d7cefc42.jpg" download="jazz.jpg">jazz.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ead874fe6e0232ac538fa77b34ee58aa071d5e968763948be7904500d7cefc42.jpg" data-filewidth="1301" data-fileheight="613" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="106" src="/.media/t_ead874fe6e0232ac538fa77b34ee58aa071d5e968763948be7904500d7cefc42"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1674.html#1874">&gt;&gt;1874</a>
+<span class="greenText">&gt;ya que recordemos que jessy no se limpia bien la colita</span>
+
+¿Según quien? ¿Ya fuiste a olerle la cola?
+
+Aldo, no se olviden de la narizona de Jazz, aunque ella ya el oldschool de Acabatelo.
+
+Por cierto en youtube ya esta saliendo otro nuevo programa especie de Acabatelo con Mayo Bezares y parte del elenco de Acabatelo, se llama Ay Te Va.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2080"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1674-2080">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 21:59:37</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1674.html#2080">№</a>
+    <a class="linkQuote" href="/mex/res/1674.html#q2080">2080</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1674.html#2071">&gt;&gt;2071</a>
+¿esta es la wera que según fajaba con shotas?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2084"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1674-2084">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 23:00:59</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1674.html#2084">№</a>
+    <a class="linkQuote" href="/mex/res/1674.html#q2084">2084</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1674.html#2071">&gt;&gt;2071</a>
+<span class="greenText">&gt;Por cierto en youtube ya esta saliendo otro nuevo programa especie de Acabatelo con Mayo Bezares y parte del elenco de Acabatelo, se llama Ay Te Va.</span>
+no mames, hay un mar de contenido de calidad en el <span class="echoText">(((Tubo)))</span> y tú te pones a peder el tiempo con contenido basura donde pedestalean a pinches viejas cabezahueca robaoxígeno</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2081"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b32b4d72d6c9520d823d13f9bf89ca2201ab266898292ca737cdee09a1064a48.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">20.41 KB</span> <span class="dimensionLabel">223x226</span>
+  <a class="originalNameLink" href="/.media/b32b4d72d6c9520d823d13f9bf89ca2201ab266898292ca737cdee09a1064a48.jpg" download="images.jpeg">images.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b32b4d72d6c9520d823d13f9bf89ca2201ab266898292ca737cdee09a1064a48.jpg" data-filewidth="223" data-fileheight="226" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="222" height="225" src="/.media/t_b32b4d72d6c9520d823d13f9bf89ca2201ab266898292ca737cdee09a1064a48"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2081">
+    <span class="labelSubject">¿Como le ofrezco un producto a alguien por corrreo electronico?</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 22:10:53</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2081.html#2081">№</a>
+    <a class="linkQuote" href="/mex/res/2081.html#q2081">2081</a>
+    <a class="linkReply" href="/mex/res/2081.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Pues eso, digamos que tengo un producto con el que puedo ser millonario y hay millones de posibles distribuidores en todo el pais, ¿como los abordo por correo?, ¿como convencerias a alguien de unirte a tu negocio de comprarte algo?
+
+Ellos venderian mi producto a mil pesos y yo a ellos por 400</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2082"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2081-2082">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 22:27:30</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2081.html#2082">№</a>
+    <a class="linkQuote" href="/mex/res/2081.html#q2082">2082</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2081.html#2081">&gt;&gt;2081</a>
+estafar por correo ya no lo hace ni mi abuelo, nigger
+mejor hazte yutuber de chingaderas de miedo o podcast  narrando memes</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2083"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2081-2083">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 22:54:14</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2081.html#2083">№</a>
+    <a class="linkQuote" href="/mex/res/2081.html#q2083">2083</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e359331ab342222ecfa0f3f42de8c44c218ea27b3879ebb0c73698f47eb2a4ca.gif"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.98 MB</span> <span class="dimensionLabel">480x360</span>
+  <a class="originalNameLink" href="/.media/e359331ab342222ecfa0f3f42de8c44c218ea27b3879ebb0c73698f47eb2a4ca.gif" download="151174587287.gif">151174587287.gif</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e359331ab342222ecfa0f3f42de8c44c218ea27b3879ebb0c73698f47eb2a4ca.gif" data-filewidth="480" data-fileheight="360" data-filemime="image/gif">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="169" src="/.media/t_e359331ab342222ecfa0f3f42de8c44c218ea27b3879ebb0c73698f47eb2a4ca"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2081.html#2081">&gt;&gt;2081</a>
+Que exactamente es dicho producto o al menos mas o menos de que se trata, si es que no quieres revelar el magnifico &quot;secreto&quot;.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2010"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8f98d3f2a9d9b3468e5c4b5e03a00da037a415a88cee4f1f8771abf486119166.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">32.65 KB</span> <span class="dimensionLabel">500x500</span>
+  <a class="originalNameLink" href="/.media/8f98d3f2a9d9b3468e5c4b5e03a00da037a415a88cee4f1f8771abf486119166.jpg" download="1657137903509.jpg">1657137903509.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8f98d3f2a9d9b3468e5c4b5e03a00da037a415a88cee4f1f8771abf486119166.jpg" data-filewidth="500" data-fileheight="500" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_8f98d3f2a9d9b3468e5c4b5e03a00da037a415a88cee4f1f8771abf486119166"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2010">
+    <span class="labelSubject">Las consecuencias nunca seran las mismas</span>
+    <a class="linkName  noEmailName" >Josecarlosgarcia@gmail.com</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 20:49:53</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2010.html#2010">№</a>
+    <a class="linkQuote" href="/mex/res/2010.html#q2010">2010</a>
+    <a class="linkReply" href="/mex/res/2010.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Escuchen malditos, ya llame a la ciberpolicia malditos, ya vienen por ustedes malditos, las consecuensias nunca seran las mismas</div>
+  
+  
+  
+  <div class="labelOmission">1 post y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2015"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2010-2015">
+    
+    <a class="linkName  noEmailName" >Pocho salta muros</a>
+    <img class="imgFlag flag-us" src="/.static/flags/us.png" title="United States of 'Murica"> 
+    <span class="labelCreated">07/06/2022 (Mie) 21:51:32</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2010.html#2015">№</a>
+    <a class="linkQuote" href="/mex/res/2010.html#q2015">2015</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Jajajaja realmente puso su correo en correo</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2073"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2010-2073">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 20:38:05</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2010.html#2073">№</a>
+    <a class="linkQuote" href="/mex/res/2010.html#q2073">2073</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2010.html#2015">&gt;&gt;2015</a>
+muérete porfis</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2074"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2010-2074">
+    
+    <a class="linkName  noEmailName" >Anonimo</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 20:50:27</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2010.html#2074">№</a>
+    <a class="linkQuote" href="/mex/res/2010.html#q2074">2074</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/415a0bb6164056f3c1a4b22baac6d25882afe808b39c260101a612632ffcf2fd.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">92.39 KB</span> <span class="dimensionLabel">850x550</span>
+  <a class="originalNameLink" href="/.media/415a0bb6164056f3c1a4b22baac6d25882afe808b39c260101a612632ffcf2fd.jpg" download="Damien&#95;Current.jpg">Damien&#95;Current.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/415a0bb6164056f3c1a4b22baac6d25882afe808b39c260101a612632ffcf2fd.jpg" data-filewidth="850" data-fileheight="550" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="146" src="/.media/t_415a0bb6164056f3c1a4b22baac6d25882afe808b39c260101a612632ffcf2fd"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2010.html#2010">&gt;&gt;2010</a>
+Ese meymey de 4chanclas es VIEJÍSIMO, nuevoputo. Yo estuve ahí hace mas de una decada cuando todo sucedio y se dio el boom de Jessi Slaugther.
+
+Bienvenido al internet.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2008"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/12725a5671e6c58e5a25f09dfee21397afec162df2f19fb3c2701129245f9faa.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">101.72 KB</span> <span class="dimensionLabel">503x755</span>
+  <a class="originalNameLink" href="/.media/12725a5671e6c58e5a25f09dfee21397afec162df2f19fb3c2701129245f9faa.jpg" download="meteorix31.JPG">meteorix31.JPG</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/12725a5671e6c58e5a25f09dfee21397afec162df2f19fb3c2701129245f9faa.jpg" data-filewidth="503" data-fileheight="755" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="150" height="225" src="/.media/t_12725a5671e6c58e5a25f09dfee21397afec162df2f19fb3c2701129245f9faa"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2008">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 20:13:39</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2008.html#2008">№</a>
+    <a class="linkQuote" href="/mex/res/2008.html#q2008">2008</a>
+    <a class="linkReply" href="/mex/res/2008.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Ahora que ya no está el chichón para borrar todo lo que no le gusta sí vale la pena elaborar un post (y un hilo) sobre por qué Meteorix es el último gran cómic de este país y cómo es que logró sobrevivir casi una década en una época donde no sólo el noveno arte, sino los medios impresos en general, básicamente ya no existía como industria.
+
+Con su muy particular y característico estilo, el creador del &quot;manganako&quot; como él mismo lo definió, se encargó de conjuntar elementos visuales y narrativos bastante efectivos en el público mexicano no sólo desde ese entonces sino hasta incluso en estos días en donde se puede decir que el cómic ha envejecido bastante bien y sigue siendo requete-cotorro.
+
+Sin duda lo mejor de Meteorix son sus personajes. Todos son tan tridimensionales que realmente parecen vivos. Es curioso cómo la sátira y el uso de estos estereotipos, que se toman para nada en serio a sí mismos, llegan a quedarse tan adentro de nuestros corazones por las vivencias, las puntadas, y los chistoretes que se avientan como si realmente fueran cualquier compañerito de la escuela o de la cuadra. El Aldo, el May, la Lucy, la Eva, &quot;el Garapiñado&quot;, el don Chencho, el Nando, la profe Katzandra, el agente Margarito Menchaca, el Pingüitron (que es la mera verga), a todos gracias por haberme dado una pubertad tan llena de buenas risas y deliciosas pajas. Pero sobre todo gracias a ti, Break, por haber sido con tu obra un gran acompañante e inspiración. Te debo muchos buenos ratos desde hace muchos años y seguramente la deuda seguirá acumulándose porque voy a seguir leyendo Meteorix hasta que me muera porque está bien chido.</div>
+  
+  
+  
+  <div class="labelOmission">4 posts omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2052"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2008-2052">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 16:01:47</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2008.html#2052">№</a>
+    <a class="linkQuote" href="/mex/res/2008.html#q2052">2052</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2008.html#2051">&gt;&gt;2051</a>
+Cierra al salir kuek</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2055"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2008-2055">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag" src="/mex/flags/62aeb5566f0e83dfcb623bd8" title="CDMX"> 
+    <span class="labelCreated">07/07/2022 (Jue) 16:44:48</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2008.html#2055">№</a>
+    <a class="linkQuote" href="/mex/res/2008.html#q2055">2055</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/54ef2e43f14105ef2d37a29e0642a8f9e8585a2f1818c315cfcb1223b998f62e.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">94.65 KB</span> <span class="dimensionLabel">768x1024</span>
+  <a class="originalNameLink" href="/.media/54ef2e43f14105ef2d37a29e0642a8f9e8585a2f1818c315cfcb1223b998f62e.jpg" download="culoflameado.jpg">culoflameado.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/54ef2e43f14105ef2d37a29e0642a8f9e8585a2f1818c315cfcb1223b998f62e.jpg" data-filewidth="768" data-fileheight="1024" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="169" height="225" src="/.media/t_54ef2e43f14105ef2d37a29e0642a8f9e8585a2f1818c315cfcb1223b998f62e"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2008.html#2051">&gt;&gt;2051</a>
+Pinche culo todo flameado kek</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2063"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2008-2063">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 18:55:17</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2008.html#2063">№</a>
+    <a class="linkQuote" href="/mex/res/2008.html#q2063">2063</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2008.html#2051">&gt;&gt;2051</a>
+Que pedo pinche amado, se te dilató el ano muy rápido, no?
+Ahhh pero cuando yo quería compartirles mis scans del comic pedorro 
+me mandaron a la verga y se la pasaron shitposteando a sus meme lolcows
+pinches bola de pateticos, yoquería aportar a esos hilos de meteorix en buen plan y na mas me tiraban de a loco, ahora tu te vas a la recontra verga.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="2056"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/d7fa95a1b289f372052ce12cd661054b4f608b8877747f5f30b932f815566f16.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">64.85 KB</span> <span class="dimensionLabel">702x1132</span>
+  <a class="originalNameLink" href="/.media/d7fa95a1b289f372052ce12cd661054b4f608b8877747f5f30b932f815566f16.jpg" download="IMG&#95;20220707&#95;114224.jpg">IMG&#95;20220707&#95;114224.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/d7fa95a1b289f372052ce12cd661054b4f608b8877747f5f30b932f815566f16.jpg" data-filewidth="702" data-fileheight="1132" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="140" height="225" src="/.media/t_d7fa95a1b289f372052ce12cd661054b4f608b8877747f5f30b932f815566f16"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-2056">
+    <span class="labelSubject">Caucasicos que se creen amerindios</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/07/2022 (Jue) 16:45:08</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/2056.html#2056">№</a>
+    <a class="linkQuote" href="/mex/res/2056.html#q2056">2056</a>
+    <a class="linkReply" href="/mex/res/2056.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Porque los morosos se creen indigenas mongolides?
+Ejemplo tenoch huerta y así
+
+Si yo fuera morisco larpearia de Mesopotamio sirico no de maya tenochca</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2057"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2056-2057">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag" src="/mex/flags/62aeb5c14a727777baea769d" title="Porfiriato"> 
+    <span class="labelCreated">07/07/2022 (Jue) 16:48:32</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2056.html#2057">№</a>
+    <a class="linkQuote" href="/mex/res/2056.html#q2057">2057</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7ed6e940afc523f737f21db1e1b7e31c9976c7256c4cdca34ba5d3bed4ff0c25.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">6.67 KB</span> <span class="dimensionLabel">275x183</span>
+  <a class="originalNameLink" href="/.media/7ed6e940afc523f737f21db1e1b7e31c9976c7256c4cdca34ba5d3bed4ff0c25.jpg" download="images.jpg">images.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7ed6e940afc523f737f21db1e1b7e31c9976c7256c4cdca34ba5d3bed4ff0c25.jpg" data-filewidth="275" data-fileheight="183" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="150" src="/.media/t_7ed6e940afc523f737f21db1e1b7e31c9976c7256c4cdca34ba5d3bed4ff0c25"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/2056.html#2056">&gt;&gt;2056</a>
+Fácil wei.
+Porque si eres prieto la sociedad te va a tratar mal y todos los putos prietos se enviolentan devolada, entonces adoptan algo para sentirse orgullosos.
+Igual que los manlets se envergan más que un wey gigante</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2058"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-2056-2058">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 16:51:09</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/2056.html#2058">№</a>
+    <a class="linkQuote" href="/mex/res/2056.html#q2058">2058</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Ese tipo parece Judas,que va ser indigena.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="1986"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1fd3fd1d9c89535a81bfef878c6c8f330464b3622af2d318c924f8c73f712575.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">383.17 KB</span> <span class="dimensionLabel">2340x1080</span>
+  <a class="originalNameLink" href="/.media/1fd3fd1d9c89535a81bfef878c6c8f330464b3622af2d318c924f8c73f712575.jpg" download="Screenshot&#95;20220703&#95;022808&#95;com.snaptube.premium.jpg">Screenshot&#95;20220703&#95;022808&#95;com.snaptube.premium.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1fd3fd1d9c89535a81bfef878c6c8f330464b3622af2d318c924f8c73f712575.jpg" data-filewidth="2340" data-fileheight="1080" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="104" src="/.media/t_1fd3fd1d9c89535a81bfef878c6c8f330464b3622af2d318c924f8c73f712575"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-1986">
+    <span class="labelSubject">Mi madre quiere viajar a Mejico</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-pe" title="Peru" src="/.static/flags/pe.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 15:28:07</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/1986.html#1986">№</a>
+    <a class="linkQuote" href="/mex/res/1986.html#q1986">1986</a>
+    <a class="linkReply" href="/mex/res/1986.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Lo de arriba.
+Vio tantas novelas, es Super devota de la Guadalupe y su sueño es ir a Mejico kek.
+
+¿Consejos de buenos lugares bonitos donde al menos no hayan narcos defendiendo su territorio?
+¿O consejos y contenido para convencerla que es mala idea?</div>
+  
+  
+  
+  <div class="labelOmission">2 posts omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="1991"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1986-1991">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/06/2022 (Mie) 16:39:52</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1986.html#1991">№</a>
+    <a class="linkQuote" href="/mex/res/1986.html#q1991">1991</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7792cdd3b32b3f48fd5d60739d3777fc1b4a53303831903cce5fc218a4dc78e3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">4.07 MB</span> <span class="dimensionLabel">1440x2372</span>
+  <a class="originalNameLink" href="/.media/7792cdd3b32b3f48fd5d60739d3777fc1b4a53303831903cce5fc218a4dc78e3.png" download="151684517596.png">151684517596.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7792cdd3b32b3f48fd5d60739d3777fc1b4a53303831903cce5fc218a4dc78e3.png" data-filewidth="1440" data-fileheight="2372" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="137" height="225" src="/.media/t_7792cdd3b32b3f48fd5d60739d3777fc1b4a53303831903cce5fc218a4dc78e3"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1986.html#1986">&gt;&gt;1986</a>
+sueltale unos putazos y que mejor utilice ese dinero en algo productivo; el turismo en mexico esta supravalorado; nadie en su sano juicio debería querer venir a este hoyo de mierda abandonado de la mano de dios <span class="spoiler">y tan cerca de EEUU</span>.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2002"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1986-2002">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-gt" src="/.static/flags/gt.png" title="Guatemala"> 
+    <span class="labelCreated">07/06/2022 (Mie) 19:22:18</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1986.html#2002">№</a>
+    <a class="linkQuote" href="/mex/res/1986.html#q2002">2002</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1986.html#1986">&gt;&gt;1986</a>
+Decile que no sea pendeja. Está en uno de los países más basados de sudacaland y quiere venir a el peor país en el que haya vivido tan solo después de Guatepeor. En serio que me sorprende lo retrasada que puede ser tu jefa, rompele un palo de escoba en la cabeza a ver si se le quita lo estúpida.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2050"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1986-2050">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 14:48:35</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1986.html#2050">№</a>
+    <a class="linkQuote" href="/mex/res/1986.html#q2050">2050</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Si es novelera entonces que vaya al lugar que le gusto mas en sus telenovelas, a veces estan hechas solo para promocionar cierto estado o ciudad.
+En su defecto llevala a donde este anon te menciona <a class="quoteLink" href="/mex/res/1986.html#1990">&gt;&gt;1990</a> y aparte hazla pasear por Santa Fe (donde los ricos de las novelas se la pasan) la calle del Angel, tal vez la calle esa donde esta Bellas Artes y la Torre Latinoamericana y por ahi tal vez incluso puedas llevarla a lugares donde estan las casas de los ricos pero no sabria decir que colonias son.
+De ahi en fuera no recomiendo mucho mas, Mexico como destino turistico a bajado muchisimo de calidad, ya no es ese paraiso que se le consideraba en los 80&apos;s y 90&apos;s por culpa de todos los changos que van a esas ciudades turisticas a servir como pesimos meseros y/o robarle a los foraneos, aparte de la burocracia y las filas inmesas para hacer o ver actividades triviales o sobrevaloradas.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="mex" id="1998"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/82d2297a0c22ae5853d4bf0f61917a818f277c8331fe3817e0337efca92bdcf7.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">134.62 KB</span> <span class="dimensionLabel">828x1044</span>
+  <a class="originalNameLink" href="/.media/82d2297a0c22ae5853d4bf0f61917a818f277c8331fe3817e0337efca92bdcf7.jpg" download="1657120504793.jpg">1657120504793.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/82d2297a0c22ae5853d4bf0f61917a818f277c8331fe3817e0337efca92bdcf7.jpg" data-filewidth="828" data-fileheight="1044" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="178" height="225" src="/.media/t_82d2297a0c22ae5853d4bf0f61917a818f277c8331fe3817e0337efca92bdcf7"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="mex-1998">
+    <span class="labelSubject">¿Que carrera estudian?...</span>
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" title="Mexico" src="/.static/flags/mx.png"> 
+    <span class="labelCreated">07/06/2022 (Mie) 18:36:44</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/mex/res/1998.html#1998">№</a>
+    <a class="linkQuote" href="/mex/res/1998.html#q1998">1998</a>
+    <a class="linkReply" href="/mex/res/1998.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">...Pues eso, ¿que licenciatura o ingenieroa estudian o estudiaron?
+
+¿Que les hubiera gustado estudiar?</div>
+  
+  
+  
+  <div class="labelOmission">2 posts y 2 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="mex" id="2032"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1998-2032">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 04:19:01</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1998.html#2032">№</a>
+    <a class="linkQuote" href="/mex/res/1998.html#q2032">2032</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1998.html#2026">&gt;&gt;2026</a>
+FIME de la UANL?
+salté pero ya, no vas a encontrar jale de tu carrera después de graduarte, no hay empleos vacantes para tanto licenciado que sale cada semestre, es pura perdida de tiempo IMHO</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2034"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1998-2034">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 05:25:08</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1998.html#2034">№</a>
+    <a class="linkQuote" href="/mex/res/1998.html#q2034">2034</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/mex/res/1998.html#2032">&gt;&gt;2032</a>
+<span class="greenText">&gt;no hay empleos vacantes para tanto licenciado que sale cada semestre</span>
+Eso se puede decir de casi cualquier carrera menos las que las industrias promocionan directamente, y esas dependen del estado/region donde te encuentres</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="mex" id="2042"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="mex-1998-2042">
+    
+    <a class="linkName  noEmailName" >Taquero</a>
+    <img class="imgFlag flag-mx" src="/.static/flags/mx.png" title="Mexico"> 
+    <span class="labelCreated">07/07/2022 (Jue) 13:29:04</span> 
+    
+    
+    <a class="linkSelf" href="/mex/res/1998.html#2042">№</a>
+    <a class="linkQuote" href="/mex/res/1998.html#q2042">2042</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">QFB</div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a><a href="2.html">2</a><a href="3.html">3</a><a href="4.html">4</a><a href="5.html">5</a><a href="6.html">6</a></span> <a id="linkNext" class="coloredIcon" href="2.html"></a> ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=mex">Administrar Tablón</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=mex">Moderar Tablón</a>
+          <a id="linkMod" href="/mod.js?boardUri=mex&amp;page=1">Moderar Hilo</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">Acerca de</a>
+    •
+    <a href="/site/res/27.html#">Comentarios</a>
+    •
+    <a href="/.static/pages/globalRules.html">Reglas Globales</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contacto</a>
+    •
+    <a href="/.static/pages/donate.html">Donar</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">№</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[Historial del Post]</a>
+    <a class="linkFileHistory">[Historial de Archivos]</a>
+    <a class="linkOffenseRecord">[Historial de Infracciones]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Pequeña Gama (1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Amplia Gama (3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Desvincular]</a>
+  <a class="unlinkAndDeleteLink">[Desvincular y Borrar]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+<script src="/mex/custom.js"></script></body></html>

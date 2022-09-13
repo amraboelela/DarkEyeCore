@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:algorithms:geometry:point_generation:polygon [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,algorithms,geometry,point_generation,polygon"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:algorithms:geometry:point_generation"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/algorithms/geometry/point_generation/polygon"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:algorithms:geometry:point_generation';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:algorithms:geometry:point_generation:polygon","namespace":"fuss:algorithms:geometry:point_generation","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:algorithms:geometry:point_generation:polygon" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:algorithms:geometry:point_generation:polygon&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms" class="wikilink1" title="fuss:algorithms" data-wiki-id="fuss:algorithms">algorithms</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/start" class="wikilink2" title="fuss:algorithms:geometry:start" rel="nofollow" data-wiki-id="fuss:algorithms:geometry:start">geometry</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation" class="wikilink1" title="fuss:algorithms:geometry:point_generation" data-wiki-id="fuss:algorithms:geometry:point_generation">point_generation</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon">polygon</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:algorithms:geometry:point_generation:polygon</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#about">About</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#uses">Uses</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#graph">Graph</a></div></li>
+<li class="level1"><div class="li"><a href="#video">Video</a></div></li>
+<li class="level1"><div class="li"><a href="#wanderer_algorithm">Wanderer Algorithm</a></div></li>
+<li class="level1"><div class="li"><a href="#shortcomings">Shortcomings</a></div></li>
+<li class="level1"><div class="li"><a href="#finding_the_centroid">Finding the Centroid</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#smallest_circle_algorithm">Smallest Circle Algorithm</a></div></li>
+<li class="level2"><div class="li"><a href="#our_own_algorithm">Our Own Algorithm</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#proof">Proof</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#further_ideas">Further Ideas</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#minimising_reject_points">Minimising Reject Points</a></div></li>
+<li class="level2"><div class="li"><a href="#probabilities">Probabilities</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#index">Index</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="about">About</h1>
+<div class="level1">
+
+<p>
+The following program is meant to create a primitive that will travel within a specified polygon (or, in civil engineering, a specified perimeter). This program works differently from other <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation" class="wikilink1" title="fuss:algorithms:geometry:point_generation" data-wiki-id="fuss:algorithms:geometry:point_generation">wanderer point generators</a> because the polygon itself is strictly defined in the code - that is, the <em>example</em> below uses the following points that define a two-dimensional concave polygon:
+</p>
+<pre class="code">57.59832, 36.773457, 1004.033325
+57.642971, 35.974648, 1004.033325
+57.065857, 36.585957, 1004.033325
+57.065857, 37.845955, 1004.033325
+58.10437, 37.301346, 1004.033325</pre>
+
+</div>
+
+<h2 class="sectionedit2" id="uses">Uses</h2>
+<div class="level2">
+
+<p>
+Different uses come to mind:
+</p>
+<ul>
+<li class="level1"><div class="li"> In Second Life we may want to establish a perimeter for some animal to move without entering the house - or perhaps even entering the house, but avoiding going through the walls.</div>
+</li>
+<li class="level1"><div class="li"> A different use could be a lawn mower that could be pre-programmed to autonomously mow the lawn without colliding with the house walls.</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit3" id="graph">Graph</h1>
+<div class="level1">
+
+<p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/plot/cc557436fe0663c88b223578b7807e89.png?id=fuss%3Aalgorithms%3Ageometry%3Apoint_generation%3Apolygon" class="media" title="plot:cc557436fe0663c88b223578b7807e89.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/plot/cc557436fe0663c88b223578b7807e89.png" class="media" alt="" /></a>
+</p>
+
+</p>
+
+</div>
+
+<h1 class="sectionedit4" id="video">Video</h1>
+<div class="level1">
+
+<p>
+<video class="media" width="512" height="288" controls="controls">
+<source src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/video/secondlife_wanderer_points_polygon.mp4" type="video/mp4" />
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/video/secondlife_wanderer_points_polygon.mp4?cache=" class="media mediafile mf_mp4" title="video:secondlife_wanderer_points_polygon.mp4 (252.1 KB)">secondlife_wanderer_points_polygon.mp4</a></video>
+
+</p>
+
+</div>
+
+<h1 class="sectionedit5" id="wanderer_algorithm">Wanderer Algorithm</h1>
+<div class="level1">
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/secondlife/secondlife_wanderer_points_polygon_algorithm.gif?id=fuss%3Aalgorithms%3Ageometry%3Apoint_generation%3Apolygon" class="media" title="secondlife:secondlife_wanderer_points_polygon_algorithm.gif"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/secondlife/secondlife_wanderer_points_polygon_algorithm.gif" class="media" alt="" /></a>
+</p>
+
+<p>
+The algorithm is an accept-reject data sampling algorithm that first generates points within a circle circumscribing a polygon and then accepts all the points that fall within the polygon.
+</p>
+<ol>
+<li class="level1"><div class="li"> First find the centroid from the polygon data points. This is called the smallest circle problem but we have made our own algorithm. For more details, please see the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon#finding_the_centroid" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon">finding the centroid chapter</a> below.</div>
+</li>
+<li class="level1"><div class="li"> The distance from the centroid to the point furthest away in the polygon data points can be used as a radius to circumscribe the polygon in a circle.</div>
+</li>
+<li class="level1"><div class="li"> Now, we can generate points within that circle by using <code>wasCirclePoint</code>.</div>
+</li>
+<li class="level1 node"><div class="li"> Using the <a href="http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html" class="urlextern" title="http://www.ecse.rpi.edu/Homepages/wrf/Research/Short_Notes/pnpoly.html" rel="ugc nofollow">PNPOLY (ray-cast) algorithm</a>, we can now determine whether the points generated in that circle are also inside the polygon. So, generate a point within that circle using <code>wasCirclePoint</code> and then:</div>
+<ol>
+<li class="level2"><div class="li"> If it is within the polygon, then that is a valid accepted point.</div>
+</li>
+<li class="level2"><div class="li"> If it is not within the polygon, then loop until we get a valid point.</div>
+</li>
+</ol>
+</li>
+</ol>
+
+<p>
+The elegance of this algorithm is given by the fact that only the polygon points have to be known and that everything else is computed at run-time.
+</p>
+
+</div>
+
+<h1 class="sectionedit6" id="shortcomings">Shortcomings</h1>
+<div class="level1">
+
+<p>
+For very nasty polygons with very acute angles, the circle circumscribing them will have a very large area compared to the area of the polygon. If this happens, then the algorithm slows down because the points generated within the encompassing circle will stand a low chance to also fall within the polygon.
+</p>
+
+<p>
+A second ray-cast has to be performed to check whether the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/secondlife/wanderer" class="wikilink1" title="secondlife:wanderer" data-wiki-id="secondlife:wanderer">wanderer</a> collides with a boundary. This is because the LSL code only generates points within a polygon which the wanderer then takes as the next destination. In doing so, the generated points using our algorithm <em>do fall within the polygon</em> but the movement of the wanderer may collide with the boundaries along the path between the current position and the next generated point. At first, we generate a point within the polygon:
+</p>
+<pre class="code lsl2">        moveTo<span class="br0">&#40;</span>wasPolygonPoint<span class="br0">&#40;</span>polygonPoints<span class="br0">&#41;</span><span class="br0">&#41;</span>;</pre>
+
+<p>
+which makes sure to move the wanderer within the polygon and when the point is reached, then we generate the next point while also checking whether the path would intersect the boundaries:
+</p>
+<pre class="code lsl2">        moveTo<span class="br0">&#40;</span>wasPolygonPath<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llGetPos"><span class="kw5">llGetPos</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span>, polygonPoints<span class="br0">&#41;</span><span class="br0">&#41;</span>;</pre>
+
+</div>
+
+<h1 class="sectionedit7" id="finding_the_centroid">Finding the Centroid</h1>
+<div class="level1">
+
+<p>
+The centroid of a polygon - or rather, any set of points, is defined as a point that is placed within that data-set so that the distances from that point to all other points is minimal. You can visualize this the following way:
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/algorithms/geometry/point_generation/secondlife_wanderer_points_polygon_centroid_houses.png?id=fuss%3Aalgorithms%3Ageometry%3Apoint_generation%3Apolygon" class="media" title="fuss:algorithms:geometry:point_generation:secondlife_wanderer_points_polygon_centroid_houses.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/algorithms/geometry/point_generation/secondlife_wanderer_points_polygon_centroid_houses.png" class="media" alt="" /></a>
+</p>
+
+<p>
+Suppose you have a scattering of houses on a field. You want to place a hospital (marked with <code>H</code> in the image) so that the hospital is placed at the minimal distance to <em>all</em> points. That means that some of the houses will reach the hospital faster, but that overall the distances from the houses to the hospital are minimal. This is illustrated by <a href="http://www.staff.science.uu.nl/~kreve101/" class="urlextern" title="http://www.staff.science.uu.nl/~kreve101/" rel="ugc nofollow">Marc van Kreveld</a> in his <a href="http://www.cs.uu.nl/docs/vakken/ga/slides4b.pdf" class="urlextern" title="http://www.cs.uu.nl/docs/vakken/ga/slides4b.pdf" rel="ugc nofollow">computational geometry slides</a> along with similar other problems.
+</p>
+
+</div>
+
+<h2 class="sectionedit8" id="smallest_circle_algorithm">Smallest Circle Algorithm</h2>
+<div class="level2">
+
+<p>
+The most common way of finding the centroid from a data set of points, reduces to the smallest circle problem. The solution to the smallest circle problem is quite difficult (albeit clever) because it involves a lot of complication in drawing and moving circles. It is also not a definite algorithm - in the sense that it involves looping around until some condition is smaller than a calculated threshold which guarantees termination. <a href="http://www.cs.mcgill.ca/~cs507/projects/1998/jacob/problem.html" class="urlextern" title="http://www.cs.mcgill.ca/~cs507/projects/1998/jacob/problem.html" rel="ugc nofollow">Jacob Eliosoff and Richard Unger</a> give a proof for this algorithm, demonstrating that the algorithm works and indicate that it is an <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4e29b5aba3434594a76084ec448c348a.png" class="latex_inline" alt="$O(n^{2})$" title="Math" /> algorithm.
+</p>
+
+</div>
+
+<h2 class="sectionedit9" id="our_own_algorithm">Our Own Algorithm</h2>
+<div class="level2">
+
+<p>
+We have chosen to create <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon#wanderer_algorithm" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon">our own algorithm</a> (see Zenos paradox on the race between Achilles and the Tortoise for inspiration) for finding the centroid, and we will illustrate it here:
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/algorithms/geometry/point_generation/secondlife_centroid_algorithm.gif?id=fuss%3Aalgorithms%3Ageometry%3Apoint_generation%3Apolygon" class="media" title="fuss:algorithms:geometry:point_generation:secondlife_centroid_algorithm.gif"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/algorithms/geometry/point_generation/secondlife_centroid_algorithm.gif" class="media" alt="" /></a>
+</p>
+<ol>
+<li class="level1"><div class="li"> Given a set of points, select any point from the set and call it <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdf5a289587a2f0247a5b97c1e8ac58ca.png" class="latex_inline" alt="$P$" title="Math" />.</div>
+</li>
+<li class="level1"><div class="li"> Calculate the distance from the selected point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdf5a289587a2f0247a5b97c1e8ac58ca.png" class="latex_inline" alt="$P$" title="Math" /> to all other points and select the longest distance.</div>
+</li>
+<li class="level1"><div class="li"> Move <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdf5a289587a2f0247a5b97c1e8ac58ca.png" class="latex_inline" alt="$P$" title="Math" /> along the longest distance by <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img47d54de4e337a06266c0e1d22c9b417b.png" class="latex_inline" alt="$\frac{1}{2}$" title="Math" /> of the distances length.</div>
+</li>
+<li class="level1"><div class="li"> Now loop at <strong>2</strong> and do the same, moving <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdf5a289587a2f0247a5b97c1e8ac58ca.png" class="latex_inline" alt="$P$" title="Math" /> along the farthest distance by <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgaaf6205e846cddd333bd3c20d79e06d0.png" class="latex_inline" alt="$\frac{1}{4},\frac{1}{8},\cdots,\frac{1}{2^{n}}$" title="Math" />, every time decreasing how much to move along the longest distance, until the distance between the ideal centroid and the approximated centroid using this method falls within a user-specified threshold.</div>
+</li>
+</ol>
+
+<p>
+Series used for approximation: <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6534d4e08d8901f6df50b88d17e0ddea.png" class="latex_inline" alt="$\frac{1}{2}, \frac{1}{4}, \cdots, \frac{1}{2^{n}}$" title="Math" /> where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc8523ad0c15a4fa2fdcbdf8b6398084d.png" class="latex_inline" alt="$n \ge 1$" title="Math" /> (absolutely convergent geometric series).
+</p>
+
+<p>
+Similar to the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon#smallest_circle_algorithm" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon">Jacob Eliosoff and Richard Unger method</a> the algorithm requires a threshold for termination. In our case, the threshold given by the user represents the distance between the ideal centroid and the centroid approximated by this algorithm.
+</p>
+
+<p>
+Compared to the Jacob Eliosoff and Richard Unger method, our algorithm is &quot;much much&quot;™ simpler to implement since it just requires ... division and addition.
+</p>
+
+<p>
+Our algorithm performs an iterative refinement / approximation of the centroid such that upon every iteration, the position of the centroid is better estimated. In other words, iteration <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3f18d8f60c110e865571bba5ba67dcc6.png" class="latex_inline" alt="$n+1$" title="Math" /> of our algorithm will provide a better estimation of the centroid than at iteration <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img55a049b8f161ae7cfeb0197d75aff967.png" class="latex_inline" alt="$n$" title="Math" />. Given a desired precision (the upper threshold) our algorithm should have the same quadratic complexity <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4e29b5aba3434594a76084ec448c348a.png" class="latex_inline" alt="$O(n^{2})$" title="Math" />.
+</p>
+
+<p>
+In pseudocode:
+</p>
+<pre class="code">select any point p = p1 from p1,p2,...,pn
+for i = 2 to m where m is a desired approximation
+    // compute largest distance d from p to all other points p2,...,pn
+    let d = 0
+    let pm = p1
+    for j=2 to n
+        k = distance from p to pj
+        if d &lt; k
+            set d = k
+            set pm = pj
+    // move point p
+    move p towards pm by d / i
+    let i = i * 2</pre>
+
+<p>
+The first complexity represents the algorithm runtime from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img034d0a6be0424bffe9a6e7ac9236c0f5.png" class="latex_inline" alt="$1$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img55a049b8f161ae7cfeb0197d75aff967.png" class="latex_inline" alt="$n$" title="Math" /> whilst the second is a repetitive complexity to determine the largest distance from the current point position to all other points thereby yielding <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img71bd2eab62dd4ac3088fc634fadd29d6.png" class="latex_inline" alt="$O(n^n)$" title="Math" /> time complexity in total. Perhaps there is a way to eliminate the inner loop based on what is already known to achieve <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1f08ccc9cd7309ba1e756c3d9345ad9f.png" class="latex_inline" alt="$O(n)$" title="Math" /> time complexity.
+</p>
+
+</div>
+
+<h3 class="sectionedit10" id="proof">Proof</h3>
+<div class="level3">
+
+<p>
+Hypothesis: when <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9f44d22fc1ab1466b9c5b92465a57948.png" class="latex_inline" alt="$n \mapsto \infty$" title="Math" /> then the centroid will be found.
+</p>
+
+<p>
+Perhaps a proof could be constructed inductively over the number of points.
+</p>
+
+</div>
+
+<h4 id="one_point">One Point</h4>
+<div class="level4">
+
+<p>
+For one point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd54bc0638e74b641cce3174453bcd092.png" class="latex_inline" alt="$A(x, y)$" title="Math" />, the distance from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" /> to itself is <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img29632a9bf827ce0200454dd32fc3be82.png" class="latex_inline" alt="$0$" title="Math" /> such that all terms of the Zeno series <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img10460d0148b074cc92174a38da4a56a6.png" class="latex_inline" alt="$0 * \frac{1}{2} = 0$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6525988f74a144a20fa94b64e8fee974.png" class="latex_inline" alt="$0 * \frac{1}{4}$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img913bd9da06e7627df2fec1cd392760b8.png" class="latex_inline" alt="$\cdots$" title="Math" /> reduce to zero and the centroid <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" /> coincides with point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" />.
+</p>
+
+</div>
+
+<h4 id="two_points">Two Points</h4>
+<div class="level4">
+
+<p>
+For two points in space (defining a line):
+</p>
+<pre class="code">A (x1, y) ----------------------- B (x2, y)</pre>
+
+<p>
+Such that the centroid (midpoint, in 2D) is to be found at <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3fed4b5a2b82b12ce028ab96b6fb9a7d.png" class="latex_inline" alt="$C = (\frac{x_{1}+x_{2}}{2}, \frac{y+y}{2}) = (\frac{x_{1}+x_{2}}{2}, y)$" title="Math" />:
+</p>
+<pre class="code">A (x1, y) ------------x---------- B (x2, y)
+                 C (x1+x2/2, y)</pre>
+
+<p>
+Note that the distance from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" /> is equal to the distance from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img61e84f854bc6258d4108d08d4c4a0852.png" class="latex_inline" alt="$B$" title="Math" /> such that any path can be chosen as a starting point (follows by applying the distance formula <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8efa3e67150e8eedb98d3ebca19b4e92.png" class="latex_inline" alt="$d = \sqrt{(x_{2} - x_{1})^{2} + (y - y)^{2}} = x_{2} - x_{1}$" title="Math" /> and substituting such that <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbf71749d35bd88bb33955847dce406e9.png" class="latex_inline" alt="$CA = \frac{x_{1} + x_{2}}{2} - x_{1} = \frac{x_{1} + x_{2} - 2 * x_{1}}{2} = \frac{x_{2} - x_{1}}{2}$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e06679d153193f8a0be42b0129342e5.png" class="latex_inline" alt="$CB = x_{2} - \frac{x_{1} + x_{2}}{2} = \frac{x_{2} - x_{1}}{2}$" title="Math" /> resulting that <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8f8520c2e465b6d8aa1e381ac8d4cdbe.png" class="latex_inline" alt="$CB=CA=\frac{x_{2}-x_{1}}{2}$" title="Math" />).
+</p>
+
+<p>
+Picking one of the two segments from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" /> or <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img61e84f854bc6258d4108d08d4c4a0852.png" class="latex_inline" alt="$B$" title="Math" />, say <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img09b0fab6bfabc923ca0defd605aa2a9b.png" class="latex_inline" alt="$CA$" title="Math" />, the first step is to move point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" /> (and rename to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" />) by <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd779e96cbeb634da484dc58e170766f0.png" class="latex_inline" alt="$d * \frac{1}{2}$" title="Math" /> towards <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img53d147e7f3fe6e47ee05b88b166bd3f6.png" class="latex_inline" alt="$A$" title="Math" /> where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img2103f85b8b1477f430fc407cad462224.png" class="latex_inline" alt="$d$" title="Math" /> represents the length of the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb12e1d644830cc484635a7f20fda3b07.png" class="latex_inline" alt="$CA = \frac{x_{2}-x_{1}}{2}$" title="Math" />:
+</p>
+<pre class="code">              Z ((3*x1+x2)/4, y)
+A (x1, y) ------x-----x---------- B (x2, y)
+                 C (x1+x2/2, y)</pre>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" /> will thus have the coordinates <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd27408725665b666930e7ea4db15aa66.png" class="latex_inline" alt="$(\frac{\frac{x_{1} + x_{2}}{2} + x_{1}}{2}, y) = (\frac{3*x_{1} + x_{2}}{4}, y)$" title="Math" />. From the next iteration on, the algorithm will always pick the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img83f2ab875d2b1a1df2d73aa9745e25ee.png" class="latex_inline" alt="$ZB$" title="Math" /> since the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img83f2ab875d2b1a1df2d73aa9745e25ee.png" class="latex_inline" alt="$ZB$" title="Math" /> will always be larger than segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6219bf98ca17ba60dd31efc1e7a900b6.png" class="latex_inline" alt="$ZA$" title="Math" /> until <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd960d65e3674b155aa4c716b5d9ddc95.png" class="latex_inline" alt="$ZC=0$" title="Math" /> (in other words, when point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" /> will coincide with point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" />; at which point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img95f55b703668fc65ce06fdd394870225.png" class="latex_inline" alt="$ZB=ZA$" title="Math" />).
+</p>
+
+<p>
+As we move the point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" /> along the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img83f2ab875d2b1a1df2d73aa9745e25ee.png" class="latex_inline" alt="$ZB$" title="Math" /> from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img61e84f854bc6258d4108d08d4c4a0852.png" class="latex_inline" alt="$B$" title="Math" />, we have to show that by applying the algorithm at every step we will eventually reach point <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9b325b9e31e85137d1de765f43c0f8bc.png" class="latex_inline" alt="$C$" title="Math" />.
+</p>
+
+<p>
+First step, for going <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imga174dc731e6190becc873a3eef8e4952.png" class="latex_inline" alt="$\frac{1}{4} * \overline{ZB}$" title="Math" /> from <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" /> to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img61e84f854bc6258d4108d08d4c4a0852.png" class="latex_inline" alt="$B$" title="Math" />, we compute <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbe28b51f495a8e6e39eace498c1d1f4a.png" class="latex_inline" alt="$\overline{ZB} = \frac{\frac{\frac{x_{1} + x_{2}}{2} + x_{1}}{2} + x_{2}}{2}$" title="Math" /> and knowing that <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5b51bd2e6f329245d425b8002d7cf942.png" class="latex_inline" alt="$Z$" title="Math" /> is at <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8e5c6f6aa9a3161c50b5f5619eaf17fe.png" class="latex_inline" alt="$\frac{\frac{x_{1} + x_{2}}{2} + x_{1}}{2}$" title="Math" /> we obtain that:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6aac9e59641a152e712b5020febb6adc.png" class="latex_displayed" alt="$$
+Z_{1/4} = \frac{\frac{x_{1} + x_{2}}{2} + x_{1}}{2} + \frac{1}{4} * \frac{\frac{\frac{x_{1} + x_{2}}{2} + x_{1}}{2} + x_{2}}{2}
+$$" title="Equation" />
+</p>
+
+</div>
+
+<h1 class="sectionedit11" id="further_ideas">Further Ideas</h1>
+<div class="level1">
+
+</div>
+
+<h2 class="sectionedit12" id="minimising_reject_points">Minimising Reject Points</h2>
+<div class="level2">
+
+<p>
+In the previous section we circumscribed the polygon into a minimal circle and then we would generate points within that circle later checking if the points also reside within the polygon. However, if we were to determine the minimal enclosing ellipse then the reject points could be further reduced.
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/algorithms/geometry/point_generation/secondlife_wanderer_points_polygon_ellipse.svg?id=fuss%3Aalgorithms%3Ageometry%3Apoint_generation%3Apolygon" class="media" title="fuss:algorithms:geometry:point_generation:secondlife_wanderer_points_polygon_ellipse.svg"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/algorithms/geometry/point_generation/secondlife_wanderer_points_polygon_ellipse.svg" class="media" alt="" /></a>
+</p>
+
+<p>
+Notice for example, in the image above how the circle around the polygon allows for more rejection points than an ellipse.
+</p>
+
+<p>
+In order to optimise the algorithm, the problem will shift to determining the minimal enclosing ellipse and then generating points within that ellipse and checking whether those points are within the polygon as well.
+</p>
+
+<p>
+A polygon-point generator that uses an ellipse generator described in this section is now available on the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon/generators/ellipse" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon:generators:ellipse" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon:generators:ellipse">ellipse polygon point generator page</a>.
+</p>
+
+</div>
+
+<h2 class="sectionedit13" id="probabilities">Probabilities</h2>
+<div class="level2">
+
+<p>
+Measuring number distributions by observing where the wanderer tends to go?
+</p>
+<pre class="code">
+    +------+                 +------+
+   /        \               /        \
+  /   -&gt;     +-------------+          \
+ +    w                                +
+  \          +-------------+          /
+   \        /               \        /
+    +------+                 +------+
+</pre>
+
+</div>
+
+<h1 class="sectionedit14" id="index">Index</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_149436974462b57659036c6" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="open"><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon/generators?idx=fuss:algorithms:geometry:point_generation:polygon:generators" class="indexmenu_idx open">generators</a></div>
+<ul class="idx">
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon/generators/circle" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon:generators:circle" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon:generators:circle">circle</a></div></li>
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon/generators/ellipse" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon:generators:ellipse" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon:generators:ellipse">ellipse</a></div></li>
+</ul></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_149436974462b57659036c6 = new dTree('indexmenu_149436974462b57659036c6','was.png');
+indexmenu_149436974462b57659036c6.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_149436974462b57659036c6.config.sepchar='/';
+indexmenu_149436974462b57659036c6.config.toc=false;
+indexmenu_149436974462b57659036c6.config.scorespace=true;
+indexmenu_149436974462b57659036c6.add('fuss/algorithms/geometry/point_generation/polygon',0,-1,"polygon",'fuss/algorithms/geometry/point_generation/polygon');
+indexmenu_149436974462b57659036c6.add('fuss/algorithms/geometry/point_generation/polygon/generators',1,0,"generators",0,1,0);
+indexmenu_149436974462b57659036c6.add('fuss/algorithms/geometry/point_generation/polygon/generators/circle',2,1,"circle",0,0,0);
+indexmenu_149436974462b57659036c6.add('fuss/algorithms/geometry/point_generation/polygon/generators/ellipse',3,1,"ellipse",0,0,0);
+document.write(indexmenu_149436974462b57659036c6);
+jQuery(function(){indexmenu_149436974462b57659036c6.init(1,0,"1",1,0);});
+//--><!]]>
+</script>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/algorithms/geometry/point_generation/polygon.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms" class="wikilink1" title="fuss:algorithms" data-wiki-id="fuss:algorithms">algorithms</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/start" class="wikilink2" title="fuss:algorithms:geometry:start" rel="nofollow" data-wiki-id="fuss:algorithms:geometry:start">geometry</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation" class="wikilink1" title="fuss:algorithms:geometry:point_generation" data-wiki-id="fuss:algorithms:geometry:point_generation">point_generation</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon" class="wikilink1" title="fuss:algorithms:geometry:point_generation:polygon" data-wiki-id="fuss:algorithms:geometry:point_generation:polygon">polygon</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:algorithms:geometry:point_generation:polygon" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/algorithms/geometry/point_generation/polygon"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aalgorithms%3Ageometry%3Apoint_generation%3Apolygon&amp;1657303783" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

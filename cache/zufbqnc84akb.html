@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>OnionShare - Whonix</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"4012241f1dca341d00c96e39","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"OnionShare","wgTitle":"OnionShare","wgCurRevisionId":83092,"wgRevisionId":83092,"wgArticleId":5632,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Documentation"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"OnionShare","wgRelevantArticleId":5632,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{"accuracy":{"levels":3}}},
+"wgStableRevisionId":83092,"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgSiteNoticeId":"1.35"};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.flaggedRevs.icons":"ready","oojs-ui-core.styles":"ready","oojs-ui.styles.indicators":"ready","mediawiki.widgets.styles":"ready","oojs-ui-core.icons":"ready","ext.cite.styles":"ready","ext.bootstrap.styles":"ready","skins.vector.styles.legacy":"ready","jquery.makeCollapsible.styles":"ready","ext.CookieWarning.styles":"ready","ext.flaggedRevs.basic":"ready","ext.dismissableSiteNotice.styles":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","ext.bootstrap.scripts","site","mediawiki.page.ready","jquery.makeCollapsible","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.CookieWarning","ext.flaggedRevs.advanced","mmv.head","mmv.bootstrap.autostart","ext.dismissableSiteNotice"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.CookieWarning.styles%7Cext.bootstrap.styles%7Cext.cite.styles%7Cext.dismissableSiteNotice.styles%7Cext.flaggedRevs.basic%2Cicons%7Cjquery.makeCollapsible.styles%7Cmediawiki.widgets.styles%7Coojs-ui-core.icons%2Cstyles%7Coojs-ui.styles.indicators%7Cskins.vector.styles.legacy&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.37.2"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="description" content="Using OnionShare in Whonix ™."/>
+<meta name="twitter:site" content="@Whonix"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=OnionShare&amp;action=edit"/>
+<link rel="edit" title="Edit" href="/w/index.php?title=OnionShare&amp;action=edit"/>
+<link rel="shortcut icon" href="/w/images/a/a4/Whonix-home-favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Whonix (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/w/api.php?action=rsd"/>
+<link rel="license" href="/wiki/WgRightsPage"/>
+<link rel="alternate" type="application/atom+xml" title="Whonix Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Header.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:SiteSpecific.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Sitenotice.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Footer.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<noscript><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Nojs.css&action=raw&ctype=text/css"></noscript>
+<link rel="stylesheet" type="text/css" href="/libs/Font-Awesome/css/all.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="OnionShare"/>
+<meta property="og:site_name" content="Whonix"/>
+<meta property="og:url" content="http://www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/wiki/OnionShare"/>
+<meta property="og:description" content="Using OnionShare in Whonix ™."/>
+<meta property="og:image" content="https://www.whonix.org/w/images/0/0d/OnionShare_logo.png"/>
+<meta property="article:modified_time" content="2022-04-15T16:29:45Z"/>
+<meta property="article:published_time" content="2022-04-15T16:29:45Z"/>
+<meta property="og:type" content="website"/>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"website","name":"OnionShare - Whonix","headline":"OnionShare - Whonix","mainEntityOfPage":"OnionShare","identifier":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/wiki\/OnionShare","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/wiki\/OnionShare","description":"Using OnionShare in Whonix \u2122.","dateModified":"2022-04-15T16:29:45Z","datePublished":"2022-04-15T16:29:45Z","image":{"@type":"ImageObject","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/images\/thumb\/f\/f1\/Logo_box.png\/200px-Logo_box.png"},"author":{"@type":"Organization","name":"Whonix","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion","logo":{"@type":"ImageObject","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/images\/thumb\/f\/f1\/Logo_box.png\/200px-Logo_box.png","caption":"Whonix"}},"publisher":{"@type":"Organization","name":"Whonix","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion","logo":{"@type":"ImageObject","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/images\/thumb\/f\/f1\/Logo_box.png\/200px-Logo_box.png","caption":"Whonix"}},"potentialAction":{"@type":"SearchAction","target":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/index.php?title=Special:Search&search={search_term}","query-input":"required name=search_term"}}</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-OnionShare rootpage-OnionShare skin-vector action-view skin--responsive skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="mw-dismissablenotice-anonplace"></div><script>(function(){var node=document.getElementById("mw-dismissablenotice-anonplace");if(node){node.outerHTML="\u003Cdiv class=\"mw-dismissable-notice\"\u003E\u003Cdiv class=\"mw-dismissable-notice-close\"\u003E[\u003Ca tabindex=\"0\" role=\"button\"\u003Edismiss\u003C/a\u003E]\u003C/div\u003E\u003Cdiv class=\"mw-dismissable-notice-body\"\u003E\u003Cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cp\u003E\u003C!--\n2022-02-21 version 2 : 10 year celebration\n--\u003E\n\u003Ca class=\"active-banner active-banner-02\" href=\"/wiki/Donate\"  data-dismiss-id=\"ab02\"\u003E\n\u003Cimg src=\"/w/images/0/0b/Whonix-10-year-celebration-banner.jpg\"\u003E\n\u003C/a\u003E\n\u003C!--first version --\u003E\n\u003C!--\n\u003Ca class=\"active-banner active-banner-01\" href=\"/wiki/Donate\" data-dismiss-id=\"ab01\"\u003E\n\u003Cimg class=\"icon\" src=\"/w/images/0/0b/Grow-symbol.png\"\u003E\n\u003Cspan\u003EWant to help us grow?\u003C/span\u003E\n\u003C/a\u003E\n--\u003E\n\u003C/p\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E";}}());</script></div>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading" >OnionShare</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">From Whonix</div>
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p>  <div id="custom-header">
+ <div class="style-wrapper">
+  <a href="/" class="home"></a>
+
+  <div class="nav-menu">
+   <div class="menu-title">Menu</div>
+
+   <div class="submenu">
+    <a href="/wiki/Download">Download</a>
+    <a href="/wiki/Documentation">Docs</a>
+    <a href="https://forums.whonix.org/c/news">News</a>
+    <a href="/wiki/Contribute">Help us</a>
+   </div>
+  </div>
+
+  <div class="menu-right">
+   <a class="search" href="/w/index.php?search="></a>
+
+   <div class="super-menu">
+    <div class="menu-title"></div>
+
+    <div class="submenus">
+     <div class="col1">
+      <span class="headline tools">Tools</span>
+      <a class="upload user-logged-in" href="/wiki/Special:Upload">Upload file</a>
+      <a class="special" href="/wiki/Special:SpecialPages">Special pages</a>
+      <a class="recentchanges user-logged-in" href="/wiki/Special:RecentChanges">Recent changes</a>
+      <a class="print" href="javascript:print();">Print Version</a>
+
+      <span class="headline pagemeta">Page meta</span>
+      <a class="whatlinkshere user-logged-in" href="/wiki/Special:WhatLinksHere/OnionShare">What links here</a>
+      <a class="relatedchanges" href="/wiki/Special:RecentChangesLinked/OnionShare">Related changes</a>
+      <a class="info" href="https://www.whonix.org/w/index.php?title=OnionShare&action=info">Page information</a>
+     </div>
+
+     <div class="col2">
+      <span class="headline page">Page</span>
+      <a class="view" href="/wiki/OnionShare">Read</a>
+      <a class="edit" href="/w/index.php?title=OnionShare&action=edit&oldid=83092">Edit</a>
+      <a class="history user-logged-in" href="/w/index.php?title=OnionShare&action=history">History</a>
+      <a class="move user-logged-in" href="/wiki/Special:MovePage/OnionShare">Move</a>
+      <a class="protect" href="/w/index.php?title=OnionShare&action=protect">Protection</a>
+      <a class="unwatch user-logged-in" href="/w/index.php?title=OnionShare&action=unwatch">Unwatch</a>
+      <a class="watch user-logged-in" href="/w/index.php?title=OnionShare&action=watch">Watch</a>
+      <a class="delete user-logged-in" href="/w/index.php?title=OnionShare&action=delete">Delete</a>
+      <a class="purge" href="/w/index.php?title=OnionShare&action=purge">Purge</a>
+     </div>
+
+     <div class="col3">
+      <span class="headline user">User</span>
+      <a class="preferences user-logged-in" href="/wiki/Special:Preferences">Preferences</a>
+      <a class="watchlist user-logged-in" href="/wiki/Special:Watchlist">Watchlist</a>
+      <a class="contributions user-logged-in" href="/wiki/Special:Contributions">Contributions</a>
+      <a class="logout user-logged-in" href="/w/index.php?title=Special:UserLogout&returnto=OnionShare">Logout</a>
+      <a class="createaccount user-logged-out" href="/w/index.php?title=Special:CreateAccount&returnto=OnionShare">Create account</a>
+      <a class="login user-logged-out" href="/w/index.php?title=Special:UserLogin&returnto=OnionShare">Login</a>
+     </div>
+    </div>
+   </div>
+
+   <a class="donate" href="/wiki/Donate">Donate</a>
+  </div>
+ </div>
+   <div id="top-bar-search-modal" class="modal fade" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title"></h5><span class="close" data-dismiss="modal" aria-label="Close">&times;</span>
+       </div>
+       <div class="modal-body">
+       </div>
+     </div>
+   </div>
+ </div>
+</div><div id="fly-in-notification-panel">
+ <div class="inner-wrapper">
+  <i class="close-panel fas fa-times"></i>
+ </div>
+</div>
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:66px;"><a href="/wiki/File:OnionShare_logo.png" class="image"><img alt="" src="/w/images/0/0d/OnionShare_logo.png" decoding="async" width="64" height="64" class="thumbimage" data-file-width="64" data-file-height="64" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:OnionShare_logo.png" class="internal" title="Enlarge"></a></div><code>OnionShare Logo</code></div></div></div>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#OnionShare_Functionality"><span class="tocnumber">1.1</span> <span class="toctext">OnionShare Functionality</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Security_Design"><span class="tocnumber">1.2</span> <span class="toctext">Security Design</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-4"><a href="#Installation"><span class="tocnumber">2</span> <span class="toctext">Installation</span></a>
+<ul>
+<li class="toclevel-2 tocsection-5"><a href="#Whonix-Gateway_™_Installation_Steps"><span class="tocnumber">2.1</span> <span class="toctext">Whonix-Gateway ™ Installation Steps</span></a>
+<ul>
+<li class="toclevel-3 tocsection-6"><a href="#onion-grater_Profile"><span class="tocnumber">2.1.1</span> <span class="toctext">onion-grater Profile</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-7"><a href="#Whonix-Workstation_™_Installation_Steps"><span class="tocnumber">2.2</span> <span class="toctext">Whonix-Workstation ™ Installation Steps</span></a>
+<ul>
+<li class="toclevel-3 tocsection-8"><a href="#Firewall_Settings"><span class="tocnumber">2.2.1</span> <span class="toctext">Firewall Settings</span></a></li>
+<li class="toclevel-3 tocsection-9"><a href="#Installation_2"><span class="tocnumber">2.2.2</span> <span class="toctext">Installation</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-10"><a href="#Using_OnionShare"><span class="tocnumber">3</span> <span class="toctext">Using OnionShare</span></a>
+<ul>
+<li class="toclevel-2 tocsection-11"><a href="#Start_OnionShare"><span class="tocnumber">3.1</span> <span class="toctext">Start OnionShare</span></a></li>
+<li class="toclevel-2 tocsection-12"><a href="#OnionShare_Configuration"><span class="tocnumber">3.2</span> <span class="toctext">OnionShare Configuration</span></a></li>
+<li class="toclevel-2 tocsection-13"><a href="#How-to:_Use_OnionShare"><span class="tocnumber">3.3</span> <span class="toctext">How-to: Use OnionShare</span></a>
+<ul>
+<li class="toclevel-3 tocsection-14"><a href="#Share_Files"><span class="tocnumber">3.3.1</span> <span class="toctext">Share Files</span></a></li>
+<li class="toclevel-3 tocsection-15"><a href="#Receive_Files_and_Messages"><span class="tocnumber">3.3.2</span> <span class="toctext">Receive Files and Messages</span></a></li>
+<li class="toclevel-3 tocsection-16"><a href="#Website_Hosting"><span class="tocnumber">3.3.3</span> <span class="toctext">Website Hosting</span></a></li>
+<li class="toclevel-3 tocsection-17"><a href="#Anonymous_Chat"><span class="tocnumber">3.3.4</span> <span class="toctext">Anonymous Chat</span></a></li>
+<li class="toclevel-3 tocsection-18"><a href="#Visit_Authenticated_OnionShare_Services_using_Tor_Browser_in_Whonix"><span class="tocnumber">3.3.5</span> <span class="toctext">Visit Authenticated OnionShare Services using Tor Browser in Whonix</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-19"><a href="#OnionShare_AppArmor_Profiles"><span class="tocnumber">3.4</span> <span class="toctext">OnionShare AppArmor Profiles</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-20"><a href="#Troubleshooting"><span class="tocnumber">4</span> <span class="toctext">Troubleshooting</span></a></li>
+<li class="toclevel-1 tocsection-21"><a href="#Footnotes"><span class="tocnumber">5</span> <span class="toctext">Footnotes</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=1" title="Edit section: Introduction">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<h2><span class="mw-headline" id="OnionShare_Functionality">OnionShare Functionality</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=2" title="Edit section: OnionShare Functionality">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>OnionShare is an open source program that allows users to share/receive files, host a website or chat anonymously utilizing the Tor network. <sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup> The OnionShare wiki succinctly describes the design: <sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+<blockquote><p>Web servers are started locally on your computer and made accessible to other people as <a target="_blank" rel="noreferrer noopener" class="external text" href="https://community.torproject.org/onion-services/">Tor onion services</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://community.torproject.org/onion-services/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>.
+</p><p>By default, OnionShare web addresses are protected with a random password. A typical OnionShare address might look something like this:
+</p><p><code><a target="_blank" rel="noreferrer noopener" class="external free" href="http://onionshare:constrict-purity@by4im3ir5nsvygprmjq74xwplrkdgt44qmeapxawwikxacmr3dqzyjad.onion">http://onionshare:constrict-purity@by4im3ir5nsvygprmjq74xwplrkdgt44qmeapxawwikxacmr3dqzyjad.onion</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="http://onionshare:constrict-purity@by4im3ir5nsvygprmjq74xwplrkdgt44qmeapxawwikxacmr3dqzyjad.onion" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></code>
+</p><p>You’re responsible for securely sharing that URL using a communication channel of your choice like in an encrypted chat message, or using something less secure like unencrypted e-mail, depending on your <a target="_blank" rel="noreferrer noopener" class="external text" href="https://ssd.eff.org/module/your-security-plan">threat model</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://ssd.eff.org/module/your-security-plan" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>.
+</p><p>
+The people you send the URL to then copy and paste it into their <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.torproject.org/">Tor Browser</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.torproject.org/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> to access the OnionShare service.</p></blockquote>
+<p>As of OnionShare version <code>2.0</code> it is also possible to run the program in Receive mode. This means you can receive files via OnionShare after they are uploaded by Tor Browser users; this is a sort of 'SecureDrop Lite' or personal dropbox. Version <code>2.2</code> of OnionShare also permits the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://micahflee.com/2019/10/new-version-of-onionshare-makes-it-easy-for-anyone-to-publish-anonymous-uncensorable-websites/">easy hosting of anonymous websites</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://micahflee.com/2019/10/new-version-of-onionshare-makes-it-easy-for-anyone-to-publish-anonymous-uncensorable-websites/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>: 
+</p>
+<blockquote><p>In addition to the “Share Files” and “Receive Files” tabs, OnionShare 2.2 introduces the “Publish Website” tab. You drag all of the files that make up your website into the OnionShare window and click “Start sharing.” It will start a web server to host your static website and give you a .onion URL. This website is only accessible from the Tor network, so people will need Tor Browser to visit it. People who visit your website will have no idea who you are – they won’t have access to your IP address, and they won’t know your identity or your location. And, so long as your website visitors are able to access the Tor network, the website can’t be censored.</p></blockquote>
+<p>Version <code>2.3</code> of OnionShare allows users to share/receive files, host websites or chat anonymously at the same time using a tabs feature. The secure, ephemeral and anonymous chat feature is particularly useful since it does not require account creation, is encrypted end-to-end and reduces the risk of messages being stored locally: <sup id="cite_ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup>
+</p>
+<blockquote><p>Now when you open OnionShare you are presented with a blank tab that lets you choose between sharing files, receiving files, hosting a website, or chatting anonymous. You can have as many tabs open as you want at a time, and you can easily save tabs (that's what the purple thumbtack in the tab bar means) so that if you quit OnionShare and open it again later, these services can start back up with the same OnionShare addresses. ... Another major new feature is chat. You start a chat service, it gives you an OnionShare address, and then you send this address to everyone who is invited to the chat room (using an encrypted messaging app like Signal, for example). Then everyone loads this address in a Tor Browser, makes up a name to go by, and can have a completely private conversation.</p></blockquote>
+<p>As OnionShare is an actively developed project, it is recommended to refer to <a target="_blank" rel="noreferrer noopener" class="external text" href="https://docs.onionshare.org/">official documentation</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup> for the latest features and information before use. Advanced users should also consider <a target="_blank" rel="noreferrer noopener" class="external text" href="https://docs.onionshare.org/2.3.1/en/advanced.html">additional features</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.3.1/en/advanced.html" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup> like saving of tabs, turning off passwords, scheduled start/stop times, command line operations and legacy addresses.
+</p>
+<h2><span class="mw-headline" id="Security_Design">Security Design</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=3" title="Edit section: Security Design">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p><b>Table:</b> <i>OnionShare Security Design</i> <sup id="cite_ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup>
+</p>
+<table class="wikitable">
+
+<tbody><tr>
+<th scope="col"><b>Protections</b>
+</th>
+<th scope="col"><b>Description</b>
+</th></tr>
+
+<tr>
+<th scope="row">Third party access
+</th>
+<td>Third parties cannot access anything that happens in OnionShare because services are hosted directly on your computer. Filesharing does not utilise online servers, and chat rooms also use your computer as a server; trust in other computers is removed.
+</td></tr>
+
+<tr>
+<th scope="row">Network eavesdroppers
+</th>
+<td>Eavesdroppers cannot spy on OnionShare activities in transit because connections between Tor onions services and Tor Browser are encrypted end-to-end. Even malicious Tor nodes used for connections will only see encrypted traffic using the onion service's private key.
+</td></tr>
+
+<tr>
+<th scope="row">Anonymity
+</th>
+<td>OnionShare anonymity is protected by Tor. If OnionShare addresses are anonymously communicated with Tor Browser users, then eavesdroppers cannot learn the identity of the OnionShare user.
+</td></tr>
+
+<tr>
+<th scope="row">Onion service discovery
+</th>
+<td>Malicious actors cannot access anything just by learning about the onion service; attackers also need to guess the private key used for client authentication (access). <sup id="cite_ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup>
+</td></tr>
+
+</tbody></table>
+<p>OnionShare cannot protect users if the OnionShare address and private key is not communicated securely. For example, do not share this information via email which can be potentially monitored by attackers. It is far safer to utilize encrypted text messages for this purpose (preferably with disappearing messages enabled), encrypted email, or in-person sharing of this information. This method is not anonymous unless a new email account or chat account is <i>only</i> created/accessed over Tor.
+</p>
+<h1><span class="mw-headline" id="Installation">Installation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=4" title="Edit section: Installation">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<h2><span id="Whonix-Gateway_.E2.84.A2_Installation_Steps"></span><span class="mw-headline" id="Whonix-Gateway_™_Installation_Steps">Whonix-Gateway ™ Installation Steps</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=5" title="Edit section: Whonix-Gateway ™ Installation Steps">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="onion-grater_Profile">onion-grater Profile</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=6" title="Edit section: onion-grater Profile">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<div class="info-box &#123;&#123;&#123;addToClass&#125;&#125;&#125;">
+<p><a href="/wiki/File:Ambox_notice.png" class="image"><img alt="Ambox notice.png" src="/w/images/thumb/c/c8/Ambox_notice.png/40px-Ambox_notice.png" decoding="async" width="40" height="40" srcset="/w/images/thumb/c/c8/Ambox_notice.png/60px-Ambox_notice.png 1.5x, /w/images/thumb/c/c8/Ambox_notice.png/80px-Ambox_notice.png 2x" data-file-width="2000" data-file-height="2000" /></a> This application requires incoming connections through a Tor onion service. Supported <a href="/wiki/Whonix-Gateway" title="Whonix-Gateway">Whonix-Gateway ™</a> modifications are therefore necessary for full functionality; see instructions below.
+</p><p>For better security, consider using <a href="/wiki/Multiple_Whonix-Gateway" title="Multiple Whonix-Gateway">Multiple Whonix-Gateway ™</a> and <a href="/wiki/Multiple_Whonix-Workstation" title="Multiple Whonix-Workstation">Multiple Whonix-Workstation ™</a>. In any case, <a href="/wiki/Whonix" class="mw-redirect" title="Whonix">Whonix ™</a> is the safest choice for running it. <sup id="cite_ref-6" class="reference"><a href="#cite_note-6">&#91;6&#93;</a></sup>
+</p>
+</div>
+<p>Extend the onion-grater whitelist in Whonix-Gateway ™ (<code>sys-whonix</code>).
+</p>
+<div class="info-box">
+<p>On Whonix-Gateway ™. <sup id="cite_ref-7" class="reference"><a href="#cite_note-7">&#91;7&#93;</a></sup> <sup id="cite_ref-8" class="reference"><a href="#cite_note-8">&#91;8&#93;</a></sup>
+</p><p>Add onion-grater profile.
+</p><p><div class="code-select ">sudo onion-grater-add 40_onionshare</div>
+</p>
+</div>
+<h2><span id="Whonix-Workstation_.E2.84.A2_Installation_Steps"></span><span class="mw-headline" id="Whonix-Workstation_™_Installation_Steps">Whonix-Workstation ™ Installation Steps</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=7" title="Edit section: Whonix-Workstation ™ Installation Steps">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<h3><span class="mw-headline" id="Firewall_Settings">Firewall Settings</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=8" title="Edit section: Firewall Settings">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Modify the Whonix-Workstation ™ (<code>anon-onionshare</code>) user firewall settings and reload them.
+</p>
+<div class="info-box">
+<p>Modify Whonix-Workstation ™ User Firewall Settings
+</p>
+<div class="info-box">
+<p><b>Note</b>: If no changes have yet been made to Whonix ™ Firewall Settings, then the Whonix ™ User Firewall Settings File <code>/etc/whonix_firewall.d/50_user.conf</code> appears empty (because it does not exist). This is expected.
+</p><p><u>If using <a href="/wiki/Qubes" title="Qubes">Qubes-Whonix ™</a></u>, complete these steps.<br />
+In Whonix-Workstation ™ App Qube. Make sure folder <code>/usr/local/etc/whonix_firewall.d</code> exists.
+</p><p><div class="code-select ">sudo mkdir -p /usr/local/etc/whonix_firewall.d</div>
+</p><p><code>Qubes App Launcher (blue/grey "Q")</code> &#8594; <code>Whonix-Workstation ™ App Qube (commonly called <i><span style="background-color:#FBFBFB">anon-whonix</span></i>)</code> &#8594; <code>Whonix ™ User Firewall Settings</code>
+</p><p><u>If using a graphical Whonix-Workstation ™</u>, complete these steps.
+</p><p><code>Start Menu</code> &#8594; <code>Applications</code> &#8594; <code>System</code> &#8594; <code>User Firewall Settings</code>
+</p><p><u>If using a terminal-only Whonix-Workstation ™</u>, complete these steps.
+</p><p>Open file <code>/usr/local/etc/whonix_firewall.d/50_user.conf</code> with root rights.
+</p><p><div class="code-select ">sudoedit /usr/local/etc/whonix_firewall.d/50_user.conf</div>
+</p>
+<div class="toccolours mw-collapsible mw-collapsed">
+<p>For more help, press on Expand on the right.
+</p>
+<div class="mw-collapsible-content">
+<div class="info-box">
+<p><b>Note: This is for informational purposes only!</b> Do not edit <code>/etc/whonix_firewall.d/30_whonix_workstation_default.conf</code>.
+</p><p>The Whonix ™ Global Firewall Settings File <code>/etc/whonix_firewall.d/30_whonix_workstation_default.conf</code> contains default settings and explanatory comments about their purpose. By default, the file is opened read-only and is not meant to be directly edited. Below, it is recommended to open the file without root rights. The file contains an explanatory comment on how to change firewall settings.
+</p>
+<pre>## Please use "/etc/whonix_firewall.d/50_user.conf" for your custom configuration,
+## which will override the defaults found here. When {{project_name_long}} is updated, this
+## file may be overwritten.
+</pre>
+<p>Also see: <a href="/wiki/Configuration_Files" class="mw-redirect" title="Configuration Files">Whonix modular flexible .d style configuration folders</a>.
+</p><p>To view the file, follow these instructions.
+</p>
+<div class="info-box">
+<p><u>If using <a href="/wiki/Qubes" title="Qubes">Qubes-Whonix ™</a></u>, complete these steps.
+</p><p><code>Qubes App Launcher (blue/grey "Q")</code> &#8594; <code>Template:</code> <code>whonix-ws-16</code> &#8594; <code>Whonix Global Firewall Settings</code>
+</p><p><u>If using a graphical Whonix-Workstation ™</u>, complete these steps.
+</p><p><code>Start Menu</code> &#8594; <code>Applications</code> &#8594; <code>Settings</code> &#8594; <code>Global Firewall Settings</code>
+</p><p><u>If using a terminal-only Whonix-Workstation ™</u>, complete these steps.
+</p><p>In Whonix-Workstation ™, open the whonix_firewall configuration file in an editor.
+<div class="code-select ">nano /etc/whonix_firewall.d/30_whonix_workstation_default.conf</div>
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Add. <sup id="cite_ref-9" class="reference"><a href="#cite_note-9">&#91;9&#93;</a></sup>
+</p><p><div class="code-select ">EXTERNAL_OPEN_PORTS+=&quot; $(seq 17600 17659) &quot;</div>
+</p><p>Save.
+</p><p>Reload Whonix-Workstation ™ Firewall.
+</p>
+<div class="info-box">
+<p><u>If you are using <a href="/wiki/Qubes" title="Qubes">Qubes-Whonix ™</a></u>, complete the following steps.
+</p><p><code>Qubes App Launcher (blue/grey "Q")</code> &#8594; <code>Whonix-Workstation ™ App Qube (commonly named anon-whonix)</code> &#8594; <code>Reload Whonix ™ Firewall</code>
+</p><p><u>If you are using a graphical Whonix-Workstation ™</u>, complete the following steps.
+</p><p><code>Start Menu</code> &#8594; <code>Applications</code> &#8594; <code>System</code> &#8594; <code>Reload Whonix ™ Firewall</code>
+</p><p><u>If you are using a terminal-only Whonix-Workstation ™</u>, run.
+<div class="code-select ">sudo whonix_firewall</div>
+</p>
+</div>
+</div>
+<h3><span class="mw-headline" id="Installation_2">Installation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=9" title="Edit section: Installation">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Before installing OnionShare:
+</p>
+<ul><li>A separate Whonix-Workstation ™ (<a href="/wiki/Qubes-Whonix" class="mw-redirect" title="Qubes-Whonix">Qubes-Whonix ™</a>: <code>anon-onionshare</code> App Qube) is also recommended; see footnote. <sup id="cite_ref-10" class="reference"><a href="#cite_note-10">&#91;10&#93;</a></sup> The reason is the OnionShare installation will persist in this configuration and it is best practice to separate different, anonymous activities in distinct VMs (App Qubes).</li>
+<li>After installation has finished, apply the <a href="#Whonix_™_VM_Configuration">Whonix ™ VM Configuration</a> steps.</li>
+<li>Installation using <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.kicksecure.com/wiki/Install_Software#Flatpak">flatpak</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.kicksecure.com/wiki/Install_Software#Flatpak" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> is discouraged because it leads to <a href="/wiki/DoNot#Allow_Tor_over_Tor_Scenarios" title="DoNot">Tor over Tor</a>.</li>
+<li>Installation from Debian package sources as documented below is recommended.</li></ul>
+<p>Inside Whonix-Workstation ™.
+</p>
+<div class="info-box">
+<p>Install package(s) <code>onionshare</code>.
+</p><p><b>A.</b> <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.kicksecure.com/wiki/Operating_System_Software_and_Updates">Update the package lists and upgrade the system</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.kicksecure.com/wiki/Operating_System_Software_and_Updates" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>.
+</p><p><div class="code-select ">sudo apt update &amp;&amp; sudo apt full-upgrade</div>
+</p><p><b>B.</b> Install the <code>onionshare</code> package(s).
+</p><p>Using <code>apt</code> command line <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.kicksecure.com/wiki/Install_Software#--no-install-recommends">parameter <code>--no-install-recommends</code></a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.kicksecure.com/wiki/Install_Software#--no-install-recommends" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> is in most cases optional.
+</p><p><div class="code-select ">sudo apt install --no-install-recommends onionshare</div>
+</p><p><b>C.</b> Done.
+</p><p>The procedure of installing package(s) <code>onionshare</code> is complete.
+</p>
+</div>
+<h1><span class="mw-headline" id="Using_OnionShare">Using OnionShare</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=10" title="Edit section: Using OnionShare">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<h2><span class="mw-headline" id="Start_OnionShare">Start OnionShare</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=11" title="Edit section: Start OnionShare">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Inside Whonix-Workstation ™.
+</p><p>If OnionShare was installed from Debian package sources, launch it in Whonix-Workstation ™ by either running the command line interface (CLI) or graphical user interface (GUI) version.
+</p>
+<ul><li>CLI: <div class="code-select ">onionshare</div></li>
+<li>GUI: <div class="code-select ">onionshare-gui</div></li>
+<li>If the flatpak version was installed (discouraged because of <a href="/wiki/DoNot#Allow_Tor_over_Tor_Scenarios" title="DoNot">Tor over Tor</a>), run. <div class="code-select ">flatpak run org.onionshare.OnionShare</div></li></ul>
+<p><b>Figure:</b> <i>First Start of OnionShare v2.4 GUI</i>
+</p><p><a href="/wiki/File:Onionsharehomepage.png" class="image"><img alt="Onionsharehomepage.png" src="/w/images/2/26/Onionsharehomepage.png" decoding="async" width="1048" height="728" class="thumbborder" data-file-width="1048" data-file-height="728" /></a>
+</p>
+<h2><span class="mw-headline" id="OnionShare_Configuration">OnionShare Configuration</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=12" title="Edit section: OnionShare Configuration">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>If OnionShare was installed from Debian package sources as documented on this wiki page, then no configuration changes specific to Whonix ™ in the OnionShare application are required. <sup id="cite_ref-11" class="reference"><a href="#cite_note-11">&#91;11&#93;</a></sup>
+</p>
+<h2><span class="mw-headline" id="How-to:_Use_OnionShare">How-to: Use OnionShare</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=13" title="Edit section: How-to: Use OnionShare">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Later OnionShare versions have significantly improved functionality:
+</p>
+<ul><li>Version <code>2.0</code> provides a feature called 'Receive Mode'. With this mode, you can start an onion service and allow other users to upload files to <i>you</i> via Tor Browser (rather than Share Mode, in which you share files from your OnionShare to others).</li>
+<li>Version <code>2.2</code> allows the hosting of static HTML websites.</li>
+<li>Version <code>2.3</code> allows users to set up a private, secure chat room that does not require an account and does not log activity.</li></ul>
+<p>A complete user guide is available, including advanced topics, hardening options <sup id="cite_ref-12" class="reference"><a href="#cite_note-12">&#91;12&#93;</a></sup> and development documentation; refer to the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://docs.onionshare.org/">official website</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup>. 
+</p><p>Do not change settings without fully understanding their function, otherwise onion addresses might be re-used, shares might be left open even after multiple downloads are performed, and so on.
+</p>
+<h3><span class="mw-headline" id="Share_Files">Share Files</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=14" title="Edit section: Share Files">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Once OnionShare has been installed correctly and the Tor check is successful, sharing files anonymously is easy: <sup id="cite_ref-13" class="reference"><a href="#cite_note-13">&#91;13&#93;</a></sup>
+</p>
+<blockquote><p>You can use OnionShare to send files and folders to people securely and anonymously. Open a share tab, drag in the files and folders you wish to share, and click “Start sharing”.
+</p><p>...
+When you’re ready to share, click the “Start sharing” button. You can always click “Stop sharing”, or quit OnionShare, immediately taking the website down. You can also click the “↑” icon in the top-right corner to show the history and progress of people downloading files from you. <br />
+</p><p>Now that you have a OnionShare, copy the address and send it to the person you want to receive the files. If the files need to stay secure, or the person is otherwise exposed to danger, use an encrypted messaging app.
+</p><p>
+That person then must load the address in Tor Browser. After logging in with the random password included in the web address, the files can be downloaded directly from your computer by clicking the “Download Files” link in the corner.</p></blockquote>
+<p><b>Figure:</b> <i>Select File to Share</i>
+</p><p><a href="/wiki/File:Sharefileone.png" class="image"><img alt="Sharefileone.png" src="/w/images/c/cf/Sharefileone.png" decoding="async" width="436" height="437" class="thumbborder" data-file-width="436" data-file-height="437" /></a>
+</p><p><b>Figure:</b> <i>Secret Onion URL for Downloaders</i>
+</p><p><a href="/wiki/File:Sharefiletwo.png" class="image"><img alt="Sharefiletwo.png" src="/w/images/4/47/Sharefiletwo.png" decoding="async" width="437" height="560" class="thumbborder" data-file-width="437" data-file-height="560" /></a>
+</p><p><b>Figure:</b> <i>OnionShare Download with Tor Browser</i> <sup id="cite_ref-14" class="reference"><a href="#cite_note-14">&#91;14&#93;</a></sup>
+</p><p><a href="/wiki/File:OnionSharereceive.png" class="image"><img alt="OnionSharereceive.png" src="/w/images/e/e9/OnionSharereceive.png" decoding="async" width="888" height="733" class="thumbborder" data-file-width="888" data-file-height="733" /></a>
+</p>
+<h3><span class="mw-headline" id="Receive_Files_and_Messages">Receive Files and Messages</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=15" title="Edit section: Receive Files and Messages">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Receiving files or messages is also simple: <sup id="cite_ref-15" class="reference"><a href="#cite_note-15">&#91;15&#93;</a></sup>
+</p>
+<blockquote><p>You can use OnionShare to let people anonymously submit files and messages directly to your computer, essentially turning it into an anonymous dropbox. Open a receive tab and choose the settings that you want.
+</p><p>You can browse for a folder to save messages and files that get submitted.
+</p><p>
+You can check “Disable submitting text” if want to only allow file uploads, and you can check “Disable uploading files” if you want to only allow submitting text messages, like for an anonymous contact form.</p></blockquote>
+<p><b>Figure:</b> <i>Receive Files or Messages</i>
+</p><p><a href="/wiki/File:Onionsharereceivefiles.png" class="image"><img alt="Onionsharereceivefiles.png" src="/w/images/4/40/Onionsharereceivefiles.png" decoding="async" width="828" height="688" class="thumbborder" data-file-width="828" data-file-height="688" /></a>
+</p>
+<h3><span class="mw-headline" id="Website_Hosting">Website Hosting</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=16" title="Edit section: Website Hosting">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Website hosting can be achieved in a few steps: <sup id="cite_ref-16" class="reference"><a href="#cite_note-16">&#91;16&#93;</a></sup>
+</p>
+<blockquote><p>To host a static HTML website with OnionShare, open a website tab, drag the files and folders that make up the static content there, and click “Start sharing” when you are ready.
+If you add an index.html file, it will render when someone loads your website. You should also include any other HTML files, CSS files, JavaScript files, and images that make up the website. (Note that OnionShare only supports hosting static websites. It can’t host websites that execute code or use databases. So you can’t for example use WordPress.)</p></blockquote>
+<p>This functionality means content can be shared temporarily to select individuals, or it can be run as a public service if desired.
+</p>
+<h3><span class="mw-headline" id="Anonymous_Chat">Anonymous Chat</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=17" title="Edit section: Anonymous Chat">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Finally, private and secure chat rooms (without logging) are possible by: <sup id="cite_ref-17" class="reference"><a href="#cite_note-17">&#91;17&#93;</a></sup>
+</p>
+<ol><li>Opening a chat tab and selecting "Start chat server".</li>
+<li>Copy the onion address and private key and send them to the intended recipients. <sup id="cite_ref-18" class="reference"><a href="#cite_note-18">&#91;18&#93;</a></sup></li>
+<li>To join the chat room, participants cut and paste the OnionShare address into Tor Brower; JavaScript is required, so the security level must be set to "Standard" or "Safer".</li>
+<li>After joining, participants are assigned a random name.</li></ol>
+<p>The benefit of OnionShare anonymous chat is no copies of messages are left on devices or possibly on servers/databases, and account creation is unnecessary.
+</p>
+<h3><span class="mw-headline" id="Visit_Authenticated_OnionShare_Services_using_Tor_Browser_in_Whonix">Visit Authenticated OnionShare Services using Tor Browser in Whonix</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=18" title="Edit section: Visit Authenticated OnionShare Services using Tor Browser in Whonix">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>This wiki chapter might be useful for users who intent to visit authenticated OnionShare Services using Tor Browser in Whonix ™.
+</p><p>When a provider of an OnionShare service is using onion authentication, then a Whonix ™ visitor of that OnionShare instance is required to setup Onion Service Client Authentication in Whonix ™ first.
+</p><p>There are two options to setup Onion Service Client Authentication. Chose <u>either</u> option <b>A)</b> <u>or</u> <b>B)</b>.
+</p>
+<ul><li><b>A)</b> <a href="/wiki/Tor_Browser#Onion_Client_Authorization" title="Tor Browser">Tor Browser Onion Client Authorization</a>, <u>or</u></li>
+<li><b>B)</b> <a href="/wiki/Onion_Services#Onion_Service_Authentication_Client_Setup" title="Onion Services">Onion Service Client Authentication setup on Whonix-Gateway ™</a>.</li></ul>
+<p>If this step is omitted, the following <a target="_blank" rel="noreferrer noopener" class="external text" href="https://github.com/onionshare/onionshare/issues/1511">symptom</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/onionshare/onionshare/issues/1511" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> might be shown.
+</p>
+<pre>Command filtered
+</pre>
+<h2><span class="mw-headline" id="OnionShare_AppArmor_Profiles">OnionShare AppArmor Profiles</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=19" title="Edit section: OnionShare AppArmor Profiles">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>AppArmor profiles are available to better contain OnionShare, but they have not yet been tested in Whonix ™. <sup id="cite_ref-19" class="reference"><a href="#cite_note-19">&#91;19&#93;</a></sup> Profile development is reported to be lagging behind the master and development branches of the OnionShare git repository. Therefore, willing testers should be knowledgeable about AppArmor profiles before attempting this procedure. 
+</p><p>Advanced users are encouraged to help progress the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://github.com/micahflee/onionshare/issues/686">open OnionShare AppArmor ticket</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/micahflee/onionshare/issues/686" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> and help complete this wiki section. Successes or failures can also be reported in the <a target="_blank" rel="noreferrer noopener" class="external text" href="http://forums.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/c/apparmor">Whonix ™ AppArmor forum</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="http://forums.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/c/apparmor" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup>.
+</p><p>TODO: Test profiles and expand this section.
+</p>
+<h1><span class="mw-headline" id="Troubleshooting">Troubleshooting</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=20" title="Edit section: Troubleshooting">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p><a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/onionshare/onionshare/issues/1374">https://github.com/onionshare/onionshare/issues/1374</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/onionshare/onionshare/issues/1374" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>
+</p>
+<pre>Opening tab in existing OnionShare window (pid 2)
+</pre>
+<p><div class="code-select ">rm ~/.config/onionshare/lock</div>
+</p>
+<h1><span class="mw-headline" id="Footnotes">Footnotes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=OnionShare&amp;action=edit&amp;section=21" title="Edit section: Footnotes">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="reflist" style="list-style-type: decimal;">
+<div class="mw-references-wrap mw-references-columns"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://onionshare.org/">https://onionshare.org/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://onionshare.org/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://docs.onionshare.org/">https://docs.onionshare.org/</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://blog.torproject.org/new-release-onionshare-23">https://blog.torproject.org/new-release-onionshare-23</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://blog.torproject.org/new-release-onionshare-23" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://docs.onionshare.org/2.4/en/security.html">https://docs.onionshare.org/2.4/en/security.html</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.4/en/security.html" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><a href="#cite_ref-5">↑</a></span> <span class="reference-text">Unless the private key feature is <a target="_blank" rel="noreferrer noopener" class="external text" href="https://docs.onionshare.org/2.4/en/advanced.html#turn-off-private-key">turned off</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.4/en/advanced.html#turn-off-private-key" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup>.</span>
+</li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><a href="#cite_ref-6">↑</a></span> <span class="reference-text">
+Security considerations:
+
+<ul><li>By using Whonix ™, additional protections are in place for greater security.</li>
+<li>This application requires access to Tor's control protocol.</li>
+<li>In the Whonix ™ context, Tor's control protocol has dangerous features. The Tor control command <i><span style="background-color:#FBFBFB">GETINFO address</span></i> reveals the real, external IP of the Tor client.</li>
+<li>Whonix ™ provides <a href="/wiki/Dev/Control_Port_Filter_Proxy" title="Dev/Control Port Filter Proxy">onion-grater, a Tor Control Port Filter Proxy - filtering dangerous Tor Control Port commands</a>.</li>
+<li>When this application is run inside Whonix ™ with an onion-grater whitelist extension, this will limit application rights to Tor control protocol access only. Non-whitelisted Tor control commands such as <i><span style="background-color:#FBFBFB">GETINFO address</span></i> are rejected by onion-grater in these circumstances.</li>
+<li>During the application's normal operations it should not attempt to use dangerous Tor control commands such as <i><span style="background-color:#FBFBFB">GETINFO address</span></i>. In the event the application or Whonix-Workstation ™ are compromised, this command would be rejected.</li>
+<li>In comparison, if the application is run on a non-Tor focused operating system like Debian, it will have unlimited access to Tor's control protocol (a less secure configuration).</li>
+<li>If the (non-)Whonix platform is used to host onion services, then running applications are more vulnerable to attacks against the Tor network compared to when Tor is solely used as a client; see also <a href="/wiki/Onion_Services#Onion_Services_Security" title="Onion Services">Onion Services Security</a>.</li></ul>
+
+In conclusion, Whonix ™ is the safest and correct choice for running this application.</span>
+</li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><a href="#cite_ref-7">↑</a></span> <span class="reference-text">
+Using <code>/usr/local/etc/onion-grater-merger.d/</code> because that onion-grater settings folder is persistent in <a href="/wiki/Qubes" title="Qubes">Qubes-Whonix ™</a> TemplateBased ProxyVMs i.e. Whonix-Gateway ™ (commonly called <code>sys-whonix</code>). <a href="/wiki/Non-Qubes-Whonix" title="Non-Qubes-Whonix">Non-Qubes-Whonix ™</a> users could also utilize <code>/etc/onion-grater-merger.d/</code>. <a href="/wiki/Qubes" title="Qubes">Qubes-Whonix ™</a> users could also utilize <code>/etc/onion-grater-merger.d/</code> but then <code>/etc/onion-grater-merger.d/</code> must be made persistent, which means doing this procedure inside the Whonix-Gateway ™ Template (commonly called <code>whonix-gw-16</code>) and then restarting the Whonix-Gateway ™ ProxyVM or using <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.qubes-os.org/doc/bind-dirs/">bind-dirs</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.qubes-os.org/doc/bind-dirs/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>. Both techniques are more complicated than simply using <code>/usr/local/etc/onion-grater-merger.d/</code>, since it is persistent either way. Further, it even allows multiple Whonix-Gateway ™ ProxyVMs based on the same Whonix-Gateway ™ Template; for example, one Whonix-Gateway ™ ProxyVM extending and relaxing onion-grater's whitelist and the other Whonix-Gateway ™ ProxyVM having the default onion-grater whitelist which is more restrictive.</span>
+</li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><a href="#cite_ref-8">↑</a></span> <span class="reference-text">
+Previously manual instructions. No longer needed. <code>onion-grater-add</code> automates that.
+<br />
+<b>1.</b> Create folder <code>/usr/local/etc/onion-grater-merger.d</code>.
+
+<div class="code-select ">sudo mkdir -p /usr/local/etc/onion-grater-merger.d</div>
+
+<b>2.</b> Symlink the onion-grater profile to the onion-grater settings folder.
+
+<div class="code-select ">sudo ln -s {{{filename_new}}}.yml /usr/local/etc/onion-grater-merger.d/</div>
+
+<b>3.</b> Restart onion-grater.
+
+<div class="code-select ">sudo service onion-grater restart</div></span>
+</li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><a href="#cite_ref-9">↑</a></span> <span class="reference-text">
+As per <a target="_blank" rel="noreferrer noopener" class="external free" href="https://labs.riseup.net/code/issues/7870#note-15">https://labs.riseup.net/code/issues/7870#note-15</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://labs.riseup.net/code/issues/7870#note-15" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> OnionShare uses ports 17600 to 17659.</span>
+</li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><a href="#cite_ref-10">↑</a></span> <span class="reference-text">To clone the existing <code>anon-whonix</code> in <a href="/wiki/Qubes-Whonix" class="mw-redirect" title="Qubes-Whonix">Qubes-Whonix ™</a>: 
+<ul><li><code>Qube Manager</code> &#8594; <code>Right-click on anon-vm</code> &#8594; <code>Select "<u>C</u>lone qube"</code> &#8594; <code>Rename to "anon-onionshare"</code></li></ul>
+</span></li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><a href="#cite_ref-11">↑</a></span> <span class="reference-text">
+Under "How should OnionShare connect to Tor?" no changes are required. Even setting "Use the Tor version built into OnionShare" is OK in the very case of OnionShare and does not lead to <a href="/wiki/DoNot#Allow_Tor_over_Tor_Scenarios" title="DoNot">Tor over Tor</a> thanks to special support by <a href="/wiki/Dev/anon-ws-disable-stacked-tor" title="Dev/anon-ws-disable-stacked-tor">anon-ws-disable-stacked-tor</a>.
+
+<a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/Whonix/anon-ws-disable-stacked-tor/blob/master/usr/bin/tor.anondist#L70">https://github.com/Whonix/anon-ws-disable-stacked-tor/blob/master/usr/bin/tor.anondist#L70</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/Whonix/anon-ws-disable-stacked-tor/blob/master/usr/bin/tor.anondist#L70" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-12"><span class="mw-cite-backlink"><a href="#cite_ref-12">↑</a></span> <span class="reference-text">Such as setting a Shutdown Timer to self-destruct shares if they are not downloaded within an acceptable time window. These topics are beyond the scope of this documentation.</span>
+</li>
+<li id="cite_note-13"><span class="mw-cite-backlink"><a href="#cite_ref-13">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://docs.onionshare.org/2.3.1/en/features.html">https://docs.onionshare.org/2.3.1/en/features.html</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.3.1/en/features.html" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></span>
+</li>
+<li id="cite_note-14"><span class="mw-cite-backlink"><a href="#cite_ref-14">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://micahflee.com/2018/02/onionshare-has-some-exciting-new-features/">https://micahflee.com/2018/02/onionshare-has-some-exciting-new-features/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://micahflee.com/2018/02/onionshare-has-some-exciting-new-features/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-15"><span class="mw-cite-backlink"><a href="#cite_ref-15">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://docs.onionshare.org/2.4/en/features.html#receive-files-and-messages">https://docs.onionshare.org/2.4/en/features.html#receive-files-and-messages</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.4/en/features.html#receive-files-and-messages" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></span>
+</li>
+<li id="cite_note-16"><span class="mw-cite-backlink"><a href="#cite_ref-16">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://docs.onionshare.org/2.4/en/features.html#host-a-website">https://docs.onionshare.org/2.4/en/features.html#host-a-website</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.4/en/features.html#host-a-website" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></span>
+</li>
+<li id="cite_note-17"><span class="mw-cite-backlink"><a href="#cite_ref-17">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://docs.onionshare.org/2.4/en/features.html#chat-anonymously">https://docs.onionshare.org/2.4/en/features.html#chat-anonymously</a><sup class="ext-link-to-archive" title="This is an .onion link"><a rel="noreferrer noopener" href="https://docs.onionshare.org/2.4/en/features.html#chat-anonymously" target="_blank"><img src="/w/images/thumb/a/a8/Iconfinder_tor_386502.png/40px-Iconfinder_tor_386502.png" /></a></sup></span>
+</li>
+<li id="cite_note-18"><span class="mw-cite-backlink"><a href="#cite_ref-18">↑</a></span> <span class="reference-text">Preferably with an encrypted messaging application.</span>
+</li>
+<li id="cite_note-19"><span class="mw-cite-backlink"><a href="#cite_ref-19">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/micahflee/onionshare/tree/develop/apparmor">https://github.com/micahflee/onionshare/tree/develop/apparmor</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/micahflee/onionshare/tree/develop/apparmor" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+</ol></div></div>
+<p><br />
+</p>
+<div id="custom-footer">
+<p>
+
+
+
+<div class="content-wrapper">
+ <div class="main-claim divider-border">
+  <span class="headline">
+   Whonix ™
+  </span>
+
+  <span class="claim">
+   The most watertight privacy operating system in the world.
+  </span>
+ </div>
+
+ <div class="donate divider-border">
+  <a href="/wiki/Donate/Bitcoin" title="Donate Bitcoin to help us grow" data-address="3LspZMk4p7ECc4Ugd6DKwSTgqyxn41KG3B">
+   <img src="/w/images/3/30/Whonix_donate_bitcoin.png">
+  </a>
+
+  <a href="/wiki/Donate/Monero" title="Donate Monero to help us grow" data-address="84ZZSsqyh5niztCgxmWAejDLu9eDerWo4Wsx8woEhDGpdKP3BWPtqenNjKuv8vojrB968U3hqYTKgLGt2zEcGopX1qaEPew">
+   <img src="/w/images/9/92/Whonix_donate_monero.png">
+  </a>
+
+  <a href="/wiki/Donate/Ethereum" title="Donate Ethereum or Token to help us grow" data-address="0xB95B577Fb9ab085BBaC7808b8ECee905d3009943">
+   <img src="/w/images/0/09/Whonix_donate_ethereum.png">
+  </a>
+
+  <a class="donate-button" href="/wiki/Donate" title="Donate to help us grow">
+   <div>
+    <span class="text">Donate</span>
+    <span class="image"><img src="/w/images/4/40/Donate-banner.png" /></span>
+   </div>
+  </a>
+ </div>
+
+ <div class="social divider-border">
+  <div class="text">Follow us on social media</div>
+  <div class="icons">
+   <a class="expand-button-50" href="https://t.me/s/Whonix" target="_blank" title="Whonix on Telegram">
+    <img src="/w/images/thumb/9/9a/1024px-Telegram_2019_Logo.svg.png/50px-1024px-Telegram_2019_Logo.svg.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://twitter.com/Whonix" target="_blank" title="Whonix on Twitter">
+    <img src="/w/images/thumb/6/67/Twitter-logo.png/50px-Twitter-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://www.facebook.com/Whonix" target="_blank" title="Whonix on Facebook">
+    <img src="/w/images/thumb/9/9d/Facebook-logo.png/50px-Facebook-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://www.reddit.com/r/Whonix" target="_blank" title="Whonix on Reddit">
+    <img src="/w/images/thumb/1/14/Reddit-logo.png/50px-Reddit-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="http://forums.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/c/news.rss" target="_blank" title="Whonix as RSS">
+    <img src="/w/images/thumb/0/09/Rss.png/50px-Rss.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://mastodon.technology/@Whonix" target="_blank" title="Whonix on Mastodon">
+    <img src="/w/images/thumb/b/b7/Mastodon-logo.png/50px-Mastodon-logo.png" />
+   </a>
+  </div>
+ </div>
+
+ <div class="support divider-border">
+  <div class="text">FREE &nbsp;·&nbsp; PLUS &nbsp;·&nbsp; PREMIUM Support</div>
+
+  <div class="logos">
+   <a class="expand-button-50" href="/wiki/Support" target="_blank" title="Whonix FREE Support">
+    <img src="/w/images/thumb/a/a6/Support-free.png/50px-Support-free.png" />
+   </a>
+
+   <a class="expand-button-50" href="/wiki/Plus_Support" target="_blank" title="Whonix PLUS Support">
+    <img src="/w/images/thumb/c/c0/Support-plus.png/50px-Support-plus.png" />
+   </a>
+
+   <a class="expand-button-50" href="/wiki/Premium_Support" target="_blank" title="Whonix PREMIUM Support">
+    <img src="/w/images/thumb/2/22/Support-premium.png/50px-Support-remium.png" />
+   </a>
+  </div>
+ </div>
+
+ <div class="opensource">
+  <img src="/w/images/thumb/a/a3/Heckert_gnu.big.png/50px-Heckert_gnu.big.png" alt="GNU logo" />
+  <img src="/w/images/thumb/0/09/Osi_standard_logo_0.png/50px-Osi_standard_logo_0.png" alt="Open Source Initiative logo" />
+  <span class="text">
+   At Whonix we believe in <b>freedom and trust</b>. That's why we fully support Open Source and Freedom Software.
+   <a href="/wiki/Reasons_for_Freedom_Software" title="Reasons for Freedom Software">Learn more</a>.
+  </span>
+ </div>
+</div>
+
+<div class="content-wrapper-2">
+ <div class="endorsements">
+  <a class="evohost" href="https://evolution-host.com/ddos-protected-vps.php" target="_blank" title="Evolution Host provides system administration advice for the whonix.org website.">
+   <img src="/w/images/e/e4/Evolution-host.png" />
+   Whonix ™ is supported by <b>Evolution Host</b> DDoS Protected VPS.
+  </a>
+
+  <div class="fosshost">
+   <a href="https://fosshost.org" target="_blank" title="Fosshost sponsors a Kicksecure stage server.">
+    <img src="/w/images/thumb/b/be/Fosshost.org_Cloud_Light.png/200px-Fosshost.org_Cloud_Light.png" />
+   </a>
+  </div>
+
+  <div class="whonix">
+   <img src="/w/images/thumb/f/f1/Logo_box.png/80px-Logo_box.png" />
+   <div>
+    Whonix is the most watertight privacy operating system in the world 
+   </div>
+  </div>
+ </div>
+
+ <div class="legal">
+  <span class="disclaimer">
+   The personal opinions of
+   <a href="http://forums.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/about" title="About (Forum)">moderators</a>
+   or
+   <a href="/wiki/Contributors" title="Contributors">contributors</a>
+   to the
+   <a href="/wiki/Whonix" title="Whonix">Whonix ™</a>
+   project do not represent the project as a whole.
+  </span>
+
+  <span class="disclaimer">
+   By using this website, you acknowledge you have read, understood, and agree to be bound by these these agreements:
+   <a href="/wiki/Terms_of_Service" title="Terms of Service">Terms of Service</a>
+   ,
+   <a href="/wiki/Privacy_Policy" title="Privacy Policy">Privacy Policy</a>
+   ,
+   <a href="/wiki/Cookie_Policy" title="Cookie Policy">Cookie Policy</a>
+   ,
+   <a href="/wiki/E-Sign_Consent" title="E-Sign Consent">E-Sign Consent</a>
+   ,
+   <a href="/wiki/DMCA" title="DMCA">DMCA</a>
+   ,
+   <a href="/wiki/Imprint" title="Imprint">Imprint</a>
+  </span>
+
+  <span class="rights">
+   Whonix
+   <a href="/wiki/Trademark_Policy" title="Trademark Policy">™</a>
+   <a href="/wiki/Whonix:Copyrights" title="Copyrights">©</a>
+   ENCRYPTED SUPPORT LP,
+   2022
+  </span>
+ </div>
+</div>
+
+
+
+<div id="footer-show-qr-codes-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="qr-area">
+        <img src="/" />
+
+        <span>
+         <strong>Whonix is free from corporate interest by being user funded. Thank you so much!</strong>
+         <i class="fa fa-heart"></i>
+         <br/><br/>
+         Scan the QR code or use the wallet address below.
+        </span>
+       </div>
+
+       &nbsp;
+
+       <div class="code-select"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</p>
+<div class="project-random-news-ticker">
+<p>Did you know that Whonix provides protection against <a href="https://en.wikipedia.org/wiki/Backdoor_(computing)" target="_blank" rel="noreferrer">backdoors</a>? <a href="/wiki/Verifiable_Builds" title="Verifiable Builds">Read more</a>
+</p>
+</div>
+</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://www.whonix.org/w/index.php?title=OnionShare&amp;oldid=83092">https://www.whonix.org/w/index.php?title=OnionShare&amp;oldid=83092</a>"</div></div>
+		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Documentation" title="Category:Documentation">Documentation</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="mw-cookiewarning-container"><div class="mw-cookiewarning-text"><span>By using our website, you acknowledge that you have read, understood and agreed to our Privacy Policy, Cookie Policy, Terms of Service, and E-Sign Consent.</span></div><form method="POST"><div class='oo-ui-layout oo-ui-horizontalLayout'><span aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-flaggedElement-progressive oo-ui-buttonWidget'><a role='button' tabindex='0' aria-disabled='false' href='/wiki/Terms_of_Service' rel='nofollow' class='oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-iconElement-noIcon oo-ui-image-progressive'></span><span class='oo-ui-labelElement-label'>More information</span><span class='oo-ui-indicatorElement-indicator oo-ui-indicatorElement-noIndicator oo-ui-image-progressive'></span></a></span><span aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-inputWidget oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-flaggedElement-primary oo-ui-flaggedElement-progressive oo-ui-buttonInputWidget'><button type='submit' tabindex='0' aria-disabled='false' name='disablecookiewarning' value='OK' class='oo-ui-inputWidget-input oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-iconElement-noIcon oo-ui-image-invert'></span><span class='oo-ui-labelElement-label'>OK</span><span class='oo-ui-indicatorElement-indicator oo-ui-indicatorElement-noIndicator oo-ui-image-invert'></span></button></span></div></form></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<h3 id="p-personal-label" class="vector-menu-heading"> <span>Personal tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage" class="mw-list-item">Not logged in</li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount" class="mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=OnionShare" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login" class="mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=OnionShare" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<h3 id="p-namespaces-label" class="vector-menu-heading"> <span>Namespaces</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected mw-list-item"><a href="/wiki/OnionShare" title="View the content page [c]" accesskey="c">Page</a></li><li id="ca-talk" class="new mw-list-item"><a href="/w/index.php?title=Talk:OnionShare&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [t]" accesskey="t">Discussion</a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox"
+		id="p-variants-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-variants"
+		class=" vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label" class="vector-menu-heading"> <span>Variants</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<h3 id="p-views-label" class="vector-menu-heading"> <span>Views</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected mw-list-item"><a href="/wiki/OnionShare">Read</a></li><li id="ca-edit" class="mw-list-item"><a href="/w/index.php?title=OnionShare&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li><li id="ca-history" class="mw-list-item"><a href="/w/index.php?title=OnionShare&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation"  title="More options"
+	 >
+	<input type="checkbox"
+		id="p-cactions-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-cactions"
+		class=" vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label" class="vector-menu-heading"> <span>More</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			<div id="p-search" role="search" class="vector-search-box">
+	<div>
+		<h3 >
+			<label for="searchInput">Search</label>
+		</h3>
+		<form action="/w/index.php" id="searchform">
+			<div id="simpleSearch" data-search-loc="header-navigation">
+				<input type="search" name="search" placeholder="Search Whonix" autocapitalize="sentences" title="Search Whonix [f]" accesskey="f" id="searchInput"/>
+				<input type="hidden" name="title" value="Special:Search"/>
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a class="mw-wiki-logo" href="/wiki/Main_Page"
+			title="Visit the main page"></a>
+	</div>
+	<nav id="p-Menu" class="mw-portlet mw-portlet-Menu vector-menu vector-menu-portal portal" aria-labelledby="p-Menu-label" role="navigation" 
+	 >
+	<h3 id="p-Menu-label" class="vector-menu-heading"> <span>Menu</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-Download " class="mw-list-item"><a href="/wiki/Download">Download </a></li><li id="n-Docs" class="mw-list-item"><a href="/wiki/Documentation">Docs</a></li><li id="n-News" class="mw-list-item"><a href="https://forums.whonix.org/c/news" target="_blank">News</a></li><li id="n-Help-us" class="mw-list-item"><a href="/wiki/Contribute">Help us</a></li></ul>
+		
+	</div>
+</nav>
+
+	<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<h3 id="p-tb-label" class="vector-menu-heading"> <span>Tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/OnionShare" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/OnionShare" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print" class="mw-list-item"><a href="javascript:print();" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=OnionShare&amp;oldid=83092" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=OnionShare&amp;action=info" title="More information about this page">Page information</a></li></ul>
+		
+	</div>
+</nav>
+
+	
+</div>
+
+</div>
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info" >
+	<li id="footer-info-lastmod"> </li>
+	<li id="footer-info-copyright">By using this website, you acknowledge you have read, understood, and agree to be bound by these these agreements:</li>
+</ul>
+
+	<ul id="footer-places" >
+	<li id="footer-places-Terms of Service"><a href="/wiki/Terms_of_Service" title="Terms of Service">Terms of Service</a></li>
+	<li id="footer-places-Privacy Policy"><a href="/wiki/Privacy_Policy" title="Privacy Policy">Privacy Policy</a></li>
+	<li id="footer-places-Cookie Policy"><a href="/wiki/Cookie_Policy" title="Cookie Policy">Cookie Policy</a></li>
+	<li id="footer-places-E-Sign_Consent"><a href="/wiki/E-Sign_Consent" title="E-Sign Consent">E-Sign Consent</a></li>
+	<li id="footer-places-DMCA"><a href="/wiki/DMCA" class="mw-redirect" title="DMCA">DMCA</a></li>
+	<li id="footer-places-Imprint"><a href="/wiki/Imprint" title="Imprint">Imprint</a></li>
+</ul>
+
+	
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":402});});</script>
+</body></html>

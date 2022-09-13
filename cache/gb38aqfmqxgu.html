@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Introduction to DNS | Coarse Enigma</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Introduction to DNS" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="The Domain Name System is one of the most basic, and oldest, infrastructure components the internet. DNS is a decentralized, hierarchical database that maps keys to values, kind of like a dictionary. This store is primarily used to map names, say lainchan.org to an IP Address 107.161.19.243. This is essential to the internet because routers are able to get data to IP Addresses, but not domain names. So, a computer makes a DNS Request to translate the a name to a machine usable number. To start this process off, your computer has the IP Address of a DNS server to start with - This is normally assigned by the network you are connected to (via DHCP), and a point of contention lately: ISPs have been fighting to retain control of your DNS server as its a common point of commercial surveillance. This has played out in Comcast lobbying the government to intervene in DNS over HTTPS, ATT Routers preventing you from setting DNS, Mobile ISPs blocking DNS requests to alternate servers, and Mobile OSs not even allowing you to set DNS. More articles on DNS and privacy are to follow." />
+<meta property="og:description" content="The Domain Name System is one of the most basic, and oldest, infrastructure components the internet. DNS is a decentralized, hierarchical database that maps keys to values, kind of like a dictionary. This store is primarily used to map names, say lainchan.org to an IP Address 107.161.19.243. This is essential to the internet because routers are able to get data to IP Addresses, but not domain names. So, a computer makes a DNS Request to translate the a name to a machine usable number. To start this process off, your computer has the IP Address of a DNS server to start with - This is normally assigned by the network you are connected to (via DHCP), and a point of contention lately: ISPs have been fighting to retain control of your DNS server as its a common point of commercial surveillance. This has played out in Comcast lobbying the government to intervene in DNS over HTTPS, ATT Routers preventing you from setting DNS, Mobile ISPs blocking DNS requests to alternate servers, and Mobile OSs not even allowing you to set DNS. More articles on DNS and privacy are to follow." />
+<link rel="canonical" href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/introduction-to-dns.html" />
+<meta property="og:url" content="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/introduction-to-dns.html" />
+<meta property="og:site_name" content="Coarse Enigma" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-11-30T00:00:00-05:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Introduction to DNS" />
+<script type="application/ld+json">
+{"description":"The Domain Name System is one of the most basic, and oldest, infrastructure components the internet. DNS is a decentralized, hierarchical database that maps keys to values, kind of like a dictionary. This store is primarily used to map names, say lainchan.org to an IP Address 107.161.19.243. This is essential to the internet because routers are able to get data to IP Addresses, but not domain names. So, a computer makes a DNS Request to translate the a name to a machine usable number. To start this process off, your computer has the IP Address of a DNS server to start with - This is normally assigned by the network you are connected to (via DHCP), and a point of contention lately: ISPs have been fighting to retain control of your DNS server as its a common point of commercial surveillance. This has played out in Comcast lobbying the government to intervene in DNS over HTTPS, ATT Routers preventing you from setting DNS, Mobile ISPs blocking DNS requests to alternate servers, and Mobile OSs not even allowing you to set DNS. More articles on DNS and privacy are to follow.","@type":"BlogPosting","headline":"Introduction to DNS","dateModified":"2020-11-30T00:00:00-05:00","datePublished":"2020-11-30T00:00:00-05:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/introduction-to-dns.html"},"url":"http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/introduction-to-dns.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/feed.xml" title="Coarse Enigma" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coarse Enigma</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/code/">Code</a><a class="page-link" href="/links/">Links</a><a class="page-link" href="/webring/">Webring</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Introduction to DNS</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-11-30T00:00:00-05:00" itemprop="datePublished">Nov 30, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>The Domain Name System is one of the most basic, and oldest, infrastructure components the internet. DNS is a decentralized, hierarchical database that maps keys to values, kind of like a dictionary. This store is primarily used to map names, say <code class="language-plaintext highlighter-rouge">lainchan.org</code> to an IP Address <code class="language-plaintext highlighter-rouge">107.161.19.243</code>. This is essential to the internet because routers are able to get data to IP Addresses, but not domain names. So, a computer makes a DNS Request to translate the a name to a machine usable number. To start this process off, your computer has the IP Address of a DNS server to start with - This is normally assigned by the network you are connected to (via DHCP), and a point of contention lately: ISPs have been fighting to retain control of your DNS server as its a common point of commercial surveillance. This has played out in Comcast lobbying the government to intervene in DNS over HTTPS, ATT Routers preventing you from setting DNS, Mobile ISPs blocking DNS requests to alternate servers, and Mobile OSs not even allowing you to set DNS. More articles on DNS and privacy are to follow.</p>
+
+<p>Interestingly, DNS has alternative applications than just mapping IP Addresses and Domain Names. The DNS system can also map a service type for a domain to a host with service records (SRV), and has been used to map companies to contact information. Currently, since SMTP has no built in authentication to verify messages sent to a yahoo SMTP server from a google SMTP actually come from google, out of band mechanisms involving DNS have been created including SPF, DMARC and DKIM. DNS is also used to verify ownership of domains for the purpose of issuing SSL certificates by projects like <a href="LetsEncrypt">https://letsencrypt.org</a>.</p>
+
+<p>DNS uses a Tree Structure to make lookups fast and that Tree is decentralized via delegation. Owners of some portion of the namespace can delegate sub-portions to alternate owners. The DNS namespace begins at the root “.” and portions of the root namespace are delegated as  “Top Level Domains” or “TLDs”. Popular TLDs include “com”, “net”, “org”, And so the top portion of the contains the following (incomplete) tree:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>	.
+      / | \
+     /  |  \
+   com net org
+</code></pre></div></div>
+<p>The root is owned by “ICANN”, a Yankee corporation formed for the purpose, and Domain Registrars assign people portions of the namespace below “TLDs” for a fee. For instance “lainchan.org” is really “.”-&gt;”org”-&gt;”lainchan” . Each of these parts of the namespace has a set of “authoritative” DNS servers which own a portion of the namespace and respond to requests for their portion. The DNS root servers control the root, and delegate control of TLDs, we can see this here using the dig command - a tool to preform DNS lookups. Here, we query a root server, f.root-servers.net. (“.”-&gt;”net”-&gt;”root-servers”-&gt;”f”) for com. (“.”-&gt;”com”).</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig @f.root-servers.net com.
+...
+;; AUTHORITY SECTION:
+com.                    172800  IN      NS      a.gtld-servers.net.
+com.                    172800  IN      NS      b.gtld-servers.net.
+com.                    172800  IN      NS      c.gtld-servers.net.
+com.                    172800  IN      NS      d.gtld-servers.net.
+com.                    172800  IN      NS      e.gtld-servers.net.
+com.                    172800  IN      NS      f.gtld-servers.net.
+com.                    172800  IN      NS      g.gtld-servers.net.
+com.                    172800  IN      NS      h.gtld-servers.net.
+com.                    172800  IN      NS      i.gtld-servers.net.
+com.                    172800  IN      NS      j.gtld-servers.net.
+com.                    172800  IN      NS      k.gtld-servers.net.
+com.                    172800  IN      NS      l.gtld-servers.net.
+com.                    172800  IN      NS      m.gtld-servers.net.
+
+;; ADDITIONAL SECTION:
+a.gtld-servers.net.     172800  IN      A       192.5.6.30
+a.gtld-servers.net.     172800  IN      AAAA    2001:503:a83e::2:30
+b.gtld-servers.net.     172800  IN      A       192.33.14.30
+b.gtld-servers.net.     172800  IN      AAAA    2001:503:231d::2:30
+c.gtld-servers.net.     172800  IN      A       192.26.92.30
+c.gtld-servers.net.     172800  IN      AAAA    2001:503:83eb::30
+...
+</code></pre></div></div>
+<p>Here we see that the root servers delegate the com. TLD to various servers who later in the tree have names under gtld-servers.net. An interesting question you might have is, how do the root servers know the address of “a.gtld-servers.net” which comes later in the tree? This is actually done through “glue records”. You can view the Root DNS Zone <a href="Here">https://www.internic.net/domain/root.zone</a>. And if you look, you see that “com.” is controlled by “a.gtld-servers.net” with the following line:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>com.			172800	IN	NS	a.gtld-servers.net.
+</code></pre></div></div>
+<p>But you also see the following line in the file</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>a.gtld-servers.net.	172800	IN	A	192.5.6.30
+</code></pre></div></div>
+<p>So, a Owner of the namespace that delegates (via NS record) must know the address of who he delegates too. How could it work otherwise. You delegate to a name, but as “glue” include the address of the name you delegate too.</p>
+
+<p>Lets follow the Tree now for lainchan.org as an experiment:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig @a.root-servers.net org.
+org.                    172800  IN      NS      d0.org.afilias-nst.org.
+org.                    172800  IN      NS      a0.org.afilias-nst.info.
+org.                    172800  IN      NS      c0.org.afilias-nst.info.
+org.                    172800  IN      NS      a2.org.afilias-nst.info.
+org.                    172800  IN      NS      b0.org.afilias-nst.org.
+org.                    172800  IN      NS      b2.org.afilias-nst.org.
+...
+dig @d0.org.afilias-nst.org lainchan.org
+lainchan.org.           86400   IN      NS      dns1.registrar-servers.com.
+lainchan.org.           86400   IN      NS      dns2.registrar-servers.com.
+</code></pre></div></div>
+<p>So, we see that lainchan.org has DNS servers registrar-servers.com responsible for it. Finally, We can query the official, authoritative DNS server for lainchan.org to make lookups in its space.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig @dns1.registrar-servers.com lainchan.org
+...
+lainchan.org.           1800    IN      A       107.161.19.243
+...
+</code></pre></div></div>
+<p>This is actually a lot of DNS requests to make for a single lookup, and this is also widely inefficient. Instead, ordinary users use caching DNS servers - shared DNS servers that remember lookups therefore keeping all there users from querying the root servers, and therefore overloading it. These caching servers will preform “recursive lookups” for you - or in one shot taking an arbitarily deep and potentially unseen hostname a.subdomain.domain.tld and preforming all lookups necessary and using whatever is cached to return a result. This is actually necessary, because the “resolvers” built into computer programs that use DNS, usually through the c libraries gethostbyname() function, cannot use a non-recursive server.</p>
+
+<p>So, you might naturally wonder, what does a non-recursive server do when queried for some portion of the namespace it doesn’t own. Lets find out:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig @f.root-servers.net lainchan.org
+
+; &lt;&lt;&gt;&gt; DiG 9.11.24-RedHat-9.11.24-2.fc32 &lt;&lt;&gt;&gt; @f.root-servers.net lainchan.org
+; (2 servers found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 25171
+;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 13
+;; WARNING: recursion requested but not available
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1472
+;; QUESTION SECTION:
+;lainchan.org.			IN	A
+
+;; AUTHORITY SECTION:
+org.			172800	IN	NS	a0.org.afilias-nst.info.
+org.			172800	IN	NS	a2.org.afilias-nst.info.
+org.			172800	IN	NS	b0.org.afilias-nst.org.
+org.			172800	IN	NS	b2.org.afilias-nst.org.
+org.			172800	IN	NS	c0.org.afilias-nst.info.
+org.			172800	IN	NS	d0.org.afilias-nst.org.
+
+;; ADDITIONAL SECTION:
+a0.org.afilias-nst.info. 172800	IN	A	199.19.56.1
+a0.org.afilias-nst.info. 172800	IN	AAAA	2001:500:e::1
+a2.org.afilias-nst.info. 172800	IN	A	199.249.112.1
+a2.org.afilias-nst.info. 172800	IN	AAAA	2001:500:40::1
+b0.org.afilias-nst.org.	172800	IN	A	199.19.54.1
+b0.org.afilias-nst.org.	172800	IN	AAAA	2001:500:c::1
+b2.org.afilias-nst.org.	172800	IN	A	199.249.120.1
+b2.org.afilias-nst.org.	172800	IN	AAAA	2001:500:48::1
+c0.org.afilias-nst.info. 172800	IN	A	199.19.53.1
+c0.org.afilias-nst.info. 172800	IN	AAAA	2001:500:b::1
+d0.org.afilias-nst.org.	172800	IN	A	199.19.57.1
+d0.org.afilias-nst.org.	172800	IN	AAAA	2001:500:f::1
+
+;; Query time: 48 msec
+;; SERVER: 192.5.5.241#53(192.5.5.241)
+;; WHEN: Sun Dec 06 13:07:16 EST 2020
+;; MSG SIZE  rcvd: 443
+</code></pre></div></div>
+<p>I have included the whole output this time, and we observe here, the root-servers, which are under heavy load, are unwilling to recurse. We see in this in these lines:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>;; flags: qr rd; QUERY: 1, ANSWER: 0, AUTHORITY: 6, ADDITIONAL: 13
+;; WARNING: recursion requested but not available
+</code></pre></div></div>
+<p>There was a query made, but No answers. We did however, receive additional information. The root server helpfully “referred” us to the authoritative servers for the org domain. We could now continue as above, querying say a0.org.afilias-nst.info (199.19.56.1) for  lainchan.org and receiving another referral. As mentioned, the ordinary DNS code used by applications cannot handle this sequence of responses and new requests, nor would this be efficient, but a DNS server can. DNS servers that will issues as many requests as needed to return a response to a client are called “recursive” or support “recursion”. Ordinarily, these are run by ISPs. You must use a recursive resolver for your DNS server settings in <code class="language-plaintext highlighter-rouge">/etc/resolv.conf</code> or on Windows “IPv4 Settings”.</p>
+
+<h1 id="dns-caching--ttls">DNS Caching : TTLs</h1>
+
+<p>DNS records are actually quite volatile and can change. For instance, if you use a dynamic DNS service provider, like afraid.org, to map your constantly changing home IP address to a human memorable name, you might want your DNS record to change quite frequently - requiring less caching, and more queries to the authoritative name server who has the instantly correct value. Other more stable services, might have less need for change, and more caching might be desirable to reduce the number of queries that the name server receives. After all, less caching means checking more often with the original server. This trade off is controlled by the owner of the DNS record through a “Time to Live” feature, where how long the record should be cached is set. A typical time is an hour, but as long as week might be used. You might be shocked at this value, but, should a server go down, having your DNS record cached at all major ISPs as one value, when your IP address has changed to a new value, might be quite frustrating.</p>
+
+<h1 id="what-kinds-of-dns-records-are-there">What kinds of DNS Records Are there</h1>
+
+<p>So, we now understand the structure of DNS - there are root servers who delegate downward to other authoritative servers, and then their are recursive resolvers run by ISPs and other organizations for end users to use. What kind of lookups are possible?</p>
+
+<p>Obviously, a Host Name to IP Address lookup is possible. For an IPv4 host, this is an “A” record. The lainchan.org record we looked up before was an A record. We see this below in the format used in popular DNS Server, BIND ( Berkeley Internet Name Daemon ) for its databases or “zones”.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>lainchan.org.           1800    IN      A       107.161.19.243
+</code></pre></div></div>
+<p>We see that lainchan.org has a TTL of 1800 seconds (30 minutes), has a class of Internet (as compared to other dead classes like choasnet), and its A record (mapping lainchan.org to a host name) has the value 107.161.19.243.</p>
+
+<p>We can also do this backward with PTR records, which turn an IP Address into a hostname. Our dig invocation now is to our caching name server, and we request the PTR record. Note the format of the request has the IP address backward reflecting the structure “arpa-&gt;in-addr-&gt;107-&gt;161-&gt;19-&gt;243” or essentially a tree like structure traversed most significant octet first, allowing us to group IP address by All 107.X.X.X (107.0.0.0/8) into a zone rather than all IP address that end in 243 (X.X.X.243). Because this is a pain in the ass to type, dig has the special syntax <code class="language-plaintext highlighter-rouge">dig -x [ip]</code> to make this simple. The long form is provided here only for demonstration.</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dig 243.19.161.107.in-addr.arpa PTR
+...
+243.19.161.107.in-addr.arpa. 86400 IN	PTR	lainchan.org.
+...
+
+</code></pre></div></div>
+<p>Also note here, the less important PTR record has a much longer cache time.</p>
+
+<h1 id="ipv6">IPv6</h1>
+
+<p>Host name to IPv6 lookups are done with AAAA records. Separate records are provided because software expects A records to occupy a specific number of bytes, and be of a specific format. Also, the IPv6 rollout is still incomplete, and not all clients can handle equally an IPv6 or IPv4 address. IPv6 lookups can be requested with AAAA records.</p>
+
+<p>We have already seen queries containing these results:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>d0.org.afilias-nst.org.	172800	IN	AAAA	2001:500:f::1
+</code></pre></div></div>
+
+<h1 id="more-records">More records</h1>
+
+<p>There are actually a wide variety of DNS records, that we will get into over time here. MX records make internet mail work, mapping domain names to mail servers that accept mail for them. TXT records that provide a generic storage used at one point to make Wikipedia articles available, verify domain ownership, or  shoehorn authentication onto SMTP out of band (SPF,DKIM). NS records are used to delegate portions of the namespace. We will get into all of these over time.</p>
+
+<h1 id="conclusions">Conclusions</h1>
+
+<p>By reading this document, you should have learned how to collect information from the DNS system via dig and about the structure and type of DNS servers including Authoritative vs Caching name servers, who runs caching servers, how delegation is done, and about the Tree like structure of DNS. Upcoming will be an article explaining security and privacy surrounding DNS.</p>
+
+  </div><a class="u-url" href="/blog/introduction-to-dns.html" hidden></a>
+</article>
+
+      </div>
+    </main></body>
+
+</html>

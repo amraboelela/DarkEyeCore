@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:libvirt [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,libvirt"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/libvirt"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:libvirt","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:libvirt" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:libvirt&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt" class="wikilink1" title="fuss:libvirt" data-wiki-id="fuss:libvirt">libvirt</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:libvirt</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#create_a_new_virtual_machine">Create a New Virtual Machine</a></div></li>
+<li class="level1"><div class="li"><a href="#delete_a_virtual_machine">Delete a Virtual Machine</a></div></li>
+<li class="level1"><div class="li"><a href="#add_iso_to_domain">Add ISO to Domain</a></div></li>
+<li class="level1"><div class="li"><a href="#speed-up_virtualization_using_virtio_drivers">Speed-Up Virtualization using Virtio Drivers</a></div></li>
+<li class="level1"><div class="li"><a href="#speed-up_virtualization_using_multi-queue_virtio_networking">Speed-Up Virtualization using Multi-Queue VirtIO Networking</a></div></li>
+<li class="level1"><div class="li"><a href="#speed-up_virtualization_using_native_aio">Speed-Up Virtualization using Native AIO</a></div></li>
+<li class="level1"><div class="li"><a href="#disable_disk_cache_to_speed-up_disk_operations">Disable Disk Cache to Speed-Up Disk Operations</a></div></li>
+<li class="level1"><div class="li"><a href="#expose_cpu_capabilities_to_guests">Expose CPU Capabilities to Guests</a></div></li>
+<li class="level1"><div class="li"><a href="#cpu_passthrough">CPU Passthrough</a></div></li>
+<li class="level1"><div class="li"><a href="#selecting_correct_topology">Selecting Correct Topology</a></div></li>
+<li class="level1"><div class="li"><a href="#increase_network_performance">Increase Network Performance</a></div></li>
+<li class="level1"><div class="li"><a href="#fix_unstable_tsc_warning">Fix Unstable TSC Warning</a></div></li>
+<li class="level1"><div class="li"><a href="#clone_virtual_machine">Clone Virtual Machine</a></div></li>
+<li class="level1"><div class="li"><a href="#delete_resume_state">Delete Resume State</a></div></li>
+<li class="level1"><div class="li"><a href="#set_startup_boot_order">Set Startup Boot Order</a></div></li>
+<li class="level1"><div class="li"><a href="#import_virtual_machine">Import Virtual Machine</a></div></li>
+<li class="level1"><div class="li"><a href="#installing_windows">Installing Windows</a></div></li>
+<li class="level1"><div class="li"><a href="#accessing_contents_of_an_image_file">Accessing Contents of an Image File</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_shutdown_of_windows_guests">Enable Shutdown of Windows Guests</a></div></li>
+<li class="level1"><div class="li"><a href="#rename_virtual_machine_domain">Rename Virtual Machine Domain</a></div></li>
+<li class="level1"><div class="li"><a href="#windows_virtio_and_dhcp">Windows, VIRTIO and DHCP</a></div></li>
+<li class="level1"><div class="li"><a href="#the_virtio_pseudo-random_generator">The VirtIO Pseudo-Random Generator</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#egd">EGD</a></div></li>
+<li class="level2"><div class="li"><a href="#testing">Testing</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#mount_images">Mount Images</a></div></li>
+<li class="level1"><div class="li"><a href="#share_a_folder_between_guest_and_host">Share a Folder Between Guest and Host</a></div></li>
+<li class="level1"><div class="li"><a href="#hotswap_disk">Hotswap Disk</a></div></li>
+<li class="level1"><div class="li"><a href="#hotswap_cd-rom_or_floppy">Hotswap CD-ROM or Floppy</a></div></li>
+<li class="level1"><div class="li"><a href="#turn_domain_autostart_on_and_off">Turn Domain Autostart On and Off</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_jumbo_frames_for_bridged_networking">Enable Jumbo Frames for Bridged Networking</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#debian_derivates">Debian Derivates</a></div></li>
+<li class="level2"><div class="li"><a href="#redhat_derivates">RedHat Derivates</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#install_guest_agent">Install Guest Agent</a></div></li>
+<li class="level1"><div class="li"><a href="#delete_lvm_backed_domain_and_pool">Delete LVM backed Domain and Pool</a></div></li>
+<li class="level1"><div class="li"><a href="#passing_plan_9_permissions">Passing Plan 9 Permissions</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#access_mode_mapped">Access Mode Mapped</a></div></li>
+<li class="level2"><div class="li"><a href="#access_mode_passthrough">Access Mode Passthrough</a></div></li>
+<li class="level2"><div class="li"><a href="#mounting_the_share">Mounting the Share</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#setting_custom_interface_name_for_bridge_networking_mode">Setting Custom Interface Name for Bridge Networking Mode</a></div></li>
+<li class="level1"><div class="li"><a href="#strange_windows_install_errors">Strange Windows Install Errors</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="create_a_new_virtual_machine">Create a New Virtual Machine</h1>
+<div class="level1">
+
+<p>
+The following command creates a new Virtual Machine with the name &quot;live&quot;, <code>1024MB</code> of <code>RAM</code>, boots from the <code>live.iso</code> in the current path, opens up an available <code>VNC</code> port listening on <code>192.168.1.1</code> and will use the pre-allocated image file <code>/var/lib/libvirt/images/live.img</code> as a harddrive.
+</p>
+
+<p>
+To pre-allocate the image file run:
+</p>
+<pre class="code bash">truncate <span class="re5">--size</span>=8192M <span class="sy0">/</span>var<span class="sy0">/</span>lib<span class="sy0">/</span>libvirt<span class="sy0">/</span>images<span class="sy0">/</span>guest.img</pre>
+
+<p>
+which will create an image file at <code>/var/lib/libvirt/images/guest.img</code> of 8GB size.
+</p>
+
+<p>
+Next, to start the install, run:
+</p>
+<pre class="code bash">virt-install <span class="re5">--name</span> live \
+    <span class="re5">--network</span> bridge:br0 <span class="re5">--ram</span> <span class="nu0">1024</span> \
+    <span class="re5">--boot</span> cdrom <span class="re5">--cdrom</span> live.iso \
+    <span class="re5">--graphics</span> vnc,<span class="re2">listen</span>=192.168.1.1,<span class="re2">port</span>=<span class="nu0">5901</span> \
+    <span class="re5">--disk</span> <span class="sy0">/</span>var<span class="sy0">/</span>lib<span class="sy0">/</span>libvirt<span class="sy0">/</span>images<span class="sy0">/</span>live.img</pre>
+
+</div>
+
+<h1 class="sectionedit2" id="delete_a_virtual_machine">Delete a Virtual Machine</h1>
+<div class="level1">
+<pre class="code">destroy live #halts the machine forcibly
+undefine live #removes live from the list of machines managed by virsh</pre>
+
+</div>
+
+<h1 class="sectionedit3" id="add_iso_to_domain">Add ISO to Domain</h1>
+<div class="level1">
+
+<p>
+First attach to the domain and edit it, by issuing:
+</p>
+<pre class="code bash">virsh <span class="re5">-c</span> qemu:<span class="sy0">///</span>system
+list <span class="re5">--all</span>
+edit domain <span class="co0"># edit the domain name, obtained from the previous command</span></pre>
+
+<p>
+and then insert the following snippet:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;disk</span> <span class="re0">type</span>=<span class="st0">'file'</span> <span class="re0">device</span>=<span class="st0">'cdrom'</span><span class="re2">&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;driver</span> <span class="re0">name</span>=<span class="st0">'qemu'</span> <span class="re0">type</span>=<span class="st0">'raw'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">file</span>=<span class="st0">'/path/to/file.iso'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;target</span> <span class="re0">dev</span>=<span class="st0">'hdc'</span> <span class="re0">bus</span>=<span class="st0">'ide'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;readonly</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;address</span> <span class="re0">type</span>=<span class="st0">'drive'</span> <span class="re0">controller</span>=<span class="st0">'0'</span> <span class="re0">bus</span>=<span class="st0">'1'</span> <span class="re0">target</span>=<span class="st0">'0'</span> <span class="re0">unit</span>=<span class="st0">'0'</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/disk<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+where <code>/path/to/file.iso</code> is the path to the ISO file to attach to the domain.
+</p>
+
+</div>
+
+<h1 class="sectionedit4" id="speed-up_virtualization_using_virtio_drivers">Speed-Up Virtualization using Virtio Drivers</h1>
+<div class="level1">
+
+<p>
+<code>virtio</code> is a thin-layer networking and disk driver that will skip the overhead of a full emulation thereby making the guest faster. In order to enable it, edit a domain and change the disk section such that they use the <code>virtio</code> driver:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;disk</span> <span class="re0">type</span>=<span class="st0">'file'</span> <span class="re0">device</span>=<span class="st0">'disk'</span><span class="re2">&gt;</span></span>
+...
+      <span class="sc3"><span class="re1">&lt;target</span> <span class="re0">dev</span>=<span class="st0">'hda'</span> <span class="re0">bus</span>=<span class="st0">'virtio'</span><span class="re2">/&gt;</span></span>
+...
+    <span class="sc3"><span class="re1">&lt;/disk<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+and be sure to remove any <code>address</code> tag because <code>virsh</code> will recreate it.
+</p>
+
+<p>
+Also change the network driver to <code>virtio</code>:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;interface</span> <span class="re0">type</span>=<span class="st0">'bridge'</span><span class="re2">&gt;</span></span>
+...
+      <span class="sc3"><span class="re1">&lt;model</span> <span class="re0">type</span>=<span class="st0">'virtio'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;driver<span class="re2">&gt;</span></span></span>
+        <span class="sc3"><span class="re1">&lt;host</span> <span class="re0">gso</span>=<span class="st0">'off'</span> <span class="re0">tso4</span>=<span class="st0">'off'</span> <span class="re0">tso6</span>=<span class="st0">'off'</span> <span class="re0">ecn</span>=<span class="st0">'off'</span> <span class="re0">ufo</span>=<span class="st0">'off'</span><span class="re2">/&gt;</span></span>
+        <span class="sc3"><span class="re1">&lt;guest</span> <span class="re0">tso4</span>=<span class="st0">'off'</span> <span class="re0">tso6</span>=<span class="st0">'off'</span> <span class="re0">ecn</span>=<span class="st0">'off'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;/driver<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/interface<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+The <code>driver</code> block ensures that various offload parameters are turned off for the host and guest which is deemed to be good practice for virtio interfaces on a bridge. Additionally, the bridge can be configured to turn off most of the offloading:
+</p>
+<pre class="code bash">ethtool <span class="re5">-K</span> br0 tso off sg off ufo off gro off gso off</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>br0</code> is the bridge interface to which the virtio interfaces are added.</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit5" id="speed-up_virtualization_using_multi-queue_virtio_networking">Speed-Up Virtualization using Multi-Queue VirtIO Networking</h1>
+<div class="level1">
+
+<p>
+Multi-queue virtio-net provides an approach to networking that scales up well as the number of virtual CPUs increases by allowing packets to be transmitted and received in parallel.
+</p>
+
+<p>
+To configure multi-queue virtio-net, edit the guest domain configuration and add:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;driver</span> <span class="re0">name</span>=<span class="st0">'vhost'</span> <span class="re0">queues</span>=<span class="st0">'N'</span><span class="re2">/&gt;</span></span></pre>
+
+<p>
+to the network interface where <code>N</code> is the number of queues (from 1 to 8).
+</p>
+
+<p>
+For instance, the following configuration:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;interface</span> <span class="re0">type</span>=<span class="st0">'bridge'</span><span class="re2">&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;mac</span> <span class="re0">address</span>=<span class="st0">'5b:48:e3:4a:5b:32'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">bridge</span>=<span class="st0">'br0'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;model</span> <span class="re0">type</span>=<span class="st0">'virtio'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;driver</span> <span class="re0">name</span>=<span class="st0">'vhost'</span> <span class="re0">queues</span>=<span class="st0">'2'</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/interface<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+will switch to the <code>vhost</code> driver and use <code>2</code> queues.
+</p>
+
+</div>
+
+<h1 class="sectionedit6" id="speed-up_virtualization_using_native_aio">Speed-Up Virtualization using Native AIO</h1>
+<div class="level1">
+
+<p>
+Native asynchronous <code>IO</code> gives better performance for virtual images, it can be enabled by editing the domain and adding the attribute <code>io=&#039;native</code>&#039; to the disk tag:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;driver</span> <span class="re0">name</span>=<span class="st0">'qemu'</span> <span class="re0">type</span>=<span class="st0">'raw'</span> <span class="re0">io</span>=<span class="st0">'native'</span><span class="re2">/&gt;</span></span></pre>
+
+</div>
+
+<h1 class="sectionedit7" id="disable_disk_cache_to_speed-up_disk_operations">Disable Disk Cache to Speed-Up Disk Operations</h1>
+<div class="level1">
+
+<p>
+Add the <code>cache=&#039;none</code>&#039; attribute to the <code>driver</code> tag of the domain:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;driver</span> <span class="re0">name</span>=<span class="st0">'qemu'</span> <span class="re0">type</span>=<span class="st0">'raw'</span> <span class="re0">io</span>=<span class="st0">'native'</span> <span class="re0">cache</span>=<span class="st0">'none'</span><span class="re2">/&gt;</span></span></pre>
+
+</div>
+
+<h1 class="sectionedit8" id="expose_cpu_capabilities_to_guests">Expose CPU Capabilities to Guests</h1>
+<div class="level1">
+
+<p>
+Execute:
+</p>
+<pre class="code bash">virsh capabilties</pre>
+
+<p>
+in order to list all the available CPU features. The CPU type with all the features are listed under the <code>&lt;cpu&gt;</code> tag and can be copied directly to a domain configuration. In order to do that, first connect to the system using <code>virsh</code>:
+</p>
+<pre class="code bash">virsh <span class="re5">-c</span> qemu:<span class="sy0">///</span>system</pre>
+
+<p>
+and then edit the domain that the features should be added to:
+</p>
+<pre class="code bash">edit guest1</pre>
+
+<p>
+and copy the desired features, including the tags (<code>&lt;cpu&gt;...&lt;/cpu&gt;</code>) from the first step into the configuration and save the file.
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="cpu_passthrough">CPU Passthrough</h1>
+<div class="level1">
+
+<p>
+If you wish to expose the entire set of features, you can use the <code>passthrough</code> parameter passed to <code>cpu</code> by editing the guest configuration:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;cpu</span> <span class="re0">mode</span>=<span class="st0">'host-passthrough'</span><span class="re2">&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/cpu<span class="re2">&gt;</span></span></span></pre>
+
+</div>
+
+<h1 class="sectionedit10" id="selecting_correct_topology">Selecting Correct Topology</h1>
+<div class="level1">
+
+<p>
+Sometimes the default settings do not select the correct topology. This can be observed by running:
+</p>
+<pre class="code bash"><span class="kw2">ps</span> aux <span class="sy0">|</span> <span class="kw2">grep</span> kvm</pre>
+
+<p>
+and reading the following line:
+</p>
+<pre class="code">-smp 2,sockets=1,cores=1,threads=1</pre>
+
+<p>
+Comparing to the correct topology, which can be obtained by running:
+</p>
+<pre class="code bash">virsh capabilities <span class="sy0">|</span> <span class="kw2">grep</span> topology</pre>
+
+<p>
+which is:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;topology</span> <span class="re0">sockets</span>=<span class="st0">'1'</span> <span class="re0">cores</span>=<span class="st0">'2'</span> <span class="re0">threads</span>=<span class="st0">'1'</span><span class="re2">/&gt;</span></span></pre>
+
+<p>
+we can observe that the number of cores is detected wrongly.
+</p>
+
+<p>
+Thus, to enable the correct topology, we take the output of the previous command and place it in the <code>cpu</code> subsection of the domain xml:
+</p>
+<pre class="code xml">  <span class="sc3"><span class="re1">&lt;cpu</span> <span class="re0">mode</span>=<span class="st0">'host-passthrough'</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;topology</span> <span class="re0">sockets</span>=<span class="st0">'1'</span> <span class="re0">cores</span>=<span class="st0">'2'</span> <span class="re0">threads</span>=<span class="st0">'1'</span><span class="re2">/&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;/cpu<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+and then shutdown and restart the guest.
+</p>
+
+</div>
+
+<h1 class="sectionedit11" id="increase_network_performance">Increase Network Performance</h1>
+<div class="level1">
+
+<p>
+<code>vnet</code> devices created by <code>virsh</code> perform better with a <code>txqueuelen</code> set to a higher <code>txqueuelen</code>. In order to test, the <code>txqueuelen</code> can be set manually using:
+</p>
+<pre class="code bash"><span class="kw2">ifconfig</span> vnet0 txqueuelen <span class="nu0">2500</span></pre>
+
+<p>
+To make the changes persistent, we add a file called <code>60-vnet.rules</code> to <code>/etc/udev/rules.d</code> containing the line:
+</p>
+<pre class="code">KERNEL==&quot;vnet[0-9]*&quot;, RUN+=&quot;/sbin/ip link set %k txqueuelen 2500&quot;</pre>
+
+</div>
+
+<h1 class="sectionedit12" id="fix_unstable_tsc_warning">Fix Unstable TSC Warning</h1>
+<div class="level1">
+
+<p>
+You may find an error message indicating that the current clock-source is unstable. If you issue:
+</p>
+<pre class="code">dmesg | grep TSC</pre>
+
+<p>
+you may see:
+</p>
+<pre class="code">kvm: SMP vm created on host with unstable TSC; guest TSC will not be reliable</pre>
+
+<p>
+In this case, it may be a good idea to supply an alternate clock-source to the kernel.
+</p>
+
+<p>
+First, to check what clock-sources are available issue:
+</p>
+<pre class="code bash"><span class="kw2">cat</span> <span class="sy0">/</span>sys<span class="sy0">/</span>devices<span class="sy0">/</span>system<span class="sy0">/</span>clocksource<span class="sy0">/</span>clocksource0<span class="sy0">/</span>available_clocksource</pre>
+
+<p>
+which will return some of the following:
+</p>
+<pre class="code">kvm-clock tsc hpet acpi_pm</pre>
+
+<p>
+To check the currently selected clock-source, issue:
+</p>
+<pre class="code bash"><span class="kw2">cat</span> <span class="sy0">/</span>sys<span class="sy0">/</span>devices<span class="sy0">/</span>system<span class="sy0">/</span>clocksource<span class="sy0">/</span>clocksource0<span class="sy0">/</span>current_clocksource</pre>
+
+<p>
+which will return the clock-source that Linux considers unstable.
+</p>
+
+<p>
+In order to fix the unstable clock-source problem, edit <code>/etc/default/grub</code> or <code>/etc/lilo.conf</code> and add the following kernel parameter:
+</p>
+<pre class="code">clocksource=acpi_pm</pre>
+
+<p>
+where <code>acpi_pm</code> is one of the available clock-sources. After which, a restart is required to pick-up the changes (remember to run <code>lilo</code> again if you are using <code>lilo</code>).
+</p>
+
+</div>
+
+<h1 class="sectionedit13" id="clone_virtual_machine">Clone Virtual Machine</h1>
+<div class="level1">
+
+<p>
+In order to clone a virtual machine with virsh, first connect and list all the machines as root:
+</p>
+<pre class="code bash">virsh <span class="re5">-c</span> qemu:<span class="sy0">///</span>system</pre>
+
+<p>
+then on the virsh console, issue:
+</p>
+<pre class="code bash">list <span class="re5">--all</span> </pre>
+
+<p>
+and shutdown the virtual machine that you wish to clone:
+</p>
+<pre class="code bash">shutdown example.domain</pre>
+
+<p>
+You can then issue <code>list --all</code> again to check when the virtual machine has been shut down:
+</p>
+<pre class="code"> -     example.domain                  shut off</pre>
+
+<p>
+Now exit the virsh command prompt with <kbd class="__keyboard">Ctrl</kbd>+<kbd class="__keyboard">D</kbd> and issue as root:
+</p>
+<pre class="code bash">virt-clone <span class="re5">--connect</span>=qemu:<span class="sy0">///</span>system <span class="re5">-o</span> example.domain <span class="re5">-n</span> new.domain <span class="re5">-f</span> <span class="sy0">/</span>var<span class="sy0">/</span>lib<span class="sy0">/</span>libvirt<span class="sy0">/</span>images<span class="sy0">/</span>new.domain.img</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>example.domain</code> represents the domain to clone</div>
+</li>
+<li class="level1"><div class="li"> <code>new.domain</code> represents the new domain to clone</div>
+</li>
+<li class="level1"><div class="li"> <code>/var/lib/libvirt/images/new.domain.img</code> is full path to the file where you want to store the new virtual machine.</div>
+</li>
+</ul>
+
+<p>
+Depending on how large the virtual machine is, after a while the new domain will be created. You should now go back to the virsh command line with:
+</p>
+<pre class="code bash">virsh <span class="re5">-c</span> qemu:<span class="sy0">///</span>system</pre>
+
+<p>
+and edit the new domain with:
+</p>
+<pre class="code">edit new.domain</pre>
+
+<p>
+in order to make any last minute change to the VM.
+</p>
+
+<p>
+After that, you can start the new domain / virtual machine using the virsh command line by issuing:
+</p>
+<pre class="code bash">start new.domain</pre>
+
+<p>
+Alternatively, do not forget to set the <code>autostart</code> flag on the newly created virtual machine in case you want it to start automatically once the system boots:
+</p>
+<pre class="code bash">autostart new.domain</pre>
+
+</div>
+
+<h1 class="sectionedit14" id="delete_resume_state">Delete Resume State</h1>
+<div class="level1">
+
+<p>
+Some resume states get corrupted which sometimes leads to the following error message when starting a domain:
+</p>
+<pre class="code">error: failed to get domain &#039;testbed&#039;
+error: Unable to read from monitor: Connection reset by peer</pre>
+
+<p>
+In order to remove the saved state for the domain <code>testbed</code> issue the following command:
+</p>
+<pre class="code bash">virsh managedsave-remove testbed</pre>
+
+</div>
+
+<h1 class="sectionedit15" id="set_startup_boot_order">Set Startup Boot Order</h1>
+<div class="level1">
+
+<p>
+The boot-order can be changed by editing the domain name and including the boot-order devices:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;os<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;type<span class="re2">&gt;</span></span></span>hvm<span class="sc3"><span class="re1">&lt;/type<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;loader<span class="re2">&gt;</span></span></span>/usr/lib/xen/boot/hvmloader<span class="sc3"><span class="re1">&lt;/loader<span class="re2">&gt;</span></span></span>
+  <span class="sc3"><span class="re1">&lt;boot</span> <span class="re0">dev</span>=<span class="st0">'network'</span><span class="re2">/&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;boot</span> <span class="re0">dev</span>=<span class="st0">'cdrom'</span><span class="re2">/&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;boot</span> <span class="re0">dev</span>=<span class="st0">'hd'</span><span class="re2">/&gt;</span></span>
+  <span class="sc3"><span class="re1">&lt;bootmenu</span> <span class="re0">enable</span>=<span class="st0">'yes'</span><span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/os<span class="re2">&gt;</span></span></span></pre>
+
+</div>
+
+<h1 class="sectionedit16" id="import_virtual_machine">Import Virtual Machine</h1>
+<div class="level1">
+
+<p>
+Virtual Machines can be imported using the <code>--import</code> parameter with <code>virt-install</code>. For example, the following command could be used:
+</p>
+<pre class="code bash">virt-install <span class="re5">-n</span> NAME \    <span class="co0"># the name of the domain to be created</span>
+    <span class="re5">-r</span> <span class="nu0">2048</span> \             <span class="co0"># the amount of RAM to be assigned to the virtual machine </span>
+    <span class="re5">--disk</span>  <span class="sy0">/</span>var<span class="sy0">/</span>lib<span class="sy0">/</span>libvirt<span class="sy0">/</span>images<span class="sy0">/</span>NAME.IMG,<span class="re2">device</span>=disk,<span class="re2">bus</span>=virtio \    <span class="co0"># the disk image NAME.IMG to be imported using the virtio driver</span>
+    <span class="re5">-w</span> <span class="re2">bridge</span>=br0,<span class="re2">model</span>=virtio \                                         <span class="co0"># bridge the network to br0 using the virtio driver</span>
+    <span class="re5">--vnc</span> \               <span class="co0"># enable VNC</span>
+    <span class="re5">--noautoconsole</span> \     <span class="co0"># do not open a console after importing</span>
+    <span class="re5">--import</span>              <span class="co0"># and import</span></pre>
+
+</div>
+
+<h1 class="sectionedit17" id="installing_windows">Installing Windows</h1>
+<div class="level1">
+
+<p>
+In case you have been accustomed to use the <code>virtio</code> bus, you will notice that booting off a Windows ISO and attempting to install will not find any disks connected. Switch the bus to <code>ide</code> and delete the <code>address</code> line (it will be recreated when you save the domain). You can then install Windows and install the <code>virtio</code> drivers and then switch back the bus to <code>virtio</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit18" id="accessing_contents_of_an_image_file">Accessing Contents of an Image File</h1>
+<div class="level1">
+
+<p>
+First determine an available loop device by issuing:
+</p>
+<pre class="code bash">losetup <span class="re5">-f</span> </pre>
+
+<p>
+which will display a device such as <code>/dev/loop0</code>. Then attach the image file to the loop device:
+</p>
+<pre class="code bash">lopsetup <span class="sy0">/</span>dev<span class="sy0">/</span>loop0 <span class="sy0">/</span>var<span class="sy0">/</span>lib<span class="sy0">/</span>libvirt<span class="sy0">/</span>images<span class="sy0">/</span>guest.img</pre>
+
+<p>
+You can check that the partitions are there by using <code>fdisk</code>.
+</p>
+
+<p>
+Next we run <code>kpartx</code> to create a map to the partitions available in the image file:
+</p>
+<pre class="code bash">kpartx <span class="re5">-av</span> <span class="sy0">/</span>dev<span class="sy0">/</span>loop0</pre>
+
+<p>
+this will create device files under <code>/dev/mapper/</code>, for example, for two partitions on <code>loop0</code>, it will create <code>/dev/mapper/loop0p1</code> and <code>/dev/mapper/loop0p2</code>.
+</p>
+
+<p>
+These can then be mounted using <code>mount</code>, for example, to mount the second partition, you would issue:
+</p>
+<pre class="code bash"><span class="kw2">mount</span> <span class="sy0">/</span>dev<span class="sy0">/</span>mapper<span class="sy0">/</span>loop0p2 <span class="sy0">/</span>mnt<span class="sy0">/</span>transfer</pre>
+
+</div>
+
+<h1 class="sectionedit19" id="enable_shutdown_of_windows_guests">Enable Shutdown of Windows Guests</h1>
+<div class="level1">
+
+<p>
+To enable the shutdown of Windows guests running under qemu/kvm, the following settings should be made:
+</p>
+<ul>
+<li class="level1"><div class="li"> Using the group policy editor (run <code>gpedit.msc</code>) make sure that <code>Computer Configuration-&gt;Windows Settings-&gt;Security Settings-&gt;Local Policies-&gt;Security Options-&gt;Shutdown: Allow system to be shut down without having to log on</code> is set to <code>Enabled</code>.</div>
+</li>
+<li class="level1"><div class="li"> Using the registry editor (run <code>regedit</code>) make sure that the DWORD located at <code>HKEY_LOCAL_MACHINE-&gt;SOFTWARE-&gt;Microsoft-&gt;Windows NT-&gt;CurrentVersion-&gt;Windows-&gt;ShutdownWarningDialogTimeout</code> is set to anything else other than <code>0xffffffff</code> (for example <code>1</code>). In case the DWORD does not exist, create it and set it to a positive decimal.</div>
+</li>
+</ul>
+
+<p>
+You can now issue: <code>shutdown windows.guest</code> to shutdown a Windows domain named <code>windows.guest</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit20" id="rename_virtual_machine_domain">Rename Virtual Machine Domain</h1>
+<div class="level1">
+
+<p>
+Virtual machines (domains) are tied into the virsh system tightly such that there is no simple solution to renaming them except following the same steps:
+</p>
+<ul>
+<li class="level1"><div class="li"> shut down the virtual machine with <code>virsh shutdown</code>.</div>
+</li>
+<li class="level1"><div class="li"> dump the domain you want to rename with <code>virsh dumpxml DOMAIN &gt; DOMAIN.xml</code> - where <code>DOMAIN</code> is the virtual machine / domain you want to rename.</div>
+</li>
+<li class="level1"><div class="li"> edit the <code>DOMAIN.xml</code> file and locate the <code>name</code> tag and rename it appropriately.</div>
+</li>
+<li class="level1"><div class="li"> undefine the old domain with <code>virsh undefine DOMAIN</code> - where <code>DOMAIN</code> is the virtual machine / domain you want to rename.</div>
+</li>
+<li class="level1"><div class="li"> import the old domain with <code>virsh define /path/to/DOMAIN.xml</code></div>
+</li>
+</ul>
+
+<p>
+You may want to actually save the new XML at <code>/etc/libvirt/qemu/</code> where all the other domain XML files are located before importing the domain.
+</p>
+
+</div>
+
+<h1 class="sectionedit21" id="windows_virtio_and_dhcp">Windows, VIRTIO and DHCP</h1>
+<div class="level1">
+
+<p>
+If you are running a Windows guest under libvirt using a virtio adapter type, you may notice that the Windows guest will not be able to acquire an IP address using DHCP.
+</p>
+
+<p>
+To fix that TSO has to be disabled on the virtio interface. In order to do that, launch a registry editor and navigate to <code>HKEY_LOCAL_MACHINE-&gt;SYSTEM-&gt;CurrentControlSet-&gt;Services-&gt;Tcpip-&gt;Parameters</code> and add a new DWORD (32 bit). Give it the name <code>DisableTaskOffload</code> and set the value to <code>1</code>. After that, restart the Windows guest and DHCP should work fine.
+</p>
+
+</div>
+
+<h1 class="sectionedit22" id="the_virtio_pseudo-random_generator">The VirtIO Pseudo-Random Generator</h1>
+<div class="level1">
+
+<p>
+Guest machines can be configured to use the host random hardware for pseudo-random number generation. First, edit the virtual machine domain configuration and add the following configuration lines:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;rng</span> <span class="re0">model</span>=<span class="st0">'virtio'</span><span class="re2">&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;backend</span> <span class="re0">model</span>=<span class="st0">'random'</span><span class="re2">&gt;</span></span>/dev/random<span class="sc3"><span class="re1">&lt;/backend<span class="re2">&gt;</span></span></span>
+    <span class="sc3"><span class="re1">&lt;/rng<span class="re2">&gt;</span></span></span> </pre>
+
+<p>
+Next, install the <code>rng-tools</code> package:
+</p>
+<pre class="code bash"><span class="kw2">apt-get install</span> rng-tools</pre>
+
+<p>
+and start <code>rngd</code>:
+</p>
+<pre class="code bash">systemctl restart rng-tools</pre>
+
+</div>
+
+<h2 class="sectionedit23" id="egd">EGD</h2>
+<div class="level2">
+
+<p>
+To use <code>egd</code>, you would have to install:
+</p>
+<pre class="code bash"><span class="kw2">aptitude install</span> egd</pre>
+
+<p>
+and then run <code>egd</code> in the background:
+</p>
+<pre class="code bash">egd.pl <span class="re5">--debug-client</span> <span class="re5">--nofork</span> localhost:<span class="nu0">8888</span></pre>
+
+<p>
+where <code>8888</code> is the port to listen on.
+</p>
+
+<p>
+After that, you would add the following configuration lines to the guest:
+</p>
+<pre class="code xml"> <span class="sc3"><span class="re1">&lt;rng</span> <span class="re0">model</span>=<span class="st0">'virtio'</span><span class="re2">&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;backend</span> <span class="re0">model</span>=<span class="st0">'egd'</span> <span class="re0">type</span>=<span class="st0">'tcp'</span><span class="re2">&gt;</span></span>
+     <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">mode</span>=<span class="st0">'connect'</span> <span class="re0">host</span>=<span class="st0">'127.0.0.1'</span> <span class="re0">service</span>=<span class="st0">'8888'</span><span class="re2">/&gt;</span></span>
+   <span class="sc3"><span class="re1">&lt;/backend<span class="re2">&gt;</span></span></span>
+ <span class="sc3"><span class="re1">&lt;/rng<span class="re2">&gt;</span></span></span></pre>
+
+</div>
+
+<h2 class="sectionedit24" id="testing">Testing</h2>
+<div class="level2">
+
+<p>
+In order to test, you would log-in to a machine and verify with:
+</p>
+<pre class="code bash"><span class="kw2">lsmod</span> <span class="sy0">|</span> <span class="kw2">grep</span> virt</pre>
+
+<p>
+that the <code>virtio_rng</code> module is loaded.
+</p>
+
+</div>
+
+<h1 class="sectionedit25" id="mount_images">Mount Images</h1>
+<div class="level1">
+
+<p>
+Using <code>losetup</code> and <code>partx</code> images can be mounted from files. Let&#039;s say the image file is <code>domain.img</code> and we would like to detect and create a device for all partitions inside the image. We would first mount the image over loopback using <code>losetup</code>:
+</p>
+<pre class="code bash">losetup <span class="re5">-v</span> <span class="re5">-f</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>domain.img</pre>
+
+<p>
+This should create a loop device such as <code>/dev/loop0</code> and display it. Next, we can list the partitions with <code>partx</code>:
+</p>
+<pre class="code bash">partx <span class="re5">--show</span> <span class="sy0">/</span>dev<span class="sy0">/</span>loop0</pre>
+
+<p>
+To make <code>partix</code> add loop devices for all partitions on the image, we issue:
+</p>
+<pre class="code bash">partx <span class="re5">-v</span> <span class="re5">--add</span> <span class="sy0">/</span>dev<span class="sy0">/</span>loop0</pre>
+
+<p>
+which should create devices such as <code>/dev/loop0p1</code> (first partition), <code>/dev/loop0p2</code> (second partition), etc...
+</p>
+
+</div>
+
+<h1 class="sectionedit26" id="share_a_folder_between_guest_and_host">Share a Folder Between Guest and Host</h1>
+<div class="level1">
+
+<p>
+To mount a shared folder inside the guest shared with the host, connect with <code>virsh</code> and edit the domain to add the following lines:
+</p>
+<pre class="code xml"><span class="sc3"><span class="re1">&lt;filesystem</span> <span class="re0">type</span>=<span class="st0">'mount'</span> <span class="re0">accessmode</span>=<span class="st0">'mapped'</span><span class="re2">&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">dir</span>=<span class="st0">'/mnt/guest_shared'</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;target</span> <span class="re0">dir</span>=<span class="st0">'host_share'</span><span class="re2">/&gt;</span></span>
+<span class="sc3"><span class="re1">&lt;/filesystem<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+This will expose the folder <code>/mnt/guest_shared</code> to the guest. The guest will then be able to mount the folder from the host <code>/mnt/guest_shared</code> by using the name <code>host_share</code>. Inside the guest, you would run:
+</p>
+<pre class="code bash"><span class="kw2">mount</span> <span class="re5">-t</span> 9p <span class="re5">-o</span> <span class="re2">trans</span>=virtio,<span class="re2">version</span>=9p2000.L host_share <span class="sy0">/</span>mnt<span class="sy0">/</span>shared<span class="sy0">/</span></pre>
+
+<p>
+which will mount the folder <code>/mnt/guest_shared</code> from the server to the folder <code>/mnt/shared</code> on the guest.
+</p>
+
+</div>
+
+<h1 class="sectionedit27" id="hotswap_disk">Hotswap Disk</h1>
+<div class="level1">
+
+<p>
+First, the guest needs to have a <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt#add_iso_to_domain" class="wikilink1" title="fuss:libvirt" data-wiki-id="fuss:libvirt">device defined for a CDROM</a>. After that, the command:
+</p>
+<pre class="code bash">virsh attach-disk domain <span class="sy0">/</span>dev<span class="sy0">/</span>sr0 hdc <span class="re5">--type</span> cdrom</pre>
+
+<p>
+or, for Windows:
+</p>
+<pre class="code bash">virsh attach-disk domain <span class="sy0">/</span>mnt<span class="sy0">/</span>isos<span class="sy0">/</span>cd.iso hdc <span class="re5">--type</span> cdrom</pre>
+
+<p>
+executed on the host operating system will mount the ISO inside the domain. The converse virsh command is <code>detach-disk</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit28" id="hotswap_cd-rom_or_floppy">Hotswap CD-ROM or Floppy</h1>
+<div class="level1">
+
+<p>
+First, in order to make sure that libvirt will boot off the CD-ROM or Floppy and then proceed to the next bootable device, edit the domain and make sure that the lines:
+</p>
+<pre class="code">    &lt;boot dev=&#039;cdrom&#039;/&gt;
+    &lt;boot dev=&#039;hd&#039;/&gt;</pre>
+
+<p>
+are added inside the <code>os</code> tag.
+</p>
+
+<p>
+Then, to eject a CD-ROM or Floppy, issue:
+</p>
+<pre class="code bash">virsh change-media domain drive <span class="re5">--eject</span> <span class="re5">--config</span></pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>domain</code> is the domain for which to eject the CD-ROM,</div>
+</li>
+<li class="level1"><div class="li"> <code>drive</code> is the bus device, ie <code>hdc</code>, <code>hdd</code>, et...,</div>
+</li>
+<li class="level1"><div class="li"> <code>--eject</code> will eject the CD-ROM,</div>
+</li>
+<li class="level1"><div class="li"> <code>--config</code> will update the domain XML to make the change persistent across reboots.</div>
+</li>
+</ul>
+
+<p>
+Conversely, to insert a CD-ROM or floppy, issue:
+</p>
+<pre class="code bash">virsh change-media domain drive <span class="sy0">/</span>var<span class="sy0">/</span>lib<span class="sy0">/</span>libvirt<span class="sy0">/</span>iso<span class="sy0">/</span>virtio-win.iso <span class="re5">--insert</span> <span class="re5">--config</span></pre>
+
+</div>
+
+<h1 class="sectionedit29" id="turn_domain_autostart_on_and_off">Turn Domain Autostart On and Off</h1>
+<div class="level1">
+
+<p>
+To make a virtual machine autostart on <code>virsh</code> start, issue on the <code>virsh</code> command line:
+</p>
+<pre class="code">autostart domain</pre>
+
+<p>
+where <code>domain</code> is the name of the virtual machine.
+</p>
+
+<p>
+In order to remove the autostart flag such that a virtual machine will not be start on <code>virsh</code> boot, issue:
+</p>
+<pre class="code">autostart domain --disable</pre>
+
+</div>
+
+<h1 class="sectionedit30" id="enable_jumbo_frames_for_bridged_networking">Enable Jumbo Frames for Bridged Networking</h1>
+<div class="level1">
+
+<p>
+To enable Jumbo frames on a bridge, you will need to ensure that all member interfaces of the bridge are also set to use Jumbo frames.
+</p>
+
+<p>
+Create an udev persistent network file (or edit it if it is available) on the machine hosting the virtual machines guests at <code>/etc/udev/rules.d/70-persistent-net.rules</code> with the following contents:
+</p>
+<pre class="code"># LibVirt Jumbo Frames
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, KERNEL==&quot;vnet*&quot;, ATTR{mtu}=&quot;9000&quot;
+# Tap Interfaces Jumbo Frames
+SUBSYSTEM==&quot;net&quot;, ACTION==&quot;add&quot;, KERNEL==&quot;tap*&quot;, ATTR{mtu}=&quot;9000&quot;</pre>
+
+</div>
+
+<h2 class="sectionedit31" id="debian_derivates">Debian Derivates</h2>
+<div class="level2">
+
+<p>
+Edit <code>/etc/network/interfaces</code> and amend all configured interfaces to set the interface MTU to 9000. For instance, for an interface <code>eth0</code> that will be a bridge member, you would have something like:
+</p>
+<pre class="code"># Part of Bridge
+allow-hotplug eth0
+iface eth0 inet static
+        # other options...
+        mtu 9000</pre>
+
+<p>
+In case you are not on Sid or Etch, then you may need to add the line:
+</p>
+<pre class="code">pre-up /sbin/ifconfig $IFACE mtu 1492</pre>
+
+<p>
+after the <code>mtu 9000</code> line to make sure that dynamic interfaces also have the MTU set.
+</p>
+
+<p>
+Additionally, in <code>/etc/network/interfaces</code>, make sure that the bridge also has the MTU set appropriately:
+</p>
+<pre class="code">auto br0
+iface br0 inet static
+        # other options...
+        mtu 9000
+        pre-up /sbin/ifconfig $IFACE mtu 9000</pre>
+
+</div>
+
+<h2 class="sectionedit32" id="redhat_derivates">RedHat Derivates</h2>
+<div class="level2">
+
+<p>
+Next, for all interfaces configured in <code>/etc/sysconfig/network-scripts/</code> add the parameter:
+</p>
+<pre class="code">MTU=9000</pre>
+
+<p>
+in order to enable Jumbo frames.
+</p>
+
+</div>
+
+<h1 class="sectionedit33" id="install_guest_agent">Install Guest Agent</h1>
+<div class="level1">
+
+<p>
+Similar to other virtualization software, qemu comes bundled with an agent that runs on the guest and facilitates various features. To install the qemu guest agent, first the agent itself has to be installed inside the guest, for instance, on Debian by issuing:
+</p>
+<pre class="code bash"><span class="kw2">aptitude install</span> qemu-guest-agent</pre>
+
+<p>
+and then the domain definition has to be changed to include:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;channel</span> <span class="re0">type</span>=<span class="st0">'unix'</span><span class="re2">&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">mode</span>=<span class="st0">'bind'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;target</span> <span class="re0">type</span>=<span class="st0">'virtio'</span> <span class="re0">name</span>=<span class="st0">'org.qemu.guest_agent.0'</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/channel<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+inside the <code>devices</code> tags.
+</p>
+
+</div>
+
+<h1 class="sectionedit34" id="delete_lvm_backed_domain_and_pool">Delete LVM backed Domain and Pool</h1>
+<div class="level1">
+
+<p>
+Shut down the domain, or destroy it if it cannot be shutdown:
+</p>
+<pre class="code bash">virsh destroy mydomain.db</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>mydomain.db</code> is the domain name.</div>
+</li>
+</ul>
+
+<p>
+Undefine the domain from libvirt:
+</p>
+<pre class="code bash">virsh undefine mydomain.db</pre>
+
+<p>
+Finally, remove the volume from the pool:
+</p>
+<pre class="code bash">virsh vol-delete <span class="re5">--pool</span> vms mydomain.db</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>vms</code> is the libvirt storage pool for the domain <code>mydomain.db</code>.</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit35" id="passing_plan_9_permissions">Passing Plan 9 Permissions</h1>
+<div class="level1">
+
+</div>
+
+<h2 class="sectionedit36" id="access_mode_mapped">Access Mode Mapped</h2>
+<div class="level2">
+
+<p>
+The following configuration changes for the domain have to be made:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;filesystem</span> <span class="re0">type</span>=<span class="st0">'mount'</span> <span class="re0">accessmode</span>=<span class="st0">'mapped'</span><span class="re2">&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">dir</span>=<span class="st0">'/mnt/cdrom'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;target</span> <span class="re0">dir</span>=<span class="st0">'cd'</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/filesystem<span class="re2">&gt;</span></span></span></pre>
+
+</div>
+
+<h2 class="sectionedit37" id="access_mode_passthrough">Access Mode Passthrough</h2>
+<div class="level2">
+
+<p>
+For passthrough access mode, the following configuration change has to be made for the domain:
+</p>
+<pre class="code xml">    <span class="sc3"><span class="re1">&lt;filesystem</span> <span class="re0">type</span>=<span class="st0">'mount'</span> <span class="re0">accessmode</span>=<span class="st0">'passthrough'</span><span class="re2">&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;source</span> <span class="re0">dir</span>=<span class="st0">'/mnt/cdrom'</span><span class="re2">/&gt;</span></span>
+      <span class="sc3"><span class="re1">&lt;target</span> <span class="re0">dir</span>=<span class="st0">'cd'</span><span class="re2">/&gt;</span></span>
+    <span class="sc3"><span class="re1">&lt;/filesystem<span class="re2">&gt;</span></span></span></pre>
+
+<p>
+Virtual machines running under <code>qemu</code> / <code>kvm</code> have to be started as root. To accomplish that, edit <code>/etc/default/libvirt/qemu.conf</code> and set:
+</p>
+<pre class="code">user = &quot;root&quot;
+group = &quot;root&quot;</pre>
+
+<p>
+Additionally, the following setting:
+</p>
+<pre class="code">clear_emulator_capabilities = 0</pre>
+
+<p>
+has to be added to <code>/etc/default/libvirt/qemu.conf</code>.
+</p>
+
+</div>
+
+<h2 class="sectionedit38" id="mounting_the_share">Mounting the Share</h2>
+<div class="level2">
+
+<p>
+Once the virtual machine boots, the share can then be automatically mounted by adding the following line:
+</p>
+<pre class="code">cd  /mnt/share     9p      defaults,trans=virtio,version=9p2000.L,posixacl 0       0</pre>
+
+<p>
+to <code>/etc/fstab</code>, where
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>cd</code> is the name of the share exposed by the host,</div>
+</li>
+<li class="level1"><div class="li"> <code>/mnt/share</code> is the path to a directory where the host share will be mounted,</div>
+</li>
+<li class="level1"><div class="li"> <code>posixacl</code> turns on passing POSIX ACLs (very convenient for using <code>getfacl</code> and <code>setfacl</code> to fine tune permissions).</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit39" id="setting_custom_interface_name_for_bridge_networking_mode">Setting Custom Interface Name for Bridge Networking Mode</h1>
+<div class="level1">
+
+<p>
+libvirt allows using:
+</p>
+<pre class="code">&lt;target dev=&#039;...&#039;/&gt;</pre>
+
+<p>
+to set the custom name for bridge interfaces such as <code>vnet0</code>, <code>vnet1</code>, etc... 
+</p>
+
+<p>
+However, if the name of the interface contains the substring <code>vnet</code>, libvirt will ignore the entry and will not save it, for instance, setting the interface name with:
+</p>
+<pre class="code">&lt;target dev=&#039;vnet888&#039;/&gt;</pre>
+
+<p>
+will just be ignored by libvirt.
+</p>
+
+<p>
+To resolve this issue, use a more custom-tailored interface name, for instance:
+</p>
+<pre class="code">&lt;target dev=&#039;mynet0&#039;/&gt;</pre>
+
+<p>
+without containing the <code>vnet</code> substring.
+</p>
+
+</div>
+
+<h1 class="sectionedit40" id="strange_windows_install_errors">Strange Windows Install Errors</h1>
+<div class="level1">
+
+<p>
+One easy workaround for a BSoD on a fresh Windows install complaining about <code>IRQL_NOT_LESS_OR_EQUAL</code> or reaching a fatal error is to increase the RAM available above <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7dab73106a51c2821e01ca07babedd35.png" class="latex_inline" alt="$3GiB$" title="Math" />.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/libvirt.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt" class="wikilink1" title="fuss:libvirt" data-wiki-id="fuss:libvirt">libvirt</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:libvirt" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/libvirt"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Alibvirt&amp;1657305309" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:iptables [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,iptables"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/iptables"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:iptables","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:iptables" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:iptables&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables" class="wikilink1" title="fuss:iptables" data-wiki-id="fuss:iptables">iptables</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:iptables</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#packet_flow">Packet Flow</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#abridged_version">Abridged Version</a></div></li>
+<li class="level2"><div class="li"><a href="#ascii">ASCII</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#flush_tables">Flush Tables</a></div></li>
+<li class="level1"><div class="li"><a href="#common_attack_protections">Common Attack Protections</a></div></li>
+<li class="level1"><div class="li"><a href="#spoofed_packets">Spoofed Packets</a></div></li>
+<li class="level1"><div class="li"><a href="#packet_flood_protections">Packet Flood Protections</a></div></li>
+<li class="level1"><div class="li"><a href="#service_flood_protection">Service Flood Protection</a></div></li>
+<li class="level1"><div class="li"><a href="#clamp_to_mss">Clamp to MSS</a></div></li>
+<li class="level1"><div class="li"><a href="#bypass_isp_nat_detection">Bypass ISP NAT Detection</a></div></li>
+<li class="level1"><div class="li"><a href="#log_wol_packets">Log WOL Packets</a></div></li>
+<li class="level1"><div class="li"><a href="#tarpit">TARPIT</a></div></li>
+<li class="level1"><div class="li"><a href="#restricting_interface_access_to_user_processes">Restricting Interface Access to User Processes</a></div></li>
+<li class="level1"><div class="li"><a href="#block_attacks_with_emerging_threats">Block Attacks with Emerging Threats</a></div></li>
+<li class="level1"><div class="li"><a href="#block_attacks_with_firehol_level_1_ip_abuse_list">Block Attacks with FireHOL Level 1 IP Abuse List</a></div></li>
+<li class="level1"><div class="li"><a href="#delete_a_single_rule">Delete a Single Rule</a></div></li>
+<li class="level1"><div class="li"><a href="#create_country_ip_sets_without_geoip">Create Country IP Sets Without GeoIP</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="packet_flow">Packet Flow</h1>
+<div class="level1">
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/fuss_iptables_flow_through_netfilter.svg?id=fuss%3Aiptables" class="media" title="fuss:fuss_iptables_flow_through_netfilter.svg"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/fuss_iptables_flow_through_netfilter.svg?w=512&amp;tok=b1d5c6" class="media" alt="" width="512" /></a>
+</p>
+
+</div>
+
+<h2 class="sectionedit2" id="abridged_version">Abridged Version</h2>
+<div class="level2">
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/fuss_iptables_flow_through_netfilter_abridged.png?id=fuss%3Aiptables" class="media" title="fuss:fuss_iptables_flow_through_netfilter_abridged.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/fuss_iptables_flow_through_netfilter_abridged.png?w=512&amp;tok=945c7d" class="media" alt="" width="512" /></a>
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="ascii">ASCII</h2>
+<div class="level2">
+
+<p>
+Original by <a href="http://dokuwiki.tachtler.net" class="urlextern" title="http://dokuwiki.tachtler.net" rel="ugc nofollow">Tachtler</a>.
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/iptables?ditaa=9971a85fd0e3300d3600c03b22090f95&amp;t=1656201538" class="media" alt=""/>
+</p>
+
+</div>
+
+<h1 class="sectionedit4" id="flush_tables">Flush Tables</h1>
+<div class="level1">
+
+<p>
+Can be used at the start of the script.
+</p>
+<pre class="code bash"><span class="co0"># Flush tables</span>
+iptables <span class="re5">-F</span>
+iptables <span class="re5">-X</span>
+iptables <span class="re5">-t</span> nat <span class="re5">-F</span>
+iptables <span class="re5">-t</span> nat <span class="re5">-X</span>
+iptables <span class="re5">-t</span> mangle <span class="re5">-F</span>
+iptables <span class="re5">-t</span> mangle <span class="re5">-X</span></pre>
+
+</div>
+
+<h1 class="sectionedit5" id="common_attack_protections">Common Attack Protections</h1>
+<div class="level1">
+<pre class="code bash"><span class="co0"># Block w00tw00t</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--dport</span> <span class="nu0">80</span> <span class="re5">-m</span> string <span class="re5">--to</span> <span class="nu0">70</span> <span class="re5">--algo</span> bm <span class="re5">--string</span> <span class="st_h">'GET /w00tw00t.at.ISC.SANS.'</span> <span class="re5">-j</span> DROP
+<span class="co0"># Block DNS ANY</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> udp <span class="re5">--dport</span> <span class="nu0">53</span> <span class="re5">-m</span> string <span class="re5">--from</span> <span class="nu0">50</span> <span class="re5">--algo</span> bm <span class="re5">--hex-string</span> <span class="st_h">'|0000FF0001|'</span> <span class="re5">-m</span> recent <span class="re5">--set</span> <span class="re5">--name</span> dnsanyquery
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> udp <span class="re5">--dport</span> <span class="nu0">53</span> <span class="re5">-m</span> string <span class="re5">--from</span> <span class="nu0">50</span> <span class="re5">--algo</span> bm <span class="re5">--hex-string</span> <span class="st_h">'|0000FF0001|'</span> <span class="re5">-m</span> recent <span class="re5">--name</span> dnsanyquery <span class="re5">--rcheck</span> <span class="re5">--seconds</span> <span class="nu0">10</span> <span class="re5">--hitcount</span> <span class="nu0">3</span> <span class="re5">-j</span> DROP</pre>
+
+</div>
+
+<h1 class="sectionedit6" id="spoofed_packets">Spoofed Packets</h1>
+<div class="level1">
+<pre class="code bash"><span class="co0">## Reject packets from RFC1918 class networks (i.e., spoofed)</span>
+<span class="co0">## Your internal network should be commented, any unused classes</span>
+<span class="co0">## should be blocked by removing the comment.</span>
+&nbsp;
+<span class="co0">#iptables -A INPUT -s 169.254.0.0/16 -j DROP</span>
+<span class="co0">#iptables -A INPUT -s 192.168.0.0/16 -j DROP</span>
+<span class="co0">#iptables -A INPUT -s 172.16.0.0/12  -j DROP</span>
+&nbsp;
+<span class="co0">#iptables -A INPUT -s 127.0.0.0/8    -j DROP</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-s</span> 224.0.0.0<span class="sy0">/</span><span class="nu0">4</span>      <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-d</span> 224.0.0.0<span class="sy0">/</span><span class="nu0">4</span>      <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-s</span> 240.0.0.0<span class="sy0">/</span><span class="nu0">5</span>      <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-d</span> 240.0.0.0<span class="sy0">/</span><span class="nu0">5</span>      <span class="re5">-j</span> DROP
+<span class="co0">#iptables -A INPUT -s 0.0.0.0/8        -j DROP</span>
+<span class="co0">#iptables -A INPUT -d 0.0.0.0/8        -j DROP</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-d</span> 239.255.255.0<span class="sy0">/</span><span class="nu0">24</span> <span class="re5">-j</span> DROP
+<span class="co0">#iptables -A INPUT -d 255.255.255.255  -j DROP</span></pre>
+
+</div>
+
+<h1 class="sectionedit7" id="packet_flood_protections">Packet Flood Protections</h1>
+<div class="level1">
+
+<p>
+The following rules should block and limit most packet-related attacks.
+</p>
+<pre class="code bash"><span class="co0"># NEW TCP packets must have SYN</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">-m</span> state <span class="re5">--state</span> NEW <span class="sy0">!</span> <span class="re5">--syn</span> <span class="re5">-j</span> DROP
+<span class="co0"># Block SYN-flood</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">-m</span> state <span class="re5">--state</span> NEW <span class="re5">-m</span> limit <span class="re5">--limit</span> <span class="nu0">2</span><span class="sy0">/</span>second <span class="re5">--limit-burst</span> <span class="nu0">2</span> <span class="re5">-j</span> ACCEPT
+<span class="co0"># Packet fragments (Teardrop, etc...)</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">--fragment</span> <span class="re5">-j</span> DROP
+<span class="co0"># Block Smurf</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> icmp <span class="re5">-m</span> icmp <span class="re5">--icmp-type</span> address-mask-request <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> icmp <span class="re5">-m</span> icmp <span class="re5">--icmp-type</span> timestamp-request <span class="re5">-j</span> DROP
+<span class="co0"># Ping of Death</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> icmp <span class="re5">--icmp-type</span> echo-request <span class="re5">-m</span> limit <span class="re5">--limit</span> <span class="nu0">3</span><span class="sy0">/</span>s <span class="re5">-m</span> length <span class="re5">--length</span> <span class="nu0">60</span>:<span class="nu0">65535</span> <span class="re5">-j</span> ACCEPT
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">-m</span> tcp <span class="re5">--tcp-flags</span> RST RST <span class="re5">-m</span> limit <span class="re5">--limit</span> <span class="nu0">2</span><span class="sy0">/</span>second <span class="re5">--limit-burst</span> <span class="nu0">2</span> <span class="re5">-j</span> ACCEPT
+<span class="co0"># Block Fraggle</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> udp <span class="re5">-m</span> pkttype <span class="re5">--pkt-type</span> broadcast <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> udp <span class="re5">-m</span> limit <span class="re5">--limit</span> <span class="nu0">3</span><span class="sy0">/</span>s <span class="re5">-j</span> ACCEPT
+<span class="co0"># Drop bad TCP flags (XMAS, NULL)</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ACK,FIN FIN <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ACK,PSH PSH <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ACK,URG URG <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> FIN,RST FIN,RST <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> SYN,FIN SYN,FIN <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> SYN,RST SYN,RST <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ALL ALL <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ALL NONE <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ALL FIN,PSH,URG <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ALL SYN,FIN,PSH,URG <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> ALL SYN,RST,ACK,FIN,URG <span class="re5">-j</span> DROP
+<span class="co0"># Drop all invalid packets</span>
+iptables <span class="re5">-A</span> INPUT <span class="re5">-m</span> state <span class="re5">--state</span> INVALID <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> FORWARD <span class="re5">-m</span> state <span class="re5">--state</span> INVALID <span class="re5">-j</span> DROP
+iptables <span class="re5">-A</span> OUTPUT <span class="re5">-m</span> state <span class="re5">--state</span> INVALID <span class="re5">-j</span> DROP</pre>
+
+<p>
+You can also increase the recent table size (in this case, to 1000 entries), since on Linux it is fixed to 100 entries:
+</p>
+<pre class="code bash"><span class="kw2">cat</span> <span class="sy0">&gt;&gt;</span> <span class="sy0">/</span>etc<span class="sy0">/</span>modprobe.d<span class="sy0">/</span>xt_recent.conf <span class="co2">&lt;&lt; EOF
+options xt_recent ip_pkt_list_tot=1000 ip_list_tot=1000
+EOF</span></pre>
+
+</div>
+
+<h1 class="sectionedit8" id="service_flood_protection">Service Flood Protection</h1>
+<div class="level1">
+
+<p>
+Brute-force authentication attacks should be mitigated using <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/unix/sshguard" class="wikilink1" title="unix:sshguard" data-wiki-id="unix:sshguard">sshguard</a> that dynamically bans offending connections for most common services. The rule below can be used to limit connections to service ports that do not necessarily involve authentication.
+</p>
+<pre class="code bash"><span class="co0"># SERVICE_PORT, SERVICE_CONNECTION_RATE, SERVICE_CONNECTION_RATE_BURST, SERVICE_NAME, EXPIRE_TIME</span>
+<span class="co0"># have to be substituted. Some reasonable values are given in the table below.</span>
+iptables <span class="re5">-t</span> mangle <span class="re5">-A</span> PREROUTING <span class="re5">-p</span> SERVICE_PROTOCOL <span class="re5">--dport</span> SERVICE_PORT <span class="re5">-m</span> state <span class="re5">--state</span> NEW \
+        <span class="re5">-m</span> hashlimit <span class="re5">--hashlimit-above</span> SERVICE_CONNECTION_RATE <span class="re5">--hashlimit-burst</span> SERVICE_CONNECTION_RATE_BURST \
+        <span class="re5">--hashlimit-htable-expire</span> EXPIRE_TIME <span class="re5">--hashlimit-name</span> SERVICE_NAME <span class="re5">--hashlimit-mode</span> srcip <span class="re5">-j</span> DROP</pre>
+
+<p>
+Here is a reference of some decent settings:
+</p>
+<div class="table sectionedit9"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign"> <code>SERVICE_PORT</code>     </th><th class="col1 leftalign"> <code>SERVICE_PROTOCOL</code>        </th><th class="col2"><code>SERVICE_CONNECTION_RATE</code> </th><th class="col3 leftalign"> <code>SERVICE_CONNECTION_RATE_BURST</code>  </th><th class="col4"> <code>SERVICE_NAME</code> </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0 leftalign"> <code>80</code>               </td><td class="col1 leftalign"> <code>tcp</code>                     </td><td class="col2 leftalign"> <code>45/sec</code>                  </td><td class="col3 leftalign"> <code>60</code>                            </td><td class="col4 leftalign"> <code>http</code>         </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 leftalign"> <code>22</code>               </td><td class="col1 leftalign"> <code>tcp</code>                     </td><td class="col2 leftalign"> <code>5/sec</code>                   </td><td class="col3 leftalign"> <code>7</code>                             </td><td class="col4 leftalign"> <code>ssh</code>          </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0 leftalign"> <code>1723</code>             </td><td class="col1 leftalign"> <code>tcp</code>                     </td><td class="col2 leftalign"> <code>5/sec</code>                   </td><td class="col3 leftalign"> <code>10</code>                            </td><td class="col4 leftalign"> <code>pptp</code>         </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 leftalign"> <code>25</code>               </td><td class="col1 leftalign"> <code>tcp</code>                     </td><td class="col2 leftalign"> <code>5/minute</code>                </td><td class="col3 leftalign"> <code>10</code>                            </td><td class="col4 leftalign"> <code>smtp</code>         </td>
+	</tr>
+</table></div>
+
+<p>
+Note that <code>EXPIRE_TIME</code> has to be defined and represents the time in milliseconds after which the entries expire.
+</p>
+
+<p>
+The reason to perform checking in <code>mangle</code> on the <code>PREROUTING</code> chain is that these limits will be enforced before any <code>nat</code>-ing rules apply. Otherwise if we were to perform the same on the <code>INPUT</code> chain, only the packets with the current machine as destination would be limited.
+</p>
+
+<p>
+For reference, <code>hashlimit</code> match has the following possible parameters:
+</p>
+<pre class="code">  --hashlimit-upto            max average match rate
+                                   [Packets per second unless followed by
+                                   /sec /minute /hour /day postfixes]
+  –hashlimit-above           min average match rate
+  –hashlimit-mode           mode is a comma-separated list of
+                                   dstip,srcip,dstport,srcport (or none)
+  –hashlimit-srcmask      source address grouping prefix length
+  –hashlimit-dstmask      destination address grouping prefix length
+  –hashlimit-name           name for /proc/net/ipt_hashlimit
+  –hashlimit-burst 	    number to match in a burst, default 5
+  –hashlimit-htable-size     number of hashtable buckets
+  –hashlimit-htable-max      number of hashtable entries
+  –hashlimit-htable-gcinterval    interval between garbage collection runs
+  –hashlimit-htable-expire        after which time are idle entries expired?</pre>
+
+</div>
+
+<h1 class="sectionedit10" id="clamp_to_mss">Clamp to MSS</h1>
+<div class="level1">
+<pre class="code bash">iptables <span class="re5">-t</span> mangle <span class="re5">-A</span> POSTROUTING <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> SYN,RST SYN <span class="re5">-o</span> EXTERNAL_IF <span class="re5">-j</span> TCPMSS <span class="re5">--clamp-mss-to-pmtu</span>
+iptables <span class="re5">-t</span> mangle <span class="re5">-A</span> FORWARD <span class="re5">-p</span> tcp <span class="re5">--tcp-flags</span> SYN,RST SYN <span class="re5">-j</span> TCPMSS <span class="re5">--clamp-mss-to-pmtu</span></pre>
+
+<p>
+where <code>EXTERNAL_IF</code> should be the external, outbound interface.
+</p>
+
+</div>
+
+<h1 class="sectionedit11" id="bypass_isp_nat_detection">Bypass ISP NAT Detection</h1>
+<div class="level1">
+
+<p>
+<code>NAT</code> can be detected by ISPs by measuring the <code>TTL</code> of packets on the network. Every gateway along the path decreases the <code>TTL</code> so it is easy to determine that <code>NAT</code> is being used if packets coming from a network have a different <code>TTL</code> value.
+</p>
+
+<p>
+The following rule clamps the TTL to <code>128</code> on the <code>OUTPUT</code> chain:
+</p>
+<pre class="code bash">iptables <span class="re5">-t</span> mangle <span class="re5">-A</span> OUTPUT <span class="re5">-j</span> TTL <span class="re5">--ttl-set</span> <span class="nu0">128</span></pre>
+
+</div>
+
+<h1 class="sectionedit12" id="log_wol_packets">Log WOL Packets</h1>
+<div class="level1">
+
+<p>
+The <code>string</code> matcher from <code>iptables</code> can be used:
+</p>
+<pre class="code bash">iptables <span class="re5">-I</span> INPUT <span class="nu0">1</span> <span class="re5">-p</span> udp <span class="re5">-m</span> string <span class="re5">--algo</span> bm <span class="re5">--hex-string</span> <span class="st_h">'|FF FF FF FF FF FF|'</span> <span class="re5">-j</span> LOG <span class="re5">--log-prefix</span> <span class="st_h">'[WOL]'</span> <span class="re5">--log-level</span> DEBUG</pre>
+
+<p>
+The rule can be made stronger by extending the hex-string with the actual MAC address of the destination machine.
+</p>
+
+<p>
+Remember, WOL packets are meant to be received by the machine when it is powered off and that <code>iptables</code> only works when the machine is powered on. More details about Wake-On-Lan can be found on the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/networking/wake_on_lan" class="wikilink1" title="networking:wake_on_lan" data-wiki-id="networking:wake_on_lan">wake on lan page</a>.
+</p>
+
+</div>
+
+<h1 class="sectionedit13" id="tarpit">TARPIT</h1>
+<div class="level1">
+
+<p>
+The <code>TARPIT</code> target of <code>iptables</code> (as an analogy to moats around castles) captures and holds incoming TCP connections using no local resources. Connections are accepted and then switched to the persist state (<code>0</code> byte window) in which the remote side stops sending data and asks to continue every <code>60</code> to <code>270</code> seconds. Attempts from the remote side to close a connection are ignored wich forces the remote connection to timeout in <code>12</code> to <code>24</code> minutes.
+</p>
+
+<p>
+For example, to tarpit all incoming connections from <code>134.45.233.16</code>, you would issue:
+</p>
+<pre class="code bash">iptables <span class="re5">-A</span> INPUT <span class="re5">-p</span> tcp <span class="re5">-s</span> 134.45.233.16 <span class="re5">-j</span> TARPIT</pre>
+
+</div>
+
+<h1 class="sectionedit14" id="restricting_interface_access_to_user_processes">Restricting Interface Access to User Processes</h1>
+<div class="level1">
+
+<p>
+Suppose that you have a beachhead on a server with a VPN service on the server that uses an interface and that you would like to restrict any traffic from that interface to the other end of your VPN to a set of users.
+</p>
+
+<p>
+A sketch of what you would like to achieve is the following:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/iptables?ditaa=a11b8a088fda89e679d6e408cc55e4a6&amp;t=1656201538" class="media" alt=""/>
+</p>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> you would like to allow all the traffic from your own server to the beachhead,</div>
+</li>
+<li class="level1"><div class="li"> you would only like to allow the traffic belonging to certain users to your own server.</div>
+</li>
+</ul>
+
+<p>
+Suppose that the interface on the beachhead server is <code>tap0</code> and that you would like to allow traffic from the beachhead server to your server for the users having the UID (from <code>/etc/passwd</code>) <code>0</code> (root), <code>1000</code> (some user), <code>1001</code> (some other user).
+</p>
+
+<p>
+In that case, we can use <code>ipt_owner</code>. First, append <code>ipt_owner</code> to <code>/etc/modules</code> and then create the following <code>iptables</code> rules:
+</p>
+<pre class="code bash">iptables <span class="re5">-N</span> OUT_TAP0
+iptables <span class="re5">-A</span> OUTPUT <span class="re5">-o</span> tap0 <span class="re5">-m</span> owner <span class="re5">--uid-owner</span> <span class="nu0">0</span> <span class="re5">-j</span> OUT_TAP0
+iptables <span class="re5">-A</span> OUTPUT <span class="re5">-o</span> tap0 <span class="re5">-m</span> owner <span class="re5">--uid-owner</span> <span class="nu0">1000</span> <span class="re5">-j</span> OUT_TAP0
+iptables <span class="re5">-A</span> OUTPUT <span class="re5">-o</span> tap0 <span class="re5">-m</span> owner <span class="re5">--uid-owner</span> <span class="nu0">1001</span> <span class="re5">-j</span> OUT_TAP0
+iptables <span class="re5">-A</span> OUT_TAP0 <span class="re5">-j</span> ACCEPT
+iptables <span class="re5">-A</span> OUTPUT <span class="re5">-o</span> tap0 <span class="sy0">!</span> <span class="re5">-p</span> icmp <span class="re5">-j</span> DROP</pre>
+
+<p>
+The rules create a jump table on the <code>OUTPUT</code> chain that accepts traffic from the processes with UID <code>0</code>, <code>1000</code>, <code>1001</code> and drops all other traffic through <code>tap0</code> except <code>ICMP</code> (useful for testing).
+</p>
+
+</div>
+
+<h1 class="sectionedit15" id="block_attacks_with_emerging_threats">Block Attacks with Emerging Threats</h1>
+<div class="level1">
+
+<p>
+The following script pulls a fresh lists of hosts to block from <a href="http://docs.emergingthreats.net" class="urlextern" title="http://docs.emergingthreats.net" rel="ugc nofollow">Emerging Threats</a> and adds firewall rules to block the retrieved IPs. The script is re-entry safe - so, suitable to be run via cron. You can drop the script in the <code>/etc/cron.daily</code> folder and it will recreate the block list every day.
+</p>
+
+<p>
+The script relies on the following tools:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>ipset</code>,</div>
+</li>
+<li class="level1"><div class="li"> <code>curl</code>,</div>
+</li>
+<li class="level1"><div class="li"> <code>egrep</code></div>
+</li>
+</ul>
+
+<p>
+all of which should be available to install via the distribution&#039;s package manager.
+</p>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/iptables?codeblock=12" title="Download Snippet" class="mediafile mf_">emerging-threats</a></dt>
+<dd><pre class="code file bash"><span class="co0">#!/usr/bin/env bash</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">##  Copyright (C) Wizardry and Steamworks 2020 - License: GNU GPLv3      ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0"># Downloads from emergingthreats.net and adds all the networks to ipset. ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">## Possible firewall configuration:</span>
+<span class="co0">## Delete all the old rules.</span>
+<span class="co0">#I=`/sbin/iptables-save | grep -- &quot;-A INPUT -j EMERGING-THREATS&quot;`</span>
+<span class="co0">#O=`/sbin/iptables-save | grep -- &quot;-A OUTPUT -j EMERGING-THREATS&quot;`</span>
+<span class="co0">#if [ ! -z &quot;$I&quot; ] || [ ! -z &quot;$O&quot; ]; then</span>
+<span class="co0">#    /sbin/iptables -F EMERGING-THREATS</span>
+<span class="co0">#    /sbin/iptables -X EMERGING-THREATS</span>
+<span class="co0">#fi</span>
+<span class="co0">#if [ ! -z &quot;$I&quot; ]; then</span>
+<span class="co0">#    /sbin/iptables -D INPUT -j EMERGING-THREATS</span>
+<span class="co0">#fi</span>
+<span class="co0">#if [ ! -z &quot;$O&quot; ]; then</span>
+<span class="co0">#    /sbin/iptables -D OUTPUT -j EMERGING-THREATS</span>
+<span class="co0">#fi</span>
+<span class="co0">## Create the chain again and add all the new rules.</span>
+<span class="co0">#/sbin/iptables -N EMERGING-THREATS</span>
+<span class="co0">#/sbin/iptables -I INPUT 1 -j EMERGING-THREATS</span>
+<span class="co0">#/sbin/iptables -I OUTPUT 1 -j EMERGING-THREATS</span>
+<span class="co0">#/sbin/iptables -A EMERGING-THREATS -p all -m set --match-set EMERGING-THREATS src,dst -j DROP</span>
+<span class="co0">## Continue with the rest.</span>
+<span class="co0">#/sbin/iptables -A EMERGING-THREATS -j RETURN</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="sy0">`</span>ipset list EMERGING-THREATS <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null<span class="sy0">`</span>
+<span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re4">$?</span> = <span class="nu0">1</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+    ipset create EMERGING-THREATS hash:net family inet
+<span class="kw1">fi</span>
+ipset flush EMERGING-THREATS
+<span class="kw1">for</span> net <span class="kw1">in</span> <span class="sy0">`</span>curl <span class="re5">-s</span> http:<span class="sy0">//</span>rules.emergingthreats.net<span class="sy0">/</span>fwrules<span class="sy0">/</span>emerging-Block-IPs.txt <span class="sy0">|</span> \
+    <span class="kw2">egrep</span> <span class="st_h">'^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/*[0-9]{0,2}'</span><span class="sy0">`</span>; <span class="kw1">do</span>
+    ipset add EMERGING-THREATS <span class="re1">$net</span>
+<span class="kw1">done</span></pre>
+</dd></dl>
+
+<p>
+To use, simply copy the script to <code>/etc/cron.hourly</code> and then insert the <code>iptables</code> rules at the top into the existing firewall.
+</p>
+
+</div>
+
+<h1 class="sectionedit16" id="block_attacks_with_firehol_level_1_ip_abuse_list">Block Attacks with FireHOL Level 1 IP Abuse List</h1>
+<div class="level1">
+
+<p>
+The <a href="http://iplists.firehol.org/?ipset=firehol_level1" class="urlextern" title="http://iplists.firehol.org/?ipset=firehol_level1" rel="ugc nofollow">FireHOL level 1 list</a> is a general purpose list that can be used to block various flavours of attacks including ransomeware reported IP addresses. Contrary to the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables#block_attacks_with_emerging_threats" class="wikilink1" title="fuss:iptables" data-wiki-id="fuss:iptables">emerging threats list</a>, The FireHOL level 1 list is updated on average every half an hour such that the script presented here is best placed in <code>/etc/cron.hourly</code>.
+</p>
+
+<p>
+The script will additionally filter the FireHOL level 1 list of IPs and networks through a list of private and reserved IPs in order to not block local networks. It uses ipsets for speed and creates a separate chain to keep the iptables rules well organized.
+</p>
+
+<p>
+The script relies on the following tools:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>ipset</code>,</div>
+</li>
+<li class="level1"><div class="li"> <code>curl</code></div>
+</li>
+<li class="level1"><div class="li"> <code>egrep</code>,</div>
+</li>
+<li class="level1"><div class="li"> <code>awk</code></div>
+</li>
+</ul>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/iptables?codeblock=13" title="Download Snippet" class="mediafile mf_">firehol-level1</a></dt>
+<dd><pre class="code file bash"><span class="co0">#!/usr/bin/env bash</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">##  Copyright (C) Wizardry and Steamworks 2020 - License: GNU GPLv3      ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0"># Downloads the FireHOL level 1 list and adds all networks to an IP set. ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">## Possible firewall configuration:</span>
+<span class="co0">## Delete all the old rules.</span>
+<span class="co0">#I=`/sbin/iptables-save | grep -- &quot;-A INPUT -j FIREHOL-LEVEL1&quot;`</span>
+<span class="co0">#O=`/sbin/iptables-save | grep -- &quot;-A OUTPUT -j FIREHOL-LEVEL1&quot;`</span>
+<span class="co0">#if [ ! -z &quot;$I&quot; ] || [ ! -z &quot;$O&quot; ]; then</span>
+<span class="co0">#    /sbin/iptables -F FIREHOL-LEVEL1</span>
+<span class="co0">#    /sbin/iptables -X FIREHOL-LEVEL1</span>
+<span class="co0">#fi</span>
+<span class="co0">#if [ ! -z &quot;$I&quot; ]; then</span>
+<span class="co0">#    /sbin/iptables -D INPUT -j FIREHOL-LEVEL1</span>
+<span class="co0">#fi</span>
+<span class="co0">#if [ ! -z &quot;$O&quot; ]; then</span>
+<span class="co0">#    /sbin/iptables -D OUTPUT -j FIREHOL-LEVEL1</span>
+<span class="co0">#fi</span>
+<span class="co0">## Create the chain again and add all the new rules.</span>
+<span class="co0">#/sbin/iptables -N FIREHOL-LEVEL1</span>
+<span class="co0">#/sbin/iptables -I INPUT 1 -j FIREHOL-LEVEL1</span>
+<span class="co0">#/sbin/iptables -I OUTPUT 1 -j FIREHOL-LEVEL1</span>
+<span class="co0">#/sbin/iptables -A FIREHOL-LEVEL1 -p all -m set --match-set FIREHOL-LEVEL1 src,dst -j DROP</span>
+<span class="co0">## Continue with the rest.</span>
+<span class="co0">#/sbin/iptables -A FIREHOL-LEVEL1 -j RETURN</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0"># Cleanup routine to delete bogon and firehol list on termination.</span>
+<span class="kw3">trap</span> <span class="st_h">'{
+&nbsp;
+# Delete the temporary bogon and firehol lists.
+for i in $BOGONS_LIST $FIREHOL_LIST; do
+    if [ -f $i ]; then
+        rm $i
+    fi
+done
+&nbsp;
+}'</span> KILL QUIT TERM EXIT INT HUP
+&nbsp;
+<span class="co0"># Delete current set.</span>
+<span class="sy0">`</span>ipset list FIREHOL-LEVEL1 <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null<span class="sy0">`</span>
+<span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re4">$?</span> = <span class="nu0">1</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+    <span class="co0"># Create the set.</span>
+    ipset create FIREHOL-LEVEL1 hash:net family inet
+<span class="kw1">fi</span>
+&nbsp;
+<span class="co0"># Flush the existing IPs.</span>
+ipset flush FIREHOL-LEVEL1
+&nbsp;
+<span class="co0"># Generate a list of private subnet IP addresses defined by</span>
+<span class="co0"># RFC 1918, RFC 5735, and RFC 6598.</span>
+<span class="re2">BOGONS_LIST</span>=<span class="sy0">`</span><span class="kw2">mktemp</span><span class="sy0">`</span>
+<span class="kw2">cat</span> <span class="sy0">&gt;</span> <span class="re1">$BOGONS_LIST</span> <span class="co2">&lt;&lt;EOF
+0.0.0.0/8
+10.0.0.0/8
+100.64.0.0/10
+127.0.0.0/8
+169.254.0.0/16
+172.16.0.0/12
+192.0.0.0/24
+192.0.2.0/24
+192.168.0.0/16
+198.18.0.0/15
+198.51.100.0/24
+203.0.113.0/24
+224.0.0.0/3
+EOF</span>
+&nbsp;
+<span class="co0"># Download the firehol netset level 1</span>
+<span class="re2">FIREHOL_LIST</span>=<span class="sy0">`</span><span class="kw2">mktemp</span><span class="sy0">`</span>
+<span class="co0"># Force curl to fail for anything other than HTTP 200</span>
+curl <span class="re5">-q</span> <span class="re5">-f</span> <span class="re5">-s</span> <span class="st_h">'https://iplists.firehol.org/files/firehol_level1.netset'</span> <span class="sy0">&gt;</span> <span class="re1">$FIREHOL_LIST</span> <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null
+<span class="co0"># Check that curl completed successfully and that the list is not empty.</span>
+<span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re4">$?</span> <span class="sy0">!</span>= <span class="nu0">0</span> <span class="br0">&#93;</span> <span class="sy0">||</span> <span class="br0">&#91;</span> <span class="re5">-z</span> <span class="re1">$FIREHOL_LIST</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+    <span class="kw3">echo</span> <span class="st_h">'FireHOL Level 1 Netset list could not be downloaded.'</span>
+    <span class="kw3">exit</span>
+<span class="kw1">fi</span>
+&nbsp;
+<span class="co0"># Filter the firehol netset through the bogon list and also filter out valid</span>
+<span class="co0"># IP and net blocks. Add the results to the created IP set.</span>
+<span class="kw1">for</span> net <span class="kw1">in</span> <span class="sy0">`</span><span class="kw2">awk</span> <span class="st_h">'{if (f==1) { r[$0] } else if (! ($0 in r)) { print $0 } } '</span> <span class="re2">f</span>=<span class="nu0">1</span> <span class="re1">$BOGONS_LIST</span> <span class="re2">f</span>=<span class="nu0">2</span> <span class="re1">$FIREHOL_LIST</span> <span class="sy0">|</span> \
+    <span class="kw2">egrep</span> <span class="st_h">'^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}/*[0-9]{0,2}'</span><span class="sy0">`</span>; <span class="kw1">do</span>
+    ipset add FIREHOL-LEVEL1 <span class="re1">$net</span>
+<span class="kw1">done</span></pre>
+</dd></dl>
+
+<p>
+To use, simply copy the script to <code>/etc/cron.hourly</code> and then insert the <code>iptables</code> rules at the top into the existing firewall.
+</p>
+
+</div>
+
+<h1 class="sectionedit17" id="delete_a_single_rule">Delete a Single Rule</h1>
+<div class="level1">
+
+<p>
+A single rule can be deleted by specifying either:
+</p>
+<ul>
+<li class="level1"><div class="li"> the rule number (of the chain)</div>
+</li>
+<li class="level1"><div class="li"> the entire rule</div>
+</li>
+</ul>
+
+<p>
+using the <code>-D</code> parameter passed to <code>iptables</code>.
+</p>
+
+<p>
+For instance, to remove the IP address <code>199.233.85.0</code> contained inside the <code>EMERGING</code> chain, issue:
+</p>
+<pre class="code bash">iptables <span class="re5">-L</span> <span class="re5">-n</span> <span class="re5">--line-numbers</span> <span class="sy0">|</span> <span class="kw2">grep</span> 199.233.85.0 <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{ print $1 }'</span> <span class="sy0">|</span> <span class="kw2">xargs</span> iptables <span class="re5">-D</span> EMERGING</pre>
+
+<p>
+The command will:
+</p>
+<ul>
+<li class="level1"><div class="li"> display the <code>iptables</code> rules (<code>-L</code>),</div>
+</li>
+<li class="level1"><div class="li"> without attempting to resolve the IP addresses to names (<code>-n</code>),</div>
+</li>
+<li class="level1"><div class="li"> by printing the rule number in each chain <code>--line-numbers</code></div>
+</li>
+</ul>
+
+<p>
+and will then match the IP address <code>199.233.85.0</code> and filter out the first number (which will be the rule number) via <code>awk</code>. The number is then piped into <code>xargs</code> that will make <code>iptables</code> delete the rule corresponding to the passed number inside the <code>EMERGING</code> chain.
+</p>
+
+<p>
+A longer variant that lets you specify the IP address on the command line and then takes care to remove that IP address from all the chains is the following procedure:
+</p>
+<ol>
+<li class="level1"><div class="li"> declare the IP address to remove <pre class="code bash"><span class="re2">IP</span>=83.141.2.155</pre>
+</div>
+</li>
+<li class="level1"><div class="li"> use the following snippet to remove the IP address from all chains <pre class="code bash">iptables <span class="re5">-n</span> <span class="re5">-L</span> <span class="re5">--line-numbers</span> <span class="sy0">|</span> \
+<span class="kw2">grep</span> <span class="re5">-oP</span> <span class="st0">&quot;((?&lt;=Chain\s)(.+?)\s)|(^[0-9]+(?=.+?<span class="es2">$IP</span>))&quot;</span> <span class="sy0">|</span> \
+<span class="kw2">xargs</span> <span class="sy0">|</span> \
+<span class="kw2">grep</span> <span class="re5">-oP</span> <span class="st_h">'([^\s]+?)\s([0-9]+)'</span> <span class="sy0">|</span> \
+<span class="kw2">xargs</span> <span class="re5">-l</span> <span class="kw2">sh</span> <span class="re5">-c</span> <span class="st_h">'iptables -D $0 $1'</span></pre>
+</div>
+</li>
+</ol>
+
+</div>
+
+<h1 class="sectionedit18" id="create_country_ip_sets_without_geoip">Create Country IP Sets Without GeoIP</h1>
+<div class="level1">
+
+<p>
+Leveraging <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/sh/json_parser" class="wikilink1" title="sh:json_parser" data-wiki-id="sh:json_parser">the pure shell JSON parser</a>, a script can be placed in crontab in order to maintain country IP lists in the form of IP sets.  
+</p>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/iptables?codeblock=17" title="Download Snippet" class="mediafile mf_sh">generate-country-ip-sets.sh</a></dt>
+<dd><pre class="code file bash"><span class="co0">#!/usr/bin/env bash</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">##  Copyright (C) Wizardry and Steamworks 2020 - License: GNU GPLv3      ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0"># Downloads the IP blocks for selected countries and creates IP sets.    ##</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0">###########################################################################</span>
+<span class="co0">##                            CONFIGURATION                              ##</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0"># Generate IP sets for the following country codes.</span>
+<span class="re2">COUNTRY_CODES</span>=<span class="br0">&#40;</span> sv <span class="br0">&#41;</span>
+&nbsp;
+<span class="co0">###########################################################################</span>
+<span class="co0">##                              INTERNALS                                ##</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="re2">JSON_BASH_PARSER</span>=$<span class="br0">&#40;</span><span class="kw2">cat</span> <span class="co2">&lt;&lt;EOF
+cigpIHsgaWYgWyAtdCAwIF07IHRoZW4gYj0kKHN0dHkgLWcpOyBzdHR5IC1pY2Fub24gLWVjaG8g
+bWluIDEgdGltZSAwOyBmaTsgYz0kKGRkIGJzPTEgY291bnQ9MSBjb252PW5vZXJyb3Isc3luYyAy
+Pi9kZXYvbnVsbCk7IGlmIFsgLXQgMCBdOyB0aGVuIHN0dHkgIiRiIjsgZmk7IH07IGUoKSB7IGVj
+aG8gIiQxPSQyIjsgfTsgYSgpIHsgbG9jYWwgZD0iJHsxOiskMS59JDIiOyBsb2NhbCBmPSJ1Ijsg
+bG9jYWwgZz0wOyB3aGlsZSBbICIkaCIgLWx0ICIkaiIgXTsgZG8gWyAiJGkiID0gIjAiIF0gJiYg
+aD0kKChoICsgMSkpICYmIHIgYzsgaT0wOyBjPSR7YzotJyAnfTsgY2FzZSAiJGYiIGluICJ1Iikg
+Y2FzZSAiJGMiIGluICd7JykgbyAiJGQiICIkZyI7IGY9ImwiOyA7OyAnXScpIHJldHVybjsgOzsg
+W1widGZURlwtMC05XSkgaT0xOyB2ICIkZCIgIiRnIjsgaT0xOyBmPSJsIjsgOzsgZXNhYyA7OyAi
+bCIpIFsgIiRjIiA9ICIsIiBdICYmIGc9JCgoZyArIDEpKSAmJiBmPSJ1IjsgWyAiJGMiID0gIl0i
+IF0gJiYgcmV0dXJuOyA7OyBlc2FjIGRvbmUgfTsgdigpIHsgbG9jYWwgZD0iJHsxOiskMS59JDIi
+OyBsb2NhbCBmPSJ1Ijsgd2hpbGUgWyAiJGgiIC1sdCAiJGoiIF07IGRvIFsgIiRpIiA9ICIwIiBd
+ICYmIGg9JCgoaCArIDEpKSAmJiByIGM7IGk9MDsgYz0ke2M6LScgJ307IGNhc2UgIiRmIiBpbiAi
+dSIpIGNhc2UgIiRjIiBpbiAnIicpIGY9InoiOyBrPSIiOyA7OyBbXC0wLTldKSBmPSJ5Ijsgaz0i
+JGMiOyA7OyBbdGZURl0pIGY9IngiOyBrPSIkYyI7IDs7ICJbIikgYSAiIiAiJGQiOyByZXR1cm47
+IDs7ICJ7IikgbyAiIiAiJGQiOyByZXR1cm47IDs7IGVzYWMgOzsgInoiKSBjYXNlICIkYyIgaW4g
+JyInKSBbICIkbSIgPSAiMCIgXSAmJiBlICIkZCIgIiRrIiAmJiByZXR1cm47IFsgIiRtIiA9ICIx
+IiBdICYmIGs9IiRrJGMiICYmIG09MDsgOzsgJ1wnKSBbICIkbSIgPSAiMSIgXSAmJiBrPSIkayRj
+IjsgbT0kKCgxIC0gbSkpOyA7OyAqKSBtPTA7IGs9IiRrJGMiOyA7OyBlc2FjIDs7ICJ5IikgY2Fz
+ZSAiJGMiIGluIFssXF19XSkgZSAiJGQiICIkayI7IGk9MTsgcmV0dXJuIDs7IFtcLTAtOS5dKSBr
+PSIkayRjIjsgOzsgZXNhYyA7OyAieCIpIGNhc2UgIiRjIiBpbiBbLFxdfV0pIGUgIiRkIiAiJGsi
+OyBpPTE7IHJldHVybjsgOzsgW2EtekEtWl0pIGs9IiRrJGMiOyA7OyBlc2FjIDs7IGVzYWMgZG9u
+ZSB9OyBvKCkgeyBsb2NhbCBkPSIkezE6KyQxLn0kMiI7IGxvY2FsIGY9InUiOyB3aGlsZSBbICIk
+aCIgLWx0ICIkaiIgXTsgZG8gWyAiJGkiID0gIjAiIF0gJiYgaD0kKChoICsgMSkpICYmIHIgYzsg
+aT0wOyBjPSR7YzotJyAnfTsgY2FzZSAiJGYiIGluICJ1IikgWyAiJGMiID0gIn0iIF0gJiYgcmV0
+dXJuOyBbICIkYyIgPSAiXCIiIF0gJiYgZj0idyIgJiYgbj0iIiAmJiBtPTA7IDs7ICJ3IikgY2Fz
+ZSAiJGMiIGluICciJykgWyAiJG0iID0gIjAiIF0gJiYgZj0icCI7IFsgIiRtIiA9ICIxIiBdICYm
+IG49IiRuJGMiICYmIG09MDsgOzsgJ1wnKSBtPSQoKDEgLSBtKSk7IG49IiRuJGMiOyA7OyAqKSBt
+PTA7IG49IiRuJGMiOyA7OyBlc2FjIDs7ICJwIikgWyAiJGMiID0gIjoiIF0gJiYgdiAiJGQiICIk
+biIgJiYgZj0icSI7IDs7ICJxIikgWyAiJGMiID0gJywnIF0gJiYgZj0idSI7IFsgIiRjIiA9ICd9
+JyBdICYmIHJldHVybjsgOzsgZXNhYyBkb25lIH07IHMoKSB7IGg9MDsgaT0wOyB3aGlsZSBbICIk
+aCIgLWx0ICIkaiIgXTsgZG8gciBjOyBjPSR7YzotJyAnfTsgaD0kKChoICsgMSkpOyBbICIkYyIg
+PSAieyIgXSAmJiBvICIiICIiICYmIHJldHVybjsgWyAiJGMiID0gIlsiIF0gJiYgYSAiIiAiIiAm
+JiByZXR1cm47IGRvbmUgfTsganNvbigpIHsgaWYgWyAteiAiJEAiIF07IHRoZW4gdD0kKGNhdCAt
+KTsgZWxzZSB0PSQoZWNobyAiJEAiKTsgZmk7IGo9IiR7I3R9IjsgZWNobyAiJHt0fSIgfCBzOyB9
+Cgo=
+EOF</span>
+<span class="br0">&#41;</span>
+&nbsp;
+<span class="kw3">eval</span> <span class="sy0">`</span><span class="kw3">printf</span> <span class="st_h">'%s\n'</span> <span class="st0">&quot;<span class="es2">$JSON_BASH_PARSER</span>&quot;</span> <span class="sy0">|</span> base64 -d<span class="sy0">`</span>
+&nbsp;
+<span class="kw1">for</span> i <span class="kw1">in</span> <span class="co1">${!COUNTRY_CODES[*]}</span>; <span class="kw1">do</span>
+    <span class="re2">COUNTRY</span>=<span class="co1">${COUNTRY_CODES[$i]}</span>
+    <span class="co0"># Create or purge IPv4/6 for configured countries.</span>
+    <span class="kw1">for</span> FAMILY <span class="kw1">in</span> inet inet6; <span class="kw1">do</span>
+        <span class="re2">SET_NAME</span>=<span class="re1">$COUNTRY</span><span class="st0">&quot;-&quot;</span><span class="re1">$FAMILY</span>
+        <span class="sy0">`</span>ipset list <span class="re1">$SET_NAME</span> <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null<span class="sy0">`</span>
+        <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re4">$?</span> = <span class="nu0">1</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+            ipset create <span class="re1">$SET_NAME</span> hash:net family <span class="re1">$FAMILY</span>
+        <span class="kw1">fi</span>
+        ipset flush <span class="re1">$SET_NAME</span>
+    <span class="kw1">done</span>
+    curl <span class="re5">-s</span> <span class="re5">-o</span> - <span class="st_h">'https://stat.ripe.net/data/country-resource-list/data.json?v4_format=prefix;resource='</span><span class="re1">$COUNTRY</span> <span class="sy0">|</span> \
+        json <span class="sy0">|</span> \
+        <span class="kw1">while</span> <span class="kw3">read</span> LINE; <span class="kw1">do</span> 
+            <span class="re2">K</span>=$<span class="br0">&#40;</span><span class="kw3">echo</span> <span class="re1">$LINE</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="re5">-F</span><span class="st_h">'='</span> <span class="st_h">'{ print $1 }'</span><span class="br0">&#41;</span>
+            <span class="re2">V</span>=$<span class="br0">&#40;</span><span class="kw3">echo</span> <span class="re1">$LINE</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="re5">-F</span><span class="st_h">'='</span> <span class="st_h">'{ print $2 }'</span><span class="br0">&#41;</span>
+            <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="st0">&quot;<span class="es2">$K</span>&quot;</span> = <span class="st0">&quot;status&quot;</span> <span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> <span class="br0">&#91;</span> <span class="st0">&quot;<span class="es2">$V</span>&quot;</span> <span class="sy0">!</span>= <span class="st0">&quot;ok&quot;</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+                <span class="kw1">for</span> FAMILY <span class="kw1">in</span> inet inet6; <span class="kw1">do</span>
+                    ipset destroy <span class="re1">$COUNTRY</span><span class="st0">&quot;-&quot;</span><span class="re1">$FAMILY</span> <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null
+                <span class="kw1">done</span>
+                <span class="kw3">continue</span>
+            <span class="kw1">fi</span>
+            <span class="kw1">case</span> $<span class="br0">&#40;</span> <span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$K</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">cut</span> <span class="re5">-c</span> <span class="nu0">1</span>-<span class="nu0">19</span> <span class="br0">&#41;</span> <span class="kw1">in</span>
+                <span class="st0">&quot;data.resources.ipv4&quot;</span><span class="br0">&#41;</span>
+                    ipset add <span class="re1">$COUNTRY</span><span class="st0">&quot;-inet&quot;</span> <span class="re1">$V</span>
+                    <span class="sy0">;;</span>
+                <span class="st0">&quot;data.resources.ipv6&quot;</span><span class="br0">&#41;</span>
+                    ipset add <span class="re1">$COUNTRY</span><span class="st0">&quot;-inet6&quot;</span> <span class="re1">$V</span>
+                    <span class="sy0">;;</span>
+            <span class="kw1">esac</span>
+    <span class="kw1">done</span>
+<span class="kw1">done</span></pre>
+</dd></dl>
+
+<p>
+The <code>generate-country-ip-sets.sh</code> script presented above will create 8 separate lists, 2 lists per country for both IPv4 and IPv6 using a list of countries <code>COUNTRY_CODES</code> adjustable in the configuration section of the script.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/iptables.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables" class="wikilink1" title="fuss:iptables" data-wiki-id="fuss:iptables">iptables</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:iptables" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/iptables"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aiptables&amp;1657305151" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

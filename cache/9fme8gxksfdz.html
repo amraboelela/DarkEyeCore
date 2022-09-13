@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>Verifying Software Signatures - Kicksecure</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"ecf2562ef672bc09896d2b1a","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Verifying_Software_Signatures","wgTitle":"Verifying Software Signatures","wgCurRevisionId":57070,"wgRevisionId":57070,"wgArticleId":1621,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Documentation"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Verifying_Software_Signatures","wgRelevantArticleId":1621,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],
+"wgFlaggedRevsParams":{"tags":{"accuracy":{"levels":3}}},"wgStableRevisionId":57070,"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgSiteNoticeId":"1.35"};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.flaggedRevs.icons":"ready","oojs-ui-core.styles":"ready","oojs-ui.styles.indicators":"ready","mediawiki.widgets.styles":"ready","oojs-ui-core.icons":"ready","ext.cite.styles":"ready","ext.bootstrap.styles":"ready","skins.vector.styles.legacy":"ready","ext.CookieWarning.styles":"ready","ext.flaggedRevs.basic":"ready","ext.dismissableSiteNotice.styles":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","ext.bootstrap.scripts","site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.CookieWarning","ext.flaggedRevs.advanced","mmv.head","mmv.bootstrap.autostart","ext.dismissableSiteNotice"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.CookieWarning.styles%7Cext.bootstrap.styles%7Cext.cite.styles%7Cext.dismissableSiteNotice.styles%7Cext.flaggedRevs.basic%2Cicons%7Cmediawiki.widgets.styles%7Coojs-ui-core.icons%2Cstyles%7Coojs-ui.styles.indicators%7Cskins.vector.styles.legacy&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.37.2"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="description" content="Digital signatures can increase security but this requires knowledge. Learn more about Verifying Software Signatures, What Digital Signatures (Not) Prove, Verification Security Levels, Conceptual Challenges, Attacks in the Wild."/>
+<meta name="twitter:site" content="@Kicksecure"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit"/>
+<link rel="edit" title="Edit" href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit"/>
+<link rel="shortcut icon" href="/w/images/4/45/Kicksecure-home-favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Kicksecure (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="https://www.kicksecure.com/w/api.php?action=rsd"/>
+<link rel="license" href="/wiki/WgRightsPage"/>
+<link rel="alternate" type="application/atom+xml" title="Kicksecure Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Header.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:SiteSpecific.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Sitenotice.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Footer.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><style>div.wip {
+ width: 600px;
+ margin: auto;
+}
+div.wip p {
+ color: white !important;
+ font-size: 16px !important;
+}
+div.wip a {
+ color: #6ab9ff;
+}</style><!-- End Extension:CSS -->
+<noscript><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Nojs.css&action=raw&ctype=text/css"></noscript>
+<link rel="stylesheet" type="text/css" href="/libs/Font-Awesome/css/all.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="Verifying Software Signatures"/>
+<meta property="og:site_name" content="Kicksecure"/>
+<meta property="og:url" content="https://www.kicksecure.com/wiki/Verifying_Software_Signatures"/>
+<meta property="og:description" content="Digital signatures can increase security but this requires knowledge. Learn more about Verifying Software Signatures, What Digital Signatures (Not) Prove, Verification Security Levels, Conceptual Challenges, Attacks in the Wild."/>
+<meta property="og:image" content="https://www.kicksecure.com/w/images/b/bb/Verifyingsignature1231233.png"/>
+<meta property="article:modified_time" content="2022-06-19T12:00:05Z"/>
+<meta property="article:published_time" content="2022-06-19T12:00:05Z"/>
+<meta property="og:type" content="website"/>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"website","name":"Verifying Software Signatures - Kicksecure","headline":"Verifying Software Signatures - Kicksecure","mainEntityOfPage":"Verifying Software Signatures","identifier":"https:\/\/www.kicksecure.com\/wiki\/Verifying_Software_Signatures","url":"https:\/\/www.kicksecure.com\/wiki\/Verifying_Software_Signatures","description":"Digital signatures can increase security but this requires knowledge. Learn more about Verifying Software Signatures, What Digital Signatures (Not) Prove, Verification Security Levels, Conceptual Challenges, Attacks in the Wild.","dateModified":"2022-06-19T12:00:05Z","datePublished":"2022-06-19T12:00:05Z","image":{"@type":"ImageObject","url":"https:\/\/www.kicksecure.com\/w\/images\/a\/aa\/Kicksecure-basic-logo.png"},"author":{"@type":"Organization","name":"Kicksecure","url":"https:\/\/www.kicksecure.com","logo":{"@type":"ImageObject","url":"https:\/\/www.kicksecure.com\/w\/images\/a\/aa\/Kicksecure-basic-logo.png","caption":"Kicksecure"}},"publisher":{"@type":"Organization","name":"Kicksecure","url":"https:\/\/www.kicksecure.com","logo":{"@type":"ImageObject","url":"https:\/\/www.kicksecure.com\/w\/images\/a\/aa\/Kicksecure-basic-logo.png","caption":"Kicksecure"}},"potentialAction":{"@type":"SearchAction","target":"https:\/\/www.kicksecure.com\/w\/index.php?title=Special:Search&search={search_term}","query-input":"required name=search_term"}}</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Verifying_Software_Signatures rootpage-Verifying_Software_Signatures skin-vector action-view skin--responsive skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="mw-dismissablenotice-anonplace"></div><script>(function(){var node=document.getElementById("mw-dismissablenotice-anonplace");if(node){node.outerHTML="\u003Cdiv class=\"mw-dismissable-notice\"\u003E\u003Cdiv class=\"mw-dismissable-notice-close\"\u003E[\u003Ca tabindex=\"0\" role=\"button\"\u003Edismiss\u003C/a\u003E]\u003C/div\u003E\u003Cdiv class=\"mw-dismissable-notice-body\"\u003E\u003Cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cp\u003E\u003Ca class=\"active-banner active-banner-01\" href=\"/wiki/Donate\" data-dismiss-id=\"ab01\"\u003E\n\u003Cimg class=\"icon\" src=\"/w/images/0/0b/Grow-symbol.png\"\u003E\n\u003Cspan\u003EWant to help us grow?\u003C/span\u003E\n\u003C/a\u003E\n\u003C/p\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E";}}());</script></div>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading" >Verifying Software Signatures</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">From Kicksecure</div>
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p>  <div id="custom-header">
+ <div class="style-wrapper">
+  <a href="/" class="home"></a>
+
+  <div class="nav-menu">
+   <div class="menu-title">Menu</div>
+
+   <div class="submenu">
+    <a href="/wiki/Download">Download</a>
+    <a href="/wiki/Documentation">Docs</a>
+    <a href="https://forums.kicksecure.com/c/news">News</a>
+    <a href="/wiki/Contribute">Help us</a>
+   </div>
+  </div>
+
+  <div class="menu-right">
+   <a class="search" href="/w/index.php?search="></a>
+
+   <div class="super-menu">
+    <div class="menu-title"></div>
+
+    <div class="submenus">
+     <div class="col1">
+      <span class="headline tools">Tools</span>
+      <a class="upload user-logged-in" href="/wiki/Special:Upload">Upload file</a>
+      <a class="special" href="/wiki/Special:SpecialPages">Special pages</a>
+      <a class="recentchanges user-logged-in" href="/wiki/Special:RecentChanges">Recent changes</a>
+      <a class="print" href="javascript:print();">Print Version</a>
+
+      <span class="headline pagemeta">Page meta</span>
+      <a class="whatlinkshere user-logged-in" href="/wiki/Special:WhatLinksHere/Verifying Software Signatures">What links here</a>
+      <a class="relatedchanges" href="/wiki/Special:RecentChangesLinked/Verifying Software Signatures">Related changes</a>
+      <a class="info" href="/w/index.php?title=Verifying Software Signatures&action=info">Page information</a>
+     </div>
+
+     <div class="col2">
+      <span class="headline page">Page</span>
+      <a class="view" href="/wiki/Verifying Software Signatures">Read</a>
+      <a class="edit" href="/w/index.php?title=Verifying Software Signatures&action=edit&oldid=57070">Edit</a>
+      <a class="history user-logged-in" href="/w/index.php?title=Verifying Software Signatures&action=history">History</a>
+      <a class="move user-logged-in" href="/wiki/Special:MovePage/Verifying Software Signatures">Move</a>
+      <a class="protect" href="/w/index.php?title=Verifying Software Signatures&action=protect">Protection</a>
+      <a class="unwatch user-logged-in" href="/w/index.php?title=Verifying Software Signatures&action=unwatch">Unwatch</a>
+      <a class="watch user-logged-in" href="/w/index.php?title=Verifying Software Signatures&action=watch">Watch</a>
+      <a class="delete user-logged-in" href="/w/index.php?title=Verifying Software Signatures&action=delete">Delete</a>
+      <a class="purge" href="/w/index.php?title=Verifying Software Signatures&action=purge">Purge</a>
+     </div>
+
+     <div class="col3">
+      <span class="headline user">User</span>
+      <a class="preferences user-logged-in" href="/wiki/Special:Preferences">Preferences</a>
+      <a class="watchlist user-logged-in" href="/wiki/Special:Watchlist">Watchlist</a>
+      <a class="contributions user-logged-in" href="/wiki/Special:Contributions">Contributions</a>
+      <a class="logout user-logged-in" href="/w/index.php?title=Special:UserLogout&returnto=Verifying%20Software%20Signatures">Logout</a>
+      <a class="createaccount user-logged-out" href="/w/index.php?title=Special:CreateAccount&returnto=Verifying%20Software%20Signatures">Create account</a>
+      <a class="login user-logged-out" href="/w/index.php?title=Special:UserLogin&returnto=Verifying%20Software%20Signatures">Login</a>
+     </div>
+    </div>
+   </div>
+
+   <a class="donate" href="/wiki/Donate">Donate</a>
+  </div>
+ </div>
+   <div id="top-bar-search-modal" class="modal fade" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title"></h5><span class="close" data-dismiss="modal" aria-label="Close">&times;</span>
+       </div>
+       <div class="modal-body">
+       </div>
+     </div>
+   </div>
+ </div>
+</div><div id="fly-in-notification-panel">
+ <div class="inner-wrapper">
+  <i class="close-panel fas fa-times"></i>
+ </div>
+</div>
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:202px;"><a href="/wiki/File:Verifyingsignature1231233.png" class="image"><img alt="Verifyingsignature1231233.png" src="/w/images/thumb/b/bb/Verifyingsignature1231233.png/200px-Verifyingsignature1231233.png" decoding="async" width="200" height="282" class="thumbimage" srcset="/w/images/thumb/b/bb/Verifyingsignature1231233.png/300px-Verifyingsignature1231233.png 1.5x, /w/images/thumb/b/bb/Verifyingsignature1231233.png/400px-Verifyingsignature1231233.png 2x" data-file-width="454" data-file-height="640" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Verifyingsignature1231233.png" class="internal" title="Enlarge"></a></div></div></div></div>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Verification_Procedure"><span class="tocnumber">2</span> <span class="toctext">Verification Procedure</span></a>
+<ul>
+<li class="toclevel-2 tocsection-3"><a href="#Checking_Digital_Fingerprints_of_Signing_Keys"><span class="tocnumber">2.1</span> <span class="toctext">Checking Digital Fingerprints of Signing Keys</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Checking_Digital_Fingerprints_of_Signed_Software"><span class="tocnumber">2.2</span> <span class="toctext">Checking Digital Fingerprints of Signed Software</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-5"><a href="#Common_Misconceptions"><span class="tocnumber">3</span> <span class="toctext">Common Misconceptions</span></a>
+<ul>
+<li class="toclevel-2 tocsection-6"><a href="#What_Digital_Signatures_Prove"><span class="tocnumber">3.1</span> <span class="toctext">What Digital Signatures Prove</span></a></li>
+<li class="toclevel-2 tocsection-7"><a href="#System_Security_Level"><span class="tocnumber">3.2</span> <span class="toctext">System Security Level</span></a></li>
+<li class="toclevel-2 tocsection-8"><a href="#Conceptual_Challenges_in_Digital_Signatures_Verification"><span class="tocnumber">3.3</span> <span class="toctext">Conceptual Challenges in Digital Signatures Verification</span></a>
+<ul>
+<li class="toclevel-3 tocsection-9"><a href="#Threat_Model_Assumptions"><span class="tocnumber">3.3.1</span> <span class="toctext">Threat Model Assumptions</span></a></li>
+<li class="toclevel-3 tocsection-10"><a href="#Potential_Adversary_Attacks"><span class="tocnumber">3.3.2</span> <span class="toctext">Potential Adversary Attacks</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2 tocsection-11"><a href="#Information_Security_Level"><span class="tocnumber">3.4</span> <span class="toctext">Information Security Level</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Attacks_in_the_Wild"><span class="tocnumber">4</span> <span class="toctext">Attacks in the Wild</span></a>
+<ul>
+<li class="toclevel-2 tocsection-13"><a href="#Cryptocurrency_Theft_via_Compromised_Binaries"><span class="tocnumber">4.1</span> <span class="toctext">Cryptocurrency Theft via Compromised Binaries</span></a></li>
+<li class="toclevel-2 tocsection-14"><a href="#Fake_Tor_Browser"><span class="tocnumber">4.2</span> <span class="toctext">Fake Tor Browser</span></a></li>
+<li class="toclevel-2 tocsection-15"><a href="#hacked_github.com"><span class="tocnumber">4.3</span> <span class="toctext">hacked github.com</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-16"><a href="#See_Also"><span class="tocnumber">5</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-17"><a href="#Attribution"><span class="tocnumber">6</span> <span class="toctext">Attribution</span></a></li>
+<li class="toclevel-1 tocsection-18"><a href="#Footnotes"><span class="tocnumber">7</span> <span class="toctext">Footnotes</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=1" title="Edit section: Introduction">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p>For greater system security the installation of unsigned software should be avoided at all costs. Instead it is recommended to:
+</p>
+<ul><li>Only install verifiable software that allows for <a href="/wiki/Warning#Always_Verify_Signatures" title="Warning">confirmation of signing keys and signatures</a>; and/or</li>
+<li>Use mechanisms that heavily simplify and automate this process, like <a href="/wiki/Operating_System_Software_and_Updates#Updates" title="Operating System Software and Updates">apt</a> upgrades.</li></ul>
+<h1><span class="mw-headline" id="Verification_Procedure">Verification Procedure</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=2" title="Edit section: Verification Procedure">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div style="background: #F8F8F8; border: 2px; padding: 5px; margin: 10px; border-style: solid; border-color: black; width: 100%">
+<p><a href="/wiki/File:Ambox_warning_pn.svg.png" class="image"><img alt="Ambox warning pn.svg.png" src="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/60px-Ambox_warning_pn.svg.png 1.5x, /w/images/thumb/f/f7/Ambox_warning_pn.svg.png/80px-Ambox_warning_pn.svg.png 2x" data-file-width="2000" data-file-height="1725" /></a> Do not continue if verification fails! This risks using infected or erroneous files! The whole point of verification is to confirm file integrity.
+</p>
+</div>
+<div style="background: #F8F8F8; border: 2px; padding: 5px; margin: 10px; border-style: solid; border-color: black; width: 100%">
+<p><a href="/wiki/File:Ambox_warning_pn.svg.png" class="image"><img alt="warning" src="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/60px-Ambox_warning_pn.svg.png 1.5x, /w/images/thumb/f/f7/Ambox_warning_pn.svg.png/80px-Ambox_warning_pn.svg.png 2x" data-file-width="2000" data-file-height="1725" /></a> Check the GPG signature timestamp makes sense. For example, if you previously saw a signature from 2020 and  now see a signature from 2019, then this might be a targeted rollback (downgrade) or indefinite freeze attack. <sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p>
+</div>
+<div style="background: #F8F8F8; border: 2px; padding: 5px; margin: 10px; border-style: solid; border-color: black; width: 100%">
+<p><a href="/wiki/File:Ambox_warning_pn.svg.png" class="image"><img alt="warning" src="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/60px-Ambox_warning_pn.svg.png 1.5x, /w/images/thumb/f/f7/Ambox_warning_pn.svg.png/80px-Ambox_warning_pn.svg.png 2x" data-file-width="2000" data-file-height="1725" /></a> Note: OpenPGP signatures sign files, but <i>not</i> file names. <sup id="cite_ref-2" class="reference"><a href="#cite_note-2">&#91;2&#93;</a></sup>
+</p>
+</div>
+<h2><span class="mw-headline" id="Checking_Digital_Fingerprints_of_Signing_Keys">Checking Digital Fingerprints of Signing Keys</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=3" title="Edit section: Checking Digital Fingerprints of Signing Keys">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<div style="background: #F8F8F8; border: 2px; padding: 5px; margin: 10px; border-style: solid; border-color: black; width: 100%">
+<p><a href="/wiki/File:Ambox_warning_pn.svg.png" class="image"><img alt="Ambox warning pn.svg.png" src="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/60px-Ambox_warning_pn.svg.png 1.5x, /w/images/thumb/f/f7/Ambox_warning_pn.svg.png/80px-Ambox_warning_pn.svg.png 2x" data-file-width="2000" data-file-height="1725" /></a> <b>Warning:</b> Software should only be installed <u>after</u> a key's fingerprint has been verified and good signatures are produced for files/repositories.
+</p>
+</div>
+<p>A critical first step in verifying software is legitimate is confirmation that the signing key is authentic -- this requires inspection of the key fingerprint. <sup id="cite_ref-3" class="reference"><a href="#cite_note-3">&#91;3&#93;</a></sup> Always perform this operation before keys are imported or trust is placed in OpenPGP output when verifying files or repositories.  
+</p><p>The standard Kicksecure ™ wiki advice is to carefully obtain copies of the <a href="/wiki/Trust#OpenPGP" title="Trust">OpenPGP fingerprint</a> from multiple secure websites and to use <a href="/wiki/OpenPGP#The_OpenPGP_Web_of_Trust" title="OpenPGP">other authentication systems</a> to check they match. <sup id="cite_ref-4" class="reference"><a href="#cite_note-4">&#91;4&#93;</a></sup> In this instance, "other authentication systems" refers to: <sup id="cite_ref-5" class="reference"><a href="#cite_note-5">&#91;5&#93;</a></sup>
+</p>
+<ul><li>Use the <a href="/wiki/OpenPGP#The_OpenPGP_Web_of_Trust" title="OpenPGP">The OpenPGP Web of Trust</a>.</li>
+<li>Check the key against different keyservers.</li>
+<li>Use different search engines to search for the fingerprint.</li>
+<li>Use various VPNs and proxy servers.</li>
+<li>Use different Wi-Fi networks (work, school, internet cafe, etc.).</li>
+<li>Ask people to post the fingerprint in various forums and chat rooms.</li>
+<li>Check against PDFs and photographs in which the fingerprint appears (e.g., slides from a talk or on a T-shirt).</li>
+<li>Repeat all of the above from different computers and devices.</li>
+<li>See also <a href="/wiki/OpenPGP#Bootstrapping_OpenPGP_keys_from_the_web" title="OpenPGP">Bootstrapping OpenPGP keys from the web</a>.</li></ul>
+<h2><span class="mw-headline" id="Checking_Digital_Fingerprints_of_Signed_Software">Checking Digital Fingerprints of Signed Software</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=4" title="Edit section: Checking Digital Fingerprints of Signed Software">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Before file signatures can be safely verified with the signing key, several prerequisites must be met:
+</p>
+<ol><li>The correct signing key pair was downloaded.</li>
+<li>The signing key's fingerprints were checked against multiple sources.</li>
+<li>The key pair was imported e.g:</li></ol>
+<pre>user@host:~/Downloads$ gpg --import KEY 
+gpg: key 61B7B526D98F0353: 24 signatures not checked due to missing keys
+gpg: key 61B7B526D98F0353: public key "Mozilla Software Releases &lt;release@mozilla.com&gt;" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: no ultimately trusted keys found
+</pre>
+<ol><li>The software package intended for installation was downloaded.</li>
+<li>The accompanying signature file for the software package (.asc files are GPG signatures) was downloaded.</li></ol>
+<p>The following example shows how the file signature is checked for Firefox v97.0.1, directly downloaded from The Mozilla Firefox website.
+</p><p>In a terminal run.
+</p><p><div class="code-select ">gpg --verify firefox-97.0.1.tar.bz2.asc firefox-97.0.1.tar.bz2</div>
+</p><p>The OpenPGP output should show a "good signature", with the primary key fingerprint matching the one verified by the user earlier on. In this example.
+</p>
+<pre>gpg: Signature made Wed 16 Feb 2022 06:52:12 PM GMT
+gpg:                using RSA key 4360FE2109C49763186F8E21EBE41E90F6F12F6D
+gpg: Good signature from "Mozilla Software Releases &lt;release@mozilla.com&gt;" [unknown]
+gpg: WARNING: This key is not certified with a trusted signature!
+gpg:          There is no indication that the signature belongs to the owner.
+Primary key fingerprint: 14F2 6682 D091 6CDD 81E3  7B6D 61B7 B526 D98F 0353
+     Subkey fingerprint: 4360 FE21 09C4 9763 186F  8E21 EBE4 1E90 F6F1 2F6D
+</pre>
+<p>The software can now be safely installed. If the output states "bad signature", then the files and digital signatures should be removed and downloaded again.
+</p>
+<h1><span class="mw-headline" id="Common_Misconceptions">Common Misconceptions</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=5" title="Edit section: Common Misconceptions">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<h2><span class="mw-headline" id="What_Digital_Signatures_Prove">What Digital Signatures Prove</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=6" title="Edit section: What Digital Signatures Prove">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Bear in mind that using digital signatures to verify the trustworthiness of software is not an infallible process. Digital signatures increase the certainty that no backdoor was introduced by a third party during transit, but this does not mean the software is absolutely "backdoor-free". The following is a summary of what digital signatures prove and do not prove.
+</p><p><b>Table:</b> <i>Digital Signatures Properties</i>
+</p>
+<div class="scroll-table">
+<table class="wikitable">
+
+
+<tbody><tr>
+<th scope="col"><b>Property</b>
+</th>
+<th scope="col"><b>Description</b>
+</th></tr>
+
+<tr>
+<th scope="row">Digital Signatures Prove
+</th>
+<td>
+<ul><li>Someone with access to the private key has made a signature.</li>
+<li>The file contents have not been tampered with (preserving integrity).</li>
+<li><i>May</i> indicate the given file is authentic.</li></ul>
+</td></tr>
+
+<tr>
+<th scope="row">Digital Signatures do not Prove
+</th>
+<td>
+<ul><li>Any other property, for example, that the file is not malicious. Nothing stops a person from signing a malicious program. Digital signature or not, for example in the case of
+<ul><li>the intentional breakage, supply chain attacks: <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/">Dev corrupts NPM libs 'colors' and 'faker' breaking thousands of apps</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.bleepingcomputer.com/news/security/dev-corrupts-npm-libs-colors-and-faker-breaking-thousands-of-apps/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a href="/wiki/Malware_and_Firmware_Trojans#Backdoors" title="Malware and Firmware Trojans">backdoors</a>: <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/">bitcoin copay wallet “direct” backdoor</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.synopsys.com/blogs/software-security/malicious-dependency-supply-chain/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>  "<i><span style="background-color:#FBFBFB">If more than 100 BTC, steal it. Otherwise, don’t bother.</span></i>" <sup id="cite_ref-6" class="reference"><a href="#cite_note-6">&#91;6&#93;</a></sup></li>
+<li>a digital signature would <u>not</u> have helped.</li></ul></li>
+<li>That persons signing the file are inherently trustworthy, for example: Debian, Kicksecure ™ developers and so on -- but trust must be eventually placed in someone. <sup id="cite_ref-7" class="reference"><a href="#cite_note-7">&#91;7&#93;</a></sup></li></ul>
+</td></tr>
+
+</tbody></table>
+</div>
+<p>If all files downloaded from trusted vendors are verified, then this removes the threat of server compromises, dishonest staff at hosting companies or ISPs, Wi-Fi attacks and so on. The reason is files that have been tampered with will produce bad digital signatures, <u>so long as the public keys used for signature verification are the authentic, original ones (see below).</u>
+</p>
+<h2><span class="mw-headline" id="System_Security_Level">System Security Level</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=7" title="Edit section: System Security Level">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>System security level can be placed into one of three categories. From strongest to weakest these are:
+</p>
+<ul><li><code>Always use software signatures verification</code>: software signatures are always verified with <a href="/wiki/OpenPGP" title="OpenPGP">OpenPGP</a>, <a href="/wiki/PQCrypto#Codecrypt" title="PQCrypto">codecrypt</a>, <a href="/wiki/Install_Software" title="Install Software">APT</a> or similar mechanisms.</li>
+<li><code>Always use TLS</code>: files are always <a href="/wiki/Secure_Downloads" title="Secure Downloads">securely downloaded</a> over <a href="/wiki/SSL" title="SSL">TLS</a>.</li>
+<li><code>Plaintext</code>.</li></ul>
+<p>If software was ever installed or started that did not previously successfully verify software signatures, then the system security level is reduced from the OpenPGP standard to either TLS or even the plaintext standard.
+</p><p>Unless a <a href="/wiki/Disaster_Recovery" title="Disaster Recovery">Disaster Recovery Procedure</a> is utilized, it is impossible to increase the security level of a machine or VM (for example, from TLS to the OpenPGP standard).
+</p><p>If the reader shares the Kicksecure ™ opinion that <a href="/wiki/SSL" title="SSL">Transport Layer Security (TLS)</a> provides a weak safeguard, then software signatures must be consistently verified and without exception.
+</p>
+<h2><span class="mw-headline" id="Conceptual_Challenges_in_Digital_Signatures_Verification">Conceptual Challenges in Digital Signatures Verification</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=8" title="Edit section: Conceptual Challenges in Digital Signatures Verification">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Many educational shortcomings exist with respect to verification of software digital signatures. In the relevant literature, a number of implicit assumptions are made which are seldom spelled out. Unless users are properly educated beforehand, it is unrealistic to expect the majority can successfully verify software signatures and simultaneously notice attacks by advanced adversaries.
+</p><p>When digitally signed software is made available, most often the relevant website will simply state the signing key should be downloaded in order to verify software signature(s). This approach has limited usefulness and kicksecure.com is not alone in this regard -- the same is true for any software that provides software signatures.
+</p><p>Due diligence in verification of software signatures falls wholly upon users, and cannot be offered by vendors who make software and associated signatures available for download. The reason is the threat model of software signature verification is intimately linked with the <a href="#System_Security_Level">system security level</a>; this section attempts to make this explicit.
+</p>
+<h3><span class="mw-headline" id="Threat_Model_Assumptions">Threat Model Assumptions</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=9" title="Edit section: Threat Model Assumptions">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>In this threat model, signing keys and software signatures are considered to provide a higher security level. On the other hand, everything the user can see on a website (including instructions) is on a lower security level because <a href="/wiki/Dev/OpenPGP_Signed_Website" title="Dev/OpenPGP Signed Website">(OpenPGP) signed websites</a> do not exist yet. Further, <a href="/wiki/SSL" title="SSL">TLS</a> provides a lower security level than verification of digital software signatures.
+</p><p>Consider an example of signed software that is available on a random website that is secured by TLS (in this very example TLS vs non-TLS does not even matter). In this hypothetical case, due to the software's file size and economic shortcomings it is impossible to host the software downloads on the same server. Instead, downloads are offered on a mirror network operated by third parties. In such an example it could be argued that mirrors are less trusted than the main project website. In the event the main website offered a signing key, but a malicious file was shipped by a third party mirror, then it could be detected if software signature verification was utilized by the user.
+</p><p>In other cases the software downloads, signing key and software signatures are all provided by the same server over <a href="/wiki/SSL" title="SSL">TLS</a>; this is the situation for Kicksecure ™ and other projects. <sup id="cite_ref-8" class="reference"><a href="#cite_note-8">&#91;8&#93;</a></sup> While this may appear more secure than the first example, no project can guarantee that its server will never be compromised; see <a href="/wiki/Trust#Distrusting_Infrastructure" title="Trust">Distrusting Infrastructure</a> for further details.
+</p><p>The preceding discussion makes it clear that is unwise to blindly trust whatever a project website says about software signature verification. Relevant threat model questions include:
+</p>
+<ul><li>What if the website I am currently viewing is already compromised?</li>
+<li>What if a malicious third party has already modified instructions concerning how to verify signatures or which signing key should be used?</li></ul>
+<p>Also, after compromising a project web server, advanced adversaries are capable of showing fake website contents to specifically targeted users.
+</p>
+<h3><span class="mw-headline" id="Potential_Adversary_Attacks">Potential Adversary Attacks</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=10" title="Edit section: Potential Adversary Attacks">edit</a><span class="mw-editsection-bracket">]</span></span></h3>
+<p>Competent adversaries are capable of various attacks, including malicious modifications of a project website. Consider the following vectors:
+</p>
+<ul><li>Removal of any mention of software signature verification and replacement of software downloads with malicious counterparts.
+<ul><li>Users who have never heard about software verification would fail to notice this, leading to compromise.</li>
+<li>Users who already understood the threat model of digital software verification and wanted to enforce the security level "always use software signatures verification" would ask for software signatures and remain safe.</li></ul></li>
+<li>Insertion of false information such as "From now on, software signatures are no longer required. This process is now automated, because ...".
+<ul><li>Gullible users would believe this statement and be compromised.</li>
+<li>Diligent users would search for a digitally signed message by the vendor confirming this change. If it was not found, they would report the issue and remain safe.</li></ul></li>
+<li>Replacing the genuine signing key and software signatures with a signing key and software signatures created by the adversary.
+<ul><li>Users who did not previously receive the signing key and who did not do further research the plausibility of having received the correct signing key would fail to not notice this and be compromised.</li>
+<li>Diligent users would follow the recommendations in earlier chapters on this page and therefore stay safe.</li></ul></li></ul>
+<p>To counter these threats, user intelligence and due diligence is necessary as a sanity check.
+</p><p>Due to the complexity of this issue and very low user awareness, it is unlikely the majority of users are enforcing the "always use software signatures verification" security level. To date, the author of this section has not seen the security level concept explicitly described elsewhere, probably because the relevant  information is not widely known. Unfortunately, the existing tools used for manual verification of software signatures have poor usability and <a href="/wiki/Software_Signature_Verification_Usability_Issues_and_Proposed_Solutions" title="Software Signature Verification Usability Issues and Proposed Solutions">better technical solutions</a> that are required do not exist.
+</p>
+<h2><span class="mw-headline" id="Information_Security_Level">Information Security Level</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=11" title="Edit section: Information Security Level">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>Information security level (similar to <a href="#System_Security_Level">system security level</a>) can be placed into one of three categories. From strongest to weakest these are:
+</p>
+<ul><li><code>signatures verification</code>: signatures are verified with <a href="/wiki/OpenPGP" title="OpenPGP">OpenPGP</a>, <a href="/wiki/PQCrypto#Codecrypt" title="PQCrypto">codecrypt</a>, or similar mechanisms.</li>
+<li><code>TLS</code>: information was received over <a href="/wiki/SSL" title="SSL">TLS</a>.</li>
+<li><code>Plaintext</code>.</li></ul>
+<p>Other properties and categories are conceivable as well. Such as for example:
+</p>
+<ul><li>Third party server not involved or cannot due to security by design tamper with information.</li>
+<li>Offline signing key.</li></ul>
+<h1><span class="mw-headline" id="Attacks_in_the_Wild">Attacks in the Wild</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=12" title="Edit section: Attacks in the Wild">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<h2><span class="mw-headline" id="Cryptocurrency_Theft_via_Compromised_Binaries">Cryptocurrency Theft via Compromised Binaries</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=13" title="Edit section: Cryptocurrency Theft via Compromised Binaries">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>In late 2019, malware was in operation that led to the theft of funds from Monero users:
+</p>
+<ul><li><a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.reddit.com/r/Monero/comments/dyfozs/security_warning_cli_binaries_available_on/">Security Warning: CLI binaries available on getmonero.org may have been compromised at some point during the last 24h.</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.reddit.com/r/Monero/comments/dyfozs/security_warning_cli_binaries_available_on/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a target="_blank" rel="noreferrer noopener" class="external text" href="https://lists.getmonero.org/hyperkitty/list/monero-announce@lists.getmonero.org/thread/DXJ223SBTCWKP7EDHVS7X73VP6WWX4S4/">Warning: The binaries of the CLI wallet were compromised for a short time</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://lists.getmonero.org/hyperkitty/list/monero-announce@lists.getmonero.org/thread/DXJ223SBTCWKP7EDHVS7X73VP6WWX4S4/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a target="_blank" rel="noreferrer noopener" class="external text" href="https://github.com/monero-project/monero/issues/6151#issuecomment-555694443">Wrong hashes (from getmonero.org)</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/monero-project/monero/issues/6151#issuecomment-555694443" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a target="_blank" rel="noreferrer noopener" class="external text" href="https://bartblaze.blogspot.com/2019/11/monero-project-compromised.html">Monero download site and binaries compromised</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://bartblaze.blogspot.com/2019/11/monero-project-compromised.html" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li></ul>
+<h2><span class="mw-headline" id="Fake_Tor_Browser">Fake Tor Browser</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=14" title="Edit section: Fake Tor Browser">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<p>To illustrate the risk of installing unsigned software, consider the following attack which recently used a <a target="_blank" rel="noreferrer noopener" class="external text" href="https://en.wikipedia.org/wiki/Trojan_horse_(computing)">"trojanized" Tor Browser</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://en.wikipedia.org/wiki/Trojan_horse_(computing)" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> to spy on users and to steal Bitcoin. This attack had several elements: <sup id="cite_ref-9" class="reference"><a href="#cite_note-9">&#91;9&#93;</a></sup> <sup id="cite_ref-10" class="reference"><a href="#cite_note-10">&#91;10&#93;</a></sup>
+</p>
+<ul><li>Advertisements for the fake Tor Browser were used in Russian forums focused on privacy, censorship circumvention, darknet markets and cryptocurrencies.
+<ul><li>Messaging included promises to circumvent Russian censorship bodies and to bypass CAPTCHAs.</li>
+<li>Links were provided to fake domains for downloading Tor Browser (<code>tor-browser.org</code> and <code>torproect.org</code>), instead of the genuine website: <code>torproject.org</code></li></ul></li>
+<li>After visiting the fake websites, users received warnings their Tor Browser was outdated (regardless of the reality). Users who believed this message were redirected to another website with an installer.</li>
+<li>The malicious Tor Browser version downloaded was older (version 7.5) than the current release (9.0 at the time of writing), and had disabled the digital signature check for installed Tor Browser add-ons (<code>xpinstall.signatures.required</code> was set to false). It had also renamed the updater tool to prevent victims updating to a legitimate version of Tor Browser.</li>
+<li>The Tor proxy was used in the browser, anonymizing the user's IP address. However, users could be spied upon because a custom user-agent (text-based identifer) was set that allowed the software and operating system to be visible -- a unique browser fingerprint made tracking by network observers possible.</li>
+<li>Attackers had bundled HTTPS Everywhere with a modified <code>manifest.json</code> file. This permitted the web extension to have broader permissions and to add content scripts that were loaded into various web pages. As a consequence, a <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.trendmicro.com/vinfo/us/security/definition/command-and-control-server">Command and Control server</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.trendmicro.com/vinfo/us/security/definition/command-and-control-server" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> could load further scripts when users browsed on certain Darknet markets and a commonly used Russian money transfer service (QIWI) -- changing cryptocurrency wallet addresses to match an addressed controlled by criminals in order to steal money.</li>
+<li>It is also assumed the NoScript extension settings were modified so JavaScript was active when browsing.</li></ul>
+<p>This highlights the possible dangers of installing unsigned software -- loss of anonymity and financial loss in this case. If the victims had instead only installed signed Tor Browser software from trusted and known sources <u>after</u>: verifying they had the correct key pair, confirming the key's fingerprints, and checking the signature file for the software package matched, then they could have bypassed this scam entirely.
+</p>
+<h2><span class="mw-headline" id="hacked_github.com">hacked github.com</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=15" title="Edit section: hacked github.com">edit</a><span class="mw-editsection-bracket">]</span></span></h2>
+<ul><li><b>1.)</b> <i>2012</i> <u>Unauthorized github repository write access:</u> <a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.blog/2012-03-04-public-key-security-vulnerability-and-mitigation/">https://github.blog/2012-03-04-public-key-security-vulnerability-and-mitigation/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.blog/2012-03-04-public-key-security-vulnerability-and-mitigation/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> <sup id="cite_ref-11" class="reference"><a href="#cite_note-11">&#91;11&#93;</a></sup></li>
+<li><b>2.</b> <i>2014</i> <a target="_blank" rel="noreferrer noopener" class="external free" href="https://homakov.blogspot.com/2014/02/how-i-hacked-github-again.html">https://homakov.blogspot.com/2014/02/how-i-hacked-github-again.html</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://homakov.blogspot.com/2014/02/how-i-hacked-github-again.html" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> <sup id="cite_ref-12" class="reference"><a href="#cite_note-12">&#91;12&#93;</a></sup></li>
+<li><b>3.)</b> <i>2022</i> <u>Hacked logins and private github repository data leak:</u>  Mike Hanley, Chief Security Officer at GitHub, wrote in a <a target="_blank" rel="noreferrer noopener" class="external text" href="https://github.blog/2022-04-15-security-alert-stolen-oauth-user-tokens/">blog post</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.blog/2022-04-15-security-alert-stolen-oauth-user-tokens/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>: <blockquote><p>We have high confidence that compromised OAuth user tokens from Heroku and Travis-CI-maintained OAuth applications were stolen and abused to download private repositories belonging to dozens of victim organizations that were using these apps. Our analysis of other behavior by the threat actor suggests that the actors may be mining the downloaded private repository contents, to which the stolen OAuth token had access, for secrets that could be used to pivot into other infrastructure.</p></blockquote> <sup id="cite_ref-13" class="reference"><a href="#cite_note-13">&#91;13&#93;</a></sup></li></ul>
+<h1><span class="mw-headline" id="See_Also">See Also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=16" title="Edit section: See Also">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<ul><li><a href="/wiki/Trust" title="Trust">Placing Trust in Kicksecure ™</a></li>
+<li><a href="/wiki/OpenPGP" title="OpenPGP">OpenPGP</a></li>
+<li><a href="/wiki/Verify_the_virtual_machine_images" title="Verify the virtual machine images">Verify the virtual machine images</a></li>
+<li><a href="/wiki/Signing_Key" title="Signing Key">Kicksecure ™ Signing Key</a></li>
+<li><a href="/wiki/Software_Signature_Verification_Usability_Issues_and_Proposed_Solutions" title="Software Signature Verification Usability Issues and Proposed Solutions">Software Signature Verification Usability Issues and Proposed Solutions</a></li></ul>
+<h1><span class="mw-headline" id="Attribution">Attribution</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=17" title="Edit section: Attribution">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p>Gratitude is expressed to <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.qubes-os.org">Qubes OS</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.qubes-os.org" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> (<a target="_blank" rel="noreferrer noopener" class="external text" href="https://groups.google.com/forum/?fromgroups=#!topic/qubes-devel/zALZnu9pTuU">Permission</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://groups.google.com/forum/?fromgroups=#!topic/qubes-devel/zALZnu9pTuU" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>). The <a href="#What_Digital_Signatures_Prove">What Digital Signatures Prove</a> chapter contains content from the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.qubes-os.org/security/verifying-signatures/#what-digital-signatures-can-and-cannot-prove">Qubes OS: What do the Digital Signatures Prove and What They DO NOT Prove</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.qubes-os.org/security/verifying-signatures/#what-digital-signatures-can-and-cannot-prove" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> page.
+</p>
+<h1><span class="mw-headline" id="Footnotes">Footnotes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit&amp;section=18" title="Edit section: Footnotes">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="reflist" style="list-style-type: decimal;">
+<div class="mw-references-wrap mw-references-columns"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">
+As defined by TUF: Attacks and Weaknesses:
+<ul><li><a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/theupdateframework/tuf/blob/develop/SECURITY.md">https://github.com/theupdateframework/tuf/blob/develop/SECURITY.md</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/theupdateframework/tuf/blob/develop/SECURITY.md" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li></ul>
+</span></li>
+<li id="cite_note-2"><span class="mw-cite-backlink"><a href="#cite_ref-2">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://lists.gnupg.org/pipermail/gnupg-users/2015-January/052185.html">https://lists.gnupg.org/pipermail/gnupg-users/2015-January/052185.html</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://lists.gnupg.org/pipermail/gnupg-users/2015-January/052185.html" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-3"><span class="mw-cite-backlink"><a href="#cite_ref-3">↑</a></span> <span class="reference-text">For example, <u>anybody could generate an OpenPGP key pair and pretend to be the "Kicksecure ™ Project"</u>, but only <a href="/wiki/Signing_Key" title="Signing Key">Patrick Schleizer's key pair</a> is legitimate.</span>
+</li>
+<li id="cite_note-4"><span class="mw-cite-backlink"><a href="#cite_ref-4">↑</a></span> <span class="reference-text">Website checks are only as secure as the imperfect TLS system, which is itself based on certificate authorities that have been frequently compromised in recent years.</span>
+</li>
+<li id="cite_note-5"><span class="mw-cite-backlink"><a href="#cite_ref-5">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://www.qubes-os.org/security/verifying-signatures/">https://www.qubes-os.org/security/verifying-signatures/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.qubes-os.org/security/verifying-signatures/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-6"><span class="mw-cite-backlink"><a href="#cite_ref-6">↑</a></span> <span class="reference-text">
+<ul><li><a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/dominictarr/event-stream/issues/116">https://github.com/dominictarr/event-stream/issues/116</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/dominictarr/event-stream/issues/116" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/dominictarr/event-stream/issues/116#issuecomment-441759047">https://github.com/dominictarr/event-stream/issues/116#issuecomment-441759047</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/dominictarr/event-stream/issues/116#issuecomment-441759047" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li></ul>
+</span></li>
+<li id="cite_note-7"><span class="mw-cite-backlink"><a href="#cite_ref-7">↑</a></span> <span class="reference-text">
+Digital signatures are still useful in this case, because it is possible to limit trust to a few select people/organizations such as Kicksecure ™ developers.</span>
+</li>
+<li id="cite_note-8"><span class="mw-cite-backlink"><a href="#cite_ref-8">↑</a></span> <span class="reference-text">Kicksecure ™ also offers all three components over <a href="/wiki/Forcing_.onion_on_Project" title="Forcing .onion on Project">.onion</a>; see also <a href="/wiki/Download_Security" title="Download Security">Download Security</a>.</span>
+</li>
+<li id="cite_note-9"><span class="mw-cite-backlink"><a href="#cite_ref-9">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://www.eff.org/deeplinks/2019/10/phony-https-everywhere-extension-used-fake-tor-browser">https://www.eff.org/deeplinks/2019/10/phony-https-everywhere-extension-used-fake-tor-browser</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.eff.org/deeplinks/2019/10/phony-https-everywhere-extension-used-fake-tor-browser" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-10"><span class="mw-cite-backlink"><a href="#cite_ref-10">↑</a></span> <span class="reference-text"><a target="_blank" rel="noreferrer noopener" class="external free" href="https://www.eset.com/us/about/newsroom/press-releases/eset-discovers-a-campaign-stealing-bitcoins-from-darknet-users/">https://www.eset.com/us/about/newsroom/press-releases/eset-discovers-a-campaign-stealing-bitcoins-from-darknet-users/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.eset.com/us/about/newsroom/press-releases/eset-discovers-a-campaign-stealing-bitcoins-from-darknet-users/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-11"><span class="mw-cite-backlink"><a href="#cite_ref-11">↑</a></span> <span class="reference-text">
+<ul><li><a target="_blank" rel="noreferrer noopener" class="external free" href="https://homakov.blogspot.com/2012/03/how-to.html">https://homakov.blogspot.com/2012/03/how-to.html</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://homakov.blogspot.com/2012/03/how-to.html" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a target="_blank" rel="noreferrer noopener" class="external free" href="https://www.extremetech.com/computing/120981-github-hacked-millions-of-projects-at-risk-of-being-modified-or-deleted">https://www.extremetech.com/computing/120981-github-hacked-millions-of-projects-at-risk-of-being-modified-or-deleted</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.extremetech.com/computing/120981-github-hacked-millions-of-projects-at-risk-of-being-modified-or-deleted" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li>
+<li><a target="_blank" rel="noreferrer noopener" class="external free" href="https://github.com/rails/rails/commit/b83965785db1eec019edf1fc272b1aa393e6dc57">https://github.com/rails/rails/commit/b83965785db1eec019edf1fc272b1aa393e6dc57</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://github.com/rails/rails/commit/b83965785db1eec019edf1fc272b1aa393e6dc57" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></li></ul>
+</span></li>
+<li id="cite_note-12"><span class="mw-cite-backlink"><a href="#cite_ref-12">↑</a></span> <span class="reference-text">
+<a target="_blank" rel="noreferrer noopener" class="external free" href="https://www.reddit.com/r/netsec/comments/1xa5xh/how_i_hacked_github_again/cf9qjcl/">https://www.reddit.com/r/netsec/comments/1xa5xh/how_i_hacked_github_again/cf9qjcl/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.reddit.com/r/netsec/comments/1xa5xh/how_i_hacked_github_again/cf9qjcl/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+<li id="cite_note-13"><span class="mw-cite-backlink"><a href="#cite_ref-13">↑</a></span> <span class="reference-text">
+<a target="_blank" rel="noreferrer noopener" class="external free" href="https://www.developer-tech.com/news/2022/apr/19/github-notifies-victims-of-oauth-token-theft/">https://www.developer-tech.com/news/2022/apr/19/github-notifies-victims-of-oauth-token-theft/</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.developer-tech.com/news/2022/apr/19/github-notifies-victims-of-oauth-token-theft/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup></span>
+</li>
+</ol></div></div>
+<hr />
+<p><br />
+<u>Unfinished</u>: <b>This wiki is a work in progress.</b> Please do not report broken links until this notice is removed, <a href="/wiki/Please_use_Search_Engines_and_see_Documentation_First" title="Please use Search Engines and see Documentation First">use Search Engines First</a> and <a href="/wiki/Contribute#Documentation" title="Contribute">contribute improving this wiki</a>.
+</p>
+<div id="custom-footer">
+<div class="wip">
+</div>
+<p>
+
+
+
+<div class="content-wrapper">
+ <div class="main-claim divider-border">
+  <span class="headline">
+   Kicksecure ™
+  </span>
+
+  <span class="claim">
+   ...
+  </span>
+ </div>
+
+ <div class="donate divider-border">
+  <a href="/wiki/Donate/Bitcoin" title="Donate Bitcoin to help us grow" data-address="3DaJWfHyLv4RVnvMD7K2Mz2AX2r3fwiQwV">
+   <img src="/w/images/9/9d/Kicksecure_donate_bitcoin.png">
+  </a>
+
+  <a href="/wiki/Donate/Monero" title="Donate Monero to help us grow" data-address="84ozcSohQfoV6nRgGfaQ8uBvWphXAH8zDTTuotVnJWF1JMNQfvgNFdbEo4ZnJ9hxPMeYfJuUoWGH3MRaXCfbYk8sFFgm4XL">
+   <img src="/w/images/6/63/Kicksecure_donate_monero.png">
+  </a>
+
+  <a href="/wiki/Donate/Ethereum" title="Donate Ethereum or Token to help us grow" data-address="0xf27EAe399f186600Dc6e5A418793C4A3D58a74e7">
+   <img src="/w/images/1/14/Kicksecure_donate_ethereum.png">
+  </a>
+
+  <a class="donate-button" href="/wiki/Donate" title="Donate to help us grow">
+   <div>
+    <span class="text">Donate</span>
+    <span class="image"><img src="/w/images/4/40/Donate-banner.png" /></span>
+   </div>
+  </a>
+ </div>
+
+ <div class="social divider-border">
+  <div class="text">Follow us on social media</div>
+  <div class="icons">
+   <a class="expand-button-50" href="https://t.me/s/Kicksecure" target="_blank" title="Kicksecure on Telegram">
+    <img src="/w/images/thumb/9/9a/1024px-Telegram_2019_Logo.svg.png/50px-1024px-Telegram_2019_Logo.svg.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://twitter.com/Kicksecure" target="_blank" title="Kicksecure on Twitter">
+    <img src="/w/images/thumb/6/67/Twitter-logo.png/50px-Twitter-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://www.facebook.com/Kicksecure" target="_blank" title="Kicksecure on Facebook">
+    <img src="/w/images/thumb/9/9d/Facebook-logo.png/50px-Facebook-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://www.reddit.com/r/Kicksecure" target="_blank" title="Kicksecure on Reddit">
+    <img src="/w/images/thumb/1/14/Reddit-logo.png/50px-Reddit-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://forums.kicksecure.com/c/news.rss" target="_blank" title="Kicksecure as RSS">
+    <img src="/w/images/thumb/0/09/Rss.png/50px-Rss.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://mastodon.technology/@Kicksecure" target="_blank" title="Kicksecure on Mastodon">
+    <img src="/w/images/thumb/b/b7/Mastodon-logo.png/50px-Mastodon-logo.png" />
+   </a>
+  </div>
+ </div>
+
+ <div class="support divider-border">
+  <div class="text">FREE &nbsp;·&nbsp; PLUS &nbsp;·&nbsp; PREMIUM Support</div>
+
+  <div class="logos">
+   <a class="expand-button-50" href="/wiki/Support" target="_blank" title="Kicksecure FREE Support">
+    <img src="/w/images/thumb/a/a6/Support-free.png/50px-Support-free.png" />
+   </a>
+
+   <a class="expand-button-50" href="/wiki/Plus_Support" target="_blank" title="Kicksecure PLUS Support">
+    <img src="/w/images/thumb/c/c0/Support-plus.png/50px-Support-plus.png" />
+   </a>
+
+   <a class="expand-button-50" href="/wiki/Premium_Support" target="_blank" title="Kicksecure PREMIUM Support">
+    <img src="/w/images/thumb/2/22/Support-premium.png/50px-Support-remium.png" />
+   </a>
+  </div>
+ </div>
+
+ <div class="opensource">
+  <img src="/w/images/thumb/a/a3/Heckert_gnu.big.png/50px-Heckert_gnu.big.png" alt="GNU logo" />
+  <img src="/w/images/thumb/0/09/Osi_standard_logo_0.png/50px-Osi_standard_logo_0.png" alt="Open Source Initiative logo" />
+  <span class="text">
+   At Kicksecure we believe in <b>freedom and trust</b>. That's why we fully support Open Source and Freedom Software.
+   <a href="/wiki/Reasons_for_Freedom_Software" title="Reasons for Freedom Software">Learn more</a>.
+  </span>
+ </div>
+</div>
+
+<div class="content-wrapper-2">
+ <div class="endorsements">
+  <a class="evohost" href="https://evolution-host.com/ddos-protected-vps.php" target="_blank" title="Evolution Host provides system administration advice for the kicksecure.com website.">
+   <img src="/w/images/e/e4/Evolution-host.png" />
+   Kicksecure ™ is supported by <b>Evolution Host</b> DDoS Protected VPS.
+  </a>
+
+  <div class="fosshost">
+   <a href="https://fosshost.org" target="_blank" title="Fosshost sponsors a Kicksecure stage server.">
+    <img src="/w/images/thumb/b/be/Fosshost.org_Cloud_Light.png/200px-Fosshost.org_Cloud_Light.png" />
+   </a>
+  </div>
+
+  <div class="project-news">
+   <img src="/w/images/thumb/9/99/Kicksecure-icon-logo.png/80px-Kicksecure-icon-logo.png" />
+   <div>
+    Kicksecure ...
+   </div>
+  </div>
+ </div>
+
+ <div class="legal">
+  <span class="disclaimer">
+   The personal opinions of
+   <a href="https://forums.kicksecure.com/about" title="About (Forum)">moderators</a>
+   or
+   <a href="/wiki/Contributors" title="Contributors">contributors</a>
+   to the
+   <a href="/" title="Kicksecure">Kicksecure ™</a>
+   project do not represent the project as a whole.
+  </span>
+
+  <span class="disclaimer">
+   By using this website, you acknowledge you have read, understood, and agree to be bound by these these agreements:
+   <a href="/wiki/Terms_of_Service" title="Terms of Service">Terms of Service</a>
+   ,
+   <a href="/wiki/Privacy_Policy" title="Privacy Policy">Privacy Policy</a>
+   ,
+   <a href="/wiki/Cookie_Policy" title="Cookie Policy">Cookie Policy</a>
+   ,
+   <a href="/wiki/E-Sign_Consent" title="E-Sign Consent">E-Sign Consent</a>
+   ,
+   <a href="/wiki/DMCA" title="DMCA">DMCA</a>
+   ,
+   <a href="/wiki/Imprint" title="Imprint">Imprint</a>
+  </span>
+
+  <span class="rights">
+   Kicksecure
+   <a href="/wiki/Trademark_Policy" title="Trademark Policy">™</a>
+   <a href="/wiki/Kicksecure:Copyrights" title="Copyrights">©</a>
+   ENCRYPTED SUPPORT LP,
+   2022
+  </span>
+ </div>
+</div>
+
+
+
+<div id="footer-show-qr-codes-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="qr-area">
+        <img src="/" />
+
+        <span>
+         <strong>Kicksecure is free from corporate interest by being user funded. Thank you so much!</strong>
+         <i class="fa fa-heart"></i>
+         <br/><br/>
+         Scan the QR code or use the wallet address below.
+        </span>
+       </div>
+
+       &nbsp;
+
+       <div class="code-select"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</p>
+<div class="project-random-news-ticker">
+<p>Host or VM can be booted into Live Mode using <a href="/wiki/Host_Live_Mode" title="Host Live Mode">Host Live Mode</a> <u>or</u> <a href="/wiki/VM_Live_Mode" title="VM Live Mode">VM Live Mode</a>
+</p>
+</div>
+</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://www.kicksecure.com/w/index.php?title=Verifying_Software_Signatures&amp;oldid=57070">https://www.kicksecure.com/w/index.php?title=Verifying_Software_Signatures&amp;oldid=57070</a>"</div></div>
+		<div id="catlinks" class="catlinks" data-mw="interface"><div id="mw-normal-catlinks" class="mw-normal-catlinks"><a href="/wiki/Special:Categories" title="Special:Categories">Category</a>: <ul><li><a href="/wiki/Category:Documentation" title="Category:Documentation">Documentation</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="mw-cookiewarning-container"><div class="mw-cookiewarning-text"><span>By using our website, you acknowledge that you have read, understood and agreed to our Privacy Policy, Cookie Policy, Terms of Service, and E-Sign Consent.</span></div><form method="POST"><div class='oo-ui-layout oo-ui-horizontalLayout'><span aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-flaggedElement-progressive oo-ui-buttonWidget'><a role='button' tabindex='0' aria-disabled='false' href='/wiki/Terms_of_Service' rel='nofollow' class='oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-iconElement-noIcon oo-ui-image-progressive'></span><span class='oo-ui-labelElement-label'>More information</span><span class='oo-ui-indicatorElement-indicator oo-ui-indicatorElement-noIndicator oo-ui-image-progressive'></span></a></span><span aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-inputWidget oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-flaggedElement-primary oo-ui-flaggedElement-progressive oo-ui-buttonInputWidget'><button type='submit' tabindex='0' aria-disabled='false' name='disablecookiewarning' value='OK' class='oo-ui-inputWidget-input oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-iconElement-noIcon oo-ui-image-invert'></span><span class='oo-ui-labelElement-label'>OK</span><span class='oo-ui-indicatorElement-indicator oo-ui-indicatorElement-noIndicator oo-ui-image-invert'></span></button></span></div></form></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<h3 id="p-personal-label" class="vector-menu-heading"> <span>Personal tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage" class="mw-list-item">Not logged in</li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount" class="mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Verifying+Software+Signatures" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login" class="mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Verifying+Software+Signatures" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<h3 id="p-namespaces-label" class="vector-menu-heading"> <span>Namespaces</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected mw-list-item"><a href="/wiki/Verifying_Software_Signatures" title="View the content page [c]" accesskey="c">Page</a></li><li id="ca-talk" class="new mw-list-item"><a href="/w/index.php?title=Talk:Verifying_Software_Signatures&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [t]" accesskey="t">Discussion</a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox"
+		id="p-variants-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-variants"
+		class=" vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label" class="vector-menu-heading"> <span>Variants</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<h3 id="p-views-label" class="vector-menu-heading"> <span>Views</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected mw-list-item"><a href="/wiki/Verifying_Software_Signatures">Read</a></li><li id="ca-edit" class="mw-list-item"><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li><li id="ca-history" class="mw-list-item"><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation"  title="More options"
+	 >
+	<input type="checkbox"
+		id="p-cactions-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-cactions"
+		class=" vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label" class="vector-menu-heading"> <span>More</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			<div id="p-search" role="search" class="vector-search-box">
+	<div>
+		<h3 >
+			<label for="searchInput">Search</label>
+		</h3>
+		<form action="/w/index.php" id="searchform">
+			<div id="simpleSearch" data-search-loc="header-navigation">
+				<input type="search" name="search" placeholder="Search Kicksecure" autocapitalize="sentences" title="Search Kicksecure [f]" accesskey="f" id="searchInput"/>
+				<input type="hidden" name="title" value="Special:Search"/>
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a class="mw-wiki-logo" href="/wiki/Main_Page"
+			title="Visit the main page"></a>
+	</div>
+	<nav id="p-Menu" class="mw-portlet mw-portlet-Menu vector-menu vector-menu-portal portal" aria-labelledby="p-Menu-label" role="navigation" 
+	 >
+	<h3 id="p-Menu-label" class="vector-menu-heading"> <span>Menu</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-HOME" class="mw-list-item"><a href="https://www.kicksecure.com" target="_blank">HOME</a></li><li id="n-DOWNLOAD" class="mw-list-item"><a href="/wiki/Download">DOWNLOAD</a></li><li id="n-DOCS" class="mw-list-item"><a href="/wiki/Documentation">DOCS</a></li><li id="n-FAQ" class="mw-list-item"><a href="/wiki/FAQ">FAQ</a></li><li id="n-HELP" class="mw-list-item"><a href="/wiki/Support">HELP</a></li><li id="n-CONTRIBUTE" class="mw-list-item"><a href="/wiki/Contribute">CONTRIBUTE</a></li><li id="n-NEWS" class="mw-list-item"><a href="https://forums.kicksecure.com/c/news" target="_blank">NEWS</a></li></ul>
+		
+	</div>
+</nav>
+
+	<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<h3 id="p-tb-label" class="vector-menu-heading"> <span>Tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Verifying_Software_Signatures" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Verifying_Software_Signatures" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print" class="mw-list-item"><a href="javascript:print();" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Verifying_Software_Signatures&amp;oldid=57070" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Verifying_Software_Signatures&amp;action=info" title="More information about this page">Page information</a></li></ul>
+		
+	</div>
+</nav>
+
+	
+</div>
+
+</div>
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info" >
+	<li id="footer-info-lastmod"> </li>
+	<li id="footer-info-copyright">By using this website, you acknowledge you have read, understood, and agree to be bound by these these agreements:</li>
+</ul>
+
+	<ul id="footer-places" >
+	<li id="footer-places-Terms of Service"><a href="/wiki/Terms_of_Service" title="Terms of Service">Terms of Service</a></li>
+	<li id="footer-places-Privacy Policy"><a href="/wiki/Privacy_Policy" title="Privacy Policy">Privacy Policy</a></li>
+	<li id="footer-places-Cookie Policy"><a href="/wiki/Cookie_Policy" title="Cookie Policy">Cookie Policy</a></li>
+	<li id="footer-places-E-Sign_Consent"><a href="/wiki/E-Sign_Consent" title="E-Sign Consent">E-Sign Consent</a></li>
+	<li id="footer-places-DMCA"><a href="/wiki/DMCA" class="mw-redirect" title="DMCA">DMCA</a></li>
+	<li id="footer-places-Imprint"><a href="/wiki/Imprint" title="Imprint">Imprint</a></li>
+</ul>
+
+	
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":364});});</script>
+</body></html>>

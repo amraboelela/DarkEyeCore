@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:mathematics:geometry:intersections:segment_and_circle [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,mathematics,geometry,intersections,segment_and_circle"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:mathematics:geometry:intersections"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/mathematics/geometry/intersections/segment_and_circle"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:mathematics:geometry:intersections';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:mathematics:geometry:intersections:segment_and_circle","namespace":"fuss:mathematics:geometry:intersections","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:mathematics:geometry:intersections:segment_and_circle" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:mathematics:geometry:intersections:segment_and_circle&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics" class="wikilink1" title="fuss:mathematics" data-wiki-id="fuss:mathematics">mathematics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry" class="wikilink1" title="fuss:mathematics:geometry" data-wiki-id="fuss:mathematics:geometry">geometry</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/start" class="wikilink2" title="fuss:mathematics:geometry:intersections:start" rel="nofollow" data-wiki-id="fuss:mathematics:geometry:intersections:start">intersections</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle" class="wikilink1" title="fuss:mathematics:geometry:intersections:segment_and_circle" data-wiki-id="fuss:mathematics:geometry:intersections:segment_and_circle">segment_and_circle</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:mathematics:geometry:intersections:segment_and_circle</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#intersection_between_a_segment_and_a_circle">Intersection Between a Segment and a Circle</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#implementation">Implementation</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#lsl">LSL</a></div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="intersection_between_a_segment_and_a_circle">Intersection Between a Segment and a Circle</h1>
+<div class="level1">
+<div class="wrap_box wrap_round wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9e6b54115dfed2a0df9ae22f40b44f3b.png" class="latex_inline" alt="
+\begin{tikzpicture}
+
+  % grid
+  \draw[help lines] (-2,-2) grid (2,2);
+  
+  % origin
+  \draw[red, line width=.1mm] (-0.1,-0.1) -- (0.1,0.1)
+    (0.1,-0.1) -- (-0.1,0.1);
+  \coordinate[label={[red]above left:$O(x_{0}, y_{0})$}] (O) at (0,0);
+  \coordinate (R) at (2,0);
+  
+  % coord
+  \coordinate[label={[green]above left:$P_{1}(x_{1},y_{1})$}] (A) at (0,2);
+  \drawpoint{A}{.5mm}{black}
+  \coordinate[label={[blue]above right:$P_{2}(x_{2},y_{2})$}] (B) at (1.7,1);
+  \drawpoint{B}{.5mm}{black}
+  
+  % lines
+  \draw (A) -- (B);
+  
+  %radius
+  \draw[fill=orange,fill opacity=0.1] (O) -- (R);
+  
+  %circle 
+  \draw [black] (0,0) circle [radius=2];
+  
+  %brace
+  \drawbrace{O}{R}{2mm}{orange}{$r$}{0}{-4mm}{mirror};
+  
+\end{tikzpicture}
+
+" title="LaTeX" />
+</p>
+</div>
+<p>
+We know that the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/shapes/circles#equation_of_a_circle" class="wikilink1" title="fuss:mathematics:geometry:shapes:circles" data-wiki-id="fuss:mathematics:geometry:shapes:circles">circle equation</a> is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb618e4c5a388f372cc3e929ad10adfa3.png" class="latex_displayed" alt="\begin{eqnarray*}
+(x-{\color{red}x_{0}})^{2}+(y-{\color{red}y_{0}})^{2} &amp;=&amp; {\color{orange}r}^{2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+we also know that the equations for a segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge4b8f9bae245dac80f8dc1312ff954a4.png" class="latex_inline" alt="$\overline{P_{1}P_{2}}$" title="Math" /> passing through two points <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img2af65dac953779feef76e864682693db.png" class="latex_inline" alt="$P_{1}=({\color{green}x_{1}}, {\color{green}y_{1}})$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgea7a1d740a8c94837596e2de2ce36a3c.png" class="latex_inline" alt="$P_{2}=({\color{blue}x_{2}},{\color{blue}y_{2}})$" title="Math" /> is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img38de6bfaf0e31ba04d0ff44a5294ced7.png" class="latex_displayed" alt="\begin{eqnarray*}
+x(t) &amp;=&amp; {\color{green}x_{1}} + ({\color{blue}x_{2}}-{\color{green}x_{1}}) * t \\
+y(t) &amp;=&amp; {\color{green}y_{1}} + ({\color{blue}y_{2}}-{\color{green}y_{1}}) * t
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+knowing that <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfb1c12a35faf984323cbf0e0dc1ed134.png" class="latex_inline" alt="$t:\Re \mapsto [0,1]$" title="Math" />, or, in other words, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1f975a585640eb1cd29367c20e39a2fd.png" class="latex_inline" alt="$0 \le t \le 1$" title="Math" />.
+</p>
+
+<p>
+We substitute <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdeceeaf6940a8c7a5a02373728002b0f.png" class="latex_inline" alt="$y$" title="Math" /> for <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4378ba898213096600125929214f90a.png" class="latex_inline" alt="$y(t)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" /> for <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf92a2fed82f1dacdec6e4d5a05fbbf97.png" class="latex_inline" alt="$x(t)$" title="Math" /> in the circle equation and obtain:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9cc77673a48e9d8d907d1d688e44520e.png" class="latex_displayed" alt="\begin{eqnarray*}
+({\color{green}x_{1}} + ({\color{blue}x_{2}}-{\color{green}x_{1}}) * t-{\color{red}x_{0}})^{2}+({\color{green}y_{1}} + ({\color{blue}y_{2}}-{\color{green}y_{1}}) * t-{\color{red}y_{0}})^{2} &amp;=&amp; {\color{orange}r}^{2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+Now, we want to collect <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4f4f4e395762a3af4575de74c019ebb5.png" class="latex_inline" alt="$t$" title="Math" />, so we expand the left hand side and obtain:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img32bf485f2a22f0e2b374fded4726d14d.png" class="latex_displayed" alt="\begin{eqnarray*}
+{\color{red}x_{0}}^{2} - 2 {\color{red}x_{0}} {\color{green}x_{1}} + 2 t {\color{red}x_{0}} {\color{green}x_{1}} + {\color{green}x_{1}}^{2} - 2 t {\color{green}x_{1}}^{2} + t^{2} {\color{green}x_{1}}^{2} - \\
+2 t {\color{red}x_{0}} {\color{blue}x_{2}} + 2 t {\color{green}x_{1}} {\color{blue}x_{2}} - 2 t^{2} {\color{green}x_{1}} {\color{blue}x_{2}} + t^{2} {\color{blue}x_{2}}^{2} + {\color{red}y_{0}}^{2} - \\
+2 {\color{red}y_{0}} {\color{green}y_{1}} + 2 t {\color{red}y_{0}} {\color{green}y_{1}} + {\color{green}y_{1}}^{2} - 2 t {\color{green}y_{1}}^{2} + t^{2} {\color{green}y_{1}}^{2} - 2 t {\color{red}y_{0}} {\color{blue}y_{2}} + \\
+2 t {\color{green}y_{1}} {\color{blue}y_{2}} - 2 t^{2} {\color{green}y_{1}} {\color{blue}y_{2}} + t^{2} {\color{blue}y_{2}}^{2} &amp;=&amp; {\color{orange}r}^{2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and collect <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4f4f4e395762a3af4575de74c019ebb5.png" class="latex_inline" alt="$t$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img48728288280c84449aade98ef660b278.png" class="latex_displayed" alt="\begin{eqnarray*}
+t^{2} ({\color{green}x_{1}}^{2} - 2 {\color{green}x_{1}} {\color{blue}x_{2}} + {\color{blue}x_{2}}^{2} + {\color{green}y_{1}}^{2} - 2 {\color{green}y_{1}} {\color{blue}y_{2}} + {\color{blue}y_{2}}^{2}) + \\
+t (2 {\color{red}x_{0}} {\color{green}x_{1}} - 2 {\color{green}x_{1}}^{2} - 2 {\color{red}x_{0}} {\color{blue}x_{2}} + 2 {\color{green}x_{1}} {\color{blue}x_{2}} + 2 {\color{red}y_{0}} {\color{green}y_{1}} - 2 {\color{green}y_{1}}^{2} - 2 {\color{red}y_{0}} {\color{blue}y_{2}} + 2 {\color{green}y_{1}} {\color{blue}y_{2}}) + \\
+{\color{red}x_{0}}^2 - 2 {\color{red}x_{0}} {\color{green}x_{1}} + {\color{green}x_{1}}^2 + {\color{red}y_{0}}^2 - 2 {\color{red}y_{0}} {\color{green}y_{1}} + {\color{green}y_{1}}^2 &amp;=&amp; {\color{orange}r}^{2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+Passing <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1e2203f6e2022a41ac6964f50d6f3296.png" class="latex_inline" alt="${\color{orange}r}^{2}$" title="Math" /> from the right-hand side to the left-hand side, we can rewrite the equation as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img52c95d0715babf9f8794c36c80683402.png" class="latex_displayed" alt="\begin{eqnarray*}
+t^{2} ({\color{green}x_{1}}^{2} - 2 {\color{green}x_{1}} {\color{blue}x_{2}} + {\color{blue}x_{2}}^{2} + {\color{green}y_{1}}^{2} - 2 {\color{green}y_{1}} {\color{blue}y_{2}} + {\color{blue}y_{2}}^{2}) + \\
+t (2 {\color{red}x_{0}} {\color{green}x_{1}} - 2 {\color{green}x_{1}}^{2} - 2 {\color{red}x_{0}} {\color{blue}x_{2}} + 2 {\color{green}x_{1}} {\color{blue}x_{2}} + 2 {\color{red}y_{0}} {\color{green}y_{1}} - 2 {\color{green}y_{1}}^{2} - 2 {\color{red}y_{0}} {\color{blue}y_{2}} + 2 {\color{green}y_{1}} {\color{blue}y_{2}}) + \\
+({\color{red}x_{0}}^2 - 2 {\color{red}x_{0}} {\color{green}x_{1}} + {\color{green}x_{1}}^2 + {\color{red}y_{0}}^2 - 2 {\color{red}y_{0}} {\color{green}y_{1}} + {\color{green}y_{1}}^2) - {\color{orange}r}^{2} &amp;=&amp; 0
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+We can observe that if we name the bracketed expressions in the equation above <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44bc9d542a92714cac84e01cbbb7fd61.png" class="latex_inline" alt="$a$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4bdc8d9bcfb35e1c9bfb51fc69687dfc.png" class="latex_inline" alt="$b$" title="Math" /> respectively <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e18a4a28fdee1744e5e3f79d13b9ff6.png" class="latex_inline" alt="$c$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img954463855b5bb4cf2960bf0b1144cf84.png" class="latex_displayed" alt="\begin{eqnarray*}
+a &amp;=&amp; ({\color{green}x_{1}}^{2} - 2 {\color{green}x_{1}} {\color{blue}x_{2}} + {\color{blue}x_{2}}^{2} + {\color{green}y_{1}}^{2} - 2 {\color{green}y_{1}} {\color{blue}y_{2}} + {\color{blue}y_{2}}^{2}) \\
+b &amp;=&amp; (2 {\color{red}x_{0}} {\color{green}x_{1}} - 2 {\color{green}x_{1}}^{2} - 2 {\color{red}x_{0}} {\color{blue}x_{2}} + 2 {\color{green}x_{1}} {\color{blue}x_{2}} + 2 {\color{red}y_{0}} {\color{green}y_{1}} - 2 {\color{green}y_{1}}^{2} - 2 {\color{red}y_{0}} {\color{blue}y_{2}} + 2 {\color{green}y_{1}} {\color{blue}y_{2}}) \\
+c &amp;=&amp; ({\color{red}x_{0}}^2 - 2 {\color{red}x_{0}} {\color{green}x_{1}} + {\color{green}x_{1}}^2 + {\color{red}y_{0}}^2 - 2 {\color{red}y_{0}} {\color{green}y_{1}} + {\color{green}y_{1}}^2) - {\color{orange}r}^{2}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+then we can reduce <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44bc9d542a92714cac84e01cbbb7fd61.png" class="latex_inline" alt="$a$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4bdc8d9bcfb35e1c9bfb51fc69687dfc.png" class="latex_inline" alt="$b$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e18a4a28fdee1744e5e3f79d13b9ff6.png" class="latex_inline" alt="$c$" title="Math" /> to:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgde8d06b5cc15fb43cdf00ce509891766.png" class="latex_displayed" alt="\begin{eqnarray*}
+a &amp;=&amp; ({\color{green}x_{1}} - {\color{blue}x_{2}})^2 + ({\color{green}y_{1}} - {\color{blue}y_{2}})^2 \\
+b &amp;=&amp; 2 (({\color{red}x_{0}} - {\color{green}x_{1}}) ({\color{green}x_{1}} - {\color{blue}x_{2}}) + ({\color{red}y_{0}} - {\color{green}y_{1}}) ({\color{green}y_{1}} - {\color{blue}y_{2}})) \\
+c &amp;=&amp; ({\color{red}x_{0}} - {\color{green}x_{1}})^2 + ({\color{red}y_{0}} - {\color{green}y_{1}})^2 - {\color{orange}r}^2
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+Looking at the equation now, we have a second-degree equation in <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4f4f4e395762a3af4575de74c019ebb5.png" class="latex_inline" alt="$t$" title="Math" /> with <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44bc9d542a92714cac84e01cbbb7fd61.png" class="latex_inline" alt="$a$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4bdc8d9bcfb35e1c9bfb51fc69687dfc.png" class="latex_inline" alt="$b$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e18a4a28fdee1744e5e3f79d13b9ff6.png" class="latex_inline" alt="$c$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfb2e7cf867d6370142fa30116924d7d2.png" class="latex_displayed" alt="\begin{eqnarray*}
+at^{2} + bt + c &amp;=&amp; 0
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+The solutions for this equation are:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8cd59cb5a8ccb9c95be214d345b64018.png" class="latex_displayed" alt="\begin{eqnarray*}
+t_{1,2} &amp;=&amp; \frac{-b \pm \sqrt{b^{2}-4ac}}{2a}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where we know <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44bc9d542a92714cac84e01cbbb7fd61.png" class="latex_inline" alt="$a$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4bdc8d9bcfb35e1c9bfb51fc69687dfc.png" class="latex_inline" alt="$b$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e18a4a28fdee1744e5e3f79d13b9ff6.png" class="latex_inline" alt="$c$" title="Math" />.
+</p>
+
+<p>
+Now the discriminant is <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0758160ce148f9e8e93daf7fc956baae.png" class="latex_inline" alt="$\Delta = b^{2}-4ac}$" title="Math" /> and depending on <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7e9fe18dc67705c858c077c5ee292ab4.png" class="latex_inline" alt="$\Delta$" title="Math" /> we have the cases:
+</p>
+<ul>
+<li class="level1"><div class="li"> in case <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd21e76eef2dcb00e6bf2270c2894f6c7.png" class="latex_inline" alt="$\Delta = 0$" title="Math" /> then the line is tangent to the circle and intersects the circle in one single point.</div>
+</li>
+<li class="level1"><div class="li"> in case <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5c9dd9eaa53761f09fc13921bf38179a.png" class="latex_inline" alt="$\Delta &gt; 0$" title="Math" /> then the line intersects the circle in two points.</div>
+</li>
+<li class="level1"><div class="li"> in case <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img004361e9643013477ebf223ed761c54b.png" class="latex_inline" alt="$\Delta &lt; 0$" title="Math" /> then the line does not intersect the circle at all.</div>
+</li>
+</ul>
+
+<p>
+By substituting <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge76101d37edb27ae78bb5a3a5cfa636b.png" class="latex_inline" alt="$t_{1,2}$" title="Math" /> in the equation of the segment for <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf92a2fed82f1dacdec6e4d5a05fbbf97.png" class="latex_inline" alt="$x(t)$" title="Math" /> respectively <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4378ba898213096600125929214f90a.png" class="latex_inline" alt="$y(t)$" title="Math" />  we obtain the point(s) of intersection between the segment <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge4b8f9bae245dac80f8dc1312ff954a4.png" class="latex_inline" alt="$\overline{P_{1}P_{2}}$" title="Math" /> and the circle:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img68fe4255028e32a94fe701339938553e.png" class="latex_displayed" alt="\begin{eqnarray*}
+P_{1} &amp;=&amp; ({\color{green}x_{1}}, {\color{green}y_{1}}) = ({\color{green}x_{1}}+({\color{blue}x_{2}}-{\color{green}x_{1}})*t_{1}, {\color{green}y_{1}}+({\color{blue}y_{2}}-{\color{green}y_{1}}) * t_{1}) \\
+P_{2} &amp;=&amp; ({\color{blue}x_{2}}, {\color{blue}y_{2}}) = ({\color{green}x_{1}}+({\color{blue}x_{2}}-{\color{green}x_{1}})*t_{2}, {\color{green}y_{1}}+({\color{blue}y_{2}}-{\color{green}y_{1}}) * t_{2})
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where we know <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge76101d37edb27ae78bb5a3a5cfa636b.png" class="latex_inline" alt="$t_{1,2}$" title="Math" /> from the expression above.
+</p>
+
+</div>
+
+<h2 class="sectionedit4" id="implementation">Implementation</h2>
+<div class="level2">
+
+<p>
+The reason for simplifying <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44bc9d542a92714cac84e01cbbb7fd61.png" class="latex_inline" alt="$a$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4bdc8d9bcfb35e1c9bfb51fc69687dfc.png" class="latex_inline" alt="$b$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e18a4a28fdee1744e5e3f79d13b9ff6.png" class="latex_inline" alt="$c$" title="Math" />, keeping <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7e9fe18dc67705c858c077c5ee292ab4.png" class="latex_inline" alt="$\Delta$" title="Math" /> as an relation between <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img44bc9d542a92714cac84e01cbbb7fd61.png" class="latex_inline" alt="$a$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4bdc8d9bcfb35e1c9bfb51fc69687dfc.png" class="latex_inline" alt="$b$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img3e18a4a28fdee1744e5e3f79d13b9ff6.png" class="latex_inline" alt="$c$" title="Math" /> and by working symbolically we can reduce the number of operations that an implementation may have to do.
+</p>
+
+</div>
+
+<h3 class="sectionedit5" id="lsl">LSL</h3>
+<div class="level3">
+<pre class="code lsl2"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2014 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">// given a circle with centre in C(x0x, c0y) and radius r and two points</span>
+<span class="co1">// p1 and p2 defining a line, the function returns the empty list if the</span>
+<span class="co1">// line p1p2 does not intersect the circle or a list containing two vectors</span>
+<span class="co1">// of the the intersection point(s).</span>
+<a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> wasLineIntersectCircle<span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> c0x, <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> c0y, <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> r, <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> p1, <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> p2<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="co1">// let dx = p1.x-p2.x</span>
+    <span class="co1">// let dy = p1.y-p2.y</span>
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> dx <span class="sy0">=</span> p1.x <span class="sy0">-</span> p2.x;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> dy <span class="sy0">=</span> p1.y <span class="sy0">-</span> p2.y;
+&nbsp;
+    <span class="co1">// let dcx = c0x-p1.x</span>
+    <span class="co1">// let dcy = c0y-p1.y</span>
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> dcx <span class="sy0">=</span> c0x <span class="sy0">-</span> p1.x;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> dcy <span class="sy0">=</span> c0y <span class="sy0">-</span> p1.y;
+&nbsp;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> a <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>dx, <span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">+</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>dy, <span class="nu0">2</span><span class="br0">&#41;</span>;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> b <span class="sy0">=</span> <span class="nu0">2</span> <span class="sy0">*</span> <span class="br0">&#40;</span>dcx <span class="sy0">*</span> dx <span class="sy0">+</span> dcy <span class="sy0">*</span> dy<span class="br0">&#41;</span>;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> c <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>dcx, <span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">+</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>dcy, <span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>r, <span class="nu0">2</span><span class="br0">&#41;</span>;
+&nbsp;
+    <span class="co1">// delta</span>
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> delta <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llPow"><span class="kw5">llPow</span></a><span class="br0">&#40;</span>b, <span class="nu0">2</span><span class="br0">&#41;</span> <span class="sy0">-</span> <span class="nu0">4</span> <span class="sy0">*</span> a <span class="sy0">*</span> c;
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span>delta <span class="sy0">&lt;</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="co1">// no intersection, no points</span>
+        <span class="kw1">return</span> <span class="br0">&#91;</span><span class="br0">&#93;</span>;
+    <span class="br0">&#125;</span>
+&nbsp;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> t1 <span class="sy0">=</span> <span class="br0">&#40;</span><span class="sy0">-</span>b <span class="sy0">+</span> <a href="http://wiki.secondlife.com/wiki/llSqrt"><span class="kw5">llSqrt</span></a><span class="br0">&#40;</span>delta<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">/</span> <span class="br0">&#40;</span><span class="nu0">2</span> <span class="sy0">*</span> a<span class="br0">&#41;</span>;
+    <a href="http://wiki.secondlife.com/wiki/float"><span class="kw4">float</span></a> t2 <span class="sy0">=</span> <span class="br0">&#40;</span><span class="sy0">-</span>b <span class="sy0">-</span> <a href="http://wiki.secondlife.com/wiki/llSqrt"><span class="kw5">llSqrt</span></a><span class="br0">&#40;</span>delta<span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">/</span> <span class="br0">&#40;</span><span class="nu0">2</span> <span class="sy0">*</span> a<span class="br0">&#41;</span>;
+&nbsp;
+    <span class="kw1">return</span> <span class="br0">&#91;</span>
+        <span class="sy0">&lt;</span> p1.x <span class="sy0">-</span> dx <span class="sy0">*</span> t1, p1.y <span class="sy0">-</span> dy <span class="sy0">*</span> t1, <span class="nu0">0</span> <span class="sy0">&gt;</span>,
+        <span class="sy0">&lt;</span> p1.x <span class="sy0">-</span> dx <span class="sy0">*</span> t2, p1.y <span class="sy0">-</span> dy <span class="sy0">*</span> t2, <span class="nu0">0</span> <span class="sy0">&gt;</span>
+    <span class="br0">&#93;</span>;
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/mathematics/geometry/intersections/segment_and_circle.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics" class="wikilink1" title="fuss:mathematics" data-wiki-id="fuss:mathematics">mathematics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry" class="wikilink1" title="fuss:mathematics:geometry" data-wiki-id="fuss:mathematics:geometry">geometry</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/start" class="wikilink2" title="fuss:mathematics:geometry:intersections:start" rel="nofollow" data-wiki-id="fuss:mathematics:geometry:intersections:start">intersections</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle" class="wikilink1" title="fuss:mathematics:geometry:intersections:segment_and_circle" data-wiki-id="fuss:mathematics:geometry:intersections:segment_and_circle">segment_and_circle</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:mathematics:geometry:intersections:segment_and_circle" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/geometry/intersections/segment_and_circle"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Amathematics%3Ageometry%3Aintersections%3Asegment_and_circle&amp;1657305516" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

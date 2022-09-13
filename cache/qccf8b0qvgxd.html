@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:c [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,c"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/c"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:c","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:c" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:c&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c" class="wikilink1" title="fuss:c" data-wiki-id="fuss:c">c</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:c</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#random_32-long_hex_string">Random 32-Long Hex String</a></div></li>
+<li class="level1"><div class="li"><a href="#generate_random_floating_point_number">Generate Random Floating Point Number</a></div></li>
+<li class="level1"><div class="li"><a href="#flush_file_descriptors">Flush File Descriptors</a></div></li>
+<li class="level1"><div class="li"><a href="#moon_activity_spinner">Moon Activity Spinner</a></div></li>
+<li class="level1"><div class="li"><a href="#create_a_formatted_date_and_time">Create a Formatted Date and Time</a></div></li>
+<li class="level1"><div class="li"><a href="#number_of_milliseconds_to_hour">Number of Milliseconds to Hour</a></div></li>
+<li class="level1"><div class="li"><a href="#queue_implementations">Queue Implementations</a></div></li>
+<li class="level1"><div class="li"><a href="#combine_two_paths">Combine two Paths</a></div></li>
+<li class="level1"><div class="li"><a href="#stack_implementations">Stack Implementations</a></div></li>
+<li class="level1"><div class="li"><a href="#quicksort">QuickSort</a></div></li>
+<li class="level1"><div class="li"><a href="#double_linked_lists_implementation">Double Linked Lists Implementation</a></div></li>
+<li class="level1"><div class="li"><a href="#two-dimensional_array_to_uni-dimensional_array">Two-Dimensional Array to Uni-Dimensional Array</a></div></li>
+<li class="level1"><div class="li"><a href="#determine_if_the_system_is_big_endian">Determine if The System is Big Endian</a></div></li>
+<li class="level1"><div class="li"><a href="#merge_two_sorted_arrays_by_preserving_sort_order">Merge Two Sorted Arrays by Preserving Sort Order</a></div></li>
+<li class="level1"><div class="li"><a href="#weighted_selection_algorithm">Weighted Selection Algorithm</a></div></li>
+<li class="level1"><div class="li"><a href="#get_the_length_of_an_array">Get the Length of an Array</a></div></li>
+<li class="level1"><div class="li"><a href="#overloading_functions">Overloading Functions</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="random_32-long_hex_string">Random 32-Long Hex String</h1>
+<div class="level1">
+<pre class="code c"><span class="kw4">char</span><span class="sy0">*</span> wasRandom32Hex<span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw4">static</span> <span class="kw4">const</span> <span class="kw4">char</span> am<span class="br0">&#91;</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="st0">&quot;0123456789abcdef&quot;</span><span class="sy0">;</span>
+    <span class="kw4">char</span><span class="sy0">*</span> s <span class="sy0">=</span> <span class="br0">&#40;</span><span class="kw4">char</span><span class="sy0">*</span><span class="br0">&#41;</span> <a href="http://www.opengroup.org/onlinepubs/009695399/functions/malloc.html"><span class="kw3">malloc</span></a><span class="br0">&#40;</span><span class="nu0">32</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/srand.html"><span class="kw3">srand</span></a><span class="br0">&#40;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/time.html"><span class="kw3">time</span></a><span class="br0">&#40;</span>NULL<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">for</span> <span class="br0">&#40;</span><span class="kw4">int</span> i<span class="sy0">=</span><span class="nu0">0</span><span class="sy0">;</span> i<span class="sy0">&lt;</span><span class="nu0">32</span><span class="sy0">;</span> <span class="sy0">++</span>i<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        s<span class="br0">&#91;</span>i<span class="br0">&#93;</span> <span class="sy0">=</span> am<span class="br0">&#91;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/rand.html"><span class="kw3">rand</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">%</span><span class="br0">&#40;</span><span class="kw4">sizeof</span><span class="br0">&#40;</span>am<span class="br0">&#41;</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="kw1">return</span> s<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit2" id="generate_random_floating_point_number">Generate Random Floating Point Number</h1>
+<div class="level1">
+
+<p>
+Using the formula to generate a random number <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8b7a437b545b870e026abf38128ab687.png" class="latex_inline" alt="$r \in [0..m]$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img76ecf532b4221724ef6e8987926864f7.png" class="latex_displayed" alt="\begin{eqnarray*}
+r &amp;=&amp; m * \frac{N}{M}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf9c4988898e7f532b9f826a75014ed3c.png" class="latex_inline" alt="$N$" title="Math" /> is a generated random number.</div>
+</li>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfb97d38bcc19230b0acd442e17db879c.png" class="latex_inline" alt="$M$" title="Math" /> is the maximal random number (<code>RAND_MAX</code>).</div>
+</li>
+</ul>
+
+<p>
+we can write the macro <code>RAND_F</code>: 
+</p>
+<pre class="code c"><span class="co2">#define RAND_F(x) (float)rand()/(float)(RAND_MAX/x)</span></pre>
+
+<p>
+that, when called, will generate a random number <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1a8a7ac28a8dfc340c7d628b251d54f6.png" class="latex_inline" alt="$r \in [0..x]$" title="Math" />.
+</p>
+
+</div>
+
+<h1 class="sectionedit3" id="flush_file_descriptors">Flush File Descriptors</h1>
+<div class="level1">
+
+<p>
+Instead of flushing <code>stdout</code> every time you write to it using <code>fflush(stdout)</code> consider using:
+</p>
+<pre class="code c"><a href="http://www.opengroup.org/onlinepubs/009695399/functions/setvbuf.html"><span class="kw3">setvbuf</span></a><span class="br0">&#40;</span>stdout<span class="sy0">,</span> NULL<span class="sy0">,</span> _IONBF<span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+which sets the terminal to unbuffered mode (data will be printed as soon as it is pushed).
+</p>
+
+</div>
+
+<h1 class="sectionedit4" id="moon_activity_spinner">Moon Activity Spinner</h1>
+<div class="level1">
+
+<p>
+Works well under OS X, Lion and above because the terminal seems to display pictures for many UTF-8 characters. This snippet starts with the <a href="http://www.fileformat.info/info/unicode/char/1f311/index.htm" class="urlextern" title="http://www.fileformat.info/info/unicode/char/1f311/index.htm" rel="ugc nofollow">new moon symbol</a> and loops over the moon phases.
+</p>
+<pre class="code c"><span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/*    Copyright (C) 2013 Wizardry and Steamworks - License: GNU GPLv3    */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;unistd.h&gt;</span>
+&nbsp;
+<span class="kw4">int</span> main<span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/setvbuf.html"><span class="kw3">setvbuf</span></a><span class="br0">&#40;</span>stdout<span class="sy0">,</span> NULL<span class="sy0">,</span> _IONBF<span class="sy0">,</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw4">char</span> <span class="sy0">*</span>m <span class="sy0">=</span> <span class="st0">&quot;<span class="es2">\xF0</span><span class="es2">\x9F</span><span class="es2">\x8C</span>&quot;</span><span class="sy0">;</span>
+    <span class="kw4">char</span> i<span class="sy0">;</span>
+cycle<span class="sy0">:</span>
+    <span class="co1">// 0x91 - new moon</span>
+    i <span class="sy0">=</span> <span class="nu0">145</span><span class="sy0">;</span>
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;%s%c &quot;</span><span class="sy0">,</span> m<span class="sy0">,</span> i<span class="br0">&#41;</span><span class="sy0">;</span>
+        usleep<span class="br0">&#40;</span><span class="nu0">100000</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;<span class="es1">\b</span><span class="es1">\b</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">while</span><span class="br0">&#40;</span><span class="sy0">++</span>i<span class="sy0">&lt;-</span><span class="nu0">104</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">goto</span> cycle<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit5" id="create_a_formatted_date_and_time">Create a Formatted Date and Time</h1>
+<div class="level1">
+
+<p>
+This can be accomplished using <code>strftime</code>:
+</p>
+<pre class="code c"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;stdlib.h&gt;</span>
+<span class="co2">#include &lt;time.h&gt;</span>
+&nbsp;
+<span class="kw4">int</span> main<span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    time_t rawtime<span class="sy0">;</span>                         <span class="coMULTI">/* raw time */</span>
+    <span class="kw4">struct</span> tm<span class="sy0">*</span> timeinfo<span class="sy0">;</span>                    <span class="coMULTI">/* initialize structure to hold the local time */</span>
+    <span class="kw4">char</span> <span class="sy0">*</span>now <span class="sy0">=</span> <span class="br0">&#40;</span><span class="kw4">char</span> <span class="sy0">*</span><span class="br0">&#41;</span> <a href="http://www.opengroup.org/onlinepubs/009695399/functions/malloc.html"><span class="kw3">malloc</span></a><span class="br0">&#40;</span><span class="nu0">17</span><span class="br0">&#41;</span><span class="sy0">;</span>        <span class="coMULTI">/* length(&quot;It is now &quot;) + 2 + length(&quot; &quot;) + 2 + 1 + 1 = 17 */</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/time.html"><span class="kw3">time</span></a> <span class="br0">&#40;</span> <span class="sy0">&amp;</span>rawtime <span class="br0">&#41;</span><span class="sy0">;</span>                      <span class="coMULTI">/* get the current time */</span>
+    timeinfo <span class="sy0">=</span> <a href="http://www.opengroup.org/onlinepubs/009695399/functions/localtime.html"><span class="kw3">localtime</span></a> <span class="br0">&#40;</span> <span class="sy0">&amp;</span>rawtime <span class="br0">&#41;</span><span class="sy0">;</span>      <span class="coMULTI">/* populate the tm structure */</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>timeinfo <span class="sy0">==</span> NULL<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;Error: unable to obtain local time.<span class="es1">\n</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="nu0">1</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="coMULTI">/* from strftime(3): %I the hour, %p AM or PM */</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/strftime.html"><span class="kw3">strftime</span></a><span class="br0">&#40;</span>now<span class="sy0">,</span> <span class="nu0">17</span><span class="sy0">,</span> <span class="st0">&quot;It is now %I %p.&quot;</span><span class="sy0">,</span> timeinfo<span class="br0">&#41;</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;Error: unable to format time.<span class="es1">\n</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">return</span> <span class="nu0">1</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <span class="coMULTI">/* print the string */</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;%s<span class="es1">\n</span>&quot;</span><span class="sy0">,</span> now<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="nu0">0</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+more information on the possible escape characters can be found in <code>strftime</code> man section 3.
+</p>
+
+</div>
+
+<h1 class="sectionedit6" id="number_of_milliseconds_to_hour">Number of Milliseconds to Hour</h1>
+<div class="level1">
+
+<p>
+<code>wasMillisecondsToClock</code> takes as parameter the current minute (<code>min</code>), current second (<code>sec</code>) and current number of milliseconds (<code>mil</code>) and computes the number of milliseconds to the hour:
+</p>
+<pre class="code c"><span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/*    Copyright (C) 2015 Wizardry and Steamworks - License: GNU GPLv3    */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="kw4">int</span> wasMillisecondsToClock<span class="br0">&#40;</span><span class="kw4">int</span> min<span class="sy0">,</span> <span class="kw4">int</span> sec<span class="sy0">,</span> <span class="kw4">int</span> mil<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">return</span> <span class="br0">&#40;</span>
+        <span class="nu0">3600000</span> <span class="sy0">-</span> <span class="br0">&#40;</span>
+            sec <span class="sy0">%</span> <span class="nu0">60</span>
+        <span class="br0">&#41;</span> <span class="sy0">*</span> <span class="nu0">1000</span> <span class="sy0">-</span> <span class="br0">&#40;</span>
+            min <span class="sy0">%</span> <span class="nu0">60</span>
+        <span class="br0">&#41;</span> <span class="sy0">*</span> <span class="nu0">60</span> <span class="sy0">*</span> <span class="nu0">1000</span> <span class="sy0">-</span> mil
+    <span class="br0">&#41;</span> <span class="sy0">%</span> <span class="nu0">3600000</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+For example, suppose that the hour is <code>8:01:20.100</code> and we want to know how many seconds till <code>9:00:00.000</code>. We then call:
+</p>
+<pre class="code c">wasMillisecondsToClock<span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">20</span><span class="sy0">,</span> <span class="nu0">100</span><span class="br0">&#41;</span></pre>
+
+<p>
+which returns <code>3519900</code> milliseconds.
+</p>
+
+</div>
+
+<h1 class="sectionedit7" id="queue_implementations">Queue Implementations</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_185440589062b82aaea692c" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/queues/integers" class="wikilink1" title="fuss:c:data_structures:queues:integers" data-wiki-id="fuss:c:data_structures:queues:integers">integers</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/queues/strings" class="wikilink1" title="fuss:c:data_structures:queues:strings" data-wiki-id="fuss:c:data_structures:queues:strings">strings</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/queues/unsigned_integers" class="wikilink1" title="fuss:c:data_structures:queues:unsigned_integers" data-wiki-id="fuss:c:data_structures:queues:unsigned_integers">unsigned_integers</a></div></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_185440589062b82aaea692c = new dTree('indexmenu_185440589062b82aaea692c','was.png');
+indexmenu_185440589062b82aaea692c.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_185440589062b82aaea692c.config.sepchar='/';
+indexmenu_185440589062b82aaea692c.config.toc=false;
+indexmenu_185440589062b82aaea692c.config.scorespace=true;
+indexmenu_185440589062b82aaea692c.add('fuss/c/data_structures/queues',0,-1,"queues",'fuss/c/data_structures/queues');
+indexmenu_185440589062b82aaea692c.add('fuss/c/data_structures/queues/integers',1,0,"integers",0,0,0);
+indexmenu_185440589062b82aaea692c.add('fuss/c/data_structures/queues/strings',2,0,"strings",0,0,0);
+indexmenu_185440589062b82aaea692c.add('fuss/c/data_structures/queues/unsigned_integers',3,0,"unsigned_integers",0,0,0);
+document.write(indexmenu_185440589062b82aaea692c);
+jQuery(function(){indexmenu_185440589062b82aaea692c.init(1,0,"",1,0);});
+//--><!]]>
+</script>
+
+</div>
+
+<h1 class="sectionedit8" id="combine_two_paths">Combine two Paths</h1>
+<div class="level1">
+
+<p>
+The <code>pathCombine</code> function takes as argument two paths, for example:
+</p>
+<ol>
+<li class="level1"><div class="li"> /home/test</div>
+</li>
+<li class="level1"><div class="li"> file.c</div>
+</li>
+</ol>
+
+<p>
+and combines the two paths together, returning a pointer to the combined path. In this example, the pointer will point to the string <code>/home/test/file.c</code>.
+</p>
+<pre class="code c"><span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/*    Copyright (C) 2013 Wizardry and Steamworks - License: GNU GPLv3    */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/* Concatenates two filesystem paths a and b together.                   */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="kw4">char</span> <span class="sy0">*</span>pathCombine<span class="br0">&#40;</span><span class="kw4">char</span> <span class="sy0">*</span>a<span class="sy0">,</span> <span class="kw4">char</span> <span class="sy0">*</span>b<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw4">size_t</span> sa <span class="sy0">=</span> <a href="http://www.opengroup.org/onlinepubs/009695399/functions/strlen.html"><span class="kw3">strlen</span></a><span class="br0">&#40;</span>a<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw4">size_t</span> sb <span class="sy0">=</span> <a href="http://www.opengroup.org/onlinepubs/009695399/functions/strlen.html"><span class="kw3">strlen</span></a><span class="br0">&#40;</span>b<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw4">char</span> <span class="sy0">*</span>rt <span class="sy0">=</span> <span class="br0">&#40;</span><span class="kw4">char</span><span class="sy0">*</span><span class="br0">&#41;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/calloc.html"><span class="kw3">calloc</span></a><span class="br0">&#40;</span>sa <span class="sy0">+</span> sb <span class="sy0">+</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="kw4">sizeof</span><span class="br0">&#40;</span><span class="kw4">char</span> <span class="sy0">*</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/memcpy.html"><span class="kw3">memcpy</span></a><span class="br0">&#40;</span>rt<span class="sy0">,</span> a<span class="sy0">,</span> sa<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">switch</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span>sa <span class="sy0">-</span> <span class="nu0">1</span><span class="br0">&#93;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="st0">'/'</span><span class="sy0">:</span>
+            <span class="kw2">break</span><span class="sy0">;</span>
+        <span class="kw1">default</span><span class="sy0">:</span>
+            rt <span class="sy0">=</span> <span class="br0">&#40;</span><span class="kw4">char</span><span class="sy0">*</span><span class="br0">&#41;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/realloc.html"><span class="kw3">realloc</span></a><span class="br0">&#40;</span>rt<span class="sy0">,</span> <span class="br0">&#40;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/strlen.html"><span class="kw3">strlen</span></a><span class="br0">&#40;</span>rt<span class="br0">&#41;</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="sy0">*</span> <span class="kw4">sizeof</span><span class="br0">&#40;</span><span class="kw4">char</span> <span class="sy0">*</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+            rt<span class="br0">&#91;</span>sa<span class="br0">&#93;</span> <span class="sy0">=</span> <span class="st0">'/'</span><span class="sy0">;</span>
+        <span class="kw2">break</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/memcpy.html"><span class="kw3">memcpy</span></a><span class="br0">&#40;</span>rt <span class="sy0">+</span> <a href="http://www.opengroup.org/onlinepubs/009695399/functions/strlen.html"><span class="kw3">strlen</span></a><span class="br0">&#40;</span>rt<span class="br0">&#41;</span><span class="sy0">,</span> b<span class="sy0">,</span> sb <span class="sy0">+</span> <span class="nu0">1</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> rt<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+The <code>pathCombine</code> function makes sure that the path separator between two paths will not appear twice in case the first path contains a separator.
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="stack_implementations">Stack Implementations</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_161782737262b82aaea6e7b" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="open"><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/stacks/generic" class="indexmenu_idx_head">generic</a></div>
+<ul class="idx">
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/stacks/generic/stack.c" class="wikilink1" title="fuss:c:data_structures:stacks:generic:stack.c" data-wiki-id="fuss:c:data_structures:stacks:generic:stack.c">stack.c</a></div></li>
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/stacks/generic/stack.h" class="wikilink1" title="fuss:c:data_structures:stacks:generic:stack.h" data-wiki-id="fuss:c:data_structures:stacks:generic:stack.h">stack.h</a></div></li>
+</ul>
+</li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/stacks/characters" class="wikilink1" title="fuss:c:data_structures:stacks:characters" data-wiki-id="fuss:c:data_structures:stacks:characters">characters</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/stacks/integers" class="wikilink1" title="fuss:c:data_structures:stacks:integers" data-wiki-id="fuss:c:data_structures:stacks:integers">integers</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/stacks/strings" class="wikilink1" title="fuss:c:data_structures:stacks:strings" data-wiki-id="fuss:c:data_structures:stacks:strings">strings</a></div></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_161782737262b82aaea6e7b = new dTree('indexmenu_161782737262b82aaea6e7b','was.png');
+indexmenu_161782737262b82aaea6e7b.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_161782737262b82aaea6e7b.config.sepchar='/';
+indexmenu_161782737262b82aaea6e7b.config.toc=false;
+indexmenu_161782737262b82aaea6e7b.config.scorespace=true;
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks',0,-1,"stacks");
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks/generic',1,0,"generic",'fuss/c/data_structures/stacks/generic',1,0);
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks/generic/stack.c',2,1,"stack.c",0,0,0);
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks/generic/stack.h',3,1,"stack.h",0,0,0);
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks/characters',4,0,"characters",0,0,0);
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks/integers',5,0,"integers",0,0,0);
+indexmenu_161782737262b82aaea6e7b.add('fuss/c/data_structures/stacks/strings',6,0,"strings",0,0,0);
+document.write(indexmenu_161782737262b82aaea6e7b);
+jQuery(function(){indexmenu_161782737262b82aaea6e7b.init(1,0,"1",1,0);});
+//--><!]]>
+</script>
+
+</div>
+
+<h1 class="sectionedit10" id="quicksort">QuickSort</h1>
+<div class="level1">
+<pre class="code c"><span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/*    Copyright (C) 2015 Wizardry and Steamworks - License: GNU GPLv3    */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="kw4">void</span> QuickSort<span class="br0">&#40;</span><span class="kw4">int</span> <span class="sy0">*</span>a<span class="sy0">,</span> <span class="kw4">int</span> n<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw4">int</span> p<span class="sy0">,</span> i<span class="sy0">,</span> j<span class="sy0">,</span> t<span class="sy0">;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>n <span class="sy0">&lt;</span> <span class="nu0">2</span><span class="br0">&#41;</span> <span class="kw1">return</span><span class="sy0">;</span>
+    p <span class="sy0">=</span> a<span class="br0">&#91;</span> n <span class="sy0">/</span> <span class="nu0">2</span> <span class="br0">&#93;</span><span class="sy0">;</span>
+    i <span class="sy0">=</span> <span class="sy0">-</span><span class="nu0">1</span><span class="sy0">;</span>
+    j <span class="sy0">=</span> n<span class="sy0">;</span>
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        <span class="kw1">while</span> <span class="br0">&#40;</span>a<span class="br0">&#91;</span><span class="sy0">++</span>i<span class="br0">&#93;</span> <span class="sy0">&lt;</span> p<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">while</span> <span class="br0">&#40;</span>p <span class="sy0">&lt;</span> a<span class="br0">&#91;</span><span class="sy0">--</span>j<span class="br0">&#93;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>j <span class="sy0">&gt;</span> i<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            t <span class="sy0">=</span> a<span class="br0">&#91;</span>i<span class="br0">&#93;</span><span class="sy0">;</span>
+            a<span class="br0">&#91;</span>i<span class="br0">&#93;</span> <span class="sy0">=</span> a<span class="br0">&#91;</span>j<span class="br0">&#93;</span><span class="sy0">;</span>
+            a<span class="br0">&#91;</span>j<span class="br0">&#93;</span> <span class="sy0">=</span> t<span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span> <span class="kw1">while</span> <span class="br0">&#40;</span>j <span class="sy0">&gt;</span> i<span class="br0">&#41;</span><span class="sy0">;</span>
+    QuickSort<span class="br0">&#40;</span>a<span class="sy0">,</span> i<span class="br0">&#41;</span><span class="sy0">;</span>
+    QuickSort<span class="br0">&#40;</span>a <span class="sy0">+</span> i<span class="sy0">,</span> n <span class="sy0">-</span> i<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit11" id="double_linked_lists_implementation">Double Linked Lists Implementation</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_108184293862b82aaea6fd7" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c/data_structures/linked_lists/double_linked_lists/strings" class="wikilink1" title="fuss:c:data_structures:linked_lists:double_linked_lists:strings" data-wiki-id="fuss:c:data_structures:linked_lists:double_linked_lists:strings">strings</a></div></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_108184293862b82aaea6fd7 = new dTree('indexmenu_108184293862b82aaea6fd7','was.png');
+indexmenu_108184293862b82aaea6fd7.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_108184293862b82aaea6fd7.config.sepchar='/';
+indexmenu_108184293862b82aaea6fd7.config.toc=false;
+indexmenu_108184293862b82aaea6fd7.config.scorespace=true;
+indexmenu_108184293862b82aaea6fd7.add('fuss/c/data_structures/linked_lists/double_linked_lists',0,-1,"double_linked_lists");
+indexmenu_108184293862b82aaea6fd7.add('fuss/c/data_structures/linked_lists/double_linked_lists/strings',1,0,"strings",0,0,0);
+document.write(indexmenu_108184293862b82aaea6fd7);
+jQuery(function(){indexmenu_108184293862b82aaea6fd7.init(1,0,"",1,0);});
+//--><!]]>
+</script>
+
+</div>
+
+<h1 class="sectionedit12" id="two-dimensional_array_to_uni-dimensional_array">Two-Dimensional Array to Uni-Dimensional Array</h1>
+<div class="level1">
+
+<p>
+The <code>set</code> function takes as parameters two indexes <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdeceeaf6940a8c7a5a02373728002b0f.png" class="latex_inline" alt="$y$" title="Math" /> of a 2D array and set the value <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6c4adbc36120d62b98deef2a20d5d303.png" class="latex_inline" alt="$v$" title="Math" /> to its corresponding location in an uni-dimensional array using row-major order:
+</p>
+<pre class="code c"><span class="kw4">int</span> array<span class="br0">&#91;</span>SIZE_X <span class="sy0">*</span> SIZE_Y<span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="kw4">void</span> set<span class="br0">&#40;</span><span class="kw4">int</span> x<span class="sy0">,</span> <span class="kw4">int</span> y<span class="sy0">,</span> <span class="kw4">int</span> v<span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+    array<span class="br0">&#91;</span>SIZE_X <span class="sy0">*</span> x <span class="sy0">+</span> y<span class="br0">&#93;</span> <span class="sy0">=</span> v<span class="sy0">;</span> 
+<span class="br0">&#125;</span></pre>
+
+<p>
+the converse function <code>get</code>:
+</p>
+<pre class="code c"><span class="kw4">int</span> array<span class="br0">&#91;</span>SIZE_X <span class="sy0">*</span> SIZE_Y<span class="br0">&#93;</span><span class="sy0">;</span>
+<span class="kw4">int</span> get<span class="br0">&#40;</span><span class="kw4">int</span> x<span class="sy0">,</span> <span class="kw4">int</span> y<span class="br0">&#41;</span> <span class="br0">&#123;</span> 
+    <span class="kw1">return</span> array<span class="br0">&#91;</span>SIZE_X <span class="sy0">*</span> x <span class="sy0">+</span> y<span class="br0">&#93;</span><span class="sy0">;</span> 
+<span class="br0">&#125;</span></pre>
+
+<p>
+returns the value stored in the 2D array at indices <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdeceeaf6940a8c7a5a02373728002b0f.png" class="latex_inline" alt="$y$" title="Math" />;
+</p>
+
+<p>
+This follows the row-major order convention, if column-major order is desired, then the formula <code>SIZE_X * x + y</code> can be changed to <code>SIZE_Y * x + y</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit13" id="determine_if_the_system_is_big_endian">Determine if The System is Big Endian</h1>
+<div class="level1">
+
+<p>
+This can be done with a macro:
+</p>
+<pre class="code c"><span class="co2">#define IS_BIG_ENDIAN (*(uint16_t *)&quot;\0\xff&quot; &lt; 0x100)</span></pre>
+
+</div>
+
+<h1 class="sectionedit14" id="merge_two_sorted_arrays_by_preserving_sort_order">Merge Two Sorted Arrays by Preserving Sort Order</h1>
+<div class="level1">
+
+<p>
+This is an interview question at Quora: &quot;Given two lists of sorted integers, develop an algorithm to sort these numbers into a single list efficiently.&quot;
+</p>
+
+<p>
+The <code>wasMergeSortedArrays</code> does that with complexity <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1f08ccc9cd7309ba1e756c3d9345ad9f.png" class="latex_inline" alt="$O(n)$" title="Math" /> where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img55a049b8f161ae7cfeb0197d75aff967.png" class="latex_inline" alt="$n$" title="Math" /> is the sum of the length of both arrays:
+</p>
+<pre class="code c"><span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/*    Copyright (C) 2015 Wizardry and Steamworks - License: GNU GPLv3    */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="kw4">int</span> <span class="sy0">*</span>wasMergeSortedArrays<span class="br0">&#40;</span><span class="kw4">int</span> <span class="sy0">*</span>a<span class="sy0">,</span> <span class="kw4">int</span> size_a<span class="sy0">,</span> <span class="kw4">int</span> <span class="sy0">*</span>b<span class="sy0">,</span> <span class="kw4">int</span> size_b<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+&nbsp;
+    <span class="kw4">int</span> s <span class="sy0">=</span> size_a <span class="sy0">+</span> size_b<span class="sy0">;</span>
+    <span class="kw4">int</span> <span class="sy0">*</span>c <span class="sy0">=</span> <span class="br0">&#40;</span><span class="kw4">int</span> <span class="sy0">*</span><span class="br0">&#41;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/calloc.html"><span class="kw3">calloc</span></a><span class="br0">&#40;</span>s<span class="sy0">,</span> <span class="kw4">sizeof</span><span class="br0">&#40;</span><span class="kw4">int</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw4">int</span> a_i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="kw4">int</span> b_i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="kw4">int</span> c_i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>  
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+&nbsp;
+        <span class="kw1">if</span><span class="br0">&#40;</span>a_i <span class="sy0">&gt;=</span> size_a<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">if</span><span class="br0">&#40;</span>b_i <span class="sy0">&lt;</span> size_b<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="sy0">*</span>c<span class="sy0">++</span> <span class="sy0">=</span> <span class="sy0">*</span>b<span class="sy0">++;</span>
+                <span class="sy0">++</span>b_i<span class="sy0">;</span>
+                <span class="kw1">continue</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+            <span class="kw1">continue</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw1">if</span><span class="br0">&#40;</span>b_i <span class="sy0">&gt;=</span> size_b<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="kw1">if</span><span class="br0">&#40;</span>a_i <span class="sy0">&lt;</span> size_a<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+                <span class="sy0">*</span>c<span class="sy0">++</span> <span class="sy0">=</span> <span class="sy0">*</span>a<span class="sy0">++;</span>
+                <span class="sy0">++</span>a_i<span class="sy0">;</span>
+                <span class="kw1">continue</span><span class="sy0">;</span>
+            <span class="br0">&#125;</span>
+            <span class="kw1">continue</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw1">if</span><span class="br0">&#40;</span><span class="sy0">*</span>a <span class="sy0">&lt;</span> <span class="sy0">*</span>b<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="sy0">*</span>c<span class="sy0">++</span> <span class="sy0">=</span> <span class="sy0">*</span>a<span class="sy0">++;</span>
+            <span class="sy0">++</span>a_i<span class="sy0">;</span>
+            <span class="kw1">continue</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="sy0">*</span>c<span class="sy0">++</span> <span class="sy0">=</span> <span class="sy0">*</span>b<span class="sy0">++;</span>
+        <span class="sy0">++</span>b_i<span class="sy0">;</span>
+&nbsp;
+    <span class="br0">&#125;</span> <span class="kw1">while</span><span class="br0">&#40;</span><span class="sy0">++</span>c_i <span class="sy0">&lt;</span> s<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> c <span class="sy0">-</span> s<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+and the example call would be:
+</p>
+<pre class="code c"><span class="kw4">int</span> main<span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw4">int</span> a<span class="br0">&#91;</span><span class="nu0">5</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#123;</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">2</span><span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> <span class="nu0">8</span><span class="sy0">,</span> <span class="nu0">77</span> <span class="br0">&#125;</span><span class="sy0">;</span>
+    <span class="kw4">int</span> b<span class="br0">&#91;</span><span class="nu0">7</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#123;</span> <span class="nu0">4</span><span class="sy0">,</span> <span class="nu0">9</span><span class="sy0">,</span> <span class="nu0">48</span><span class="sy0">,</span> <span class="nu0">99</span><span class="sy0">,</span> <span class="nu0">204</span><span class="sy0">,</span> <span class="nu0">500</span><span class="sy0">,</span> <span class="nu0">1024</span> <span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw4">int</span> <span class="sy0">*</span>c <span class="sy0">=</span> wasMergeSortedArrays<span class="br0">&#40;</span>a<span class="sy0">,</span> <span class="nu0">5</span><span class="sy0">,</span> b<span class="sy0">,</span> <span class="nu0">7</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;Result: &quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw4">int</span> i <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;%d &quot;</span><span class="sy0">,</span> <span class="sy0">*</span>c<span class="sy0">++</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span> <span class="kw1">while</span><span class="br0">&#40;</span><span class="sy0">++</span>i <span class="sy0">&lt;</span> <span class="nu0">12</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;<span class="es1">\n</span>&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit15" id="weighted_selection_algorithm">Weighted Selection Algorithm</h1>
+<div class="level1">
+
+<p>
+Given a list of elements each with an attributed weight, every time the <code>wasWeightedSelect</code> function is called, it will select an element from the list based on its probability.
+</p>
+<pre class="code c"><span class="coMULTI">/*************************************************************************/</span>
+<span class="coMULTI">/*    Copyright (C) 2016 Wizardry and Steamworks - License: GNU GPLv3    */</span>
+<span class="coMULTI">/*************************************************************************/</span>
+<span class="kw4">float</span> wasWeightedSelect<span class="br0">&#40;</span><span class="kw4">float</span> <span class="sy0">*</span>s<span class="sy0">,</span> <span class="kw4">float</span> <span class="sy0">*</span>p<span class="sy0">,</span> <span class="kw4">float</span> size<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw4">float</span> t <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">,</span> c<span class="sy0">,</span> f<span class="sy0">;</span>
+&nbsp;
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/srand.html"><span class="kw3">srand</span></a><span class="br0">&#40;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/time.html"><span class="kw3">time</span></a><span class="br0">&#40;</span>NULL<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">do</span> <span class="br0">&#123;</span>
+        c <span class="sy0">=</span> <span class="sy0">*</span>p<span class="sy0">++;</span>
+        t <span class="sy0">+=</span> c<span class="sy0">;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span><span class="br0">&#40;</span><span class="kw4">float</span><span class="br0">&#41;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/rand.html"><span class="kw3">rand</span></a><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">/</span> <span class="br0">&#40;</span><span class="kw4">float</span><span class="br0">&#41;</span><span class="br0">&#40;</span>RAND_MAX <span class="sy0">/</span> t<span class="br0">&#41;</span> <span class="sy0">&lt;</span> c<span class="br0">&#41;</span>
+            f <span class="sy0">=</span> <span class="sy0">*</span>s<span class="sy0">;</span>
+        s<span class="sy0">++;</span>
+    <span class="br0">&#125;</span> <span class="kw1">while</span><span class="br0">&#40;</span><span class="sy0">--</span>size <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw1">return</span> f<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+An example call would be:
+</p>
+<pre class="code c"><span class="co2">#include &lt;stdio.h&gt;</span>
+<span class="co2">#include &lt;stdlib.h&gt;</span>
+<span class="co2">#include &lt;time.h&gt;</span>
+&nbsp;
+<span class="kw4">int</span> main<span class="br0">&#40;</span><span class="kw4">void</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw4">float</span> a<span class="br0">&#91;</span><span class="nu0">4</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#123;</span> <span class="nu0">1</span><span class="sy0">,</span> <span class="nu0">9</span><span class="sy0">,</span> <span class="nu0">7</span><span class="sy0">,</span> <span class="nu0">5</span> <span class="br0">&#125;</span><span class="sy0">;</span>
+    <span class="kw4">float</span> b<span class="br0">&#91;</span><span class="nu0">4</span><span class="br0">&#93;</span> <span class="sy0">=</span> <span class="br0">&#123;</span> <span class="nu16">12.5</span><span class="sy0">,</span> <span class="nu16">12.5</span><span class="sy0">,</span> <span class="nu0">25</span><span class="sy0">,</span> <span class="nu0">50</span> <span class="br0">&#125;</span><span class="sy0">;</span>
+&nbsp;
+    <span class="kw4">float</span> p <span class="sy0">=</span> wasWeightedSelect<span class="br0">&#40;</span>a<span class="sy0">,</span> b<span class="sy0">,</span> <span class="nu0">4</span><span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+    <a href="http://www.opengroup.org/onlinepubs/009695399/functions/printf.html"><span class="kw3">printf</span></a><span class="br0">&#40;</span><span class="st0">&quot;%f<span class="es1">\n</span>&quot;</span><span class="sy0">,</span> p<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit16" id="get_the_length_of_an_array">Get the Length of an Array</h1>
+<div class="level1">
+
+<p>
+The array length can roughly be seen as the size of the array divided by the size of the type that the array contains. These macros should be avoided at all costs and instead the length of the array should be passed along with the function call. Nevertheless, the variants are:
+</p>
+<pre class="code c"><span class="co2">#define SIZE(array, type) (sizeof(array) / (sizeof(type))</span>
+<span class="co2">#define length(array) (sizeof(array)/sizeof(*(array)))</span>
+<span class="co2">#define ARRAY_LENGTH(array) (sizeof((array))/sizeof((array)[0]))</span></pre>
+
+<p>
+Google Chromium defines <code>COUNT_OF</code> for arrays as:
+</p>
+<pre class="code c"><span class="co2">#define COUNT_OF(x) ((sizeof(x)/sizeof(0[x])) / ((size_t)(!(sizeof(x) % sizeof(0[x])))))</span></pre>
+
+<p>
+and it does cause a division by zero that may be caught by some compilers.
+</p>
+
+</div>
+
+<h1 class="sectionedit17" id="overloading_functions">Overloading Functions</h1>
+<div class="level1">
+
+<p>
+Given a function that creates a new stack structure such as:
+</p>
+<pre class="code c"><span class="coMULTI">/*
+ * Creates a new stringStack with a given size.
+ */</span>
+stringStack<span class="sy0">*</span> stringStackCreate<span class="br0">&#40;</span><span class="kw4">int</span> size<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+   stringStack <span class="sy0">*</span>s <span class="sy0">=</span> <span class="br0">&#40;</span>stringStack<span class="sy0">*</span><span class="br0">&#41;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/calloc.html"><span class="kw3">calloc</span></a><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">,</span> <span class="kw4">sizeof</span><span class="br0">&#40;</span>stringStack<span class="br0">&#41;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+   <span class="kw1">if</span> <span class="br0">&#40;</span><span class="br0">&#40;</span>s<span class="sy0">-&gt;</span>store <span class="sy0">=</span> <span class="br0">&#40;</span><span class="kw4">char</span><span class="sy0">**</span><span class="br0">&#41;</span><a href="http://www.opengroup.org/onlinepubs/009695399/functions/calloc.html"><span class="kw3">calloc</span></a><span class="br0">&#40;</span>size<span class="sy0">,</span> <span class="kw4">sizeof</span><span class="br0">&#40;</span><span class="kw4">char</span> <span class="sy0">**</span><span class="br0">&#41;</span><span class="br0">&#41;</span><span class="br0">&#41;</span> <span class="sy0">==</span> NULL<span class="br0">&#41;</span>
+       <span class="kw1">return</span> NULL<span class="sy0">;</span>
+   s<span class="sy0">-&gt;</span>size <span class="sy0">=</span> size<span class="sy0">;</span>
+   s<span class="sy0">-&gt;</span>top <span class="sy0">=</span> <span class="nu0">0</span><span class="sy0">;</span>
+   <span class="kw1">return</span> s<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+it is preferable to have an overload that automatically sets the size to <code>1</code> when the function is invoked with zero parameters.
+</p>
+
+<p>
+The function can be renamed to <code>stringStackCreate_Internal</code> and then the following macros can be added in order to conditionally invoke<code>stringStackCreate_Internal</code> conditionally depending on the number of arguments:
+</p>
+<pre class="code c"><span class="co1">// Zero or one arguments for StackCreate_Internal.</span>
+<span class="co2">#define stringStackCreate_0() stringStackCreate_Internal(1)</span>
+<span class="co2">#define stringStackCreate_1(x) stringStackCreate_Internal(x)</span>
+<span class="co2">#define _FUNC_OVERRIDE(_1, FUNC) FUNC</span>
+<span class="co2">#define stringStackCreate(...) _FUNC_OVERRIDE(stringStackCreate_1(__VA_ARGS__), stringStackCreate_0())</span></pre>
+
+<p>
+This can then be generalised to any number of arguments (in this case, up to 4 overloads of <code>stringStackCreate</code> progressively taking: 0, 1, 2 and 3 arguments respectively):
+</p>
+<pre class="code c"><span class="co1">// Zero or one arguments for StackCreate_Internal.</span>
+<span class="co2">#define stringStackCreate_0() stringStackCreate_Internal(1)</span>
+<span class="co2">#define stringStackCreate_1(x) stringStackCreate_Internal(x)</span>
+<span class="co2">#define stringStackCreate_2(x, y) stringStackCreate_Internal(x, y)</span>
+<span class="co2">#define stringStackCreate_3(x, y, z) stringStackCreate_Internal(x, y, z)</span>
+<span class="co2">#define _FUNC_OVERRIDE(_1, _2, _3, /* ad nauseum */, FUNC, ...) FUNC</span>
+<span class="co2">#define stringStackCreate(...) _FUNC_OVERRIDE(stringStackCreate_3(__VA_ARGS__), stringStackCreate_2(__VA_ARGS__), stringStackCreate_1(__VA_ARGS__), stringStackCreate_0())</span></pre>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/c.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c" class="wikilink1" title="fuss:c" data-wiki-id="fuss:c">c</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:c" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/c"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Ac&amp;1657304151" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

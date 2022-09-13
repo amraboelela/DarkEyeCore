@@ -1,0 +1,3047 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/site/ - Site Meta</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=site"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Refresh</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=site">
+    <div>
+      <p id="labelName">/site/ - Site Meta</p>
+    </div>
+    <p id="labelDescription">Official 8chan Site Meta. (Bring bug reports, complaints, and requests here)</p>
+	<span class="boardLinks">
+		<a href="catalog.html">Catalog</a>
+		<a id="archiveLinkBoard">Archive</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Mode: Thread</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  <tr id="divName">
+    <th>Name</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldName" name="name"></td>
+  </tr>
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="site"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  <tr id="captchaDiv">
+
+    <th>Captcha</th>
+    <td><img class="captchaImage" src="/captcha.js">
+
+      <div class="subCaptchaDiv">
+        <input type="button" value="Reload" class="hidden reloadCaptchaButton">
+        <span class="captchaTimer"></span>
+        <br>
+
+        <input name="captcha" type="text" autocomplete="none" class="captchaField postingInput" id="fieldCaptcha" placeholder="answer">
+
+        <a href="/noCookieCaptcha.js" class="small" id="noCookiesLink">no cookies?</a>
+
+      </div></td>
+  </tr>
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Remember to follow the
+          <a href="rules.html" class="localPageLink">Rules</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="site" id="5423"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/f2e1aaf9839bf53edbcdeaa8cc807b8455a87b52e2800c108bd089731224c234.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.03 MB</span> <span class="dimensionLabel">2048x1448</span>
+  <a class="originalNameLink" href="/.media/f2e1aaf9839bf53edbcdeaa8cc807b8455a87b52e2800c108bd089731224c234.jpg" download="yoko slide.jpg">yoko slide.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/f2e1aaf9839bf53edbcdeaa8cc807b8455a87b52e2800c108bd089731224c234.jpg" data-filewidth="2048" data-fileheight="1448" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="159" src="/.media/t_f2e1aaf9839bf53edbcdeaa8cc807b8455a87b52e2800c108bd089731224c234"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8f9c6c1ff532b633ee307593d2ee174e89656a0feefaf932249c9c4255d1680d.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">3.31 MB</span> <span class="dimensionLabel">1342x1821</span>
+  <a class="originalNameLink" href="/.media/8f9c6c1ff532b633ee307593d2ee174e89656a0feefaf932249c9c4255d1680d.png" download="8chan family.png">8chan family.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8f9c6c1ff532b633ee307593d2ee174e89656a0feefaf932249c9c4255d1680d.png" data-filewidth="1342" data-fileheight="1821" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="166" height="225" src="/.media/t_8f9c6c1ff532b633ee307593d2ee174e89656a0feefaf932249c9c4255d1680d"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5423">
+    <span class="labelSubject">General Purpose 8chan Sitewide Meta Thread</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">05/12/2022 (Thu) 02:37:48</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #9b4131">9b4131</span></span>
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/site/res/5423.html#5423">No.</a>
+    <a class="linkQuote" href="/site/res/5423.html#q5423">5423</a>
+    <a class="linkReply" href="/site/res/5423.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/5423.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">This cyclical thread is for all of the following:
+
+<span class="redText">Bug Reports</span>
+<span class="redText">General Help</span>
+<span class="redText">8chan Tech Support</span>
+<span class="redText">Board Migrations</span>
+<span class="redText">Suggestions and Feature Requests</span>
+<span class="redText">Global Site Announcements</span>
+<span class="redText">Transparency Reports</span>
+<span class="redText">General Site Meta Discussion</span>
+<span class="redText">Summoning the Admins</span>
+
+Specific meta threads on this board and elsewhere are deprecated.  If something is really important or urgent it may get its own sticky, otherwise post in here.</div>
+  
+  
+  
+  <div class="labelOmission">428 posts and 154 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6274"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5423-6274">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 12:20:19</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #831060">831060</span></span>
+    
+    <a class="linkSelf" href="/site/res/5423.html#6274">No.</a>
+    <a class="linkQuote" href="/site/res/5423.html#q6274">6274</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5423.html#6273">&gt;&gt;6273</a>
+they obviously do work because if people were still allowed to say how much they want to have sex with a chiId or how sexy little prepυbescent girls are then this site would have been nuked months ago.
+you have our lord and savior the king of cucks himself to thank for the very ground you shitpost on so kiss the ring and pledge your fealty.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="4481"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/12a197f77a33b50cd9395463677e45651cb773927538e82b9ffccfc4a5506495.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">498.56 KB</span> <span class="dimensionLabel">1821x3091</span>
+  <a class="originalNameLink" href="/.media/12a197f77a33b50cd9395463677e45651cb773927538e82b9ffccfc4a5506495.jpg" download="FALchan crossed.jpg">FALchan crossed.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/12a197f77a33b50cd9395463677e45651cb773927538e82b9ffccfc4a5506495.jpg" data-filewidth="1821" data-fileheight="3091" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="133" height="225" src="/.media/t_12a197f77a33b50cd9395463677e45651cb773927538e82b9ffccfc4a5506495"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-4481">
+    <span class="labelSubject">8chan Rules Enforcement and Corner Case Rulings Compendium</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">11/21/2021 (Sun) 23:49:51</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #0a02ed">0a02ed</span></span>
+    
+    <span class="lockIndicator" title="Locked"></span>
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    
+    
+    <a class="linkSelf" href="/site/res/4481.html#4481">No.</a>
+    <a class="linkQuote" href="/site/res/4481.html#q4481">4481</a>
+    <a class="linkReply" href="/site/res/4481.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">This is a locked thread for archiving the causes and outcomes of corner case rulings vis-a-vis the site&apos;s Global Rules.  It may be cited as an explanation for rules and policies.  The Global Rules page is the &quot;what&quot;, this thread will archive the &quot;why&quot; and the &quot;how&quot; for specific instances.</div>
+  
+  
+  
+  <div class="labelOmission">13 posts and 1 image omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5777"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-4481-5777">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/10/2022 (Fri) 08:53:47</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9c2755">9c2755</span></span>
+    
+    <a class="linkSelf" href="/site/res/4481.html#5777">No.</a>
+    <a class="linkQuote" href="/site/res/4481.html#q5777">5777</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Ruling14:  Top Board rank manipulation.
+
+Intentionally using underhanded tactics such as hidden spam or unauthorized tools such as bots to artificially inflate a board&apos;s stats or otherwise manipulate the site&apos;s Top Board ranking system is a violation of Global Rules 3 and 4.  Users found performing such actions will have their posts removed and may face sitewide bans, and Board Owners or moderators who participate in such activity may be subject to sanctions under Global Rule 3, up to and including possible loss of their board and/or User Account.
+
+<span class="greenText">&gt;Why?</span>
+Spam is spam and is always a Global matter, and it is also implicit in the site&apos;s design that the board ranking system should be <em>fair</em>, and return reasonably true numbers and a ranked list of boards determined by the popularity of those boards among the site&apos;s users.  Allowing a user or Board Owner to &quot;game the system&quot; defeats the purpose of having ranked boards in the first place, diminishes one of the site&apos;s core features, cheats other boards and Board Owners out of their proper ranking spots and associated visibility, and leads to user confusion over which boards actually have more activity.</div>
+  
+  
+  <div class="labelLastEdit">Edited last time by Acidadmin on 06/10/2022 (Fri) 16:58:03.</div>
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="5219"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/f1e737c5ec768cc14ebae12edb758abefceb90db3682819cc722810b1d8073dc.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">92.80 KB</span> <span class="dimensionLabel">1873x400</span>
+  <a class="originalNameLink" href="/.media/f1e737c5ec768cc14ebae12edb758abefceb90db3682819cc722810b1d8073dc.png" download="1.png">1.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/f1e737c5ec768cc14ebae12edb758abefceb90db3682819cc722810b1d8073dc.png" data-filewidth="1873" data-fileheight="400" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="48" src="/.media/t_f1e737c5ec768cc14ebae12edb758abefceb90db3682819cc722810b1d8073dc"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/121c665a74dce4f83931ea08075ea6eb89416d76a8add7f593bff1f03c2c138f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">229.79 KB</span> <span class="dimensionLabel">720x1440</span>
+  <a class="originalNameLink" href="/.media/121c665a74dce4f83931ea08075ea6eb89416d76a8add7f593bff1f03c2c138f.png" download="2.png">2.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/121c665a74dce4f83931ea08075ea6eb89416d76a8add7f593bff1f03c2c138f.png" data-filewidth="720" data-fileheight="1440" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="113" height="225" src="/.media/t_121c665a74dce4f83931ea08075ea6eb89416d76a8add7f593bff1f03c2c138f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5219">
+    
+    <a class="linkName  noEmailName" >Parias </a>
+     <span class="labelRole">Root</span>
+    <span class="labelCreated">04/28/2022 (Thu) 22:08:59</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #eca0a5">eca0a5</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/5219.html#5219">No.</a>
+    <a class="linkQuote" href="/site/res/5219.html#q5219">5219</a>
+    <a class="linkReply" href="/site/res/5219.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/5219.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Effective immediately, /b/ has been reassigned under Global Rule 3. While the administration wanted to allow Silvia to retain control in order to coordinate a migration to a new site, this retention of the board was conditional on several factors, including a renewed effort to moderate rulebreaking content. These obligations have been left unmet on his end, including several days with zero moderator activity, a lack of moderation regarding certain posters who have egregiously broken global rules and evaded bans for same, and overall a seemingly concerted effort to &quot;poison the well&quot; and render the board unusable. As a result the adminstrative threshold for activity has been met and the issue is now considered closed, and based on the multiple chances given to fix the board&apos;s problems and the failures to follow through this decision may not be appealed. 
+
+The screencaps included detail the posting of one user in particular, who was globally permabanned for creating global rule-breaking content exclusively to post on /b/, enjoying a conversation with Silvia himself earlier this morning. While ban evasion is likely quite common as we are an anonymous imageboard, Silvia chose to continue allowing him to post with the same name, even reverting bans and restoring deleted content in order to annoy global moderators, as seen in the second image. When confronted in private over the first user, a promise was made by Silvia to keep that user off the board, and that promise has not been upheld. It is worth mentioning that if the rulebreaking users such as this one had been properly banned and an effort made to at least appear to be upholding our rules, the recent rule changes that affected the /cat/ thread would not have been necessary. Allowing users to immediately continue posting under the same name makes the site look as if it does not enforce its own rules, and the host or authorities will not stick around to see the context.</div>
+  
+  
+  
+  <div class="labelOmission">136 posts and 42 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5839"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5219-5839">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/16/2022 (Thu) 03:11:03</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #627308">627308</span></span>
+    
+    <a class="linkSelf" href="/site/res/5219.html#5839">No.</a>
+    <a class="linkQuote" href="/site/res/5219.html#q5839">5839</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5219.html#5680">&gt;&gt;5680</a>
+I would tear her small cunt to pieces.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6277"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5219-6277">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 12:31:12</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #64e60a">64e60a</span></span>
+    
+    <a class="linkSelf" href="/site/res/5219.html#6277">No.</a>
+    <a class="linkQuote" href="/site/res/5219.html#q6277">6277</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8cd3f5f2d2334c1f2d69d98cd35fca6b4856e47d62ea690a9e19d332f746a166.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">19.20 KB</span> <span class="dimensionLabel">435x445</span>
+  <a class="originalNameLink" href="/.media/8cd3f5f2d2334c1f2d69d98cd35fca6b4856e47d62ea690a9e19d332f746a166.png" download="smug-face-clipart.png">smug-face-clipart.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8cd3f5f2d2334c1f2d69d98cd35fca6b4856e47d62ea690a9e19d332f746a166.png" data-filewidth="435" data-fileheight="445" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="220" height="225" src="/.media/t_8cd3f5f2d2334c1f2d69d98cd35fca6b4856e47d62ea690a9e19d332f746a166"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5219.html#5219">&gt;&gt;5219</a>
+I&apos;m glad the pedos have finally been kicked off their pedestal. Now they have to eternally torpost and cry about it. It feels good reading their salt here.
+
+Nobody wants to share a website with pedos besides other pedos.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6278"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5219-6278">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 17:49:07</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7ce4d1">7ce4d1</span></span>
+    
+    <a class="linkSelf" href="/site/res/5219.html#6278">No.</a>
+    <a class="linkQuote" href="/site/res/5219.html#q6278">6278</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5219.html#6277">&gt;&gt;6277</a>
+<span class="greenText">&gt;Nobody wants to share a website with pedos besides other pedos.</span>
+is that your explanation for why this site is dead outside of the beaner bunkers that don&apos;t even speak english because it was created for lolicon and is full of nothing but pedos as a result?</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="3841"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/403bd6ef8bca309770fc5ca0ca21edb42b3e8fb2254132b39a985ea1dbac6eb3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">195.16 KB</span> <span class="dimensionLabel">2176x1056</span>
+  <a class="originalNameLink" href="/.media/403bd6ef8bca309770fc5ca0ca21edb42b3e8fb2254132b39a985ea1dbac6eb3.png" download="8kun vs. 8moe.png">8kun vs. 8moe.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/403bd6ef8bca309770fc5ca0ca21edb42b3e8fb2254132b39a985ea1dbac6eb3.png" data-filewidth="2176" data-fileheight="1056" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="109" src="/.media/t_403bd6ef8bca309770fc5ca0ca21edb42b3e8fb2254132b39a985ea1dbac6eb3"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-3841">
+    <span class="labelSubject">8moe Seemingly On Track to Surpass 8kun</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">08/25/2021 (Wed) 06:09:57</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #ec3c57">ec3c57</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/3841.html#3841">No.</a>
+    <a class="linkQuote" href="/site/res/3841.html#q3841">3841</a>
+    <a class="linkReply" href="/site/res/3841.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><a target="&#95;blank" href="https://www.similarweb.com/website/8kun.top/?competitors&#61;8chan.moe">https://www.similarweb.com/website/8kun.top/?competitors&#61;8chan.moe</a>
+
+Will 8moe continue its seemingly rapid growth? That&apos;s up to (you)!</div>
+  
+  
+  
+  <div class="labelOmission">27 posts and 5 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6154"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3841-6154">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 20:34:34</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #1327bd">1327bd</span></span>
+    
+    <a class="linkSelf" href="/site/res/3841.html#6154">No.</a>
+    <a class="linkQuote" href="/site/res/3841.html#q6154">6154</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/3841.html#6139">&gt;&gt;6139</a>
+don&apos;t you have a screenshot of the top 40 a few months ago?
+I want to know what position hispachan.org was for the years 2021-2022.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6159"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3841-6159">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 00:04:43</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2fea70">2fea70</span></span>
+    
+    <a class="linkSelf" href="/site/res/3841.html#6159">No.</a>
+    <a class="linkQuote" href="/site/res/3841.html#q6159">6159</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/3841.html#6154">&gt;&gt;6154</a>
+<a target="&#95;blank" href="https://allchans.org/category/top-lists/">https://allchans.org/category/top-lists/</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6276"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3841-6276">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 12:26:31</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #b8976b">b8976b</span></span>
+    
+    <a class="linkSelf" href="/site/res/3841.html#6276">No.</a>
+    <a class="linkQuote" href="/site/res/3841.html#q6276">6276</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/909ccb5b38db75014a06c565d5fb630bcf315fb3b9eaa3c081e3327a31992002.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">242.43 KB</span> <span class="dimensionLabel">1080x1222</span>
+  <a class="originalNameLink" href="/.media/909ccb5b38db75014a06c565d5fb630bcf315fb3b9eaa3c081e3327a31992002.png" download="8moe.png">8moe.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/909ccb5b38db75014a06c565d5fb630bcf315fb3b9eaa3c081e3327a31992002.png" data-filewidth="1080" data-fileheight="1222" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="199" height="225" src="/.media/t_909ccb5b38db75014a06c565d5fb630bcf315fb3b9eaa3c081e3327a31992002"></a>
+</details>
+</figure></div>
+  <div class="divMessage"></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="3103"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/4fac1ad6f058d5f4a79ae5cda2b1dcaa2f7b68cad10091146535cb4bab54733f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">293.85 KB</span> <span class="dimensionLabel">1042x1718</span>
+  <a class="originalNameLink" href="/.media/4fac1ad6f058d5f4a79ae5cda2b1dcaa2f7b68cad10091146535cb4bab54733f.png" download="╱zoo╱ is free speech.png">╱zoo╱ is free speech.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/4fac1ad6f058d5f4a79ae5cda2b1dcaa2f7b68cad10091146535cb4bab54733f.png" data-filewidth="1042" data-fileheight="1718" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="136" height="225" src="/.media/t_4fac1ad6f058d5f4a79ae5cda2b1dcaa2f7b68cad10091146535cb4bab54733f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-3103">
+    <span class="labelSubject">/zoo/</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/12/2021 (Sat) 01:45:59</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/3103.html#3103">No.</a>
+    <a class="linkQuote" href="/site/res/3103.html#q3103">3103</a>
+    <a class="linkReply" href="/site/res/3103.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">There&apos;s an abandoned or squatted /zoo/ board. Apparently, /zoo/ is legal, and freeze peach. /zoo/fags should start using the board.</div>
+  
+  
+  
+  <div class="labelOmission">18 posts and 1 image omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5714"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3103-5714">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/03/2022 (Fri) 23:45:41</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6abf35">6abf35</span></span>
+    
+    <a class="linkSelf" href="/site/res/3103.html#5714">No.</a>
+    <a class="linkQuote" href="/site/res/3103.html#q5714">5714</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">The board was claimed ten months ago. Whats left to talk about?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5725"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3103-5725">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/04/2022 (Sat) 09:45:42</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #50dd4e">50dd4e</span></span>
+    
+    <a class="linkSelf" href="/site/res/3103.html#5725">No.</a>
+    <a class="linkQuote" href="/site/res/3103.html#q5725">5725</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/3103.html#3103">&gt;&gt;3103</a>
+<span class="greenText">&gt;The state where Obama was born made Bestiality legal</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6272"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3103-6272">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 07:49:41</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5397c5">5397c5</span></span>
+    
+    <a class="linkSelf" href="/site/res/3103.html#6272">No.</a>
+    <a class="linkQuote" href="/site/res/3103.html#q6272">6272</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Ssssssssssssssssssssssssssssssssssssssssssssssssssssssssessssssssssssssssessswssssssssssssssssssssssssssssssssssssssssssssssssssssssssnnnnnnnnnnnnnnnnnnnnnnnnnnhnnnnnnj</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="6261"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7fb0be7bbac8f4ac783d519f1ca0f3f245195b8c121d2a29dd8fe23f5f35fa63.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">555.79 KB</span> <span class="dimensionLabel">800x534</span>
+  <a class="originalNameLink" href="/.media/7fb0be7bbac8f4ac783d519f1ca0f3f245195b8c121d2a29dd8fe23f5f35fa63.png" download="7fb0be7bbac8f4ac783d519f1ca0f3f245195b8c121d2a29dd8fe23f5f35fa63.png">7fb0be7bbac8f4ac783d519f1ca0f3f245195b8c121d2a29dd8fe23f5f35fa63.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7fb0be7bbac8f4ac783d519f1ca0f3f245195b8c121d2a29dd8fe23f5f35fa63.png" data-filewidth="800" data-fileheight="534" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="150" src="/.media/t_7fb0be7bbac8f4ac783d519f1ca0f3f245195b8c121d2a29dd8fe23f5f35fa63"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-6261">
+    <span class="labelSubject">does some of you fellow /boards/ take part in the ICUP ?</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/07/2022 (Thu) 16:07:42</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #920384">920384</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/6261.html#6261">No.</a>
+    <a class="linkQuote" href="/site/res/6261.html#q6261">6261</a>
+    <a class="linkReply" href="/site/res/6261.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Subject says it all.
+<a target="&#95;blank" href="https://anon.cafe/icup/">https://anon.cafe/icup/</a>
+Pic definitely not related.</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6262"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6261-6262">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/07/2022 (Thu) 16:10:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0f3ac7">0f3ac7</span></span>
+    
+    <a class="linkSelf" href="/site/res/6261.html#6262">No.</a>
+    <a class="linkQuote" href="/site/res/6261.html#q6262">6262</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Can the hispanic boards join?
+If so, id like to tell /arepa/ about it.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6265"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6261-6265">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/07/2022 (Thu) 16:48:05</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #93dba6">93dba6</span></span>
+    
+    <a class="linkSelf" href="/site/res/6261.html#6265">No.</a>
+    <a class="linkQuote" href="/site/res/6261.html#q6265">6265</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/6261.html#6262">&gt;&gt;6262</a>
+This, i&apos;ll ask in <a href="/hisrol/">&gt;&gt;&gt;/hisrol/</a> if they want to participate, same with <a href="/hispachan/">&gt;&gt;&gt;/hispachan/</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6266"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6261-6266">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/07/2022 (Thu) 17:49:12</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #fa5256">fa5256</span></span>
+    
+    <a class="linkSelf" href="/site/res/6261.html#6266">No.</a>
+    <a class="linkQuote" href="/site/res/6261.html#q6266">6266</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/6261.html#6261">&gt;&gt;6261</a>
+<a href="/ac/">&gt;&gt;&gt;/ac/</a> is already in and looks like they have most of the stuff done.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="6163"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7d2aa3b080ccd264365a4a8e45926e5810808baae17f48271ad9df0ecf045926.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">30.59 KB</span> <span class="dimensionLabel">638x360</span>
+  <a class="originalNameLink" href="/.media/7d2aa3b080ccd264365a4a8e45926e5810808baae17f48271ad9df0ecf045926.jpg" download="image.jpg">image.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7d2aa3b080ccd264365a4a8e45926e5810808baae17f48271ad9df0ecf045926.jpg" data-filewidth="638" data-fileheight="360" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_7d2aa3b080ccd264365a4a8e45926e5810808baae17f48271ad9df0ecf045926"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-6163">
+    <span class="labelSubject">Please change your board re-claiming approach or we migrate our communities out of 8chan.moe</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 03:00:38</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #a9123e">a9123e</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/6163.html#6163">No.</a>
+    <a class="linkQuote" href="/site/res/6163.html#q6163">6163</a>
+    <a class="linkReply" href="/site/res/6163.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">I shouldn&apos;t have to re-login when I&apos;m still logged in just to prevent you from handing over the board to some troll who nukes everything. Instead of discreetly handing away the board over without providing any notice to the current BO (most of us use throwaway emails) or community to a potential board nuker, you should first actually post a thread with your admin/mod tag on that board notifying the community that someone has claimed the board and the BO has one week to re-login. For example another board /loomis/ was recently sabotaged by a new board owner (the original one was always there and posted frequently and did mod actions, but didn&apos;t re-login) who proceded delete several threads. I on principle will refuse to re-login to my own board, because that&apos;s a really stupid system you have where a BO who&apos;s still logged in can get his board stolen by a board nuker because you&apos;re not willing to make any effort to actually check whether the board even needs a new BO or not and post a notification on the board about a board claim. You are aware that you have several rivals (anoncafe, zzzchan et al.) from your childish webring drama who will exploit this process and nuke boards to bring them over to their own sites, right? If you don&apos;t change this broken policy within a week then I&apos;ll have you know that I and a few other board owners will be migrating our boards out of 8chan.moe, we all know how to do server and site administration, configure BIND9 DNS servers, find the cheapest and best VPS &amp; domain registration deals (e.g. there are various excellent DMCA-ignoring pro-free-speech VPS providers based in Russia for example, not just your basic bitch pro-censorship globohomo Western VPS providers that you normies settle for), mask domain registration and hide identity with Bitcoin payments, set up reverse proxies, PHP programming (Lynxchan is an undocumented overengineered ANTI-MODULAR piece of trash and Node has ZERO advantage over PHP, the former of which requires a fucking server restart just to modify some code, what a garbage server runtime environment and language, I pity you having to deal with that shit, no wonder it takes days for you to figure out how to fix a simple thumbnail problem on the front-end lmao because of your piece of trash imageboard software that is hard to test and overhyped language for hipsters and corporate yuppies which by the way was never even designed for backend development but for client-side scripting, even the Node creator Ryan Dahl admitted Node was a huge mistake and is promoting Deno as a replacement), MySQL tuning, locking down several points of entry/directories with nginx for security hardening, etc. etc., so don&apos;t think we&apos;re just puffing hot air.</div>
+  
+  
+  
+  <div class="labelOmission">8 posts omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6188"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6163-6188">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 22:10:53</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #dd63b5">dd63b5</span></span>
+    
+    <a class="linkSelf" href="/site/res/6163.html#6188">No.</a>
+    <a class="linkQuote" href="/site/res/6163.html#q6188">6188</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/6163.html#6169">&gt;&gt;6169</a>
+Regardless of the rest of the arguments his request is reasonable, It wouldn&apos;t cost anything to just make a post on the board that&apos;s gonna be reassigned in case the BO is around but hasn&apos;t logged into his account in some time. I&apos;m a BO myself and although I have no relation to OP I also pretty much only log in so that my board isn&apos;t marked as abandoned. Reports are a non issue because the activity is small enough where I can read everything that&apos;s posted and log into my BO account if something needs to get done, however I think I can count the times where that&apos;s been needed with the fingers in my hand. I believe this may be the same for other boards on the site since in general, boards other than /v/ (and I guess the newest refugees) barely get any activity. It wasn&apos;t that much of an issue before I started browsing through tor since then the account would stay logged in but now I have to explicitly do it every once in a while.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6230"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6163-6230">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 10:37:47</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #b49616">b49616</span></span>
+    
+    <a class="linkSelf" href="/site/res/6163.html#6230">No.</a>
+    <a class="linkQuote" href="/site/res/6163.html#q6230">6230</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><span class="greenText">&gt;can&apos;t even login once per month</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6247"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6163-6247">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/06/2022 (Wed) 11:29:47</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #10ffd1">10ffd1</span></span>
+    
+    <a class="linkSelf" href="/site/res/6163.html#6247">No.</a>
+    <a class="linkQuote" href="/site/res/6163.html#q6247">6247</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">So you couldn&apos;t even be arsed to login, lost your former dead board fair and square and only throw a bitch fit when someone claims it and deletes one specific thread? You clearly cared enough to check that thread but not to login which takes less than a minute.
+Fucking disgusting that you got the board handed back to you when you are a lazy motherfucker who won&apos;t do jack shit with it.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="5978"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">460.04 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a.jpg" download="Herbert West Re-Animator.jpg">Herbert West Re-Animator.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a.jpg" data-filewidth="1280" data-fileheight="720" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b5a5ab869e8572f511f1b068676d58ab5aa2325a5ef5cc40d4e17c65e29e11ed.swf"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">2.49 MB</span> 
+  <a class="originalNameLink" href="/.media/b5a5ab869e8572f511f1b068676d58ab5aa2325a5ef5cc40d4e17c65e29e11ed.swf" download="Marissa Stole the Precious Thing.swf">Marissa Stole the Precious Thing.swf</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b5a5ab869e8572f511f1b068676d58ab5aa2325a5ef5cc40d4e17c65e29e11ed.swf"   data-filemime="application/x-shockwave-flash">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="125" height="125" src="/genericThumb.png"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5978">
+    <span class="labelSubject">LynxChan + Aleph 2.8 Changelog: Re-Animated Edition</span>
+    <a class="linkName  noEmailName" >Codexx</a>
+     <span class="labelRole">Root</span>
+    <span class="labelCreated">06/28/2022 (Tue) 03:31:18</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #cca955">cca955</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/5978.html#5978">No.</a>
+    <a class="linkQuote" href="/site/res/5978.html#q5978">5978</a>
+    <a class="linkReply" href="/site/res/5978.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/5978.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">We&apos;re bringing the dead back to life with this update! As usual, please leave <em>bug reports</em> and <em>new feature suggestions</em> in this thread. It will be the designated tech support and changelog thread until the next major release.
+See previous thread: <a class="quoteLink" href="/site/res/4917.html#4917">&gt;&gt;4917</a>
+
+<span class="redText">Features</span>
+Added Flash embed support; We have created <a href="/f/">&gt;&gt;&gt;/f/</a> as a board dedicated to SWF files
+Added three new themes to the dropdown, Hispita, Hispaperro, and HispaSexy. Additional Hispachan themes are available in the /.static/css/ directory.
+Mobile view now supports slide-out menus for navbar and side catalog. Try swiping!
+Modals should now work better on mobile view
+Reply previews are now disabled on mobile view
+Added smooth-scroll option
+Added three new themes to the dropdown and four new hidden themes
+Pasted images now default to their SHA256 hash instead of &quot;ClipboardImage&quot;
+Spoilering images, editing posts, etc should no longer mark posts as deleted when using websockets
+Tor users will now receive an ID based on their bypass
+Board URIs can now be changed
+Threadwise r9k is now available and can be enabled by board owners
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/site/res/5978.html#5978">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">80 posts and 36 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6231"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6231">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 10:40:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #54a50c">54a50c</span></span>
+    
+    <a class="linkSelf" href="/site/res/5978.html#6231">No.</a>
+    <a class="linkQuote" href="/site/res/5978.html#q6231">6231</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">About that thumbnail enlarge on click issue, do I imagine it or it was fixed temporarily 1-2 days ago?
+idk I remember the feature work again but it revert again. could be mistaken.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6232"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6232">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 15:56:09</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2e572d">2e572d</span></span>
+    
+    <a class="linkSelf" href="/site/res/5978.html#6232">No.</a>
+    <a class="linkQuote" href="/site/res/5978.html#q6232">6232</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+<a class="quoteLink" href="/site/res/5978.html#6030">&gt;&gt;6030</a>
+<a class="quoteLink" href="/site/res/5978.html#6180">&gt;&gt;6180</a>
+I&apos;ve been using this:
+<span class="blockCode"><code><span class="hljs-selector-class">.innerOP</span> <span class="hljs-selector-class">.uploadCell</span><span class="hljs-selector-pseudo">:not</span>(.expandedCell) {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+}</code></span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6237"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6237">
+    
+    <a class="linkName  noEmailName" >Cheets</a>
+     
+    <span class="labelCreated">07/06/2022 (Wed) 00:19:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #689105">689105</span></span>
+    
+    <a class="linkSelf" href="/site/res/5978.html#6237">No.</a>
+    <a class="linkQuote" href="/site/res/5978.html#q6237">6237</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6214">&gt;&gt;6214</a>
+thank you for the reply it is appreciated. Be well, I will try your fix.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="1519"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/abb95687a8580f95456d0bc915b8d3c9ab57e22a72c4b5b8dd6c076be7f0cf0e.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">54.44 KB</span> <span class="dimensionLabel">1024x1024</span>
+  <a class="originalNameLink" href="/.media/abb95687a8580f95456d0bc915b8d3c9ab57e22a72c4b5b8dd6c076be7f0cf0e.png" download="49a790fee50adb44f692680177e9edabe85eef99250fe4c21bb0c39cd8ba64da.png">49a790fee50adb44f692680177e9edabe85eef99250fe4c21bb0c39cd8ba64da.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/abb95687a8580f95456d0bc915b8d3c9ab57e22a72c4b5b8dd6c076be7f0cf0e.png" data-filewidth="1024" data-fileheight="1024" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_abb95687a8580f95456d0bc915b8d3c9ab57e22a72c4b5b8dd6c076be7f0cf0e"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-1519">
+    <span class="labelSubject">8chan Broadcasting Service</span>
+    <a class="linkName  noEmailName" >Codexx</a>
+     <span class="labelRole">Root</span>
+    <span class="labelCreated">11/17/2020 (Tue) 09:20:00</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #3ae7e9">3ae7e9</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/1519.html#1519">No.</a>
+    <a class="linkQuote" href="/site/res/1519.html#q1519">1519</a>
+    <a class="linkReply" href="/site/res/1519.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/1519.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">This is the official support thread for <a target="&#95;blank" href="https://watch.8ch.moe/">https://watch.8ch.moe/</a>
+
+<span class="redText">What is this site?</span>
+A place for anons to stream anything they&apos;d like.
+You can stream any video you&apos;d like, and users can join chat anonymously.
+Streams can also be embedded elsewhere for easy sharing.
+Chat is built around XMPP, so you can connect with any Jabber client.
+Streams are generic RTMP streams, so you can connect and view them directly. For example, you can watch a stream in VLC instead of on the website.
+
+<span class="redText">What can&apos;t it do?</span>
+So far, no emotes/images in the chat. This should be available soon.
+Theme support is poor. The site can have one global theme. User-selectable themes and channel-specific CSS coming soon.
+The site supports uploading videos and storing clips, but these features are currently disabled. If there&apos;s strong interest, I can make it available, but I&apos;d need a way to pay for storage space.
+
+<span class="redText">Why should I use this?</span>
+The goal is to provide anons with an easy, convenient way to get a media stream. Other sites actively police uploads to enforce &quot;community guidelines&quot;. It can be inconvenient to share some media as a result.
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/site/res/1519.html#1519">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">186 posts and 46 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5729"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-1519-5729">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/05/2022 (Sun) 02:24:43</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9ade59">9ade59</span></span>
+    
+    <a class="linkSelf" href="/site/res/1519.html#5729">No.</a>
+    <a class="linkQuote" href="/site/res/1519.html#q5729">5729</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Another suggestion. When the streams buffer the selected volume is reset to max, often this can be deafening. I&apos;d like for it to save the last set volume if it buffers.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5801"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-1519-5801">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/12/2022 (Sun) 18:04:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f49a4f">f49a4f</span></span>
+    
+    <a class="linkSelf" href="/site/res/1519.html#5801">No.</a>
+    <a class="linkQuote" href="/site/res/1519.html#q5801">5801</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Some one, whether themselves or a bot, was spamming the chat during the Xbox stream: <a target="&#95;blank" href="https://watch.8ch.moe/view/26985367-f948-4c5a-8da9-bc85a4cdb21d/">https://watch.8ch.moe/view/26985367-f948-4c5a-8da9-bc85a4cdb21d/</a>
+Could there be better tolls to prevent this?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6229"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-1519-6229">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 08:59:38</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #533c7b">533c7b</span></span>
+    
+    <a class="linkSelf" href="/site/res/1519.html#6229">No.</a>
+    <a class="linkQuote" href="/site/res/1519.html#q6229">6229</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Can we have private mode?
+unindexed streams?</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="5682"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e38e410f214440480b8a464047581f25c39e52848572a0f26883f485a02e680b.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">395.40 KB</span> <span class="dimensionLabel">674x598</span>
+  <a class="originalNameLink" href="/.media/e38e410f214440480b8a464047581f25c39e52848572a0f26883f485a02e680b.png" download="161866907335.png">161866907335.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e38e410f214440480b8a464047581f25c39e52848572a0f26883f485a02e680b.png" data-filewidth="674" data-fileheight="598" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="200" src="/.media/t_e38e410f214440480b8a464047581f25c39e52848572a0f26883f485a02e680b"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5682">
+    <span class="labelSubject">Hilo /M/eta para hisparefugio´s</span>
+    <a class="linkName  noEmailName" >Anónimo</a>
+     
+    <span class="labelCreated">06/02/2022 (Thu) 03:40:44</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #531752">531752</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/5682.html#5682">No.</a>
+    <a class="linkQuote" href="/site/res/5682.html#q5682">5682</a>
+    <a class="linkReply" href="/site/res/5682.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/5682.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hola a todos los negros de <a href="/hispachan/">&gt;&gt;&gt;/hispachan/</a> <a href="/hisrol/">&gt;&gt;&gt;/hisrol/</a> <a href="/arepa/">&gt;&gt;&gt;/arepa/</a> y demas tablones hispanos. Los convoco a aqui para organizar, estar comunicados y estar juntos. Hablando con otros anons todos los tablones creados por el cierrre de chispa (los antes mencionados) tiene administradores diferente y tendran mods diferentes. Esta es la primeras señales que como comunidad nos dividiremos, convoco a los demas dueños de sus tablones a que tenga este hilo en favoritos ya que mi deseo es estar unidos para ser fuertes y seria aqui donde tanto los dueños y los usuarios de los tablones hispanos podamos discutir, solucionar, crear, pensar proyectos y estar unidos. 
+<span class="greenText">&gt;Aldo</span>
+Tambien pueden reportar usuarios malos que esten entre los tablones hispanos y entre dueños y mods reportar avarputos para poder juntos detenerlos. 
+
+Desde /hispachan/ nos comunicamos para mas en chisparefugio(@) gmail.(com) pero por igual usemos este hilo para la comunicacion principal</div>
+  
+  
+  
+  <div class="labelOmission">110 posts and 13 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6199"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5682-6199">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 18:07:01</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9095a2">9095a2</span></span>
+    
+    <a class="linkSelf" href="/site/res/5682.html#6199">No.</a>
+    <a class="linkQuote" href="/site/res/5682.html#q6199">6199</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5682.html#6196">&gt;&gt;6196</a>
+El JavaScript generalmente se añade a pedido en el hilo meta en sticky, pero envíale un correo a codexx a ver si te habilita para que puedas subir el JS personalizado directamente desde tu panel.
+<span class="greenText">&gt;donde puedo unirme al programa para trasladar hilos?</span>
+Enviaron un correo a todos los DTs, vas a tener que revisar en tu bandeja de entrada. Si no te llegó, contáctate directamente con el root.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6203"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5682-6203">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 21:17:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d2640e">d2640e</span></span>
+    
+    <a class="linkSelf" href="/site/res/5682.html#6203">No.</a>
+    <a class="linkQuote" href="/site/res/5682.html#q6203">6203</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5682.html#6196">&gt;&gt;6196</a>
+Envíame un mensaje usando tu cuenta de correo electrónico verificada, o haz un post con capcode en /av/ y enlázalo aquí.
+Codexx (@) cock (punto) li</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6205"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5682-6205">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 02:01:30</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #b68272">b68272</span></span>
+    
+    <a class="linkSelf" href="/site/res/5682.html#6205">No.</a>
+    <a class="linkQuote" href="/site/res/5682.html#q6205">6205</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/94e67e9daa301614e544e7694e31c377ce3dfefc8e13f6feea50f3e55c5fc641.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">9.28 KB</span> <span class="dimensionLabel">605x113</span>
+  <a class="originalNameLink" href="/.media/94e67e9daa301614e544e7694e31c377ce3dfefc8e13f6feea50f3e55c5fc641.png" download="Screenshot&#95;14.png">Screenshot&#95;14.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/94e67e9daa301614e544e7694e31c377ce3dfefc8e13f6feea50f3e55c5fc641.png" data-filewidth="605" data-fileheight="113" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="42" src="/.media/t_94e67e9daa301614e544e7694e31c377ce3dfefc8e13f6feea50f3e55c5fc641"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5682.html#6203">&gt;&gt;6203</a>
+Done</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="6052"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/3d62907c7648463d2a29beb0fcac3602485cc017a3ad9079fe0ca4a15ef0fba3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">325.53 KB</span> <span class="dimensionLabel">620x365</span>
+  <a class="originalNameLink" href="/.media/3d62907c7648463d2a29beb0fcac3602485cc017a3ad9079fe0ca4a15ef0fba3.png" download="stiahnuť - 2022-06-29T090403.297.png">stiahnuť - 2022-06-29T090403.297.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/3d62907c7648463d2a29beb0fcac3602485cc017a3ad9079fe0ca4a15ef0fba3.png" data-filewidth="620" data-fileheight="365" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="132" src="/.media/t_3d62907c7648463d2a29beb0fcac3602485cc017a3ad9079fe0ca4a15ef0fba3"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-6052">
+    <span class="labelSubject">Why the fuck did you ruín the catalog view for mobile?</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 17:01:01</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #a33701">a33701</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/6052.html#6052">No.</a>
+    <a class="linkQuote" href="/site/res/6052.html#q6052">6052</a>
+    <a class="linkReply" href="/site/res/6052.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">I don&apos;t need to say more do I? Pic unrelated.</div>
+  
+  
+  
+  <div class="labelOmission">12 posts and 3 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="6122"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6052-6122">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 17:37:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a33701">a33701</span></span>
+    
+    <a class="linkSelf" href="/site/res/6052.html#6122">No.</a>
+    <a class="linkQuote" href="/site/res/6052.html#q6122">6122</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/6052.html#6110">&gt;&gt;6110</a>
+Then it might be on mobile only.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6123"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6052-6123">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 17:48:26</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d378e3">d378e3</span></span>
+    
+    <a class="linkSelf" href="/site/res/6052.html#6123">No.</a>
+    <a class="linkQuote" href="/site/res/6052.html#q6123">6123</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">The catalog page uses JavaScript to provide sorting and search functionality. Previously, the way the page was built was preventing thumbnails from lazy-loading and had a number of other small issues. The new JavaScript appears to have an issue where it takes a moment to reload, and on mobile it is sometimes failing to reload.
+It&apos;s a known issue and we are working on it. On mobile, you can try using the side catalog in the meantime as a workaround.
+
+For the fastest response, please keep bug reports in the latest changelog thread. It is the thread checked most often.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6158"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-6052-6158">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 23:27:39</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #bd4ceb">bd4ceb</span></span>
+    
+    <a class="linkSelf" href="/site/res/6052.html#6158">No.</a>
+    <a class="linkQuote" href="/site/res/6052.html#q6158">6158</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/34a34008d1946d21ec77d84314f7c6c83ddbdc4bd405da0d06a4760dde1304ce.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.63 MB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/34a34008d1946d21ec77d84314f7c6c83ddbdc4bd405da0d06a4760dde1304ce.png" download="Captura de pantalla (21).png">Captura de pantalla (21).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/34a34008d1946d21ec77d84314f7c6c83ddbdc4bd405da0d06a4760dde1304ce.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_34a34008d1946d21ec77d84314f7c6c83ddbdc4bd405da0d06a4760dde1304ce"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/cbc9d357c109df2ab238d6420ebb00996d5ee215eba32bac8c617f5fe71ebef6.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.43 MB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/cbc9d357c109df2ab238d6420ebb00996d5ee215eba32bac8c617f5fe71ebef6.png" download="Captura de pantalla (23).png">Captura de pantalla (23).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/cbc9d357c109df2ab238d6420ebb00996d5ee215eba32bac8c617f5fe71ebef6.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_cbc9d357c109df2ab238d6420ebb00996d5ee215eba32bac8c617f5fe71ebef6"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ec1fbb159649bb2a9da27a65c6b10f6d70d973ef5b46df7b10e45bded4558a49.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.50 MB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/ec1fbb159649bb2a9da27a65c6b10f6d70d973ef5b46df7b10e45bded4558a49.png" download="Captura de pantalla (22).png">Captura de pantalla (22).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ec1fbb159649bb2a9da27a65c6b10f6d70d973ef5b46df7b10e45bded4558a49.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_ec1fbb159649bb2a9da27a65c6b10f6d70d973ef5b46df7b10e45bded4558a49"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/0135573ecc79ba71d4423f7bfbf252d9188999fd6f3e977c4b367096b4044678.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.56 MB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/0135573ecc79ba71d4423f7bfbf252d9188999fd6f3e977c4b367096b4044678.png" download="Captura de pantalla (20).png">Captura de pantalla (20).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/0135573ecc79ba71d4423f7bfbf252d9188999fd6f3e977c4b367096b4044678.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_0135573ecc79ba71d4423f7bfbf252d9188999fd6f3e977c4b367096b4044678"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/793c97c5cd2de89d021a52ec5dcb5acb0e36f57c08f735b2730eace6dffd22df.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.61 MB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/793c97c5cd2de89d021a52ec5dcb5acb0e36f57c08f735b2730eace6dffd22df.png" download="Captura de pantalla (24).png">Captura de pantalla (24).png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/793c97c5cd2de89d021a52ec5dcb5acb0e36f57c08f735b2730eace6dffd22df.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_793c97c5cd2de89d021a52ec5dcb5acb0e36f57c08f735b2730eace6dffd22df"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/6052.html#6097">&gt;&gt;6097</a>
+For me, it&apos;s Qinqiu.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="3004"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/a3a1f16763148bcda50c4783350b76816684eeb949c77c4ec985673c25418420.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">955.54 KB</span> <span class="dimensionLabel">1367x1068</span>
+  <a class="originalNameLink" href="/.media/a3a1f16763148bcda50c4783350b76816684eeb949c77c4ec985673c25418420.jpg" download="Sinon Yoko.jpeg">Sinon Yoko.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/a3a1f16763148bcda50c4783350b76816684eeb949c77c4ec985673c25418420.jpg" data-filewidth="1367" data-fileheight="1068" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="176" src="/.media/t_a3a1f16763148bcda50c4783350b76816684eeb949c77c4ec985673c25418420"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-3004">
+    <span class="labelSubject">A Brief Reminder of Fallback Measures</span>
+    <a class="linkName  noEmailName" >Acid</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/05/2021 (Sat) 04:38:27</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #fc16f1">fc16f1</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/3004.html#3004">No.</a>
+    <a class="linkQuote" href="/site/res/3004.html#q3004">3004</a>
+    <a class="linkReply" href="/site/res/3004.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/3004.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Greetings.
+
+With the recent drama passed, I have had some anons contacting me asking if there is a plan or plans on how the site would deal with any sort of major trouble or deplatforming event.  Many of you who were here during the &quot;Esther&quot; era already know that we have multiple fallback setups, but it was suggested to me to make a post reminding the oldfags about them and informing the newfags that they exist.  
+
+If 8moe should go down for a significant time (more than a couple hours) any reason, keep an eye on the site&apos;s Twitter and the meta boards of the other imageboard sites.  We&apos;ll bring updates to the inevitable topics.
+
+<span class="greenText">&gt;If the main domain should be deplatformed</span>
+<span class="pinkText">&lt;Use the backup domain at <a target="&#95;blank" href="https://8chan.se">https://8chan.se</a></span>
+
+<span class="greenText">&gt;If THAT somehow gets taken down, which is unlikely as its handled by the guys who handle TPB, we will spin up the <a target="&#95;blank" href="https://8chan.cc">https://8chan.cc</a> domain from a Chinese &quot;bulletproof&quot; registrar.</span>
+
+<span class="greenText">&gt;If we lose Cloudflare, the most likely weakpoint in our current setup</span>
+<span class="pinkText">&lt;We will switch over to the host&apos;s in house CDN for DDoS protection.  The site will be down for a few hours to a day as the DNS records update, and we&apos;ll have to spend a day or two adjusting some settings.  Not a big deal.</span>
+
+<span class="greenText">&gt;Its the end of the world and all the domains got yanked.</span>
+<span class="pinkText">&lt;Access us via the .onion link and Tor Browser/Brave/Dissenter, or visit the proxies on Redchannit.  We can spin up tor gateways on redchannit.net, .org, .com, and .xyz on short notice.</span>
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/site/res/3004.html#3004">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">57 posts and 5 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5964"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3004-5964">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/27/2022 (Mon) 06:10:13</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7fb34c">7fb34c</span></span>
+    
+    <a class="linkSelf" href="/site/res/3004.html#5964">No.</a>
+    <a class="linkQuote" href="/site/res/3004.html#q5964">5964</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/3004.html#3006">&gt;&gt;3006</a>
+<span class="greenText">&gt;Principles sound nice and all, but physical threats are a true test of conviction, and I doubt you fags would think this site is worth your very lives, no matter how much time and money you put into it.</span>
+Well, it&apos;s like Eric Cartman says: <em>&quot;It is easy to be a ninja when everything is in your favor, but it is in the difficult moments that you show your conviction.&quot;</em></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5973"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3004-5973">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 00:36:24</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #42e9b3">42e9b3</span></span>
+    
+    <a class="linkSelf" href="/site/res/3004.html#5973">No.</a>
+    <a class="linkQuote" href="/site/res/3004.html#q5973">5973</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">someone link the webring that&apos;s where every other board took off to right?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5974"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-3004-5974">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 00:39:06</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #db0044">db0044</span></span>
+    
+    <a class="linkSelf" href="/site/res/3004.html#5974">No.</a>
+    <a class="linkQuote" href="/site/res/3004.html#q5974">5974</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/3004.html#5973">&gt;&gt;5973</a>
+<span class="greenText">&gt;every other board</span>
+Anything in specific?</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="5865"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/23f20b2ea2eaed1dc02f1c54d000c642be39993122d84903384232bc41253309.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">169.37 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/23f20b2ea2eaed1dc02f1c54d000c642be39993122d84903384232bc41253309.png" download="8kun lang filter.png">8kun lang filter.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/23f20b2ea2eaed1dc02f1c54d000c642be39993122d84903384232bc41253309.png" data-filewidth="1280" data-fileheight="720" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_23f20b2ea2eaed1dc02f1c54d000c642be39993122d84903384232bc41253309"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5865">
+    <span class="labelSubject">Filter boards by language</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/17/2022 (Fri) 15:14:49</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #021c61">021c61</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/5865.html#5865">No.</a>
+    <a class="linkQuote" href="/site/res/5865.html#q5865">5865</a>
+    <a class="linkReply" href="/site/res/5865.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">It would be interesting to have this option in <a target="&#95;blank" href="https://8chan.moe/boards.js">https://8chan.moe/boards.js</a> as 8kun has (see attached image).
+Especially because it could be a complement to what is discussed in <a class="quoteLink" href="/hispachan/res/11762.html#11762">&gt;&gt;&gt;/hispachan/11762</a> and easily find all the boards in Spanish that have been created lately.</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5875"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5865-5875">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/19/2022 (Sun) 11:29:22</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #226ebd">226ebd</span></span>
+    
+    <a class="linkSelf" href="/site/res/5865.html#5875">No.</a>
+    <a class="linkQuote" href="/site/res/5865.html#q5875">5875</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5865.html#5865">&gt;&gt;5865</a>
+Seconding
+<span class="greenText">&gt;t. pastafag</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5914"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5865-5914">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/20/2022 (Mon) 21:05:49</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #314b9a">314b9a</span></span>
+    
+    <a class="linkSelf" href="/site/res/5865.html#5914">No.</a>
+    <a class="linkQuote" href="/site/res/5865.html#q5914">5914</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5865.html#5865">&gt;&gt;5865</a>
+is there an Eastern European slav site or image board that isn&apos;t kremlin owned or 4chan tier where I could shitpost? would rather listen to an Serb and Bulgarian argue then read spic shit at least it&apos;s funny reading it in broken English, spics aren&apos;t even funny they just fing retarded boring shit.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5928"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5865-5928">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/22/2022 (Wed) 05:34:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #db76c0">db76c0</span></span>
+    
+    <a class="linkSelf" href="/site/res/5865.html#5928">No.</a>
+    <a class="linkQuote" href="/site/res/5865.html#q5928">5928</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5865.html#5914">&gt;&gt;5914</a>
+<span class="greenText">&gt;other slave nation too poor since separated from USSR that they can&apos;t afford imageboard</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="5806"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9da468d363bd269be3c5ebf8eb81457d4eea1304a6179dc4cc8a630254b3369c.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">16.98 KB</span> <span class="dimensionLabel">782x157</span>
+  <a class="originalNameLink" href="/.media/9da468d363bd269be3c5ebf8eb81457d4eea1304a6179dc4cc8a630254b3369c.png" download="12312111.png">12312111.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9da468d363bd269be3c5ebf8eb81457d4eea1304a6179dc4cc8a630254b3369c.png" data-filewidth="782" data-fileheight="157" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="45" src="/.media/t_9da468d363bd269be3c5ebf8eb81457d4eea1304a6179dc4cc8a630254b3369c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5806">
+    <span class="labelSubject">How much it takes to receive the confirmation e-mail?</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/13/2022 (Mon) 04:42:02</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #e6211f">e6211f</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/5806.html#5806">No.</a>
+    <a class="linkQuote" href="/site/res/5806.html#q5806">5806</a>
+    <a class="linkReply" href="/site/res/5806.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Because I remember asking for it months ago, and I never received it, and I double checked the spam section.</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5815"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5806-5815">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/13/2022 (Mon) 17:06:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #45bae1">45bae1</span></span>
+    
+    <a class="linkSelf" href="/site/res/5806.html#5815">No.</a>
+    <a class="linkQuote" href="/site/res/5806.html#q5815">5815</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">It&apos;s usually inmediately, which mail are you using?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5821"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5806-5821">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/14/2022 (Tue) 00:59:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #e6211f">e6211f</span></span>
+    
+    <a class="linkSelf" href="/site/res/5806.html#5821">No.</a>
+    <a class="linkQuote" href="/site/res/5806.html#q5821">5821</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5806.html#5815">&gt;&gt;5815</a>
+Outlook (hotmail.com), should I use another?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5824"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5806-5824">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/14/2022 (Tue) 09:55:28</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #524254">524254</span></span>
+    
+    <a class="linkSelf" href="/site/res/5806.html#5824">No.</a>
+    <a class="linkQuote" href="/site/res/5806.html#q5824">5824</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5806.html#5821">&gt;&gt;5821</a>
+<span class="greenText">&gt;Outlook (hotmail.com)</span>
+<span class="greenText">&gt;should I use another?</span>
+yes</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="5577"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c861e7510b2ea749c068d1380c15cf6399c26e8b5e898e33ad34d7e7821facb1.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">110.66 KB</span> <span class="dimensionLabel">800x910</span>
+  <a class="originalNameLink" href="/.media/c861e7510b2ea749c068d1380c15cf6399c26e8b5e898e33ad34d7e7821facb1.jpg" download="Imoto-chan.jpg">Imoto-chan.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c861e7510b2ea749c068d1380c15cf6399c26e8b5e898e33ad34d7e7821facb1.jpg" data-filewidth="800" data-fileheight="910" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="198" height="225" src="/.media/t_c861e7510b2ea749c068d1380c15cf6399c26e8b5e898e33ad34d7e7821facb1"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5577">
+    <span class="labelSubject">Replying</span>
+    <a class="linkName  noEmailName" >Imoto-chan</a>
+     
+    <span class="labelCreated">05/22/2022 (Sun) 06:49:43</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/5577.html#5577">No.</a>
+    <a class="linkQuote" href="/site/res/5577.html#q5577">5577</a>
+    <a class="linkReply" href="/site/res/5577.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Dumb but how do you reply to people&apos;s comments on your post?
+And how do you keep track of your posts on who replies and not?</div>
+  
+  
+  
+  <div class="labelOmission">1 post omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5586"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5577-5586">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">05/22/2022 (Sun) 23:21:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    <a class="linkSelf" href="/site/res/5577.html#5586">No.</a>
+    <a class="linkQuote" href="/site/res/5577.html#q5586">5586</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5577.html#5579">&gt;&gt;5579</a>
+Thank you.
+And backlinks where is it located?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5600"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5577-5600">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">05/24/2022 (Tue) 07:27:01</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a5fb78">a5fb78</span></span>
+    
+    <a class="linkSelf" href="/site/res/5577.html#5600">No.</a>
+    <a class="linkQuote" href="/site/res/5577.html#q5600">5600</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/0f5ec5e8235e7035184497c3eac09d234966ae2803698630abe3c3024dd7ba26.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">4.88 KB</span> <span class="dimensionLabel">245x57</span>
+  <a class="originalNameLink" href="/.media/0f5ec5e8235e7035184497c3eac09d234966ae2803698630abe3c3024dd7ba26.png" download="Screenshot&#95;20220524&#95;002629.png">Screenshot&#95;20220524&#95;002629.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/0f5ec5e8235e7035184497c3eac09d234966ae2803698630abe3c3024dd7ba26.png" data-filewidth="245" data-fileheight="57" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="52" src="/.media/t_0f5ec5e8235e7035184497c3eac09d234966ae2803698630abe3c3024dd7ba26"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5577.html#5586">&gt;&gt;5586</a>
+By default, at the top. If you want them at the bottom then you can set that in the Settings menu.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5774"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5577-5774">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/09/2022 (Thu) 16:26:36</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #944f60">944f60</span></span>
+    
+    <a class="linkSelf" href="/site/res/5577.html#5774">No.</a>
+    <a class="linkQuote" href="/site/res/5577.html#q5774">5774</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5577.html#5577">&gt;&gt;5577</a>
+Cute anime girl</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="site" id="1651"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2a408e5360f8d1a28cfccc7cf1b269bbd06c615f2666a254134b46c03d71ffe7.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">130.22 KB</span> <span class="dimensionLabel">500x507</span>
+  <a class="originalNameLink" href="/.media/2a408e5360f8d1a28cfccc7cf1b269bbd06c615f2666a254134b46c03d71ffe7.jpg" download="158a6296ab0ac77864ec93d802f7d4078b6f725cd25945a7a802a1192e740385.jpg">158a6296ab0ac77864ec93d802f7d4078b6f725cd25945a7a802a1192e740385.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2a408e5360f8d1a28cfccc7cf1b269bbd06c615f2666a254134b46c03d71ffe7.jpg" data-filewidth="500" data-fileheight="507" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="222" height="225" src="/.media/t_2a408e5360f8d1a28cfccc7cf1b269bbd06c615f2666a254134b46c03d71ffe7"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-1651">
+    <span class="labelSubject">Board Owner Support and Migration Requests</span>
+    <a class="linkName  noEmailName" >Codexx</a>
+     <span class="labelRole">Root</span>
+    <span class="labelCreated">12/13/2020 (Sun) 05:27:09</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #abfacc">abfacc</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/site/res/1651.html#1651">No.</a>
+    <a class="linkQuote" href="/site/res/1651.html#q1651">1651</a>
+    <a class="linkReply" href="/site/res/1651.html">[Reply]</a>
+    <a class="linkLast" href="/site/last/1651.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">This thread is for Board Owners to get support for running their boards.
+
+<span class="redText">How do I create a board?</span>
+First, you should see if the board you want to create already exists. Some boards may be marked abandoned, in which case you can put in a board claim.
+If the board doesn&apos;t exist, you can create one yourself. Create an account or log-in by visiting the lightning bolt symbol next to the CSS dropdown at the top of the page. Once there, make sure you have a verified e-mail address. Then, you can scroll to the bottom of the page and find the board creation section. Enter the URI, name, and a description. After you fill out the captcha and submit, you&apos;ll have your very own board.
+
+<span class="redText">How do I claim an existing board?</span>
+A board will be marked abandoned if the Board Owner has not logged in for a few weeks. Sometimes, this indicates they&apos;ve gone missing. If the BO cannot be reached then we will hand the board over to a willing replacement.
+We recommend sending an e-mail to the administration address of 8moeadmin@protonmail.com. Please include your username on the site and the board you are requesting.
+
+<span class="redText">How do I create custom CSS?</span>
+There is an upload field on the board settings page for custom CSS. Upload your file there.
+Custom board assets such as background images, mascots, icons, music, etc should be posted in the appropriate thread on <a href="/res/">&gt;&gt;&gt;/res/</a>. This board is for board assets only. This way, you don&apos;t need to clutter your board with a pinned asset, or worry an uploaded image will fall off the site.
+
+<span class="redText">How do I create custom JavaScript?</span>
+This feature is currently disabled. Soon, you&apos;ll be able to request custom JS be activated for your board. You can leave that request here.
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/site/res/1651.html#1651">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">313 posts and 57 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5731"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-1651-5731">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/05/2022 (Sun) 10:10:02</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #03fa35">03fa35</span></span>
+    
+    <a class="linkSelf" href="/site/res/1651.html#5731">No.</a>
+    <a class="linkQuote" href="/site/res/1651.html#q5731">5731</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/a39c8485068c19a12aa11d2c98c3050dd938de5ce48cffdced4ae5765000c739.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">38.71 KB</span> <span class="dimensionLabel">1524x489</span>
+  <a class="originalNameLink" href="/.media/a39c8485068c19a12aa11d2c98c3050dd938de5ce48cffdced4ae5765000c739.png" download="i&apos;m so paranoid RN.png">i&apos;m so paranoid RN.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/a39c8485068c19a12aa11d2c98c3050dd938de5ce48cffdced4ae5765000c739.png" data-filewidth="1524" data-fileheight="489" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="72" src="/.media/t_a39c8485068c19a12aa11d2c98c3050dd938de5ce48cffdced4ae5765000c739"></a>
+</details>
+</figure></div>
+  <div class="divMessage">If 2 posts have same Bypass Id but the other 4 infos are different, are they made by same person or can 2 different poster have same Bypass Id? The thread look like this. I was asking a decision by new poster(s) in that thread, I sus #7 might be an old poster who impersonate new one(s). the OP definitely a new poster and my old poster don’t like the way I run things
+I can think of 3 scenarios
+-both ASN A&amp;C are new posters, they just happen to have Bypass Id
+-ASN C is an old poster impersonating new one, they just happen to have Bypass Id
+-both ASN A&amp;C are same person. He just reply late to #5 using same browser but different internet connection</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5732"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-1651-5732">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/05/2022 (Sun) 10:23:19</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4f5ff7">4f5ff7</span></span>
+    
+    <a class="linkSelf" href="/site/res/1651.html#5732">No.</a>
+    <a class="linkQuote" href="/site/res/1651.html#q5732">5732</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/aa8480777a5d2f633825137133a36d7295618063840be8c4858a566a5b61be7f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">222.48 KB</span> <span class="dimensionLabel">1024x1024</span>
+  <a class="originalNameLink" href="/.media/aa8480777a5d2f633825137133a36d7295618063840be8c4858a566a5b61be7f.png" download="langfr-1024px-ANSSI&#95;Logo.svg.png">langfr-1024px-ANSSI&#95;Logo.svg.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/aa8480777a5d2f633825137133a36d7295618063840be8c4858a566a5b61be7f.png" data-filewidth="1024" data-fileheight="1024" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_aa8480777a5d2f633825137133a36d7295618063840be8c4858a566a5b61be7f"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/1651.html#5715">&gt;&gt;5715</a>
+<span class="greenText">&gt;Can you add it please ? Do I need to push it on the git myself ?</span>
+Ah yes !
+<a target="&#95;blank" href="https://gitgud.io/8chan/Aleph/-/commit/b722e229097fa4e09ba6e4cea092f79a6cbb3ccf">https://gitgud.io/8chan/Aleph/-/commit/b722e229097fa4e09ba6e4cea092f79a6cbb3ccf</a>
+Thanks !</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5747"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-1651-5747">
+    <span class="labelSubject">custom.js help</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/06/2022 (Mon) 11:15:39</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4f5ff7">4f5ff7</span></span>
+    
+    <a class="linkSelf" href="/site/res/1651.html#5747">No.</a>
+    <a class="linkQuote" href="/site/res/1651.html#q5747">5747</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">So I asked to be granted to upload a custom.js.
+It was primarily to automatically open [embed] videos for esthetic reasons.
+The problem is, invidious videos (not the youtube ones tho) autoplay. It&apos;s really bothering and unwanted behavior.
+A fellow BO share his custom.js with me :
+<span class="blockCode"><code><span class="hljs-keyword">var</span> embedButtons = <span class="hljs-built&#95;in">document</span>.getElementsByClassName(<span class="hljs-string">&#x27;embedButton&#x27;</span>); 
+<span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = <span class="hljs-number">0</span>; i &lt; embedButtons.length; ++i) { 	
+embedButtons[i].click();
+}
+    <span class="hljs-keyword">var</span> vid = <span class="hljs-built&#95;in">document</span>.getElementById(<span class="hljs-string">&quot;myVideo&quot;</span>);
+    vid.autoplay = <span class="hljs-keyword">false</span>;
+    vid.load();</code></span>
+The three last lines are supposed to disallow autoplay but it&apos;s not working on some browsers that don&apos;t have the &quot;block autoplay&quot; setting implemented. So obviously something should be tweaked here.
+
+This is what anon tell me after investigating the issue :
+
+At home on Firefox ESR 91.10 (the latest), videos from Invidious/yewtu.be (and maybe others) launch automatically despite the trigger.
+The <span class="inlineCode"><code><span class="hljs-attribute">embedButtons</span></code></span> and <span class="inlineCode"><code><span class="hljs-attribute">vid</span></code></span> variables return <span class="inlineCode"><code><span class="hljs-literal">undefined</span></code></span> when evaluated. Searching the page code, it seems that the JS selectors are targeting identifiers that do not exist.</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/site/res/1651.html#5747">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a><a href="2.html">2</a><a href="3.html">3</a><a href="4.html">4</a><a href="5.html">5</a></span> <a id="linkNext" class="coloredIcon" href="2.html"></a> ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=site">Manage Board</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=site">Moderate Board</a>
+          <a id="linkMod" href="/mod.js?boardUri=site&amp;page=1">Moderate Thread</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">No.</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[History]</a>
+    <a class="linkFileHistory">[File History]</a>
+    <a class="linkOffenseRecord">[Offense Record]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Broad range(1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Narrow range(3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Unlink]</a>
+  <a class="unlinkAndDeleteLink">[Unlink & Delete]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

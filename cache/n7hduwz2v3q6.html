@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:perl [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,perl"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/perl"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:perl","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:perl" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:perl&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl" class="wikilink1" title="fuss:perl" data-wiki-id="fuss:perl">perl</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:perl</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#count_characters_in_string">Count Characters in String</a></div></li>
+<li class="level1"><div class="li"><a href="#remove_newline_from_array">Remove Newline From Array</a></div></li>
+<li class="level1"><div class="li"><a href="#generate_dsa_password">Generate DSA Password</a></div></li>
+<li class="level1"><div class="li"><a href="#calculate_ip_address_blocks_given_a_range_of_ip_addresses">Calculate IP Address Blocks Given a Range of IP Addresses</a></div></li>
+<li class="level1"><div class="li"><a href="#set_scheduling_priority">Set Scheduling Priority</a></div></li>
+<li class="level1"><div class="li"><a href="#randomise_lines_in_text_file">Randomise Lines in Text File</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="count_characters_in_string">Count Characters in String</h1>
+<div class="level1">
+
+<p>
+Count occurences of the letters <code>p</code> and <code>q</code> in a string <code>$str</code>:
+</p>
+<pre class="code perl"><span class="kw1">my</span> <span class="re0">$pq_count</span> <span class="sy0">=</span> <span class="re0">$str</span> <span class="sy0">=~</span> <span class="co2">tr/pq//</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit2" id="remove_newline_from_array">Remove Newline From Array</h1>
+<div class="level1">
+<pre class="code perl"><a href="http://perldoc.perl.org/functions/pop.html"><span class="kw3">pop</span></a> <span class="re0">@data</span> <span class="kw1">if</span> <span class="re0">$data</span><span class="br0">&#91;</span><span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#93;</span> <span class="kw1">eq</span> <span class="st0">&quot;<span class="es0">\n</span>&quot;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit3" id="generate_dsa_password">Generate DSA Password</h1>
+<div class="level1">
+
+<p>
+The following is a quick script that generates DSA passwords from an input string. To use, save the script as an executable file, and then issue:
+</p>
+<pre class="code bash">.<span class="sy0">/</span>dsagen.pl password</pre>
+
+<p>
+where <code>password</code> is a password you want to hash.
+</p>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/perl?codeblock=3" title="Download Snippet" class="mediafile mf_pl">dsagen.pl</a></dt>
+<dd><pre class="code file perl"><span class="co1">#!/usr/bin/perl -w</span>
+<span class="co1">###########################################################################</span>
+<span class="co1">##  Copyright (C) Wizardry and Steamworks 2014 - License: GNU GPLv3      ##</span>
+<span class="co1">###########################################################################</span>
+<span class="kw2">use</span> strict<span class="sy0">;</span>
+<span class="kw2">use</span> Crypt<span class="sy0">::</span><span class="me2">PasswdMD5</span><span class="sy0">;</span>
+&nbsp;
+<span class="kw1">if</span> <span class="br0">&#40;</span><span class="re0">$#ARGV</span><span class="sy0">+</span><span class="nu0">1</span> <span class="sy0">!=</span> <span class="nu0">1</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://perldoc.perl.org/functions/print.html"><span class="kw3">print</span></a> <span class="st0">&quot;<span class="es0">\n</span>Usage: dsagen.pl &lt;password&gt;<span class="es0">\n</span>&quot;</span><span class="sy0">;</span>
+    <a href="http://perldoc.perl.org/functions/exit.html"><span class="kw3">exit</span></a><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<a href="http://perldoc.perl.org/functions/print.html"><span class="kw3">print</span></a> <a href="http://perldoc.perl.org/functions/crypt.html"><span class="kw3">crypt</span></a><span class="br0">&#40;</span>
+    <span class="re0">$ARGV</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span><span class="sy0">,</span> 
+    <span class="kw2">sub</span> <span class="br0">&#123;</span>
+        <span class="kw1">my</span> <span class="re0">@table</span> <span class="sy0">=</span> <span class="br0">&#40;</span> <span class="st_h">'.'</span><span class="sy0">,</span> <span class="st_h">'/'</span><span class="sy0">,</span> <span class="nu0">0</span> <span class="sy0">..</span> <span class="nu0">9</span><span class="sy0">,</span> <span class="st_h">'A'</span> <span class="sy0">..</span> <span class="st_h">'Z'</span><span class="sy0">,</span> <span class="st_h">'a'</span> <span class="sy0">..</span> <span class="st_h">'z'</span> <span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="kw1">my</span> <span class="re0">$salt</span><span class="sy0">;</span>
+        <span class="kw1">for</span><span class="br0">&#40;</span><span class="nu0">1</span><span class="sy0">..</span><span class="nu0">2</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+            <span class="re0">$salt</span> <span class="sy0">.=</span> <span class="br0">&#40;</span><span class="re0">@table</span><span class="br0">&#41;</span><span class="br0">&#91;</span><a href="http://perldoc.perl.org/functions/rand.html"><span class="kw3">rand</span></a> <span class="re0">@table</span><span class="br0">&#93;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <a href="http://perldoc.perl.org/functions/return.html"><span class="kw3">return</span></a> <span class="re0">$salt</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#41;</span><span class="sy0">.</span><span class="st0">&quot;<span class="es0">\n</span>&quot;</span><span class="sy0">;</span></pre>
+</dd></dl>
+
+</div>
+
+<h1 class="sectionedit4" id="calculate_ip_address_blocks_given_a_range_of_ip_addresses">Calculate IP Address Blocks Given a Range of IP Addresses</h1>
+<div class="level1">
+
+<p>
+As a one-liner:
+</p>
+<pre class="code perl">perl <span class="sy0">-</span>MNet<span class="sy0">::</span><span class="me2">IP</span> <span class="sy0">-</span>e <span class="st_h">'$ip = new Net::IP (&quot;$ARGV[0] - $ARGV[1]&quot;); print map { &quot;$_\n&quot; } $ip-&gt;find_prefixes();'</span> <span class="st0">&quot;127.0.0.1&quot;</span> <span class="st0">&quot;127.0.0.2&quot;</span></pre>
+
+<p>
+the script:
+</p>
+<ul>
+<li class="level1"><div class="li"> uses the <code>Net::IP</code> package.</div>
+</li>
+<li class="level1"><div class="li"> takes the range of the first argument (<code>127.0.0.1</code>) and the second argument (<code>127.0.0.2</code>) passed on the command-line.</div>
+</li>
+<li class="level1"><div class="li"> prints the address blocks within that range.</div>
+</li>
+</ul>
+
+<p>
+An example usage is the following:
+</p>
+<pre class="code bash"><span class="kw2">perl</span> -MNet::IP <span class="re5">-e</span> <span class="st_h">'$ip = new Net::IP (&quot;$ARGV[0] - $ARGV[1]&quot;); print map { &quot;$_\n&quot; } $ip-&gt;find_prefixes();'</span> <span class="st0">&quot;127.0.0.0&quot;</span> <span class="st0">&quot;127.0.63.255</span></pre>
+
+<p>
+which returns:
+</p>
+<pre class="code">127.0.0.0/18</pre>
+
+</div>
+
+<h1 class="sectionedit5" id="set_scheduling_priority">Set Scheduling Priority</h1>
+<div class="level1">
+
+<p>
+This can be performed in the following way for the process and the IO priority:
+</p>
+<pre class="code perl"><span class="kw2">use</span> BSD<span class="sy0">::</span><span class="me2">Resource</span> <a href="http://perldoc.perl.org/functions/qw.html"><span class="kw3">qw</span></a><span class="br0">&#40;</span>PRIO_PROCESS <a href="http://perldoc.perl.org/functions/setpriority.html"><span class="kw3">setpriority</span></a><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">use</span> Linux<span class="sy0">::</span><span class="me2">IO_Prio</span> <a href="http://perldoc.perl.org/functions/qw.html"><span class="kw3">qw</span></a><span class="br0">&#40;</span>IOPRIO_WHO_PROCESS IOPRIO_PRIO_VALUE IOPRIO_CLASS_BE ioprio_set<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw2">BEGIN</span> <span class="br0">&#123;</span> 
+  <a href="http://perldoc.perl.org/functions/require.html"><span class="kw3">require</span></a> autodie<span class="sy0">::</span><span class="me2">hints</span><span class="sy0">;</span> 
+  autodie<span class="sy0">::</span><span class="me2">hints</span><span class="sy0">-&gt;</span><span class="me1">set_hints_for</span><span class="br0">&#40;</span>
+    <span class="re0">\&amp;ioprio_set</span><span class="sy0">,</span> 
+    <span class="br0">&#123;</span> 
+      fail <span class="sy0">=&gt;</span> <span class="kw2">sub</span> <span class="br0">&#123;</span> 
+        <span class="co5">$_</span><span class="br0">&#91;</span><span class="nu0">0</span><span class="br0">&#93;</span> <span class="sy0">==</span> <span class="sy0">-</span><span class="nu0">1</span> 
+      <span class="br0">&#125;</span> 
+    <span class="br0">&#125;</span> 
+  <span class="br0">&#41;</span> 
+<span class="br0">&#125;</span><span class="sy0">;</span>
+<span class="kw2">use</span> autodie <a href="http://perldoc.perl.org/functions/qw.html"><span class="kw3">qw</span></a><span class="br0">&#40;</span><span class="sy0">:</span>all <a href="http://perldoc.perl.org/functions/setpriority.html"><span class="kw3">setpriority</span></a> ioprio_set<span class="br0">&#41;</span><span class="sy0">;</span>
+&nbsp;
+<a href="http://perldoc.perl.org/functions/setpriority.html"><span class="kw3">setpriority</span></a><span class="br0">&#40;</span>
+    PRIO_PROCESS<span class="sy0">,</span>
+    <span class="co5">$$</span><span class="sy0">,</span>
+    <span class="nu0">19</span> <span class="co1"># nice: from -20 most favourable to 19 least favourable </span>
+<span class="br0">&#41;</span><span class="sy0">;</span>
+ioprio_set<span class="br0">&#40;</span>
+    IOPRIO_WHO_PROCESS<span class="sy0">,</span>
+    <span class="co5">$$</span><span class="sy0">,</span>
+    <span class="co1"># IOPRIO_CLASS_BE - best effort (0 is most favourable and 7 is least favourable)</span>
+    IOPRIO_PRIO_VALUE<span class="br0">&#40;</span>IOPRIO_CLASS_BE<span class="sy0">,</span> <span class="nu0">7</span><span class="br0">&#41;</span>
+<span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+</div>
+
+<h1 class="sectionedit6" id="randomise_lines_in_text_file">Randomise Lines in Text File</h1>
+<div class="level1">
+
+<p>
+The following one-liner:
+</p>
+<pre class="code bash"><span class="kw2">cat</span> lines.txt <span class="sy0">|</span> <span class="kw2">perl</span> -MList::Util <span class="re5">-e</span> <span class="st_h">'print List::Util::shuffle &lt;&gt;'</span></pre>
+
+<p>
+will randomly shuffle the lines in <code>lines.txt</code>.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/perl.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl" class="wikilink1" title="fuss:perl" data-wiki-id="fuss:perl">perl</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:perl" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/perl"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aperl&amp;1657305779" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

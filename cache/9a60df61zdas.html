@@ -1,0 +1,814 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:apache [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,apache"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/apache"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:apache","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:apache" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:apache&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache" class="wikilink1" title="fuss:apache" data-wiki-id="fuss:apache">apache</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:apache</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#using_apache_memory_cache">Using Apache Memory Cache</a></div></li>
+<li class="level1"><div class="li"><a href="#usual_required_modules">Usual Required Modules</a></div></li>
+<li class="level1"><div class="li"><a href="#remove_directory_listing">Remove Directory Listing</a></div></li>
+<li class="level1"><div class="li"><a href="#allow_and_deny_network">Allow and Deny Network</a></div></li>
+<li class="level1"><div class="li"><a href="#reverse_proxy_with_virtual_host">Reverse Proxy with Virtual Host</a></div></li>
+<li class="level1"><div class="li"><a href="#block_bad_bots">Block Bad Bots</a></div></li>
+<li class="level1"><div class="li"><a href="#create_webdav_share">Create WebDAV Share</a></div></li>
+<li class="level1"><div class="li"><a href="#set_expiration_for_resources">Set Expiration for Resources</a></div></li>
+<li class="level1"><div class="li"><a href="#apache_logs_statistics_through_using_the_shell">Apache Logs Statistics Through using The Shell</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#get_number_of_unique_visitors">Get Number of Unique Visitors</a></div></li>
+<li class="level2"><div class="li"><a href="#get_number_of_unique_returning_visitors">Get Number of Unique Returning Visitors</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#apache_image_hot-link_protection">Apache Image Hot-Link Protection</a></div></li>
+<li class="level1"><div class="li"><a href="#permanently_redirecting_pages">Permanently Redirecting pages</a></div></li>
+<li class="level1"><div class="li"><a href="#migrating_website_domain">Migrating Website Domain</a></div></li>
+<li class="level1"><div class="li"><a href="#disabling_timeouts_for_long-running_services">Disabling Timeouts for Long-Running Services</a></div></li>
+<li class="level1"><div class="li"><a href="#make_apache_case-insensitive">Make Apache Case-Insensitive</a></div></li>
+<li class="level1"><div class="li"><a href="#configure_zend_opcache">Configure Zend OpCache</a></div></li>
+<li class="level1"><div class="li"><a href="#redirect_to_https_and_then_authenticate">Redirect to HTTPs and then Authenticate</a></div></li>
+<li class="level1"><div class="li"><a href="#enable_hsts">Enable HSTS</a></div></li>
+<li class="level1"><div class="li"><a href="#enforce_strong_cryptography">Enforce Strong Cryptography</a></div></li>
+<li class="level1"><div class="li"><a href="#return_404_for_default_virtual_host">Return 404 for Default Virtual Host</a></div></li>
+<li class="level1"><div class="li"><a href="#calculate_the_optimal_maximum_number_of_concurrent_connections">Calculate the Optimal Maximum Number of Concurrent Connections</a></div></li>
+<li class="level1"><div class="li"><a href="#implementing_a_global_and_consistent_directory_index_style">Implementing a Global and Consistent Directory Index Style</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="using_apache_memory_cache">Using Apache Memory Cache</h1>
+<div class="level1">
+
+<p>
+Apache has its own memory cache module <code>mod_mem_cache</code> which can be used to cache content similar to <code>memcached</code>. The following directives configure Apache to use <code>1GB</code> of memory and will cache up to <code>1000</code> objects, each between <code>1</code> byte and <code>1</code> megabyte.
+</p>
+<pre class="code apache">&lt;<span class="kw3">IfModule</span> mod_mem_cache.c&gt;
+  Cache Enable mem /
+  <span class="kw1">MCacheSize</span> <span class="nu0">1074741824</span>
+  <span class="kw1">MCacheMaxObjectCount</span> <span class="nu0">1000</span>
+  <span class="kw1">MCacheMaxObjectSize</span> <span class="nu0">1048576</span>
+&lt;/<span class="kw3">IfModule</span>&gt;</pre>
+
+</div>
+
+<h1 class="sectionedit2" id="usual_required_modules">Usual Required Modules</h1>
+<div class="level1">
+<pre class="code">authz_host_module
+log_config_module
+headers_module
+setenvif_module
+# Proxy needed by default on OSX
+proxy_module
+mime_module
+# DAV needed by default on OSX
+dav_module
+dav_fs_module
+# Status needed by default on OSX
+status_module
+negotiation_module
+dir_module
+userdir_module
+dir_module
+userdir_module
+apple_userdir_module
+alias_module
+rewrite_module
+php5_module</pre>
+
+</div>
+
+<h1 class="sectionedit3" id="remove_directory_listing">Remove Directory Listing</h1>
+<div class="level1">
+
+<p>
+Find:
+</p>
+<pre class="code apache"><span class="kw1">Options</span> <span class="kw2">Indexes</span> <span class="kw2">FollowSymLinks</span> MultiViews</pre>
+
+<p>
+and remove <code>Indexes</code> from the options list.
+</p>
+
+</div>
+
+<h1 class="sectionedit4" id="allow_and_deny_network">Allow and Deny Network</h1>
+<div class="level1">
+
+<p>
+Every directory can be protected with <code>Allow</code> and <code>Deny</code>. The following example denies access to the root path <code>/</code> to anybody except the local network <code>192.168.1.0/24</code>:
+</p>
+<pre class="code apache">&lt;<span class="kw3">Directory</span> /&gt;
+       <span class="kw1">Order</span> <span class="kw1">deny</span>,<span class="kw1">allow</span>
+       <span class="kw1">Allow</span> from 192.168.1.0/<span class="nu0">24</span>
+       <span class="kw1">Deny</span> from <span class="kw2">all</span>
+&lt;/<span class="kw3">Directory</span>&gt;</pre>
+
+<p>
+The <code>Order</code> is important - it says to first <code>deny</code>, which resolves to <code>Deny from all</code> and after that to <code>allow</code> which resolves to <code>Allow from 192.168.1.0/24</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit5" id="reverse_proxy_with_virtual_host">Reverse Proxy with Virtual Host</h1>
+<div class="level1">
+
+<p>
+Apache can be configured as a reverse proxy in order to pass traffic to a backend. For example, the following directives:
+</p>
+<pre class="code apache">&lt;<span class="kw3">VirtualHost</span> *:<span class="nu0">80</span>&gt;
+       <span class="kw1">ProxyRequests</span> <span class="kw2">Off</span>
+       <span class="kw1">ProxyPreserveHost</span> <span class="kw2">On</span>
+       <span class="kw1">ProxyPass</span> / http://192.168.0.1:<span class="nu0">80</span>/ connectiontimeout=<span class="nu0">300</span> <span class="kw1">timeout</span>=<span class="nu0">300</span>
+       <span class="kw1">ProxyPassReverse</span> / http://192.168.0.1:<span class="nu0">80</span>/
+       <span class="kw1">ServerName</span> website.com
+       <span class="kw1">ServerAlias</span> *.website.com
+       <span class="kw1">ErrorLog</span> ${APACHE_LOG_DIR}/error.log
+       <span class="kw1">LogLevel</span> warn
+       <span class="kw1">CustomLog</span> ${APACHE_LOG_DIR}/access.log combined
+&lt;/<span class="kw3">VirtualHost</span>&gt;</pre>
+
+<p>
+will redirect all traffic for <code>website.com</code> and any sub-domain, such as <code>site.website.com</code> to the host <code>192.168.0.1</code>. Additionally, it specifies that connections will timeout in <code>300s</code>. As long as:
+</p>
+<pre class="code apache">&lt;<span class="kw3">VirtualHost</span> *:<span class="nu0">80</span>&gt;</pre>
+
+<p>
+is specified, then you can have any number of websites to be proxied to their respective backends.
+</p>
+
+</div>
+
+<h1 class="sectionedit6" id="block_bad_bots">Block Bad Bots</h1>
+<div class="level1">
+
+<p>
+On Debian-like systems, a global rule can be set to block bad bots. In order to do so create a file: <code>/etc/apache2/conf.d/blockbots.conf</code> containing the <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/apache/templates/security/crawlers/bad_bots" class="wikilink1" title="apache:templates:security:crawlers:bad_bots" data-wiki-id="apache:templates:security:crawlers:bad_bots">bad_bots configuration</a>.
+</p>
+
+<p>
+You must also enable the <code>setenvif</code> module with:
+</p>
+<pre class="code bash">a2enmod setenvif</pre>
+
+</div>
+
+<h1 class="sectionedit7" id="create_webdav_share">Create WebDAV Share</h1>
+<div class="level1">
+
+<p>
+The following directive will share <code>/var/www/webserver/share</code> through <code>WebDAV</code>:
+</p>
+<pre class="code apache">        &lt;<span class="kw3">Directory</span> /var/www/webserver/share&gt;
+                <span class="kw1">DAV</span> <span class="kw2">On</span>
+                <span class="kw1">AuthType</span> Digest
+                <span class="kw1">AuthName</span> <span class="st0">&quot;share&quot;</span>
+                <span class="kw1">AuthDigestDomain</span> /
+                <span class="kw1">AuthDigestProvider</span> file
+                <span class="kw1">AuthUserFile</span> /etc/apache2/.htpasswd
+                &lt;<span class="kw3">LimitExcept</span> PROPFIND&gt;
+                    <span class="kw1">Require</span> valid-<span class="kw1">user</span>
+                &lt;/<span class="kw3">LimitExcept</span>&gt;
+        &lt;/<span class="kw3">Directory</span>&gt;</pre>
+
+<p>
+It seems that <code>Directory</code> is prefered instead of <code>Location</code>; the latter leading sometimes to <code>System Error 67</code> meaning that the network path could not be found.
+</p>
+
+<p>
+The authentication mechanism to use for maximum compatibility is <code>Digest</code> and username and password pairs can be generated using the <code>htdigest</code> command line utility. For this example:
+</p>
+<pre class="code bash">htdigest <span class="re5">-c</span> <span class="sy0">/</span>etc<span class="sy0">/</span>apache2<span class="sy0">/</span>.htpasswd share username</pre>
+
+<p>
+which will prompt for a password.
+</p>
+
+<p>
+If you have been trying for a while to access the <code>DAV</code> share from Windows and are prompted for the username and password over and over again even if you entered the correct information, you may want to run in Windows on a command prompt:
+</p>
+<pre class="code dos">net stop WebClient
+net start WebClient</pre>
+
+<p>
+in order to restart the web-client thereby resetting <code>WebDAV</code> caches and fixing the username and password prompt loop.
+</p>
+
+</div>
+
+<h1 class="sectionedit8" id="set_expiration_for_resources">Set Expiration for Resources</h1>
+<div class="level1">
+
+<p>
+After enabling <code>mod_expires</code> with:
+</p>
+<pre class="code bash">a2enmod expires</pre>
+
+<p>
+after which <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/apache/templates/optimizations/expiration/expiration.conf" class="wikilink1" title="apache:templates:optimizations:expiration:expiration.conf" data-wiki-id="apache:templates:optimizations:expiration:expiration.conf">an optimized configuration</a> can be added as a file under <code>/etc/apache/conf.d/</code> in order to set the expiration time for resources.
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="apache_logs_statistics_through_using_the_shell">Apache Logs Statistics Through using The Shell</h1>
+<div class="level1">
+
+<p>
+We use <code>zcat</code> in combination with the <code>-f</code> flag to read compressed and uncompressed files. The commands assume that your current working directory is in the apache log directory. The commands also assume that the files are named <code>access.log*</code> which may be different on other systems (ie: <code>access_log</code>).
+</p>
+
+</div>
+
+<h2 class="sectionedit10" id="get_number_of_unique_visitors">Get Number of Unique Visitors</h2>
+<div class="level2">
+<pre class="code bash"><span class="kw2">zcat</span> <span class="re5">-f</span> access.log<span class="sy0">*</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{print $1}'</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="re5">-u</span> <span class="sy0">|</span> <span class="kw2">wc</span> <span class="re5">-l</span></pre>
+
+</div>
+
+<h2 class="sectionedit11" id="get_number_of_unique_returning_visitors">Get Number of Unique Returning Visitors</h2>
+<div class="level2">
+<pre class="code bash"><span class="kw2">zcat</span> <span class="re5">-f</span> access.log<span class="sy0">*</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{print $1}'</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="sy0">|</span> <span class="kw2">uniq</span> <span class="re5">-c</span> <span class="re5">-d</span> <span class="sy0">|</span> <span class="kw2">sort</span> <span class="re5">-n</span> <span class="re5">-k</span> <span class="nu0">1</span></pre>
+
+</div>
+
+<h1 class="sectionedit12" id="apache_image_hot-link_protection">Apache Image Hot-Link Protection</h1>
+<div class="level1">
+
+<p>
+The idea of preventing people from hot-linking images on your website is contradictory in itself: if you are serving content, then why prevent people from using the content you provide? You can instead shut your website down and keep the content to yourself.
+</p>
+
+<p>
+Nevertheless, some people chose to do this, and one way to prevent hot-linking is to branch on the referrer (typo intentional in the example below) and deny any access to images when the referrer is not your website. In the example, we assume that <code>www.example.com</code> and <code>example.com</code> are the accepted domains used as referrer to your images and any other referrer, except a blank referrer (last rule) is denied the connection:
+</p>
+<pre class="code apache"><span class="kw1">SetEnvIfNoCase</span> Referer <span class="st0">&quot;^http://www.example.com/&quot;</span> locally_linked=<span class="nu0">1</span>
+<span class="kw1">SetEnvIfNoCase</span> Referer <span class="st0">&quot;^http://www.example.com$&quot;</span> locally_linked=<span class="nu0">1</span>
+<span class="kw1">SetEnvIfNoCase</span> Referer <span class="st0">&quot;^http://example.com/&quot;</span> locally_linked=<span class="nu0">1</span>
+<span class="kw1">SetEnvIfNoCase</span> Referer <span class="st0">&quot;^http://example.com$&quot;</span> locally_linked=<span class="nu0">1</span>
+<span class="kw1">SetEnvIfNoCase</span> Referer <span class="st0">&quot;^$&quot;</span> locally_linked=<span class="nu0">1</span>
+&lt;<span class="kw3">FilesMatch</span> <span class="st0">&quot;<span class="es0">\.</span>(gif|png|jpe?g)$&quot;</span>&gt;
+<span class="kw1">Order</span> <span class="kw1">Allow</span>,<span class="kw1">Deny</span>
+<span class="kw1">Allow</span> from env=locally_linked
+&lt;/<span class="kw3">FilesMatch</span>&gt;</pre>
+
+<p>
+Note that branching on referrers is a very bad idea, given upstream caches that may manipulate headers as well as the possibility to circumvent this protection easily by sending a different referrer (your domain) along with the request. Bad, bad idea.
+</p>
+
+</div>
+
+<h1 class="sectionedit13" id="permanently_redirecting_pages">Permanently Redirecting pages</h1>
+<div class="level1">
+
+<p>
+The best way to permanently redirect surfers to a different website is to <code>RedirectMatch</code> with the <code>permanent</code> option. This will ensure that the <code>301</code> (permanently moved) will be sent before redirecting.
+</p>
+
+<p>
+Suppose you have a virtual host configuration for the domain <code>servername.com</code>:
+</p>
+<pre class="code apache">&lt;<span class="kw3">VirtualHost</span> *:<span class="nu0">80</span>&gt;
+  <span class="kw1">ServerName</span>    <span class="kw1">servername</span>.com
+  <span class="kw1">DocumentRoot</span>  /var/www/<span class="kw1">servername</span>.com
+  &lt;<span class="kw3">Directory</span> /var/www/<span class="kw1">servername</span>.com
+    <span class="kw1">Order</span> <span class="kw1">allow</span>,<span class="kw1">deny</span>
+    <span class="kw1">Allow</span> from <span class="kw2">all</span>
+  &lt;/<span class="kw3">Directory</span>&gt;
+&lt;/<span class="kw3">VirtualHost</span>&gt;</pre>
+
+<p>
+and that you want to redirect <code>www.servername.com</code> to <code>servername.com</code>. You would then add another virtual host that will perform the redirection:
+</p>
+<pre class="code apache">&lt;<span class="kw3">VirtualHost</span> *:<span class="nu0">80</span>&gt;
+  <span class="kw1">ServerName</span>  www.<span class="kw1">servername</span>.com
+  <span class="kw1">RedirectMatch</span> permanent ^/(.*) http://<span class="kw1">servername</span>.com/$1
+&lt;/<span class="kw3">VirtualHost</span>&gt;</pre>
+
+</div>
+
+<h1 class="sectionedit14" id="migrating_website_domain">Migrating Website Domain</h1>
+<div class="level1">
+
+<p>
+In this example, we want to move <code>somesite.net</code> to <code>newsite.org</code>. We already have a virtual host in-place to handle <code>newsite.org</code> and we need to redirect every page from <code>somesite.net</code> as well as any sub-domains to <code>newsite.org</code>. In order to do that, we modify the old virtual-host for <code>somesite.net</code>:
+</p>
+<pre class="code apache">&lt;<span class="kw3">VirtualHost</span> *:<span class="nu0">80</span>&gt;
+        <span class="kw1">ServerName</span>    somesite.net
+        <span class="kw1">ServerAlias</span>   *.somesite.net
+        <span class="kw1">RewriteEngine</span> <span class="kw2">on</span>
+        <span class="kw1">RewriteCond</span>   %{HTTPS}s    ^..(s?)
+        <span class="kw1">RewriteRule</span>   ^            -                                 [E=PROTO:http%1]
+        <span class="kw1">RewriteCond</span>   %{HTTP_HOST} !^\w+\.newsite\.org$              [NC]
+        <span class="kw1">RewriteCond</span>   %{HTTP_HOST} ^(\w+)\.\w+\..+                   [NC]
+        <span class="kw1">RewriteRule</span>   ^/?(.*)      %{ENV:PROTO}://%1. newsite.org/$1 [R=<span class="nu0">301</span>,L]
+        <span class="kw1">RewriteCond</span>   %{HTTP_HOST} somesite\.net
+        <span class="kw1">RewriteRule</span>   ^/?(.*)      %{ENV:PROTO}://newsite.org/$1     [R=<span class="nu0">301</span>,L]
+&lt;/<span class="kw3">VirtualHost</span>&gt;</pre>
+
+<p>
+this will match both protocols, HTTP and HTTPs (matching the last <code>s</code>), it will also match any sub-domains and redirect everything to <code>newsite.org</code>.
+</p>
+
+</div>
+
+<h1 class="sectionedit15" id="disabling_timeouts_for_long-running_services">Disabling Timeouts for Long-Running Services</h1>
+<div class="level1">
+
+<p>
+When using a web-server for live streams or software repositories (git, svn, etc...) it is sometimes useful to disable timeouts. This can be done in apache using the following directives:
+</p>
+<pre class="code apache">&lt;<span class="kw3">IfModule</span> reqtimeout_module&gt;
+    RequestReadTimeout <span class="kw1">header</span>=<span class="nu0">0</span> body=<span class="nu0">0</span>
+&lt;/<span class="kw3">IfModule</span>&gt;
+<span class="kw1">LimitRequestBody</span> <span class="nu0">0</span></pre>
+
+</div>
+
+<h1 class="sectionedit16" id="make_apache_case-insensitive">Make Apache Case-Insensitive</h1>
+<div class="level1">
+
+<p>
+When migrating documents from case-insensitive filesystems to a server with Apache and a case-sensitive system, some links may appear broken and inaccessible. In order to resolve this, enable the <code>speling</code> (note the lack of double-<code>l</code>) module with:
+</p>
+<pre class="code bash">a2enmod speling</pre>
+
+<p>
+and then either in an <code>.htaccess</code>, <code>Directory</code> directive or globally add the setting:
+</p>
+<pre class="code apache"><span class="kw1">CheckSpelling</span> <span class="kw2">on</span></pre>
+
+</div>
+
+<h1 class="sectionedit17" id="configure_zend_opcache">Configure Zend OpCache</h1>
+<div class="level1">
+
+<p>
+To increase the amount of memory alloted to the Zend OpCache found in newer PHP variants, edit the file <code>/etc/php5/apache2/conf.d/05-opcache.ini</code>. It should contain something like the following:
+</p>
+<pre class="code">; configuration for php ZendOpcache module
+; priority=05
+zend_extension=opcache.so</pre>
+
+<p>
+and then after that line add the following options:
+</p>
+<pre class="code">opcache.memory_consumption=256
+opcache.interned_strings_buffer=8
+opcache.max_accelerated_files=8000
+opcache.revalidate_freq=60
+opcache.fast_shutdown=1
+opcache.enable_cli=1</pre>
+
+</div>
+
+<h1 class="sectionedit18" id="redirect_to_https_and_then_authenticate">Redirect to HTTPs and then Authenticate</h1>
+<div class="level1">
+
+<p>
+Suppose you have a <code>/support</code> alias where clients should be able to access some protected data by authenticating first using basic authentication. In this case, the password may travel over the wire unencrypted such that we need to first redirect through HTTPs and then provide authentication.
+</p>
+
+<p>
+In the example below a <code>/support</code> alias is created that is protected by <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/apache/pam_authentication" class="wikilink1" title="apache:pam_authentication" data-wiki-id="apache:pam_authentication">basic authentication through PAM</a>. By using the 403 error document we can redirect to the HTTPs version of the website <code>site.tld</code>.
+</p>
+<pre class="code apache"><span class="kw1">Alias</span> /support /usr/share/support
+&nbsp;
+&lt;<span class="kw3">Directory</span> /opt/support&gt;
+  <span class="kw1">Options</span> <span class="kw2">FollowSymLinks</span> MultiViews
+  <span class="kw1">AllowOverride</span> <span class="kw2">All</span>
+&nbsp;
+  <span class="kw1">SSLOptions</span> +StrictRequire
+  <span class="kw1">SSLRequireSSL</span>
+  <span class="kw1">ErrorDocument</span> <span class="nu0">403</span> https://site.tld/support
+&nbsp;
+  <span class="kw1">AuthType</span> Basic
+  <span class="kw1">AuthName</span> <span class="st0">&quot;Restricted Area&quot;</span>
+  <span class="kw1">AuthBasicProvider</span> external
+  AuthExternal pwauth
+  GroupExternal unixgroup
+  <span class="kw1">Require</span> valid-<span class="kw1">user</span>
+&nbsp;
+&lt;/<span class="kw3">Directory</span>&gt;</pre>
+
+<p>
+The reason for this hack is that authentication takes precedence such that using <code>mod_rewrite</code> to create a redirect would not work. As such, the setup now generates a 403 error when the HTTP version of the website is requested, which in turn redirects to the HTTPs version where the authentication takes place over HTTPs.
+</p>
+
+</div>
+
+<h1 class="sectionedit19" id="enable_hsts">Enable HSTS</h1>
+<div class="level1">
+
+<p>
+If a website accepts a connection through HTTP and then redirects to HTTPS, there is a small window of opportunity where the client talks to the server without encryption that can be abused with a MITM attack.
+</p>
+
+<p>
+First enable the headers module:
+</p>
+<pre class="code bash">a2enmod headers</pre>
+
+<p>
+To enable HSTS, edit the SSL virtual host version of your website and add the following stanza:
+</p>
+<pre class="code">Header always set Strict-Transport-Security &quot;max-age=31556926; includeSubdomains;&quot;</pre>
+
+<p>
+this will tell browsers to use the HTTPS version of the website without loading the HTTP version first.
+</p>
+
+<p>
+The age in the example is set to one year and the <code>includeSubdomains</code> option will enable HSTS for any subdomains as well.
+</p>
+
+</div>
+
+<h1 class="sectionedit20" id="enforce_strong_cryptography">Enforce Strong Cryptography</h1>
+<div class="level1">
+
+<p>
+When using Apache SSL, the following directives should be added in order to use strong cryptography:
+</p>
+<pre class="code">SSLProtocol all -SSLv2 -SSLv3
+SSLCipherSuite ECDHE-ECDSA-CHACHA20-POLY1305:ECDHE-RSA-CHACHA20-POLY1305:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES256-GCM-SHA384:DHE-RSA-AES128-GCM-SHA256:DHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-RSA-AES128-SHA256:ECDHE-ECDSA-AES128-SHA:ECDHE-RSA-AES256-SHA384:ECDHE-RSA-AES128-SHA:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-RSA-AES256-SHA:DHE-RSA-AES128-SHA256:DHE-RSA-AES128-SHA:DHE-RSA-AES256-SHA256:DHE-RSA-AES256-SHA:ECDHE-ECDSA-DES-CBC3-SHA:ECDHE-RSA-DES-CBC3-SHA:EDH-RSA-DES-CBC3-SHA:AES128-GCM-SHA256:AES256-GCM-SHA384:AES128-SHA256:AES256-SHA256:AES128-SHA:AES256-SHA:DES-CBC3-SHA:!DSS
+SSLHonorCipherOrder on
+SSLCompression off
+SSLSessionTickets off</pre>
+
+<p>
+the settings will disable SSLv2 and SSLv3 as well as enable most of the elliptic-curve cryptography.
+</p>
+
+<p>
+Optionally, given a non self-signed certificate, SSL stapling can be used for apache above 2.3.3:
+</p>
+<pre class="code">SSLUseStapling on
+SSLStaplingResponderTimeout 5
+SSLStaplingReturnResponderErrors off
+SSLStaplingCache shmcb:/var/run/ocsp(128000) </pre>
+
+</div>
+
+<h1 class="sectionedit21" id="return_404_for_default_virtual_host">Return 404 for Default Virtual Host</h1>
+<div class="level1">
+
+<p>
+Create a virtual host file or create a virtual host using the following configuration:
+</p>
+<pre class="code apache">&lt;<span class="kw3">VirtualHost</span> *:<span class="nu0">80</span>&gt;
+	<span class="kw1">Redirect</span> <span class="nu0">404</span> /
+&lt;/<span class="kw3">VirtualHost</span>&gt;</pre>
+
+<p>
+The effect is that if a visitor attempts to access the server IP directly, the default virtual host will return a 404 error.
+</p>
+
+</div>
+
+<h1 class="sectionedit22" id="calculate_the_optimal_maximum_number_of_concurrent_connections">Calculate the Optimal Maximum Number of Concurrent Connections</h1>
+<div class="level1">
+
+<p>
+To calculate the <code>MaxClients</code> value for Apache, you first need to get the Resident Set Size (RSS) of an Apache process. In order to do this, under Linux, you can issue:
+</p>
+<pre class="code bash"><span class="kw2">ps</span> <span class="re5">-ylC</span> apache2 --sort:rss</pre>
+
+<p>
+otherwise, the <code>top</code> utility may work as well by watching the <code>SIZE</code> or <code>RSS</code> value.
+</p>
+
+<p>
+The formula to calculate the value that should be passed to <code>MaxClients</code> in the Apache configuration is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc992b69cdbe9fa31d3ef541d64fd8346.png" class="latex_displayed" alt="\begin{eqnarray*}
+\text{MaxClients} &amp;=&amp; \frac{(\text{Total Memory}\mbox{ }GB) * 1024 - \text{Memory for Other Processes}\mbox{ }MB}{\text{Resident Set Size (RSS)}\mbox{ }MB} \\
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+For instance, assuming a server with a total of 8GB of RAM, leaving 1GB over to other processes, and with an Apache RSS of 100MB the calculation would become:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge491d42b75577b9ef57ff1f85b262aae.png" class="latex_displayed" alt="\begin{eqnarray*}
+\text{MaxClients} &amp;=&amp; \frac{8GB * 1024 - 1024}{100MB} \\
+&amp;\approx&amp; 71 
+\end{eqnarray*}" title="Equations" />
+</p>
+
+</div>
+
+<h1 class="sectionedit23" id="implementing_a_global_and_consistent_directory_index_style">Implementing a Global and Consistent Directory Index Style</h1>
+<div class="level1">
+
+<p>
+The following setup implements a global and consistent directory index style that can be used for multiple virtual hosts just by adding an include to any <code>Directory</code> stanza within a virtual host configuration.
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/apache?ditaa=d0b10712bcabe2a9585155a93b72c3db&amp;t=1656277562" class="media" alt=""/>
+</p>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>/etc/apache2/conf-available/fancyindex.conf</code> contains:</div>
+</li>
+</ul>
+<pre class="code">Alias &quot;/fancyindex.css&quot; &quot;/var/www/.fancyindex.css</pre>
+<ul>
+<li class="level1"><div class="li"> <code>/etc/apache2/includes/fancyindex.conf</code> contains:</div>
+</li>
+</ul>
+<pre class="code">IndexOptions +Charset=UTF-8
+IndexOptions +TrackModified
+IndexOptions +Charset=UTF-8
+IndexOptions +FoldersFirst
+IndexOptions +NameWidth=*
+IndexOptions +FancyIndexing
+IndexOptions +HTMLTable
+IndexOptions +SuppressDescription
+IndexIgnore favicon.ico
+IndexIgnore auth*
+IndexIgnore include*
+IndexIgnore css*
+IndexIgnore share*
+IndexIgnore upload*
+IndexIgnore incoming*
+IndexStyleSheet &quot;/fancyindex.css&quot;
+Options +Indexes</pre>
+<ul>
+<li class="level1"><div class="li"> <code>/etc/apache2/sites-available/vhost.conf</code> is a virtual host configuration where the indexing can be turned on within any <code>Directory</code> stanza just by including <code>/etc/apache2/includes/fancyindex.conf</code>, ie enabling directory indexing for the directory named <code>path</code> relative to the root of the virtual host:</div>
+</li>
+</ul>
+<pre class="code">    &lt;Directory /path&gt;
+        include &quot;includes/fancyindex.conf&quot;
+    &lt;/Directory&gt;</pre>
+<ul>
+<li class="level1"><div class="li"> <code>/var/www/.fancyindex.css</code> contains the following:</div>
+</li>
+</ul>
+<pre class="code">* {
+    font-family: monospace;
+}</pre>
+
+<p>
+and is responsible for setting the CSS for the rendered index page.
+</p>
+<div class="wrap_info plugin_wrap">
+<p>
+<code>IndexStyleSheet</code> takes an URL relative to the virtual host document root such that the aliasing performed within <code>/etc/apache2/conf-available/fancyindex.conf</code> redirects the requests to the default virtual host where the <code>/var/www/.fancyindex.css</code> file is placed. It ain&#039;t pretty, but it works; at least short of changing <code>IndexStyleSheet</code> itself! 
+</p>
+</div>
+<p>
+Perhaps a good reason for preferring this setup to using <code>AllowOverride</code> and <code>.htaccess</code> files is that the style of the directory index is generated by Apache itself rather than the website such that one can avoid mixing data with code. Furthermore, given multiple virtual hosts with the same owner, a consistent style may be preferred and with a centralized way of batch-changing all directory indexes.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/apache.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache" class="wikilink1" title="fuss:apache" data-wiki-id="fuss:apache">apache</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:apache" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/apache"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aapache&amp;1657304068" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

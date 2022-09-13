@@ -1,0 +1,3282 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:lsl:restrained_love_viewer:specification [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,lsl,restrained_love_viewer,specification"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:lsl:restrained_love_viewer"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/lsl/restrained_love_viewer/specification"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:lsl:restrained_love_viewer';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:lsl:restrained_love_viewer:specification","namespace":"fuss:lsl:restrained_love_viewer","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:lsl:restrained_love_viewer:specification" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:lsl:restrained_love_viewer:specification&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl" class="wikilink1" title="fuss:lsl" data-wiki-id="fuss:lsl">lsl</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/start" class="wikilink2" title="fuss:lsl:restrained_love_viewer:start" rel="nofollow" data-wiki-id="fuss:lsl:restrained_love_viewer:start">restrained_love_viewer</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification" class="wikilink1" title="fuss:lsl:restrained_love_viewer:specification" data-wiki-id="fuss:lsl:restrained_love_viewer:specification">specification</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:lsl:restrained_love_viewer:specification</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#restrained_love_viewer_v29_specification">Restrained Love viewer v2.9 Specification</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#audience">Audience</a></div></li>
+<li class="level2"><div class="li"><a href="#introduction">Introduction</a></div></li>
+<li class="level2"><div class="li"><a href="#architecture">Architecture</a></div></li>
+<li class="level2"><div class="li"><a href="#list_of_commands">List of commands</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#version_checking">Version Checking</a></div></li>
+<li class="level3"><div class="li"><a href="#blacklist_handling">Blacklist handling</a></div></li>
+<li class="level3"><div class="li"><a href="#miscellaneous">Miscellaneous</a></div></li>
+<li class="level3"><div class="li"><a href="#movement">Movement</a></div></li>
+<li class="level3"><div class="li"><a href="#camera_and_view">Camera and view</a></div></li>
+<li class="level3"><div class="li"><a href="#chat">Chat</a></div></li>
+<li class="level3"><div class="li"><a href="#emotes">Emotes</a></div></li>
+<li class="level3"><div class="li"><a href="#private_channels">Private Channels</a></div></li>
+<li class="level3"><div class="li"><a href="#instant_messages">Instant Messages</a></div></li>
+<li class="level3"><div class="li"><a href="#teleportation">Teleportation</a></div></li>
+<li class="level3"><div class="li"><a href="#sitting">Sitting</a></div></li>
+<li class="level3"><div class="li"><a href="#clothing_and_attachments">Clothing and Attachments</a></div></li>
+<li class="level3"><div class="li"><a href="#touch">Touch</a></div></li>
+<li class="level3"><div class="li"><a href="#location">Location</a></div></li>
+<li class="level3"><div class="li"><a href="#name_tags_and_hovertext">Name Tags and Hovertext</a></div></li>
+<li class="level3"><div class="li"><a href="#group">Group</a></div></li>
+<li class="level3"><div class="li"><a href="#viewer_control">Viewer Control</a></div></li>
+<li class="level3"><div class="li"><a href="#unofficial_commands">Unofficial Commands</a></div></li>
+<li class="level3"><div class="li"><a href="#footnotes">Footnotes</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#important_note_about_the_global_behaviours_such_as_sendchat">Important note about the global behaviours such as sendchat</a></div></li>
+<li class="level2"><div class="li"><a href="#shared_folders">Shared Folders</a></div></li>
+<li class="level2"><div class="li"><a href="#for_your_information">For your information</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="restrained_love_viewer_v29_specification">Restrained Love viewer v2.9 Specification</h1>
+<div class="level1">
+
+<p>
+Created By Marine Kelley.
+</p>
+
+</div>
+
+<h2 class="sectionedit2" id="audience">Audience</h2>
+<div class="level2">
+
+<p>
+This document is for people who wish to modify or create their own LSL scripts to use the features of the <a href="http://realrestraint.blogspot.com" class="urlextern" title="http://realrestraint.blogspot.com" rel="ugc nofollow">RestrainedLove viewer</a>. It does not explain LSL concepts such as messages and events, nor universal concepts such as UUIDs.
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="introduction">Introduction</h2>
+<div class="level2">
+
+<p>
+The <a href="http://realrestraint.blogspot.com" class="urlextern" title="http://realrestraint.blogspot.com" rel="ugc nofollow">RestrainedLove viewer</a> executes certain behaviours when receiving special messages from scripts in-world. These messages are mostly calls to the llOwnerSay() LSL function.
+</p>
+
+</div>
+
+<h2 class="sectionedit4" id="architecture">Architecture</h2>
+<div class="level2">
+
+<p>
+The <a href="http://realrestraint.blogspot.com" class="urlextern" title="http://realrestraint.blogspot.com" rel="ugc nofollow">RestrainedLove viewer</a> intercepts every <code>llOwnerSay</code> message sent to the viewer.  Lines that begin with an at-sign (<code></code>@<code></code>) are parsed as RLV commands.  Other lines are forwarded to the user in the Local Chat window, as usual. For instance, a call to <code>llOwnerSay (@detach=n)</code> sends the <em>detach</em> command with parameter <em>n</em> to the viewer on behalf of the object running the script.
+</p>
+
+<p>
+The syntax of a message is:
+</p>
+<pre class="code">@&lt;command1&gt;[:option1]=&lt;param1&gt;,&lt;command2&gt;[:option2]=&lt;param2&gt;,...,&lt;commandN&gt;[:optionN]=&lt;paramN&gt;</pre>
+
+<p>
+Note that there is only one &#039;@&#039; sign, placed at the beginning of the message. The viewer interprets this as &quot;this entire <code>llOwnerSay()</code> message contains one or more commands to execute&quot;.  For documentation purposes, commands are always presented with the leading <code></code>@<code></code>.  However, it is an error to put the <code></code>@<code></code> in front of each command within a multi-command message, and the subsequent commands will fail.
+</p>
+
+<p>
+: Historical Note: Prior to Version <strong>1.10</strong>, RLV only allowed one command per message.  Version <strong>1.10</strong> added the ability to include multiple commands in one message, to avoid spamming users who are not using this viewer.
+</p>
+
+<p>
+If at least one command fails (e.g. a typo), the viewer says <code>... fails command : ... </code> and prints the entire message. However, correct commands are still parsed and executed, only the incorrect ones are ignored.
+</p>
+
+<p>
+Many of these commands determine the subsequent <em>behaviour</em> of the object or avatar.  For example, the <code>@detach=n</code> command locks the given object, making it undetachable.  Some commands set <em>global behaviours</em>, which aren&#039;t limited to the object sending the command.  For example, the <code>@sendchat=n</code> command will prevent the user from talking in local chat.
+</p>
+
+<p>
+<strong>NOTE</strong> about commands with exceptions, such as <code>@sendim</code> or <code>@sendchannel...</code> <code>@(rule):(exception)=n</code> actually (and counter-intuitively) <strong>adds an exception</strong> for the given rule.  <code>@sendchannel:1=n</code>, for example, <strong>allows</strong> chat on channel 1.  This has been the source of at least two scripters&#039; confusion.  =add (which means the same as =n) and =rem (which means =y) exist for the purpose of adding and removing exceptions, respectively.  Use them.
+</p>
+
+<p>
+These behaviours are <strong>not</strong> persistent between sessions.  Since an object changes its UUID every time it rezzes, the object <em>must</em> resend its status (undetachable, preventing IMs...) in the on_rez() event as well as whenever it changes its status.
+</p>
+
+</div>
+
+<h2 class="sectionedit5" id="list_of_commands">List of commands</h2>
+<div class="level2">
+
+<p>
+<strong>Note:</strong> These commands are not case-sensitive but are spacing-sensitive. In other words, <code>@detach = n</code> will <strong>not</strong> work.
+</p>
+
+<p>
+<strong>Notation convention:</strong> Parameters in [square brackets] are optional parameters that can be omitted. The pipe <code>|</code> and slash <code>/</code> signs separate options from which one must be used. Angle brackets (<code>&lt;</code> and <code>&gt;</code>) enclose parameters that are mandatory.
+</p>
+
+<p>
+<strong>Footnotes:</strong> &quot;(*)&quot; are footnotes and will be explained at the end of the list
+</p>
+
+</div>
+
+<h3 class="sectionedit6" id="version_checking">Version Checking</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Automated version checking</em></strong> : <code>@version=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0b</em>
+</p>
+
+<p>
+Makes the viewer automatically say the version of the RLV API it implements, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+
+<p>
+<strong>Warning</strong> : when logging in, the on_rez event of all the attachments occurs way before the avatar can actually send chat messages (about half the way through the login progress bar). This means the timeout should be long enough, like 30 seconds to one minute in order to receive the automatic reply from the viewer.
+</p>
+
+<p>
+<strong>Warning 2</strong> : On 02/22/2010, Linden Lab has released their Third Party Viewer policy which forbids using the term <code>Life</code> in the name of Third Party Viewers. Therefore <code>Restrained Life</code> had to be renamed to <code>Restrained Love</code>. However, for compatibility purposes, this <code>@version</code> command still works and will keep working, however you are encouraged to <strong>not</strong> use it in new scripts, and to <strong>not</strong> show the terms <code>Restrained Life</code> to the user anywhere. For new scripts, please use <code>@versionnew</code> below instead.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Automated version checking</em></strong> : <code>@versionnew=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.23</em>
+</p>
+
+<p>
+Makes the viewer automatically say the version of the RLV API it implements, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+
+<p>
+This command is the successor of <code>@version</code> and replaces it, although <code>@version</code> is kept for ascending compatibility purposes. It returns <code>RestrainedLove viewer v... (SL ...)</code> (<code>RestrainedLove</code> is in one word).
+</p>
+
+<p>
+<strong>Warning</strong> : when logging in, the on_rez event of all the attachments occurs way before the avatar can actually send chat messages (about half the way through the login progress bar). This means the timeout should be long enough, like 30 seconds to one minute in order to receive the automatic reply from the viewer.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Automated version number checking</em></strong> : <code>@versionnum=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+Makes the viewer automatically say the version number of the RLV API it implements (please note that this is different from the version of the viewer, which the scripts should not have to care about), immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. This command is less cumbersome than <code>@version</code>, since the script does not have to parse the response, it gets the version number immediately.
+</p>
+
+<p>
+The version number is a mere integer that represents the version of the API. If the version is X.Y.Z.P, then the number will be X.10^6 + Y.10^4 + Z.10^2 + P. For example, 1.21.1 would be 1210100.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Automated version checking, second way</em></strong> : <code>llGetAgentLanguage (key id)</code> <strong><em>DEPRECATED: DO NOT USE !</em></strong></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+When calling this LSL function, the result is obtained immediately (no need to use a listener and a timer), is exactly equal to the one given by <code>@version</code> and cannot be hidden by the user. This string takes the place of the language returned by the regular SL viewer, which could answer values like <code>en-us</code>, <code>fr</code>, <code>ko</code> etc. Or nothing at all, if the user chose to hide their language setting. Being optional in the regular viewer, it cannot be trusted by a script, so <code>hijacking</code> this feature for the much more useful synchronous version checking in the RLV makes sense. IMPORTANT NOTE: this feature cannot be implemented in viewers prior to v1.21, even when they do implement RestrainedLove v1.16, so make sure you do fall back to the <code>@version</code> method whenever llGetAgentLanguage() returns an empty string. ALSO NOTE: In RestrainedLove 1.16, llGetAgentLanguage() will return an empty string when called by on_rez during login unless the call is delayed by several seconds (how many seconds may vary). FINAL NOTE: This feature was removed from v1.16.1 (and v1.16b, for the Cool SL Viewer).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Manual version checking</em></strong> : <code>@version</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0a</em>
+</p>
+
+<p>
+This command must be sent in IM from an avatar to the user (will not work from objects). The viewer automatically answers its version to the sender in IM, but neither the message nor the answer appears in the user&#039;s IM window, so it&#039;s usually totally stealthy. However, some viewers, such as Firestorm, have the ability to send an autoreply message when someone begins typing an IM to the user. If the user has that option enabled, an IM window will open and display the auto response as soon as the <code>@</code> is typed by the sender, but nothing else.
+</p>
+
+</div>
+
+<h3 class="sectionedit7" id="blacklist_handling">Blacklist handling</h3>
+<div class="level3">
+
+<p>
+The blacklist (implemented in v2.8) is a list of RLV commands that the viewer is meant to ignore. It is modifiable at any time, but a restart is needed to take the changes into account. When a command is issued and it is part of the blacklist, the RLV will simply ignore it. Modifying the blacklist won&#039;t clear existing restrictions though, once they are issued, a restart is needed. When a command is received, a positive acknowledgement is sent to the script, whether the command was actually accepted or not. This way scripts that wait for notifications won&#039;t break if they can&#039;t handle a denial.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Automated version number checking, followed by the blacklist</em></strong> : <code>@versionnumbl=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.8</em>
+</p>
+
+<p>
+Makes the viewer automatically say the version number of the RLV API it implements (please note that this is different from the version of the viewer, which the scripts should not have to care about), followed by a comma (<code>,</code>) and the contents of the blacklist, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. This command is less cumbersome than <code>@version</code> followed by <code>@getblacklist</code>, since the script does not have to parse the response, it gets the version number immediately, and it does not have to send a second asynchronous request after the response to the first.
+</p>
+
+<p>
+For example, <code>@versionnumbl=2222</code> will answer <code>2080000,sendim,recvim</code> if the blacklist is currently <code>sendim,recvim</code>. LSL allows for casting such a string into an integer without any trouble, it would return <code>2080000</code>, discarding the first comma and all that is after it.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the contents of the blacklist, with a filter</em></strong> : <code>@getblacklist[:filter]=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.8</em>
+</p>
+
+<p>
+Makes the viewer automatically reply with the contents of the blacklist (if a filter is present, then only the commands containing that text will be part of the reply), immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Manual blacklist checking</em></strong> : <code>@getblacklist</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.8</em>
+</p>
+
+<p>
+This command must be sent in IM from an avatar to the user (will not work from objects). The viewer automatically answers the contents of its blacklist to the sender in IM, but neither the message nor the answer appears in the user&#039;s IM window, so it&#039;s usually totally stealthy, with the same caveat mentioned above under <code>@version</code>.
+</p>
+
+</div>
+
+<h3 class="sectionedit8" id="miscellaneous">Miscellaneous</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Start/stop notifications on a private channel</em></strong> : <code>@notify:&lt;channel_number&gt;[;word]=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.20, improved in v2.2 (and v1.24)</em>
+</p>
+
+<p>
+Makes the viewer automatically repeat any restriction it adds or removes on the specified channel, or only the restrictions which name contains the word specified after the semicolon (<code>;</code>) character. The response on the private channel <code>&lt;channel_number&gt;</code> is preceded with a slash (<code>/</code>) to avoid making the avatar send commands to other scripts without knowing it, and followed by an equal sign (<code>=</code>) and <code>n</code> or <code>y</code> according to whether the restriction is applied or lifted respectively. The <code>@clear</code> command will not add an equal sign. There is no way to know what object issued the restriction or lifted it, to avoid disclosing too much information about foreign scripts. It does not repeat one-shot commands either (force commands). For example, <code>@notify:2222;detach=add</code> will send <code>/detach=n</code> whenever an object is locked, and <code>/detach=y</code> whenever an object is unlocked, on channel 2222 to which the script will listen to.
+</p>
+
+<p>
+Note : Since v2.2 (and v1.24) you can also set a notification for inventory offers. When your object gives an item or a folder, the avatar using a RLV v2.2 (and v1.24) or higher will respond automatically on the given channel one of the following :
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>/accepted_in_rlv inv_offer &lt;folder&gt;</code> : The folder has been accepted and is now available under <code>#RLV</code> (don&#039;t forget that the viewer renames it, removing the <code>#RLV/</code> prefix).</div>
+</li>
+<li class="level1"><div class="li"> <code>/accepted_in_inv inv_offer &lt;folder&gt;</code> : The folder has been accepted but is not shared.</div>
+</li>
+<li class="level1"><div class="li"> <code>/declined inv_offer &lt;folder&gt;</code> : The folder has been declined and/or the user has pressed <code>Block</code> (formerly <code>Mute</code>).</div>
+</li>
+</ul>
+
+<p>
+Where <code>&lt;folder&gt;</code> is the full path of the folder or item given. For example, #RLV/~MyCuffs. There is a space before <code>inv_offer</code>, which is a token chosen in a way that it is easy to set a notification for it. If you just want to know whether your folder named #RLV/~MyCuffs has been accepted in the <code>#RLV</code> folder, issue a <code>@notify:2222;accepted_in_rlv inv_offer #RLV/~MyCuffs=add</code> command. If you just want to know whether the avatar has received something, issue a simple <code>@notify:2222;inv_offer=add</code> command.
+</p>
+
+<p>
+Note 2 : Since v2.5 the viewer also sends notifications when wearing outfits :
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>/worn legally &lt;layer&gt;</code> : The avatar has just worn a piece of clothing on the indicated layer.</div>
+</li>
+<li class="level1"><div class="li"> <code>/unworn legally &lt;layer&gt;</code> : The avatar has just removed a piece of clothing from the indicated layer.</div>
+</li>
+<li class="level1"><div class="li"> <code>/attached legally &lt;attach_point_name&gt;</code> : The avatar has just attached an object to the indicated attachment point.</div>
+</li>
+<li class="level1"><div class="li"> <code>/attached illegally &lt;attach_point_name&gt;</code> : The avatar has just attached an object to the indicated attachment point, but was not allowed to (probably a script attached it automatically), and it will be detached in a few seconds.</div>
+</li>
+<li class="level1"><div class="li"> <code>/detached legally &lt;attach_point_name&gt;</code> : The avatar has just detached an object from the indicated attachment point.</div>
+</li>
+<li class="level1"><div class="li"> <code>/detached illegally &lt;attach_point_name&gt;</code> : The avatar has just detached an object from the indicated attachment point, but was not allowed to (probably a script kicked it off), and it will be re-attached in a few seconds.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/deny permissive exceptions</em></strong> : <code>@permissive=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When denied, all restrictions turn into their <code>secure</code> counterparts (if any). This means an exception to a restriction will be ignored if it is not issued by the same object that issued the restriction. Using non-secure restrictions (the original ones, like <code>@sendim</code>, <code>@recvim</code> etc) and not using @permissive allow the avatar to benefit from exceptions issued by different objects.
+</p>
+
+<p>
+<strong>Warning</strong> : Using this command (or any secure version of the original commands) may silently discard exceptions issued by different objects (it is even its primary purpose), hence some products may appear to cease working while this restriction is in effect. For example, a product that allows the avatar to always be able to send IMs a particular friend will not be able to overcome a <code>@sendim_sec</code> or a <code>@permissive</code> command sent by another object, and will look like it is broken. Therefore, use with caution and make the user aware of how secure your own product is !
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Clear all the rules tied to an object</em></strong> : <code>@clear</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0a, but working only since v1.04a</em>
+</p>
+
+<p>
+This command clears all the restrictions and exceptions tied to a particular UUID.
+</p>
+
+<p>
+<strong>Warning</strong> : when triggered on detach by default, this might prevent the automatic reattach when <code>@defaultwear</code> is active, as <code>@clear</code> will also lift <code>@detach=n</code>, thus the viewer thinks the item that gets detached by accident by a default-wear-action is unlocked and will not reattach it.
+</p>
+
+<p>
+Possible workarounds:
+</p>
+<ul>
+<li class="level1"><div class="li"> only lift the exact restrictions you added with <code>@clear=&lt;pattern&gt;</code></div>
+</li>
+<li class="level1"><div class="li"> only trigger <code>@clear</code> on detach when you are sure the attachment is not locked</div>
+</li>
+<li class="level1"><div class="li"> don&#039;t trigger <code>@clear</code> on detach at all and wait for the viewer to lift the set restrictions</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Clear a subset of the rules tied to an object</em></strong> : <code>@clear=&lt;string&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0a, but working only since v1.04a</em>
+</p>
+
+<p>
+This command clears all the restrictions and exceptions tied to a particular UUID which name contains <code>&lt;string&gt;</code>. A good example would be <code>@clear=tp</code> which clears all the teleport restrictions and exceptions tied to that object, whereas <code>@clear=tplure:</code> would only clear the exceptions to the <code>teleport-by-friend</code> restriction
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the list of restrictions the avatar is currently submitted to</em></strong> : <code>@getstatus[:&lt;part_of_rule&gt;[;&lt;custom_separator&gt;]]=&lt;channel&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10, slightly tweaked in v1.16 and v2.8</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the list of rules the avatar is currently under, which would only contains the restrictions issued by the object that sends this command, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. The answer is a list of rules, separated by slashes (&#039;/&#039;) or by any other separator if specified. Attention : since v1.16 a slash is prepended at the beginning of the string. This does not confuse llParseString2List() calls, but does confuse llParseStringKeepNulls() calls !
+</p>
+
+<p>
+Since v2.8, if <code>&lt;custom_separator&gt;</code> is specified, it will replace the slash (&#039;/&#039;) with the provided separator. Attention, the option part must be present, therefore there must be a colon (&#039;:&#039;) before the semicolon (&#039;;&#039;), even if <code>&lt;part_of_rule&gt;</code> is absent.
+</p>
+
+<p>
+This command is useful for people who write scripts that may conflict with other scripts in the same object (for instance : third-party plugins). Conflicts do not occur in different objects, that&#039;s why this command only replies the restrictions issued by the object calling it.
+</p>
+
+<p>
+<code>&lt;part_of_rule&gt;</code> is the name of a rule, or a part of it, useful if the script only needs to know about a certain restriction.
+</p>
+
+<p>
+Example : If the avatar is under <code>tploc</code>, <code>tplure</code>, <code>tplm</code> and <code>sittp</code>, here is what the script would get :
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>@getstatus=2222</code>  =&gt;  /tploc/tplure/tplm/sittp</div>
+</li>
+<li class="level1"><div class="li"> <code>@getstatus:sittp=2222</code>  =&gt;  /sittp</div>
+</li>
+<li class="level1"><div class="li"> <code>@getstatus:tpl=2222</code>  =&gt;  /tploc/tplure/tplm  (because <code>tpl</code> is part of <code>tploc</code>, <code>tplure</code> and <code>tplm</code> but not <code>sittp</code>)</div>
+</li>
+<li class="level1"><div class="li"> <code>@getstatus:tpl;#=2222</code>  =&gt;  #tploc#tplure#tplm  (because <code>tpl</code> is part of <code>tploc</code>, <code>tplure</code> and <code>tplm</code> but not <code>sittp</code>, and the specified separator is <code>#</code>)</div>
+</li>
+<li class="level1"><div class="li"> <code>@getstatus:;#=2222</code>  =&gt;  #tploc#tplure#tplm#sittp  (because the specified separator is <code>#</code>)</div>
+</li>
+<li class="level1"><div class="li"> <code>@getstatus:;=2222</code>  =&gt;  /tploc/tplure/tplm/sittp  (because the specified separator is empty, so it defaults to <code>/</code>)</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the list of all the restrictions the avatar is currently submitted to</em></strong> : <code>@getstatusall[:&lt;part_of_rule&gt;[;&lt;custom_separator&gt;]]=&lt;channel&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15, slightly tweaked in v1.16 and v2.8</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the list of rules the avatar is currently under, for all the objects regardless of their UUID, contrary to <code>@getstatus</code>, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. The answer is a list of rules, separated by slashes (&#039;/&#039;) or by any other separator if specified. Attention : since v1.16 a slash is prepended at the beginning of the string. This does not confuse llParseString2List() calls, but does confuse llParseStringKeepNulls() calls !
+</p>
+
+<p>
+Since v2.8, if <code>&lt;custom_separator&gt;</code> is specified, it will replace the slash (&#039;/&#039;) with the provided separator. Attention, the option part must be present, therefore there must be a colon (&#039;:&#039;) before the semicolon (&#039;;&#039;), even if <code>&lt;part_of_rule&gt;</code> is absent.
+</p>
+
+</div>
+
+<h3 class="sectionedit9" id="movement">Movement</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent flying</em></strong> : <code>@fly=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.12.2</em>
+</p>
+
+<p>
+When prevented, the user is unable to fly.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent running by double-tapping an arrow key</em></strong> : <code>@temprun=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.7</em>
+</p>
+
+<p>
+When prevented, the user is unable to run by double-tapping an arrow key. If you want to prevent the user from running at all, you must also use @alwaysrun.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent always running</em></strong> : <code>@alwaysrun=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.7</em>
+</p>
+
+<p>
+When prevented, the user is unable to switch running mode on by pressing Ctrl-R. If you want to prevent the user from running at all, you must also use <code>@temprun</code>. This command is useful when you want to force the user to accelerate before running, rather than running all the time, for example during combats or sports games.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force rotate the avatar to a set direction</em></strong> : <code>@setrot:&lt;angle_in_radians&gt;=force</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.17</em>
+</p>
+
+<p>
+Forces the avatar to rotate towards a direction set by an angle in radians from the north. Note that this command is not very precise, nor will do anything if the action attempts to rotate the avatar by less than 10° (experimental value, it has been mentioned somewhere that 6° was the minimum). In other words, it is best to either check with a llGetRot() first, or to make the avatar turn twice, first 180° plus the desired angle, then by the angle we need. It isn&#039;t very elegant but it works.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Change the height of the avatar</em></strong> : <code>@adjustheight:&lt;distance_pelvis_to_foot_in_meters&gt;;&lt;factor&gt;[;delta_in_meters]=force</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+Forces the avatar to modify its <code>Z-offset</code>, in other words its altitude. This value can already be changed through a debug setting in most third party viewers, this command allows to automate the change according to the animation.
+</p>
+
+<p>
+Attention, certain viewers do not implement this command.
+</p>
+
+</div>
+
+<h3 class="sectionedit10" id="camera_and_view">Camera and view</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent zooming too far forward with Ctrl-0</em></strong> : <code>@camzoommax:&lt;max_multiplier&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction prevents the user from zooming in (with the Ctrl-0 key) further than <code>&lt;max_multiplier&gt;</code>, knowing that 1.0 is the default. If several objects issue this restriction, the viewer retains the smallest value of all. 
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent zooming too far back with Ctrl-8</em></strong> : <code>@camzoommin:&lt;min_multiplier&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction prevents the user from zooming out (with the Ctrl-8 key) further than <code>&lt;min_multiplier&gt;</code>, knowing that 1.0 is the default. If several objects issue this restriction, the viewer retains the highest value of all. 
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent moving the camera too far from the avatar</em></strong> : <code>@camdistmax:&lt;max_distance&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction prevents the user from moving the camera too far from the avatar, either with the mouse wheel or when focusing with the Alt key. If <code>&lt;max_distance&gt;</code> is set to 0, this command forces the avatar to stay in Mouselook. If several objects issue this restriction, the viewer retains the smallest value of all. This does not impact scripts that move the camera themselves, though.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent moving the camera too close to the avatar</em></strong> : <code>@camdistmin:&lt;min_distance&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction prevents the user from moving the camera too close to the avatar, either with the mouse wheel or when focusing with the Alt key. If <code>&lt;min_distance&gt;</code> is set to something higher than 0, this command forces the avatar to go out of Mouselook, and prevents from going back to it. If several objects issue this restriction, the viewer retains the highest value of all. This does not impact scripts that move the camera themselves, though.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Partially or completely blind the avatar</em></strong> : <code>@camdrawmin:&lt;min_distance&gt;=&lt;y/n&gt;</code>, <code>@camdrawmax:&lt;max_distance&gt;=&lt;y/n&gt;</code>, <code>@camdrawalphamin:&lt;min_alpha&gt;=&lt;y/n&gt;</code>, <code>@camdrawalphamax:&lt;max_alpha&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, these two restriction make the viewer draw several concentric spheres around the avatar, with increasing opacities going from <code>&lt;min_alpha&gt;</code> at <code>&lt;min_distance&gt;</code> to <code>&lt;max_alpha&gt;</code> at <code>&lt;max_distance&gt;</code>. The result looks like fog darkening gradually as the distance increases, and it can completely block the view if <code>@camdrawalphamax</code> is set to 1 (the default).
+There are several matters to take into account when issuing these restrictions :
+</p>
+<ul>
+<li class="level1"><div class="li"> There is fog (gradual darkening of the view) only if both <code>@camdrawalphamin</code> and <code>@camdrawalphamax</code> are specified and different. If either of them is omitted, only one sphere is rendered (which may be what the scripter wants).</div>
+</li>
+<li class="level1"><div class="li"> The number of spheres to draw is not fixed and depends on the viewer (for example, a debug setting can let the user decide, because the more transparent spheres to stack, the heavier for the rendering).</div>
+</li>
+<li class="level1"><div class="li"> The viewer does it so the distant objects are obscured only by <code>@camdrawalphamax</code> (for example, if <code>@camdrawalphamax</code> is set to 0.75, a white fullbright wall in the distance will look dark grey, RGB 64/64/64), regardless of the number of spheres to draw.</div>
+</li>
+<li class="level1"><div class="li"> The camera cannot go beyond <code>@camdrawmin</code>, and <code>@camdrawmin</code> cannot be set below <code>0.4</code> (because it is not its role to force to Mouselook, and the sphere would not be rendered by the viewer under that limit).</div>
+</li>
+<li class="level1"><div class="li"> The limits retained by the viewer are the lowest maxima and the highest minima, if several of them are issued by different objects.</div>
+</li>
+<li class="level1"><div class="li"> The avatars&#039; name tags and the hovertexts in world fade to invisibility beyond @camdrawmin.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Specify the color of the fog</em></strong> : <code>@camdrawcolor:&lt;red&gt;;&lt;green&gt;;&lt;blue&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When this command issues, the color of the fog designed by <code>@camdrawmin</code> and <code>@camdrawmax</code> is set to <code>&lt;red&gt;</code>, <code>&lt;green&gt;</code>, <code>&lt;blue&gt;</code>. Those three values are between 0.0 and 1.0, the default being black (<code>0;0;0</code>). When several objects issue this command, the resulting color is a mix of all.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent unlocking the camera from the avatar</em></strong> : <code>@camunlock=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction prevents the user from unlocking the camera from the avatar, meaning that the user cannot use Alt to focus nor orbit the camera around the avatar. While the camera is locked, the sim forces it to stay in a line of sight from the avatar, meaning that this restriction is good to prevent from seeing through walls.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Turn all the avatars to silhouettes beyond a certain distance</em></strong> : <code>@camavdist:&lt;distance&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction makes all the avatars beyond <code>&lt;distance&gt;</code> look as if they were visually muted, but colored pitch black.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Turn all the textures blank, except for the avatars</em></strong> : <code>@camtextures=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+When active, this restriction makes the viewer ignore every texture in world, except those on the attachments worn by the avatars, as well as their skins and clothes. The materials are untouched as well so this restriction is good for simulating the fact that the avatar cannot <code>see</code>, let alone <code>read</code> textures, but can still <code>feel</code> the world around.
+</p>
+
+</div>
+
+<h4 id="chat_emotes_and_instant_messages">Chat, Emotes and Instant Messages</h4>
+<div class="level4">
+
+</div>
+
+<h3 class="sectionedit11" id="chat">Chat</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent sending chat messages</em></strong> : <code>@sendchat=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0b</em>
+</p>
+
+<p>
+When prevented, everything typed on channel 0 will be discarded. However, emotes and messages beginning with a slash (&#039;/&#039;) will go through, truncated to strings of 30 and 15 characters long respectively (likely to change later). Messages with special signs like ()&quot;-*=_^ are prohibited, and will be discarded. When a period (&#039;.&#039;) is present, the rest of the message is discarded.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent shouting</em></strong> : <code>@chatshout=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+When prevented, the avatar will chat normally even when the user tries to shout. This does not change the message in any way, only its range.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent chatting at normal volume</em></strong> : <code>@chatnormal=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+When prevented, the avatar will whisper even when the user tries to shout or chat normally. This does not change the message in any way, only its range.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent whispering</em></strong> : <code>@chatwhisper=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+When prevented, the avatar will chat normally even when the user tries to whisper. This does not change the message in any way, only its range.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Redirect public chat to private channels</em></strong> : <code>@redirchat:&lt;channel_number&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+When active, this restriction redirects whatever the user says on the public channel (<code>/0</code>) to the private channel provided in the option field. If several redirections are issued, the chat message will be redirected to each channel. It does not apply to emotes, and will not trigger any animation (typing start, typing stop, nodding) when talking. This restriction does not supersede @sendchannel.
+</p>
+
+<p>
+<strong>NOTE:</strong> As of RLV v1.22.1 / RLVa 1.1.0, it had a bug that <code>@redirchat</code> also truncates emotes on channel 0. An additional <code>@emote=add</code> works around this side-effect. This bug was fixed in the Cool VL Viewer starting with v1.22g (but Marine&#039;s RLV v1.23 still had this bug) and RLV v2.0 (it is safe to assume it was fixed in all viewers starting with v1.24 and v2.0).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving chat messages</em></strong> : <code>@recvchat=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0b</em>
+</p>
+
+<p>
+When prevented, everything heard in public chat will be discarded except emotes.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving chat messages, secure way</em></strong> : <code>@recvchat_sec=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When prevented, everything heard in public chat will be discarded except emotes. This particular command accepts exceptions issued from the same object only, opposed to the non-secure way that accepts exceptions from any object.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the chat message receiving prevention</em></strong> : <code>@recvchat:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.01</em>
+</p>
+
+<p>
+When adding an exception, the user can hear chat messages from the sender whose UUID is specified in the command. This overrides the prevention for this avatar only (there is no limit to the number of exceptions), don&#039;t forget to remove it when it becomes obsolete.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving chat messages from someone in particular</em></strong> : <code>@recvchatfrom:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When prevented, everything heard in public chat from the specified avatar will be discarded except emotes.
+</p>
+
+</div>
+
+<h3 class="sectionedit12" id="emotes">Emotes</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add an exception to the emote truncation above</em></strong> : <code>@emote=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.01</em>
+</p>
+
+<p>
+When adding this exception, the emotes are not truncated anymore (however, special signs will still discard the message).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Redirect public emotes to private channels</em></strong> : <code>@rediremote:&lt;channel_number&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When active, this restriction redirects whatever emote the user says on the public channel (<code>/0</code>) to the private channel provided in the option field. If several redirections are issued, the emote will be redirected to each channel.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing emotes</em></strong> : <code>@recvemote=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When prevented, every emote seen in public chat will be discarded.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving emotes seen in public chat from someone in particular</em></strong> : <code>@recvemotefrom:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+When prevented, everything emote seen in public chat from the specified avatar will be discarded.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing emotes, secure way</em></strong> : <code>@recvemote_sec=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When prevented, every emote seen in public chat will be discarded. This particular command accepts exceptions issued from the same object only, opposed to the non-secure way that accepts exceptions from any object.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the emote seeing prevention</em></strong> : <code>@recvemote:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When adding an exception, the user can see emotes from the sender whose UUID is specified in the command. This overrides the prevention for this avatar only (there is no limit to the number of exceptions), don&#039;t forget to remove it when it becomes obsolete.
+</p>
+
+</div>
+
+<h3 class="sectionedit13" id="private_channels">Private Channels</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent using any chat channel but certain channels</em></strong> : <code>@sendchannel[:&lt;channel&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Complimentary of <code>@sendchat</code>, this command prevents the user from sending messages on non-public Chat channels. If channel is specified, it becomes an exception to the aforementioned restriction (then it is better to use <code>rem</code> or <code>add</code> instead of <code>y</code> or <code>n</code> respectively). It does not prevent the viewer automatic replies like <code>@version=nnnn</code>, <code>@getstatus=nnnn</code> etc...  
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent using any chat channel but certain channels, secure way</em></strong> : <code>@sendchannel_sec[:&lt;channel&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Complimentary of <code>@sendchat</code>, this command prevents the user from sending messages on non-public channels. If channel is specified, it becomes an exception to the aforementioned restriction (then it is better to use <code>rem</code> or <code>add</code> instead of <code>y</code> or <code>n</code> respectively). It does not prevent the viewer automatic replies like <code>@version=nnnn</code>, <code>@getstatus=nnnn</code> etc... This particular command only accepts exceptions issued from the same object, opposed to its non-secure version which accepts exceptions from any other object.
+</p>
+
+</div>
+
+<h3 class="sectionedit14" id="instant_messages">Instant Messages</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent sending instant messages</em></strong> : <code>@sendim=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0b</em>
+</p>
+
+<p>
+When prevented, everything typed in IM will be discarded and a bogus message will be sent to the receiver instead.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent sending instant messages, secure way</em></strong> : <code>@sendim_sec=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When prevented, everything typed in IM will be discarded and a bogus message will be sent to the receiver instead. This particular command accepts exceptions issued from the same object only, opposed to the non-secure way that accepts exceptions from any object.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the instant message sending prevention</em></strong> : <code>@sendim:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.01</em>
+</p>
+
+<p>
+When adding an exception, the user can send IMs to the receiver whose UUID is specified in the command. This overrides the prevention for this avatar only (there is no limit to the number of exceptions), don&#039;t forget to remove it when it becomes obsolete.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent sending instant messages to someone in particular</em></strong> : <code>@sendimto:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When prevented, everything typed in IM to the specified avatar will be discarded and a bogus message will be sent instead.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent starting an IM session with anyone</em></strong> : <code>@startim=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.6</em>
+</p>
+
+<p>
+When prevented, the user is unable to start an IM session with anyone. Sessions that are already open are not impacted though.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the IM session start prevention</em></strong> : <code>@startim:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.6</em>
+</p>
+
+<p>
+When adding an exception, the user can start an IM session with the receiver whose UUID is specified in the command. This overrides the prevention for this avatar only (there is no limit to the number of exceptions), don&#039;t forget to remove it when it becomes obsolete.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent starting an IM session with someone in particular</em></strong> : <code>@startimto:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.6</em>
+</p>
+
+<p>
+When prevented, the user is unable to start an IM session with that person. Sessions that are already open are not impacted though.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving instant messages</em></strong> : <code>@recvim=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0b</em>
+</p>
+
+<p>
+When prevented, every incoming IM will be discarded and the sender will be notified that the user cannot read them.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving instant messages, secure way</em></strong> : <code>@recvim_sec=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When prevented, every incoming IM will be discarded and the sender will be notified that the user cannot read them. This particular command accepts exceptions issued from the same object only, opposed to the non-secure way that accepts exceptions from any object.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the instant message receiving prevention</em></strong> : <code>@recvim:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.01</em>
+</p>
+
+<p>
+When adding an exception, the user can read instant messages from the sender whose UUID is specified in the command. This overrides the prevention for this avatar only (there is no limit to the number of exceptions), don&#039;t forget to remove it when it becomes obsolete.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent receiving instant messages from someone in particular</em></strong> : <code>@recvimfrom:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When prevented, every IM received from the the specified avatar will be discarded and the sender will be notified that the user cannot read them.
+</p>
+
+</div>
+
+<h3 class="sectionedit15" id="teleportation">Teleportation</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent teleporting to a landmark</em></strong> : <code>@tplm=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0</em>
+</p>
+
+<p>
+When prevented, the user cannot use a landmark, pick or any other preset location to teleport there.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent teleporting to a location</em></strong> : <code>@tploc=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0</em>
+</p>
+
+<p>
+When prevented, the user cannot use teleport to a coordinate by using the map and such.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent teleporting by a friend</em></strong> : <code>@tplure=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0</em>
+</p>
+
+<p>
+When prevented, the user automatically discards any teleport offer, and the avatar who initiated the offer is notified.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent teleporting by a friend, secure way</em></strong> : <code>@tplure_sec=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When prevented, the user automatically discards any teleport offer, and the avatar who initiated the offer is notified. This particular command accepts exceptions issued from the same object only, opposed to the non-secure way that accepts exceptions from any object.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the friend teleport prevention</em></strong> : <code>@tplure:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0</em>
+</p>
+
+<p>
+When adding an exception, the user can be teleported by the avatar whose UUID is specified in the command. This overrides the prevention for this avatar only (there is no limit to the number of exceptions), don&#039;t forget to remove it when it becomes obsolete.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Unlimit/limit sit-tp</em></strong> : <code>@sittp=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0</em>
+</p>
+
+<p>
+When limited, the avatar cannot sit on a prim unless it is closer than 1.5 m. This allows cages to be secure, preventing the avatar from warping its position through the walls (unless the prim is too close).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent standing up at a different location than where we sat down</em></strong> : <code>@standtp=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.1.2 and v1.24</em>
+</p>
+
+<p>
+When this restriction is active and the avatar stands up, it is automatically teleported back to the location where it initially sat down. Please note that the <code>last standing location</code> is also stored when the restriction is issued, so this won&#039;t be a problem for grabbers and the like, that sit the victim, then move them inside a cell, which issues its restrictions, and then unsits them. In this case the avatar will stay in the cell.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force-Teleport the user</em></strong> : <code>@tpto:&lt;X&gt;/&lt;Y&gt;/&lt;Z&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.12</em>
+</p>
+
+<p>
+This command forces the avatar to teleport to the indicated coordinates. Note that these coordinates are always <strong>global</strong>, hence the script that calls this command will not be trivial. Moreso, if the destination contains a telehub or a landing point, the user will land there instead of the desired point. This is a SL limitation. Also keep in mind that <code>@tpto</code> is inhibited by <code>@tploc=n</code>, and from v1.15 and above, by <code>@unsit</code> too.
+</p>
+
+<p>
+Here is a sample code to call that command properly :
+</p>
+<pre class="code lsl2"><span class="co1">// FORCE TELEPORT EXAMPLE</span>
+<span class="co1">// Listens on channel 4 for local coordinates and a sim name</span>
+<span class="co1">// and tells your viewer to teleport you there.</span>
+<span class="co1">//</span>
+<span class="co1">// By Marine Kelley 2008-08-26</span>
+<span class="co1">// RLV version required : 1.12 and above</span>
+<span class="co1">//</span>
+<span class="co1">// HOW TO USE :</span>
+<span class="co1">//   * Create a script inside a box</span>
+<span class="co1">//   * Overwrite the contents of the script with this one</span>
+<span class="co1">//   * Wear the box</span>
+<span class="co1">//   * Say the destination coords Region/X/Y/Z on channel 4 :</span>
+<span class="co1">//     Example : /4 Help Island Public/128/128/50</span>
+&nbsp;
+<a href="http://wiki.secondlife.com/wiki/key"><span class="kw4">key</span></a> kRequestHandle; <span class="co1">// UUID of the dataserver request</span>
+<a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> vLocalPos;   <span class="co1">// local position extracted from the</span>
+&nbsp;
+Init <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+  kRequestHandle <span class="sy0">=</span> <span class="kw2">NULL_KEY</span>;
+  <a href="http://wiki.secondlife.com/wiki/llListen"><span class="kw5">llListen</span></a> <span class="br0">&#40;</span><span class="nu0">4</span>, <span class="st0">&quot;&quot;</span>, <a href="http://wiki.secondlife.com/wiki/llGetOwner"><span class="kw5">llGetOwner</span></a> <span class="br0">&#40;</span><span class="br0">&#41;</span>, <span class="st0">&quot;&quot;</span><span class="br0">&#41;</span>;
+<span class="br0">&#125;</span>
+&nbsp;
+&nbsp;
+<a href="http://wiki.secondlife.com/wiki/default"><span class="kw5">default</span></a>
+<span class="br0">&#123;</span>
+  <a href="http://wiki.secondlife.com/wiki/state_entry"><span class="kw3">state_entry</span></a> <span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    Init <span class="br0">&#40;</span><span class="br0">&#41;</span>;
+  <span class="br0">&#125;</span>
+&nbsp;
+  <a href="http://wiki.secondlife.com/wiki/on_rez"><span class="kw3">on_rez</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> start_param<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    Init <span class="br0">&#40;</span><span class="br0">&#41;</span>;
+  <span class="br0">&#125;</span>
+&nbsp;
+  <a href="http://wiki.secondlife.com/wiki/listen"><span class="kw3">listen</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> channel, <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> name, <a href="http://wiki.secondlife.com/wiki/key"><span class="kw4">key</span></a> id, <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> message<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> tokens <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llParseString2List"><span class="kw5">llParseString2List</span></a> <span class="br0">&#40;</span>message, <span class="br0">&#91;</span><span class="st0">&quot;/&quot;</span><span class="br0">&#93;</span>, <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>;
+    <a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a> L <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llGetListLength"><span class="kw5">llGetListLength</span></a> <span class="br0">&#40;</span>tokens<span class="br0">&#41;</span>;
+&nbsp;
+    <span class="kw1">if</span> <span class="br0">&#40;</span>L<span class="sy0">==</span><span class="nu0">4</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="co1">// Extract local X, Y and Z</span>
+      vLocalPos.x <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2Float"><span class="kw5">llList2Float</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">1</span><span class="br0">&#41;</span>;
+      vLocalPos.y <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2Float"><span class="kw5">llList2Float</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">2</span><span class="br0">&#41;</span>;
+      vLocalPos.z <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2Float"><span class="kw5">llList2Float</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">3</span><span class="br0">&#41;</span>;
+&nbsp;
+      <span class="co1">// Request info about the sim</span>
+      kRequestHandle<span class="sy0">=</span><a href="http://wiki.secondlife.com/wiki/llRequestSimulatorData"><span class="kw5">llRequestSimulatorData</span></a> <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/llList2String"><span class="kw5">llList2String</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">0</span><span class="br0">&#41;</span>, <span class="kw2">DATA_SIM_POS</span><span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+  <a href="http://wiki.secondlife.com/wiki/dataserver"><span class="kw3">dataserver</span></a><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/key"><span class="kw4">key</span></a> queryid, <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span> <span class="br0">&#40;</span>queryid <span class="sy0">==</span> kRequestHandle<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+      <span class="co1">// Parse the dataserver response (it is a vector cast to a string)</span>
+      <a href="http://wiki.secondlife.com/wiki/list"><span class="kw4">list</span></a> tokens <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llParseString2List"><span class="kw5">llParseString2List</span></a> <span class="br0">&#40;</span>data, <span class="br0">&#91;</span><span class="st0">&quot;&lt;&quot;</span>, <span class="st0">&quot;,&quot;</span>, <span class="st0">&quot;&gt;&quot;</span><span class="br0">&#93;</span>, <span class="br0">&#91;</span><span class="br0">&#93;</span><span class="br0">&#41;</span>;
+      <a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a> pos_str <span class="sy0">=</span> <span class="st0">&quot;&quot;</span>;
+      <a href="http://wiki.secondlife.com/wiki/vector"><span class="kw4">vector</span></a> global_pos;
+&nbsp;
+      <span class="co1">// The coordinates given by the dataserver are the ones of the</span>
+      <span class="co1">// South-West corner of this sim</span>
+      <span class="co1">// =&gt; offset with the specified local coordinates</span>
+      global_pos.x <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2Float"><span class="kw5">llList2Float</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">0</span><span class="br0">&#41;</span>;
+      global_pos.y <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2Float"><span class="kw5">llList2Float</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">1</span><span class="br0">&#41;</span>;
+      global_pos.z <span class="sy0">=</span> <a href="http://wiki.secondlife.com/wiki/llList2Float"><span class="kw5">llList2Float</span></a> <span class="br0">&#40;</span>tokens, <span class="nu0">2</span><span class="br0">&#41;</span>;
+      global_pos <span class="sy0">+=</span> vLocalPos;
+&nbsp;
+      <span class="co1">// Build the command</span>
+      pos_str <span class="sy0">=</span>      <span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a><span class="br0">&#41;</span><span class="br0">&#40;</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a><span class="br0">&#41;</span>global_pos.x<span class="br0">&#41;</span>
+                <span class="sy0">+</span><span class="st0">&quot;/&quot;</span><span class="sy0">+</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a><span class="br0">&#41;</span><span class="br0">&#40;</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a><span class="br0">&#41;</span>global_pos.y<span class="br0">&#41;</span>
+                <span class="sy0">+</span><span class="st0">&quot;/&quot;</span><span class="sy0">+</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a><span class="br0">&#41;</span><span class="br0">&#40;</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/integer"><span class="kw4">integer</span></a><span class="br0">&#41;</span>global_pos.z<span class="br0">&#41;</span>;
+      <a href="http://wiki.secondlife.com/wiki/llOwnerSay"><span class="kw5">llOwnerSay</span></a> <span class="br0">&#40;</span><span class="st0">&quot;Global position : &quot;</span><span class="sy0">+</span><span class="br0">&#40;</span><a href="http://wiki.secondlife.com/wiki/string"><span class="kw4">string</span></a><span class="br0">&#41;</span>pos_str<span class="br0">&#41;</span>; <span class="co1">// Debug purposes</span>
+&nbsp;
+      <span class="co1">// Fire !</span>
+      <a href="http://wiki.secondlife.com/wiki/llOwnerSay"><span class="kw5">llOwnerSay</span></a> <span class="br0">&#40;</span><span class="st0">&quot;@tpto:&quot;</span><span class="sy0">+</span>pos_str<span class="sy0">+</span><span class="st0">&quot;=force&quot;</span><span class="br0">&#41;</span>;
+    <span class="br0">&#125;</span>
+  <span class="br0">&#125;</span>
+&nbsp;
+<span class="br0">&#125;</span></pre>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add auto-accept teleport offers from a particular avatar</em></strong> : <code>@accepttp[:&lt;UUID&gt;]=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15, slightly improved in v1.16</em>
+</p>
+
+<p>
+Adding this rule will make the user automatically accept any teleport offer from the avatar which key is <code>&lt;UUID&gt;</code>, exactly like if that avatar was a Linden (no confirmation box, no message, no Cancel button). This rule does not supersede nor deprecate <code>@tpto</code> because the former teleports to someone, while the latter teleports to an arbitrary location. Attention : in v1.16 the UUID becomes optional, which means that @accepttp=add will force the user to accept teleport offers from anyone ! Use with caution !
+</p>
+
+</div>
+
+<h4 id="inventory_editing_and_rezzing">Inventory, Editing and Rezzing</h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent using inventory</em></strong> : <code>@showinv=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Forces the inventory windows to close and stay closed.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent reading notecards</em></strong> : <code>@viewnote=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Prevents from opening notecards but does not close the ones already open.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent opening scripts</em></strong> : <code>@viewscript=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.22</em>
+</p>
+
+<p>
+Prevents from opening scripts but does not close the ones already open.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent opening textures</em></strong> : <code>@viewtexture=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.22</em>
+</p>
+
+<p>
+Prevents from opening textures (and snapshots) but does not close the ones already open.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent editing objects</em></strong> : <code>@edit=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.03</em>
+</p>
+
+<p>
+When prevented from editing and opening objects, the Build &amp; Edit window will refuse to open.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the edit prevention</em></strong> : <code>@edit:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When adding an exception, the user can edit or open this object in particular.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent rezzing inventory</em></strong> : <code>@rez=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.03</em>
+</p>
+
+<p>
+When prevented from rezzing stuff, creating and deleting objects, drag-dropping from inventory and dropping attachments will fail.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent editing particular objects</em></strong> : <code>@editobj:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When prevented, the Build &amp; Edit window will refuse to open when trying to edit or open the specified object.
+</p>
+
+</div>
+
+<h3 class="sectionedit16" id="sitting">Sitting</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent standing up</em></strong> : <code>@unsit=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10, modified in v1.15 to prevent teleporting as well</em>
+</p>
+
+<p>
+Hides the Stand up button. From v1.15 it also prevents teleporting, which was a way to stand up.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force sit on an object</em></strong> : <code>@sit:&lt;UUID&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Does not work if the user is prevented from sit-tping and further than 1.5 meters away, or when prevented from unsitting.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the UUID of the object the avatar is sitting on</em></strong> : <code>@getsitid=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.12.4 but broken in all versions older than v1.24 and v2.2 (was reporting the UUID of the last object any avatar within draw distance sat upon)</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the UUID of the object the avatar is currently sitting on, or NULL_KEY if they are not sitting.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force unsit</em></strong> : <code>@unsit=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Self-explanatory but for some reason it randomly fails, so don&#039;t rely on it for now. Further testing is needed.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent sitting down</em></strong> : <code>@sit=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16.2</em>
+</p>
+
+<p>
+Prevents the user from sitting on anything, including with @sit:&lt;UUID&gt;=force.
+</p>
+
+</div>
+
+<h3 class="sectionedit17" id="clothing_and_attachments">Clothing and Attachments</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Render an object detachable/nondetachable</em></strong> : <code>@detach=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.0a</em>
+</p>
+
+<p>
+When called with the <code>n</code> option, the object sending this message (which must be an attachment) will be made nondetachable. It can be detached again when the <code>y</code> option is called.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Unlock/Lock an attachment point</em></strong> : <code>@detach:&lt;attach_point_name&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.20</em>
+</p>
+
+<p>
+When called with the <code>n</code> option, the attachment point of name <code>&lt;attach_point_name&gt;</code> will be locked either full (if it is occupied by an object at that time) or empty (if not). Any object that is occupying this point when the restriction is issued will be considered as undetachable, exactly like if it had issued a <code>@detach=n</code> command itself. If the point is empty it will stay that way, no item will be able to be attached there, and llAttachToAvatar() calls will fail (the object will be attached, then detached right away).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Unlock/Lock an attachment point empty</em></strong> : <code>@addattach[:&lt;attach_point_name&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.22</em>
+</p>
+
+<p>
+When called with the <code>n</code> option, the attachment point of name <code>&lt;attach_point_name&gt;</code> will be locked empty. Any object that is occupying this point when the restriction is issued can be detached, but nothing can be attached there. If the point is empty it will stay that way, no item will be able to be attached there, and llAttachToAvatar() calls will fail (the object will be attached, then detached right away). If <code>&lt;attach_point_name&gt;</code> is not specified, then all the attachment points will be concerned. This command is the counterpart to <code>@addoutfit</code>, for attachments.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Unlock/Lock an attachment point full</em></strong> : <code>@remattach[:&lt;attach_point_name&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.22</em>
+</p>
+
+<p>
+When called with the <code>n</code> option, the attachment point of name <code>&lt;attach_point_name&gt;</code> will be locked full. Any object that is occupying this point when the restriction is issued will be rendered undetachable. If the point is empty it will allow the user to wear something, but then that object will become undetachable too, no item will be able to replace it, and llAttachToAvatar() calls will fail (the object will be attached, then detached right away).  If <code>&lt;attach_point_name&gt;</code> is not specified, then all the attachment points will be concerned. This command is the counterpart to <code>@remoutfit</code>, for attachments.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/deny the <code>Wear</code> contextual menu</em></strong> : <code>&quot;@defaultwear=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.21</em>
+</p>
+
+<p>
+When allowed, the user is always able to choose the <code>Wear</code>command on the contextual menu of the inventory, even when an object is locked on their avatar. This holds the risk of kicking that locked object, but it will be reattached automatically within 5 seconds (and successive locked objects every second until there is nothing left to reattach). However some objects may be scripted in a way that they drop their restrictions when detached, or simply not take into account the fact that even a locked object can be detached when using the RLV.
+</p>
+
+<p>
+Therefore, using this command with the <code>n</code> option will suppress this comman, but it will still be available for objects that contain the target attachment point in their name or in the name of their parent folder, exactly like pre-1.21 RLV. This is a little less user-friendly but more secure when it comes to make sure no locked object may be detached accidentally.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force removing attachments</em></strong> : <code>@detach[:attachpt]=force (*) </code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Where part is :
+ chest|skull|left shoulder|right shoulder|left hand|right hand|left foot|right foot|spine|
+ pelvis|mouth|chin|left ear|right ear|left eyeball|right eyeball|nose|r upper arm|r forearm|
+ l upper arm|l forearm|right hip|r upper leg|r lower leg|left hip|l upper leg|l lower leg|stomach|left pec|
+ right pec|center 2|top right|top|top left|center|bottom left|bottom|bottom right|neck|root
+If part is not specified, removes everything.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force removing attachments (alias)</em></strong> : <code>@remattach[:attachpt]=force (*) </code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.22</em>
+</p>
+
+<p>
+This command is an alias to <code>@detach[:attachpt]=force</code> (to keep things consistent).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent wearing clothes</em></strong> : <code>@addoutfit[:&lt;part&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10, added skin hair and eyes in v1.10.1, added physics in 2.6.1</em>
+</p>
+
+<p>
+Where part is :
+ gloves|jacket|pants|shirt|shoes|skirt|socks|underpants|undershirt|skin|eyes|hair|shape|alpha|tattoo|physics
+If part is not specified, prevents from wearing anything beyond what the avatar is already wearing.
+</p>
+
+<p>
+<strong>Note:</strong> Since the release of Viewer 2.0 there are two new avatar skin layers: Tattoo and Avatar Transparency Mask. The alpha and tattoo layers will only be supported by RLV compliant viewers that implement the new Viewer 2.0 features.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent removing clothes</em></strong> : <code>@remoutfit[:&lt;part&gt;]=&lt;y/n&gt;</code> (underpants and undershirt are kept for teens)</div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10, added skin hair and eyes in v1.10.1, added physics in 2.6.1</em>
+</p>
+
+<p>
+Where part is :
+</p>
+<pre class="code">gloves|jacket|pants|shirt|shoes|skirt|socks|underpants|undershirt|skin|eyes|hair|shape|alpha|tattoo|physics</pre>
+
+<p>
+If part is not specified, prevents from removing anything in what the avatar is wearing.
+</p>
+
+<p>
+<strong>Note:</strong> Since the release of Viewer 2.0 there are two new avatar skin layers: Tattoo and Avatar Transparency Mask. The alpha and tattoo layers will only be supported by RLV compliant viewers that implement the new Viewer 2.0 features.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force removing clothes</em></strong> : <code>@remoutfit[:&lt;part&gt;]=force</code> (*) (teens can&#039;t be forced to remove underpants and undershirt)</div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Where part is :
+</p>
+<pre class="code">gloves|jacket|pants|shirt|shoes|skirt|socks|underpants|undershirt|alpha|tattoo|physics</pre>
+
+<p>
+If part is not specified, removes everything.
+</p>
+
+<p>
+<strong>Note:</strong> Since the release of Viewer 2.0 there are two new avatar skin layers: Tattoo and Avatar Transparency Mask. The alpha and tattoo layers will only be supported by RLV compliant viewers that implement the new Viewer 2.0 features.
+</p>
+
+<p>
+<strong>Note:</strong> skin, shape, eyes and hair cannot be removed since they are body parts (and removing any would result in an unrezzed avatar).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the list of worn clothes</em></strong> : <code>@getoutfit[:part]=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10, added skin hair and eyes in v1.10.1, added physics in 2.6.1</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the current occupation of clothes layers as a list of 0s (empty) and 1s (occupied) immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+
+<p>
+The list of 0s and 1s corresponds to :
+ gloves,jacket,pants,shirt,shoes,skirt,socks,underpants,undershirt,skin,eyes,hair,shape
+in that order.
+</p>
+
+<p>
+If a part is specified, answers a single 0 (empty) or 1 (occupied) corresponding to the part.
+</p>
+<ul>
+<li class="level1"><div class="li"> Ex 1 : <code>@getoutfit=2222</code> =&gt; <code>0011000111</code> =&gt; avatar is wearing pants, shirt, underpants and undershirt, and of course a skin.</div>
+</li>
+<li class="level1"><div class="li"> Ex 2 : <code>@getoutfit:socks=2222</code> =&gt; <code>0</code> =&gt; the avatar is not wearing socks.</div>
+</li>
+</ul>
+
+<p>
+<strong>Note:</strong> For viewers that implement the new Viewer 2.0 features, the list is:
+</p>
+
+<p>
+gloves,jacket,pants,shirt,shoes,skirt,socks,underpants,undershirt,skin,eyes,hair,shape,alpha,tattoo
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the list of worn attachments</em></strong> : <code>@getattach[:attachpt]=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.10</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the current occupation of attachment points as a list of 0s (empty) and 1s (occupied) immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+
+<p>
+The list of 0s and 1s corresponds to :
+</p>
+<pre class="code">none,chest,skull,left shoulder,right shoulder,left hand,right hand,left foot,right foot,spine,
+pelvis,mouth,chin,left ear,right ear,left eyeball,right eyeball,nose,r upper arm,r forearm,
+l upper arm,l forearm,right hip,r upper leg,r lower leg,left hip,l upper leg,l lower leg,stomach,left pec,
+right pec,center 2,top right,top,top left,center,bottom left,bottom,bottom right,neck,root</pre>
+
+<p>
+in that order.
+</p>
+
+<p>
+If an attachment point is specified, answers a single 0 (empty) or 1 (occupied) corresponding to the point.
+</p>
+<ul>
+<li class="level1"><div class="li"> Ex 1 : <code>@getattach=2222</code> =&gt; <code>011000011010000000000000100100000000101</code> =&gt; avatar is wearing attachments on </div>
+</li>
+</ul>
+
+<p>
+ chest, skull, left and right foot, pelvis, l and r lower leg, HUD bottom left and HUD bottom right.
+</p>
+<ul>
+<li class="level1"><div class="li"> Ex 2 : <code>@getattach:chest=2222</code> =&gt; <code>1</code> =&gt; avatar is wearing something on the chest.</div>
+</li>
+</ul>
+
+<p>
+<em>Note</em> : The first character (<code>none</code>) is always &#039;0&#039;, so the index of each attach point in the string is <strong>exactly equal</strong> to the corresponding ATTACH_* macro in LSL. For instance, the index 9 in the string is ATTACH_BACK (which means <code>spine</code>). Remember the indices start at zero.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force the viewer to automatically accept attach and take control permission requests</em></strong> : <code>@acceptpermission=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+Forces the avatar to automatically accept attach and take control permission requests. The dialog box doesn&#039;t even show up. This command does not supersede <code>@denypermission</code>, of course.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent accepting attach and take control permissions</em></strong> : <code>@denypermission=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16, DEPRECATED in v1.16.2</em>
+</p>
+
+<p>
+When prevented, all attach and take control permission requests are automatically declined, without even showing the dialog box. Due to the extreme annoyance it was making, and because locked objects automatically reattach themselves since v1.16.1, this command is NOW DEPRECATED, DON&#039;T USE IT !
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force detach an item</em></strong> : <code>@detachme=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16.2</em>
+</p>
+
+<p>
+This command forces the object that issues it to detach itself from the avatar. It is there as a convenience to avoid a race condition when calling <code>@clear</code> then llDetachFromAvatar(), sometimes the object could detach itself before clearing its restrictions, making it reattach automatically after a while. With this command one can issue a <code>@clear,detachme=force</code> to be sure <code>@clear</code> is executed first.
+</p>
+
+</div>
+
+<h4 id="clothing_and_attachments_shared_folders">Clothing and Attachments (Shared Folders)</h4>
+<div class="level4">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent wearing clothes and attachments that are not part of the #RLV folder</em></strong> : <code>@unsharedwear=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When prevented, no object, piece of clothing or bodypart can be worn unless it is part of the <code>#RLV</code> folder (i.e. <code>shared</code>).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent removing clothes and attachments that are not part of the #RLV folder</em></strong> : <code>@unsharedunwear=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When prevented, no object, piece of clothing or bodypart can be removed from the avatar unless it is part of the <code>#RLV</code> folder (i.e. <code>shared</code>).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the list of shared folders in the avatar&#039;s inventory</em></strong> : @getinv[:folder1/.../folderN]=&lt;channel_number&gt;</div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.11, added sub-folders in v1.13</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the list of folders contained into the folder named <code>#RLV</code> (if it exists), immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. If folders are specified, it will give the list of sub-folders contained into the folder located at that path instead of the shared root (example : <code>@getinv:Restraints/Leather cuffs/Arms=2222</code>). Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+
+<p>
+The answer is a list of names, separated by commas (<code>,</code>). Folders which names begin with a dot (<code>.</code>) will be ignored.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the list of shared folders in the avatar&#039;s inventory, with information about worn items</em></strong> : @getinvworn[:folder1/.../folderN]=&lt;channel_number&gt;</div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the list of folders contained into the folder named <code>#RLV</code> (if it exists), immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. If folders are specified, it will give the list of sub-folders contained into the folder located at that path instead of the shared root (example : <code>@getinvworn:Restraints/Leather cuffs/Arms=2222</code>). Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout.
+</p>
+
+<p>
+The answer is a comma-separated list of names, each one followed with a pipe (<code>|</code>) and two digits. The current folder is put in first position (as opposed to <code>@getinv</code> which does not show the current folder, obviously), but without a name, only the pipe and the two digits.
+</p>
+<ul>
+<li class="level1"><div class="li"> Object : <code>@getinvworn:Restraints/Leather cuffs=2222</code></div>
+</li>
+<li class="level1"><div class="li"> Viewer : <code>|02,Arms|30,Legs|10</code></div>
+</li>
+</ul>
+
+<p>
+Folders which names begin with a dot (<code>.</code>) will be ignored. The two digits are calculated as follows :
+</p>
+
+<p>
+First digit : Proportion of items worn in the corresponding folder (including no-mod items). In this example, the <code>3</code> of <code>30</code> means &quot;all the items in the &quot;Arms&quot; folder are currently worn, while the <code>1</code> of <code>10</code> means &quot;no item in the Legs folder is currently worn, but there are items to wear&quot;.
+</p>
+
+<p>
+Second digit : Proportion of items globally worn in all the folders contained inside the corresponding folder. In this example, the <code>2</code> of <code>02</code> means &quot;some items are worn in some of the folders contained into <code>Leather cuffs</code>.
+</p>
+
+<p>
+The digits, comprised between 0 and 3 included, have the following meaning :
+</p>
+
+<p>
+:* 0 : No item is present in that folder
+:* 1 : Some items are present in that folder, but none of them is worn
+:* 2 : Some items are present in that folder, and some of them are worn
+:* 3 : Some items are present in that folder, and all of them are worn
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the path to a shared folder by giving a search criterion</em></strong> : <code>@findfolder:part1[&amp;&amp;...&amp;&amp;partN]=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.13.1</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the path to the first shared folder which name contains <code>&lt;part1&gt;</code> and <code>&lt;part2&gt;</code> and ... and <code>&lt;partN&gt;</code>, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. The search is in depth first, notice the separator which is <code>&amp;&amp;</code> like <code>and</code>. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. It does not take disabled folders into account (folders which name begins with a dot <code>.</code>), nor folders which name begins with a tilde (<code>~</code>). The answer is a list of folders, separated by slashes (&#039;/&#039;).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder</em></strong> : <code>@attach:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.11, added no-mod items in v1.12, added sub-folders in v1.13</em>
+</p>
+
+<p>
+Forces the viewer to attach every object and wear every piece of clothing contained inside the folder located at the specified path (which must be under <code>#RLV</code>). Objects names <strong>must</strong> contain the name of their target attachment point or they won&#039;t be attached. Each no-modify object <strong>must</strong> be contained inside a folder (one object per folder), which name contains the name of its target attachment point since it can&#039;t be renamed. Names cannot begin with a dot (<code>.</code>) since such folders are invisible to the scripts.
+</p>
+
+<p>
+Attachment point names are the same as the ones contained into the &quot;Attach To&quot; submenu : <code>skull</code>, <code>chest</code>, <code>l forearm</code>...
+</p>
+
+<p>
+Note 1 : Folder names <strong>can</strong> contain slashes, and will be chosen in priority when able (for instance, if <code>@attach:Restraints/cuffs=force</code> is issued, the <code>Restraints/cuffs</code> folder will be chosen before a <code>cuffs</code> folder contained inside a <code>Restraints</code> parent folder.
+</p>
+
+<p>
+Note 2 : If the name of a folder begins with a plus sign (<code>+</code>), then this command will act exactly like <code>@attachover</code>. This rule can be changed through the use of the <code>RestrainedLoveStackWhenFolderBeginsWith</code> debug setting.
+</p>
+
+<p>
+<strong>Attention</strong> : This command will likely change in the future, to revert back to how it used to behave in version 1.x, i.e. never add an object if the target attachment point is already taken, but rather replace the old object. The current behaviour is intended to be ensured by <code>@attachoverorreplace</code> and its derivatives. For now <code>@attachoverorreplace</code> is a synonym to <code>@attach</code>, but this won&#039;t always be the case. In other words, if you intend to make your script always replace existing attachments when attaching new ones, use <code>@attach</code>. If you want your script to always make attachments stack, use <code>@attachover</code>. If you want to give the user the choice through the name of the folder (as indicated above, by prepending the name by a <code>+</code> sign by default), use <code>@attachoverorreplace</code>.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder, without replacing what is already being worn</em></strong> : <code>@attachover:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.1.2 and v1.24</em>
+</p>
+
+<p>
+This command works exactly like <code>@attach</code> described hereabove, except that it won&#039;t kick objects and pieces of clothing that are already being worn.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder</em></strong> : <code>@attachoverorreplace:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+This command works exactly like <code>@attach</code> described hereabove, it is a synonym.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder, and its children recursively</em></strong> : <code>@attachall:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+This command works exactly like <code>@attach</code> described hereabove, but also attaches whatever is contained into children folders.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder, and its children recursively, without replacing what is already being worn</em></strong> : <code>@attachallover:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.1.2 and v1.24</em>
+</p>
+
+<p>
+This command works exactly like <code>@attachall</code> described hereabove, except that it won&#039;t kick objects and pieces of clothing that are already being worn.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder, and its children recursively</em></strong> : <code>@attachalloverorreplace:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+This command works exactly like <code>@attachall</code> described hereabove, it is a synonym.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force detach items contained inside a shared folder</em></strong> : <code>@detach:&lt;folder_name&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.11</em>
+</p>
+
+<p>
+Forces the viewer to detach every object and unwear every piece of clothing contained inside <code>&lt;folder_name&gt;</code>(which must be directly under <code>#RLV</code>). If <code>@detach</code> is used with an attachment point name (skull, pelvis... see above), it takes priority over this way of detaching since it is the same command.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force detach items contained inside a shared folder, and its children recursively</em></strong> : <code>@detachall:&lt;folder1/.../folderN&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+This command works exactly like <code>@detach</code> described hereabove, but also detaches whatever is contained into children folders.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the path to the shared folder containing a particular object/clothing worn on a point</em></strong> : <code>@getpath[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the path to the shared folder containing the item that :
+</p>
+<ul>
+<li class="level1"><div class="li"> issues this command if no option is set</div>
+</li>
+<li class="level1"><div class="li"> is attached on the attach point provided in the option field, ex : <code>@getpath:spine=2222</code> =&gt; <code>Restraints/Collar</code></div>
+</li>
+<li class="level1"><div class="li"> is worn on the clothing layer provided in the option field, ex : <code>@getpath:pants=2222</code> =&gt; <code>Casual/Jeans/Tight</code></div>
+</li>
+</ul>
+
+<p>
+Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. It does not take disabled folders into account (folders which name begins with a dot <code>.</code>). The answer is a list of folders, separated by slashes (&#039;/&#039;).
+</p>
+
+<p>
+Please note : As version 1.40.4 is now live on the main grid, wearing several objects on the same attachment point is now possible. Therefore this command does not make much sense anymore since it can only respond with one folder, while the several objects could belong to several folders. Therefore it is better to use <code>@getpathnew</code>, since <code>@getpath</code> will slowly become deprecated as more and more users switch to 2.1 and beyond.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the all paths to the shared folders containing the objects/clothing worn on a point</em></strong> : <code>@getpathnew[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.1 and v1.24</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the paths to the shared folders containing the item(s) that :
+</p>
+<ul>
+<li class="level1"><div class="li"> issues this command if no option is set</div>
+</li>
+<li class="level1"><div class="li"> are attached on the attach point provided in the option field, ex : <code>@getpathnew:spine=2222</code> =&gt; <code>Restraints/Collar,Jewelry/Cute necklace</code></div>
+</li>
+<li class="level1"><div class="li"> is worn on the clothing layer provided in the option field, ex : <code>@getpathnew:pants=2222</code> =&gt; <code>Casual/Jeans/Tight</code></div>
+</li>
+</ul>
+
+<p>
+Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. It does not take disabled folders into account (folders which name begins with a dot <code>.</code>). The answer is a list of folders, separated by slashes (&#039;/&#039;), if several paths must be returned because several outfits are concerned, they are organized in a list of strings separated by commas (&#039;,&#039;).
+</p>
+
+<p>
+This command has been added to replace <code>@getpath</code>, since in 2.1 several objects can be worn on the same attachment point.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained into a shared folder that contains a particular object/clothing</em></strong> : <code>@attachthis[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+This command is a shortcut for a <code>@getpath</code> followed with an <code>@attach</code> command (this saves a listener and a timeout).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder, without replacing what is already being worn</em></strong> : <code>@attachthisover[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.1.2 and v1.24</em>
+</p>
+
+<p>
+This command works exactly like <code>@attachthis</code> described hereabove, except that it won&#039;t kick objects and pieces of clothing that are already being worn.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder</em></strong> : <code>@attachthisoverorreplace[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+This command works exactly like <code>@attachthis</code> described hereabove, it is a synonym.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained into a shared folder that contains a particular object/clothing, and its children folders</em></strong> : <code>@attachallthis[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+This command is a shortcut for a <code>@getpath</code> followed with an <code>@attachall</code> command (this saves a listener and a timeout).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder, without replacing what is already being worn</em></strong> : <code>@attachallthisover[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.1.2 and v1.24</em>
+</p>
+
+<p>
+This command works exactly like <code>@attachallthis</code> described hereabove, except that it won&#039;t kick objects and pieces of clothing that are already being worn.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force attach items contained inside a shared folder</em></strong> : <code>@attachallthisoverorreplace[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+This command works exactly like <code>@attachallthis</code> described hereabove, it is a synonym.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force detach items contained into a shared folder that contains a particular object/clothing</em></strong> : <code>@detachthis[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+This command is a shortcut for a <code>@getpath</code> followed with a <code>@detach</code> command (this saves a listener and a timeout).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force detach items contained into a shared folder that contains a particular object/clothing, and its children folders</em></strong> : <code>@detachallthis[:&lt;attachpt&gt; or &lt;clothing_layer&gt;]=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+This command is a shortcut for a <code>@getpath</code> followed with a <code>@detachall</code> command (this saves a listener and a timeout).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent removing some folders</em></strong> : <code>@detachthis[:&lt;layer&gt;|&lt;attachpt&gt;|&lt;path_to_folder&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When prevented, the user is unable to remove a folder if either of these conditions is filled :
+</p>
+<ul>
+<li class="level1"><div class="li"> no option is specified and the folder contains the object that issues this restriction</div>
+</li>
+<li class="level1"><div class="li"> the <code>layer</code> option is set (shirt, pants...) and the folder contains a piece of clothing that is worn on this layer</div>
+</li>
+<li class="level1"><div class="li"> the <code>attachpt</code> option is set (l forearm, spine...) and the folder contains an attachment that is worn on this point</div>
+</li>
+<li class="level1"><div class="li"> the <code>path_to_folder</code> option is set and the folder corresponds to this location</div>
+</li>
+</ul>
+
+<p>
+Moreso, this folder or these folders cannot be renamed, moved, deleted or modified.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent removing some folders and their children</em></strong> : <code>@detachallthis[:&lt;layer&gt;|&lt;attachpt&gt;|&lt;path_to_folder&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+These commands do exactly like <code>@detachthis</code>, but also apply to their children folders recursively.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent wearing some folders</em></strong> : <code>@attachthis:&lt;layer&gt;|&lt;attachpt&gt;|&lt;path_to_folder&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+When prevented, the user is unable to attach a folder if either of these conditions is filled :
+</p>
+<ul>
+<li class="level1"><div class="li"> the <code>layer</code> option is set (shirt, pants...) and the folder contains a piece of clothing that is meant to be worn on this layer</div>
+</li>
+<li class="level1"><div class="li"> the <code>attachpt</code> option is set (l forearm, spine...) and the folder contains an attachment that is meant to be worn on this point</div>
+</li>
+<li class="level1"><div class="li"> the <code>path_to_folder</code> option is set and the folder corresponds to this location</div>
+</li>
+</ul>
+
+<p>
+Moreso, this folder or these folders cannot be renamed, moved, deleted or modified.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent wearing some folders and their children</em></strong> : <code>@attachallthis[:&lt;layer&gt;|&lt;attachpt&gt;|&lt;path_to_folder&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.3 and v1.25</em>
+</p>
+
+<p>
+These commands do exactly like <code>@attachthis</code>, but also apply to their children folders recursively.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the detachallthis restriction, for one folder only</em></strong> : <code>@detachthis_except:&lt;folder&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When adding an exception, the user can remove the items contained into the indicated folder.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the detachallthis restriction, for one folder and its children</em></strong> : <code>@detachallthis_except:&lt;folder&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When adding an exception, the user can remove the items contained into the indicated folder, or in any of its children.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the attachallthis restriction, for one folder only</em></strong> : <code>@attachthis_except:&lt;folder&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When adding an exception, the user can wear the items contained into the indicated folder.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the attachallthis restriction, for one folder and its children</em></strong> : <code>@attachallthis_except:&lt;folder&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When adding an exception, the user can wear the items contained into the indicated folder, or in any of its children.
+</p>
+
+<p>
+Note : These exceptions will be taken into account only for the restrictions that have been issued by the <strong>same object</strong>, you cannot put such an exception to a restriction issued by another object.
+</p>
+
+<p>
+Note : The viewer checks which exception or restriction is the &quot;closest parent&quot; in the folders hierarchy to the folder that the user is trying to wear or remove. If the closest is an <code>@attach[all]this_except</code> or a <code>@detach[all]this_except</code> exception , then the folder can be worn or removed respectively. If the closest is an <code>@attach[all]this</code> or a <code>@detach[all]this</code> restriction, then the folder is locked, no matter how many exceptions are pointing on the folders that are parent to this one.
+</p>
+
+<p>
+Example : A script issues a <code>@attachallthis:=n</code> restriction, preventing the whole <code>#RLV</code> folder and its children from being attached. It also issues a <code>@detachallthis:=n</code> restriction, preventing the whole <code>#RLV</code> folder and its children from being removed as well. Therefore the <code>#RLV</code> folder is now completely frozen.
+</p>
+
+<p>
+However, the same object issues a <code>@attachallthis:Jewelry/Gold=add</code> exception, then a <code>@detachallthis:Jewelry/Gold=add</code> one, making the <code>Jewelry/Gold</code> folder available for wearing and removing. Finally, it issues a <code>@attachallthis:Jewelry/Gold/Watch=n</code> restriction followed by a <code>@detachallthis:Jewelry/Gold/Watch=n</code> restriction. As a result, the user can wear and remove only what is contained inside the Jewelry/Gold folder, except what is in <code>Jewelry/Gold/Watch</code>, and the rest is out of reach.
+</p>
+
+</div>
+
+<h3 class="sectionedit18" id="touch">Touch</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching objects located further than 1.5 meters away from the avatar</em></strong> : <code>@fartouch=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.11</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch/grab objects from more than 1.5 m away, this command makes restraints more realistic since the avatar litterally has to press against the object in order to click on it.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching objects located further than 1.5 meters away from the avatar</em></strong> : <code>@touchfar=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+This command is a synonym of @fartouch
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching any objects</em></strong> : <code>@touchall=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch/grab any object and attachment. This does not apply to HUDs.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching objects in-world</em></strong> : <code>@touchworld=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch/grab objects rezzed in-world, i.e. not attachments and HUDs.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add exceptions to the touchworld prevention</em></strong> : <code>@touchworld:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When adding an exception, the user can touch this object in particular.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching one object in particular</em></strong> : <code>@touchthis:&lt;UUID&gt;=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch/grab the object which UUID corresponds to the one specified in the command.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Remove/add an exception to the touch* preventions, for one object only</em></strong> : <code>@touchme=&lt;rem/add&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.6</em>
+</p>
+
+<p>
+When adding such an exception, the user can touch this object in particular.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching attachments</em></strong> : <code>@touchattach=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch attachments (theirs and other avatars&#039;), but this does not apply to HUDs.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching one&#039;s attachments</em></strong> : @touchattachself=&lt;y/n&gt;</div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch their own attachments (theirs but can touch other people&#039;s), but this does not apply to HUDs.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching other people&#039;s attachments</em></strong> : @touchattachother=&lt;y/n&gt;</div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.4</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to touch other people&#039;s attachments (but they can touch their owns). This does not apply to HUDs.
+</p>
+
+</div>
+
+<h3 class="sectionedit19" id="location">Location</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent viewing the world map</em></strong> : <code>@showworldmap=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.11</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to view the world map, and it closes if it is open when the restriction becomes active.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent viewing the mini map</em></strong> : <code>@showminimap=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.11</em>
+</p>
+
+<p>
+When prevented, the avatar is unable to view the mini map, and it closes if it is open when the restriction becomes active.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent knowing the current location</em></strong> : <code>@showloc=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.12</em>
+</p>
+
+<p>
+When prevented, the user is unable to know where they are : the world map is hidden, the parcel and region name on the top menubar are hidden, they can&#039;t create landmarks, nor buy the land, nor see what land they have just left after a teleport, nor see the location in the About box, and even system and object messages are obfuscated if they contain the name of the region and/or the name of the parcel. However, llOwnerSay calls are <em>not</em> obfuscated so radars <em>will</em> still work (and RL commands as well).
+</p>
+
+</div>
+
+<h3 class="sectionedit20" id="name_tags_and_hovertext">Name Tags and Hovertext</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing the names of the people around</em></strong> : <code>@shownames=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.12.2, added more dummy names in v1.16</em>
+</p>
+
+<p>
+When prevented, the user is unable to see any name (including their own). The names don&#039;t show on the screen, the names on the chat are replaced by &quot;dummy&quot; names such as <code>Someone</code>, <code>A resident</code>, the tooltips are hidden, the pie menu is almost useless so the user can&#039;t get the profile directly etc.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing the names of the people around, without censorship</em></strong> : <code>@shownametags=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.9</em>
+</p>
+
+<p>
+This restriction is the same as <code>@shownames</code>, except that it won&#039;t censor the chat with dummy names. However, avatars around will not have their names shown, the radar will be hidden, right-clicking on an avatar around will not disclose their names, and so on.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing all the hovertexts</em></strong> : <code>@showhovertextall=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When prevented, the user is unable to read any hovertext (2D text floating above some prims).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing one hovertext in particular</em></strong> : <code>@showhovertext:&lt;UUID&gt;=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When prevented, the user is unable to read the hovertext floating above the prim which id is UUID. This is made that way so that the restriction can be issued on an object, by another one (unlike <code>@detach</code> which can only set this restriction on itself).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing the hovertexts on the HUD of the user</em></strong> : <code>@showhovertexthud=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When prevented, the user is unable to read any hovertext showing over their HUD objects, but will be able to see the ones in-world.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent seeing the hovertexts in-world</em></strong> : <code>@showhovertextworld=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.19</em>
+</p>
+
+<p>
+When prevented, the user is unable to read any hovertext showing over their in-world objects, but will be able to see the ones over their HUD.
+</p>
+
+</div>
+
+<h3 class="sectionedit21" id="group">Group</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force the agent to change the active group</em></strong> : <code>@setgroup:&lt;group_name&gt;=force</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+Forces the agent to change the active group, to the specified one. Of course, they must already be a member of this group. If <code>&lt;group_name&gt;</code> is <code>none</code>, then the agent will deactivate the current group and not show any group tag at all.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent activating a group</em></strong> : <code>@setgroup=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+When prevented, the user is unable to change the active group.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the name of the active group</em></strong> : <code>@getgroup=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v2.5</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the name of the currently active group, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. The answer will simply be <code>none</code> if no group is active at the time. Please note that there is no way to obtain the UUID of the group, only the name.
+</p>
+
+</div>
+
+<h3 class="sectionedit22" id="viewer_control">Viewer Control</h3>
+<div class="level3">
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent changing some debug settings</em></strong> : <code>@setdebug=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+When prevented, the user is unable to change some viewer debug settings (Advanced &gt; Debug Settings). As most debug settings are either useless or critical to the user&#039;s experience, a whitelist approach is taken : only a few debug settings are locked, the others are always available and untouched. At the time of this writing, the allowed debug settings are :
+</p>
+<ul>
+<li class="level1"><div class="li"> AvatarSex (0 : Female, 1 : Male) : gender of the avatar at creation.</div>
+</li>
+<li class="level1"><div class="li"> RenderResolutionDivisor (1 -&gt; ...) : &quot;blurriness&quot; of the screen. Combined to clever <code>@setenv</code> commands, can simulate nice effects. Note: renderresolutiondivisor is a Windlight only option (Basic Shaders must be enabled in graphics preferences) and as such, is not available in v1.19.0.5 or older viewers.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force change a debug setting</em></strong> : <code>@setdebug_&lt;setting&gt;:&lt;value&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+Forces the viewer to change a particular debug setting and set it to <code>&lt;value&gt;</code>. This command is actually a package of many sub-commands, that are regrouped under <code>@setdebug_...</code>, for instance <code>@setdebug_avatarsex:0=force</code>, <code>@setdebug_renderresolutiondivisor:64=force</code> etc.
+</p>
+
+<p>
+See the list of allowed debug settings in the <code>@setdebug</code> command hereabove.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the value of a debug setting</em></strong> : <code>@getdebug_&lt;setting&gt;=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.16</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the value of a debug setting, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. The answer is the value that has been set with the <code>&lt;setting&gt;</code> part of the matching <code>@setdebug</code> command, or by hand.
+</p>
+
+<p>
+See the list of allowed debug settings in the <code>@setdebug</code> command hereabove.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent changing the environment settings</em></strong> : <code>@setenv=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.14</em>
+</p>
+
+<p>
+When prevented, the user is unable to change the viewer environment settings (World &gt; Environment Settings &gt; Sunrise/Midday/Sunset/Midnight/Revert to region default/Environment editor are all locked out).
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Force change an environment setting</em></strong> : <code>@setenv_&lt;setting&gt;:&lt;value&gt;=force (*)</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.14</em>
+</p>
+
+<p>
+Forces the viewer to change a particular environment setting (time of day or Windlight) and set it to <code>&lt;value&gt;</code>. This command is actually a package of many sub-commands, that are regrouped under <code>@setenv_...</code>, for instance <code>@setenv_daytime:0.5=force</code>, <code>@setenv_bluehorizonr:0.21=force</code> etc.
+</p>
+
+<p>
+This command (like any other <code>force</code> command) is silently discarded if the corresponding restriction has been set, here <code>@setenv</code>, but in this case the restriction is ignored if the change is issued from the object that has created it. In other words, a collar can restrict environment changes, yet force a change by itself, while another object could not do it until the collar lifts the restriction.
+</p>
+
+<p>
+Although a range is specified for every value, no check is made in the viewer so a script can do what the UI can&#039;t do, for interesting effects. Use at your own risk, though. The ranges indicated here are merely the ones available on the sliders on the Environment Editor, for reference.
+</p>
+
+<p>
+Each particular sub-command works as follows (the names are chosen to be as close to the Windlight panels of the viewer as possible) :
+</p>
+<div class="table sectionedit23"><table class="inline">
+	<tr class="row0">
+		<td class="col0 centeralign" colspan="2">  <strong>@setenv_XXX:&lt;value&gt;=force where XXX is...</strong>      </td><td class="col2 centeralign" colspan="2">   <strong>&lt;value&gt; range</strong>            </td>
+	</tr>
+	<tr class="row1">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row2">
+		<td class="col0 centeralign" colspan="2">   daytime       </td><td class="col2 centeralign" colspan="2">   0.0-1.0 and &lt;0         </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row4">
+		<td class="col0 centeralign" colspan="2">   preset        </td><td class="col2 centeralign" colspan="2">   String                 </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row6">
+		<td class="col0 centeralign" colspan="2">   ambientr      </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row8">
+		<td class="col0 centeralign" colspan="2">   ambientg      </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row9">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row10">
+		<td class="col0 centeralign" colspan="2">   ambientb      </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row11">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row12">
+		<td class="col0 centeralign" colspan="2">   ambienti      </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row13">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row14">
+		<td class="col0 centeralign" colspan="2">   bluedensityr  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row15">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row16">
+		<td class="col0 centeralign" colspan="2">   bluedensityg  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row17">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row18">
+		<td class="col0 centeralign" colspan="2">   bluedensityb  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row19">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row20">
+		<td class="col0 centeralign" colspan="2">   bluedensityi  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row21">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row22">
+		<td class="col0 centeralign" colspan="2">   bluehorizonr  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row23">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row24">
+		<td class="col0 centeralign" colspan="2">   bluehorizong  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row25">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row26">
+		<td class="col0 centeralign" colspan="2">   bluehorizonb  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row27">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row28">
+		<td class="col0 centeralign" colspan="2">   bluehorizoni  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row29">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row30">
+		<td class="col0 centeralign" colspan="2">   cloudcolorr   </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row31">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row32">
+		<td class="col0 centeralign" colspan="2">   cloudcolorg   </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row33">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row34">
+		<td class="col0 centeralign" colspan="2">   cloudcolorb   </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row35">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row36">
+		<td class="col0 centeralign" colspan="2">   cloudcolori   </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row37">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row38">
+		<td class="col0 rightalign" colspan="2">   cloudcoverage </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row39">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row40">
+		<td class="col0 centeralign" colspan="2">   cloudx        </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row41">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row42">
+		<td class="col0 centeralign" colspan="2">   cloudy        </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row43">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row44">
+		<td class="col0 centeralign" colspan="2">   cloudd        </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row45">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row46">
+		<td class="col0 centeralign" colspan="2">   clouddetailx  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row47">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row48">
+		<td class="col0 centeralign" colspan="2">   clouddetaily  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row49">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row50">
+		<td class="col0 centeralign" colspan="2">   clouddetaild  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row51">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row52">
+		<td class="col0 centeralign" colspan="2">   cloudscale    </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row53">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row54">
+		<td class="col0 centeralign" colspan="2">   cloudscrollx  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row55">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row56">
+		<td class="col0 centeralign" colspan="2">   cloudscrolly  </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row57">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row58">
+		<td class="col0 centeralign" colspan="2">   densitymultiplier    </td><td class="col2 centeralign" colspan="2">   0.0-0.9         </td>
+	</tr>
+	<tr class="row59">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row60">
+		<td class="col0 centeralign" colspan="2">   distancemultiplier   </td><td class="col2 centeralign" colspan="2">   0.0-100.0       </td>
+	</tr>
+	<tr class="row61">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row62">
+		<td class="col0 centeralign" colspan="2">   eastangle            </td><td class="col2 centeralign" colspan="2">   0.0-1.0               </td>
+	</tr>
+	<tr class="row63">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row64">
+		<td class="col0 centeralign" colspan="2">   hazedensity   </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row65">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row66">
+		<td class="col0 centeralign" colspan="2">   hazehorizon   </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row67">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row68">
+		<td class="col0 centeralign" colspan="2">   maxaltitude   </td><td class="col2 centeralign" colspan="2">   0.0-4000.0       </td>
+	</tr>
+	<tr class="row69">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row70">
+		<td class="col0 centeralign" colspan="2">   scenegamma    </td><td class="col2 centeralign" colspan="2">   0.0-10.0               </td>
+	</tr>
+	<tr class="row71">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row72">
+		<td class="col0 rightalign" colspan="2">   starbrightness</td><td class="col2 centeralign" colspan="2">   0.0-2.0                </td>
+	</tr>
+	<tr class="row73">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row74">
+		<td class="col0 centeralign" colspan="2">   sunglowfocus  </td><td class="col2 centeralign" colspan="2">   0.0-0.5                </td>
+	</tr>
+	<tr class="row75">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row76">
+		<td class="col0 centeralign" colspan="2">   sunglowsize   </td><td class="col2 centeralign" colspan="2">   1.0-2.0                </td>
+	</tr>
+	<tr class="row77">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row78">
+		<td class="col0 rightalign" colspan="2">   sunmooncolorr </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row79">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row80">
+		<td class="col0 rightalign" colspan="2">   sunmooncolorg </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row81">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row82">
+		<td class="col0 rightalign" colspan="2">   sunmooncolorb </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row83">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row84">
+		<td class="col0 rightalign" colspan="2">   sunmooncolori </td><td class="col2 centeralign" colspan="2">   0.0-1.0                </td>
+	</tr>
+	<tr class="row85">
+		<td class="col0"></td><td class="col1"></td><td class="col2"></td><td class="col3"></td>
+	</tr>
+	<tr class="row86">
+		<td class="col0 centeralign" colspan="2">   sunmoonposition      </td><td class="col2 centeralign" colspan="2">   0.0-1.0         </td>
+	</tr>
+</table></div>
+
+<p>
+Note: from the above settings, only the <code>daytime</code> one is supported by v1.19.0 (or older) viewers implementing RestrainedLove v1.14 and later. The other settings are ignored. This is because these viewers do not implement the Windlight renderer.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Get the value of an environment setting</em></strong> : <code>@getenv_&lt;setting&gt;=&lt;channel_number&gt;</code></div>
+</li>
+</ul>
+
+<p>
+<em>Implemented in v1.15</em>
+</p>
+
+<p>
+Makes the viewer automatically answer the value of an environment setting, immediately on the chat channel number <code>&lt;channel_number&gt;</code> that the script can listen to. Always use a positive integer. Remember that regular viewers do not answer anything at all so remove the listener after a timeout. The answer is the value that has been set with the <code>&lt;setting&gt;</code> part of the matching <code>@setenv</code> command, or by hand. See the table hereabove for a list of settings.
+</p>
+
+<p>
+Note: only <code>@getenv_daytime</code> is supported by v1.19.0 (or older, i.e. non Windlight) viewers implementing RestrainedLove v1.15 and later.
+</p>
+
+</div>
+
+<h3 class="sectionedit24" id="unofficial_commands">Unofficial Commands</h3>
+<div class="level3">
+
+<p>
+Certain viewers use a different restriction system, based on the RestrainedLove API, which includes a number of extra commands.  These extra commands are <strong>not</strong> part of the RestrainedLove API specification, but are documented here for convenience.  These commands should not be relied on, as only certain viewers will be able to process them.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching HUDs</em></strong> : <code>@touchhud[:&lt;UUID&gt;]=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+When prevented, the avatar is unable to touch any HUDs.  If sent with a UUID, the avatar is prevented from touching only the HUD indicated by the UUID.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent touching objects or attachments, editing, or rezzing</em></strong> : <code>@interact=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+When prevented, the avatar is unable to touch any objects, attachments, or HUDs, cannot edit or rez, and cannot sit on objects.
+</p>
+<ul>
+<li class="level1"><div class="li"> <strong><em>Allow/prevent the disabling of the automatic Away/AFK indicator</em></strong> : <code>@allowidle=&lt;y/n&gt;</code></div>
+</li>
+</ul>
+
+<p>
+When prevented, the automatic activation of the Away status indicator after a period of avatar inactivity cannot be disabled.  If the idle timeout duration has been set to zero, the default timeout of 30 minutes will be used.
+</p>
+
+</div>
+
+<h3 class="sectionedit25" id="footnotes">Footnotes</h3>
+<div class="level3">
+
+<p>
+Silently discarded if the user is prevented from doing so by the corresponding restriction. This is on purpose.
+</p>
+
+<p>
+Ex : Force detach won&#039;t work if the object is undetachable. Force undress won&#039;t work if the user is prevented from undressing.
+</p>
+
+</div>
+
+<h2 class="sectionedit26" id="important_note_about_the_global_behaviours_such_as_sendchat">Important note about the global behaviours such as sendchat</h2>
+<div class="level2">
+
+<p>
+Such behaviours are global, which means they don&#039;t depend on a particular object. However, they are triggered by objects with a set UUID which can change, and several objects can add the same behaviour, which will be stored several times as the UUIDs are different. 
+</p>
+
+<p>
+This has a nice side effect : when wearing 2 locked devices that prevent chat, it is necessary to unlock them both to be able to chat again. But it has a nasty side effect, too : if the item changes UUID (for instance it was derezzed and rezzed again), and it doesn&#039;t allow chat beforehand, then the user will have to wait a short moment because the rule stays &quot;orphaned&quot; (its UUID is defunct) until the <strong>garbage collector</strong> kicks in.
+</p>
+
+<p>
+Please note : Since 1.16.1 any locked object that is kicked off by any mean (llAttachToAvatar for example) will be reattached automatically by the viewer after a few seconds. This means that calling <code>@clear</code> on detaching will actually unlock the object, which will have to be relocked after being reattached. It is therefore not recommended anymore to call <code>@clear</code> on detach, as opposed to pre-1.16.1 versions.
+</p>
+
+</div>
+
+<h2 class="sectionedit27" id="shared_folders">Shared Folders</h2>
+<div class="level2">
+
+<p>
+Since v1.11, the viewer can &quot;share&quot; some of your items with scripts in world in order to let them force you to attach, detach and list what you have shared.
+</p>
+
+<p>
+&quot;Share&quot; does NOT mean they will be taken by other people if they want to (some of the items may be no-transfer anyway), but only that they can force YOU to wear/unwear them at will through the use of a script YOUR restraints contain. They will remain in your inventory. In fact, this feature would be best named &quot;Exposed folder&quot;.
+</p>
+
+<p>
+To do this :
+</p>
+<ul>
+<li class="level1"><div class="li"> Create a folder named <code>#RLV</code> directly under <code>My Inventory</code> (right-click on <code>My Inventory</code>, select <code>New Folder</code>). We&#039;ll call this folder the <code>shared root</code>.</div>
+</li>
+<li class="level1"><div class="li"> Move a folder containing restraints or other attachments directly into this new folder.</div>
+</li>
+<li class="level1"><div class="li"> Wear the contents of that folder, that&#039;s it !</div>
+</li>
+</ul>
+
+<p>
+So it would look like this :
+</p>
+<pre class="code"> My Inventory
+ |- #RLV
+ |  |- cuffs
+ |  |  |- left cuff (l forearm)   (no copy)
+ |  |  \- right cuff (r forearm)   (no copy)
+ |  \- gag
+ |     \- gag (mouth)   (no copy)
+ |- Animations
+ |- Body Parts
+ .
+ .
+ .</pre>
+
+<p>
+For example : If you&#039;re owning a set of RR Straps and want to share them, just move the folder <code>Straps BOXED</code> under the shared root.
+</p>
+
+<p>
+Either wear all the items of the folders you have just moved (one folder at a time !) or rename your items yourself, so that each item name contains the name of the target attachment point. For example : <code>left cuff (l forearm)</code>, <code>right ankle cuff (r lower leg)</code>. Please note that no-modify items are a bit more complex to share, because they cannot be renamed either by you or by the viewer. More on that below.
+</p>
+
+<p>
+The attachment point name is the same as the one you find in the <code>Attach To</code> menu of your inventory, and is case insensitive (for example : <code>chest</code>, <code>skull</code>, <code>stomach</code>, <code>left ear</code>, <code>r upper arm</code>...). If you wear the item without renaming it first it will be renamed automatically, but only if it is in a shared folder, and does not contain any attachment point name already, and is mod. If you want to wear it on another attachment point, you&#039;ll need to rename it by hand first.
+</p>
+
+<p>
+Pieces of clothing are treated exactly the same way (in fact they can even be put in the folder of a set of restraints and be worn with the same command). Shoes, for instance, are a good example of mixed outfits : some attachments and the Shoes layer. Clothes are NOT renamed automatically when worn, since their very type decides where they are to be worn (skirt, jacket, undershirt...).
+</p>
+
+<p>
+HOW TO SHARE NO-MODIFY ITEMS :
+As you already know, no-mod items cannot be renamed so the technique is a bit more complex. Create a sub-folder inside the outfit folder (such as <code>cuffs</code> in the example above), put ONE no-modify item in it. When wearing the object, you&#039;ll see the folder itself be renamed (that&#039;s why you must not put more than one object inside it). So if your outfit contains several no-mod objects, you&#039;ll need to create as many folders and put the no-mod objects in them, one in each folder.
+</p>
+
+<p>
+Example with no-modify shoes :
+</p>
+<pre class="code"> My Inventory
+ |- #RLV
+ |  \- shoes
+ |     |- left shoe (left foot)
+ |     |  \- left shoe   (no modify) (no transfer)  &lt;-- no-mod object
+ |     |- right shoe (right foot)
+ |     |  \- right shoe   (no modify) (no transfer) &lt;-- no-mod object
+ |     \- shoe base   (no modify) (no transfer)     &lt;-- this is not an object
+ |- Animations
+ |- Body Parts
+ .
+ .
+ .</pre>
+
+<p>
+GOTCHAS :
+</p>
+<ul>
+<li class="level1"><div class="li"> Do NOT put a comma (&#039;,&#039;) in the name of the folders under the shared root or it would screw the list up.</div>
+</li>
+<li class="level1"><div class="li"> Don&#039;t forget to rename the items in the shared folders (or to wear these items at least once to have them be renamed automatically) or the force attach command will appear to do nothing at all.</div>
+</li>
+<li class="level1"><div class="li"> Avoid cluttering the shared root with many folders, since some scripts may rely on the list they got with the <code>@getinv</code> command and chat messages are limited to 1023 characters. Choose wisely, and use short names. But with 9 characters per folder name average, you can expect to have about 100 folders available.</div>
+</li>
+<li class="level1"><div class="li"> Remember to put no-modify items in sub-folders, one each, so their names can be used by the viewer do find out where to attach them. They can&#039;t be shared like modify items since they can&#039;t be renamed, and the outfit folder itself will not be renamed (since it contains several items).</div>
+</li>
+</ul>
+
+<p>
+<strong><em>Accept sub-folders given via llGiveInventoryList() into the shared folder</em></strong> :
+</p>
+
+<p>
+Starting with RestrainedLove v1.16.2, you may give a list of items to a victim and have them stored as a sub-folder inside the <code>#RLV</code> folder (thus allowing you to <code>@attach</code> the given items later).
+</p>
+
+<p>
+Issuing a <code>llGiveInventoryList(victim_id, #RLV/~subfolder_name, list_of_stuff)</code> command in a script makes a standard Keep/Discard/Mute dialog appear in the viewer of the victim (the avatar which key is victim_id).
+</p>
+
+<p>
+Should the victim accept the offer, the list_of_stuff items are put into a new sub-folder of the <code>#RLV</code> folder. The name of this sub-folder is <code>~subfolder_name</code> (it is the scripter&#039;s responsibility to use unique sub-folder names: if the name is the same as an existing sub-folder, two sub-folders with the same name will appear in the <code>#RLV</code> folder).
+</p>
+
+<p>
+Note that the tilde character <strong>must</strong> be used as the first character for the name of the sub-folder (this is so that the victim can easily spot any sub-folder given to them in this way, and so that such sub-folder names appear last in the <code>#RLV</code> folder).
+</p>
+
+<p>
+Note also that this feature may be disabled by the user, (by setting the RestrainedLoveForbidGiveToRLV debug setting to TRUE): in this case the given items are put into a folder named <code>#RLV/~subfolder_name</code> at the root of the inventory instead of inside the <code>#RLV</code> folder.
+</p>
+
+<p>
+Since the user may either refuse the offer or have the feature disabled in their viewer, and since SL may take quite some time to perform the actual transfer of the objects on laggy days, you must check that the given folder is present (with <code>@getinv</code>), before attempting to @attach the given objects.
+</p>
+
+</div>
+
+<h2 class="sectionedit28" id="for_your_information">For your information</h2>
+<div class="level2">
+
+<p>
+Here is how it works internally, for a better understanding of the gotchas you may encounter :
+</p>
+<ul>
+<li class="level1"><div class="li"> Each command is parsed into a <strong>Behaviour</strong> (ex: <code>remoutfit</code>), an <strong>Option</strong> (ex: <code>shirt</code>) and a <strong>Param</strong> (ex: <code>force</code>) and comes from an UUID (the unique identifier of the emitting object).</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> There are two types of commands : <strong>one-shot</strong> commands (those which Param is <code>force</code> and those which Param is a number such as the channel number of a <code>version</code> call) and <strong>rules</strong> (those which Param is <code>y</code>, <code>n</code>, <code>add</code> or <code>rem</code>). <code>clear</code> is special but can be seen as a one-shot command.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> When the command takes a channel number, this number may be either strictly positive or (for RestrainedLove v1.23a (<code>@versionnum = 1230001</code>) and above) strictly negative. Using channel 0 is not allowed. Note that RestrainedLove can send a maximum of 255 characters on negative channels, while it can send up to 1023 characters on positive channels. Negative channels are useful to prevent the user from cheating, for example when asking for the <code>@versionnum</code> (since the user could use a non-RestrainedLove viewer and make the RestrainedLove devices believe they run within a RestrainedLove viewer by spoofing the reply to the version command on a positive channel, which they can&#039;t do on negative channels). Positive channels are best used for commands that may return large reply strings (<code>@getpath</code>, for example).</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Parameters <code>n</code> and <code>add</code> are <strong>exactly equal</strong> and are treated <strong>exactly the same way</strong>, they are just <strong>synonyms</strong>. Same goes for <code>y</code> and <code>rem</code>. The only purpose is to distinguish rules (<code>sendchannel=n</code>) from exceptions (<code>sendchannel:8=add</code>) in a script for clarity.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> Rules are stored inside a table linking the UUID of the emitter to the rule itself. They are <strong>added</strong> when receiving a <code>n</code>/<code>add</code> Param, and <strong>removed</strong> when receiving a <code>y</code>/<code>rem</code> Param.</div>
+</li>
+</ul>
+
+<p>
+If <strong><em>UUID1</em></strong> is a collar and <strong><em>UUID2</em></strong> is a gag :
+</p>
+
+<p>
+<strong><em>UUID1</em></strong> =&gt; detach, tploc, tplm, tplure, sittp
+</p>
+
+<p>
+<strong><em>UUID2</em></strong> =&gt; detach, sendim, sendim:(keyholder)
+</p>
+
+<p>
+Those two rules mean that the user cannot send IMs except to their keyholder, and cannot TP at all. Those two items are not detachable. Now if the collar sends <code>@sendim=n</code>, the table becomes :
+</p>
+
+<p>
+<strong><em>UUID1</em></strong> =&gt; detach, tploc, tplm, tplure, sittp, sendim
+</p>
+
+<p>
+<strong><em>UUID2</em></strong> =&gt; detach, sendim, sendim:(keyholder)
+</p>
+
+<p>
+If it sends <code>@sendim=n</code> a second time nothing changes, as there is a check for its existence prior to adding it. If the gag is unlocked and detached, either it sends a <code>@clear</code> or the garbage collector kicks in so the rules linked to <strong><em>UUID2</em></strong> disappear. However, the avatar is still unable to send IMs even to their keyholder, as the exception has disappeared as well. This is because rules linked to one object don&#039;t conflict with rules linked to another one.
+</p>
+<ul>
+<li class="level1"><div class="li"> One-shot commands, on the other hand, are executed on-the-fly and are not stored.</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> When logging on, the avatar stays non-operational (cannot chat, cannot move) for some time, while the user sees the progress bar. However, worn scripted objects rez in the meantime and start sending rules and commands before the viewer can execute them. Therefore it stores them in a buffer and executes them only when the user is given controls (when the progress bar disappears).</div>
+</li>
+</ul>
+<ul>
+<li class="level1"><div class="li"> The viewer periodically (every N seconds) checks all its rules and removes the ones linked to an UUID that does not exist around anymore (garbage collector). This means that rules issued by an <strong>unworn</strong> owned object will be discarded as soon as the avatar teleports elsewhere.</div>
+</li>
+</ul>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/lsl/restrained_love_viewer/specification.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl" class="wikilink1" title="fuss:lsl" data-wiki-id="fuss:lsl">lsl</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/start" class="wikilink2" title="fuss:lsl:restrained_love_viewer:start" rel="nofollow" data-wiki-id="fuss:lsl:restrained_love_viewer:start">restrained_love_viewer</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification" class="wikilink1" title="fuss:lsl:restrained_love_viewer:specification" data-wiki-id="fuss:lsl:restrained_love_viewer:specification">specification</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:lsl:restrained_love_viewer:specification" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lsl/restrained_love_viewer/specification"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Alsl%3Arestrained_love_viewer%3Aspecification&amp;1657305417" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

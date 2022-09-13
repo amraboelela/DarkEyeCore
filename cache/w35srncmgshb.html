@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:freebsd [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,freebsd"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/freebsd"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:freebsd","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:freebsd" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:freebsd&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd" class="wikilink1" title="fuss:freebsd" data-wiki-id="fuss:freebsd">freebsd</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:freebsd</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#launching_a_process_on_boot">Launching a Process on Boot</a></div></li>
+<li class="level1"><div class="li"><a href="#passing_arguments_to_autoconf">Passing Arguments to Autoconf</a></div></li>
+<li class="level1"><div class="li"><a href="#updating_ports">Updating Ports</a></div></li>
+<li class="level1"><div class="li"><a href="#updating_packages">Updating Packages</a></div></li>
+<li class="level1"><div class="li"><a href="#setting_time-zome">Setting Time-Zome</a></div></li>
+<li class="level1"><div class="li"><a href="#reinstalling_ports">Reinstalling Ports</a></div></li>
+<li class="level1"><div class="li"><a href="#add_user_to_wheel_group">Add User to Wheel Group</a></div></li>
+<li class="level1"><div class="li"><a href="#initialize_geoip_databases">Initialize GeoIP Databases</a></div></li>
+<li class="level1"><div class="li"><a href="#ports_cheat-sheet">Ports Cheat-Sheet</a></div></li>
+<li class="level1"><div class="li"><a href="#automatically_repair_filesystem_on_boot">Automatically Repair Filesystem on Boot</a></div></li>
+<li class="level1"><div class="li"><a href="#adding_and_removing_users_from_groups">Adding and Removing Users from Groups</a></div></li>
+<li class="level1"><div class="li"><a href="#remove_acl_entries">Remove ACL Entries</a></div></li>
+<li class="level1"><div class="li"><a href="#i2p_on_freebsd_10">i2p on FreeBSD 10</a></div></li>
+<li class="level1"><div class="li"><a href="#set_default_acls_for_newly_created_files">Set Default ACLs for Newly Created Files</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="launching_a_process_on_boot">Launching a Process on Boot</h1>
+<div class="level1">
+
+<p>
+On Unix systems, when a user logs on, their default shell which is set when the account is first created, is spawned for them automatically. We use that to spawn a program instead of a shell by creating a user, in this case named <code>wiz</code> which has its default shell set to some program like <code>/usr/bin/top</code>.
+</p>
+
+<p>
+A new user should be added using the <code>adduser</code> utility which makes the appropriate changes. In order to check whether the user has been added correctly the <code>/etc/passwd</code> file should contain an entry like the following for our user <code>wiz</code>:
+</p>
+<pre class="code sh">wiz:*:1000:1000:Wizardry and Steamworks:/home/wiz:/usr/bin/top</pre>
+
+<p>
+We duplicate the Pc console in <code>/etc/gettytab</code> and give it another name, while making sure that it has some new unique identifiers like <code>Pa</code> instead of <code>Pc</code> as well as specifying our username to automatically log on by using the <code>al</code> (automatic login) option. 
+</p>
+<pre class="code sh">P|Pc|Pc console:\
+        :ht:np:sp#9600:
+&nbsp;
+P|Pa|Pa console:\
+        :ht:np:sp#9600:al=wiz</pre>
+
+<p>
+Then, we add the terminal to the <code>/etc/ttys</code> file which will launch the <code>Po</code> console on the first virtual terminal, then log-in our user named <code>wiz</code> that would launch <code>wiz</code>&#039;s shell which is <code>/usr/bin/top</code>:
+</p>
+<pre class="code sh">ttyv0   &quot;/usr/libexec/getty Po&quot;         xterm   on  secure
+# Virtual terminals
+ttyv1   &quot;/usr/libexec/getty Pc&quot;         xterm   on  secure</pre>
+
+</div>
+
+<h1 class="sectionedit2" id="passing_arguments_to_autoconf">Passing Arguments to Autoconf</h1>
+<div class="level1">
+
+<p>
+There are instances where certain options from ports are not configurable using the port system. For example, there is a bug in FreeBSD 10.1 that prevents <code>libidn</code> to be installed in case you also have the <code>mono</code> compiler install. The issue stems from the fact that when <code>libidn</code> runs, it will also pick-up the <code>mono</code> install and attempt to install the chsarp bindings. The solution in that case is to go to <code>/usr/ports/dns/libidn</code> and edit the <code>Makefile</code> and add the following option:
+</p>
+<pre class="code bash"><span class="re2">CONFIGURE_ARGS</span>= <span class="re5">--disable-csharp</span></pre>
+
+<p>
+where all the parameters passed to the <code>CONFIGURE_ARGS</code> variable will be passed on to the autoconf <code>configure</code> script. Note that <code>CONFIGURE_ARGS</code> can also be passed as a parameter to <code>make</code> using the <code>variable=value</code> format.
+</p>
+
+</div>
+
+<h1 class="sectionedit3" id="updating_ports">Updating Ports</h1>
+<div class="level1">
+
+<p>
+A good idea is to keep ports updated and that can be achieved using the <code>portsnap</code> command. First, in order to update your ports, issue:
+</p>
+<pre class="code bash">portsnap fetch extract</pre>
+
+<p>
+and then any time you wish to update the ports, issue:
+</p>
+<pre class="code bash">portsnap fetch update</pre>
+
+</div>
+
+<h1 class="sectionedit4" id="updating_packages">Updating Packages</h1>
+<div class="level1">
+
+<p>
+In order to update packages, you can use <code>portmaster</code> commonly found in <code>/usr/ports/ports-mgmt/portmaster</code>. You can check what new packages are available by issuing:
+</p>
+<pre class="code bash">portmaster <span class="re5">-L</span> <span class="re5">--index-only</span><span class="sy0">|</span> <span class="kw2">egrep</span> <span class="st_h">'(ew|ort) version|total install'</span></pre>
+
+<p>
+and, in order to update a package - say <code>bash</code>, issue:
+</p>
+<pre class="code bash">portmaster <span class="kw2">bash</span></pre>
+
+<p>
+Alternatively, to update the whole distribution, you can issue:
+</p>
+<pre class="code bash">portmaster <span class="re5">-a</span></pre>
+
+</div>
+
+<h1 class="sectionedit5" id="setting_time-zome">Setting Time-Zome</h1>
+<div class="level1">
+
+<p>
+Some packages depend heavily on a time-zone being set. FreeBSD by default assumes UTC, in which case, it considers that no timezone setting is necessary. What happens is that if there is no <code>/etc/localtime</code> installed, then some programs such as the <code>mono</code> c-sharp compiler will bomb out claiming that they were unable to determine the time-zone.
+</p>
+
+<p>
+In order to install a time-zone, copy a file (don&#039;t copy a directory) from <code>/usr/share/zoneinfo/</code> to <code>/etc/localtime</code>. For example, to set to <code>UTC</code> time, issue:
+</p>
+<pre class="code bash"><span class="kw2">cp</span> <span class="sy0">/</span>usr<span class="sy0">/</span>share<span class="sy0">/</span>zoneinfo<span class="sy0">/</span>UTC <span class="sy0">/</span>etc<span class="sy0">/</span>localtime</pre>
+
+</div>
+
+<h1 class="sectionedit6" id="reinstalling_ports">Reinstalling Ports</h1>
+<div class="level1">
+
+<p>
+In order to rebuild a port and the ports it depends on, issue:
+</p>
+<pre class="code bash">portupgrade <span class="re5">-Rf</span> <span class="sy0">&lt;</span>portglob<span class="sy0">&gt;</span></pre>
+
+<p>
+or
+</p>
+<pre class="code bash">portmaster <span class="re5">-f</span> <span class="sy0">&lt;</span>portglob<span class="sy0">&gt;</span></pre>
+
+<p>
+In order to rebuild a port and the ports that depend on it, issue:
+</p>
+<pre class="code bash">portupgrade <span class="re5">-rf</span> <span class="sy0">&lt;</span>portglob<span class="sy0">&gt;</span></pre>
+
+<p>
+or
+</p>
+<pre class="code bash">portmaster <span class="re5">-rf</span> <span class="sy0">&lt;</span>portglob<span class="sy0">&gt;</span></pre>
+
+<p>
+where <code>&lt;portglob&gt;</code> is a port path, ie: <code>multimedia/mplayer</code>
+</p>
+
+</div>
+
+<h1 class="sectionedit7" id="add_user_to_wheel_group">Add User to Wheel Group</h1>
+<div class="level1">
+
+<p>
+In order for an user to be able to elevate its privileges, the user needs to be part of the <code>wheel</code> group. Issue the command:
+</p>
+<pre class="code bash">pw user mod USER <span class="re5">-G</span> wheel</pre>
+
+<p>
+as root in order to add <code>USER</code> to the <code>wheel</code> group.
+</p>
+
+</div>
+
+<h1 class="sectionedit8" id="initialize_geoip_databases">Initialize GeoIP Databases</h1>
+<div class="level1">
+
+<p>
+First, install the <code>GeoIP</code> port:
+</p>
+<pre class="code bash"><span class="kw3">cd</span> <span class="sy0">/</span>usr<span class="sy0">/</span>ports<span class="sy0">/</span>net<span class="sy0">/</span>GeoIP
+<span class="kw2">make</span> config-recursive
+<span class="kw2">make</span> <span class="kw2">install</span> clean</pre>
+
+<p>
+then change directory to <code>/usr/local/share/GeoIP/</code>:
+</p>
+<pre class="code bash"><span class="kw3">cd</span> <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>share<span class="sy0">/</span>GeoIP</pre>
+
+<p>
+and download the <a href="http://dev.maxmind.com/geoip/legacy/geolite/" class="urlextern" title="http://dev.maxmind.com/geoip/legacy/geolite/" rel="ugc nofollow">databases from maxmind.com</a>:
+</p>
+<pre class="code bash">curl <span class="re5">-O</span> http:<span class="sy0">//</span>geolite.maxmind.com<span class="sy0">/</span>download<span class="sy0">/</span>geoip<span class="sy0">/</span>database<span class="sy0">/</span>GeoLiteCountry<span class="sy0">/</span>GeoIP.dat.gz
+curl <span class="re5">-O</span> http:<span class="sy0">//</span>geolite.maxmind.com<span class="sy0">/</span>download<span class="sy0">/</span>geoip<span class="sy0">/</span>database<span class="sy0">/</span>GeoLiteCity.dat.gz
+curl <span class="re5">-O</span> http:<span class="sy0">//</span>download.maxmind.com<span class="sy0">/</span>download<span class="sy0">/</span>geoip<span class="sy0">/</span>database<span class="sy0">/</span>asnum<span class="sy0">/</span>GeoIPASNum.dat.gz</pre>
+
+<p>
+and extract them:
+</p>
+<pre class="code bash"><span class="kw2">gunzip</span> GeoIP.dat.gz
+<span class="kw2">gunzip</span> GeoIPASNum.dat.gz
+<span class="kw2">gunzip</span> GeoLiteCity.dat.gz</pre>
+
+<p>
+which should cover the installation of the databases.
+</p>
+
+<p>
+In order to check that they are working correctly, issue, for instance:
+</p>
+<pre class="code">/usr/local/bin/geoiplookup -f /usr/local/share/GeoIP/GeoLiteCity.dat 8.8.8.8</pre>
+
+<p>
+which should yield:
+</p>
+<pre class="code">GeoIP City Edition, Rev 1: US, CA, California, Mountain View, 94040, 37.386002, -122.083801, 807, 650</pre>
+
+</div>
+
+<h1 class="sectionedit9" id="ports_cheat-sheet">Ports Cheat-Sheet</h1>
+<div class="level1">
+<div class="table sectionedit10"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Command </th><th class="col1"> Purpose </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> <code>make rmconfig</code> </td><td class="col1"> Removes the configuration of the current port. </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> <code>make rmconfig-recursive</code> </td><td class="col1"> Removes the configuration of the current port and all ports depending on the current port. </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> <code>make config</code> </td><td class="col1"> Configures the current port. </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> <code>make config-recursive</code> </td><td class="col1"> Configures the current port and all ports depending on the current port. </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"> <code>make depends</code> </td><td class="col1"> Compiles all the ports that the current port depends on. </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0"> <code>make showconfig</code> </td><td class="col1"> Show the build options for the current port. </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0"> <code>make showconfig-recursive</code> </td><td class="col1"> Show the build options for the current port and all ports built by the current port. </td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit11" id="automatically_repair_filesystem_on_boot">Automatically Repair Filesystem on Boot</h1>
+<div class="level1">
+
+<p>
+The option:
+</p>
+<pre class="code">fsck_y_enable=&quot;YES&quot;</pre>
+
+<p>
+can be added to <code>/etc/rc.conf</code> which will make FreeBSD answer yes to all questions when performing the filesystem check (it is the equivalent of <code>fsck -y</code>).
+</p>
+
+<p>
+Additionally, by specifying:
+</p>
+<pre class="code">background_fsck=&quot;NO&quot;</pre>
+
+<p>
+in <code>/etc/rc.conf</code>, the file system check will not run concurrently to the boot process and the file system check will be performed first and then the machine will boot.
+</p>
+
+</div>
+
+<h1 class="sectionedit12" id="adding_and_removing_users_from_groups">Adding and Removing Users from Groups</h1>
+<div class="level1">
+
+<p>
+In order to remove a user named <code>USER</code> from a group named <code>GROUP</code>, issue:
+</p>
+<pre class="code bash">pw mod group GROUP <span class="re5">-d</span> USER</pre>
+
+<p>
+In order to add a user named <code>USER</code> to a group named <code>GROUP</code>, issue:
+</p>
+<pre class="code bash">pw mod user USER <span class="re5">-G</span> GROUP</pre>
+
+</div>
+
+<h1 class="sectionedit13" id="remove_acl_entries">Remove ACL Entries</h1>
+<div class="level1">
+
+<p>
+This can be achieved using the command:
+</p>
+<pre class="code bash">setfacl <span class="re5">-bn</span> PATH</pre>
+
+<p>
+where <code>PATH</code> is the path to a file or folder.
+</p>
+
+</div>
+
+<h1 class="sectionedit14" id="i2p_on_freebsd_10">i2p on FreeBSD 10</h1>
+<div class="level1">
+
+<p>
+<code>i2p</code> from <code>security/i2p</code> seems to be very broken on FreeBSD 10 due to a shell script that launches a Java service wrapper to start <code>i2p</code>. To start <code>i2p</code>, you would edit <code>/etc/rc.conf</code> and add the lines:
+</p>
+<pre class="code">i2p_enable=&quot;YES&quot;
+i2p_user=&quot;i2p&quot;</pre>
+
+<p>
+where <code>i2p</code> must be an user that you have previously configured.
+</p>
+
+<p>
+After that, you would issue:
+</p>
+<pre class="code bash"><span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>etc<span class="sy0">/</span>rc.d<span class="sy0">/</span>i2p <span class="kw2">install</span></pre>
+
+<p>
+which will install the service files to the home directory of the <code>i2p</code> from <code>/etc/rc.conf</code>.
+</p>
+
+<p>
+Then, if you attempt to start the service:
+</p>
+<pre class="code bash"><span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>etc<span class="sy0">/</span>rc.d<span class="sy0">/</span>i2p start</pre>
+
+<p>
+and monitor <code>wrapper.log</code> (usually found under the <code>i2p</code> user&#039;s home directory in a hidden folder named <code>.i2p/</code>), you will notice that it bombs out with various errors such as:
+</p>
+<pre class="code">Launching a JVM...
+javavm: warning: The use of &#039;javavm&#039; as a synonym for &#039;java&#039; is deprecated
+JVM exited while loading the application.
+Error: Could not find or load main class org.tanukisoftware.wrapper.WrapperSimpleApp
+The value of wrapper.java.command does not appear to be a java binary.
+The use of scripts is not supported. Trying to continue, but some features may not work correctly..</pre>
+
+<p>
+Which is obviously a class-path problem. The officially suggested workaround is to install <code>sysutils/javaservicewrapper</code> and then copy some files into the install path of <code>i2p</code>:
+</p>
+<pre class="code bash"><span class="kw3">cd</span> <span class="re1">$HOME</span><span class="sy0">/</span>i2p
+<span class="kw2">cp</span> <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>bin<span class="sy0">/</span>javaservicewrapper i2psvc
+<span class="kw2">cp</span> <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>lib<span class="sy0">/</span>javaservicewrapper<span class="sy0">/</span>lib<span class="sy0">/</span>wrapper.jar lib<span class="sy0">/</span>
+<span class="kw2">cp</span> <span class="sy0">/</span>usr<span class="sy0">/</span>local<span class="sy0">/</span>lib<span class="sy0">/</span>javaservicewrapper<span class="sy0">/</span>lib<span class="sy0">/</span>libwrapper.so lib<span class="sy0">/</span></pre>
+
+<p>
+Unfortunately, that does not work either. The deep-magic lies in the <code>wrapper.config</code> file in the <code>i2p</code> install path (the path mentioned where you issued <code>/usr/local/etc/rc.d/i2p install</code>).
+</p>
+
+<p>
+You need to edit <code>wrapper.config</code> and then find all occurrences of:
+</p>
+<pre class="code">$INSTALL_PATH</pre>
+
+<p>
+and replace that variable with the hard-coded path to where you installed i2p. Apparently the install script does not set the environment variable properly such that you will have to hard-code it this way in order for i2p to start.
+</p>
+
+</div>
+
+<h1 class="sectionedit15" id="set_default_acls_for_newly_created_files">Set Default ACLs for Newly Created Files</h1>
+<div class="level1">
+
+<p>
+In order to have the ACLs applied to new files and folders created under a directory, default ACLs can be used.
+</p>
+
+<p>
+The first step is to set the default ACL for the directory:
+</p>
+<pre class="code bash">setfacl <span class="re5">-dm</span> u::rwx,m::rwx,g::rx,o::rx DIRECTORY</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>DIRECTORY</code> is the directory to set the default ACL for.</div>
+</li>
+</ul>
+
+<p>
+This step is necessary before setting default ACLs that grant other users permissions, otherwise setting default user ACLs directly would result in:
+</p>
+<pre class="code">setfacl: DIRECTORY: acl_calc_mask() failed: Invalid argument
+setfacl: DIRECTORY: failed to set ACL mask</pre>
+
+<p>
+The final step is to set the default ACLs for the users you want:
+</p>
+<pre class="code bash">setfacl <span class="re5">-dm</span> u:USER:rwx,g:GROUP:rwx DIRECTORY</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>USER</code> is an user name,</div>
+</li>
+<li class="level1"><div class="li"> <code>GROUP</code> is a group name,</div>
+</li>
+<li class="level1"><div class="li"> <code>DIRECTORY</code> is the directory to set the ACLs for.</div>
+</li>
+</ul>
+
+<p>
+To set these permissions recursively (note that only directories may have default ACLs), you would have to use <code>find</code>:
+</p>
+<pre class="code bash"><span class="kw2">find</span> . <span class="re5">-type</span> d <span class="re5">-exec</span> setfacl <span class="re5">-dm</span> u:USER:rwx,g:GROUP:rwx <span class="st_h">'{}'</span> \;</pre>
+
+<p>
+which will set default permissions for all directories and sub-directories starting from the current directory.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/freebsd.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd" class="wikilink1" title="fuss:freebsd" data-wiki-id="fuss:freebsd">freebsd</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:freebsd" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/freebsd"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Afreebsd&amp;1657304791" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

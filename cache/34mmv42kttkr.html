@@ -1,0 +1,4049 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/site/ - LynxChan + Aleph 2.8 Changelog: Re-Animated Edition</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderThread"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="../rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href=".." class="coloredIcon linkBack">
+           <hr>
+           Back
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a href=".." title="Back" id="linkBack" class="linkBack hideMobile coloredIcon"></a> <span>/</span> <a href="#" id="linkTop" title="Top" class="coloredIcon"></a> <span>/</span> <a href="#footer" id="linkBottom" title="Bottom" class="coloredIcon"></a> <span>/</span> <a href="../catalog.html" title="Catalog" id="navCatalog" class="navCatalog hideMobile coloredIcon"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Refresh</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <div id="mainPanel">
+
+    <header class="boardHeader">
+      <img id="bannerImage" src="/randomBanner.js?boardUri=site">
+      <div>
+        <p id="labelName">/site/ - Site Meta</p>
+      </div>
+      <p id="labelDescription">Official 8chan Site Meta. (Bring bug reports, complaints, and requests here)</p>
+    </header>
+
+	<div class="innerUtility top">
+		<a href="../">Index</a>
+		<a href="../catalog.html">Catalog</a>
+		<a target="_blank" class="archiveLinkThread">Archive</a>
+		<a class="navButton" href="#footer">Bottom</a>
+		<a class="reloadButton">Refresh</a>
+	</div>
+
+    <div id="postingForm">
+
+      <fieldset id="newPostFieldset" class="threadFieldset">
+        <legend><label for="newPostFieldHide">Mode: Reply</label></legend>
+        <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+        <form action="/replyThread.js" enctype="multipart/form-data" method="post">
+
+          <input type="hidden" name="threadId" id="threadIdentifier" value="5978">
+
+          <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  <tr id="divName">
+    <th>Name</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldName" name="name"></td>
+  </tr>
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="site"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  <tr id="captchaDiv">
+
+    <th>Captcha</th>
+    <td><img class="captchaImage" src="/captcha.js">
+
+      <div class="subCaptchaDiv">
+        <input type="button" value="Reload" class="hidden reloadCaptchaButton">
+        <span class="captchaTimer"></span>
+        <br>
+
+        <input name="captcha" type="text" autocomplete="none" class="captchaField postingInput" id="fieldCaptcha" placeholder="answer">
+
+        <a href="/noCookieCaptcha.js" class="small" id="noCookiesLink">no cookies?</a>
+
+      </div></td>
+  </tr>
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+          <p class="small">
+            Remember to follow the
+            <a href="../rules.html" class="localPageLink">Rules</a>
+          </p>
+
+          <input type="submit" id="formButton" value="Reply">
+
+        </form>
+
+      </fieldset>
+
+    </div>
+
+    
+    
+
+    <div id="transferControls">
+
+      
+
+    </div>
+
+    
+
+    <div id="ipDelete">
+
+      
+
+    </div>
+
+    <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+    
+
+    <div id="threadList">
+
+      <form method="post" action="/contentActions.js" enctype="multipart/form-data">
+
+        <div id="divThreads"><div class="opCell" data-boarduri="site" id="5978"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">460.04 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a.jpg" download="Herbert West Re-Animator.jpg">Herbert West Re-Animator.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a.jpg" data-filewidth="1280" data-fileheight="720" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_707f62c9733b625618aba3e3e16629e0516e5a0e34c33b0cd5411122a0d3513a"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b5a5ab869e8572f511f1b068676d58ab5aa2325a5ef5cc40d4e17c65e29e11ed.swf"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">2.49 MB</span> 
+  <a class="originalNameLink" href="/.media/b5a5ab869e8572f511f1b068676d58ab5aa2325a5ef5cc40d4e17c65e29e11ed.swf" download="Marissa Stole the Precious Thing.swf">Marissa Stole the Precious Thing.swf</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b5a5ab869e8572f511f1b068676d58ab5aa2325a5ef5cc40d4e17c65e29e11ed.swf"   data-filemime="application/x-shockwave-flash">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="125" height="125" src="/genericThumb.png"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="site-5978">
+    <span class="labelSubject">LynxChan + Aleph 2.8 Changelog: Re-Animated Edition</span>
+    <a class="linkName  noEmailName" >Codexx</a>
+     <span class="labelRole">Root</span>
+    <span class="labelCreated">06/28/2022 (Tue) 03:31:18</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #cca955">cca955</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="#5978">No.</a>
+    <a class="linkQuote" href="#q5978">5978</a>
+    
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">We&apos;re bringing the dead back to life with this update! As usual, please leave <em>bug reports</em> and <em>new feature suggestions</em> in this thread. It will be the designated tech support and changelog thread until the next major release.
+See previous thread: <a class="quoteLink" href="/site/res/4917.html#4917">&gt;&gt;4917</a>
+
+<span class="redText">Features</span>
+Added Flash embed support; We have created <a href="/f/">&gt;&gt;&gt;/f/</a> as a board dedicated to SWF files
+Added three new themes to the dropdown, Hispita, Hispaperro, and HispaSexy. Additional Hispachan themes are available in the /.static/css/ directory.
+Mobile view now supports slide-out menus for navbar and side catalog. Try swiping!
+Modals should now work better on mobile view
+Reply previews are now disabled on mobile view
+Added smooth-scroll option
+Added three new themes to the dropdown and four new hidden themes
+Pasted images now default to their SHA256 hash instead of &quot;ClipboardImage&quot;
+Spoilering images, editing posts, etc should no longer mark posts as deleted when using websockets
+Tor users will now receive an ID based on their bypass
+Board URIs can now be changed
+Threadwise r9k is now available and can be enabled by board owners
+
+<span class="redText">Bugs</span>
+Fixed HTML literals occuring in subject lines on the catalog
+Fixed webms/mp4 thumbnails not lazy-loading
+Fixed catalog images not lazy-loading
+Fixed thumbnails being cropped on mobile view
+Code tags should no longer extend past a post&apos;s width
+Filenames now wrap within file&apos;s container
+Board rules can now be deleted
+
+<span class="redText">Policy</span>
+Whitelisted WAV files
+Disabled webring until memory leak can be identified and fixed
+
+<span class="redText">Languages</span>
+Updated some pages to translate frontend strings
+Added Spanish Frontend translations
+Added French Backend Language Pack
+
+<span class="redText">Coming Soon</span>
+Better language support; we&apos;re just getting started!
+Oekaki
+
+<span class="redText">Special Thanks</span>
+AestheticAnon for the Hispachan themes
+/ac/&apos;s BO for helping with the Spanish translation</div>
+  
+  
+  
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="site" id="5979"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5979">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 03:45:29</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#5979">No.</a>
+    <a class="linkQuote" href="#q5979">5979</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">How can I toggle the language?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5980"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5980">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 03:45:38</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7ec58d">7ec58d</span></span>
+    
+    <a class="linkSelf" href="#5980">No.</a>
+    <a class="linkQuote" href="#q5980">5980</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+<span class="greenText">&gt;Threadwise r9k is now available and can be enabled by board owners</span>
+FINALLY</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5981"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5981">
+    
+    <a class="linkName  noEmailName" >Michelin</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 03:50:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #744f49">744f49</span></span>
+    
+    <a class="linkSelf" href="#5981">No.</a>
+    <a class="linkQuote" href="#q5981">5981</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/57c39e15201ba9f3f1285c38ce7e397f8b5cabb5614ef8a2b0bde0af3af44ad5.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">231.69 KB</span> <span class="dimensionLabel">1072x2186</span>
+  <a class="originalNameLink" href="/.media/57c39e15201ba9f3f1285c38ce7e397f8b5cabb5614ef8a2b0bde0af3af44ad5.jpg" download="IMG&#95;20220627&#95;234936.jpg">IMG&#95;20220627&#95;234936.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/57c39e15201ba9f3f1285c38ce7e397f8b5cabb5614ef8a2b0bde0af3af44ad5.jpg" data-filewidth="1072" data-fileheight="2186" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="110" height="225" src="/.media/t_57c39e15201ba9f3f1285c38ce7e397f8b5cabb5614ef8a2b0bde0af3af44ad5"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Uhmm... How do i fix this?
+It&apos;s in the desktop version too</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5982"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5982">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/28/2022 (Tue) 03:51:39</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #65221b">65221b</span></span>
+    
+    <a class="linkSelf" href="#5982">No.</a>
+    <a class="linkQuote" href="#q5982">5982</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5981">&gt;&gt;5981</a>
+Flush your browser cache completely and reload the site.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5983"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5983">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 03:51:50</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#5983">No.</a>
+    <a class="linkQuote" href="#q5983">5983</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5981">&gt;&gt;5981</a>
+Hard refresh the site, it should be working now.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5984"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5984">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 03:59:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #744f49">744f49</span></span>
+    
+    <a class="linkSelf" href="#5984">No.</a>
+    <a class="linkQuote" href="#q5984">5984</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ed3a7de0ac07da3b551665b786b466067108d2e593dd296c5d519b872a8c2751.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">21.82 KB</span> <span class="dimensionLabel">750x826</span>
+  <a class="originalNameLink" href="/.media/ed3a7de0ac07da3b551665b786b466067108d2e593dd296c5d519b872a8c2751.jpg" download="undefined.jpg">undefined.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ed3a7de0ac07da3b551665b786b466067108d2e593dd296c5d519b872a8c2751.jpg" data-filewidth="750" data-fileheight="826" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="204" height="225" src="/.media/t_ed3a7de0ac07da3b551665b786b466067108d2e593dd296c5d519b872a8c2751"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5982">&gt;&gt;5982</a>
+<a class="quoteLink" href="/site/res/5978.html#5983">&gt;&gt;5983</a>
+Thanks, it worked very well</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5985"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5985">
+    
+    <a class="linkName  noEmailName" >Codexx</a>
+     <span class="labelRole">Root</span>
+    <span class="labelCreated">06/28/2022 (Tue) 04:02:19</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cca955">cca955</span></span>
+    
+    <a class="linkSelf" href="#5985">No.</a>
+    <a class="linkQuote" href="#q5985">5985</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5979">&gt;&gt;5979</a>
+If you&apos;re a board owner, you can set the preferred language of the board.
+If you want the language sitewide, you need to set language priority in your browser. The site should recognize these and serve the appropriate version of the page, if a translation exists.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5986"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5986">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 04:04:31</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#5986">No.</a>
+    <a class="linkQuote" href="#q5986">5986</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">I was thinking if you could consider adding a tool for Board Owners to move threads to other boards and receive thread requests from other boards, like they were discussing here <a class="quoteLink" href="/site/res/5423.html#5905">&gt;&gt;5905</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5987"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5987">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 04:13:20</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #96a327">96a327</span></span>
+    
+    <a class="linkSelf" href="#5987">No.</a>
+    <a class="linkQuote" href="#q5987">5987</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+Cool update m8</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5988"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5988">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 04:16:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#5988">No.</a>
+    <a class="linkQuote" href="#q5988">5988</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/3500617b1e61a185dc0472e89189191810417ed852ad36da9f98e409d69386aa.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">212.32 KB</span> <span class="dimensionLabel">720x1600</span>
+  <a class="originalNameLink" href="/.media/3500617b1e61a185dc0472e89189191810417ed852ad36da9f98e409d69386aa.png" download="Screenshot&#95;20220627-231535.png">Screenshot&#95;20220627-231535.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/3500617b1e61a185dc0472e89189191810417ed852ad36da9f98e409d69386aa.png" data-filewidth="720" data-fileheight="1600" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="101" height="225" src="/.media/t_3500617b1e61a185dc0472e89189191810417ed852ad36da9f98e409d69386aa"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Threads don&apos;t show on the catalog</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5989"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5989">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 04:47:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#5989">No.</a>
+    <a class="linkQuote" href="#q5989">5989</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><span class="greenText">&gt;Also</span>
+&quot;Actualiar&quot; should be &quot;Actuali<u>z</u>ar&quot;</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5991"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5991">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 05:13:43</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #1c41c5">1c41c5</span></span>
+    
+    <a class="linkSelf" href="#5991">No.</a>
+    <a class="linkQuote" href="#q5991">5991</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1fc8c58b05bb4c898ffd8d675b575fb68ea1c341f15aed6a58394373f9e9f8f2.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.02 MB</span> <span class="dimensionLabel">1080x1920</span>
+  <a class="originalNameLink" href="/.media/1fc8c58b05bb4c898ffd8d675b575fb68ea1c341f15aed6a58394373f9e9f8f2.png" download="1fc8c58b05bb4c898ffd8d675b575fb68ea1c341f15aed6a58394373f9e9f8f2.png">1fc8c58b05bb4c898ffd8d675b575fb68ea1c341f15aed6a58394373f9e9f8f2.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1fc8c58b05bb4c898ffd8d675b575fb68ea1c341f15aed6a58394373f9e9f8f2.png" data-filewidth="1080" data-fileheight="1920" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="127" height="225" src="/.media/t_1fc8c58b05bb4c898ffd8d675b575fb68ea1c341f15aed6a58394373f9e9f8f2"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5988">&gt;&gt;5988</a>
+works for me</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5992"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5992">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 06:47:19</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #34b651">34b651</span></span>
+    
+    <a class="linkSelf" href="#5992">No.</a>
+    <a class="linkQuote" href="#q5992">5992</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+I dont understand how to acceso to the hidden themes ;&#95;;</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5993"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5993">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 06:56:26</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7ec58d">7ec58d</span></span>
+    
+    <a class="linkSelf" href="#5993">No.</a>
+    <a class="linkQuote" href="#q5993">5993</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5992">&gt;&gt;5992</a>
+1. Go to <a target="&#95;blank" href="https://gitgud.io/8chan/Aleph/-/tree/master/static/css">https://gitgud.io/8chan/Aleph/-/tree/master/static/css</a> to see the full list of available themes.
+2. Go to <a target="&#95;blank" href="https://8chan.moe/.static/css/xxx.css,">https://8chan.moe/.static/css/xxx.css,</a> where xxx.css is the name of one of the themes. Example: <a target="&#95;blank" href="https://8chan.moe/.static/css/yukkuri.css">https://8chan.moe/.static/css/yukkuri.css</a>
+NOTE: you can copy the CSS code from the GitGud repo too.
+3. Copy the content of that page and paste it in the CSS section of your settings window (the gear icon).
+4. Enjoy the theme.
+
+If you want to use one of these themes in your board, save the .css file from the GitGud repo or from the matching .static/css link on 8moe.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5994"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5994">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:08:54</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #34b651">34b651</span></span>
+    
+    <a class="linkSelf" href="#5994">No.</a>
+    <a class="linkQuote" href="#q5994">5994</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5993">&gt;&gt;5993</a>
+Thank you very much! 
+
+Good to see Hispabook made it too as facepalm ;´)</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5995"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5995">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:15:09</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #34b651">34b651</span></span>
+    
+    <a class="linkSelf" href="#5995">No.</a>
+    <a class="linkQuote" href="#q5995">5995</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c03d588011d83be4dcc3609e5168147e09732624e39207bb8fd25d0e254521bb.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">43.96 KB</span> <span class="dimensionLabel">1129x484</span>
+  <a class="originalNameLink" href="/.media/c03d588011d83be4dcc3609e5168147e09732624e39207bb8fd25d0e254521bb.png" download="Screenshot&#95;45.png">Screenshot&#95;45.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c03d588011d83be4dcc3609e5168147e09732624e39207bb8fd25d0e254521bb.png" data-filewidth="1129" data-fileheight="484" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="96" src="/.media/t_c03d588011d83be4dcc3609e5168147e09732624e39207bb8fd25d0e254521bb"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/09c708cfa5d9097fd093d7487dc816019cede7f737f1f65ad3f3c702b2037d8b.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">27.90 KB</span> <span class="dimensionLabel">993x491</span>
+  <a class="originalNameLink" href="/.media/09c708cfa5d9097fd093d7487dc816019cede7f737f1f65ad3f3c702b2037d8b.png" download="Screenshot&#95;44.png">Screenshot&#95;44.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/09c708cfa5d9097fd093d7487dc816019cede7f737f1f65ad3f3c702b2037d8b.png" data-filewidth="993" data-fileheight="491" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="111" src="/.media/t_09c708cfa5d9097fd093d7487dc816019cede7f737f1f65ad3f3c702b2037d8b"></a>
+</details>
+</figure></div>
+  <div class="divMessage">I think i found two bugs
+
+When i try to change the .css of a board it says: (Board not found)
+
+And, in the hispa themes it should be something in that space?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5996"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5996">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:23:38</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4fb65b">4fb65b</span></span>
+    
+    <a class="linkSelf" href="#5996">No.</a>
+    <a class="linkQuote" href="#q5996">5996</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/123d3ca7885ce9b9adc9ceab79f82f3941ec0437f7f6ea667a3bd7779af227f6.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">104.60 KB</span> <span class="dimensionLabel">2130x1348</span>
+  <a class="originalNameLink" href="/.media/123d3ca7885ce9b9adc9ceab79f82f3941ec0437f7f6ea667a3bd7779af227f6.png" download="black 8moe.png">black 8moe.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/123d3ca7885ce9b9adc9ceab79f82f3941ec0437f7f6ea667a3bd7779af227f6.png" data-filewidth="2130" data-fileheight="1348" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="142" src="/.media/t_123d3ca7885ce9b9adc9ceab79f82f3941ec0437f7f6ea667a3bd7779af227f6"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/adbfbb7346d49a208960566b6a826b342b9201b24ca06c05e35f2e546aa8674f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">53.89 KB</span> <span class="dimensionLabel">2130x1348</span>
+  <a class="originalNameLink" href="/.media/adbfbb7346d49a208960566b6a826b342b9201b24ca06c05e35f2e546aa8674f.png" download="white 8moe.png">white 8moe.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/adbfbb7346d49a208960566b6a826b342b9201b24ca06c05e35f2e546aa8674f.png" data-filewidth="2130" data-fileheight="1348" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="142" src="/.media/t_adbfbb7346d49a208960566b6a826b342b9201b24ca06c05e35f2e546aa8674f"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/4043c9a254d485bbbbeecb9d929da9ca724da802f99e2a9b4152556a4623c038.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">447.95 KB</span> <span class="dimensionLabel">7500x5100</span>
+  <a class="originalNameLink" href="/.media/4043c9a254d485bbbbeecb9d929da9ca724da802f99e2a9b4152556a4623c038.png" download="8moe symbol.png">8moe symbol.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/4043c9a254d485bbbbeecb9d929da9ca724da802f99e2a9b4152556a4623c038.png" data-filewidth="7500" data-fileheight="5100" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="153" src="/.media/t_4043c9a254d485bbbbeecb9d929da9ca724da802f99e2a9b4152556a4623c038"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5995">&gt;&gt;5995</a>
+<span class="greenText">&gt;When i try to change the .css of a board it says: (Board not found)</span>
+What&apos;s your board&apos;s name?
+<span class="greenText">&gt;And, in the hispa themes it should be something in that space?</span>
+Yes. Each theme has its own logo. Turns out nobody made logos for the new themes.
+Here are some templates in case somebody wants to make the logos.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5997"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5997">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:26:48</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #34b651">34b651</span></span>
+    
+    <a class="linkSelf" href="#5997">No.</a>
+    <a class="linkQuote" href="#q5997">5997</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5996">&gt;&gt;5996</a>
+It´s /av/ 
+
+<span class="greenText">&gt;Turns out nobody made logos for the new themes</span>
+
+Time to call /arte/</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="5998"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-5998">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:34:18</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4fb65b">4fb65b</span></span>
+    
+    <a class="linkSelf" href="#5998">No.</a>
+    <a class="linkQuote" href="#q5998">5998</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5997">&gt;&gt;5997</a>
+Odd, really odd. Can you post here the file you&apos;re trying to upload?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6001"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6001">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:38:42</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #34b651">34b651</span></span>
+    
+    <a class="linkSelf" href="#6001">No.</a>
+    <a class="linkQuote" href="#q6001">6001</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5998">&gt;&gt;5998</a>
+I cant, it says is not a valid format, but its the Hispahack theme (Moepheus.css) from the GitGud</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6002"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6002">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:42:48</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4fb65b">4fb65b</span></span>
+    
+    <a class="linkSelf" href="#6002">No.</a>
+    <a class="linkQuote" href="#q6002">6002</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6001">&gt;&gt;6001</a>
+I tried it in a test board and it worked perfectly.
+What happens if you change something else. Change the language to English and try another .css file.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6003"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6003">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:48:45</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #34b651">34b651</span></span>
+    
+    <a class="linkSelf" href="#6003">No.</a>
+    <a class="linkQuote" href="#q6003">6003</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6002">&gt;&gt;6002</a>
+I put the preferred lenguage on none and still doesnt allow me to change it, i also tried facepalm and another one but nope</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6004"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6004">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 07:50:50</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    <a class="linkSelf" href="#6004">No.</a>
+    <a class="linkQuote" href="#q6004">6004</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/bf2feb756f915866d35e2e33d841cb378c317da83fcc18973505a10aec2bf04b.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">30.35 KB</span> <span class="dimensionLabel">568x363</span>
+  <a class="originalNameLink" href="/.media/bf2feb756f915866d35e2e33d841cb378c317da83fcc18973505a10aec2bf04b.png" download="bf2feb756f915866d35e2e33d841cb378c317da83fcc18973505a10aec2bf04b.png">bf2feb756f915866d35e2e33d841cb378c317da83fcc18973505a10aec2bf04b.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/bf2feb756f915866d35e2e33d841cb378c317da83fcc18973505a10aec2bf04b.png" data-filewidth="568" data-fileheight="363" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="144" src="/.media/t_bf2feb756f915866d35e2e33d841cb378c317da83fcc18973505a10aec2bf04b"></a>
+</details>
+</figure></div>
+  <div class="divMessage">What causes the &quot;watched board&quot; star to be inconsistently sized with custom themes?
+Also I&apos;ve run into an occasional issue of pictures not  expanding correctly when clicked on. I&apos;m not completely sure how to reproduce it but it&apos;s happened a couple times at least. 
+<a class="quoteLink" href="/site/res/5978.html#5996">&gt;&gt;5996</a>
+lol</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6011"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6011">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 11:22:14</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #44e2f4">44e2f4</span></span>
+    
+    <a class="linkSelf" href="#6011">No.</a>
+    <a class="linkQuote" href="#q6011">6011</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5988">&gt;&gt;5988</a>
+Having the exact same problem</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6012"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6012">
+    <span class="labelSubject">BUG</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 12:33:06</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #22039e">22039e</span></span>
+    
+    <a class="linkSelf" href="#6012">No.</a>
+    <a class="linkQuote" href="#q6012">6012</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9282b4c43c8a6f973b570055257e4a01ac58550531add0c9a6930edc478c9eaf.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">165.66 KB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/9282b4c43c8a6f973b570055257e4a01ac58550531add0c9a6930edc478c9eaf.png" download="Before Clicking Image.png">Before Clicking Image.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9282b4c43c8a6f973b570055257e4a01ac58550531add0c9a6930edc478c9eaf.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_9282b4c43c8a6f973b570055257e4a01ac58550531add0c9a6930edc478c9eaf"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/87b042ad539adb345a4bd182a751af0f110b7d57ad9236e0e79c3d1c5194bd11.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">181.61 KB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/87b042ad539adb345a4bd182a751af0f110b7d57ad9236e0e79c3d1c5194bd11.png" download="After Clicking Image.png">After Clicking Image.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/87b042ad539adb345a4bd182a751af0f110b7d57ad9236e0e79c3d1c5194bd11.png" data-filewidth="1366" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_87b042ad539adb345a4bd182a751af0f110b7d57ad9236e0e79c3d1c5194bd11"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Some images display as incredibly small when clicked now, requiring opening the image in a seperate tab to view it full size. Anyone else experiencing this issue?
+
+Pic related, clicking the image barely increases its size from the thumbnail.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6013"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6013">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 13:17:02</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    <a class="linkSelf" href="#6013">No.</a>
+    <a class="linkQuote" href="#q6013">6013</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2fe5f69baa7edee06cfd17ab8046669bc3073e111729c90e6e0514546c13bb08.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">46.85 KB</span> <span class="dimensionLabel">462x332</span>
+  <a class="originalNameLink" href="/.media/2fe5f69baa7edee06cfd17ab8046669bc3073e111729c90e6e0514546c13bb08.jpg" download="nothing can mess this up everything is great.jpg">nothing can mess this up everything is great.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2fe5f69baa7edee06cfd17ab8046669bc3073e111729c90e6e0514546c13bb08.jpg" data-filewidth="462" data-fileheight="332" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="162" src="/.media/t_2fe5f69baa7edee06cfd17ab8046669bc3073e111729c90e6e0514546c13bb08"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><span class="greenText">&gt;mfw I reported some of those bugs</span>
+
+<a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+I don&apos;t have sound in .swfs and in general it feels they&apos;re running with very low performance. Is this normal? Posting from tor browser.
+Also, I didn&apos;t see any mention of this, but is the exceeded quota bug finally fixed?
+Otherwise some nice QoL updates in this update, but I feel there&apos;s still a lot to iron out.
+
+<a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+<span class="greenText">&gt;see post</span>
+<span class="greenText">&gt;try to expand image to see what anon&apos;s talking about</span>
+<span class="greenText">&gt;image won&apos;t expand</span>
+the irony is through the roof today.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6015"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6015">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 17:57:46</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cac7fc">cac7fc</span></span>
+    
+    <a class="linkSelf" href="#6015">No.</a>
+    <a class="linkQuote" href="#q6015">6015</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8844d7405bbe993b8170023c26d02d303a94a84d16bdefdc0e1163c4f7ca6e4b.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">27.86 KB</span> <span class="dimensionLabel">720x330</span>
+  <a class="originalNameLink" href="/.media/8844d7405bbe993b8170023c26d02d303a94a84d16bdefdc0e1163c4f7ca6e4b.png" download="Screenshot&#95;20220628-113418-701.png">Screenshot&#95;20220628-113418-701.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8844d7405bbe993b8170023c26d02d303a94a84d16bdefdc0e1163c4f7ca6e4b.png" data-filewidth="720" data-fileheight="330" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="103" src="/.media/t_8844d7405bbe993b8170023c26d02d303a94a84d16bdefdc0e1163c4f7ca6e4b"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+OMG everything is broken, I&apos;ll gonna try to post a picture, let&apos;s see (please, work!)</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6018"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6018">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:01:32</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2d1452">2d1452</span></span>
+    
+    <a class="linkSelf" href="#6018">No.</a>
+    <a class="linkQuote" href="#q6018">6018</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+<span class="greenText">&gt;Anyone else experiencing this issue?</span>
+Yep, me too.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6019"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6019">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/28/2022 (Tue) 18:03:22</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #65221b">65221b</span></span>
+    
+    <a class="linkSelf" href="#6019">No.</a>
+    <a class="linkQuote" href="#q6019">6019</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6015">&gt;&gt;6015</a>
+Make sure you clear your browser cache and that you have us whitelisted in any privacy addons, then try again.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6020"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6020">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:06:01</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cac7fc">cac7fc</span></span>
+    
+    <a class="linkSelf" href="#6020">No.</a>
+    <a class="linkQuote" href="#q6020">6020</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+OMG everything is broken, I&apos;ll gonna try to post a picture, let&apos;s see (please, work!)
+
+<span class="spoiler">It didn&apos;t</span>
+
+Even the captcha doesn&apos;t work, it&apos;s so frustrating.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6021"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6021">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:07:43</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cac7fc">cac7fc</span></span>
+    
+    <a class="linkSelf" href="#6021">No.</a>
+    <a class="linkQuote" href="#q6021">6021</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6015">&gt;&gt;6015</a>
+<a class="quoteLink" href="/site/res/5978.html#6020">&gt;&gt;6020</a>
+Oh my God, this is Hilarious.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6022"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6022">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:08:31</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #54626b">54626b</span></span>
+    
+    <a class="linkSelf" href="#6022">No.</a>
+    <a class="linkQuote" href="#q6022">6022</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6020">&gt;&gt;6020</a>
+Try using your balls.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6023"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6023">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:16:47</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#6023">No.</a>
+    <a class="linkQuote" href="#q6023">6023</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+Same here</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6024"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6024">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:23:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #73abbb">73abbb</span></span>
+    
+    <a class="linkSelf" href="#6024">No.</a>
+    <a class="linkQuote" href="#q6024">6024</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/94ccb133b784d2792d20afa3ca74038ea9f4d11102932ca646813e6b51048112.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.36 MB</span> <span class="dimensionLabel">688x688</span>
+  <a class="originalNameLink" href="/.media/94ccb133b784d2792d20afa3ca74038ea9f4d11102932ca646813e6b51048112.mp4" download="v2.mp4">v2.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/94ccb133b784d2792d20afa3ca74038ea9f4d11102932ca646813e6b51048112.mp4" data-filewidth="688" data-fileheight="688" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_94ccb133b784d2792d20afa3ca74038ea9f4d11102932ca646813e6b51048112"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/035004a6724ed5bea3678bfa868888d8a1f56063afa8d20f0bf4a83de597d619.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">12.86 KB</span> <span class="dimensionLabel">670x143</span>
+  <a class="originalNameLink" href="/.media/035004a6724ed5bea3678bfa868888d8a1f56063afa8d20f0bf4a83de597d619.png" download="wd.png">wd.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/035004a6724ed5bea3678bfa868888d8a1f56063afa8d20f0bf4a83de597d619.png" data-filewidth="670" data-fileheight="143" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="48" src="/.media/t_035004a6724ed5bea3678bfa868888d8a1f56063afa8d20f0bf4a83de597d619"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+I noticed that it only happens when uploading several images, but when uploading only one image it changes to full size as before.
+
+I&apos;m getting annoyed that when you open an image it sends you further down the page instead of staying in position.
+
+Also, the icons of this bar do not appear, in my case using the Windows 95 theme, and others report the same in the other themes.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6025"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6025">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 18:28:05</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6c55aa">6c55aa</span></span>
+    
+    <a class="linkSelf" href="#6025">No.</a>
+    <a class="linkQuote" href="#q6025">6025</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/63b6031df631290cffe1cb086e2c2926dc898b794072b265b502f2731c20a8a6.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">170.06 KB</span> <span class="dimensionLabel">1080x1088</span>
+  <a class="originalNameLink" href="/.media/63b6031df631290cffe1cb086e2c2926dc898b794072b265b502f2731c20a8a6.jpg" download="IMG&#95;20220628&#95;142557.jpg">IMG&#95;20220628&#95;142557.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/63b6031df631290cffe1cb086e2c2926dc898b794072b265b502f2731c20a8a6.jpg" data-filewidth="1080" data-fileheight="1088" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="223" height="225" src="/.media/t_63b6031df631290cffe1cb086e2c2926dc898b794072b265b502f2731c20a8a6"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Sometimes the replies repeat themselves, i don&apos;t know if it&apos;s because of the connection of the poster, or because of the changes
+Here&apos;s an example (altought, not the best).
+Other thing, it&apos;s that the images are a bit slow in their charge, when i click in them to expand them</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6027"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6027">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 19:53:12</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #db247c">db247c</span></span>
+    
+    <a class="linkSelf" href="#6027">No.</a>
+    <a class="linkQuote" href="#q6027">6027</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+Came here to bitch about this issue</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6030"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6030">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 21:10:39</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #e3c107">e3c107</span></span>
+    
+    <a class="linkSelf" href="#6030">No.</a>
+    <a class="linkQuote" href="#q6030">6030</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+You&apos;ve exchanged the &amp;apos; &amp;quot; problems for other problems.
+
+<a class="quoteLink" href="/site/res/5978.html#5988">&gt;&gt;5988</a>
+When I open the Catalog there is a delay before threads appear. Even if that information is in the cache this delay still occurs. There are times when catalog threads will appear for a split second then vanish for the delay before re-appearing. Although the information is already there it is being hidden for a moment before showing it.
+
+<a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+I&apos;ve had this happening too. Already purged browser data and refreshed. Images are not expanding properly anymore. Expanding videos is not affected.
+
+<span class="redText">After trying various things I made a <em>dumb</em> fix for image expansion using custom CSS, however..</span>
+1. <em>expanded images can go off page (a single or first image in the post shouldn&apos;t though)</em>
+2. <em>expanded images do not push other content away / cover content</em>
+<span class="blockCode"><code><span class="hljs-keyword">@-moz-document</span> domain(<span class="hljs-string">&quot;8chan.moe&quot;</span>), domain(<span class="hljs-string">&quot;8chan.se&quot;</span>) {
+<span class="hljs-comment">/* Temporary Image Expansion Fix */</span> 
+<span class="hljs-selector-class">.imgExpanded</span> {<span class="hljs-attribute">position</span>: absolute <span class="hljs-meta">!important</span>; <span class="hljs-attribute">z-index</span>:<span class="hljs-number">1</span> <span class="hljs-meta">!important</span>; <span class="hljs-attribute">max-width</span>:<span class="hljs-number">96%</span>;}
+}</code></span>
+This CSS should let you at least regain <em>some</em> of that functionality. The width value is present in the html, but affects nothing unless I change position to absolute.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6031"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6031">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 21:25:49</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d79451">d79451</span></span>
+    
+    <a class="linkSelf" href="#6031">No.</a>
+    <a class="linkQuote" href="#q6031">6031</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/42a0ba4175e8adca7ad668a6293679edd04976eb54ec2207b9f3aff97c16eff5.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">12.28 KB</span> <span class="dimensionLabel">400x400</span>
+  <a class="originalNameLink" href="/.media/42a0ba4175e8adca7ad668a6293679edd04976eb54ec2207b9f3aff97c16eff5.png" download="media&#95;EgL4FVIU0AAnWug.jpg">media&#95;EgL4FVIU0AAnWug.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/42a0ba4175e8adca7ad668a6293679edd04976eb54ec2207b9f3aff97c16eff5.png" data-filewidth="400" data-fileheight="400" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_42a0ba4175e8adca7ad668a6293679edd04976eb54ec2207b9f3aff97c16eff5"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+<span class="greenText">&gt;Added Flash embed support</span>
+Broken on Pale Moon and Ungoogled Chromium
+<span class="greenText">&gt;Mobile view now supports slide-out menus for navbar and side catalog. Try swiping!</span>
+<span class="redText">You idiots! I have <em>ONE</em> demand when it comes to mobile posting, and you morons ignore it each and every time, GIVE US ACCESS THE FULL PC INTERFACE WHEN POSTING FROM MOBILE!!!</span>
+I <strong>HATE</strong> the way all sites are now gimped whenever I access them from my phone, and there&apos;s not a damn thing I can do to solve it.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6032"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6032">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/28/2022 (Tue) 21:31:59</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #799120">799120</span></span>
+    
+    <a class="linkSelf" href="#6032">No.</a>
+    <a class="linkQuote" href="#q6032">6032</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6025">&gt;&gt;6025</a>
+<span class="greenText">&gt;Sometimes the replies repeat themselves</span>
+Usually it has to do with the internet where this place is hosted. Tends to happen alongside connection errors when they have issues that last for a short while.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6033"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6033">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 00:01:04</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #8bfa4e">8bfa4e</span></span>
+    
+    <a class="linkSelf" href="#6033">No.</a>
+    <a class="linkQuote" href="#q6033">6033</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6031">&gt;&gt;6031</a>
+<span class="greenText">&gt;Broken on Pale Moon and Ungoogled Chromium</span>
+SWF files are supported by Ruffle, a JS/Rust Flash emulator. Pale Meme doesn&apos;t have the JS required, and ungoogled Chromium probably has it disabled.
+<span class="greenText">&gt;You idiots! I have ONE demand when it comes to mobile posting, and you morons ignore it each and every time, GIVE US ACCESS THE FULL PC INTERFACE WHEN POSTING FROM MOBILE!!!</span>
+Ironically, the new layout made available a lot of functions that were missing before, including the settings panel and the watcher.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6034"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6034">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 02:36:44</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #586efc">586efc</span></span>
+    
+    <a class="linkSelf" href="#6034">No.</a>
+    <a class="linkQuote" href="#q6034">6034</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+<span class="greenText">&gt;Added smooth-scroll option</span>
+The fuck does that mean.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6035"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6035">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 03:15:00</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a1e3a0">a1e3a0</span></span>
+    
+    <a class="linkSelf" href="#6035">No.</a>
+    <a class="linkQuote" href="#q6035">6035</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">yo i wanna see how many seconds ago something was posted when i hover over the time, ya my brain is that lazy. is it possible?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6036"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6036">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 03:19:50</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6f9a8d">6f9a8d</span></span>
+    
+    <a class="linkSelf" href="#6036">No.</a>
+    <a class="linkQuote" href="#q6036">6036</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5995">&gt;&gt;5995</a>
+<span class="greenText">&gt;no logo</span>
+There&apos;s a logo set in the CSS and it&apos;s on the server, but it&apos;s not displaying for some reason. Will be fixed soon.
+<span class="greenText">&gt;CSS not setting</span>
+That&apos;s odd. I was unable to reproduce the issue. If you&apos;d like to e-mail me with your board and the CSS file you&apos;re trying to upload, I can try doing it myself. It&apos;s also possible the connection died during the attempt and that was the default error.
+
+<a class="quoteLink" href="/site/res/5978.html#6004">&gt;&gt;6004</a>
+<span class="greenText">&gt;What causes the &quot;watched board&quot; star to be inconsistently sized with custom themes?</span>
+Not sure. What boards does it happen on?
+
+<a class="quoteLink" href="/site/res/5978.html#6011">&gt;&gt;6011</a>
+<a class="quoteLink" href="/site/res/5978.html#5988">&gt;&gt;5988</a>
+We&apos;re looking into it. Can you open your browser console (open dev tools with ctrl+shift+I and go to the &quot;console&quot; tab) and report if there are any errors? You can 
+
+<a class="quoteLink" href="/site/res/5978.html#6024">&gt;&gt;6024</a>
+Will investigate. Thanks for the extra info on images not resizing properly.
+
+<a class="quoteLink" href="/site/res/5978.html#6025">&gt;&gt;6025</a>
+They&apos;re probably clicking again to get it to send, and it&apos;s causing two posts to be sent to the server. We&apos;re looking into the connection problems, but they might be out of our hands based on network connections in Eastern Europe.
+
+<a class="quoteLink" href="/site/res/5978.html#6031">&gt;&gt;6031</a>
+I can&apos;t promise Flash support on all browsers. I&apos;m not sure what the incompatibility is; Pale Moon supports WASM now apparently. Ungoogled Chromium should work fine if you are on a newer version. If the player loads and an error message occurs, please post that message.
+
+<a class="quoteLink" href="/site/res/5978.html#6013">&gt;&gt;6013</a>
+No sound on Tor is a known issue related to Tor security policies. There&apos;s nothing we can do about that. Apparently setting <span class="inlineCode"><code>dom<span class="hljs-selector-class">.webaudio</span>.enabled</code></span> fixes it. I&apos;m not sure why Tor has that policy disabled by default, but they do.
+
+<a class="quoteLink" href="/site/res/5978.html#6031">&gt;&gt;6031</a>
+Nothing is missing from the mobile version. There is now more functionality than there was before, and it should be easier to access than having to stretch your thumb all the way to the top of the screen.
+
+<a class="quoteLink" href="/site/res/5978.html#6030">&gt;&gt;6030</a>
+I&apos;m aware of the catalog delay and am looking into it.</div>
+  
+  
+  <div class="labelLastEdit">Edited last time by codexx on 06/29/2022 (Wed) 03:20:20.</div>
+</div>
+</div><div class="postCell" data-boarduri="site" id="6037"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6037">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 06:51:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #77a7f5">77a7f5</span></span>
+    
+    <a class="linkSelf" href="#6037">No.</a>
+    <a class="linkQuote" href="#q6037">6037</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e85cf43090613ba45e1d2010f2fb061cfd035665a42c1955f50d2ecc0b96d6ab.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">12.08 KB</span> <span class="dimensionLabel">394x202</span>
+  <a class="originalNameLink" href="/.media/e85cf43090613ba45e1d2010f2fb061cfd035665a42c1955f50d2ecc0b96d6ab.png" download="?.png">?.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e85cf43090613ba45e1d2010f2fb061cfd035665a42c1955f50d2ecc0b96d6ab.png" data-filewidth="394" data-fileheight="202" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="115" src="/.media/t_e85cf43090613ba45e1d2010f2fb061cfd035665a42c1955f50d2ecc0b96d6ab"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+Where is the french language plox ?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6038"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6038">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 07:13:10</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6f9a8d">6f9a8d</span></span>
+    
+    <a class="linkSelf" href="#6038">No.</a>
+    <a class="linkQuote" href="#q6038">6038</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6037">&gt;&gt;6037</a>
+I forgot to add it. Should be configured now.
+Note that the Italian and French translations are missing a lot of the new strings added with 2.8. A number of strings will be broken on boards using these languages until it is fixed.
+The latest version of the file can be found here: <a target="&#95;blank" href="https://gitgud.io/8chan/Aleph/-/blob/master/languages/eng.json">https://gitgud.io/8chan/Aleph/-/blob/master/languages/eng.json</a>
+
+I&apos;d love it if someone could translate (and will be opening a translation thread on this board soon to facilitate additional translations) but I must warn that this is a moving target. I currently have tokenized a large portion of the user-facing part of the site, but there are still a number of smaller pages and elements that need to be translated.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6039"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6039">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 07:20:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #77a7f5">77a7f5</span></span>
+    
+    <a class="linkSelf" href="#6039">No.</a>
+    <a class="linkQuote" href="#q6039">6039</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1d2e48d301381ad493da4e6d959c640a7378077faa631b55f2084027081cc148.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">84.29 KB</span> <span class="dimensionLabel">1049x423</span>
+  <a class="originalNameLink" href="/.media/1d2e48d301381ad493da4e6d959c640a7378077faa631b55f2084027081cc148.png" download="label.png">label.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1d2e48d301381ad493da4e6d959c640a7378077faa631b55f2084027081cc148.png" data-filewidth="1049" data-fileheight="423" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="91" src="/.media/t_1d2e48d301381ad493da4e6d959c640a7378077faa631b55f2084027081cc148"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/800f3b000683bd259a4fccfd65f0e2b1e73472faf6b39d429a4a396710cc7643.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">16.91 KB</span> <span class="dimensionLabel">602x174</span>
+  <a class="originalNameLink" href="/.media/800f3b000683bd259a4fccfd65f0e2b1e73472faf6b39d429a4a396710cc7643.png" download="lbl.png">lbl.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/800f3b000683bd259a4fccfd65f0e2b1e73472faf6b39d429a4a396710cc7643.png" data-filewidth="602" data-fileheight="174" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="65" src="/.media/t_800f3b000683bd259a4fccfd65f0e2b1e73472faf6b39d429a4a396710cc7643"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b46686cc2f6980585b0a3512b6744f07a0f76825ca58c3694c9ebe7196173c56.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">6.55 KB</span> <span class="dimensionLabel">562x86</span>
+  <a class="originalNameLink" href="/.media/b46686cc2f6980585b0a3512b6744f07a0f76825ca58c3694c9ebe7196173c56.png" download="lebal.png">lebal.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b46686cc2f6980585b0a3512b6744f07a0f76825ca58c3694c9ebe7196173c56.png" data-filewidth="562" data-fileheight="86" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="34" src="/.media/t_b46686cc2f6980585b0a3512b6744f07a0f76825ca58c3694c9ebe7196173c56"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/4d2d3e75dc5b1a1932fdf222f1c1d757dc2b7c6ab92e08658f3d1feee2cc6ec9.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">33.92 KB</span> <span class="dimensionLabel">913x113</span>
+  <a class="originalNameLink" href="/.media/4d2d3e75dc5b1a1932fdf222f1c1d757dc2b7c6ab92e08658f3d1feee2cc6ec9.png" download="horsed.png">horsed.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/4d2d3e75dc5b1a1932fdf222f1c1d757dc2b7c6ab92e08658f3d1feee2cc6ec9.png" data-filewidth="913" data-fileheight="113" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="28" src="/.media/t_4d2d3e75dc5b1a1932fdf222f1c1d757dc2b7c6ab92e08658f3d1feee2cc6ec9"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6037">&gt;&gt;6037</a>
+OK after reloading the page, french option is present but when I activate it it shows lot of errors.
+<a class="quoteLink" href="/site/res/5978.html#6038">&gt;&gt;6038</a>
+<span class="greenText">&gt;A number of strings will be broken</span>
+OK just noticing lots of strings are not even translated and are replaced with <em>labelshit</em>.
+
+I will rework the translation.
+
+Also look at 4th pic (<em>horsed</em>), some filenames are hovered by the icons of the next file.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6040"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6040">
+    
+    <a class="linkName  noEmailName" >sage</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 07:21:26</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #77a7f5">77a7f5</span></span>
+    
+    <a class="linkSelf" href="#6040">No.</a>
+    <a class="linkQuote" href="#q6040">6040</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6039">&gt;&gt;6039</a>
+Fuck the images are not supposed to be this little.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6041"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6041">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 08:55:36</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6f9a8d">6f9a8d</span></span>
+    
+    <a class="linkSelf" href="#6041">No.</a>
+    <a class="linkQuote" href="#q6041">6041</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6040">&gt;&gt;6040</a>
+They&apos;re not, they just don&apos;t expand all the way. That&apos;s another bug we&apos;re working on.
+
+<a class="quoteLink" href="/site/res/5978.html#6039">&gt;&gt;6039</a>
+Sorry about the strings. I&apos;ll propose a fallback for incomplete translations to Stephen tomorrow; I see no reason it can&apos;t check 2-3 different files in descending priority to find a valid string.
+I&apos;ll happily update fra.json when you have an updated translation. There is quite a bit that has been added, so it will probably be a few hours of work. And as I said, more is on the way.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6042"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6042">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 12:21:07</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    <a class="linkSelf" href="#6042">No.</a>
+    <a class="linkQuote" href="#q6042">6042</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6013">&gt;&gt;6013</a>
+<span class="greenText">&gt;Also, I didn&apos;t see any mention of this, but is the exceeded quota bug finally fixed?</span>
+Niggers, this bug is still present, god dammit.
+
+<a class="quoteLink" href="/site/res/5978.html#6036">&gt;&gt;6036</a>
+<span class="greenText">&gt;Apparently setting dom.webaudio.enabled fixes it</span>
+Thanks, I&apos;ll look into it. It&apos;s rather awkward that the audio in videos and such works fine except for this. Is the low performance also a normal thing on tor or is that the way it&apos;s supposed to work and therefore pointless to debug it?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6044"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6044">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 13:25:42</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d79451">d79451</span></span>
+    
+    <a class="linkSelf" href="#6044">No.</a>
+    <a class="linkQuote" href="#q6044">6044</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6036">&gt;&gt;6036</a>
+<span class="greenText">&gt;There is now more functionality than there was before, and it should be easier to access than having to stretch your thumb all the way to the top of the screen.</span>
+Have you actually tried using the site on a mobile device? Giving us the PC interface, the way it functions on PC is the <strong>ONLY</strong> way sites should be designed for accessed on a smartphone. To show an example of why I cannot stress this enough, I can&apos;t quote posts anymore from my phone because, adjust the highlighted text on my phone results in the overbar or the catalog clogging up the screen, and removing them also removes the highlight tool that I was using.
+<span class="redText">Stop trying to make things &quot;better&quot; for the &quot;unique&quot; way phones are designed and give us the PC interface.</span>
+It will save you far more time to have one unified design that spans all devices than having to design, optimize, and debug two different designs for two entirely separate devices.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6045"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6045">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 13:26:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0ecb27">0ecb27</span></span>
+    
+    <a class="linkSelf" href="#6045">No.</a>
+    <a class="linkQuote" href="#q6045">6045</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7f8dc4c0980daf8a8024e9fa17e7ba9fc78ef5ae4c5d04f522b054f76e207953.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">289.17 KB</span> <span class="dimensionLabel">623x2105</span>
+  <a class="originalNameLink" href="/.media/7f8dc4c0980daf8a8024e9fa17e7ba9fc78ef5ae4c5d04f522b054f76e207953.jpg" download="FYI.jpg">FYI.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7f8dc4c0980daf8a8024e9fa17e7ba9fc78ef5ae4c5d04f522b054f76e207953.jpg" data-filewidth="623" data-fileheight="2105" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="67" height="225" src="/.media/t_7f8dc4c0980daf8a8024e9fa17e7ba9fc78ef5ae4c5d04f522b054f76e207953"></a>
+</details>
+</figure></div>
+  <div class="divMessage">This thing is not working on some boards.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6058"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6058">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 18:17:06</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#6058">No.</a>
+    <a class="linkQuote" href="#q6058">6058</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6045">&gt;&gt;6045</a>
+Same thing is happening here.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6060"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6060">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 18:59:56</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6f9a8d">6f9a8d</span></span>
+    
+    <a class="linkSelf" href="#6060">No.</a>
+    <a class="linkQuote" href="#q6060">6060</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6042">&gt;&gt;6042</a>
+We&apos;re talking about teaks to the hourly limit and if we need to make an addon to be happy with it. Will hopefully reach a decision soon.
+Performance isn&apos;t great. Flash was always pretty bulky and &quot;emulating&quot; it doesn&apos;t make it any faster. Maybe once the emulation is nearly perfect there will be a greater emphasis on performance, but it&apos;s not something we have control over.
+
+<a class="quoteLink" href="/site/res/5978.html#6044">&gt;&gt;6044</a>
+That&apos;s a bug and will be fixed.
+If you want the desktop layout, you always have the option of asking your browser for desktop mode.
+
+<a class="quoteLink" href="/site/res/5978.html#6045">&gt;&gt;6045</a>
+<a class="quoteLink" href="/site/res/5978.html#6058">&gt;&gt;6058</a>
+I&apos;ve seen this happen and am working to reliably reproduce. Will look at rolling a fix out soon.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6063"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6063">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 19:26:19</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#6063">No.</a>
+    <a class="linkQuote" href="#q6063">6063</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/74a47862132d668fbf893a6cd0c632f23374ce245d1a95e5ef3aefd15dc8fe0c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">58.29 KB</span> <span class="dimensionLabel">720x405</span>
+  <a class="originalNameLink" href="/.media/74a47862132d668fbf893a6cd0c632f23374ce245d1a95e5ef3aefd15dc8fe0c.jpg" download="1456988688428.jpg">1456988688428.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/74a47862132d668fbf893a6cd0c632f23374ce245d1a95e5ef3aefd15dc8fe0c.jpg" data-filewidth="720" data-fileheight="405" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_74a47862132d668fbf893a6cd0c632f23374ce245d1a95e5ef3aefd15dc8fe0c"></a>
+</details>
+</figure></div>
+  <div class="divMessage">I remember reading something on the general meta thread regarding that the webring addon has a memory leak so they are going to get rid of it and since the top board used that webring as input you are going to decide the top boards with monthly Hunger Games, how about that?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6065"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6065">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 19:57:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #559a5a">559a5a</span></span>
+    
+    <a class="linkSelf" href="#6065">No.</a>
+    <a class="linkQuote" href="#q6065">6065</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6cb1844a2d03ea506b3e02a312760560408292c3fdcf4346b6055d7d2bdb5313.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">5.45 KB</span> <span class="dimensionLabel">413x190</span>
+  <a class="originalNameLink" href="/.media/6cb1844a2d03ea506b3e02a312760560408292c3fdcf4346b6055d7d2bdb5313.png" download="firefox&#95;lMW6SFOssl.png">firefox&#95;lMW6SFOssl.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6cb1844a2d03ea506b3e02a312760560408292c3fdcf4346b6055d7d2bdb5313.png" data-filewidth="413" data-fileheight="190" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="104" src="/.media/t_6cb1844a2d03ea506b3e02a312760560408292c3fdcf4346b6055d7d2bdb5313"></a>
+</details>
+</figure></div>
+  <div class="divMessage">This shit keeps popping up in all of my tabs. I never want to see it again.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6073"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6073">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 22:08:25</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f5d441">f5d441</span></span>
+    
+    <a class="linkSelf" href="#6073">No.</a>
+    <a class="linkQuote" href="#q6073">6073</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8c2498aeed597bb79f5852da1dfee2aad5ccfc698a16877ff359f0894d4078aa.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">972.95 KB</span> <span class="dimensionLabel">3000x3000</span>
+  <a class="originalNameLink" href="/.media/8c2498aeed597bb79f5852da1dfee2aad5ccfc698a16877ff359f0894d4078aa.png" download="hispita.png">hispita.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8c2498aeed597bb79f5852da1dfee2aad5ccfc698a16877ff359f0894d4078aa.png" data-filewidth="3000" data-fileheight="3000" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_8c2498aeed597bb79f5852da1dfee2aad5ccfc698a16877ff359f0894d4078aa"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/f5965415f1860611f38c85395c8581e49380551829c0478755b795e430268bef.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">936.19 KB</span> <span class="dimensionLabel">3000x3000</span>
+  <a class="originalNameLink" href="/.media/f5965415f1860611f38c85395c8581e49380551829c0478755b795e430268bef.png" download="hispasexy.png">hispasexy.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/f5965415f1860611f38c85395c8581e49380551829c0478755b795e430268bef.png" data-filewidth="3000" data-fileheight="3000" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_f5965415f1860611f38c85395c8581e49380551829c0478755b795e430268bef"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6036">&gt;&gt;6036</a>
+<span class="greenText">&gt;There&apos;s a logo set in the CSS and it&apos;s on the server, but it&apos;s not displaying for some reason. Will be fixed soon.</span>
+Use one of the logos made at <a class="quoteLink" href="/arte/res/484.html#484">&gt;&gt;&gt;/arte/484</a>. These two are too neat to be ignored.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6076"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6076">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 22:48:56</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f5d441">f5d441</span></span>
+    
+    <a class="linkSelf" href="#6076">No.</a>
+    <a class="linkQuote" href="#q6076">6076</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c543c7b7b76d0d0d3ef7e4e80cb743ac2c56b88d82f0a3c26ebb9112aa47dced.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">9.94 KB</span> <span class="dimensionLabel">309x99</span>
+  <a class="originalNameLink" href="/.media/c543c7b7b76d0d0d3ef7e4e80cb743ac2c56b88d82f0a3c26ebb9112aa47dced.png" download="maintenanceImage.png">maintenanceImage.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c543c7b7b76d0d0d3ef7e4e80cb743ac2c56b88d82f0a3c26ebb9112aa47dced.png" data-filewidth="309" data-fileheight="99" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="72" src="/.media/t_c543c7b7b76d0d0d3ef7e4e80cb743ac2c56b88d82f0a3c26ebb9112aa47dced"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/728d87c0d2a58484f7b9ef0830749ae4b360b13ff576e2f1ba43b43a968ccaa4.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">9.92 KB</span> <span class="dimensionLabel">300x100</span>
+  <a class="originalNameLink" href="/.media/728d87c0d2a58484f7b9ef0830749ae4b360b13ff576e2f1ba43b43a968ccaa4.png" download="custommaintenanceImage.png">custommaintenanceImage.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/728d87c0d2a58484f7b9ef0830749ae4b360b13ff576e2f1ba43b43a968ccaa4.png" data-filewidth="300" data-fileheight="100" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="75" src="/.media/t_728d87c0d2a58484f7b9ef0830749ae4b360b13ff576e2f1ba43b43a968ccaa4"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Also thoughts on pic related?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6078"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6078">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 22:57:13</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9a7647">9a7647</span></span>
+    
+    <a class="linkSelf" href="#6078">No.</a>
+    <a class="linkQuote" href="#q6078">6078</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6076">&gt;&gt;6076</a>
+2nd is much better.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6080"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6080">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 23:03:18</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f5d441">f5d441</span></span>
+    
+    <a class="linkSelf" href="#6080">No.</a>
+    <a class="linkQuote" href="#q6080">6080</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1138e8e2cc663030095d0a5b1d9f675d6720101aa45961a63c89b12de4f26ec0.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">12.90 KB</span> <span class="dimensionLabel">300x100</span>
+  <a class="originalNameLink" href="/.media/1138e8e2cc663030095d0a5b1d9f675d6720101aa45961a63c89b12de4f26ec0.png" download="8ch&#95;default.png">8ch&#95;default.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1138e8e2cc663030095d0a5b1d9f675d6720101aa45961a63c89b12de4f26ec0.png" data-filewidth="300" data-fileheight="100" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="75" src="/.media/t_1138e8e2cc663030095d0a5b1d9f675d6720101aa45961a63c89b12de4f26ec0"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6078">&gt;&gt;6078</a>
+Thanks. My idea is to replace the default maintenance banner (left) with one that is similar to 8moe&apos;s default banner.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6082"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6082">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 23:22:27</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4e541d">4e541d</span></span>
+    
+    <a class="linkSelf" href="#6082">No.</a>
+    <a class="linkQuote" href="#q6082">6082</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/f9dac864891f100a34c870bcd2076346ae4b8bfd8df29e9e0afde956cc07ff16.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">66.54 KB</span> <span class="dimensionLabel">613x525</span>
+  <a class="originalNameLink" href="/.media/f9dac864891f100a34c870bcd2076346ae4b8bfd8df29e9e0afde956cc07ff16.jpg" download="this kill the crab.jpg">this kill the crab.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/f9dac864891f100a34c870bcd2076346ae4b8bfd8df29e9e0afde956cc07ff16.jpg" data-filewidth="613" data-fileheight="525" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="193" src="/.media/t_f9dac864891f100a34c870bcd2076346ae4b8bfd8df29e9e0afde956cc07ff16"></a>
+</details>
+</figure></div>
+  <div class="divMessage">I think board list only show top 100 boards now? It is still bigger than other (even 8kun top at 50) but RIP small boards visibility (/tg/). (I know I can still see them in page2)
+
+<a class="quoteLink" href="/site/res/5978.html#5996">&gt;&gt;5996</a>
+<span class="greenText">&gt;Each theme has its own logo.</span>
+Neat</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6108"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6108">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 10:25:53</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #b7a7b6">b7a7b6</span></span>
+    
+    <a class="linkSelf" href="#6108">No.</a>
+    <a class="linkQuote" href="#q6108">6108</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6060">&gt;&gt;6060</a>
+<span class="greenText">&gt;Flash was always pretty bulky and &quot;emulating&quot; it doesn&apos;t make it any faster</span>
+<span class="greenText">&gt;Maybe once the emulation is nearly perfect there will be a greater emphasis on performance</span>
+<span class="pinkText">&lt;Ruffle</span>
+<span class="pinkText">&lt;WebAsm</span>
+<span class="pinkText">&lt;Rust</span>
+<span class="pinkText">&lt;Javascript</span>
+<span class="pinkText">&lt;HTML5</span>
+<span class="pinkText">&lt;webbrowsers</span>
+<span class="greenText">&gt;emulation is nearly perfect</span>
+<span class="greenText">&gt;performance</span>
+Holy fuck.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6111"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6111">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 12:19:25</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    <a class="linkSelf" href="#6111">No.</a>
+    <a class="linkQuote" href="#q6111">6111</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">test</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6112"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6112">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 12:30:20</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9197e1">9197e1</span></span>
+    
+    <a class="linkSelf" href="#6112">No.</a>
+    <a class="linkQuote" href="#q6112">6112</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+I see that in <a target="&#95;blank" href="https://8chan.moe/boards.js">https://8chan.moe/boards.js</a> the SFW and abandoned indicators were converted to icons. It would be nice if hovering the mouse pointer over these would show their meaning (otherwise new users might find it a little confusing).
+By the way, is there a way to prevent side panels from opening when you swipe left or right in mobile view? I find it quite annoying (for example, when I zoom in or scroll the page some of the panels open by themselves), besides there are already buttons that serve that purpose.
+<span class="greenText">&gt;Added Flash embed support</span>
+There&apos;s also Lightspark ( <a target="&#95;blank" href="https://lightspark.github.io">https://lightspark.github.io</a> ) in case Ruffle proves too much trouble, though I don&apos;t know if it can be transpiled to Javascript.
+<span class="greenText">&gt;Additional Hispachan themes are available in the /.static/css/ directory.</span>
+<span class="greenText">&gt;four new hidden themes</span>
+In case anyone is curious, in <a class="quoteLink" href="/hispachan/res/20208.html#20292">&gt;&gt;&gt;/hispachan/20292</a> they left a couple of ways to activate the hidden themes more easily.
+<span class="greenText">&gt;Pasted images now default to their SHA256 hash instead of &quot;ClipboardImage&quot;</span>
+In that case you could clarify in <a target="&#95;blank" href="https://8chan.moe/.static/pages/posting.html">https://8chan.moe/.static/pages/posting.html</a> that it is possible to paste images from the clipboard since there are those who do not realize that (at least in my case I only knew it when someone commented it in a thread).
+I also take the opportunity to mention some things that I would like to see in a future update:
+* Thumbnails in SVG files. Maybe you could use <a target="&#95;blank" href="https://stackoverflow.com/questions/9853325/how-to-convert-a-svg-to-a-png-with-imagemagick">https://stackoverflow.com/questions/9853325/how-to-convert-a-svg-to-a-png-with-imagemagick</a> to generate them.
+* Being able to filter boards by language as proposed in <a class="quoteLink" href="/site/res/5865.html#5865">&gt;&gt;5865</a>.
+* Date format based on language. An &quot;easy&quot; way to implement it would be using the Accept-Language HTTP header (server) and/or toLocaleString() (client).
+* That on mobile you can see the statistics of the boards list. It would also be useful to have some clarifications about PPH, Total Posts and Users as in Endchan.
+* Button bar above the message box to format text (at least with the most common tags). I&apos;m already used to put the tags from memory but it is certainly something that would make to hispachaners feel more like in &quot;home&quot;.
+* Upload cbr and cb7 files (curiously, it allows uploading cbz according to my tests). Initially it would be for <a href="/ac/">&gt;&gt;&gt;/ac/</a> and <a href="/co/">&gt;&gt;&gt;/co/</a> but other boards could also benefit from it in the long run.
+* Search inside the boards (which would be quite useful to find posts of which you only remember a few words).
+* When merging threads, create a redirect from the old thread to where it belongs.
+* Some way to indicate that you are the OP of a thread on boards where the name is disabled (perhaps using the same password as for deleting posts?).
+<a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+I think I found a workaround by modifying the thumbs.expandImage() function like this:
+<span class="blockCode"><code>thumbs.expandImage = functi<span class="hljs-meta">on(</span>mouseEvent, <span class="hljs-meta">link</span>, mime) {
+
+  <span class="hljs-meta">if</span> (mouseEvent.which === 2 || mouseEvent.ctrlKey) {
+    <span class="hljs-meta">return</span> true;
+  }
+
+  <span class="hljs-meta">link</span>.parentNode.classList.<span class="hljs-meta">add</span>(<span class="hljs-string">&#x27;expandedCell&#x27;</span>);
+
+  var thumb = <span class="hljs-meta">link</span>.getElementsByTagName(<span class="hljs-string">&#x27;img&#x27;</span>)[0];
+
+  <span class="hljs-meta">if</span> (thumb.style.<span class="hljs-meta">display</span> === <span class="hljs-string">&#x27;none&#x27;</span>) {
+    <span class="hljs-meta">link</span>.getElementsByClassName(<span class="hljs-string">&#x27;imgExpanded&#x27;</span>)[0].style.<span class="hljs-meta">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>;
+    thumb.style.<span class="hljs-meta">display</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+    // TODO: Autodetect default uploadCell max-width
+    <span class="hljs-meta">link</span>.parentNode.parentNode.style.maxWidth = <span class="hljs-string">&quot;260px&quot;</span>;
+
+    <span class="hljs-meta">if</span> (thumb.getBoundingClientRect().top &lt; 0) {
+      thumbs.scrollToPost(thumb);
+    }
+
+    <span class="hljs-meta">return</span> false;
+  } <span class="hljs-meta">else</span> {
+    <span class="hljs-meta">link</span>.parentNode.parentNode.style.maxWidth = <span class="hljs-string">&quot;inherit&quot;</span>;
+  }
+
+  var expanded = <span class="hljs-meta">link</span>.getElementsByClassName(<span class="hljs-string">&#x27;imgExpanded&#x27;</span>)[0];
+
+  <span class="hljs-meta">if</span> (expanded) {
+    thumb.style.<span class="hljs-meta">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>;
+    expanded.style.<span class="hljs-meta">display</span> = <span class="hljs-string">&#x27;&#x27;</span>;
+    thumbs.scrollToPost(<span class="hljs-meta">link</span>);
+
+  } <span class="hljs-meta">else</span> {
+    var expandedSrc = <span class="hljs-meta">link</span>.href;
+
+    <span class="hljs-meta">if</span> (thumb.src === expandedSrc <span class="hljs-variable">&amp;&amp;</span> mime !== <span class="hljs-string">&#x27;image/svg+xml&#x27;</span>) {
+      <span class="hljs-meta">return</span> false;
+    }
+
+    expanded = document.createElement(<span class="hljs-string">&#x27;img&#x27;</span>);
+    expanded.setAttribute(<span class="hljs-string">&#x27;src&#x27;</span>, expandedSrc);
+    expanded.className = <span class="hljs-string">&#x27;imgExpanded&#x27;</span>;
+    expanded.style.width = <span class="hljs-meta">link</span>.dataset.filewidth + <span class="hljs-string">&quot;px&quot;</span>;
+
+    thumb.style.<span class="hljs-meta">display</span> = <span class="hljs-string">&#x27;none&#x27;</span>;
+    <span class="hljs-meta">link</span>.appendChild(expanded);
+    var maxwidth = Math<span class="hljs-meta">.min(</span><span class="hljs-meta">link</span>.parentNode.getBoundingClientRect(), maxwidth);
+    expanded.style.width = maxwidth.width + <span class="hljs-string">&quot;px&quot;</span>;
+    var rect = expanded.getBoundingClientRect();
+    expanded.style.height = ((<span class="hljs-meta">link</span>.dataset.fileheight / <span class="hljs-meta">link</span>.dataset.filewidth) <span class="hljs-comment">* maxwidth) + &quot;px&quot;;</span>
+
+  }
+
+    //<span class="hljs-meta">remove</span> image <span class="hljs-meta">on</span> expand
+  <span class="hljs-meta">if</span> (thumbs.hoveringImage !== undefined) {
+	thumbs.hoveringImage.src = <span class="hljs-string">&quot;&quot;</span>;
+	thumbs.hoveringImage.<span class="hljs-meta">remove</span>();
+  }
+
+  <span class="hljs-meta">return</span> false;
+
+};</code></span>
+Although it would be necessary to find out the value of the maximum width of the uploadCell class in case some theme uses a value other than 260 pixels.
+<a class="quoteLink" href="/site/res/5978.html#6035">&gt;&gt;6035</a>
+<span class="greenText">&gt;is it possible?</span>
+Yes, Hispachan had that option (perhaps inside the backup of <a class="quoteLink" href="/hispachan/res/2913.html#2913">&gt;&gt;&gt;/hispachan/2913</a> you can see how it was implemented).
+<a class="quoteLink" href="/site/res/5978.html#6065">&gt;&gt;6065</a>
+It only happens to me when I lurk the chan from the phone and then disable the wifi for a few hours.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6116"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6116">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 13:13:17</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #000000">000000</span></span>
+    
+    <a class="linkSelf" href="#6116">No.</a>
+    <a class="linkQuote" href="#q6116">6116</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6060">&gt;&gt;6060</a>
+<span class="greenText">&gt;We&apos;re talking about teaks to the hourly limit and if we need to make an addon to be happy with it. Will hopefully reach a decision soon.</span>
+I don&apos;t understand, this happens to me when I try to post for the very first time on a new browser session (tor browser delete all site data once it&apos;s closed), so this being some sort of issue with limits doesn&apos;t make sense. Additionally when I can&apos;t post on the .moe domain I hop onto the .se domain and then I can send the post I couldn&apos;t on .moe just fine, so it&apos;s either something with the .moe domain specifically, or something with the user settings, since that&apos;s also per domain. The only setting I change is the board theme but I don&apos;t really change it for .se since when I go there it&apos;s just to submit a specific post, but this being the problem doesn&apos;t make a lot of sense either.
+
+Furthermore the error seems to get fixed at random, sometimes I can post straight after I open the site, sometimes it takes 10 minutes, and sometimes I can&apos;t post in the whole day (12+ hours). Lately it seems to be a lot better and I can post immediately or soon after I open the site, hence me believing it was fixed a few days ago. Once the error gets sorted out I can post throughout the rest of the day without issues however, so again some sort of issue with limits doesn&apos;t make sense to me. 
+
+Having to hop between domains and copy paste post contents and re attach all the files in the right order and re set all the post options for 12 hours is frustrating as hell, hence why I bitch so much about this.
+
+<span class="greenText">&gt;Performance isn&apos;t great</span>
+Alright, good to know. I was just concerned it could have been something on my end.
+
+<a class="quoteLink" href="/site/res/5978.html#6108">&gt;&gt;6108</a>
+He&apos;s probably talking about development focus.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6117"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6117">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 13:14:51</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4a6472">4a6472</span></span>
+    
+    <a class="linkSelf" href="#6117">No.</a>
+    <a class="linkQuote" href="#q6117">6117</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">I always user the header bar to return to the index of whatever board I&apos;m on, but now the current board&apos;s name is grayed out. Stylistically, I like it, nice little CSS touch. Functionally, I hate it, put the link back on it.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6118"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6118">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 13:26:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d79451">d79451</span></span>
+    
+    <a class="linkSelf" href="#6118">No.</a>
+    <a class="linkQuote" href="#q6118">6118</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6060">&gt;&gt;6060</a>
+<span class="greenText">&gt;If you want the desktop layout, you always have the option of asking your browser for desktop mode.</span>
+Just tried that out, and I think I found the problem. All the issues I have with the site while mobile posting are exclusive to iOS.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6125"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6125">
+    <span class="labelSubject">Image loads in small size</span>
+    <a class="linkName  noEmailName" >Cheets</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 19:03:46</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #689105">689105</span></span>
+    
+    <a class="linkSelf" href="#6125">No.</a>
+    <a class="linkQuote" href="#q6125">6125</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">If I click on some of the images in a thread some open in full size other just expand a bit but look like they load again, you can do a view image and most of the time you can see the full image in its full size.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6138"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6138">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 01:48:36</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7041f8">7041f8</span></span>
+    
+    <a class="linkSelf" href="#6138">No.</a>
+    <a class="linkQuote" href="#q6138">6138</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ac9e30f521166f41f6848308efe3fdf487f65b49a5e0c4bc4cac88585dad1e65.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">133.21 KB</span> <span class="dimensionLabel">1091x937</span>
+  <a class="originalNameLink" href="/.media/ac9e30f521166f41f6848308efe3fdf487f65b49a5e0c4bc4cac88585dad1e65.png" download="here.png">here.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ac9e30f521166f41f6848308efe3fdf487f65b49a5e0c4bc4cac88585dad1e65.png" data-filewidth="1091" data-fileheight="937" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="193" src="/.media/t_ac9e30f521166f41f6848308efe3fdf487f65b49a5e0c4bc4cac88585dad1e65"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6117">&gt;&gt;6117</a>
+May help</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6141"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6141">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 03:26:12</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cdaa47">cdaa47</span></span>
+    
+    <a class="linkSelf" href="#6141">No.</a>
+    <a class="linkQuote" href="#q6141">6141</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/79a90903de87b99655c9a74fd50a6e345c97c0f5fcfdaaef5b96a30b7fbe08a3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">64.71 KB</span> <span class="dimensionLabel">1198x279</span>
+  <a class="originalNameLink" href="/.media/79a90903de87b99655c9a74fd50a6e345c97c0f5fcfdaaef5b96a30b7fbe08a3.png" download="79a90903de87b99655c9a74fd50a6e345c97c0f5fcfdaaef5b96a30b7fbe08a3.png">79a90903de87b99655c9a74fd50a6e345c97c0f5fcfdaaef5b96a30b7fbe08a3.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/79a90903de87b99655c9a74fd50a6e345c97c0f5fcfdaaef5b96a30b7fbe08a3.png" data-filewidth="1198" data-fileheight="279" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="52" src="/.media/t_79a90903de87b99655c9a74fd50a6e345c97c0f5fcfdaaef5b96a30b7fbe08a3"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/321933ef853a79b5a06d432d85796ad77744ee8011bd27161169dc724aa38af3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">39.07 KB</span> <span class="dimensionLabel">796x382</span>
+  <a class="originalNameLink" href="/.media/321933ef853a79b5a06d432d85796ad77744ee8011bd27161169dc724aa38af3.png" download="321933ef853a79b5a06d432d85796ad77744ee8011bd27161169dc724aa38af3.png">321933ef853a79b5a06d432d85796ad77744ee8011bd27161169dc724aa38af3.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/321933ef853a79b5a06d432d85796ad77744ee8011bd27161169dc724aa38af3.png" data-filewidth="796" data-fileheight="382" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="108" src="/.media/t_321933ef853a79b5a06d432d85796ad77744ee8011bd27161169dc724aa38af3"></a>
+</details>
+</figure></div>
+  <div class="divMessage">sorry but for the next 2.9 update can you consider adding an extra security for moderated accounts? Add two-step authentication</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6150"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6150">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 18:10:13</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #849220">849220</span></span>
+    
+    <a class="linkSelf" href="#6150">No.</a>
+    <a class="linkQuote" href="#q6150">6150</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6141">&gt;&gt;6141</a>
+I proposed this to Stephen like two years ago and he didn&apos;t seem interested, so it&apos;s been sitting on my to-do pile. But backend modifications take the most work to write and debug, so I can&apos;t promise it will land in 2.9.
+
+<a class="quoteLink" href="/site/res/5978.html#6117">&gt;&gt;6117</a>
+Can you take a screenshot? Nothing should be grayed-out and you should have all the links available to you at all times on both desktop and mobile view.
+
+<a class="quoteLink" href="/site/res/5978.html#6112">&gt;&gt;6112</a>
+I owe you a full response later, when I have more time.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6152"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6152">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 19:58:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4a6472">4a6472</span></span>
+    
+    <a class="linkSelf" href="#6152">No.</a>
+    <a class="linkQuote" href="#q6152">6152</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2aee0d19441aa7278702b96cb3c338e55def7edd40753d3ff7830fda3d1f0bfd.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">75.80 KB</span> <span class="dimensionLabel">750x238</span>
+  <a class="originalNameLink" href="/.media/2aee0d19441aa7278702b96cb3c338e55def7edd40753d3ff7830fda3d1f0bfd.png" download="gray.png">gray.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2aee0d19441aa7278702b96cb3c338e55def7edd40753d3ff7830fda3d1f0bfd.png" data-filewidth="750" data-fileheight="238" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="71" src="/.media/t_2aee0d19441aa7278702b96cb3c338e55def7edd40753d3ff7830fda3d1f0bfd"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6138">&gt;&gt;6138</a>
+A fair alternative, thanks.
+
+<a class="quoteLink" href="/site/res/5978.html#6150">&gt;&gt;6150</a>
+In this case, if I&apos;m on /arepa/, /arepa/ is gray and not a link, or at least, not clickable.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6153"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6153">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 20:19:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d57c3f">d57c3f</span></span>
+    
+    <a class="linkSelf" href="#6153">No.</a>
+    <a class="linkQuote" href="#q6153">6153</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6150">&gt;&gt;6150</a>
+<a class="quoteLink" href="/site/res/5978.html#6152">&gt;&gt;6152</a>
+Can confirm it acts the same on Librewolf, Chromium and Opera, and in Safari the navbar is replaced with a list similar to the theme picker. Also Live updates don&apos;t work in Safari.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6155"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6155">
+    
+    <a class="linkName  noEmailName" >Anonymous (You)</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 21:06:30</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0b20e4">0b20e4</span></span>
+    
+    <a class="linkSelf" href="#6155">No.</a>
+    <a class="linkQuote" href="#q6155">6155</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6152">&gt;&gt;6152</a>
+<a class="quoteLink" href="/site/res/5978.html#6153">&gt;&gt;6153</a>
+I&apos;m pretty sure that was a design choice, if you are on /arepa/ then it shows arepa&apos;s link on the navigation bar gray because you are on that board. I don&apos;t really mind, honestly, there are already other ways to return to the index.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6157"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6157">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/01/2022 (Fri) 22:24:14</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4fbb5f">4fbb5f</span></span>
+    
+    <a class="linkSelf" href="#6157">No.</a>
+    <a class="linkQuote" href="#q6157">6157</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6155">&gt;&gt;6155</a>
+removing functions is not the best, I did use it as an index with other top boards</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6180"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6180">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 08:38:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #77a7f5">77a7f5</span></span>
+    
+    <a class="linkSelf" href="#6180">No.</a>
+    <a class="linkQuote" href="#q6180">6180</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">About the thumbnails image not expanding, do you work on a solution or do I have to tweak the CSS myself on my board ?
+
+<span class="greenText">&gt;embed .swfs</span>
+Nice !</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6182"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6182">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 13:47:52</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2a61e0">2a61e0</span></span>
+    
+    <a class="linkSelf" href="#6182">No.</a>
+    <a class="linkQuote" href="#q6182">6182</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#5978">&gt;&gt;5978</a>
+Anyone else having issues getting to work while using mac book pro?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6185"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6185">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 19:19:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #99736a">99736a</span></span>
+    
+    <a class="linkSelf" href="#6185">No.</a>
+    <a class="linkQuote" href="#q6185">6185</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6182">&gt;&gt;6182</a>
+Live updates are broken in Safari. The console returns this message 3 times:
+<span class="greenText">&gt;Refused to connect to wss://8chan.moe:2087/ because it appears in neither the connect-src directive nor the default-src directive of the Content Security Policy.</span>
+<span class="greenText">&gt;[Error] SecurityError: The operation is insecure.</span>
+<span class="greenText">&gt;thread.js:757</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6195"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6195">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 08:23:55</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d1214a">d1214a</span></span>
+    
+    <a class="linkSelf" href="#6195">No.</a>
+    <a class="linkQuote" href="#q6195">6195</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">There is something I don&apos;t understand, why use WebSockets instead of something more compatible like AJAX?
+If it&apos;s due to some technical advantage or something, then maybe you could keep both implementations and use AJAX as a failback when exceptions like <a class="quoteLink" href="/site/res/5978.html#6185">&gt;&gt;6185</a> occur.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6210"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6210">
+    
+    <a class="linkName  noEmailName" >Cheets</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 15:56:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #689105">689105</span></span>
+    
+    <a class="linkSelf" href="#6210">No.</a>
+    <a class="linkQuote" href="#q6210">6210</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6180">&gt;&gt;6180</a>
+How does that work, not sure how to fix the problem with the board. It seems to like this on all the boards I view. Some thumbs open to a large image while others do not. Dont know much about web pages and how they work.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6214"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6214">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 19:03:55</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #612e6a">612e6a</span></span>
+    
+    <a class="linkSelf" href="#6214">No.</a>
+    <a class="linkQuote" href="#q6214">6214</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6210">&gt;&gt;6210</a>
+Yes unfortunately the problem is site wide.
+Some BO have implemented a CSS fix. And we wait for the staff to implement a proper solution.
+If you&apos;re a BO copy/paste this to your custom.css and upload it in your <strong>Administration page</strong>.
+If you&apos;re a regular user, try to paste this into the CSS field of the <strong>Settings</strong> panel. It may work.
+<span class="blockCode"><code><span class="hljs-comment">/*Multiple Image Uploads*/</span>
+
+<span class="hljs-selector-class">.multipleUploads</span> <span class="hljs-selector-class">.uploadCell</span><span class="hljs-selector-pseudo">:not</span>(.expandedCell) {
+  <span class="hljs-attribute">display</span>: inline-block;
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">600px</span>;
+}</code></span>
+<em>found on /404/</em></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6231"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6231">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 10:40:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #54a50c">54a50c</span></span>
+    
+    <a class="linkSelf" href="#6231">No.</a>
+    <a class="linkQuote" href="#q6231">6231</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">About that thumbnail enlarge on click issue, do I imagine it or it was fixed temporarily 1-2 days ago?
+idk I remember the feature work again but it revert again. could be mistaken.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6232"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6232">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 15:56:09</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2e572d">2e572d</span></span>
+    
+    <a class="linkSelf" href="#6232">No.</a>
+    <a class="linkQuote" href="#q6232">6232</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6012">&gt;&gt;6012</a>
+<a class="quoteLink" href="/site/res/5978.html#6030">&gt;&gt;6030</a>
+<a class="quoteLink" href="/site/res/5978.html#6180">&gt;&gt;6180</a>
+I&apos;ve been using this:
+<span class="blockCode"><code><span class="hljs-selector-class">.innerOP</span> <span class="hljs-selector-class">.uploadCell</span><span class="hljs-selector-pseudo">:not</span>(.expandedCell) {
+  <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+}</code></span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="site" id="6237"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="site-5978-6237">
+    
+    <a class="linkName  noEmailName" >Cheets</a>
+     
+    <span class="labelCreated">07/06/2022 (Wed) 00:19:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #689105">689105</span></span>
+    
+    <a class="linkSelf" href="#6237">No.</a>
+    <a class="linkQuote" href="#q6237">6237</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/site/res/5978.html#6214">&gt;&gt;6214</a>
+thank you for the reply it is appreciated. Be well, I will try your fix.</div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+        <hr class="clearer">
+
+		<div class="threadBottom">
+			<span class="innerUtility">
+				<a href="../">Index</a>
+				<a href="../catalog.html">Catalog</a>
+				<a target="_blank" class="archiveLinkThread">Archive</a>
+				<a class="navButton" href="#">Top</a>
+				<a id="replyButton" href="#postingForm">Reply</a>
+			</span>
+
+			<span class="threadInfo">
+				<span id="postCount"></span>
+				<span id="idCount"></span>
+				<span id="fileCount"></span>
+			</span>
+
+		</div>
+
+		<hr>
+
+        <div class="divRefresh hidden">
+
+          <input type="button" id="refreshButton" value="Refresh">
+
+          <label>
+            <input id="checkboxChangeRefresh" type="checkbox" checked="">
+            <span id="labelWsStatus" title="Connecting to WS...">⬤</span>
+            <span id="labelAutoIndicator">Auto</span> <span id="labelRefresh"></span>
+          </label>
+
+        </div>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=site">Manage Board</a>
+          <a id="linkModeration">Moderate Board</a>
+          <a id="linkMod" href="/mod.js?boardUri=site&amp;threadId=5978">Moderate Thread</a>
+        </div>
+
+        <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+      </form>
+
+    </div>
+
+    <div id="quick-reply" style="top: 50px;"><!--can't be nested in another form, so it has to come after moderation forms-->
+<form action="/replyThread.js" enctype="multipart/form-data" method="post">
+
+ <input type="text" id="qr_prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+ <input type="password" id="qr_prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table><tbody>
+	<tr><th class="handle">
+		Quick Reply
+		<a class="close-btn coloredIcon"></a>
+    </th> </tr>
+
+    <tr id="qr-name-row" class="hidden"><td>
+		<input id="qrname" type="text" maxlength="35" name="name" autocomplete="none" placeholder="Name">
+	</td></tr>
+
+	<tr><td>
+		<input id="qrsubject" type="text" maxlength="100" name="subject" autocomplete="none" placeholder="Subject">
+	</td></tr>
+
+	<tr><td>
+		<input type="checkbox" name="sage" id="qrdoSageCheckbox" class="postingCheckbox">
+		<label for="qrdoSageCheckbox" class="spoilerCheckbox">
+			Sage
+		</label>
+		<input type="checkbox" id="qralwaysUseBypassCheckBox" class="postingCheckbox">
+		<label for="qralwaysUseBypassCheckBox" class="spoilerCheckbox">
+			Bypass Check
+		</label>
+	</td></tr>
+
+	<tr><td>
+		<textarea id="qrbody" rows="5" placeholder="Comment"></textarea>
+	</td></tr>
+</tbody> 
+</table>
+
+<details open="" id="qrFilesBody" class="hidden">
+<summary id="qrFilesButton" class="glowOnHover"> </summary>
+<table>
+
+	<tbody><tr><td>
+		<div class="dropzone" id="dropzoneQr">
+			Drag files to upload or <br>
+			click here to select them
+		</div>
+		<div id="selectedDivQr"></div>
+	</td></tr>
+
+    <tr><td class="centered">
+		<input type="checkbox" id="qrcheckboxSpoiler" name="spoiler" class="postingCheckbox">
+		<label for="qrcheckboxSpoiler"> </label>
+		<input type="checkbox" id="qrcheckboxScramble" class="postingCheckbox">
+		<label for="qrcheckboxScramble"> </label>
+	</td></tr>
+
+</tbody></table>
+</details>
+
+<details open="" class="hidden" id="captchaBody">
+<summary id="qrCaptchaButton" class="glowOnHover"></summary>
+<table><tbody>
+
+    <tr><td colspan="2">
+		<img id="qr-captcha-image" class="captchaImage">
+	</td></tr>
+
+	<tr><td colspan="2">
+		<a href="/noCookieCaptcha.js" target="_blank" class="small">
+			No cookies?
+		</a>
+	</td></tr>
+
+    <tr><td>
+		<input name="captcha" type="text" class="captchaField" id="QRfieldCaptcha" placeholder="Answer">
+	</td><td>
+		<input type="button" class="reloadCaptchaButton" value="Reload">
+		<span class="captchaTimer">0</span>
+	</td></tr>
+
+</tbody> </table>
+</details>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+<table><tbody>
+
+	<tr><td>
+		<input id="qremail" type="text" maxlength="40" autocomplete="none" name="email" placeholder="Email">
+	</td></tr>
+
+	<tr><td>
+		<input id="qrpassword" name="password" type="password" placeholder="Password">
+	</td></tr>
+
+    <tr id="qr-flags-row" class="hidden"><td>
+		<div id="qrFlagsDiv"></div>
+	</td></tr>
+
+    <tr id="qr-flags-check-row" class="hidden"><td class="centered">
+		<input type="checkbox" id="qrcheckboxNoFlag" class="postingCheckbox" name="noflag">
+		<label for="qrcheckboxNoFlag" class="spoilerCheckbox">
+    		Don't show location
+		</label>
+	</td>
+</tr></tbody></table>
+</details>
+
+<table><tbody>
+<tr><td class="centered">
+	<input accesskey="s" id="qrbutton" type="submit" value="Reply">
+</td></tr>
+</tbody></table>
+
+</form>
+</div>
+    <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">No.</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[History]</a>
+    <a class="linkFileHistory">[File History]</a>
+    <a class="linkOffenseRecord">[Offense Record]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Broad range(1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Narrow range(3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+    <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Unlink]</a>
+  <a class="unlinkAndDeleteLink">[Unlink & Delete]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/thread.js"></script>
+
+<script src="/.static/js/qr.js"></script>
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/gallery.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

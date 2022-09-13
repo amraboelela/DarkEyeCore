@@ -1,0 +1,364 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Help</title>
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+</head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeader"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> </span>
+</nav>
+
+  <header>
+    <img src="/.static/logo.png" class="logoImg" alt="logo">
+  </header>
+
+  <div class="titleWrapper">
+    <fieldset class="titleFieldset">
+      <legend>Creating a Board</legend>
+	  <h3>Account Registration</h3>
+      <p>An account is required to create, own, or moderate a board</p>
+      <p>You can register or on the <a href="/login.html">Log-In Page</a> ()</p>
+      <p>You will only be able to reset your password with the provided e-mail. Use an invalid address at your own risk.</p>
+	  <hr>
+      <h3>Validate E-mail</h3>
+      <p>While users with unverified e-mails may volunteer for boards, they may not create them</p>
+      <p>You can request a validation e-mail from your account settings page.</p>
+      <p>Sometimes these e-mails get lost. Admins can manually verify your account. Please mail the administration with your username from the address you want validated.
+	  </p><hr>
+      <h3>Check Existing Boards</h3>
+      <p>All board URIs must be unique, and must be all lowercase.</p>
+      <p>Not all boards are indexed, but all of them are public, so it's best to visit the board's address.</p>
+      <p>If the board does not exist, you are free to create it. If it does exist, you can check if it is abandoned. Abandoned boards are available for claim. E-mail an admin to request a board be transferred.</p> 
+	  <hr>
+      <h3>Board Creation</h3>
+      <p>If the board does not exist, you are free to create it!</p>
+      <p>You can do this from your account settings page.</p>
+      <p>Enter the address of the board (for example, if you want to create "/test/", you would enter "test"</p>
+      <p>Supply a board name, generally the subject of the board (for example, "v" is named "Video Games") and a description.</p>
+	</fieldset>
+
+    <fieldset class="titleFieldset">
+      <legend>Bypasses</legend>
+	  <h3>What is a Bypass?</h3>
+	  <p>A Bypass is a temporary identifier that gives you access to certain site functions.</p>
+	  <p>Most importantly, you need a bypass to post.</p>
+	  <p>A bypass will expire after a set number of hours or after making so many posts. The exact values may vary.</p>
+	  <hr>
+      <h3>Captcha</h3>
+      <p>All bypasses require filling out a captcha.</p>
+      <p>Some boards may also require a captcha to make a post. As such, you may sometimes need to fill out two captchas before you can post.</p>
+      <p>Once you have a bypass, you won't need to fill one out again unless a board requires it or your bypass expired.</p>
+	  <hr>
+      <p>This is a system whereby you are required to generate a cryptographic hash before receiving your bypass.</p>
+      <p>Though similar in nature to coin miners, the system does not generate any "currency", and does not put much strain on your computer.</p>
+      <p>The required time to generate a bypass is determined by your computer's specs. Do not close the tab, refresh the page, etc or you will need to begin the process of getting a bypass again.</p>
+      <p>You will see a spike in CPU usage. This is normal, and it will end when the bypass is generated.</p>
+      <p>This system may be inconvenient, especially to users with lower end devices, but it is an effective method at preventing spam. We generally only activate it when the site is under attack. You will be compensated with a bypass that lasts much longer and a bigger post allotment.</p>
+    </fieldset>
+
+    <fieldset class="titleFieldset">
+      <legend>Names</legend>
+	  <h3>Tripcodes</h3>
+      <p>To use a tripcode, add a # in your name. After the #, add the
+        password for the tripcode.</p>
+      <p>The server will apply a hash to the password and display the hashed
+        password.</p>
+      <p>To use a secure tripcode, add ## in your name and a password. A
+        secure tripcode will generate a random text to be displayed that will
+        only be used if your password matches.</p>
+
+	  <hr>
+      <h3>Role signature</h3>
+      <p>If you wish to display your global or board role when posting, you
+        can put #rs in your name, like a tripcode, case insensitive. This will
+        prevent you from using a tripcode.</p>
+      <p>You can also enable an always use role signature rule in your
+        account settings.</p>
+
+	</fieldset>
+	<fieldset class="titleFieldset">
+      <legend>Post Markdown</legend>
+      <p>When posting you can use some tools that will enhance its text in
+        HTML.</p>
+
+	  <hr>
+      <h3>URLs</h3>
+      <p>If you post a URL starting with either http or https, it will
+        automatically be linked.</p>
+      <br>
+      <p>Example:</p>
+      <p>
+        http://bot.net →
+        <a href="">http://bot.net</a>
+      </p>
+
+	  <hr>
+	  <br>
+
+      <h3>Greentext</h3>
+      <p>Adding &gt; at the start of a line, will greentext the text
+        until a newline.</p>
+      <br>
+      <p>Example:</p>
+      <p>
+        &gt;le ebin upboat :^) → <span class="greenText">&gt;le ebin upboat
+          :^)</span>
+      </p>
+
+      <br>
+
+	  <hr>
+      <h3>Quote</h3>
+      <p>If you write &gt;&gt; and then a number to a posting, it will create a
+        link to this post in the board you are posting and add a tooltip with
+        the post preview if you have javascript enabled.</p>
+      <br>
+      <p>Example:</p>
+      <p>
+        &gt;&gt;50 →
+        <a href="">&gt;&gt;50</a>
+      </p>
+
+      <br>
+
+	  <hr>
+      <h3>Board link</h3>
+      <p>If you write &gt;&gt;&gt; and then add a board name between slashes, it will
+        create a link to the board.</p>
+      <br>
+      <p>Example:</p>
+      <p>
+        &gt;&gt;&gt;/cancer/ →
+        <a href="" class="quoteLink">&gt;&gt;&gt;/cancer/</a>
+      </p>
+
+      <br>
+
+	  <hr>
+      <h3>Cross-quote</h3>
+      <p>It is also possible to quote posts from another boards. Just add
+        the posting number after the board name.</p>
+      <br>
+      <p>Example:</p>
+      <p>
+        &gt;&gt;&gt;/cancer/50 →
+        <a href="" class="quoteLink">&gt;&gt;&gt;/cancer/50</a>
+      </p>
+
+      <br>
+
+	  <hr>
+      <h3>Dice Rolling</h3>
+      <p>
+        To roll n dice which all have m sides, use the command 
+        <code>/roll{ndm[+-k]}</code>
+        <br>
+        Hovering over the dice roll will display the rolls on individual dice
+        rather than the total with modifiers.
+      </p>
+      <br>
+      <p>Example:</p>
+	  <table>
+		<tbody><tr><td>
+          /roll{2d6} 
+        </td><td>→
+        </td><td>
+		  <span class="diceRoll" title="2, 3">2d6 = 5</span>
+        </td></tr>
+		<tr><td>
+          /roll{1d20+4}
+        </td><td>→
+        </td><td>
+		  <span class="diceRoll" title="15">1d20+4 = 19</span>
+        </td></tr>
+      </tbody></table>
+
+      <br>
+
+	  <hr>
+      <h3>Tags</h3>
+	  <table>
+		  <tbody><tr><th>Before:</th><th>After:</th></tr>
+		  <tr>
+			<td>
+				[spoiler]the game[/spoiler] <br>
+				**this also works** 
+			</td> <td>
+				<span class="spoiler">the game</span><br>
+				<span class="spoiler">this also works</span>
+			</td>
+		  </tr> <tr>
+			<td>
+				==SRZ BIZNIZ==
+			</td><td>
+				<span class="redText">SRZ BIZNIZ</span>
+			</td>
+		  </tr>
+		  <tr>
+			<td>
+				(((Echoes)))
+			</td><td>
+				<span class="echoText">(((Echoes)))</span>
+			</td>
+		  </tr> <tr>
+			<td>
+				&lt;pinktext
+			</td><td>
+				<span class="pinkText">&lt;pinktext</span>
+			</td>
+		  </tr> <tr>
+			<td>
+				[moe]UGUU SO MOE~[/moe] 
+			</td><td>
+				<span class="moeText">UGUU SO MOE~</span>
+			</td>
+		  </tr> <tr>
+			<td>
+				[doom]RIP AND TEAR[/doom] 
+			</td><td>
+				<span class="doomText">RIP AND TEAR</span>
+			</td>
+		  </tr> <tr>
+			<td>
+				''italics'' 
+			</td><td>
+				<em>italics</em>
+			</td>
+		  </tr> <tr>
+			<td>
+				'''bold''' 
+			</td><td>
+				<strong>bold</strong>
+			</td>
+		  </tr> <tr>
+			<td>
+				__underline__ 
+			</td><td>
+				<u>underline</u>
+			</td>
+		  </tr> <tr>
+			<td>
+				~~strikethrough~~ 
+			</td><td>
+				<s>strikethrough</s>
+			</td>
+		  </tr> <tr>
+			<td>
+				///Slanted Text\\\
+			</td><td>
+				<span class="slopedText">Slanted Text
+			</span></td>
+		  </tr>
+    </tbody></table>
+
+    <hr>
+    <h3>Board-Specific Tags</h3>
+
+    <p>The following tags are enabled on a per-board basis:</p>
+    <table>
+		  <tbody><tr><th>Before:</th><th>After:</th></tr>
+          <tr><td>
+				[board]Depends on Board CSS[/board]
+			</td><td>
+				<span class="boardText">Depends on Board CSS</span>
+			</td>
+          </tr><tr><td>
+				[aa]Mona Pゴシック[/aa] 
+			</td><td>
+				<span class="aa">Mona Pゴシック</span>
+			</td>
+		  </tr> <tr>
+			<td>
+				[code]echo "Code with syntax highlighting!";[/code] 
+			</td><td>
+<code><span class="hljs-built_in">echo</span> <span class="hljs-string">"Code with syntax highlighting!"</span>;</code>
+			</td>
+		  </tr><tr>
+			<td>
+				Inline $$\LaTeX$$
+			</td><td>
+				Inline
+<span class="katex"><span class="katex-mathml"><math xmlns="<a target=" &#95;blank"="" href="http://www.w3.org/1998/Math/MathML&quot;>">http://www.w3.org/1998/Math/MathML"&gt;<semantics><mrow><mtext>LaTeX</mtext></mrow><annotation encoding="application/x-tex">\LaTeX</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.89883em;vertical-align:-0.2155em;"></span><span class="mord text"><span class="mord textrm">L</span><span class="mspace" style="margin-right:-0.36em;"></span><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.68333em;"><span style="top:-2.904999em;"><span class="pstrut" style="height:2.7em;"></span><span class="mord"><span class="mord textrm mtight sizing reset-size6 size3">A</span></span></span></span></span></span><span class="mspace" style="margin-right:-0.15em;"></span><span class="mord text"><span class="mord textrm">T</span><span class="mspace" style="margin-right:-0.1667em;"></span><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.46782999999999997em;"><span style="top:-2.7845em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord textrm">E</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2155em;"><span></span></span></span></span><span class="mspace" style="margin-right:-0.125em;"></span><span class="mord textrm">X</span></span></span></span></span></span>
+			</td>
+		  </tr><tr>
+			<td>
+				\[ \int_a^b {x^2 dx} \]
+			</td><td>
+<span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="<a target=" &#95;blank"="" href="http://www.w3.org/1998/Math/MathML&quot;">http://www.w3.org/1998/Math/MathML" display="block"&gt;<semantics><mrow><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><msup><mi>x</mi><mn>2</mn></msup><mtext> </mtext><mi>d</mi><mi>x</mi></mrow><annotation encoding="application/x-tex"> \int_{a}^{b} x^2 \,dx </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.5109580000000005em;vertical-align:-0.9119499999999999em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011249999999999316em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.5990080000000004em;"><span style="top:-1.7880500000000001em;margin-left:-0.44445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">a</span></span></span></span><span style="top:-3.812900000000001em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">b</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9119499999999999em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathnormal">d</span><span class="mord mathnormal">x</span></span></span></span></span>
+			</td>
+		  </tr>
+	  </tbody></table>
+
+
+	</fieldset><fieldset class="titleFieldset">
+	  <legend>Hotkeys</legend>
+	  <p>Press <kbd>alt</kbd>+<kbd>R</kbd> to reload the CAPTCHA.
+	  </p>
+    </fieldset>
+
+  </div>
+  <footer id="dynamicFooter"><div id="footer">
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine" href="//gitgud.io/LynxChan/LynxChan"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+
+
+
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+
+
+</body></html>

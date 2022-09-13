@@ -1,0 +1,595 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/digi/ - Net Hangout</title><link rel="stylesheet" type="text/css" href="/digi/custom.css"></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=digi"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Refresh</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=digi">
+    <div>
+      <p id="labelName">/digi/ - Net Hangout</p>
+    </div>
+    <p id="labelDescription">DiGital Communication</p>
+	<span class="boardLinks">
+		<a href="catalog.html">Catalog</a>
+		<a id="archiveLinkBoard">Archive</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Mode: Thread</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  <tr id="divName">
+    <th>Name</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldName" name="name"></td>
+  </tr>
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="digi"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      <div id="flagsDiv">
+        <select name="flag" id="flagCombobox"><option>No flag</option><option value="62680d264893d05c990cade4">Animal Crossing - Bell</option><option value="62681f4a5e44666c6ed3ec30">Animal Crossing - Isabelle ;P</option><option value="62681f24fe17600253d5ba20">Animal Crossing - Rover [!!!]</option><option value="625f67c6f20fbc8449fbdad8">Beretta 92 Stain. L</option><option value="625f66eb80e4fd83f6e956e4">Bubsy</option><option value="625f68787b92b28fb782aa17">CD-ROM</option><option value="6252f0aa2260752e976f50e2">CnC mammoth tank</option><option value="625f67c327339c2a0d730c70">Confederate Battle Flag</option><option value="625f6949a84c9f138a2ecd49">Cow Tools</option><option value="6240615a923e230687bce6ee">CrazyTaxi</option><option value="626810343f53d978a0bcab2e">Dejiko hi</option><option value="62680c1b4893d05c990cad74">Digimon - Kyubimon</option><option value="62680bac23e93a15bd0faecf">Digimon - Renamon</option><option value="62680c4023e93a15bd0faf14">Digimon - Weregarurumon</option><option value="62681050fe17600253d5b471">FF - Chocobo thumbs up</option><option value="6268106f9a0a2401e17dae4e">FF - Mad Moogle</option><option value="626814cc1719ec1e22396fe4">Gundam - Amuro Suit</option><option value="626814cd237860012314d3fc">Gundam - Char Aznable 1</option><option value="626814cde35075452e4a2862">Gundam - Haro</option><option value="626814cee35075452e4a2865">Gundam - MS-06F</option><option value="626814ce895f8abf5a42d0b4">Gundam - MS-06S</option><option value="626814cf5e44666c6ed3e81b">Gundam - RX-78-2</option><option value="626814d0e35075452e4a286e">Gundam - RX-78-3</option><option value="625f6a188deca71a3731c9ef">Jumping Flash</option><option value="62539c68f2af51677747e21a">KemonoFriend</option><option value="62539c69ccd94ac49e925df3">KemonoFriend2</option><option value="627c0241a0373439da251e57">KemonoFriend3</option><option value="625f681e32f9e8a080e55a30">Mac OS</option><option value="625f5e7c27339c2a0d730888">N64</option><option value="625f5f55f20fbc8449fbd8cd">N64 - Bob-Omb Buddy</option><option value="625f5f22ffab818babdf1fb7">N64 - Bully</option><option value="625f5eec27339c2a0d7308ca">N64 - Gray</option><option value="625f609d7dd3cd0c30c08dc3">N64 - Mario</option><option value="625f5f758deca71a3731c628">N64 - Unit</option><option value="625f6a191d214ecfa72eb0ac">PS Memory Card</option><option value="625f6a17289dce150746e398">Playstation Unit</option><option value="6298c7b3eafa48a930870c40">Pokemon - Lucario</option><option value="625f6a191d214ecfa72eb0a9">Psygnosis</option><option value="626811144893d05c990cb069">Rabi en rose - wink</option><option value="625f67c327339c2a0d730c6a">Union Flag</option><option value="625f68a2ffab818babdf22ba">Wacom Tablet</option><option value="625f6a181d214ecfa72eb0a6">Wipeout</option><option value="6236e2f509e6c60f9be47253">akarin</option><option value="62ae24b89062000ebd7c87ad">angery</option><option value="62680fcf52636ab649d702a1">angry</option><option value="625918369d41c2e2631560a4">anpanman</option><option value="623e3e57923e230687bc0b10">apple</option><option value="626800124893d05c990ca7bf">aqua-cry</option><option value="6244fdc4c911ce2eff4fcb90">aralechan</option><option value="6244ffa518ae2fd44d580d25">aralechan2</option><option value="628bd4b9047e6e5c58e48783">ascii dance</option><option value="6268097723e93a15bd0fad63">asuna</option><option value="61b2cea071c190126d2a268c">bell</option><option value="62728cf03c28e3a1d46908e1">beos -  surf the net</option><option value="62728cf13d2368a558ad4053">beos - (You)</option><option value="62728cf13d2368a558ad4056">beos - clock</option><option value="62728cf23d2368a558ad4059">beos - lightbulb</option><option value="62728cf3a10ac68478f6c71a">beos - mail</option><option value="62728cf33d2368a558ad405c">beos - sound</option><option value="62728cf43c28e3a1d46908e4">beos - stop</option><option value="62728cf5a10ac68478f6c71d">beos - terminal</option><option value="62728cf53d2368a558ad4062">beos - tv</option><option value="625f6a71ffab818babdf238f">blogpost</option><option value="6270678d3c28e3a1d4685681">blur milk</option><option value="6257837e0e779bc8d14fba24">bomb</option><option value="62578174d5e602044c3928fa">bomberman</option><option value="628a45aa36263f1701dcca0d">cardcaptor sakura - kero</option><option value="628a45aa36263f1701dcca0a">cardcaptor sakura - sakura 01</option><option value="628a45ab4b86827f2769b9d4">cardcaptor sakura - sakura 02</option><option value="628a45ac4b86827f2769b9d7">cardcaptor sakura - sakura 03</option><option value="628a45aded571ec0e82f149d">cardcaptor sakura - sakura 04</option><option value="628b882c232d7c83120cb0d4">cardcaptor sakura - wand</option><option value="6267f122e35075452e4a1a96">chaika</option><option value="625928f844973a773ef2fb58">charlie</option><option value="6236daf2122505601b123a76">chen</option><option value="62aa3065dc46778c88cddf14">chihaya board</option><option value="62577668d5e602044c392420">chiyo</option><option value="6268178c1cf259ff9bcfcfa4">chocotto sister - choco</option><option value="62539a17967963db43a47078">chummy</option><option value="6236de6f8572f345ae30c90a">cirno</option><option value="62439ccbc911ce2eff4f3951">copland&#95;os</option><option value="62680978fe17600253d5b1a0">da capo</option><option value="6227abc34fea19937762b9ec">deaf-mutes</option><option value="623f16552aa9c81562523543">dejiko-c</option><option value="61b2ced1164d961291c657f2">dgc</option><option value="62728815ada55ed828f24a80">disk - bad</option><option value="62728814ada55ed828f24a7d">disk - blue</option><option value="62728814ada55ed828f24a7a">disk - cool</option><option value="62728813ada55ed828f24a77">disk - cute blue</option><option value="627288133d2368a558ad3e47">disk - cute pink</option><option value="62728812ada55ed828f24a71">disk - fire</option><option value="62728812ada55ed828f24a6e">disk - hearts</option><option value="62728eb0b794ded5b190f75b">disk - pastel</option><option value="62591789fdb14da62627f3c2">doraemon</option><option value="6268101e3f53d978a0bcaaec">dq - slime disappoint</option><option value="624062927fcd50673ad60f32">dreamcast</option><option value="6268097afe17600253d5b1a9">eureka seven</option><option value="6236df47f2dc733553b8ea2d">flan</option><option value="62591ea5193a9a0257d5fee1">gamecube</option><option value="625751ea963053b7c8aff506">gilbert</option><option value="6232b6595d7ffc19f6f0f069">gnu</option><option value="6259131444973a773ef2f4c0">goemon</option><option value="62681985895f8abf5a42d2a4">grenadier - rushuna</option><option value="62717effada55ed828f1f6a7">guitar</option><option value="625784994a6af701134bce1c">hamster dance 1</option><option value="625784a7cd68ab8fc8508fe6">hamster dance 2</option><option value="625784b30f38b0ffd368b77e">hamster dance 3</option><option value="62a28ba42889d9b2c6448faf">hamtaro</option><option value="6268097bfe17600253d5b1ac">haruhi</option><option value="62680ec19a0a2401e17dae16">haruhi2</option><option value="628bd4ba7ac65fcfa4d8e210">hikki</option><option value="6227b13bbedb63aa41163594">homestar</option><option value="62577be561dba10ad97dcc02">hoodie lain</option><option value="6268097cfe17600253d5b1af">ichigo mashimaro</option><option value="623f1641cef33e92be4ae5c6">jigen</option><option value="626810fa1cf259ff9bcfccd5">just puchiko</option><option value="62681e0a5e44666c6ed3eb81">kage kara mamoru - yuna</option><option value="6268240dcae67c2e923fef02">kaiji - smoking</option><option value="6268097cfe17600253d5b1b2">kallisti</option><option value="62681cfb23e93a15bd0fb66e">kemeko</option><option value="623f0841cef33e92be4ae079">keroro</option><option value="62591702336ee9055fa520cc">kirby idle</option><option value="6259154d7da9efa51c40c41d">kirby jump</option><option value="625916787da9efa51c40c4fb">kirby sleepy</option><option value="6236e245539a838b3f04ba44">kona1</option><option value="6236e24a9493ca34e7ef179f">kona2</option><option value="6267f1ddfe17600253d5a7e0">kyoko smug</option><option value="623dd47f65aeb81a0790fa8d">lamp</option><option value="6247700d02a410bbf280f737">lesserdog</option><option value="627a8b5e27d9a4635d966e88">lil bat</option><option value="62b92595df12e8032437a380">loli :o</option><option value="62681b5623e93a15bd0fb5b7">lucky star - kona peace</option><option value="623f1630ffe02cce670fa9ba">lupin</option><option value="626810981cf259ff9bcfcc84">lwa - akko laugh</option><option value="624380735462367819846082">madotsuki</option><option value="6236db6f9493ca34e7ef15b1">mari</option><option value="6259114e9d41c2e263155e8b">maruko chan 1</option><option value="6236dcc79493ca34e7ef15f3">meiling</option><option value="623dd905b31e04dcf710191e">met</option><option value="622d0a8ed6d1e075e4eec8ac">miku</option><option value="6254b02de735f3ef12031505">mini gondola and moai</option><option value="6259900d9d41c2e2631588f0">mlp - applejack</option><option value="6259900e7da9efa51c40ea49">mlp - fluttershy</option><option value="625990109819a793f9644489">mlp - pinkie</option><option value="6259900f9d41c2e2631588ff">mlp - r dash</option><option value="6259900f9d41c2e263158902">mlp - rarity</option><option value="6259900e9d41c2e2631588f9">mlp - twi</option><option value="6254b02ee735f3ef12031508">moai nazo</option><option value="623dd476e0ce84f6ac32b7de">mother</option><option value="622d0bebf8d5ebcce4eceefa">mrsaturn</option><option value="6227ad9b420d635f7ea877cd">mrsth</option><option value="62a37199aab66514a11f6fdf">nWo</option><option value="62680a1ce35075452e4a239f">nanoha</option><option value="623dd469dfdf731b9409e6c4">ninten</option><option value="6236dc25406eb173eb71db84">nitori</option><option value="626815b9237860012314d471">other - . . .</option><option value="62681549e35075452e4a28a0">other - ??</option><option value="626815a823e93a15bd0fb2f1">other - aaaaah</option><option value="626815f2237860012314d492">other - bed invite</option><option value="6268157152636ab649d7053c">other - can&apos;t sleep</option><option value="626815569a0a2401e17db000">other - evil hand rub</option><option value="62681561e35075452e4a28cc">other - shock</option><option value="626815944893d05c990cb282">other - soda can</option><option value="62681614e35075452e4a2920">other - sorry</option><option value="62680c9f1719ec1e22396c2a">paranoia agent</option><option value="6259115024ac26b45d4cbe1e">phoenix evidence</option><option value="6259278087d5fb8aca8b1a44">pim</option><option value="6259126f60204833d97f1aaf">playstation</option><option value="626810e9ad39c0a3b563161f">pokemon - eevee ok!</option><option value="6298cb9e9395d43f563c1629">pokemon - lucario</option><option value="626810d81cf259ff9bcfcc96">pokemon - pika shock</option><option value="626810b93f53d978a0bcab58">pokemon - pikachu &lt;3</option><option value="626810c5895f8abf5a42ce91">pokemon - psyduck</option><option value="623f17eaea4d472550ca3877">popuko</option><option value="61b2ce7a9a1952123c6f407d">puchi</option><option value="623f164fc97b3d3ded680582">puchi2</option><option value="624382cd02a410bbf27f534b">puyoblue</option><option value="624381f0dc2645db1571ba13">puyogreen</option><option value="624382cbd1a2e17c3105437b">puyopink</option><option value="624382cc556516c6bd0fd50f">puyopurple</option><option value="624381ee546236781984614e">puyored</option><option value="624381efc911ce2eff4f2da8">puyoyellow</option><option value="6272716fa40491fe3d72124b">quake</option><option value="627271703948c5118e5a88ae">quake black</option><option value="623f1648c9b97420ca770ced">rabienrose-c</option><option value="6236dda880181a9b6c65a1fb">reimu</option><option value="6236dedd8572f345ae30c98b">reisen</option><option value="6236da0ee4cdbf097544366e">remi</option><option value="62577deb8e92f72077908d42">renge</option><option value="624dc79178a3b84b5e23317a">retroTV</option><option value="62680ae5237860012314d0c7">rika</option><option value="62680b6552636ab649d70100">rin kokonoe</option><option value="6236dde39493ca34e7ef1680">rmykkr</option><option value="623dd96b30b7d47076937776">rock</option><option value="6236dfe4b9f08e43500a9668">rumia</option><option value="62b920bca28291a80de21f98">running loli</option><option value="623f17f7c97b3d3ded6805eb">sakamoto</option><option value="6236cf276d036d8da8b1230d">sakurat</option><option value="62433c5477e74d5d39766603">saturn</option><option value="6267f39423e93a15bd0fa3f0">shinobu1</option><option value="62968e9e18eabe1ad8f7fef0">shonen bat</option><option value="6266a440e35075452e498c10">sims green</option><option value="6266a43f895f8abf5a423ae8">sims red</option><option value="6272a32db794ded5b190fead">skull</option><option value="62680f9a8dfb7760e867d135">slayers - lina</option><option value="6236e1798572f345ae30ca60">slime</option><option value="62920fe6c0fc06ba95f6b224">slime 2</option><option value="62536f5674799a2fa710b65c">slime fc</option><option value="6264d53fe35075452e48dd49">smol bsd</option><option value="6298cb9f9395d43f563c1632">smt - mara</option><option value="62aa3065dc46778c88cddf17">sonic</option><option value="626814d7237860012314d40b">star trek - borg</option><option value="6227b13b1018f45b71465bae">strongbad</option><option value="62406af07fcd50673ad6128e">syobon</option><option value="622d013be8932561e60391af">ted</option><option value="626818e51cf259ff9bcfd110">the third - honoka</option><option value="6268166f237860012314d522">tmnt - April O&apos;Neil</option><option value="626816716f2c4935c2d0a94a">tmnt - Leo</option><option value="626816706f2c4935c2d0a947">tmnt - don</option><option value="626816716f2c4935c2d0a953">tmnt - mike</option><option value="626816736f2c4935c2d0a956">tmnt - raph</option><option value="626816736f2c4935c2d0a959">tmnt - shredder</option><option value="62680df1ad39c0a3b56314db">toradora - taiga</option><option value="6236e300344dfd1b5c49ff1b">toshino</option><option value="625751e98d4cc4b25400375c">tournesol</option><option value="62ae4b915c049f62b92a8a0e">tux</option><option value="6267f87623e93a15bd0fa684">u gotta be squiddin</option><option value="62698e2823e93a15bd1032ff">uganda knuckles</option><option value="62577f41d5e602044c39289f">umaru wave</option><option value="623dd4a7f3cdea9ff30b1ea6">uz inu</option><option value="625926829819a793f964275d">vargfren</option><option value="624e35e80d42566e19518594">wcw</option><option value="6227acedf8d5ebcce4eacf4e">win9x</option><option value="62592682be1c3d8ce4175e70">worm</option><option value="62ab1fb8928972a417a70b1d">wwf</option><option value="62680a88237860012314d07a">yoshika</option><option value="6268134e52636ab649d7040b">yuruyuri - akari hi</option><option value="6268135752636ab649d7042f">yuruyuri - akari mad</option><option value="6268135452636ab649d70429">yuruyuri - akari rush</option><option value="6268135a3f53d978a0bcac8b">yuruyuri - akari thank you</option><option value="6268135652636ab649d7042c">yuruyuri - ayano 2</option><option value="626813514893d05c990cb1c8">yuruyuri - ayano brag</option><option value="626813504893d05c990cb1bc">yuruyuri - chinatsu love</option><option value="626813583f53d978a0bcac7f">yuruyuri - chinatsu shock</option><option value="6268136523e93a15bd0fb1ab">yuruyuri - chinatsu shock2</option><option value="626813559a0a2401e17daf71">yuruyuri - chinatsu stare</option><option value="626813528dfb7760e867d217">yuruyuri - kyoko eat</option><option value="626813569a0a2401e17daf77">yuruyuri - kyoko excite</option><option value="6268134f52636ab649d70420">yuruyuri - kyoko thumbs up</option><option value="6268135952636ab649d7043b">yuruyuri - sakurako confused</option><option value="626813529a0a2401e17daf6b">yuruyuri - sakurako sorry</option><option value="6268135052636ab649d70426">yuruyuri - yui</option><option value="6268135852636ab649d70432">yuruyuri - yui baffled</option><option value="626813539a0a2401e17daf6e">yuruyuri - yui ok</option><option value="6268135a9a0a2401e17daf7a">yuruyuri - yui shock</option><option value="62591f859819a793f96425e0">⑨</option></select>
+        <img class="flagPreview">
+      </div>
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Remember to follow the
+          <a href="rules.html" class="localPageLink">Rules</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage">いつのまにか三十路になっていく
+Also check out <a href="/a">【Anime & Manga】</a><a href="/loli">【Lolicon】</a><a href="/t">【Tech】</a></div>
+  </div>
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="digi" id="10000"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5da78639855b0eb9c2f02e97141c75fe0d86ba2bcf01c7b6783517c365778bae.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">3.59 MB</span> <span class="dimensionLabel">1431x1954</span>
+  <a class="originalNameLink" href="/.media/5da78639855b0eb9c2f02e97141c75fe0d86ba2bcf01c7b6783517c365778bae.png" download="5da78639855b0eb9c2f02e97141c75fe0d86ba2bcf01c7b6783517c365778bae.png">5da78639855b0eb9c2f02e97141c75fe0d86ba2bcf01c7b6783517c365778bae.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5da78639855b0eb9c2f02e97141c75fe0d86ba2bcf01c7b6783517c365778bae.png" data-filewidth="1431" data-fileheight="1954" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="165" height="225" src="/.media/t_5da78639855b0eb9c2f02e97141c75fe0d86ba2bcf01c7b6783517c365778bae"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="digi-10000">
+    <span class="labelSubject">Eternal Winter Garden</span>
+    <a class="linkName  noEmailName" >Anyonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 20:09:29</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    <span class="bumpLockIndicator" title="Bumplocked"></span>
+    
+    <a class="linkSelf" href="/digi/res/10000.html#10000">No.</a>
+    <a class="linkQuote" href="/digi/res/10000.html#q10000">10000</a>
+    <a class="linkReply" href="/digi/res/10000.html">[Reply]</a>
+    <a class="linkLast" href="/digi/last/10000.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">This is a friendly off-topic singular thread board for weary netizens.
+Have fun!
+
+<span class="greenText">&gt;Di Gi Charat Music Collection</span>
+<a target="&#95;blank" href="https://mega.nz/folder/wIF0BRTR#g5ppTdw-3noiWBIO8Hv6cQ">https://mega.nz/folder/wIF0BRTR#g5ppTdw-3noiWBIO8Hv6cQ</a>
+<span class="greenText">&gt;Archives of the previous thread</span>
+<a target="&#95;blank" href="https://archive.ph/https://8chan.moe/digi/res/1.html">https://archive.ph/https://8chan.moe/digi/res/1.html</a></div>
+  
+  
+  <div class="labelLastEdit">Edited last time by pururin on 07/08/2022 (Fri) 20:10:44.</div>
+  <div class="labelOmission">1005 posts and 556 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="digi" id="10026"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="digi-10000-10026">
+    
+    <a class="linkName  noEmailName" >Anyonymous</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 22:00:20</span> 
+    
+    
+    <a class="linkSelf" href="/digi/res/10000.html#10026">No.</a>
+    <a class="linkQuote" href="/digi/res/10000.html#q10026">10026</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/62228864791152a2476ed356f08cacb0a4ea00e688c244ce892546393a8d12a0.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.12 MB</span> <span class="dimensionLabel">682x1000</span>
+  <a class="originalNameLink" href="/.media/62228864791152a2476ed356f08cacb0a4ea00e688c244ce892546393a8d12a0.png" download="62228864791152a2476ed356f08cacb0a4ea00e688c244ce892546393a8d12a0.png">62228864791152a2476ed356f08cacb0a4ea00e688c244ce892546393a8d12a0.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/62228864791152a2476ed356f08cacb0a4ea00e688c244ce892546393a8d12a0.png" data-filewidth="682" data-fileheight="1000" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="153" height="225" src="/.media/t_62228864791152a2476ed356f08cacb0a4ea00e688c244ce892546393a8d12a0"></a>
+</details>
+</figure></div>
+  <div class="divMessage">RIP in peace Jinzo Abe</div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a></span>  ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=digi">Manage Board</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=digi">Moderate Board</a>
+          <a id="linkMod" href="/mod.js?boardUri=digi&amp;page=1">Moderate Thread</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">No.</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[History]</a>
+    <a class="linkFileHistory">[File History]</a>
+    <a class="linkOffenseRecord">[Offense Record]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Broad range(1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Narrow range(3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Unlink]</a>
+  <a class="unlinkAndDeleteLink">[Unlink & Delete]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

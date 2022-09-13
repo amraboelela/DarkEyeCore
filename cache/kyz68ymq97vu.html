@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+    <title>MEGA Tor FileShare- Best anonymous file sharing service on the dark web - Online file sharing</title>
+
+    <base href="http://crqkllx7afomrokwx6f2sjcnl2do2i3i77hjjb4eqetlgq3cths3o6ad.onion/">
+
+    <!-- Favicon -->
+    <link href="http://crqkllx7afomrokwx6f2sjcnl2do2i3i77hjjb4eqetlgq3cths3o6ad.onion/assets/img/favicon.ico" rel="shortcut icon" type="image/png">
+
+    <!-- Search engine tags -->
+    <meta name="description" content="Darkweb file sharing">
+    <meta name="author" content="MEGA Tor FileShare">
+    <meta name="keywords" content=" uploader, files, transfer"/>
+
+    <!-- External libraries and fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,300,600,800,900" rel="stylesheet" type="text/css">
+    <link href="https://cdn.lineicons.com/3.0/lineicons.css" rel="stylesheet">
+    <link href="assets/css/vegas.min.css?v=2.4.2.1" rel="stylesheet">
+
+    <!-- Preload icons -->
+    <link rel="preload" href="assets/themes/modern/mecwbjnp.json">
+    <link rel="preload" href="assets/themes/modern/lupuorrc.json">
+    <link rel="preload" href="assets/themes/modern/yyecauzv.json">
+
+    <!-- Droppy stylesheet -->
+    <link rel="stylesheet" href="assets/themes/modern/css/style.css?v=20224982762.4.2.1">
+
+        <!-- Style overwrite -->
+    <style>.button.is-info, .upload-block .upload-form .radio-group .radio.selected { background: #cc0000 !important; color: #fff } .close-btn { color: #cc0000 } .navbar.is-info { background-color: #cc0000 }</style>
+    
+    
+    <!-- Javascript -->
+    <script src="assets/js/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+<!-- Background -->
+<div class="background" id="background"></div>
+
+<!-- Dropzone overlay -->
+<div class="drop-overlay" id="drop-overlay"><p>Drop your files here</p></div>
+
+<!-- Mobile navbar -->
+<nav class="navbar is-info mobile-nav" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item" href="http://crqkllx7afomrokwx6f2sjcnl2do2i3i77hjjb4eqetlgq3cths3o6ad.onion/">
+            <img src="assets/img/logo.png" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div class="navbar-menu">
+        <div class="navbar-start">
+                                    <a class="navbar-item" data-target="tab-language">
+                Change language            </a>
+                        <a class="navbar-item" data-target="tab-terms">
+                Terms of service            </a>
+            <a class="navbar-item" data-target="tab-about">
+                About us            </a>
+                                            </div>
+    </div>
+    </div>
+</nav>
+
+<!-- Logo -->
+<a href="http://crqkllx7afomrokwx6f2sjcnl2do2i3i77hjjb4eqetlgq3cths3o6ad.onion/"><img src="assets/img/logo.png" class="main-logo"></a>
+
+<!-- Page tabs -->
+<div class="tabs is-toggle is-small is-right" id="page-tabs">
+    <ul>
+                        <li>
+            <a data-target="tab-language">
+                <span>Change language</span>
+            </a>
+        </li>
+                <li>
+            <a data-target="tab-terms">
+                <span>Terms of service</span>
+            </a>
+        </li>
+        <li>
+            <a data-target="tab-about">
+                <span>About us</span>
+            </a>
+        </li>
+                            </ul>
+</div>
+<!-- END Page tabs -->
+
+<div class="tab-window">
+    <a href="#" class="close-btn"><i class="lni lni-close"></i></a>
+    <hr>
+    <div class="tab" id="tab-language">
+        <h1>Change language</h1>
+
+        <label class="label">Select your prefered language</label>
+        <div class="control has-icons-left">
+            <div class="select is-rounded is-fullwidth">
+                <select onchange="General.changeLanguage()" id="languagePicker">
+                    <option disabled selected> -- Select language -- </option>
+                    <option value="dutch">Dutch</option><option value="english">English</option>                </select>
+            </div>
+            <div class="icon is-small is-left">
+                <i class="lni lni-world"></i>
+            </div>
+        </div>
+        <br>
+            </div>
+    <div class="tab large" id="tab-terms">
+        <h1>Terms of service</h1>
+
+        <p>
+            ** ABSOLUTELY NO CHILD PORNOGRAPHY **, Anything else is winner winner chicken dinner --> Uploads are purged every 30 days, unless specified when uploading.        </p>
+    </div>
+    <div class="tab large" id="tab-about">
+        <h1>About us</h1>
+
+        <p>
+            MEGAtor is a free and anonymous file-sharing dark platform. Share all types content (files, images, music, videos etc...). There is no limit, you download at the maximum speed of your connection and everything is free. Issues or suggestions, hit us up on GuanXi or drop us a line at megator-help@protonmail.com        </p>
+    </div>
+        <!-- Logo -->
+    <img src="assets/img/logo.png" class="tab-logo">
+</div><!-- Upload box -->
+<div class="upload-block">
+    <div class="upload-block-inner">
+        <div class="upload-block-content active" id="terms">
+            <div>
+                <lord-icon
+                        src="assets/themes/modern/yyecauzv.json"
+                        trigger="loop"
+                        colors="primary:#cc0000,secondary:#d59f80"
+                        style="width:100%;height:250px">
+                </lord-icon>
+
+                <span class="description">You will need to accept our Terms of service to proceed to our website.<br><a href="#" id="openTerms">View terms</a></span>
+            </div>
+
+            <div class="button-block">
+                <a class="button is-info is-rounded" href="handler/acceptterms?url=http%3A%2F%2Fcrqkllx7afomrokwx6f2sjcnl2do2i3i77hjjb4eqetlgq3cths3o6ad.onion%2F">Accept</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document.body).on('click', '#openTerms', function(ev) {
+        ev.preventDefault();
+        Tabs.open('tab-terms');
+    });
+</script>
+<!-- Loading tools -->
+<script src="assets/js/jquery-ui.min.js"></script>
+<script src="assets/js/vegas.min.js?v=2.4.2.1"></script>
+<script src="assets/themes/modern/js/progressbar.min.js"></script>
+<script src="assets/themes/modern/js/lord-icon-2.0.2.js"></script>
+<script src="assets/js/jquery.fileupload.js"></script>
+
+<!-- Inline JS variables -->
+<script>
+    var mobileVersion = "no";
+    var maxSize = 1024;
+    var maxFiles = 10;
+    var maxSizeBytes = maxSize * 1024 * 1024;
+    var maxChunkSize = 1;
+    var disallowedFiles = "";
+    var process_activate = false;
+    var siteUrl = "http://crqkllx7afomrokwx6f2sjcnl2do2i3i77hjjb4eqetlgq3cths3o6ad.onion/";
+    var themeColor = "#cc0000";
+    var themeColorSec = "#3e8ed0";
+
+    $(document).ready(function() {
+        var backgrounds = [
+            { src: "assets/backgrounds/cyberpunk-2077-4k-game-o5-1024x768.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/wp8882428.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/408313-best-cortana-wallpaper-1920x1080-notebook.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/1616991088_33-p-kiberpank-devushki-oboi-38.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/maxresdefault.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/D-zFVZ1WwAEdgNa.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/1606994519199510710.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/og_og_1606995484244948497.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/小姐姐_-_by_Dean_Huang.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/65463-cyborg-cyberpunk.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/659469-sci-fu-futuristic-woman-woman-girl-girls-warrior-art-artwork.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/cyberpunk-mission-mj-3840x2160.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/KASJB4D.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/thumb-1920-129538.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/ECx0vkSXkAAtyB4.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/9406929_original.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/15.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/7194980-3.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/jgdkhbsse.jpg", clickurl: "", delay: 4000},{ src: "assets/backgrounds/cyberpnk_plugs-ad.jpg", clickurl: "http://ylmjp76zk4ndvgpncbtgzrfsrzpblvlzgtuoduqgygwdlexou64iwfqd.onion/marketplace/", delay: 15000},{ src: "assets/backgrounds/cybpnk_plugs.jpg", clickurl: "http://ylmjp76zk4ndvgpncbtgzrfsrzpblvlzgtuoduqgygwdlexou64iwfqd.onion/marketplace", delay: 15000},{ src: "assets/backgrounds/cybpunk_deepmen_ad.jpg", clickurl: "http://ylmjp76zk4ndvgpncbtgzrfsrzpblvlzgtuoduqgygwdlexou64iwfqd.onion/marketplace", delay: 15000},        ];
+
+        // Randomize backgrounds
+        backgrounds.shuffle();
+
+        $(".background").vegas({
+            slides: backgrounds,
+            transition: 'fade',
+            preloadImage: true,
+            timer: true,
+            shuffle: true
+        });
+    });
+</script>
+
+<!-- Loading the javascript -->
+<script src="assets/themes/modern/js/droppy.js?v=2.4.2.1"></script>
+
+<script>Form.pickShareOption('link');</script>
+
+
+<!-- Droppy V2.4.2.1 -->
+</body>
+</html>

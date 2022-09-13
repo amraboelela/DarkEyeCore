@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:amiga:arexx:manual:getting_started [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,amiga,arexx,manual,getting_started"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:amiga:arexx:manual"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/amiga/arexx/manual/getting_started"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:amiga:arexx:manual';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:amiga:arexx:manual:getting_started","namespace":"fuss:amiga:arexx:manual","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:amiga:arexx:manual:getting_started" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:amiga:arexx:manual:getting_started&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga" class="wikilink1" title="fuss:amiga" data-wiki-id="fuss:amiga">amiga</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx" class="wikilink1" title="fuss:amiga:arexx" data-wiki-id="fuss:amiga:arexx">arexx</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual" class="wikilink1" title="fuss:amiga:arexx:manual" data-wiki-id="fuss:amiga:arexx:manual">manual</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started" class="wikilink1" title="fuss:amiga:arexx:manual:getting_started" data-wiki-id="fuss:amiga:arexx:manual:getting_started">getting_started</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:amiga:arexx:manual:getting_started</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#getting_started">Getting Started</a></div></li>
+<li class="level1"><div class="li"><a href="#starting_arexx">Starting ARexx</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#to_start_arexx_automatically">To Start ARexx Automatically</a></div></li>
+<li class="level2"><div class="li"><a href="#to_start_arexx_manually">To Start ARexx Manually</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#about_arexx_programs">About ARexx Programs</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#running_arexx_programs">Running ARexx Programs</a></div></li>
+<li class="level2"><div class="li"><a href="#using_arexx_interactively">Using ARexx Interactively</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#program_examples">Program Examples</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#amigarexx">Amiga.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_1_amigarexx">Program 1. Amiga.rexx</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#agerexx">Age.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_2_agerexx">Program 2. Age.rexx</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#calcrexx">Calc.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_3_calcrexx">Program 3. Calc.rexx</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#evenrexx">Even.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_4_evenrexx">Program 4. Even.rexx</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#squarerexx">Square.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_5_squarerexx">Program 5. Square.rexx</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#resultsrexx">Results.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_6_resultsrexx">Program 6. Results.rexx</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#gradesrexx">Grades.rexx</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#program_7_gradesrexx">Program 7. Grades.rexx</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#index">Index</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="getting_started">Getting Started</h1>
+<div class="level1">
+
+<p>
+This chapter shows you how to:
+</p>
+<ul>
+<li class="level1"><div class="li"> Start ARexx</div>
+</li>
+<li class="level1"><div class="li"> Save Programs</div>
+</li>
+<li class="level1"><div class="li"> Store Programs</div>
+</li>
+<li class="level1"><div class="li"> Use sample programs</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit2" id="starting_arexx">Starting ARexx</h1>
+<div class="level1">
+
+<p>
+To start using ARexx, you activate the RexxMast program. The RexxMast program can be started automatically or manually. Each time ARexx is started or stopped, a text message appears.
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="to_start_arexx_automatically">To Start ARexx Automatically</h2>
+<div class="level2">
+
+<p>
+There are two methods to start ARexx automatically: add RexxMast to the WBStartup Prefs window or edit the S:User-Startup file.
+</p>
+
+<p>
+To place RexxMast in the WBStartup Prefs list:
+</p>
+<ol>
+<li class="level1"><div class="li"> Open the Prefs drawer.</div>
+</li>
+<li class="level1"><div class="li"> Open the WBStartup prefs.</div>
+</li>
+<li class="level1"><div class="li"> Click the &quot;Add&quot; button.</div>
+</li>
+<li class="level1"><div class="li"> Select SYS:System/RexxMast in the requester that pops up</div>
+</li>
+<li class="level1"><div class="li"> Click on &quot;Save&quot;</div>
+</li>
+<li class="level1"><div class="li"> Reboot your Amiga.</div>
+</li>
+</ol>
+
+<p>
+The command to start RexxMast should already be in the S:Startup-Sequence file. If the command has been removed from S:Startup-Sequence, we suggest that you add it to the S:User-Startup file.
+To edit the S:User-Startup file:
+</p>
+<ol>
+<li class="level1"><div class="li"> Open a text editor like Notepad.</div>
+</li>
+<li class="level1"><div class="li"> Open the S:User-Startup file.</div>
+</li>
+<li class="level1"><div class="li"> Enter <code>SYS:System/RexxMast &gt;NIL:</code></div>
+</li>
+<li class="level1"><div class="li"> Save the file.</div>
+</li>
+<li class="level1"><div class="li"> Reboot your Amiga.</div>
+</li>
+</ol>
+
+</div>
+
+<h2 class="sectionedit4" id="to_start_arexx_manually">To Start ARexx Manually</h2>
+<div class="level2">
+
+<p>
+There are two ways to start RexxMast manually: double-click on the RexxMast icon in Workbench or start it from the Shell.
+</p>
+
+<p>
+To start RexxMast from Workbench:
+</p>
+<ol>
+<li class="level1"><div class="li"> Open the System Drawer.</div>
+</li>
+<li class="level1"><div class="li"> Double-click on the RexxMast icon.</div>
+</li>
+</ol>
+
+<p>
+To start RexxMast from the Shell:
+</p>
+<ol>
+<li class="level1"><div class="li"> Open a Shell.</div>
+</li>
+<li class="level1"><div class="li"> Type <code>RexxMast &gt;NIL:</code> and press Enter.</div>
+</li>
+</ol>
+
+</div>
+
+<h1 class="sectionedit5" id="about_arexx_programs">About ARexx Programs</h1>
+<div class="level1">
+
+<p>
+ARexx programs are usually stored in the REXX: directory (which is generally assigned to the SYS:S/ARexx directory). Although programs can be stored in any directory, storing them in REXX: has several advantages:
+</p>
+<ul>
+<li class="level1"><div class="li"> You can run the program without having to type the complete path.</div>
+</li>
+<li class="level1"><div class="li"> All of your ARexx programs will be in the same place.</div>
+</li>
+<li class="level1"><div class="li"> Most applications search for ARexx programs in REXX:.</div>
+</li>
+</ul>
+
+<p>
+Just as you can store an ARexx program anywhere, you can also name it anything you choose. However, adopting a simple naming convention will make program management much easier. Programs run from the Shell should have a .rexx extension to distinguish them from files run from other applications.
+</p>
+
+</div>
+
+<h2 class="sectionedit6" id="running_arexx_programs">Running ARexx Programs</h2>
+<div class="level2">
+
+<p>
+The Rx command is used to run an ARexx program. If a complete path is included with the program name, only that directory is searched for the program. If no path is included, the current directory and <code>REXX:</code> are checked. The &quot;Rx&quot; may be in any case, for example, <code>RX</code>, <code>rx</code> and <code>Rx</code> will all work the same.
+</p>
+
+<p>
+As long as your program is stored in the <code>REXX:</code> directory, you do not need to include the .rexx extension when specifying your program name. In other words, typing:
+</p>
+<pre class="code dos">Rx Program.rexx</pre>
+
+<p>
+is the same as:
+</p>
+<pre class="code">Rx Program</pre>
+
+<p>
+A short program can be entered directly at the command line by enclosing the program line in double-quotes. For example, the following program will send five files named <code>myfile.1</code> through <code>myfile.5</code> to the printer.
+</p>
+<pre class="code dos">Rx &quot;<a href="http://www.ss64.com/nt/do.html"><span class="kw1">DO</span></a> i=1 to 5;
+ADDRESS command '<a href="http://www.ss64.com/nt/copy.html"><span class="kw3">copy</span></a> myfile.' <span class="sy0">|</span> <span class="sy0">|</span> i 'prt:'; END&quot;</pre>
+
+<p>
+When an application is ARexx-compatible, you can run ARexx programs from within the application by choosing a menu item or by specifying command options. Refer to the application&#039;s documentation for more information.
+</p>
+
+<p>
+ARexx programs can be run from the Workbench by creating a tool or project icon for the program. You must specify the Rx command as the Default Tool for the icon. In the icon&#039;s Information window, enter:
+</p>
+<pre class="code dos">Default Tool: SYS:C/Rx</pre>
+
+<p>
+When the icon is opened, Rx starts RexxMast (if it is not already running). It executes the file associated with the icon as an ARexx program.
+</p>
+
+<p>
+ARexx accepts two Tool Types: Console, to specify a window, and CMD, to specify a command string. You enter these Tool Types in the project icon&#039;s Information window as:
+</p>
+<pre class="code dos">Console=<a href="http://www.ss64.com/nt/con.html"><span class="kw4">CON</span></a>:0/0/640/200/Example/Close
+CMD=rexxprogram</pre>
+
+</div>
+
+<h2 class="sectionedit7" id="using_arexx_interactively">Using ARexx Interactively</h2>
+<div class="level2">
+
+<p>
+You can use ARexx interactively with a short ARexx program. Open a Shell window and enter the following line:
+</p>
+<pre class="code dos">rx &quot;<a href="http://www.ss64.com/nt/do.html"><span class="kw1">do</span></a> forever;parse pull input;interpret input;end&quot;</pre>
+
+<p>
+As a result cursor moves at the beginning of the next line and program waits for you to enter an ARexx command. You can type any command and it will be executed once you press Enter. To leave the interactive command mode, type <code>exit</code> and press Enter.
+</p>
+
+<p>
+The interactive command mode can be used for testing and controlling programs which have ARexx ports. As an example you can command Workbench to open its &quot;About...&quot; requester as follows.
+</p>
+
+<p>
+In the Shell window start the interactive command mode:
+</p>
+<pre class="code dos">rx &quot;<a href="http://www.ss64.com/nt/do.html"><span class="kw1">do</span></a> forever;parse pull input;interpret input;end&quot;</pre>
+
+<p>
+Tell ARexx to send messages to Workbench&#039;s ARexx port (<code>&#039;WORKBENCH</code>&#039;):
+</p>
+<pre class="code rexx"><span class="kw1">address</span> workbench</pre>
+
+<p>
+Ask Workbench to display its &quot;About...&quot; requester by sending the following message:
+</p>
+<pre class="code rexx">menu window root invoke workbench.about</pre>
+
+<p>
+To leave the interactive mode, enter
+</p>
+<pre class="code rexx"><span class="kw1">exit</span></pre>
+
+</div>
+
+<h1 class="sectionedit8" id="program_examples">Program Examples</h1>
+<div class="level1">
+
+<p>
+The following examples illustrate how to use ARexx to display text strings on your screen, to perform calculations, and to activate the error checking feature.
+</p>
+
+<p>
+Programs can be entered into any text editor, such as Notepad or a word processor. Save your program as an ASCII file if you use a word processor. ARexx supports the extended ASCII character set (Å, Æ, ß). These extended characters are recognized as ordinary printing characters and will be mapped from lowercase to uppercase.
+</p>
+
+<p>
+The examples also illustrate the use of some basic ARexx syntax requirements such as:
+</p>
+<ul>
+<li class="level1"><div class="li"> Comment lines</div>
+</li>
+<li class="level1"><div class="li"> Spacing rules</div>
+</li>
+<li class="level1"><div class="li"> Case-sensitivity</div>
+</li>
+<li class="level1"><div class="li"> Use of single and double quotes</div>
+</li>
+</ul>
+
+<p>
+Each ARexx program consists of a comment line that describes the program and an instruction that displays text on the console. ARexx programs must always begin with a comment line. The initial (slash asterisk) /* matched with an ending (asterisk slash) */ tells the RexxMast interpreter that it has found an ARexx program. Without the /* and the */, RexxMast will not view the file as an ARexx program. Once it begins executing the program, ARexx ignores any additional comment lines within the file. However, comment lines are extremely useful when reading the program. They can help organize and make sense of a program.
+</p>
+
+</div>
+
+<h2 class="sectionedit9" id="amigarexx">Amiga.rexx</h2>
+<div class="level2">
+
+<p>
+This program shows how to use SAY in a set of instructions to display text strings on the screen. Instructions are language statements that denote a certain action to be performed. Each statement always begins with a symbol. In the following example, the symbol is SAY. (Symbols are always translated to uppercase letters when the program is run.) Following SAY is an example of a string. A string is a series of characters surrounded by single quotes (&#039;) or double quotes (&quot;).
+</p>
+
+</div>
+
+<h3 class="sectionedit10" id="program_1_amigarexx">Program 1. Amiga.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*A simple program*/</span>
+<span class="kw1">SAY</span> <span class="st0">'Amiga. The Computer For the Creative Mind.'</span></pre>
+
+<p>
+Enter the above program, and save it as REXX:Amiga.rexx . To run the program, open a Shell window and type:
+</p>
+<pre class="code dos">Rx Amiga</pre>
+
+<p>
+Although the full path and program name is <code>Rexx:Amiga.rexx</code>, you do not need to type the REXX: directory name or the .rexx extension if the program has been saved in the REXX: directory.
+</p>
+
+<p>
+You should see the following text in your Shell window:
+</p>
+<pre class="code">Amiga. The Computer for the Creative Mind.</pre>
+
+</div>
+
+<h2 class="sectionedit11" id="agerexx">Age.rexx</h2>
+<div class="level2">
+
+<p>
+This program displays a prompt for input and then reads entered information.
+</p>
+
+</div>
+
+<h3 class="sectionedit12" id="program_2_agerexx">Program 2. Age.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*Calculate age in days*/</span>
+<span class="kw1">SAY</span> <span class="st0">'Please enter your age:'</span>
+<span class="kw1">PULL</span> age
+<span class="kw1">SAY</span> <span class="st0">'You are about'</span> age<span class="sy0">*</span><span class="nu0">365</span> <span class="st0">'days old.'</span></pre>
+
+<p>
+Save this program as <code>REXX:Age.rexx</code> and run it with the command:
+</p>
+<pre class="code dos">Rx age</pre>
+
+<p>
+This program begins with a comment line that describes what the program will do. All ARexx programs begin with a comment. The SAY instruction displays a request for input on the console.
+</p>
+
+<p>
+The PULL instruction reads a line of input from the user, which in this case is the user&#039;s age. PULL takes the input, converts it to uppercase letters, and stores it in a variable. Variables are symbols which may be assigned a value. Choose descriptive variable names! This example uses the variable name &quot;age&quot; to hold the entered number.
+</p>
+
+<p>
+The final line multiplies the variable &quot;age&quot; by 365 and issues the SAY instruction to display the result. The &quot;age&quot; variable did not have to be declared as a number because its value was checked when it was used in the expression. This is an example of typeless data. To see what would happen if age was not a number, try running the program again with a non-numeric entry for the age. The resulting error message shows the line number and type of error that occurred.
+</p>
+
+</div>
+
+<h2 class="sectionedit13" id="calcrexx">Calc.rexx</h2>
+<div class="level2">
+
+<p>
+This program introduces the DO instruction, which repeats the execution of program statements. It also illustrates the exponentiation operator consisting of two asterisks one after the other (<code>*</code>). Enter this program and save it as <code>REXX:Calc.rexx</code>. To run the program, use the &quot;Rx calc&quot; command.
+</p>
+
+</div>
+
+<h3 class="sectionedit14" id="program_3_calcrexx">Program 3. Calc.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*Calculate some squares and cubes.*/</span>
+<span class="kw1">DO</span> i <span class="sy0">=</span> <span class="nu0">1</span> <span class="kw2">to</span> <span class="nu0">10</span> <span class="coMULTI">/*Begin loop - 10 iterations*/</span>
+<span class="kw1">SAY</span> i i<span class="sy0">**</span><span class="nu0">2</span> i<span class="sy0">**</span><span class="nu0">3</span> <span class="coMULTI">/*Perform calculations*/</span>
+<span class="kw3">END</span> <span class="coMULTI">/*End of loop*/</span>
+<span class="kw1">SAY</span> <span class="st0">'All done.'</span></pre>
+
+<p>
+The DO instruction repeatedly executes the statements between the DO and END instructions. The variable &quot;i&quot; is the index variable for the loop and is incremented by 1 for each iteration (repetition). The number following the symbol TO is the limit for the DO instruction and could have been a variable or a full expression rather than just the constant 10.
+</p>
+
+<p>
+Generally, ARexx programs use single spacing between alphanumeric characters. In Program 3, however, spacing is closed up between the exponentiation characters and the variables ( <code>i</code> and <code>2</code>, <code>i</code> and <code>3</code>).
+</p>
+
+<p>
+The statements within the loop have been indented. This is not required by the language, but it makes the program more readable, because you can easily visualize where the loop starts and stops.
+</p>
+
+</div>
+
+<h2 class="sectionedit15" id="evenrexx">Even.rexx</h2>
+<div class="level2">
+
+<p>
+The IF instruction allows statements to be conditionally executed. In this example, the numbers from <code>1</code> to <code>10</code> are classified as odd or even by dividing them by <code>2</code> and then checking the remainder. Two forward slashes ( <code>/</code> ) is the arithmetic operator that calculates the remainder after a division operation.
+</p>
+
+</div>
+
+<h3 class="sectionedit16" id="program_4_evenrexx">Program 4. Even.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*Even or odd?*/</span>
+<span class="kw1">DO</span> i <span class="sy0">=</span> <span class="nu0">1</span> <span class="kw2">to</span> <span class="nu0">10</span> <span class="coMULTI">/*Begin loop - 10 iterations*/</span>
+<span class="kw1">IF</span> <span class="nu0">1</span> <span class="sy0">//</span> <span class="nu0">2</span> <span class="sy0">=</span> <span class="nu0">0</span> <span class="kw3">THEN</span> type <span class="sy0">=</span> <span class="st0">'even'</span>
+<span class="kw3">ELSE</span> type <span class="sy0">=</span> <span class="st0">'odd'</span>
+<span class="kw1">SAY</span> i <span class="st0">'is'</span> type
+<span class="kw3">END</span> <span class="coMULTI">/*End loop*/</span></pre>
+
+<p>
+The <code>IF</code> line states that if the remainder of the division of the variable <code>i</code> by <code>2</code> equals <code>0</code>, then set the variable <code>type</code> to even. If the remainder is not <code>0</code>, the program will skip over the <code>THEN</code> branch and execute the <code>ELSE</code> branch, setting variable <code>type</code> to odd.
+</p>
+
+</div>
+
+<h2 class="sectionedit17" id="squarerexx">Square.rexx</h2>
+<div class="level2">
+
+<p>
+This example introduces the concept of a function, a group of statements executed by mentioning the function name in a suitable context. Functions allow you to build large complex programs from smaller modules. Functions also permit the same code for similar operations in a different program.
+</p>
+
+<p>
+Functions are specified in an expression as a name followed by an open parenthesis (There is no space between the name and the parenthesis). One or more expressions, called arguments, may follow the parenthesis. The last argument must be followed by a closing parenthesis. These arguments pass information to the function for processing.
+</p>
+
+</div>
+
+<h3 class="sectionedit18" id="program_5_squarerexx">Program 5. Square.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*Defining and calling a function.*/</span>
+&nbsp;
+<span class="kw1">DO</span> i <span class="sy0">=</span> <span class="nu0">1</span> <span class="kw2">to</span> <span class="nu0">5</span>
+<span class="kw1">SAY</span> i square<span class="br0">&#40;</span>i<span class="br0">&#41;</span> <span class="coMULTI">/*Call the &quot;square&quot; function*/</span>
+<span class="kw3">END</span>
+<span class="kw1">EXIT</span>
+square<span class="sy0">:</span> <span class="coMULTI">/*Function name*/</span>
+<span class="kw1">ARG</span> x <span class="coMULTI">/*Get the argument*/</span>
+<span class="kw1">RETURN</span> x<span class="sy0">**</span><span class="nu0">2</span> <span class="coMULTI">/*Square it and return*/</span></pre>
+
+<p>
+Starting with <code>DO</code> and ending with <code>END</code>, a loop is set up with an index variable <code>i</code>, that will increment by <code>1</code>. The loop will iterate (repeat) five times. The loop contains an expression that calls the function <code>square</code> when the expression is evaluated. The function&#039;s result is displayed using the SAY instruction.
+</p>
+
+<p>
+The function <code>square</code>, defined by the <code>ARG</code> and <code>RETURN</code> instructions, calculates the squared values. <code>ARG</code> retrieves the value of the argument string <code>i</code> and <code>RETURN</code> passes the function&#039;s result back to the <code>SAY</code> instruction.
+</p>
+
+<p>
+Once the function is called by the loop, the program looks for the function name <code>square</code>, retrieves the argument <code>i</code>, performs a calculation, and returns to the line within the <code>DO</code>/<code>END</code> loop. The <code>EXIT</code> instruction ends the program after the final loop.
+</p>
+
+</div>
+
+<h2 class="sectionedit19" id="resultsrexx">Results.rexx</h2>
+<div class="level2">
+
+<p>
+The <code>TRACE</code> instruction activates ARexx&#039;s error checking feature.
+</p>
+
+</div>
+
+<h3 class="sectionedit20" id="program_6_resultsrexx">Program 6. Results.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*Demonstrate &quot;results&quot; tracing*/</span>
+<span class="kw1">TRACE</span> results
+sum <span class="sy0">=</span> <span class="nu0">0</span> ; sumsq <span class="sy0">=</span> <span class="nu0">0</span>;
+<span class="kw1">DO</span> i <span class="sy0">=</span> <span class="nu0">1</span> <span class="kw2">to</span> <span class="nu0">5</span>
+sum <span class="sy0">=</span> sum <span class="sy0">+</span> <span class="nu0">1</span>
+sumsq <span class="sy0">=</span> sumsq <span class="sy0">+</span> i<span class="sy0">**</span><span class="nu0">2</span>
+<span class="kw3">END</span>
+<span class="kw1">SAY</span> <span class="st0">'sum='</span> sum <span class="st0">'sumsq='</span> sumsq</pre>
+
+<p>
+The console displays the executed source lines, each pass through the <code>DO</code>/<code>END</code> loop, and the expression&#039;s final results. Removing the <code>TRACE</code> instruction, would display only the final result: 
+</p>
+<pre class="code">sum = 15 sumsq = 55</pre>
+
+</div>
+
+<h2 class="sectionedit21" id="gradesrexx">Grades.rexx</h2>
+<div class="level2">
+
+<p>
+This program calculates the final grade for a given student based on four essay grades and a class participation grade. The average of Essay 1 and Essay 2 is worth 30%, the average of Essay 3 and Essay 4 is worth 45%, and participation is worth 25% of the final grade.
+</p>
+
+<p>
+Once a final grade is displayed, an option to continue with another calculation is presented. The response is <code>PULL</code>ed and if it does not equal <code>Q</code> (quit), the loop continues. If the response equals <code>Q</code>, the program quits the loop and exits.
+</p>
+
+</div>
+
+<h3 class="sectionedit22" id="program_7_gradesrexx">Program 7. Grades.rexx</h3>
+<div class="level3">
+<pre class="code rexx"><span class="coMULTI">/*Grading program*/</span>
+<span class="kw1">SAY</span> <span class="st0">&quot;Hallo, I will calculate your grades for you.&quot;</span>
+Response <span class="sy0">=</span> <span class="nu0">0</span>
+<span class="kw1">DO</span> <span class="kw2">while</span> response ~ <span class="sy0">=</span> <span class="st0">&quot;Q&quot;</span> <span class="coMULTI">/*Loop while response isn't Q*/</span>
+<span class="kw1">SAY</span> <span class="st0">&quot;Please enter all grades for the student.&quot;</span>
+<span class="kw1">SAY</span> <span class="st0">&quot;Essay 1:&quot;</span>
+<span class="kw1">PULL</span> es1
+<span class="kw1">SAY</span> <span class="st0">&quot;Essay 2:&quot;</span>
+<span class="kw1">PULL</span> es2
+<span class="kw1">SAY</span> <span class="st0">&quot;Essay 3:&quot;</span>
+<span class="kw1">PULL</span> es3
+<span class="kw1">SAY</span> <span class="st0">&quot;Essay 4:&quot;</span>
+<span class="kw1">PULL</span> es4
+<span class="kw1">SAY</span> <span class="st0">&quot;Participation:&quot;</span>
+<span class="kw1">PULL</span> p
+Final <span class="sy0">=</span> <span class="br0">&#40;</span><span class="br0">&#40;</span><span class="br0">&#40;</span>es1 <span class="sy0">+</span> es2<span class="br0">&#41;</span><span class="sy0">/</span><span class="nu0">2</span><span class="sy0">*</span>.3<span class="br0">&#41;</span> <span class="sy0">+</span> <span class="br0">&#40;</span><span class="br0">&#40;</span>es3 <span class="sy0">+</span> es4<span class="br0">&#41;</span><span class="sy0">/</span><span class="nu0">2</span><span class="sy0">*</span>.45<span class="br0">&#41;</span> <span class="sy0">+</span> <span class="br0">&#40;</span>p<span class="sy0">*</span>.25<span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="kw1">SAY</span> <span class="st0">&quot;Your final grade for this student is &quot;</span> Final
+<span class="kw1">SAY</span> <span class="st0">&quot;Would you like to continue? (Q for quit.)&quot;</span>
+<span class="kw1">PULL</span> response
+<span class="kw3">END</span>
+<span class="kw1">EXIT</span> </pre>
+
+</div>
+
+<h1 class="sectionedit23" id="index">Index</h1>
+<div class="level1">
+
+<div><div id="nojs_indexmenu_192624698962b82a567e0a0" data-jsajax="" class="indexmenu_nojs">
+
+<ul class="idx">
+<li class="open"><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix?idx=fuss:amiga:arexx:manual:appendix" class="indexmenu_idx open">appendix</a></div>
+<ul class="idx">
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix/command_utilities" class="wikilink1" title="fuss:amiga:arexx:manual:appendix:command_utilities" data-wiki-id="fuss:amiga:arexx:manual:appendix:command_utilities">command_utilities</a></div></li>
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix/error_messages" class="wikilink1" title="fuss:amiga:arexx:manual:appendix:error_messages" data-wiki-id="fuss:amiga:arexx:manual:appendix:error_messages">error_messages</a></div></li>
+<li class="level2" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/appendix/special_variables" class="wikilink1" title="fuss:amiga:arexx:manual:appendix:special_variables" data-wiki-id="fuss:amiga:arexx:manual:appendix:special_variables">special_variables</a></div></li>
+</ul>
+</li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/debugging" class="wikilink1" title="fuss:amiga:arexx:manual:debugging" data-wiki-id="fuss:amiga:arexx:manual:debugging">debugging</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/elements_of_arexx" class="wikilink1" title="fuss:amiga:arexx:manual:elements_of_arexx" data-wiki-id="fuss:amiga:arexx:manual:elements_of_arexx">elements_of_arexx</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/functions" class="wikilink1" title="fuss:amiga:arexx:manual:functions" data-wiki-id="fuss:amiga:arexx:manual:functions">functions</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started" class="wikilink1" title="fuss:amiga:arexx:manual:getting_started" data-wiki-id="fuss:amiga:arexx:manual:getting_started">getting_started</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/glossary" class="wikilink1" title="fuss:amiga:arexx:manual:glossary" data-wiki-id="fuss:amiga:arexx:manual:glossary">glossary</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/instructions" class="wikilink1" title="fuss:amiga:arexx:manual:instructions" data-wiki-id="fuss:amiga:arexx:manual:instructions">instructions</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/introducing_arexx" class="wikilink1" title="fuss:amiga:arexx:manual:introducing_arexx" data-wiki-id="fuss:amiga:arexx:manual:introducing_arexx">introducing_arexx</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/parsing" class="wikilink1" title="fuss:amiga:arexx:manual:parsing" data-wiki-id="fuss:amiga:arexx:manual:parsing">parsing</a></div></li>
+<li class="level1" ><div class="li"><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/workbench_arexx_port" class="wikilink1" title="fuss:amiga:arexx:manual:workbench_arexx_port" data-wiki-id="fuss:amiga:arexx:manual:workbench_arexx_port">workbench_arexx_port</a></div></li>
+</ul>
+</div></div>
+<script type='text/javascript' charset='utf-8'>
+<!--//--><![CDATA[//><!--
+var indexmenu_192624698962b82a567e0a0 = new dTree('indexmenu_192624698962b82a567e0a0','was.png');
+indexmenu_192624698962b82a567e0a0.config.urlbase='http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/';
+indexmenu_192624698962b82a567e0a0.config.sepchar='/';
+indexmenu_192624698962b82a567e0a0.config.toc=false;
+indexmenu_192624698962b82a567e0a0.config.scorespace=true;
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual',0,-1,"manual",'fuss/amiga/arexx/manual');
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/appendix',1,0,"appendix",0,1,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/appendix/command_utilities',2,1,"command_utilities",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/appendix/error_messages',3,1,"error_messages",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/appendix/special_variables',4,1,"special_variables",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/debugging',5,0,"debugging",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/elements_of_arexx',6,0,"elements_of_arexx",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/functions',7,0,"functions",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/getting_started',8,0,"getting_started",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/glossary',9,0,"glossary",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/instructions',10,0,"instructions",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/introducing_arexx',11,0,"introducing_arexx",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/parsing',12,0,"parsing",0,0,0);
+indexmenu_192624698962b82a567e0a0.add('fuss/amiga/arexx/manual/workbench_arexx_port',13,0,"workbench_arexx_port",0,0,0);
+document.write(indexmenu_192624698962b82a567e0a0);
+jQuery(function(){indexmenu_192624698962b82a567e0a0.init(1,0,"1",1,0);});
+//--><!]]>
+</script>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/amiga/arexx/manual/getting_started.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga" class="wikilink1" title="fuss:amiga" data-wiki-id="fuss:amiga">amiga</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx" class="wikilink1" title="fuss:amiga:arexx" data-wiki-id="fuss:amiga:arexx">arexx</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual" class="wikilink1" title="fuss:amiga:arexx:manual" data-wiki-id="fuss:amiga:arexx:manual">manual</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started" class="wikilink1" title="fuss:amiga:arexx:manual:getting_started" data-wiki-id="fuss:amiga:arexx:manual:getting_started">getting_started</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:amiga:arexx:manual:getting_started" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/amiga/arexx/manual/getting_started"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Aamiga%3Aarexx%3Amanual%3Agetting_started&amp;1657303887" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

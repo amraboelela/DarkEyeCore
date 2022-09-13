@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:node-red [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,node-red"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/node-red"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:node-red","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:node-red" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:node-red&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red" class="wikilink1" title="fuss:node-red" data-wiki-id="fuss:node-red">node-red</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:node-red</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#reverse-proxying_node-red_and_alexa_philips_hue_emulation_bridge">Reverse-Proxying Node-RED and Alexa Philips Hue Emulation Bridge</a></div></li>
+<li class="level1"><div class="li"><a href="#creating_an_elegant_multiple_algorithm_random_number_engine_in_node_red">Creating an Elegant Multiple Algorithm Random Number Engine in Node Red</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#creating_the_engine_on_startup">Creating the Engine on Startup</a></div></li>
+<li class="level2"><div class="li"><a href="#selecting_the_algorithm_and_calling_the_engine">Selecting the Algorithm and Calling the Engine</a></div></li>
+<li class="level2"><div class="li"><a href="#export">Export</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#integrating_jenkins_and_node-red_for_job_build_automation">Integrating Jenkins and Node-Red for Job Build Automation</a></div></li>
+<li class="level1"><div class="li"><a href="#persistent_reusable_functions">Persistent Reusable Functions</a></div></li>
+<li class="level1"><div class="li"><a href="#slow_graphs_in_node-red">Slow Graphs in Node-Red</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="reverse-proxying_node-red_and_alexa_philips_hue_emulation_bridge">Reverse-Proxying Node-RED and Alexa Philips Hue Emulation Bridge</h1>
+<div class="level1">
+
+<p>
+The Alexa Philips Hue Emulation Bridge for node-red provided by the <code>node-red-contrib-amazon-echo</code> package needs to listen on port <code>80</code> for HTTP requests sent by Amazon Alexa devices performing discovery. Instructions for the <code>node-red-contrib-amazon-echo</code> package include setting up a port redirect from port <code>8080</code> used by the Amazon Echo Hub node in the node-red interface to port <code>80</code>. Unfortunately, since port <code>80</code> is occupied, a webserver performing reverse proxying cannot be placed in front of node-red without some tricks. 
+</p>
+
+<p>
+One solution is to use nginx and regular expressions in an attempt to match the user-agent of Amazon Echo devices in order to redirect regular HTTP requests to node-red and HTTP requests from Amazon Alexa devices to the <code>node-red-contrib-amazon-echo</code> listening port on <code>8080</code>:
+</p>
+<pre class="code">map &quot;$http_user_agent&quot; $targetupstream {
+  default        http://127.0.0.1:1880;
+  &quot;~AEO[A-Z]{2,3} Build\/[A-Z0-9]+&quot; http://127.0.0.1:8080;
+}
+
+server {
+        listen 80;
+        server_name mynoderedserver.tld;
+
+        access_log /var/log/nginx/access.log;
+
+        location / {
+                proxy_pass $targetupstream;
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection &quot;upgrade&quot;;
+        }
+}
+</pre>
+
+<p>
+The map at the top is responsible for conditionally proxying requests based on the user agents: by default, all requests to the server <code>mynoderedserver.tld</code> are passed to node-red on port <code>1880</code> and requests that match the regular expression <code>~AEO[A-Z]{2,3} Build\/[A-Z0-9]+</code> are delivered to port <code>8080</code> on which the Amazon Alexa Philips Hue Emulation bridge (provided by <code>node-red-contrib-amazon-echo</code>) is listening.
+</p>
+
+<p>
+The result is that a request via a browser to <code>http://mynoderedserver.tld</code> will open up the node-red flow design interface. Similarly, requests to: <code>http://mynoderedserver.tld/ui</code> will open the dashboard provided by <code>node-red-dashboard</code> package. This removes the need to memorize ports and/or IP addresses.
+</p>
+
+</div>
+
+<h1 class="sectionedit2" id="creating_an_elegant_multiple_algorithm_random_number_engine_in_node_red">Creating an Elegant Multiple Algorithm Random Number Engine in Node Red</h1>
+<div class="level1">
+
+<p>
+One problem with Node Red is that function nodes are meant to execute JavaScript code but there is no persistence using the function node such that if the JavaScript code is a class then the class within the function node will have to be instantiated each and every time a message is passed to the input of the function node.
+</p>
+
+<p>
+It would be nice if Node Red flow would allow for easily adding classes by instantiating the classes when the Node Red flow is deployed (or started) and then re-using the instantiated object every time. There is a way to reuse classes instantiated on startup by using dynamic object instantiation and invocation whilst additionally only using built-in nodes in order to not require any third-party modules.
+</p>
+
+<p>
+As an example, the following is an implementation as a Node Red flow of a multiple-algorithm random number engine. The flow can be used by using link in and out nodes after specifying the algorithm to be used.
+</p>
+
+</div>
+
+<h2 class="sectionedit3" id="creating_the_engine_on_startup">Creating the Engine on Startup</h2>
+<div class="level2">
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/fuss_iot_node_red_flow_rng_engine.png?id=fuss%3Anode-red" class="media" title="fuss:fuss_iot_node_red_flow_rng_engine.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/fuss_iot_node_red_flow_rng_engine.png?w=512&amp;tok=4399ce" class="media" alt="" width="512" /></a>
+</p>
+
+<p>
+The following nodes are used to dynamically instantiate the classes that will generate the random numbers:
+</p>
+<ul>
+<li class="level1"><div class="li"> the <code>Begin</code> node is used just to jump start the entire flow when the flow is deployed or node-red is restarted,</div>
+</li>
+<li class="level1"><div class="li"> each <code>Class Definition</code> node contains a class that will generate a random number with the only requirement that the class implements at least a <code>random()</code> method call (perhaps there is a way to create an interface in node red such that each class node is supposed to implement the <code>random()</code> function (?)),</div>
+</li>
+<li class="level1"><div class="li"> the <code>Instantiation</code> class uses the JavaScript <code>eval</code> function to dynamically create an instance of the random number generating class,</div>
+</li>
+<li class="level1"><div class="li"> the <code>Storage</code> node defines the storage where an instance of the random number generating class will be stored,</div>
+</li>
+<li class="level1"><div class="li"> <code>Store</code> uses <code>flow.set()</code> method call internal to Node Red in order to store the instantiated object in memory.</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit4" id="selecting_the_algorithm_and_calling_the_engine">Selecting the Algorithm and Calling the Engine</h2>
+<div class="level2">
+
+<p>
+After an instance of each class is created and stored, the following flow is used to generate random numbers whenever other flows link using the link-in node and will output the random numbers via the link-out node to be processed.
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/fuss_iot_node_red_flow_invoking.png?id=fuss%3Anode-red" class="media" title="fuss:fuss_iot_node_red_flow_invoking.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/fuss_iot_node_red_flow_invoking.png?w=512&amp;tok=052e81" class="media" alt="" width="512" /></a>
+</p>
+
+<p>
+The nodes within this flow have the following use:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>Method Invoker</code> is responsible for retrieving a stored instance of the engine and then generating a random number; the node calls <code>.random()</code> on a dynamically constructed object such that the requirement is that the classes define a <code>random()</code> method,</div>
+</li>
+<li class="level1"><div class="li"> <code>Normalize [0,1]</code> is responsible for fitting the value generated by the clases within the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge88c070a4a52572ef1d5792a341c0900.png" class="latex_inline" alt="$[0, 1]$" title="Math" /> interval (perhps this could be parametrized further on),</div>
+</li>
+<li class="level1"><div class="li"> the two link-in and link-out nodes should be linked to from other flows in order to process incoming requests for a random number,</div>
+</li>
+<li class="level1"><div class="li"> <code>timestamp</code> and <code>msg</code> are meant just for testing</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit5" id="export">Export</h2>
+<div class="level2">
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/node-red?codeblock=1" title="Download Snippet" class="mediafile mf_json">rng.json</a></dt>
+<dd><pre class="code file json">[{&quot;id&quot;:&quot;bf051c9.452f96&quot;,&quot;type&quot;:&quot;tab&quot;,&quot;label&quot;:&quot;Random Number Generators&quot;,&quot;disabled&quot;:false,&quot;info&quot;:&quot;&quot;},{&quot;id&quot;:&quot;3f5cdd9f.a44f52&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;true&quot;,&quot;targetType&quot;:&quot;full&quot;,&quot;x&quot;:970,&quot;y&quot;:560,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;4dffce72.2bcd48&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Begin&quot;,&quot;topic&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;str&quot;,&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:true,&quot;onceDelay&quot;:&quot;1&quot;,&quot;x&quot;:310,&quot;y&quot;:160,&quot;wires&quot;:[[&quot;986c2654.33466&quot;,&quot;f79a2199.e417e&quot;]]},{&quot;id&quot;:&quot;9f9325d1.023298&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Store&quot;,&quot;func&quot;:&quot;/* Push the object instance onto the pool of global variables. */\nflow.set(msg.topic, msg.payload, msg.store);\n&quot;,&quot;outputs&quot;:0,&quot;noerr&quot;:0,&quot;x&quot;:990,&quot;y&quot;:160,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;986c2654.33466&quot;,&quot;type&quot;:&quot;template&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Class Definition&quot;,&quot;field&quot;:&quot;payload&quot;,&quot;fieldType&quot;:&quot;msg&quot;,&quot;format&quot;:&quot;javascript&quot;,&quot;syntax&quot;:&quot;plain&quot;,&quot;template&quot;:&quot;/* \n   Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,\n   All rights reserved.                          \n \n   Redistribution and use in source and binary forms, with or without\n   modification, are permitted provided that the following conditions\n   are met:\n \n     1. Redistributions of source code must retain the above copyright\n        notice, this list of conditions and the following disclaimer.\n \n     2. Redistributions in binary form must reproduce the above copyright\n        notice, this list of conditions and the following disclaimer in the\n        documentation and/or other materials provided with the distribution.\n \n     3. The names of its contributors may not be used to endorse or promote \n        products derived from this software without specific prior written \n        permission.\n \n   THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n   \&quot;AS IS\&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\n   LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\n   A PARTICULAR PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE COPYRIGHT OWNER OR\n   CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL,\n   EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,\n   PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR\n   PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF\n   LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING\n   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS\n   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.\n \n \n   Any feedback is very welcome.\n   http://www.math.sci.hiroshima-u.ac.jp/~m-mat/MT/emt.html\n   email: m-mat @ math.sci.hiroshima-u.ac.jp (remove space)\n\n   Wrapped by Sean McCullough (banksean@gmail.com) into JavaScript,\n   Altered by Wizardry and Steamworks (grimore.org) into a JavaScript class-based variation.\n*/\n\nclass MersenneTwister {\n    // class methods\n    constructor(seed) {\n        if (seed === undefined) {\n            seed = new Date().getTime();\n        }\n        /* Period parameters */\n        this.N = 624;\n        this.M = 397;\n        this.MATRIX_A = 0x9908b0df;   /* constant vector a */\n        this.UPPER_MASK = 0x80000000; /* most significant w-r bits */\n        this.LOWER_MASK = 0x7fffffff; /* least significant r bits */\n\n        this.mt = new Array(this.N); /* the array for the state vector */\n        this.mti = this.N + 1; /* mti==N+1 means mt[N] is not initialized */\n\n        this.init_genrand(seed);\n    }\n\n    /* initializes mt[N] with a seed */\n    init_genrand() {\n        this.mt[0] = s &gt;&gt;&gt; 0;\n        for (this.mti = 1; this.mti &lt; this.N; this.mti++) {\n            var s = this.mt[this.mti - 1] ^ (this.mt[this.mti - 1] &gt;&gt;&gt; 30);\n            this.mt[this.mti] = (((((s &amp; 0xffff0000) &gt;&gt;&gt; 16) * 1812433253) &lt;&lt; 16) + (s &amp; 0x0000ffff) * 1812433253)\n                + this.mti;\n            /* See Knuth TAOCP Vol2. 3rd Ed. P.106 for multiplier. */\n            /* In the previous versions, MSBs of the seed affect   */\n            /* only MSBs of the array mt[].                        */\n            /* 2002/01/09 modified by Makoto Matsumoto             */\n            this.mt[this.mti] &gt;&gt;&gt;= 0;\n            /* for &gt;32 bit machines */\n        }\n    }\n\n    /* initialize by an array with array-length */\n    /* init_key is the array for initializing keys */\n    /* key_length is its length */\n    /* slight change for C++, 2004/2/26 */\n    init_by_array(init_key, key_length) {\n        var i, j, k;\n        this.init_genrand(19650218);\n        i = 1; j = 0;\n        k = (this.N &gt; key_length ? this.N : key_length);\n        for (; k; k--) {\n            var s = this.mt[i - 1] ^ (this.mt[i - 1] &gt;&gt;&gt; 30)\n            this.mt[i] = (this.mt[i] ^ (((((s &amp; 0xffff0000) &gt;&gt;&gt; 16) * 1664525) &lt;&lt; 16) + ((s &amp; 0x0000ffff) * 1664525)))\n                + init_key[j] + j; /* non linear */\n            this.mt[i] &gt;&gt;&gt;= 0; /* for WORDSIZE &gt; 32 machines */\n            i++; j++;\n            if (i &gt;= this.N) { this.mt[0] = this.mt[this.N - 1]; i = 1; }\n            if (j &gt;= key_length) j = 0;\n        }\n        for (k = this.N - 1; k; k--) {\n            var s = this.mt[i - 1] ^ (this.mt[i - 1] &gt;&gt;&gt; 30);\n            this.mt[i] = (this.mt[i] ^ (((((s &amp; 0xffff0000) &gt;&gt;&gt; 16) * 1566083941) &lt;&lt; 16) + (s &amp; 0x0000ffff) * 1566083941))\n                - i; /* non linear */\n            this.mt[i] &gt;&gt;&gt;= 0; /* for WORDSIZE &gt; 32 machines */\n            i++;\n            if (i &gt;= this.N) { this.mt[0] = this.mt[this.N - 1]; i = 1; }\n        }\n\n        this.mt[0] = 0x80000000; /* MSB is 1; assuring non-zero initial array */\n    }\n\n    /* generates a random number on [0,0xffffffff]-interval */\n    genrand_int32() {\n        var y;\n        var mag01 = new Array(0x0, this.MATRIX_A);\n        /* mag01[x] = x * MATRIX_A  for x=0,1 */\n\n        if (this.mti &gt;= this.N) { /* generate N words at one time */\n            var kk;\n\n            if (this.mti == this.N + 1)   /* if init_genrand() has not been called, */\n                this.init_genrand(5489); /* a default initial seed is used */\n\n            for (kk = 0; kk &lt; this.N - this.M; kk++) {\n                y = (this.mt[kk] &amp; this.UPPER_MASK) | (this.mt[kk + 1] &amp; this.LOWER_MASK);\n                this.mt[kk] = this.mt[kk + this.M] ^ (y &gt;&gt;&gt; 1) ^ mag01[y &amp; 0x1];\n            }\n            for (; kk &lt; this.N - 1; kk++) {\n                y = (this.mt[kk] &amp; this.UPPER_MASK) | (this.mt[kk + 1] &amp; this.LOWER_MASK);\n                this.mt[kk] = this.mt[kk + (this.M - this.N)] ^ (y &gt;&gt;&gt; 1) ^ mag01[y &amp; 0x1];\n            }\n            y = (this.mt[this.N - 1] &amp; this.UPPER_MASK) | (this.mt[0] &amp; this.LOWER_MASK);\n            this.mt[this.N - 1] = this.mt[this.M - 1] ^ (y &gt;&gt;&gt; 1) ^ mag01[y &amp; 0x1];\n\n            this.mti = 0;\n        }\n\n        y = this.mt[this.mti++];\n\n        /* Tempering */\n        y ^= (y &gt;&gt;&gt; 11);\n        y ^= (y &lt;&lt; 7) &amp; 0x9d2c5680;\n        y ^= (y &lt;&lt; 15) &amp; 0xefc60000;\n        y ^= (y &gt;&gt;&gt; 18);\n\n        return y &gt;&gt;&gt; 0;\n    }\n\n    /* generates a random number on [0,0x7fffffff]-interval */\n    genrand_int31() {\n        return (this.genrand_int32() &gt;&gt;&gt; 1);\n    }\n\n    /* generates a random number on [0,1]-real-interval */\n    genrand_real1() {\n        return this.genrand_int32() * (1.0 / 4294967295.0);\n        /* divided by 2^32-1 */\n    }\n\n    /* generates a random number on [0,1)-real-interval */\n    random() {\n        return this.genrand_int32() * (1.0 / 4294967296.0);\n        /* divided by 2^32 */\n    }\n\n    /* generates a random number on (0,1)-real-interval */\n    genrand_real3() {\n        return (this.genrand_int32() + 0.5) * (1.0 / 4294967296.0);\n        /* divided by 2^32 */\n    }\n\n    /* generates a random number on [0,1) with 53-bit resolution*/\n    genrand_res53() {\n        var a = this.genrand_int32() &gt;&gt;&gt; 5, b = this.genrand_int32() &gt;&gt;&gt; 6;\n        return (a * 67108864.0 + b) * (1.0 / 9007199254740992.0);\n    }\n}\n&quot;,&quot;output&quot;:&quot;str&quot;,&quot;x&quot;:480,&quot;y&quot;:80,&quot;wires&quot;:[[&quot;e0a73b2e.e3e1d&quot;]]},{&quot;id&quot;:&quot;e0a73b2e.e3e1d&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Instantiation&quot;,&quot;func&quot;:&quot;/* Retrieve the class definition from the passed message. */\nvar classDefinition = msg.payload;\n\n/* Construct the object from the class definition. */\nvar object = eval(`new ${classDefinition}()`);\n\n/* Return the instantiated object. */\nmsg.topic = object.constructor.name;\nmsg.payload = object;\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;x&quot;:670,&quot;y&quot;:160,&quot;wires&quot;:[[&quot;2575ce58.41a362&quot;]]},{&quot;id&quot;:&quot;df62633f.d51c38&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Method Invoker&quot;,&quot;func&quot;:&quot;var engine = flow.get(msg.payload, 'randomEngine');\nmsg.payload = engine.random();\nreturn msg;\n&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;x&quot;:680,&quot;y&quot;:400,&quot;wires&quot;:[[&quot;64ac43e2.5e73bc&quot;,&quot;aaae4e9d.091358&quot;]]},{&quot;id&quot;:&quot;2575ce58.41a362&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Storage&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;store&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;randomEngine&quot;,&quot;tot&quot;:&quot;str&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:840,&quot;y&quot;:160,&quot;wires&quot;:[[&quot;9f9325d1.023298&quot;]]},{&quot;id&quot;:&quot;e5fa9a1b.38e4c&quot;,&quot;type&quot;:&quot;link in&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;&quot;,&quot;links&quot;:[],&quot;x&quot;:435,&quot;y&quot;:400,&quot;wires&quot;:[[&quot;df62633f.d51c38&quot;]]},{&quot;id&quot;:&quot;64ac43e2.5e73bc&quot;,&quot;type&quot;:&quot;link out&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;&quot;,&quot;links&quot;:[],&quot;x&quot;:895,&quot;y&quot;:400,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;f79a2199.e417e&quot;,&quot;type&quot;:&quot;template&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Class Definition&quot;,&quot;field&quot;:&quot;payload&quot;,&quot;fieldType&quot;:&quot;msg&quot;,&quot;format&quot;:&quot;javascript&quot;,&quot;syntax&quot;:&quot;plain&quot;,&quot;template&quot;:&quot;/*\n * Converted from Lehmer Random Number Generator in LOLCode.\n *   \n * OBTW  Copyright (C) 2014 Wizardry and Steamworks - License: GNU GPLv3  TLDR\n * OBTW X(k+1) = g * X(k) mod n\n * I HAS A COUNTER ITZ 1\n * HOW IZ I WAS_MESS YR NUMBER\n *   I HAS A THING ITZ MAEK NUMBER A NUMBAR\n *     IM IN YR LOOP UPPIN YR ROUNDS WILE DIFFRINT ROUNDS AN NUMBER\n *       THING R MOD OF PRODUKT OF 75 AN SUM OF THING AN COUNTER AN 65537\n *         COUNTER R SUM OF COUNTER AN 1\n *     IM OUTTA YR LOOP\n *   FOUND YR MOD OF THING AN NUMBER\n * IF U SAY SO\n *\n */\n \nclass Lehmer {\n    constructor(g, n, max) {\n        if(g === undefined) {\n            this.g = 75;\n        }\n        \n        if (n === undefined) {\n            this.n = 65537;\n        }\n        \n        if(max === undefined) {\n            this.max = 100;\n        }\n        \n        this.i = 1;\n    }\n    \n    random() {\n        this.i = (this.g * (this.max + this.i++)) % this.n;\n        return this.i;\n    }\n}\n&quot;,&quot;output&quot;:&quot;str&quot;,&quot;x&quot;:480,&quot;y&quot;:240,&quot;wires&quot;:[[&quot;e0a73b2e.e3e1d&quot;]]},{&quot;id&quot;:&quot;97dde7ac.c1f06&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;&quot;,&quot;topic&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;x&quot;:460,&quot;y&quot;:500,&quot;wires&quot;:[[&quot;df62633f.d51c38&quot;]]},{&quot;id&quot;:&quot;aaae4e9d.091358&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;bf051c9.452f96&quot;,&quot;name&quot;:&quot;Normalize [0,1]&quot;,&quot;func&quot;:&quot;const magnitude = Math.ceil(Math.log10(msg.payload + 1));\n\nvar modulo = msg.payload % magnitude;\n\nswitch(Math.abs(parseInt(msg.payload))) {\n    case 0:\n        msg.payload = modulo;\n        break;\n    default:\n        msg.payload = modulo / magnitude;\n        break;\n}\n\nreturn msg;\n&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;x&quot;:880,&quot;y&quot;:480,&quot;wires&quot;:[[&quot;3f5cdd9f.a44f52&quot;]]}]</pre>
+</dd></dl>
+
+</div>
+
+<h1 class="sectionedit6" id="integrating_jenkins_and_node-red_for_job_build_automation">Integrating Jenkins and Node-Red for Job Build Automation</h1>
+<div class="level1">
+
+<p>
+A node-red flow can be crated to automate building jobs via the UI. Instead of statically declaring jobs within node-red, with the help of some clever disposition of nodes, the list of jobs to build can be retrieved via the Jenkins HTTP API, dynamically built and fed into a dropdown selector on the dashboard. Then, when a user selects a job on the dashboard, the job name gets stored among the flow variables to be picked up when the user presses a build button. When the build button is pressed, the job name is retrieved from the dropdown selector on the UI and a POST HTTP request is made to Jenkins to run the job.
+</p>
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/fuss/node-red?codeblock=2" title="Download Snippet" class="mediafile mf_json">jenkins.json</a></dt>
+<dd><pre class="code file json">[{&quot;id&quot;:&quot;7180fd67.94b164&quot;,&quot;type&quot;:&quot;tab&quot;,&quot;label&quot;:&quot;Jenkins&quot;,&quot;disabled&quot;:false,&quot;info&quot;:&quot;&quot;},{&quot;id&quot;:&quot;8218139e.d32828&quot;,&quot;type&quot;:&quot;ui_button&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;group&quot;:&quot;2fd36062.d4104&quot;,&quot;order&quot;:3,&quot;width&quot;:0,&quot;height&quot;:0,&quot;passthru&quot;:false,&quot;label&quot;:&quot;Build&quot;,&quot;tooltip&quot;:&quot;&quot;,&quot;color&quot;:&quot;&quot;,&quot;bgcolor&quot;:&quot;&quot;,&quot;icon&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;str&quot;,&quot;topic&quot;:&quot;&quot;,&quot;x&quot;:150,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;59285b3c.629fbc&quot;]]},{&quot;id&quot;:&quot;2ccebd98.8406a2&quot;,&quot;type&quot;:&quot;http request&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;method&quot;:&quot;POST&quot;,&quot;ret&quot;:&quot;txt&quot;,&quot;paytoqs&quot;:false,&quot;url&quot;:&quot;&quot;,&quot;tls&quot;:&quot;&quot;,&quot;persist&quot;:false,&quot;proxy&quot;:&quot;&quot;,&quot;authType&quot;:&quot;&quot;,&quot;x&quot;:1230,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;3841dda8.ea9b7a&quot;]]},{&quot;id&quot;:&quot;ad14cdf0.2ccba8&quot;,&quot;type&quot;:&quot;credentials&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;props&quot;:[{&quot;value&quot;:&quot;username&quot;,&quot;type&quot;:&quot;msg&quot;},{&quot;value&quot;:&quot;password&quot;,&quot;type&quot;:&quot;msg&quot;},{&quot;value&quot;:&quot;jenkins&quot;,&quot;type&quot;:&quot;msg&quot;}],&quot;x&quot;:670,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;9e5e36f5.bb0ae&quot;]]},{&quot;id&quot;:&quot;5970b615.2af028&quot;,&quot;type&quot;:&quot;ui_dropdown&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Jenkins Jobs&quot;,&quot;label&quot;:&quot;Jobs&quot;,&quot;tooltip&quot;:&quot;Jenkins Jobs&quot;,&quot;place&quot;:&quot;Select option&quot;,&quot;group&quot;:&quot;2fd36062.d4104&quot;,&quot;order&quot;:3,&quot;width&quot;:0,&quot;height&quot;:0,&quot;passthru&quot;:false,&quot;options&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;value&quot;:&quot;&quot;,&quot;type&quot;:&quot;str&quot;}],&quot;payload&quot;:&quot;&quot;,&quot;topic&quot;:&quot;&quot;,&quot;x&quot;:980,&quot;y&quot;:440,&quot;wires&quot;:[[&quot;6ffe4097.a8688&quot;]]},{&quot;id&quot;:&quot;384a76ed.cd970a&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Initialize&quot;,&quot;topic&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:true,&quot;onceDelay&quot;:0.1,&quot;x&quot;:280,&quot;y&quot;:320,&quot;wires&quot;:[[&quot;8f19937f.086ad8&quot;]]},{&quot;id&quot;:&quot;a95a1739.ce39&quot;,&quot;type&quot;:&quot;http request&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;method&quot;:&quot;GET&quot;,&quot;ret&quot;:&quot;txt&quot;,&quot;paytoqs&quot;:false,&quot;url&quot;:&quot;&quot;,&quot;tls&quot;:&quot;&quot;,&quot;persist&quot;:false,&quot;proxy&quot;:&quot;&quot;,&quot;authType&quot;:&quot;&quot;,&quot;x&quot;:1010,&quot;y&quot;:380,&quot;wires&quot;:[[&quot;f5a411b0.ca704&quot;]]},{&quot;id&quot;:&quot;8f19937f.086ad8&quot;,&quot;type&quot;:&quot;credentials&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;props&quot;:[{&quot;value&quot;:&quot;username&quot;,&quot;type&quot;:&quot;msg&quot;},{&quot;value&quot;:&quot;password&quot;,&quot;type&quot;:&quot;msg&quot;},{&quot;value&quot;:&quot;jenkins&quot;,&quot;type&quot;:&quot;msg&quot;}],&quot;x&quot;:470,&quot;y&quot;:380,&quot;wires&quot;:[[&quot;4a595e2f.95b068&quot;]]},{&quot;id&quot;:&quot;4a595e2f.95b068&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Authentication&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;headers&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;'Basic ' &amp; $base64encode(username &amp; ':' &amp; password)&quot;,&quot;tot&quot;:&quot;jsonata&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:660,&quot;y&quot;:380,&quot;wires&quot;:[[&quot;ab2064a2.a4b978&quot;]]},{&quot;id&quot;:&quot;3841dda8.ea9b7a&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;true&quot;,&quot;targetType&quot;:&quot;full&quot;,&quot;x&quot;:1250,&quot;y&quot;:660,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;f5a411b0.ca704&quot;,&quot;type&quot;:&quot;json&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;property&quot;:&quot;payload&quot;,&quot;action&quot;:&quot;obj&quot;,&quot;pretty&quot;:false,&quot;x&quot;:1170,&quot;y&quot;:380,&quot;wires&quot;:[[&quot;10c9d4d7.594b4b&quot;]]},{&quot;id&quot;:&quot;a8e2cc1e.9e44c8&quot;,&quot;type&quot;:&quot;split&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;splt&quot;:&quot;\\n&quot;,&quot;spltType&quot;:&quot;str&quot;,&quot;arraySplt&quot;:1,&quot;arraySpltType&quot;:&quot;len&quot;,&quot;stream&quot;:false,&quot;addname&quot;:&quot;&quot;,&quot;x&quot;:310,&quot;y&quot;:440,&quot;wires&quot;:[[&quot;769ed2a8.094b9c&quot;]]},{&quot;id&quot;:&quot;10c9d4d7.594b4b&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Get Jobs&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;payload&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;payload.jobs&quot;,&quot;tot&quot;:&quot;msg&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:160,&quot;y&quot;:440,&quot;wires&quot;:[[&quot;a8e2cc1e.9e44c8&quot;]]},{&quot;id&quot;:&quot;769ed2a8.094b9c&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Get Name&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;payload&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;msg.payload.name&quot;,&quot;tot&quot;:&quot;msg&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:470,&quot;y&quot;:440,&quot;wires&quot;:[[&quot;62878d4e.d6909c&quot;]]},{&quot;id&quot;:&quot;62878d4e.d6909c&quot;,&quot;type&quot;:&quot;join&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;mode&quot;:&quot;custom&quot;,&quot;build&quot;:&quot;array&quot;,&quot;property&quot;:&quot;payload&quot;,&quot;propertyType&quot;:&quot;msg&quot;,&quot;key&quot;:&quot;topic&quot;,&quot;joiner&quot;:&quot;\\n&quot;,&quot;joinerType&quot;:&quot;str&quot;,&quot;accumulate&quot;:false,&quot;timeout&quot;:&quot;&quot;,&quot;count&quot;:&quot;&quot;,&quot;reduceRight&quot;:false,&quot;reduceExp&quot;:&quot;&quot;,&quot;reduceInit&quot;:&quot;&quot;,&quot;reduceInitType&quot;:&quot;&quot;,&quot;reduceFixup&quot;:&quot;&quot;,&quot;x&quot;:630,&quot;y&quot;:440,&quot;wires&quot;:[[&quot;b18ded1a.7ce8f8&quot;]]},{&quot;id&quot;:&quot;b18ded1a.7ce8f8&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Set Options&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;options&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;payload&quot;,&quot;tot&quot;:&quot;msg&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:790,&quot;y&quot;:440,&quot;wires&quot;:[[&quot;5970b615.2af028&quot;]]},{&quot;id&quot;:&quot;6ffe4097.a8688&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Set Selected Job&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;selectedJob&quot;,&quot;pt&quot;:&quot;flow&quot;,&quot;to&quot;:&quot;payload&quot;,&quot;tot&quot;:&quot;msg&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:1190,&quot;y&quot;:440,&quot;wires&quot;:[[]]},{&quot;id&quot;:&quot;59285b3c.629fbc&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Get Selected Job&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;job&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;selectedJob&quot;,&quot;tot&quot;:&quot;flow&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:330,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;74a80484.312994&quot;]]},{&quot;id&quot;:&quot;9e5e36f5.bb0ae&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Authentication&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;headers&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;'Basic ' &amp; $base64encode(username &amp; ':' &amp; password)&quot;,&quot;tot&quot;:&quot;jsonata&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:860,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;cdffb7c2.a7b908&quot;]]},{&quot;id&quot;:&quot;cdffb7c2.a7b908&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Build URL&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;url&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;'https://' &amp; username &amp; ':' &amp; password &amp; '@' &amp; jenkins &amp; '/job/' &amp; job &amp; '/build'&quot;,&quot;tot&quot;:&quot;jsonata&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:1050,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;2ccebd98.8406a2&quot;]]},{&quot;id&quot;:&quot;feccf819.b3eba&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;topic&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;x&quot;:140,&quot;y&quot;:640,&quot;wires&quot;:[[&quot;59285b3c.629fbc&quot;]]},{&quot;id&quot;:&quot;74a80484.312994&quot;,&quot;type&quot;:&quot;switch&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;&quot;,&quot;property&quot;:&quot;payload&quot;,&quot;propertyType&quot;:&quot;msg&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;nempty&quot;},{&quot;t&quot;:&quot;else&quot;}],&quot;checkall&quot;:&quot;true&quot;,&quot;repair&quot;:false,&quot;outputs&quot;:2,&quot;x&quot;:510,&quot;y&quot;:540,&quot;wires&quot;:[[&quot;ad14cdf0.2ccba8&quot;],[]]},{&quot;id&quot;:&quot;ab2064a2.a4b978&quot;,&quot;type&quot;:&quot;change&quot;,&quot;z&quot;:&quot;7180fd67.94b164&quot;,&quot;name&quot;:&quot;Build URL&quot;,&quot;rules&quot;:[{&quot;t&quot;:&quot;set&quot;,&quot;p&quot;:&quot;url&quot;,&quot;pt&quot;:&quot;msg&quot;,&quot;to&quot;:&quot;'https://' &amp; jenkins &amp; '/api/json?tree=jobs[name]'&quot;,&quot;tot&quot;:&quot;jsonata&quot;}],&quot;action&quot;:&quot;&quot;,&quot;property&quot;:&quot;&quot;,&quot;from&quot;:&quot;&quot;,&quot;to&quot;:&quot;&quot;,&quot;reg&quot;:false,&quot;x&quot;:830,&quot;y&quot;:380,&quot;wires&quot;:[[&quot;a95a1739.ce39&quot;]]},{&quot;id&quot;:&quot;2fd36062.d4104&quot;,&quot;type&quot;:&quot;ui_group&quot;,&quot;z&quot;:&quot;&quot;,&quot;name&quot;:&quot;Jenkins&quot;,&quot;tab&quot;:&quot;a4498652.0868f&quot;,&quot;disp&quot;:true,&quot;width&quot;:&quot;6&quot;,&quot;collapse&quot;:true},{&quot;id&quot;:&quot;a4498652.0868f&quot;,&quot;type&quot;:&quot;ui_tab&quot;,&quot;z&quot;:&quot;&quot;,&quot;name&quot;:&quot;Vault 101&quot;,&quot;icon&quot;:&quot;dashboard&quot;,&quot;disabled&quot;:false,&quot;hidden&quot;:false}]</pre>
+</dd></dl>
+
+<p>
+After importing the template, the credentials nodes have to be updated in order to set the Jenkins username (<code>username</code>), API token (<code>password</code>) and the Jenkins hostname (<code>jenkins</code>).
+</p>
+
+<p>
+The main trick involved in populating the dropdown dashboard element is a REST call to Jenkins to retrieve the name of the jobs and then format the response to match the <code>msg.options</code> input parameter of the dropdown dashboard element. When a user selects an job item on the dashboard from the dropdown element, the dropdown node outputs the selected item as <code>msg.payload</code> which is then stored into a flow variable <code>flow.selectedJob</code>. Conversely, when the build button is pressed, the job name is retrieved from the flow variable <code>flow.selectedJob</code> and then the rest of the workflow involves making a REST call to Jenkins in order to start the job.
+</p>
+
+</div>
+
+<h1 class="sectionedit7" id="persistent_reusable_functions">Persistent Reusable Functions</h1>
+<div class="level1">
+
+<p>
+Since Node-Red does not have a function for every purpose it is sometimes necessary to define javascript functions within function nodes. However, since function nodes cannot route messages out of different outlets, reusing a defined function usually implies copying the code over to other nodes.
+</p>
+
+<p>
+In order to define a persistent function, one solution is to use the Node-Red <code>flow.set()</code> function to store the function within the flow (or globally, via <code>global.set()</code>) and then on a different node to pull the function via <code>flow.get()</code> (respectively, <code>global.get()</code>) and invoke the function with the right amount of parameters.
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/fuss_node-red_reusable_functions.png?id=fuss%3Anode-red" class="media" title="fuss:fuss_node-red_reusable_functions.png"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/fuss_node-red_reusable_functions.png" class="media" alt="" /></a>
+</p>
+
+<p>
+The flow consists of two sections: the upper half contains an injector that feeds into the <code>Function Definition</code> node. In turn, the <code>Function Definition</code> node contains the following code:
+</p>
+<pre class="code javascript"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2019 Wizardry and Steamworks - License: CC BY 2.0    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="kw1">function</span> wasKeyValueGet<span class="br0">&#40;</span>k<span class="sy0">,</span> data<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>data.<span class="me1">length</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>k.<span class="me1">length</span> <span class="sy0">==</span> <span class="nu0">0</span><span class="br0">&#41;</span> <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+    <span class="kw1">var</span> a <span class="sy0">=</span> data.<span class="me1">split</span><span class="br0">&#40;</span><span class="co2">/&amp;|=/</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">var</span> i <span class="sy0">=</span> a.<span class="me1">filter</span><span class="br0">&#40;</span><span class="br0">&#40;</span>e<span class="sy0">,</span>i<span class="br0">&#41;</span> <span class="sy0">=&gt;</span> <span class="sy0">!</span><span class="br0">&#40;</span>i <span class="sy0">%</span> <span class="nu0">2</span><span class="br0">&#41;</span><span class="br0">&#41;</span>.<span class="me1">indexOf</span><span class="br0">&#40;</span>k<span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="kw1">if</span><span class="br0">&#40;</span>i <span class="sy0">!=</span> <span class="sy0">-</span><span class="nu0">1</span><span class="br0">&#41;</span> <span class="kw1">return</span> a<span class="br0">&#91;</span><span class="br0">&#40;</span><span class="nu0">2</span> <span class="sy0">*</span> i<span class="br0">&#41;</span> <span class="sy0">%</span> a.<span class="me1">length</span> <span class="sy0">+</span> <span class="nu0">1</span><span class="br0">&#93;</span><span class="sy0">;</span>
+    <span class="kw1">return</span> <span class="st0">&quot;&quot;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+flow.<span class="kw1">set</span><span class="br0">&#40;</span><span class="st0">'wasKeyValueGet'</span><span class="sy0">,</span> wasKeyValueGet<span class="br0">&#41;</span>
+&nbsp;
+<span class="kw1">return</span> msg<span class="sy0">;</span></pre>
+
+<p>
+that defines a <code>wasKeyValueGet</code> function and then stores the function definition within the flow via <code>flow.set()</code>.
+</p>
+
+<p>
+The lower part of the flow is an example invocation of the <code>wasKeyvalueGet</code> function, consisting in an injector node a <code>Function Invocation</code> node and a debug node to print out the result. The <code>Function Invocation</code> node contains the following code:
+</p>
+<pre class="code javascript"><span class="kw1">var</span> proc <span class="sy0">=</span> flow.<span class="kw1">get</span><span class="br0">&#40;</span><span class="st0">'wasKeyValueGet'</span><span class="br0">&#41;</span><span class="br0">&#40;</span><span class="st0">&quot;data&quot;</span><span class="sy0">,</span> <span class="st0">&quot;data=a&amp;p=b&quot;</span><span class="br0">&#41;</span>
+msg.<span class="me1">payload</span> <span class="sy0">=</span> proc<span class="sy0">;</span>
+<span class="kw1">return</span> msg<span class="sy0">;</span></pre>
+
+<p>
+and the debug node will print out the expected result <code>a</code> on the debug tab.
+</p>
+
+<p>
+Here is the full flow export:
+</p>
+<pre class="code">[{&quot;id&quot;:&quot;e1e1f80f.4787b&quot;,&quot;type&quot;:&quot;tab&quot;,&quot;label&quot;:&quot;Flow 1&quot;,&quot;disabled&quot;:false,&quot;info&quot;:&quot;&quot;},{&quot;id&quot;:&quot;4bc33115.6d19a8&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;e1e1f80f.4787b&quot;,&quot;name&quot;:&quot;Initialize&quot;,&quot;topic&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:true,&quot;onceDelay&quot;:0.1,&quot;x&quot;:200,&quot;y&quot;:120,&quot;wires&quot;:[[&quot;d28e3bed.d65a58&quot;]]},{&quot;id&quot;:&quot;d28e3bed.d65a58&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;e1e1f80f.4787b&quot;,&quot;name&quot;:&quot;Function Definition&quot;,&quot;func&quot;:&quot;///////////////////////////////////////////////////////////////////////////\n//    Copyright (C) 2019 Wizardry and Steamworks - License: CC BY 2.0    //\n///////////////////////////////////////////////////////////////////////////\nfunction wasKeyValueGet(k, data) {\n    if(data.length == 0) return \&quot;\&quot;;\n    if(k.length == 0) return \&quot;\&quot;;\n    var a = data.split(/&amp;|=/);\n    var i = a.filter((e,i) =&gt; !(i % 2)).indexOf(k);\n    if(i != -1) return a[(2 * i) % a.length + 1];\n    return \&quot;\&quot;;\n}\n\nflow.set(&#039;wasKeyValueGet&#039;, wasKeyValueGet)\n\nreturn msg;&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;x&quot;:390,&quot;y&quot;:120,&quot;wires&quot;:[[]]},{&quot;id&quot;:&quot;5e01a723.e7792&quot;,&quot;type&quot;:&quot;function&quot;,&quot;z&quot;:&quot;e1e1f80f.4787b&quot;,&quot;name&quot;:&quot;Function Invocation&quot;,&quot;func&quot;:&quot;var proc = flow.get(&#039;wasKeyValueGet&#039;)(\&quot;data\&quot;, \&quot;data=a&amp;p=b\&quot;)\nmsg.payload = proc;\nreturn msg;\n&quot;,&quot;outputs&quot;:1,&quot;noerr&quot;:0,&quot;x&quot;:400,&quot;y&quot;:240,&quot;wires&quot;:[[&quot;964d7154.d9d7e8&quot;]]},{&quot;id&quot;:&quot;964d7154.d9d7e8&quot;,&quot;type&quot;:&quot;debug&quot;,&quot;z&quot;:&quot;e1e1f80f.4787b&quot;,&quot;name&quot;:&quot;&quot;,&quot;active&quot;:true,&quot;tosidebar&quot;:true,&quot;console&quot;:false,&quot;tostatus&quot;:false,&quot;complete&quot;:&quot;false&quot;,&quot;x&quot;:610,&quot;y&quot;:240,&quot;wires&quot;:[]},{&quot;id&quot;:&quot;c8046e4b.6c057&quot;,&quot;type&quot;:&quot;inject&quot;,&quot;z&quot;:&quot;e1e1f80f.4787b&quot;,&quot;name&quot;:&quot;&quot;,&quot;topic&quot;:&quot;&quot;,&quot;payload&quot;:&quot;&quot;,&quot;payloadType&quot;:&quot;date&quot;,&quot;repeat&quot;:&quot;&quot;,&quot;crontab&quot;:&quot;&quot;,&quot;once&quot;:false,&quot;onceDelay&quot;:0.1,&quot;x&quot;:200,&quot;y&quot;:240,&quot;wires&quot;:[[&quot;5e01a723.e7792&quot;]]}]</pre>
+
+</div>
+
+<h1 class="sectionedit8" id="slow_graphs_in_node-red">Slow Graphs in Node-Red</h1>
+<div class="level1">
+
+<p>
+One major problem with Node-Red dashboard graphs is that the graphs start to slow down after about <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9830e079d937c9309065ea54502643ff.png" class="latex_inline" alt="$30000$" title="Math" /> data points and the dashboard will start slowing down the browser considerably. To resolve the issue, reduce the number of data points displayed on graphs.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/node-red.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red" class="wikilink1" title="fuss:node-red" data-wiki-id="fuss:node-red">node-red</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:node-red" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/node-red"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Anode-red&amp;1657305714" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

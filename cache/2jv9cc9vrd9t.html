@@ -1,0 +1,3934 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/hisrol/ - Hispa Rol</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=hisrol"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Actualizar</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=hisrol">
+    <div>
+      <p id="labelName">/hisrol/ - Hispa Rol</p>
+    </div>
+    <p id="labelDescription">Lugar para rolear</p>
+	<span class="boardLinks">
+		<a href="catalog.html">Catálogo</a>
+		<a id="archiveLinkBoard">Archivar</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Modo: Hilo</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  <tr id="divName">
+    <th>Name</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldName" name="name"></td>
+  </tr>
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="hisrol"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Recuerda leer las
+          <a href="rules.html" class="localPageLink">reglas</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage">TABLONES HERMANOS
+
+Hispa
+<a href="/hispachan">hispachan</a>
+
+Tablones regionales
+<a href="/arepa">arepa</a> / <a href="/esp">esp</a> / <a href="/col">col</a> / <a href="/cc">cc</a> / <a href="/pe">pe</a> / <a href="/mex">mex</a>
+
+Tablones de intereses y ocio
+<a href="/ac">ac</a> / <a href="/vt">vt</a> / <a href="/hispol">hispol</a> / <a href="/arte">arte</a> / <a href="/av">av</a> / <a href="/hispatec">hispatec</a>
+
+Próximamente correo propio de contacto</div>
+  </div>
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="hisrol" id="57794"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e0c30794bcc6d7c27c2f1a047a63f4bd54230aef7c4a4d7cb878e5fb26ae3fb3.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">41.39 KB</span> <span class="dimensionLabel">397x388</span>
+  <a class="originalNameLink" href="/.media/e0c30794bcc6d7c27c2f1a047a63f4bd54230aef7c4a4d7cb878e5fb26ae3fb3.jpg" download="partida-de-rol1.jpg">partida-de-rol1.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e0c30794bcc6d7c27c2f1a047a63f4bd54230aef7c4a4d7cb878e5fb26ae3fb3.jpg" data-filewidth="397" data-fileheight="388" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="220" src="/.media/t_e0c30794bcc6d7c27c2f1a047a63f4bd54230aef7c4a4d7cb878e5fb26ae3fb3"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57794">
+    <span class="labelSubject">Presentación del Tablón y Reglas</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">06/21/2022 (Mar) 15:44:00</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #1c814b">1c814b</span></span>
+    
+    <span class="lockIndicator" title="Locked"></span>
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/57794.html#57794">№</a>
+    <a class="linkQuote" href="/hisrol/res/57794.html#q57794">57794</a>
+    <a class="linkReply" href="/hisrol/res/57794.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Tablones de Respaldo en caso de cualquier eventualidad:
+<a target="&#95;blank" href="https://endchan.net/Hisrol/">https://endchan.net/Hisrol/</a>
+<a target="&#95;blank" href="https://endchan.org/Hisrol/">https://endchan.org/Hisrol/</a>
+
+Bienvenido anon, /hisrol/ es un tablón en dónde puedes jugar tus partidas de juego de rol (tanto con sistemas predefinidos como: d20, Pathfinder y demás; así como también sistemas propios que tú hagas), así como también partidas de risk, y tales tipos de juegos que requieran el uso de dados. Así mismo, también puedes compartir tus historias o anécdotas jugando IRL o con algún grupo. 
+En pocas palabras, imaginalo como la fusión entre /tg/ y /qst/, en español.
+Crea una partida, o únete a alguna partida, y diviértete.
+
+<span class="redText">Reporta lo que rompa las reglas, si un rol o una partida no te gusta, dale a hide y olvida su existencia</span>
+
+El tablón tiene 6 reglas aparte de las globales.
+
+-0 Forzadera, mierdaposteo y desviadera de discusiones e hilos
+-Escribir en un tono neutro.
+-El Avatarfag esta permitido siempre y cuando se mantenga dentro del respectivo hilo
+-No esta permitido el &quot;shitposting&quot;.
+-No se permite el spam de ningún tipo.</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/57794.html#57794">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  <div class="labelLastEdit">Editado por última vez por DanMaster en 06/28/2022 (Mar) 16:23:27.</div>
+  
+</div>
+<div class="divPosts"></div>
+</div><div class="opCell" data-boarduri="hisrol" id="59804"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9a01b3fc9bfea9b3d9451aeb8455c23ffec42ea632ea4e3e4079b4a065dffd36.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">166.77 KB</span> <span class="dimensionLabel">1600x2382</span>
+  <a class="originalNameLink" href="/.media/9a01b3fc9bfea9b3d9451aeb8455c23ffec42ea632ea4e3e4079b4a065dffd36.jpg" download="prison-cell-lock-up-black-white-security.jpg">prison-cell-lock-up-black-white-security.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9a01b3fc9bfea9b3d9451aeb8455c23ffec42ea632ea4e3e4079b4a065dffd36.jpg" data-filewidth="1600" data-fileheight="2382" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="151" height="225" src="/.media/t_9a01b3fc9bfea9b3d9451aeb8455c23ffec42ea632ea4e3e4079b4a065dffd36"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59804">
+    <span class="labelSubject">Devastadores.</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/07/2022 (Jue) 00:05:06</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #da4d82">da4d82</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/59804.html#59804">№</a>
+    <a class="linkQuote" href="/hisrol/res/59804.html#q59804">59804</a>
+    <a class="linkReply" href="/hisrol/res/59804.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/59804.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><a target="&#95;blank" href="https://youtu.be/idG3X0zZofA">https://youtu.be/idG3X0zZofA</a>
+¿Cuántos años habían pasado? En ese entonces era el año 2030 ¿Que se siente ser uno mismo? Era algo que transitaba por tu cabeza a veces en ese obscuro y frío lugar, estar ahí abajo podía hacer que tu cerebro se pudriera pero estar ahí afuera a más de uno rompería, por lo que estar encadenado en ese calabozo, atrapado en tu propio cuerpo, podía no ser tan malo, no necesitabas comer, no necesitabas dormir, incluso si las ratas se comían tus dedos estos volverían a crecer con el tiempo, si podías ver o hablar era algo de lo que no estabas consciente ahora mismo pero en ese momento en que tus pensamientos estaban dispersos, algo que jamás pensaste volver a ver apareció.
+<a target="&#95;blank" href="https://youtu.be/rqWFo0BoQL0">https://youtu.be/rqWFo0BoQL0</a>
+Esa era la luz del exterior, aunque no podías levantar la cabeza podías ver cómo las ratas a tus pies huían ante un resplandor y el sonido de pasos acercándose a tu celda.
+
+&quot;¿Es ese?&quot; Pregunto una chica
+
+&quot;E- Es ese pero, señorita Pennywort, esta persona es, incluso entre los &quot;Devastadores&quot;... Es un arma sumamente peligrosa, por eso se encuentra en este lugar y...&quot; El hombre fue interrumpido
+
+&quot;Activalo&quot; Dijo con voz severa y hubo silencio, tus ojos se movieron levemente hacia arriba, el miedo de ese sujeto era claro, podías incluso olerlo, el hombre exhaló sabiendo que no podía hacer nada contra las palabras de su ama y solo levantó la tablet de control presionando la pantalla mientras su índice temblaba
+
+<a target="&#95;blank" href="https://youtu.be/&#95;ygWTird2lM">https://youtu.be/&#95;ygWTird2lM</a>
+Dentro de tu cabeza un fuerte sonido se escuchó y tus grilletes se separaron, dirijiste tu mano derecha a tu hombro adolorido por haber estado tanto tiempo en la misma posición, posando las manos en el suelo húmedo te ayudaste para ponerte de pie frente a esas personas para asegurarte que tus piernas aún funcionaban.
+
+&quot;Escúchame... &quot;Devastador&quot;, necesito que asesines a unos Dioses por mi, prometo recompensarte&quot; Sonrió con cierta malicia mientras la alarma sonaba abriendo las rejas de tu celda.
+<a target="&#95;blank" href="https://youtu.be/Ihi5dRsr0dE">https://youtu.be/Ihi5dRsr0dE</a>
+Habías perdido la noción del tiempo estando ahí abajo, era bueno regresar.</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59804.html#59804">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">55 posts y 54 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60217"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59804-60217">
+    
+    <a class="linkName  noEmailName" >???</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 18:56:50</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #7de8a5">7de8a5</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59804.html#60217">№</a>
+    <a class="linkQuote" href="/hisrol/res/59804.html#q60217">60217</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/84fe6656f59b8bb3fe752be7bfa7cf1c1bb7e281e7468396449a82819f2fd143.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">47.81 KB</span> <span class="dimensionLabel">564x999</span>
+  <a class="originalNameLink" href="/.media/84fe6656f59b8bb3fe752be7bfa7cf1c1bb7e281e7468396449a82819f2fd143.jpg" download="interrogante4.jpg">interrogante4.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/84fe6656f59b8bb3fe752be7bfa7cf1c1bb7e281e7468396449a82819f2fd143.jpg" data-filewidth="564" data-fileheight="999" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="127" height="225" src="/.media/t_84fe6656f59b8bb3fe752be7bfa7cf1c1bb7e281e7468396449a82819f2fd143"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e85d86ac3081694e6821c7999fc96a73745360ce86eede73ce47b7199e5d45ae.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">16.47 KB</span> <span class="dimensionLabel">330x347</span>
+  <a class="originalNameLink" href="/.media/e85d86ac3081694e6821c7999fc96a73745360ce86eede73ce47b7199e5d45ae.jpg" download="esperando.jpg">esperando.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e85d86ac3081694e6821c7999fc96a73745360ce86eede73ce47b7199e5d45ae.jpg" data-filewidth="330" data-fileheight="347" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="214" height="225" src="/.media/t_e85d86ac3081694e6821c7999fc96a73745360ce86eede73ce47b7199e5d45ae"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59804.html#60202">&gt;&gt;60202</a>
+
+&quot;Alli&quot;
+
+<em>Se dijo así mismo, se sentía a planetas de distancia la presencia de aquel ser, saltando y corriendo entre montañas, pasando por encima de lo seres inferiores a el que contemplaban su presencia con miedo y respeto.</em>
+
+<em>Cayendo en la zona rompiendo el suelo en el acto, viendo la nieve agachandose para tocarla con sus manos, era algo diferente al metal, algo diferente a la oscuridad de su prision, por lo que se quedo admirándola unos momentos antes de escuchar las palabras de la mujer en su cabeza.</em>
+
+-Hina-
+
+&quot;Con cuidado unidad 003, se trata de un...&quot;
+
+<em>La mujer fue interrumpida por la presencia del ser, el cual, no era para nada algo de importancia, como si se compararan una hormiga con un elefante, el se quedo viendo detrás de este, esperando algo mas interesante por lo que salir, no se quejaba estar fuera, pero...¿para esto?.</em>
+
+<em>Con un solo respiro y estiramiento de uno de sus ligamentos ya habia cortado gran parte de este Dios.</em>
+
+-Hina--</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59804.html#60217">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60221"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59804-60221">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 20:31:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #43fa30">43fa30</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59804.html#60221">№</a>
+    <a class="linkQuote" href="/hisrol/res/59804.html#q60221">60221</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8477ddf606b5a31caf32d58d1bddaeb3fa903ce454e93d4581635f500b3161d6.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.27 MB</span> <span class="dimensionLabel">1485x1650</span>
+  <a class="originalNameLink" href="/.media/8477ddf606b5a31caf32d58d1bddaeb3fa903ce454e93d4581635f500b3161d6.jpg" download="Lord.Raptor.full.518915.jpg">Lord.Raptor.full.518915.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8477ddf606b5a31caf32d58d1bddaeb3fa903ce454e93d4581635f500b3161d6.jpg" data-filewidth="1485" data-fileheight="1650" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="203" height="225" src="/.media/t_8477ddf606b5a31caf32d58d1bddaeb3fa903ce454e93d4581635f500b3161d6"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59804.html#60215">&gt;&gt;60215</a>
+
+<strong>...</strong>
+<strong>Cuatro paredes que lucían reforzadas por la atmosfera pesada que creaban. Una ventana al fondo junto con un escritorio y sentado en este estaba el director, a quien apodaron como <em>el salvador</em> a pesar de que está metido en su oficina 24/7.</strong>
+<strong>Ambas encargadas se comportaban como debían, estaban quietas enfrente del director esperando a que terminara de firmar algo y, más atrás de ellas, causando bullicio sin pena ni vergüenza, los dos devastadores reían a carcajadas.</strong>
+
+AHAHAHAHA AYYYY, ADORO CUANDO CREEN QUE SON TODOPODEROSOS AHAHAHAHA
+
+<strong>Palmeaba el sillón con tanta fuerza que lo hacía retumbar, de milagro no lo rompía por casualidad.</strong>
+<strong>No hacia ni el mínimo esfuerzo por fingir interés, le importaba tan poco el papeleo y la charla con el supuesto salvador que directamente andaba ignorando a medio mundo, prefiriendo hablar con Jimmy de los buenos momentos que han tenido.</strong>
+
+Ojalá, yo ya quiero salir. Si fuera por mí, saldría a todas horas a matar a esos Dioses, fácilmente podría eliminar a la mitad de ellos en...Una semanita, dos si ando con pereza
+
+<strong>Suspira y el director habla, pide un informe acerca del resultado de la misión de hoy y el estado de los devastadores.</strong>
+<strong>El del parche tuvo un buen rendimiento y no tiene problemas en refregárselo en la cara al zombi, quien, cruzándose de brazos, entrecerró los ojos mirándole molesto hasta que sonríe de la nada por la información que entrega Mimi.</strong>
+
+Je...¿Quién es mi putita?</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59804.html#60221">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60228"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59804-60228">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 22:09:55</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #2f4f2b">2f4f2b</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59804.html#60228">№</a>
+    <a class="linkQuote" href="/hisrol/res/59804.html#q60228">60228</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7c26c2934d5a54b1217b26fcbc7644da364255cc2eed5a698c7de3f5745fc24e.gif"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">730.29 KB</span> <span class="dimensionLabel">498x498</span>
+  <a class="originalNameLink" href="/.media/7c26c2934d5a54b1217b26fcbc7644da364255cc2eed5a698c7de3f5745fc24e.gif" download="red-eyes-creepy-eyes.gif">red-eyes-creepy-eyes.gif</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7c26c2934d5a54b1217b26fcbc7644da364255cc2eed5a698c7de3f5745fc24e.gif" data-filewidth="498" data-fileheight="498" data-filemime="image/gif">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="125" height="125" src="/hisrol/custom.spoiler"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59804.html#60214">&gt;&gt;60214</a>
+Dios: ¿Humana?... Los humanos no pueden cargar cosas como esa...
+<span class="greenText">&gt;Señaló la espada, viste la oportunidad de sorprenderlo</span>
+<a target="&#95;blank" href="https://youtu.be/&#95;cNckVdAiSs">https://youtu.be/&#95;cNckVdAiSs</a>
+<span class="greenText">&gt;No ya iba sido un golpe directo, el Dios ya IA levantado los brazos en forma de X para protegerte pero el filo se había incrustado hasta el hueso, sus pies se hundían en la tierra y podías ver lo difícil que me era mantenerse</span>
+<span class="greenText">&gt;Giraste pateando su abdomen para lanzarlo hacia atrás, este se flexiono levemente y levantó la mirada viéndote en el aire y cayendo sobre el</span>
+<span class="greenText">&gt;BOOM* las placas de tierra se elevaron creando un cráter, el Dios retrocedió buscándote entre la lluvia de lodo que habías levantado, movía los ojos a toda velocidad y solo te tomo un segundo aparecer frente a el golpeando su costado</span>
+<a target="&#95;blank" href="https://youtu.be/N8uMK8038iI">https://youtu.be/N8uMK8038iI</a>
+<span class="greenText">&gt;Sus ojos se entrecerraron antes de salir disparado a un costado y rodar sobre el lodo</span>
+Johan: Wou, esa chica es dinamita
+
+Ángel: Es verdad que no lo hace mal pero confiarse es un error, los Dioses tienen muchos trucos escondidos
+<span class="greenText">&gt;El Dios comenzó a ponerse de pie notando cómo su brazo derecho y costillas, estaban rotas, una de ellas incluso sobresalía de su cuerpo, el daño que había recibido había sido demasiado en muy poco tiempo por lo que no se estaba regenerando adecuadamente</span>
+<span class="greenText">&gt;Te miro y se trono el cuello, apretó el puño derecho y bajo su centro de gravedad, sentiste una leve presión en el pecho que te indicaba peligro, su cuerpo comenzó a ser rodeado por un aura roja y sus ojos se tiñeron del mismo color</span>
+Dios: Artes de caza...
+<span class="greenText">&gt;Ahí estaba, claramente iba a ser algo que usaría al estar en está situación, una de las habilidades más fuertes de los Dioses, los Artes de caza, si iba a ser así entonces tú también tendrías que usar el tuyo</span>
+<span class="greenText">&gt;Exhalaste abriendo la boca y dejando que vapor saliera, apretaste el mango de tu espada mientras te inclinabas hacia adelante y cerradas los ojos</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59804.html#60228">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="59139"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6b262b30e9932a50ddc60dc68fbdde15717f2d25862766c599733d40f5d1b287.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">398.79 KB</span> <span class="dimensionLabel">850x465</span>
+  <a class="originalNameLink" href="/.media/6b262b30e9932a50ddc60dc68fbdde15717f2d25862766c599733d40f5d1b287.png" download="6b262b30e9932a50ddc60dc68fbdde15717f2d25862766c599733d40f5d1b287.png">6b262b30e9932a50ddc60dc68fbdde15717f2d25862766c599733d40f5d1b287.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6b262b30e9932a50ddc60dc68fbdde15717f2d25862766c599733d40f5d1b287.png" data-filewidth="850" data-fileheight="465" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="123" src="/.media/t_6b262b30e9932a50ddc60dc68fbdde15717f2d25862766c599733d40f5d1b287"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59139">
+    <span class="labelSubject">Space Wars | The red dawn [Capitulo 32]</span>
+    <a class="linkName  noEmailName" >Queso</a>
+     
+    <span class="labelCreated">07/01/2022 (Vie) 05:14:23</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #c062e3">c062e3</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/59139.html#59139">№</a>
+    <a class="linkQuote" href="/hisrol/res/59139.html#q59139">59139</a>
+    <a class="linkReply" href="/hisrol/res/59139.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/59139.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><a target="&#95;blank" href="https://youtu.be/FGtPVJ08o5w">https://youtu.be/FGtPVJ08o5w</a>
+
+<strong>La avanzada comunista por el norte de África continúa, Argelia ha caído y con ello la misma capital de la nación, siendo anexada por la URSA, aunque bien es cierto que había varias dificultades a la hora de tomar la nación, fronteras llenas y completamente militarizada, defensas hasta en la esquina más rotunda de la nación, pero aún así, con la ayuda de Pravda, le división de Tanques más potente y números de la nación, hizo un ataque relámpago agarrando a las tropas en el día ya que de por si la URSA acostumbra a atacar en la noche, cuando marco el medio día, aprovechando el cambio de turno, Pravda atacó junto con todo el ejército, y como no, figuras de gran importancia política para propaganda. Por otro lado, en el mismo ataque, la URSA estuvo ganando terreno por media hora, hasta que llegaron mechas de Argelia a tomar control de la zona y mermar el ataque de tanques de la URSA, al final la misma nación comunista tuvo que mandar a sus propios mechas, los cuales no estaban terminados del todo y eran poco y más que un prototipo. Siguieron hacia adelante, y se encontraron a un coloso de metal, un mecha de varios metros de altura y muchísimo más armado que los mechas que ya la URSA había desplegado de por si... Por esa misma razón, se tuvo que desplegar otro prototipo: El Cherno Alpha, un coloso de metal de varios metros de altura para poder apoyar a las mismas tropas, después de eso, Pravda logro capturar a Curie, miembro del gobierno Argelino de Vichy... Llegados a la capital, Baronesa aparece, una meta humana la cual fue derrotada por humanos &quot;comunes y corrientes&quot; pero a pesar de todo... La URSA venció.</strong>
+
+<strong>Mientras tanto, por parte del G&amp;K, la organización militar avanza, dejando atrás las prácticas de retener a los enemigos en la frontera y decidieron avanzar, tomar Benin con ayuda de toda la RNZ era el plan principal, aunque para eso, tenían que meterse dentro de la nación sin que puedan ser detectados... Cosa que lograron, avanzaron, se infiltraron, tomaron la base más importante de esa pequeña y minúscula nación, y mandaron un mensaje a las tropas aliadas para que pudieran avanzar, encontrando una resistencia mínima ya que a la hora de defender, los habían desarmado... Aún así, no todo es color de rosas, Clare había sido secuestrada y estaba rumbo a Burkina Faso para ser torturada, pero antes de pasar la frontera, lograron recuperarla y salvarla... Cuando Clare volvió con el G&amp;K, se enteró que habían apuñalado a Nacre y se estaba decantando entre la vida y la muerte... Al final vivió, pero las cosas están muy lejos de estar bien... ¿Que hará la URSA ahora? ¿Y que pasará con el ahora formado 404?</strong></div>
+  
+  
+  
+  <div class="labelOmission">196 posts y 281 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60224"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59139-60224">
+    <span class="labelSubject">ME CAGO EN LA PUTA ME QUEDE DORMIDO FRENTE AL ORDENADOR</span>
+    <a class="linkName  noEmailName" >Ishiro</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 21:40:40</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #ccbf6d">ccbf6d</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59139.html#60224">№</a>
+    <a class="linkQuote" href="/hisrol/res/59139.html#q60224">60224</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/08e0169802a164b5d9c8f757f446f5c14f11e00f27ec20b6b952adf01aeed3f4.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">66.89 KB</span> <span class="dimensionLabel">428x652</span>
+  <a class="originalNameLink" href="/.media/08e0169802a164b5d9c8f757f446f5c14f11e00f27ec20b6b952adf01aeed3f4.jpg" download="Don Quixote.jpg">Don Quixote.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/08e0169802a164b5d9c8f757f446f5c14f11e00f27ec20b6b952adf01aeed3f4.jpg" data-filewidth="428" data-fileheight="652" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="148" height="225" src="/.media/t_08e0169802a164b5d9c8f757f446f5c14f11e00f27ec20b6b952adf01aeed3f4"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2218435cf1acc1518827f4271a199a35e483cd5687398079e827e8e307258514.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">783.68 KB</span> <span class="dimensionLabel">800x1000</span>
+  <a class="originalNameLink" href="/.media/2218435cf1acc1518827f4271a199a35e483cd5687398079e827e8e307258514.jpg" download="94770804&#95;p0&#95;master1200.jpg">94770804&#95;p0&#95;master1200.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2218435cf1acc1518827f4271a199a35e483cd5687398079e827e8e307258514.jpg" data-filewidth="800" data-fileheight="1000" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="180" height="225" src="/.media/t_2218435cf1acc1518827f4271a199a35e483cd5687398079e827e8e307258514"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59139.html#60122">&gt;&gt;60122</a>
+<a class="quoteLink" href="/hisrol/res/59139.html#60123">&gt;&gt;60123</a>
+<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.3744399999999999em;vertical-align:-0.33999999999999997em;"></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.03444em;"><span style="top:-3.03444em;"><span class="pstrut" style="height:3.37444em;"></span><span class="stretchy fcolorbox" style="height:1.3744399999999999em;border-style:solid;border-width:0.04em;background-color:yellow;border-color:orange;"></span></span><span style="top:-3.37444em;"><span class="pstrut" style="height:3.37444em;"></span><span class="mord boxpad"><span class="mord">T</span><span class="mord">h</span><span class="mord">e</span><span class="mord"> </span><span class="mord">G</span><span class="mord">i</span><span class="mord">r</span><span class="mord">l</span><span class="mord">s</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.33999999999999997em;"><span></span></span></span></span></span></span></span></span>
+
+<span class="pinkText">&lt;¿Ustedes para que la quieren? ¿Les hizo algo malo? Si es así, ustedes entenderán que no les puedo decir nada de ella ¿Vale?</span>
+
+<em>&apos;Ishmael: Tu media-hermana nos ha hecho ningún mal a mi o lo miembros de mi equipo pero tiene información sobre un evento clasificado bajo el nombre de &quot;The day the clown cried&quot; que involucra de forma personal a una de los nuestros</em>
+
+<span class="pinkText">&lt;¿Te gustan mis muslos y mi culito, Don Quijote de la Mancha?</span>
+
+<em>Don Quixote: No te voy a mentir me fascina lo que tienes ahi</em>
+
+<span class="pinkText">&lt;En fin ¿Tu quieres ser mi mami y leerme más libros? </span>
+
+<em>Don Quixote: Te diré osita solo de cariño pero si me gustaría contarte cuentos y cuidar de ti, no soy el tipo de chica que buscas, Winnie...ya estoy demasiado vieja para salir contigo y siento que me estoy aprovechando de ti</em>
+
+<em>Don Quixote: Lo cual es de las pocas líneas morales que no me atrevo a cruzar, tu deberías buscar una jovencita de tu edad, no un antiguedad de unos casi 1462 años que ve nada en la vida pero no voy a negar que físicamente me eres cautivadora</em></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59139.html#60224">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60225"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59139-60225">
+    
+    <a class="linkName  noEmailName" >Chestercito</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 21:51:11</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9c5e8a">9c5e8a</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59139.html#60225">№</a>
+    <a class="linkQuote" href="/hisrol/res/59139.html#q60225">60225</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6e49a986666bd09a77f315ebdf9f58990a499b3c8a7aa7d23737c270c3bc362a.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">207.43 KB</span> <span class="dimensionLabel">400x400</span>
+  <a class="originalNameLink" href="/.media/6e49a986666bd09a77f315ebdf9f58990a499b3c8a7aa7d23737c270c3bc362a.png" download="6e49a986666bd09a77f315ebdf9f58990a499b3c8a7aa7d23737c270c3bc362a.png">6e49a986666bd09a77f315ebdf9f58990a499b3c8a7aa7d23737c270c3bc362a.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6e49a986666bd09a77f315ebdf9f58990a499b3c8a7aa7d23737c270c3bc362a.png" data-filewidth="400" data-fileheight="400" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_6e49a986666bd09a77f315ebdf9f58990a499b3c8a7aa7d23737c270c3bc362a"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ba27a9500b85ee78fd9c6b165f53fe6dcc36a6f3e3b854dd574bae586278e7c8.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">729.05 KB</span> <span class="dimensionLabel">850x692</span>
+  <a class="originalNameLink" href="/.media/ba27a9500b85ee78fd9c6b165f53fe6dcc36a6f3e3b854dd574bae586278e7c8.png" download="ba27a9500b85ee78fd9c6b165f53fe6dcc36a6f3e3b854dd574bae586278e7c8.png">ba27a9500b85ee78fd9c6b165f53fe6dcc36a6f3e3b854dd574bae586278e7c8.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ba27a9500b85ee78fd9c6b165f53fe6dcc36a6f3e3b854dd574bae586278e7c8.png" data-filewidth="850" data-fileheight="692" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="183" src="/.media/t_ba27a9500b85ee78fd9c6b165f53fe6dcc36a6f3e3b854dd574bae586278e7c8"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1ab44e531e38e93541e6e27c6785037f57c5c926effb26e563ea05b270a8350e.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.11 MB</span> <span class="dimensionLabel">671x1000</span>
+  <a class="originalNameLink" href="/.media/1ab44e531e38e93541e6e27c6785037f57c5c926effb26e563ea05b270a8350e.png" download="1ab44e531e38e93541e6e27c6785037f57c5c926effb26e563ea05b270a8350e.png">1ab44e531e38e93541e6e27c6785037f57c5c926effb26e563ea05b270a8350e.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1ab44e531e38e93541e6e27c6785037f57c5c926effb26e563ea05b270a8350e.png" data-filewidth="671" data-fileheight="1000" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="151" height="225" src="/.media/t_1ab44e531e38e93541e6e27c6785037f57c5c926effb26e563ea05b270a8350e"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/63730e9c5e42fe632f9a578780742b62bb05262a5d3dde6ecb46ec4306ebcbf5.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">231.75 KB</span> <span class="dimensionLabel">679x1392</span>
+  <a class="originalNameLink" href="/.media/63730e9c5e42fe632f9a578780742b62bb05262a5d3dde6ecb46ec4306ebcbf5.jpg" download="Comidita.jpg">Comidita.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/63730e9c5e42fe632f9a578780742b62bb05262a5d3dde6ecb46ec4306ebcbf5.jpg" data-filewidth="679" data-fileheight="1392" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="110" height="225" src="/.media/t_63730e9c5e42fe632f9a578780742b62bb05262a5d3dde6ecb46ec4306ebcbf5"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59139.html#60169">&gt;&gt;60169</a>
+<a class="quoteLink" href="/hisrol/res/59139.html#60162">&gt;&gt;60162</a>
+<span class="pinkText">&lt;Marín</span>
+
+<span class="greenText">&gt;El suspiro de ambos hace creer a la chica que había metido la pata y que no debió de haber intentado hablar de videojuegos con ellos, lo cual no sería raro para ella, muchas veces se ha topado en Internet con incels o con los MGTOW que creen firmemente en la idea de que las mujeres arruinan todo lo que tocan y por esa simple razón ha sido descartada en conversaciones de sus hobbies, lo bueno es que esos dos no le hacen el feo, cosa que le alegra y no puede más que seguir hablando con la emoción de una infante rarita. </span>
+
+Escuché rumores acerca de una nueva quest para el vagabundo y la niña con cuernos, por ahí ví unas filtraciones en Worldchan que avalan esas teorías pero toca esperar ya que el creador es un flojanazo de primera... Y g-gracias, lo normal es que a las chicas no les interese los jueguitos y que sea un mundo solo para hombres pero es que mi papá me había regalado una revocstation 1 cuando era una peque y ahí fue que me empezaron a gustar ¡En fin! Estoy divagando, mejor te diré que sipiti, me gustaría jugar con ustedes y patearles el trasero, Jejeje. 
+
+<span class="greenText">&gt;Asiente efusivamente, ansiosa por la propuesta del muchacho y orgullosa al admitir que es buena en esa clase de juegos tipo Dark Souls, ya quiere dar a ver sus grandes habilidades con los deditos (owo), por otro lado, tras recuperar la confianza gracias a las palabras de Clark, ella pone está carita (-﹏-) al oír la revelación de que no la vieron en su competencia de baile con Tifa pero la nueva propuesta del albino cambia su expresión a esta (ㆁωㆁ) y chasquea los dedos, no parece estar nadita disgustada por su mañoseria. </span>
+
+¿No me vieron bailar...? ¡Bueno! Luego podemos ir al salón de ballet de la institución para que me vean bailar y ahí me dicen que les parece ¡¿Les agradaría?! Yo no tengo ningún tipo de problema, solo no vayan a malpensar de mi ni me miren extraño, COQUETO.
+
+<span class="greenText">&gt;A la hora de exclamar eso último, le da un rápido pellizquito a la mejilla del peliblanco para que borre cualquier pensamiento cochino, si les va a bailar es por amor al arte, no para ponerlos horny que si fuese el caso, ella usaría otros métodos ¡Lo que sea! Olvida lo de la orientación sexual y va directo a la pregunta nerviosa de Clarky, rápido acerca su rostro al suyo, unos cuatro centímetros los separan de darse un kissu y de esta forma le responde en relación a lo que ganaría por mentirle. </span>
+
+No lo sé, dímelo tú, guapo.
+
+<span class="greenText">&gt;Ríe entre dientes, mostrando aquella sonrisa smug detalladamente, luego se separa de golpe al ver cómo el otro chico se cae, eso le preocupa muchito, más por qué fue su culpa y pues no le dió tiempo para decirle a Clark que se ve lindo con sus cachetes sonrojados por qué se le quedó viendo a Tom de esta forma (◉⌓◉) hasta que el hijo de Aiana y Dwight le da su mano amiga al pelicastaño, eso le alegra pero también le hace sentir un poquis mal, no le gusta ser jodona por lo que da un paso atrás, prefiere evitar provocarles algún lío o parecer que solo los jode por haberla rechazado.</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59139.html#60225">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60227"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59139-60227">
+    
+    <a class="linkName  noEmailName" >Chestercito</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 22:01:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #9c5e8a">9c5e8a</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59139.html#60227">№</a>
+    <a class="linkQuote" href="/hisrol/res/59139.html#q60227">60227</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9ad4f1c3ca2553826f363ba5fe84ddc87c7aab15a080c8fb7fc06aea34f26158.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">261.21 KB</span> <span class="dimensionLabel">768x768</span>
+  <a class="originalNameLink" href="/.media/9ad4f1c3ca2553826f363ba5fe84ddc87c7aab15a080c8fb7fc06aea34f26158.png" download="9ad4f1c3ca2553826f363ba5fe84ddc87c7aab15a080c8fb7fc06aea34f26158.png">9ad4f1c3ca2553826f363ba5fe84ddc87c7aab15a080c8fb7fc06aea34f26158.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9ad4f1c3ca2553826f363ba5fe84ddc87c7aab15a080c8fb7fc06aea34f26158.png" data-filewidth="768" data-fileheight="768" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_9ad4f1c3ca2553826f363ba5fe84ddc87c7aab15a080c8fb7fc06aea34f26158"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2deb7e73a7aea98089923e568324bf625b0b64c4ab1faf6807756a9d5defe499.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">738.20 KB</span> <span class="dimensionLabel">849x791</span>
+  <a class="originalNameLink" href="/.media/2deb7e73a7aea98089923e568324bf625b0b64c4ab1faf6807756a9d5defe499.png" download="2deb7e73a7aea98089923e568324bf625b0b64c4ab1faf6807756a9d5defe499.png">2deb7e73a7aea98089923e568324bf625b0b64c4ab1faf6807756a9d5defe499.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2deb7e73a7aea98089923e568324bf625b0b64c4ab1faf6807756a9d5defe499.png" data-filewidth="849" data-fileheight="791" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="210" src="/.media/t_2deb7e73a7aea98089923e568324bf625b0b64c4ab1faf6807756a9d5defe499"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/e30afa3184b1b19fdf826fc7befeb9cb7e8994c988848c2f76f701b617b7d5ed.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">470.02 KB</span> <span class="dimensionLabel">850x567</span>
+  <a class="originalNameLink" href="/.media/e30afa3184b1b19fdf826fc7befeb9cb7e8994c988848c2f76f701b617b7d5ed.png" download="e30afa3184b1b19fdf826fc7befeb9cb7e8994c988848c2f76f701b617b7d5ed.png">e30afa3184b1b19fdf826fc7befeb9cb7e8994c988848c2f76f701b617b7d5ed.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/e30afa3184b1b19fdf826fc7befeb9cb7e8994c988848c2f76f701b617b7d5ed.png" data-filewidth="850" data-fileheight="567" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="150" src="/.media/t_e30afa3184b1b19fdf826fc7befeb9cb7e8994c988848c2f76f701b617b7d5ed"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/fc15a19381f5d5a6f6ae04e06be2e2f1166bc32f41ccd668733d1d0deb744a13.mp4"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">512.88 KB</span> <span class="dimensionLabel">426x426</span>
+  <a class="originalNameLink" href="/.media/fc15a19381f5d5a6f6ae04e06be2e2f1166bc32f41ccd668733d1d0deb744a13.mp4" download="242663023&#95;584490596069240&#95;5495770797641107283&#95;n.mp4">242663023&#95;584490596069240&#95;5495770797641107283&#95;n.mp4</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/fc15a19381f5d5a6f6ae04e06be2e2f1166bc32f41ccd668733d1d0deb744a13.mp4" data-filewidth="426" data-fileheight="426" data-filemime="video/mp4">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_fc15a19381f5d5a6f6ae04e06be2e2f1166bc32f41ccd668733d1d0deb744a13"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/968eeb6819575920a733f24c789475676acbf20991000c3abd6a6d55ea5f1dfa.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">623.97 KB</span> <span class="dimensionLabel">842x800</span>
+  <a class="originalNameLink" href="/.media/968eeb6819575920a733f24c789475676acbf20991000c3abd6a6d55ea5f1dfa.png" download="968eeb6819575920a733f24c789475676acbf20991000c3abd6a6d55ea5f1dfa.png">968eeb6819575920a733f24c789475676acbf20991000c3abd6a6d55ea5f1dfa.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/968eeb6819575920a733f24c789475676acbf20991000c3abd6a6d55ea5f1dfa.png" data-filewidth="842" data-fileheight="800" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="214" src="/.media/t_968eeb6819575920a733f24c789475676acbf20991000c3abd6a6d55ea5f1dfa"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59139.html#60169">&gt;&gt;60169</a>
+<a class="quoteLink" href="/hisrol/res/59139.html#60225">&gt;&gt;60225</a>
+<span class="pinkText">&lt;Sí se hará, no comas ansias &gt;:3</span>
+P-Perdón, solo decía Unu
+
+<span class="pinkText">&lt;al no haber matado el lado humano</span>
+Eso me da miedito pero a la vez me entra la curiosidad por lo que, no se si quieras, pero podemos &quot;matar&quot; ese lado de Ame en el rol con Gura, ella lo va a pasar muy mal pero si es necesario, pues ni pedo a hacerlo u,w,u
+
+<span class="pinkText">&lt;de aventarle la bulla a Ame -,w,- </span>
+¿Que tiene de malo? :&apos;3 Nada más puse un POV de algo bonito que le podría pasar a nuestras monitas, aqui te lo dejo otra vez por si no lo viste y para que veas que no es nada maloso, solo es una cita por alguna parte de Ciudad Académia umu 
+
+<a target="&#95;blank" href="https://youtu.be/wqBgQUlVs10">https://youtu.be/wqBgQUlVs10</a>
+
+<span class="pinkText">&lt;literal me tarde tres horas kuek</span>
+Y valió cada segundo de espera :D
+
+<span class="pinkText">&lt;con todo para enamorar a la Marín</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59139.html#60227">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="57414"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/36d3ce0b427db762f6f98ce6e90208282163c3646095ca8177bef5c37465d92c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">125.55 KB</span> <span class="dimensionLabel">1000x758</span>
+  <a class="originalNameLink" href="/.media/36d3ce0b427db762f6f98ce6e90208282163c3646095ca8177bef5c37465d92c.jpg" download="Invincible.jpg">Invincible.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/36d3ce0b427db762f6f98ce6e90208282163c3646095ca8177bef5c37465d92c.jpg" data-filewidth="1000" data-fileheight="758" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="171" src="/.media/t_36d3ce0b427db762f6f98ce6e90208282163c3646095ca8177bef5c37465d92c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57414">
+    <span class="labelSubject">Superhéroes (test)</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">06/18/2022 (Sab) 23:28:11</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #313da1">313da1</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/57414.html#57414">№</a>
+    <a class="linkQuote" href="/hisrol/res/57414.html#q57414">57414</a>
+    <a class="linkReply" href="/hisrol/res/57414.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/57414.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">¡En un futuro distante, donde la Tierra es más avanzada y los superhumanos son algo común, el mal acecha en cada esquina, usando sus poderes para sacar provecho de las formas más viles posibles!
+
+¡Pero donde existe el mal, el bien estará ahí para frenarlo! Y es así como la Asociación de héroes se formó. La gran corporación global financiada por el gobierno que acoge a los superhumanos que quieran luchar por la justicia en contra de los malvados villanos que plagan el mundo en el que vivimos...
+
+--
+
+¡Hoy es otro día en Ciudad Principal! El sol brilla con intensidad, el refrescante viento sopla, acariciando a buenos, malos y dudosos... ¡Era un día perfecto para iniciar una gran historia!
+
+<span class="greenText">&gt;FICHAAAAAAAAAAAA</span>
+<span class="greenText">&gt;Nombre</span>
+Tu nombre. No tu nombre de héroe ni de villano, sólo tu nombre.
+<span class="greenText">&gt;edad</span>
+¿crees que el heroísmo y la maldad tienen edad? ¡claro que no! 
+<span class="greenText">&gt;apariencia</span>
+¡cómo te ves! La última cara que tus víctimas verán... O la que aquellos que salves recordarán por siempre.
+<span class="greenText">&gt;poder</span>
+¿Cuál es la habilidad que te vuelve un superhumano? ¿siquiera tienes una? Porque no es necesario ser un superhumano para ser un héroe... O un villano.</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/57414.html#57414">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">175 posts y 209 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60211"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57414-60211">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 18:22:50</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #df87d8">df87d8</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/57414.html#60211">№</a>
+    <a class="linkQuote" href="/hisrol/res/57414.html#q60211">60211</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/0b83229b42d9c51b81d7dc41feabc9189e1d566ea5a980b3b63662fa2e8ebd51.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">62.37 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/0b83229b42d9c51b81d7dc41feabc9189e1d566ea5a980b3b63662fa2e8ebd51.jpg" download="maxresdefault (2).jpg">maxresdefault (2).jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/0b83229b42d9c51b81d7dc41feabc9189e1d566ea5a980b3b63662fa2e8ebd51.jpg" data-filewidth="1280" data-fileheight="720" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_0b83229b42d9c51b81d7dc41feabc9189e1d566ea5a980b3b63662fa2e8ebd51"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/57414.html#60141">&gt;&gt;60141</a>
+<span class="greenText">&gt;Sweet</span>
+
+<strong>El diablo se burla de lo que sucedió con Yang. El payaso suelta una que otra leve risa por las bromas que hace. Cuando le ofrece la cabeza, llaman a otro tipo enmascarado y sin camisa pero con garras en vez de machete.</strong>
+
+Así parece, si...Pero yo soy más guapo
+
+<strong>Entrega el cráneo sin problemas. Con una risa nerviosa, Antonio se retira para usar la cabeza como advertencia contra cualquier héroe o aspirante que quiera entrometerse en los negocios del demonio.</strong>
+
+No todos tienen un buen sentido del humor
+
+<strong>Estando a solas, se sientan en una mesa de poker y el diablo comienza a jugar con un mazo de cartas. No es que fueran a ponerse a apostar, sino, más bien, era una muestra de la habilidad que poseía el demonio con las cartas y el cómo disfrutaba barajarlas y hacer trucos con estas.</strong>
+
+Awww, me halagas. Se me va a subir el color a la cara
+
+<strong>Suelta una risa tomando el as de diamantes, lo mira fijamente mientras sigue escuchando lo que su nuevo compañero tiene que decirle. Agita la mano indicando que más o menos conoce el sistema de amenazas.</strong>
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/57414.html#60211">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60220"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57414-60220">
+    <span class="labelSubject">Timothy</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 19:38:19</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #66baf1">66baf1</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/57414.html#60220">№</a>
+    <a class="linkQuote" href="/hisrol/res/57414.html#q60220">60220</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/57414.html#59685">&gt;&gt;59685</a>
+<span class="spoiler">Lamento la demora OP, estuve ocupado estos días. Mando turno en la noche,</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60226"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57414-60226">
+    
+    <a class="linkName  noEmailName" >cosa salvaje</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 21:59:50</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #dae91e">dae91e</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/57414.html#60226">№</a>
+    <a class="linkQuote" href="/hisrol/res/57414.html#q60226">60226</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c958d84556698f6e43ca023be444c2cd2fe9785b71181494c851a7135f20c249.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.47 MB</span> <span class="dimensionLabel">1600x898</span>
+  <a class="originalNameLink" href="/.media/c958d84556698f6e43ca023be444c2cd2fe9785b71181494c851a7135f20c249.png" download="c958d84556698f6e43ca023be444c2cd2fe9785b71181494c851a7135f20c249.png">c958d84556698f6e43ca023be444c2cd2fe9785b71181494c851a7135f20c249.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c958d84556698f6e43ca023be444c2cd2fe9785b71181494c851a7135f20c249.png" data-filewidth="1600" data-fileheight="898" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_c958d84556698f6e43ca023be444c2cd2fe9785b71181494c851a7135f20c249"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/4a82f330690e9aba0e89cd7a2ca08855454e41b28a0474e8344da76da85f411f.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">92.99 KB</span> <span class="dimensionLabel">196x257</span>
+  <a class="originalNameLink" href="/.media/4a82f330690e9aba0e89cd7a2ca08855454e41b28a0474e8344da76da85f411f.png" download="4a82f330690e9aba0e89cd7a2ca08855454e41b28a0474e8344da76da85f411f.png">4a82f330690e9aba0e89cd7a2ca08855454e41b28a0474e8344da76da85f411f.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/4a82f330690e9aba0e89cd7a2ca08855454e41b28a0474e8344da76da85f411f.png" data-filewidth="196" data-fileheight="257" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="172" height="225" src="/.media/t_4a82f330690e9aba0e89cd7a2ca08855454e41b28a0474e8344da76da85f411f"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/57414.html#60140">&gt;&gt;60140</a>
+<span class="greenText">&gt;Durante las siguientes horas, Ryan estuvo todo el día preparándose para el anochecer, haciendo lagartijas en su sala, abdominales, barras… Con sus musculos ardiendo, el hombre se acercó a la puerta para atender al repartidor. </span>
+
+<span class="greenText">&gt;Tras tomar la comida, sacó el traje que había usado la noche anterior y lo puso sobre el sofá mientras que se sentó frente a él para comer su comida china mientras que observaba su atuendo y piensa. “Aquel que lucha contra monstruos debe tener cuidado de no convertirse en uno. Si miras fijamente al abismo, el abismo mira dentro de ti.” Frases de Mark Twain que no se encuentran presentes en la cabeza del pelinaranjo, pero que son buenas frases para recordar mientras vemos esta escena: en un departamento de apenas media estrella, mientras oscurece y un hombre semi desnudo yace sentado frente al disfraz que usará para luchar ahí fuera por la causa más egoísta que puedas imaginar, satisfacer su ego, saber que es mejor que los demás en lo que hace. Su padre estuvo en la guerra, era momento de que Ryan fuera a la guerra también. </span>
+
+<span class="greenText">&gt;Su pequeño reloj suena a la misma hora que antes, el hombre se levanta erguido ante su destino iluminado por la luz de una ciudad tan decadente como ella misma. Empieza a vestirse con su ropa y después toma la mascara de jockey, la cual observa durante unos segundos antes de guardarla en su abrigo oscuro junto a su glock en el mismo abrigo, era la única arma que poseía en este momento. Salió del departamento como una sombre deslizándose ágilmente y con prisa por las paredes del edificio hasta llegar a la calle y más tarde, internarse dentro de un putrefacto callejón en donde llevarías a tu novia después de haber invertido cerca de 100 dolares para emborracharla para que acceda a follarte detrás de un contenedor de basura… Si crees que eso suena demasiado especifico como para ser algo recién inventado, ¡metete en tus asuntos! Tras entrar en dicho callejón, sacó su máscara del abrigo y fundió su rostro con ella. </span>
+
+<span class="greenText">&gt;Con todo listo, Wild Thing emergió de la oscuridad del callejón para aventurarse bajo la luz amarilla enfermiza de las farolas de la calle. Caminando en busca de un objetivo. </span>
+
+<span class="spoiler">me miré el final de the boys y joder, ando más inspirado que nunca, ¡Será mejor que lo aproveches Op!</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="57728"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5bcdcb6387f9a49d19d4ab8067ac9f5339215ce01a40e8bc277a159ba0d72f7a.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">466.04 KB</span> <span class="dimensionLabel">500x743</span>
+  <a class="originalNameLink" href="/.media/5bcdcb6387f9a49d19d4ab8067ac9f5339215ce01a40e8bc277a159ba0d72f7a.png" download="ClipboardImage.png">ClipboardImage.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5bcdcb6387f9a49d19d4ab8067ac9f5339215ce01a40e8bc277a159ba0d72f7a.png" data-filewidth="500" data-fileheight="743" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="151" height="225" src="/.media/t_5bcdcb6387f9a49d19d4ab8067ac9f5339215ce01a40e8bc277a159ba0d72f7a"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/d802cab6e7c4594104e8789cbef08bbdfcd7fc4a4150ec28db5ad98c39875788.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">285.58 KB</span> <span class="dimensionLabel">640x480</span>
+  <a class="originalNameLink" href="/.media/d802cab6e7c4594104e8789cbef08bbdfcd7fc4a4150ec28db5ad98c39875788.png" download="ClipboardImage.png">ClipboardImage.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/d802cab6e7c4594104e8789cbef08bbdfcd7fc4a4150ec28db5ad98c39875788.png" data-filewidth="640" data-fileheight="480" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="169" src="/.media/t_d802cab6e7c4594104e8789cbef08bbdfcd7fc4a4150ec28db5ad98c39875788"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57728">
+    <span class="labelSubject">Reinas demoníacas capítulo 9.99 You can (not) end, DLC Edition all final & Knuckles</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">06/21/2022 (Mar) 05:01:49</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #0ecca4">0ecca4</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/57728.html#57728">№</a>
+    <a class="linkQuote" href="/hisrol/res/57728.html#q57728">57728</a>
+    <a class="linkReply" href="/hisrol/res/57728.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/57728.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><span class="greenText">&gt;Hilo para concluír lo que haya que concluir y discutir cualquier idea para una posible secuela</span>
+
+Frente a la pantalla de un ordenador había un hombre la apariencia de este variaría según quien lo estuviera viendo, por lo que describirlo no tendría caso, si pensabas que era un anciano de larga barba entonces verías eso, si creías que era alguien de apariencia andrógina cual miembro de k-pop entonces esa sería su forma y si lo imaginabas como un niño pequeño entonces eso es lo que verías, el porque este hombre funciona de esta manera o lo que estaba haciendo no era importante, lo único con valor real en esta habitación cargada de misticismo, libros viejos, santerías y demás cosas aptas para el estudio de lo mágico, era lo que sucedía detrás de la pantalla de aquel ordenador, en esta se mostraba los resultados de su experimento uno que ha llevado a cabo durante miles de años, el punto de aquel experimento tampoco importa sino el resultado o mas bien &quot;los&quot; resultados, aquellos que lleva viendo extendiéndose y bifurcándose todo este tiempo, tal y como lo hacen las ramas de un árbol, algunas de estas ramas fueron cortadas apenas crearse, otras crecieron durante mas tiempo solo para marchitarse por si solas de forma natural, algunas siguen creciendo y formándose incluso ahora, sea cual sea el resultado en que acabasen todas y cada una de esas ramas contenían historias, historias felices, tristes, normales, dolorosas, aburridas, frustrantes, crueles, agridulces, sorpresivas, mediocres, esperanzadoras, el hombre había visto varias de estas historias, a veces intervenía para hacerlas moverse, otras simplemente se quedaba viendo sin hacer nada, este siempre pensó que estaba libre de cualquier cosa que pasara en estas, pero en muy raras ocasiones se creaban ramas invisibles que escapaban incluso a sus ojos, al no conocer de su existencia nunca tuvo idea de que sucedía con estas y por puros azares del destino una de esas ramas logró lo imposible traspando el velo entre planos y presentándose frente a este como un gran tentáculo que atravesó la pantalla de su ordenador para atraparlo en un fuerte abrazo, pero eso es también una historia para otro momento, así que al menos por ahora concestremoslo en los resultados de aquellas ramas y su crecimiento o marchitamiento
+
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;DQI&#95;4p1f-mQ">https://www.youtube.com/watch?v&#61;DQI&#95;4p1f-mQ</a></div>
+  
+  
+  
+  <div class="labelOmission">108 posts y 39 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60189"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57728-60189">
+    
+    <a class="linkName  noEmailName" >𝓚𝓾𝓶𝓲𝓴𝓸##eULHjo</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 13:33:15</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f54ebd">f54ebd</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/57728.html#60189">№</a>
+    <a class="linkQuote" href="/hisrol/res/57728.html#q60189">60189</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/57728.html#60075">&gt;&gt;60075</a>
+<a class="quoteLink" href="/hisrol/res/57728.html#60117">&gt;&gt;60117</a>
+<span class="spoiler">¿vuelvo a controlar a Mae y Nara?</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60219"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57728-60219">
+    
+    <a class="linkName  noEmailName" >Saki</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 19:34:34</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #c14917">c14917</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/57728.html#60219">№</a>
+    <a class="linkQuote" href="/hisrol/res/57728.html#q60219">60219</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/57728.html#60189">&gt;&gt;60189</a>
+<span class="spoiler">Sí, por favor.</span>
+
+<a class="quoteLink" href="/hisrol/res/57728.html#60117">&gt;&gt;60117</a>
+<span class="spoiler">Los compañeros mascota de las chicas mágicas siempre las están viendo en todo momento, cuando duermen, cuando se cambian de ropa, a veces hasta se meten en la tina con ellas. Todas son bestias sexuales, incluso las piedras.</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60223"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-57728-60223">
+    
+    <a class="linkName  noEmailName" >Amanda</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 21:07:20</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5d9838">5d9838</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/57728.html#60223">№</a>
+    <a class="linkQuote" href="/hisrol/res/57728.html#q60223">60223</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/57728.html#60189">&gt;&gt;60189</a>
+<span class="spoiler">Estamos jugando como en los viejos tiempos por lo que tienes control de todos los npscs</span>
+
+<a class="quoteLink" href="/hisrol/res/57728.html#60219">&gt;&gt;60219</a>
+<span class="spoiler">La primera vez que nos bañamos Howly literal se echo una siesta, por lo que al menos el se comporta</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="42042"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7497d0cef9d67aa793cfb29efaa50fbb6b28989b0b779494a48650230183625c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.51 MB</span> <span class="dimensionLabel">2784x4096</span>
+  <a class="originalNameLink" href="/.media/7497d0cef9d67aa793cfb29efaa50fbb6b28989b0b779494a48650230183625c.jpg" download="20220207&#95;071947.jpg">20220207&#95;071947.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7497d0cef9d67aa793cfb29efaa50fbb6b28989b0b779494a48650230183625c.jpg" data-filewidth="2784" data-fileheight="4096" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="153" height="225" src="/.media/t_7497d0cef9d67aa793cfb29efaa50fbb6b28989b0b779494a48650230183625c"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ef97781fe9700bf7e69b34e9866773da52275789db99985ce4ec76910ff62c36.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.04 MB</span> <span class="dimensionLabel">2850x2008</span>
+  <a class="originalNameLink" href="/.media/ef97781fe9700bf7e69b34e9866773da52275789db99985ce4ec76910ff62c36.jpg" download="ef9.jpeg">ef9.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ef97781fe9700bf7e69b34e9866773da52275789db99985ce4ec76910ff62c36.jpg" data-filewidth="2850" data-fileheight="2008" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="159" src="/.media/t_ef97781fe9700bf7e69b34e9866773da52275789db99985ce4ec76910ff62c36"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/1361da43e1d7c19452e3958eea1b269051f28c75b36085a46acc431c03db2b5c.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">115.63 KB</span> <span class="dimensionLabel">850x1026</span>
+  <a class="originalNameLink" href="/.media/1361da43e1d7c19452e3958eea1b269051f28c75b36085a46acc431c03db2b5c.jpg" download="&#95;&#95;kuroki&#95;tomoko&#95;watashi&#95;ga&#95;motenai&#95;no&#95;wa&#95;dou&#95;kangaetemo&#95;omaera&#95;ga&#95;warui&#95;drawn&#95;by&#95;hospital&#95;king&#95;&#95;sample-f8a267c22224d709e9d9fe7d627bb217.jpg">&#95;&#95;kuroki&#95;tomoko&#95;watashi&#95;ga&#95;motenai&#95;no&#95;wa&#95;dou&#95;kangaetemo&#95;omaera&#95;ga&#95;warui&#95;drawn&#95;by&#95;hospital&#95;king&#95;&#95;sample-f8a267c22224d709e9d9fe7d627bb217.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/1361da43e1d7c19452e3958eea1b269051f28c75b36085a46acc431c03db2b5c.jpg" data-filewidth="850" data-fileheight="1026" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="186" height="225" src="/.media/t_1361da43e1d7c19452e3958eea1b269051f28c75b36085a46acc431c03db2b5c"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-42042">
+    <span class="labelSubject">BNH Hilo meta 62</span>
+    <a class="linkName  noEmailName" >OPmu</a>
+     
+    <span class="labelCreated">03/02/2022 (Mie) 01:41:16</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #7dd21f">7dd21f</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/42042.html#42042">№</a>
+    <a class="linkQuote" href="/hisrol/res/42042.html#q42042">42042</a>
+    <a class="linkReply" href="/hisrol/res/42042.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/42042.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo para hablar del rol y demas, para asi no llenar de basura el hilo de rol
+<span class="spoiler">M-Misa, Morri, los extraño...</span></div>
+  
+  
+  
+  <div class="labelOmission">233 posts y 273 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60059"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-42042-60059">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 03:01:35</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5564ce">5564ce</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/42042.html#60059">№</a>
+    <a class="linkQuote" href="/hisrol/res/42042.html#q60059">60059</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/42042.html#60042">&gt;&gt;60042</a>
+Kekazo muy buena foto, en general a Nazuna le gusta mucho los productos de bebé, al menos de productos de limpieza.
+
+<a class="quoteLink" href="/hisrol/res/42042.html#60048">&gt;&gt;60048</a>
+¿Si estuviera en Danganronpa que talento tuviera? Nazuna sería la herbolaria definitiva, le gusta mucho las plantas</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60074"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-42042-60074">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 03:26:07</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #19cb80">19cb80</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/42042.html#60074">№</a>
+    <a class="linkQuote" href="/hisrol/res/42042.html#q60074">60074</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/475aeb04bd55579d3fdbe420a003b54f28405eec12b73326e2c368dd398bb984.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">167.99 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/475aeb04bd55579d3fdbe420a003b54f28405eec12b73326e2c368dd398bb984.jpg" download="475aeb04bd55579d3fdbe420a003b54f28405eec12b73326e2c368dd398bb984.jpg">475aeb04bd55579d3fdbe420a003b54f28405eec12b73326e2c368dd398bb984.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/475aeb04bd55579d3fdbe420a003b54f28405eec12b73326e2c368dd398bb984.jpg" data-filewidth="1280" data-fileheight="720" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_475aeb04bd55579d3fdbe420a003b54f28405eec12b73326e2c368dd398bb984"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/42042.html#60048">&gt;&gt;60048</a>
+<span class="greenText">&gt;dronne abre reboot de la primera temporada</span>
+<span class="greenText">&gt;los npcs pasan a tener backstories mas largos que divine wars</span>
+<span class="greenText">&gt;todos los npcs tienen quirks psicologicos y de soporte y las batallas pasan a ser batallas de dialogo reguladas por sistema</span>
+<span class="greenText">&gt;boku no hero se convierte en monogatari</span>
+<span class="pinkText">&lt;mcc</span>
+<span class="spoiler">soul</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60222"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-42042-60222">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 20:33:44</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #c5e2e5">c5e2e5</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/42042.html#60222">№</a>
+    <a class="linkQuote" href="/hisrol/res/42042.html#q60222">60222</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/42042.html#60054">&gt;&gt;60054</a>
+Amnogus</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="59203"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/89f410b9e92be7367746edb90a74dcd3f098a0bc5f1e6cd859f7bfda78444e87.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">463.40 KB</span> <span class="dimensionLabel">1537x1600</span>
+  <a class="originalNameLink" href="/.media/89f410b9e92be7367746edb90a74dcd3f098a0bc5f1e6cd859f7bfda78444e87.jpg" download="Anne-Louis Girodet - Apotheosis of French Heroes who died for their Country during the War of Freedom 1801.jpg">Anne-Louis Girodet - Apotheosis of French Heroes who died for their Country during the War of Freedom 1801.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/89f410b9e92be7367746edb90a74dcd3f098a0bc5f1e6cd859f7bfda78444e87.jpg" data-filewidth="1537" data-fileheight="1600" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="216" height="225" src="/.media/t_89f410b9e92be7367746edb90a74dcd3f098a0bc5f1e6cd859f7bfda78444e87"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59203">
+    <span class="labelSubject">El nivel mas profundo -Hilo meta</span>
+    <a class="linkName  noEmailName" >OP</a>
+     
+    <span class="labelCreated">07/01/2022 (Vie) 21:48:39</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #c7eacd">c7eacd</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/59203.html#59203">№</a>
+    <a class="linkQuote" href="/hisrol/res/59203.html#q59203">59203</a>
+    <a class="linkReply" href="/hisrol/res/59203.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">En el inicio de todo, dos hermanos llegaron a un gran vacio, su raza era tan antigüa que su nombre se habia perdido en el tiempo, sin embargo, algunos hombres sabios los llamaban Apokrifos. El primero se llamaba Fajmenne, y el segundo en nacer fue Kumamoete. Ambos buscaron crear un nuevo mundo para gobernarlo. Primero crearon las estrellas con uno de sus ojos, con uno de sus dedos crearon a las bestias esféricas, sin embargo, el planeta donde habitaron los hombres, lo hicieron con la forma de un animal y lo rodearon de agua. Crearon las 2 dimensiones, vertical y horizontal. Tras haber creado el cielo y la tierra, ellos pusieron vida en la tierra con su sangre. Crearon dos lunas, la superior y la inferior, para que acompañaran a los hombres en sus noches.
+Los humanos eran una raza fascinante, que podía utilizar su mente y cuerpo para modificar la realidad inmediata, creando todo tipo de herramientas y artilugios. Ellos aun no lo sabían, pero podrían en un futuro utilizar su energia interna para hacer actos imposibles. 
+El primero creo a los humanos y los adopto como su raza elegida, sin embargo, el se hacia pasar por el creador de todo y todos, excluyendo a su hermano menor. Kumamoete molesto encaro a su hermano y sin quererlo sus emociones los llevaron a una intensa batalla que casi extinguió la vida en el mundo. Cuando el menor se vio vencido, como venganza creo dos razas perversas, uno era solo físico, carecía de mente, sin embargo podía adherirse a los hombres y potenciar sus sentimientos negativos, sus instinto de caza, los corrompia hasta el punto de convertirlos en bestias. La segunda raza, carecía de cuerpo, sin embargo, eran mucho mas brillantes que los hombres, y podian manipular sus mentes, demonios, que engañaban y creaban mundos falsos en las mentes de los hombres. Como toque final de su venganza, el menor separo a la humanidad, los hizo débiles, y dividio sus cualidades. Ya no era una sola raza de hombres, sino siete. 
+Separados, debilitados y confundidos, los hombres aun conservando parte del poder de sus creadores crearon deidades para si mismos, seres que les hicieran tener esperanza. Con el tiempo y sin darse cuenta, estas deidades se volverían realidad por el poder de la fe colectiva. Y siguiendo los pasos de su abuelos, estos dioses se disfrazaron y se ocultaron dentre los hombres, para ayudarlos, para llevar vidas tranquilas. Solo unos cuantos aceptaron ser venerados.</div>
+  
+  
+  
+  <div class="labelOmission">28 posts y 21 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="59605"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59203-59605">
+    
+    <a class="linkName  noEmailName" >OP</a>
+     
+    <span class="labelCreated">07/04/2022 (Lun) 19:09:15</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #def81a">def81a</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59203.html#59605">№</a>
+    <a class="linkQuote" href="/hisrol/res/59203.html#q59605">59605</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9cc3867c4463c4329484311be15e068aece27e667c5deced95a15fb976f4c5a0.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">55.37 KB</span> <span class="dimensionLabel">640x640</span>
+  <a class="originalNameLink" href="/.media/9cc3867c4463c4329484311be15e068aece27e667c5deced95a15fb976f4c5a0.jpg" download="afc572701c10f4e980222136cba4d55b3e777544b46fde6816b5694fb2166be7.jpg">afc572701c10f4e980222136cba4d55b3e777544b46fde6816b5694fb2166be7.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9cc3867c4463c4329484311be15e068aece27e667c5deced95a15fb976f4c5a0.jpg" data-filewidth="640" data-fileheight="640" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="125" height="125" src="/hisrol/custom.spoiler"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59203.html#59569">&gt;&gt;59569</a>
+Ok negro. Es interesante que metieras dos fichas que se complementan
+Kekie con la loli con alcnaciones, ya pesare que darle a caa personaje, por ahora esta bien.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="59678"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59203-59678">
+    <span class="labelSubject">TECNICAS DE DOCTRINA ESPIRITUAL</span>
+    <a class="linkName  noEmailName" >OP</a>
+     
+    <span class="labelCreated">07/05/2022 (Mar) 15:51:06</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f58943">f58943</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59203.html#59678">№</a>
+    <a class="linkQuote" href="/hisrol/res/59203.html#q59678">59678</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">NIVEL PRINCIPIANTE Y APRENDIZ
+
+Tecnica 1: Estado del sabio
+
+El estado del sabio es la tecnica base de todas las demas, el control total de la ente, que por voluntad propia se apaga todo pensamiento y movimiento innecesario, el mago apaga su mente y cuerpo para centrarse en algo mas abstracto. Confiere una gran paz y concentracion, por eso es llamado el estado del sabio
+
+Nivel 1
+En el nivel 1, la tecnica no puede usarse mas que para aprender otras habilidades ya que toma mucho tiempo el entrar en este estado. Quien lo utilice, gana +1 en inteligencia y voluntad, pero consume una hora de su tiempo
+Nivel 2
+En el nivel 2, el usuario se ha acostumrado a separar su mente de todo pensamiento innecesaril, pero aun no puede utilizaro adecuadamente, a demas de incrementar en 1 la inteligencia concede +5 en dados al utilizar cualquier habilidad, ya sea en combate o fuera de el. Toma 3 turnos preparar este estado, por ll aue necesita preparacion previa o alguien que cuide del cuerpo del usuario hasta aje entre e este estado
+Nivel 3
+Es el estado maximo de concentracion. incrementa +2 inteligencia y voluntad, tabien mejora las habilidades en 5 puntos, pero su mayor fuerte es aue puede utilizarse al instante, y facilita el utilizar otras tecnicas de la doctrina espiritual.
+
+Tecnica 2:Visualización
+Esta tecnica consiste en centrarse en el penultio punto del &quot;arbol&quot;, la &quot;torre de mariposas&quot; o conocido de otra forma como los puntos de energia del cuerpo, que comienzan desde el coccix y termnan en la coronilla de la cabeza. Esta tecnica se entra en visualizar on gran fuerza cualquier cosa que se desee. Es usado casi en su totalidad por magos que siguen la doctrina de simbolos. 
+Como minimo se requiere nivel 2 del estado del sabio
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59203.html#59678">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60218"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59203-60218">
+    <span class="labelSubject">SISTEMA DE HABILIDADES Y DADOS BASICO</span>
+    <a class="linkName  noEmailName" >OP</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 19:07:55</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a37de4">a37de4</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59203.html#60218">№</a>
+    <a class="linkQuote" href="/hisrol/res/59203.html#q60218">60218</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Ahora que ya comenzo el rol voy a dejar por aqui el sistema de dados
+
+<span class="pinkText">&lt;Habildades</span>
+-Espadas
+-Hacnas
+-Mazas
+-Espadas largas
+-Hachas de batalla
+-Alabardas
+-Lanzas
+-Latigos
+-Martillos
+-Dagas
+-Espadas cortas
+-Desarmado 
+(((3×D)+P)×10)/8
+-Bloqueo</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/59203.html#60218">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="59615"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/4e4e227de58ef141ae5c67ce96e8e9b25b8cc31b4c8697fa57113b52c09345e4.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">112.88 KB</span> <span class="dimensionLabel">1000x1500</span>
+  <a class="originalNameLink" href="/.media/4e4e227de58ef141ae5c67ce96e8e9b25b8cc31b4c8697fa57113b52c09345e4.jpg" download="photo-1510596713412-56030de252c8.jpeg">photo-1510596713412-56030de252c8.jpeg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/4e4e227de58ef141ae5c67ce96e8e9b25b8cc31b4c8697fa57113b52c09345e4.jpg" data-filewidth="1000" data-fileheight="1500" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="150" height="225" src="/.media/t_4e4e227de58ef141ae5c67ce96e8e9b25b8cc31b4c8697fa57113b52c09345e4"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59615">
+    <span class="labelSubject">Meadows Falls</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/04/2022 (Lun) 21:34:50</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #395c39">395c39</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/59615.html#59615">№</a>
+    <a class="linkQuote" href="/hisrol/res/59615.html#q59615">59615</a>
+    <a class="linkReply" href="/hisrol/res/59615.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hace frío, mucho, mucho frío... Tus ojos poco a poco se van abriendo, y aquel inclemente frío, si bien, no te abandona, va reduciendo increíblemente su fuerza... Tu cara, tus piernas, tus brazos y tú pecho, poco a poco se sienten más cálidos, y con aquel frío, una extraña niebla iba abandonando aquel lugar en donde estabas, dejándote ver todo con apenas claridad: Hay una ventana en aquel sitio, pero todo se ve bastante gris, bastante apagado, sin casi rastro del sol ayudando a iluminar ese sombrío paraje.
+
+Tu cabeza duele al solo intentar recordar dónde estás, o siquiera, quien eres y que haces allí. El suelo está duro y frío, pero afortunadamente tu cabeza se encontraba reposando encima de unas cuantas telas manchadas de pintura, más tu cabello y cabeza no lo estaba, mucho menos la ropa que tenías puesta, estaba pulcra, a excepción de tus botas, que tenían unas cuantas manchas de barro pegadas.
+
+Una rápida revisión a tus bolsillos, no revelaba nada más allá de unos cuantos billetes, algunas pelusas, unas cuantas monedas, y, más importante, una especie de carnet, que contenía unos cuantos datos, al parecer, sobre tu persona:
+
+<span class="greenText">&gt;Nombre completo</span>
+<span class="greenText">&gt;Sexo</span>
+<span class="greenText">&gt;Edad</span>
+<span class="greenText">&gt;Lugar de nacimiento</span>
+<span class="greenText">&gt;Fecha de nacimiento</span>
+<span class="greenText">&gt;Tipo de sangre</span>
+<span class="greenText">&gt;Foto</span>
+<span class="greenText">&gt;Fecha de vencimiento: 31/12/1999</span>
+<span class="redText">Meadows Falls, el mejor lugar para vivir!</span>
+
+Una suave ventisca soplo, al momento en que leíste aquello último... Más sin embargo, a pesar de tu amnesia, nada te hacía resonar el nombre de aquel lugar.</div>
+  
+  
+  
+  <div class="labelOmission">19 posts y 19 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60193"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59615-60193">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 14:55:46</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #c75bd7">c75bd7</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59615.html#60193">№</a>
+    <a class="linkQuote" href="/hisrol/res/59615.html#q60193">60193</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Último bumpo</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60199"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59615-60199">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 16:12:38</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #4b1cd6">4b1cd6</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59615.html#60199">№</a>
+    <a class="linkQuote" href="/hisrol/res/59615.html#q60199">60199</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Pobrecito OP... ¿De que va tu rol? A ver, iluminame</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60207"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59615-60207">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 17:20:15</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #efe431">efe431</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59615.html#60207">№</a>
+    <a class="linkQuote" href="/hisrol/res/59615.html#q60207">60207</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59615.html#60199">&gt;&gt;60199</a>
+En muy resumidas cuentas: Silent Hill 1 con Wayward Pines, aunque más específicamente, las bases son SH y Jacob&apos;s Ladder, así que, con eso, creo que puedes tener más o menos una idea de cómo va la cosa</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="1"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/bd1b783312879be98ad3f38329f4452e4e18d8af1192ca6824a5c5eabcd5d6bb.gif"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">184.81 KB</span> <span class="dimensionLabel">624x430</span>
+  <a class="originalNameLink" href="/.media/bd1b783312879be98ad3f38329f4452e4e18d8af1192ca6824a5c5eabcd5d6bb.gif" download="Banner.gif">Banner.gif</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/bd1b783312879be98ad3f38329f4452e4e18d8af1192ca6824a5c5eabcd5d6bb.gif" data-filewidth="624" data-fileheight="430" data-filemime="image/gif">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="155" src="/.media/t_bd1b783312879be98ad3f38329f4452e4e18d8af1192ca6824a5c5eabcd5d6bb"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1">
+    <span class="labelSubject">/mg/ - Meta General</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">03/20/2021 (Sab) 17:40:54</span>
+    
+    
+    
+    
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/hisrol/res/1.html#1">№</a>
+    <a class="linkQuote" href="/hisrol/res/1.html#q1">1</a>
+    <a class="linkReply" href="/hisrol/res/1.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/1.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Quién no pueda postear aqui, recuerde que está el tablón de respaldo en endchan, en caso de que no puedan postear tampoco en este hilo. Mantenganlo civilizado y sin tiradera de mierda o shitpost. Este hilo será para feedback, dudas, preguntas, consultas de cualquier tipo referentes al tablón o al hobby en general.
+
+<a target="&#95;blank" href="https://endchan.net/Hisrol/">https://endchan.net/Hisrol/</a>
+<a target="&#95;blank" href="https://endchan.org/Hisrol/">https://endchan.org/Hisrol/</a>
+
+<span class="redText">Reporta lo que rompa las reglas, si un rol no te gusta, dale a hide y olvida su existencia</span>
+
+<span class="greenText">&gt;Anteriores /mg/ en Hispa</span>
+<a target="&#95;blank" href="https://pastebin.com/NNdeQAMy">https://pastebin.com/NNdeQAMy</a>
+<span class="greenText">&gt;Para guardar hilos</span>
+<a target="&#95;blank" href="https://archive.is/">https://archive.is/</a>
+<span class="greenText">&gt;¿Como puedo guardar mi hilo?</span>
+Copia el link de tu hilo, luego lo pegas en la barra de archive.is, y luego das click a guardar. Hecho eso, solo queda esperar a que la página te entregué un link en donde estará el hilo guardado. En pocas palabras, funciona de forma bastante similar a Hispafiles
+
+<span class="redText">RECURSOS O HERRAMIENTAS PARA AYUDARSE, GUIARSE, Y DARLE UN MEJOR TOQUE A TU ROL</span>
+<a target="&#95;blank" href="https://graphicsgale.com/us/">https://graphicsgale.com/us/</a>
+<a target="&#95;blank" href="https://www.campfiretechnology.com/">https://www.campfiretechnology.com/</a> </div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/1.html#1">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  <div class="labelLastEdit">Editado por última vez por DanMaster en 06/21/2022 (Mar) 15:48:09.</div>
+  <div class="labelOmission">597 posts y 155 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60104"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1-60104">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 04:33:10</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a43d71">a43d71</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/1.html#60104">№</a>
+    <a class="linkQuote" href="/hisrol/res/1.html#q60104">60104</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/1.html#60093">&gt;&gt;60093</a>
+<a class="quoteLink" href="/hisrol/res/1.html#60095">&gt;&gt;60095</a>
+Negro esto es real?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60105"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1-60105">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 04:34:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #a9b511">a9b511</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/1.html#60105">№</a>
+    <a class="linkQuote" href="/hisrol/res/1.html#q60105">60105</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/1.html#60104">&gt;&gt;60104</a>
+Dudoso, Kumiko tiene un muy posible autismo no irónico y él dijo algo una vez sobre &quot;quién no hace X hace ERP en caralibro&quot; (y lo hizo). Los autistas no mienten.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60201"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1-60201">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 16:33:43</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cebdf2">cebdf2</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/1.html#60201">№</a>
+    <a class="linkQuote" href="/hisrol/res/1.html#q60201">60201</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/1.html#60104">&gt;&gt;60104</a>
+<a class="quoteLink" href="/hisrol/res/1.html#60105">&gt;&gt;60105</a>
+No se negro, en lo personal son demasiadas coincidencias. Se llama kumiko, rolea, es autista y gigacoomer. Si no es él sería su gemelo malvado.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="18364"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2c2cd2a7a9341bbde015b3c519a894e96216eaf29a7892fcc1034eec6059a9ea.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">38.78 KB</span> <span class="dimensionLabel">680x529</span>
+  <a class="originalNameLink" href="/.media/2c2cd2a7a9341bbde015b3c519a894e96216eaf29a7892fcc1034eec6059a9ea.jpg" download="IMG-20200528-WA0046.jpg">IMG-20200528-WA0046.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2c2cd2a7a9341bbde015b3c519a894e96216eaf29a7892fcc1034eec6059a9ea.jpg" data-filewidth="680" data-fileheight="529" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="175" src="/.media/t_2c2cd2a7a9341bbde015b3c519a894e96216eaf29a7892fcc1034eec6059a9ea"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-18364">
+    <span class="labelSubject">Hilo General de OCs/Banners</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">07/13/2021 (Mar) 02:29:47</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #4bb429">4bb429</span></span>
+    
+    
+    
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/hisrol/res/18364.html#18364">№</a>
+    <a class="linkQuote" href="/hisrol/res/18364.html#q18364">18364</a>
+    <a class="linkReply" href="/hisrol/res/18364.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/18364.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Lo del título, pueden usar este hilo para postear OCs relativos a sus roles y que deseen compartir con todos, algún banner que quisieran que ocupará la cabecera del tablón, y cualquier cosita que pueda ayudar a darle un bonito look al tablon.
+
+<span class="redText">PARA BANNERS</span>
+El tamaño debe ser de 300x100 píxeles para que se pueda ver bien. El tamaño máximo para banners, es de 1mb.
+
+<span class="redText">SPOILERS CUSTOMIZADOS</span>
+8moe permite customizar el spoiler, para que no sea sencillamente un enorme &quot;?&quot; Negro. Aunque no se menciona el tamaño máximo para esto, se permitirá también la subida de candidatos para spoiler customizado.
+
+<span class="redText">CSS CUSTOMIZADO</span>
+O el tema de fondo del tablón. Por aspectos tecnicos, no se utilizará de momento ningún CSS para el tablón, en un futuro, puede que se acepten nuevos estilos para el tablón</div>
+  
+  
+  <div class="labelLastEdit">Editado por última vez por DanMaster en 07/15/2021 (Jue) 14:20:45.</div>
+  <div class="labelOmission">120 posts y 47 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="59562"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-18364-59562">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/04/2022 (Lun) 02:35:15</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #023450">023450</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/18364.html#59562">№</a>
+    <a class="linkQuote" href="/hisrol/res/18364.html#q59562">59562</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/18364.html#59560">&gt;&gt;59560</a>
+Me gustaría, pero siento que es algo que debería nacer de cualquiera de los negros, para que quede mejor kek</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="59565"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-18364-59565">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/04/2022 (Lun) 03:41:05</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #c226e6">c226e6</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/18364.html#59565">№</a>
+    <a class="linkQuote" href="/hisrol/res/18364.html#q59565">59565</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/09c4b5659c79f58a6dd2231bb9fa4bf1b47256e09e7287b152ad32b731446dc7.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">5.92 KB</span> <span class="dimensionLabel">369x66</span>
+  <a class="originalNameLink" href="/.media/09c4b5659c79f58a6dd2231bb9fa4bf1b47256e09e7287b152ad32b731446dc7.png" download="Paste.png">Paste.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/09c4b5659c79f58a6dd2231bb9fa4bf1b47256e09e7287b152ad32b731446dc7.png" data-filewidth="369" data-fileheight="66" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="40" src="/.media/t_09c4b5659c79f58a6dd2231bb9fa4bf1b47256e09e7287b152ad32b731446dc7"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/18364.html#59562">&gt;&gt;59562</a>
+Sera anonlondo quién se lleve el banner entonces</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60197"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-18364-60197">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 16:02:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #6f19d3">6f19d3</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/18364.html#60197">№</a>
+    <a class="linkQuote" href="/hisrol/res/18364.html#q60197">60197</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7e0fb483bb1587df273f7f92138e494f8d049dbfa146e5c10f073939a4a26d1d.gif"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">898.33 KB</span> <span class="dimensionLabel">300x100</span>
+  <a class="originalNameLink" href="/.media/7e0fb483bb1587df273f7f92138e494f8d049dbfa146e5c10f073939a4a26d1d.gif" download="hisrol d1.gif">hisrol d1.gif</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7e0fb483bb1587df273f7f92138e494f8d049dbfa146e5c10f073939a4a26d1d.gif" data-filewidth="300" data-fileheight="100" data-filemime="image/gif">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="75" src="/.media/t_7e0fb483bb1587df273f7f92138e494f8d049dbfa146e5c10f073939a4a26d1d"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Un banner</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="1566"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/cc33917bb614ae031eb15c5e96fc7ef91f96d79ec79a91c35eeacb2b38410fef.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">15.04 KB</span> <span class="dimensionLabel">620x351</span>
+  <a class="originalNameLink" href="/.media/cc33917bb614ae031eb15c5e96fc7ef91f96d79ec79a91c35eeacb2b38410fef.jpg" download="Un ala robada del angel mas hermoso.jpg">Un ala robada del angel mas hermoso.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/cc33917bb614ae031eb15c5e96fc7ef91f96d79ec79a91c35eeacb2b38410fef.jpg" data-filewidth="620" data-fileheight="351" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_cc33917bb614ae031eb15c5e96fc7ef91f96d79ec79a91c35eeacb2b38410fef"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1566">
+    
+    <a class="linkName  noEmailName" >El infierno de Dante</a>
+     
+    <span class="labelCreated">03/29/2021 (Lun) 02:10:28</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #1336c4">1336c4</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/1566.html#1566">№</a>
+    <a class="linkQuote" href="/hisrol/res/1566.html#q1566">1566</a>
+    <a class="linkReply" href="/hisrol/res/1566.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/1566.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Zodoreje, lape zodiredo Noco Mada, hoathahe Saitan! 
+
+¡O Tù, quien comanda la llama primera, bajo cuyas alas se hallan los ejes que de las telarañas que envuelven la Tierra; que conocèis el nombre de la &quot;rectitud&quot; y el sello del falso honor!. ¡Moveos y apareced!
+
+¡Oh, llama segunda, mansiòn de justicia, que tiene en gloria sus orìgenes y consuela al justo; que camina sobre la Tierra con pasos de fuego; que entiende y separa las criaturas! Grande sois ante el Dios que se extiende y conquista. ¡Moveos y apareced!
+
+¡Oh, Llama Tercera, cuyas alas son espinas que aumentan el dolor, y que tienes ante ti miradas de làmparas vivientes; cuyo Dios es ira y rencor. Prepara tus òrganos genitales, y escucha! ¡Muèvete, y aparece! Abre los misterios de tu creaciòn! ¡Se amistosa conmigo, porque soy el mismo! el adorador verdadero del excelso e inefable Rey del Infierno!</div>
+  
+  
+  
+  <div class="labelOmission">156 posts y 183 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="59681"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1566-59681">
+    
+    <a class="linkName  noEmailName" >Abdullah</a>
+     
+    <span class="labelCreated">07/05/2022 (Mar) 18:45:55</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #dbc7e9">dbc7e9</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/1566.html#59681">№</a>
+    <a class="linkQuote" href="/hisrol/res/1566.html#q59681">59681</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ae07cf2ff68b3f214fe12c219a07e60b2d0495421b924c9e25dbadedb1df7436.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">49.06 KB</span> <span class="dimensionLabel">564x564</span>
+  <a class="originalNameLink" href="/.media/ae07cf2ff68b3f214fe12c219a07e60b2d0495421b924c9e25dbadedb1df7436.jpg" download="abdu10.jpg">abdu10.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ae07cf2ff68b3f214fe12c219a07e60b2d0495421b924c9e25dbadedb1df7436.jpg" data-filewidth="564" data-fileheight="564" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_ae07cf2ff68b3f214fe12c219a07e60b2d0495421b924c9e25dbadedb1df7436"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/1566.html#59599">&gt;&gt;59599</a>
+
+-Tiempo-
+
+&quot;Hola&quot;
+
+-Abdullah-
+
+&quot;¡HOLA!&quot;
+
+<em>Dijo antes de preguntar, no antes de ir al momento donde iria, el orden factorial no afecta en este momento.</em>
+
+-Tiempo-
+
+&quot; &apos;Dios&apos; es mas como un familiar, como...mi Hermano mayor, algo así, venimos del mismo lugar pero el es superior a mi, aunque hubo un momento donde éramos iguales&quot;.
+
+-Abdullah-</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/1566.html#59681">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60022"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1566-60022">
+    <span class="labelSubject">Apendice de Dios</span>
+    <a class="linkName  noEmailName" >, OP</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 00:28:36</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #1336c4">1336c4</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/1566.html#60022">№</a>
+    <a class="linkQuote" href="/hisrol/res/1566.html#q60022">60022</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/d9c653b6785168f59849bf9f2d022659828d1e6ddf1db29316d4731fedc740a2.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">73.96 KB</span> <span class="dimensionLabel">564x742</span>
+  <a class="originalNameLink" href="/.media/d9c653b6785168f59849bf9f2d022659828d1e6ddf1db29316d4731fedc740a2.jpg" download="rid.jpg">rid.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/d9c653b6785168f59849bf9f2d022659828d1e6ddf1db29316d4731fedc740a2.jpg" data-filewidth="564" data-fileheight="742" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="125" height="125" src="/hisrol/custom.spoiler"></a>
+</details>
+</figure></div>
+  <div class="divMessage">KEK
+<a class="quoteLink" href="/hisrol/res/1566.html#59681">&gt;&gt;59681</a>
+<strong>ABDULLAH</strong>
+
+<u>Tiempo</u>
+
+Cuando nuestro padre nos creo, pero &quot;Dios&quot; aprovecho y robo gran parte de su poder...ahora el...
+
+<span class="greenText">&gt;En medio de la sala, una grieta en la realidad misma se formo, como si fuera una advertencia, Tiempo se cayo.</span>
+
+<u>Tiempo</u>
+
+Ya no puedo decir mucho...
+
+<span class="greenText">&gt;...</span>
+<span class="greenText">&gt;Regresando al tiempo actual, dejaste a la criatura generarse mostrando piedad a algo que segun lo que sabes hace poco estaba a punto de matarte, Malacoda se voltea hacia a ti con el comentario sobre que el no tiene nada que decir ahora mismo, y suspiro con una pequeña risa de fondo.</span>
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/1566.html#60022">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60194"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-1566-60194">
+    
+    <a class="linkName  noEmailName" >Abdullah</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 15:00:02</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #ddc21d">ddc21d</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/1566.html#60194">№</a>
+    <a class="linkQuote" href="/hisrol/res/1566.html#q60194">60194</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/a58be8725e3b72f6edc12343bea943fa5215d083f7d0d579d986a58361623941.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">37.32 KB</span> <span class="dimensionLabel">564x564</span>
+  <a class="originalNameLink" href="/.media/a58be8725e3b72f6edc12343bea943fa5215d083f7d0d579d986a58361623941.jpg" download="abdu11.jpg">abdu11.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/a58be8725e3b72f6edc12343bea943fa5215d083f7d0d579d986a58361623941.jpg" data-filewidth="564" data-fileheight="564" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_a58be8725e3b72f6edc12343bea943fa5215d083f7d0d579d986a58361623941"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/1566.html#60022">&gt;&gt;60022</a>
+
+&quot;HMMMMMMMMMMMMMMMMMM&quot;
+
+<em>Se quedo pensando, mientras intentaba tocar aquella grita en la realidad misma, como cosa rara, pensando que lo habia hecho ese mismo &quot;Dios&quot; para evitar que Tiempo siguiera hablando de mas, el simplemente lo ignoro e hizo una pregunta mas.</em>
+
+&quot;¿Y quien es tu padre?&quot;
+
+<em>...............................</em>
+
+<em>Vovliendo nuevamente a la criatura extraña, ignorando por encima los comentarios de Malacoda siendo respondidos por solo apretar un poco bastante la espada de Dante en su columna para que se callara y se pusiera como buen perrito.</em>
+
+<em>Viendo al dinosaurio volar el solamente saco a Mammidas y a Tenebris para activarlos, Mammidas para ganar fuerza y a Tenebris dandole mas sangre de lo normla para generar un gran espectro de la guadaña que vaya hacia donde estaba el dinosaurio, conociendo como es el poder de esta, le ayudara a saber por donde vendra el bicho para poder prepararse con mayor facilidad.</em>
+
+&quot;Calma pueblo, yo me encargo, por algo soy el mejor desgraciado de este lugar&quot;
+
+<em>Dijo fanfarroneando, ya que no muchos segun sabe han llegado tan lejos como el.</em></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/1566.html#60194">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="55262"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/fdb4ae552a422e83d5bd3c7b18fac8f262072e0fd30e90e7ffe7f66dddf84b88.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">172.35 KB</span> <span class="dimensionLabel">1152x815</span>
+  <a class="originalNameLink" href="/.media/fdb4ae552a422e83d5bd3c7b18fac8f262072e0fd30e90e7ffe7f66dddf84b88.jpg" download="165392630695.jpg">165392630695.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/fdb4ae552a422e83d5bd3c7b18fac8f262072e0fd30e90e7ffe7f66dddf84b88.jpg" data-filewidth="1152" data-fileheight="815" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="159" src="/.media/t_fdb4ae552a422e83d5bd3c7b18fac8f262072e0fd30e90e7ffe7f66dddf84b88"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-55262">
+    <span class="labelSubject">Los roles sin sistema son para normis</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">06/03/2022 (Vie) 14:55:19</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #f94634">f94634</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/55262.html#55262">№</a>
+    <a class="linkQuote" href="/hisrol/res/55262.html#q55262">55262</a>
+    <a class="linkReply" href="/hisrol/res/55262.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Chance My mind
+Los roles sin estadísticas son para normis, desde siempre se ha utilizado números, clases, roles, etc en los productos y pasatiempos relacionados al rol. Tanto en los videojuegos  como roles de mesa o roles en línea. Sin un sistema no se diferencia mucho de los roles que se hacen en amino, salvó que se justifica lo que hace tu personaje con una tirada de dados
+Los sistemas ayudan a personalizar más, con estadísticas y clases que los hacen diferentes, y no son una tirada genérica de dados en donde todos tienen las mismas chances. Se requiere de estrategia y no planes sacados del culo.
+Volvamos a los sistemas,</div>
+  
+  
+  
+  <div class="labelOmission">30 posts y 10 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="55727"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-55262-55727">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">06/06/2022 (Lun) 11:52:37</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #041bfd">041bfd</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/55262.html#55727">№</a>
+    <a class="linkQuote" href="/hisrol/res/55262.html#q55727">55727</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/55262.html#55474">&gt;&gt;55474</a>
+M-msiha era real!</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="57409"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-55262-57409">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">06/18/2022 (Sab) 20:04:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #0760b2">0760b2</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/55262.html#57409">№</a>
+    <a class="linkQuote" href="/hisrol/res/55262.html#q57409">57409</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/55262.html#55262">&gt;&gt;55262</a>
+Sin un sistema aunque sea uno muy sencillo, no es una partida de rol sino un taller de narrativa y literatura.
+No digo que todos los juegos deben tener cientos de reglas super estrictas, pero tiene que existir cierta guía y margen de acción para evitar una anarquía total o una dictadura del DM.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60192"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-55262-60192">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 13:47:00</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #626827">626827</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/55262.html#60192">№</a>
+    <a class="linkQuote" href="/hisrol/res/55262.html#q60192">60192</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/55262.html#55727">&gt;&gt;55727</a>
+Siempre lo fue</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="60045"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b29930aabbc9e95d1bff5195d60c9c746895bf93bf95cef6489c5af0651bc8b8.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">248.03 KB</span> <span class="dimensionLabel">1920x1164</span>
+  <a class="originalNameLink" href="/.media/b29930aabbc9e95d1bff5195d60c9c746895bf93bf95cef6489c5af0651bc8b8.jpg" download="149937.jpg">149937.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b29930aabbc9e95d1bff5195d60c9c746895bf93bf95cef6489c5af0651bc8b8.jpg" data-filewidth="1920" data-fileheight="1164" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="136" src="/.media/t_b29930aabbc9e95d1bff5195d60c9c746895bf93bf95cef6489c5af0651bc8b8"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-60045">
+    <span class="labelSubject">El punto mas profundo -Hilo 1</span>
+    <a class="linkName  noEmailName" >OP</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 02:24:06</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #0e1b73">0e1b73</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/60045.html#60045">№</a>
+    <a class="linkQuote" href="/hisrol/res/60045.html#q60045">60045</a>
+    <a class="linkReply" href="/hisrol/res/60045.html">[Responder]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Año 245 de la era del decimo
+Siglos han pasado desde la caida del imperio Syryilianyo, solo leyendas se cuentan sobre las guerras Jixneticas ocurridas hace casi un milenio. Los reinos no viven en paz y armonia, pero han llegado a cierto estado de estabilidad, ahora las guerras son dificiles de ver. Los llamados magos han dejado de ser perseguidos y son respetados, sin embargo, tras el incidente de el reino de alina, que sumio en completo caos y oscuridad a toda una nacion, las personas los miran con recelo y a veces con miedo. Los antiguos codigos de honor en caballeros se han olvidado, y han pasado de proteger al rey y a sus habitantes a solamente servir al rey, abusando del resto, dejandose sobornar por los comerciantes nobles, aunque siguen habiendo ciertos romanticos, religiosos y guerreros que siguen respetando el honor en las peleas.
+Las naciones ahora dedican sus esfuerzos al arte y a la ciencia, con mecenas que financian a artistas y musicos para que creen obras en su nombre, para sus ciudades o por motivos religiosos y de politica. Sin embargo, pese a la cubierta pacifica y esperanzadora de la nueva era que se acerca, la guerra sigue amenazando al este, desde el imperio Zrukdence, principalmente conformado y gobernado por los hombres del desierto, con sus diestros soldados, grandes bestias amaestradas, alquimistas e ingenieros que crean todo tipo de armas para el imperio. Pero lejos en el este, en un continente conocido como &quot;La cola&quot;, los vientos de la guerra no han llegado, aunque hayan bestias, hechiceros malignos, bandidos y demonios rondando en los bosques y caminos, pero como un equilibrio, tambien habian nobles aventureros, universidades que capacitaban a grandes magos y alquimistas. 
+El mundo a pesar de lo oscuro que ha comenzado a tornarse desde el inicio de la era del decimo, tambien ha comenzado una era de iluminacion poco a poco como una llama que se enciende en cada ciudad humana, en cada corazon, en cada hombre que comienza a buscar la libertad y la jusicia.</div>
+  
+  
+  
+  <div class="labelOmission">1 post y 1 imagen omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60068"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-60045-60068">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 03:10:38</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #50ee4a">50ee4a</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/60045.html#60068">№</a>
+    <a class="linkQuote" href="/hisrol/res/60045.html#q60068">60068</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/60045.html#60045">&gt;&gt;60045</a>
+<span class="spoiler">AAAAAAAYYYYY vi la pic mientras bajaba y te juro que sentí como mi ano se encogía, pensé que era Conquistador 2 TOP KEK</span>
+¿Bump?</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60101"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-60045-60101">
+    <span class="labelSubject">Para Durant</span>
+    <a class="linkName  noEmailName" >OP</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 04:27:24</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #cea6b4">cea6b4</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/60045.html#60101">№</a>
+    <a class="linkQuote" href="/hisrol/res/60045.html#q60101">60101</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/fdbb0a0e9be070a3d5d56cf12eccffba527298818b09821b38c359698a057eeb.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">309.63 KB</span> <span class="dimensionLabel">996x680</span>
+  <a class="originalNameLink" href="/.media/fdbb0a0e9be070a3d5d56cf12eccffba527298818b09821b38c359698a057eeb.jpg" download="Albert Goodwin - Certosa.jpg">Albert Goodwin - Certosa.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/fdbb0a0e9be070a3d5d56cf12eccffba527298818b09821b38c359698a057eeb.jpg" data-filewidth="996" data-fileheight="680" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="154" src="/.media/t_fdbb0a0e9be070a3d5d56cf12eccffba527298818b09821b38c359698a057eeb"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/de4f58f18aaa78005157cf49ef1e630a00eb7b13ca1125756c0ffcae6ff54ad9.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">96.97 KB</span> <span class="dimensionLabel">460x800</span>
+  <a class="originalNameLink" href="/.media/de4f58f18aaa78005157cf49ef1e630a00eb7b13ca1125756c0ffcae6ff54ad9.jpg" download="bd21a7e001c6d2f48df4252a668aae3d.jpg">bd21a7e001c6d2f48df4252a668aae3d.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/de4f58f18aaa78005157cf49ef1e630a00eb7b13ca1125756c0ffcae6ff54ad9.jpg" data-filewidth="460" data-fileheight="800" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="129" height="225" src="/.media/t_de4f58f18aaa78005157cf49ef1e630a00eb7b13ca1125756c0ffcae6ff54ad9"></a>
+</details>
+</figure></div>
+  <div class="divMessage">11/5&quot;/245 del decimo
+
+<span class="pinkText">&lt;El joven herrero de Meloco, habia pasado casi toda su vida en aquel pueblo, aquel lugar era comodo para vivir, los habitantes a veces podian ser supersticiosos y tontos, pero era un ambiente tolerable para cualquiera que respetara la ley y no fuera demasiado huraño. Cada cierto tiempo se celebraban festivales, no habia pasado ni dos meses y ya podrian estar planeando un njevo festival, la vida era dura y muchos preferian paliar las carencias o la incertidumbre con reuniones entre vecinos. En aquel pueblo se adoraba a los 7 dioses, puesto que vivian al rededor del famoso Gran lago, donde antaño habian se los adoraba con mayor fervor.</span>
+<span class="pinkText">&lt;En cuanto a Malta, la mayoria de los campesinos la trataban con cordialidad, pero muchos preferian evitarla por lo peligrosos que podian ser los hombres bestia con sus garras y agilidad sobrehumana. Aunque eso no evitaba que una parte de los chicos hubieran intentado cortejarla, era como un panal lleno de miel atrayendo abejas, incluso algunos hkmbres ha casados y demasiado maores no podian evitar voltear su mirada para verla. Quienes tenian una relacion mas amistosa con Durant siemre hacian chistes sobre lo bien que debia de aprovechar su &quot;inversion&quot; por las noches, segun ellos, Malta ya estaba en edad de merecer y no dudaban que Durant hubiera tomado provecho de la situacion.</span>
+<span class="pinkText">&lt;A parte de la acogedora calma que habia en el pueblo y la vida lenta, rumores llegaban de reinos en la lejania del oeste que estaban reclutando hombres de otros lugares para enfrentar al gran imperio de Zrukdence, pagarian 5 Fermines de oro al mes a quienes se enlistaran en sus ejercitos. Era una suma mas aue considerable, con 5 Fermines alguien de vida modesta podria vivir por medio año sin problemas. Varios de los jovenes mas entuciastas ya se habian marchado de Meloco para enlistarse. Uno de ellos, el primero que se enlisto, habia vuelto por un permiso de descanso y habia contado en la posada que se habia enfrentado con terribles magos que utilizaban esferas negras que explotaban al tocarlas, muchos habian perdido piernas y brazos en combate, pero el se las habia arreglado para salir ileso.</span>
+<span class="pinkText">&lt;Un dia mientras el joven herrero, Durant, evisaba su libro de contaduria, noto que le hacian falta materias primas para sus proyectos, entonces como de costumbre preparo su carreta y se dispuso a salir con su esclava Malta a la ciudad de Hamild, donde podria comprar a su proveedor los materiales para continuar con su tabajo. En mitad del camno a la ciudad, encontraron a un hombre malherido y casi desnutrido, este miraba suplicando por compasion a los jovenes viajeros, no llevaba mas que un viejo trapo desgastado y agujereado curbiendo su torso y parte de sus piernas</span>
+&quot;Por favor, alguien audeme, mis piernas no dan para mas, por favor, ayudenme a llegar a casa, sobre aauella colina de alla&quot;
+<span class="pinkText">&lt;Dijo el cansado y angustiado viejo. Durant no conocia el lugar como para saber si cerca de alli vivia alguien, estaba a 4 kilometros de Meloco y ajnque habia salidl de aventjras, no habia estado en aquella zona. El hombre prosiguio esta vez dirigiendose a Malta</span>
+&quot;Señorita, ustedes me ayudaran ¿verdad? No tengo much que ofrecer, perl si me llevan hasta mi hogar podria ofrecerles comida para su viaje y algun balsamo de los que preparo en ocasiones&quot;</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60191"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-60045-60191">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 13:43:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #8ed61d">8ed61d</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/60045.html#60191">№</a>
+    <a class="linkQuote" href="/hisrol/res/60045.html#q60191">60191</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/60045.html#60068">&gt;&gt;60068</a>
+Cierra le hocico pendejo</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="59578"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6c2b04acc739a6eee1091276df50560c2ad867c32412ee1463fb0a5a64c32b6e.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">81.53 KB</span> <span class="dimensionLabel">650x650</span>
+  <a class="originalNameLink" href="/.media/6c2b04acc739a6eee1091276df50560c2ad867c32412ee1463fb0a5a64c32b6e.jpg" download="Reign of the Supermen.jpg">Reign of the Supermen.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6c2b04acc739a6eee1091276df50560c2ad867c32412ee1463fb0a5a64c32b6e.jpg" data-filewidth="650" data-fileheight="650" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_6c2b04acc739a6eee1091276df50560c2ad867c32412ee1463fb0a5a64c32b6e"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59578">
+    <span class="labelSubject">Reign Of The Supermen</span>
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/04/2022 (Lun) 08:48:32</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #d75c50">d75c50</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/59578.html#59578">№</a>
+    <a class="linkQuote" href="/hisrol/res/59578.html#q59578">59578</a>
+    <a class="linkReply" href="/hisrol/res/59578.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/59578.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Más allá de las estrellas, en el infinito espacio oscuro que sirve de techo para todo ser vivo que habita nuestro planeta, lleno de luces que son a penas vestigios de sistemas solares que ya no existen, mundos como los nuestros se alzan y decaen de forma retroalimentativa en un hermoso y natural ciclo de autodestrucción que ampara todo aquello que existe en el Cosmos sin que nos demos cuenta, y sin que afecte nuestro día a día de forma significativa.
+
+Sin embargo, últimamente la Nasa ha detectado la desaparición misteriosa de Planetas lejanos a nuestra Galaxia, esfumándose como la llama de una vela en la oscuridad, como si simplemente hubieran dejado de existir. Esta noticia se filtró en varias redes sociales y se ha hablado bastante de ello... Pero eventualmente, las masas llevaron su atención a cosas más triviales, como el drama de celebridades e influencers o el lanzamiento de una decimo-octava secuela de una vieja franquicia de Terror slasher, dejando atrás este incómodo misterio que jamás alcanzó a siquiera llegar a ser tendencia.
+
+...
+
+Eres un niño, criado por Seres Humanos comunes y corrientes con todo el amor que te pudieron dar. El Mundo en el que vives es muy avanzado Tecnológicamente hablando, teniendo a LexCorp y la Corporación Capsula, nombres que has de escuchar aunque vivas en el campo, intentando superarse el uno al otro tanto Económicamente como en avances Tecnológicos, estos enfrentamientos usualmente suelen ser reñidos. Últimamente se ha hecho eco de varios experimentos Militares para crear Super-Soldados, y de grabaciones de criaturas extrañas y eventos increíbles que aún se discuten en foros anonimos y redes sociales sin descanso.
+
+Pero todo eso no tiene nada que ver contigo, que estas dejando la niñez y pasando por la pubertad, y tu mundo se va a empezar a poner de cabeza debido a ello. Entras en una nueva etapa de tu vida, será problemático, y será raro, pero tus atentos Padres estarán allí para ahogarte con toda su indeseada y exagerada atención, por lo que tendrás que aprender a sobrellevarlo mientras puedas.
+
+Tu vida es normal.
+
+Tu eres normal.
+
+Para bien o para mal, la Tierra no dejará de girar sin ti.</div>
+  
+  
+  
+  <div class="labelOmission">37 posts y 31 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="59952"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59578-59952">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     
+    <span class="labelCreated">07/07/2022 (Jue) 20:01:29</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #188515">188515</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59578.html#59952">№</a>
+    <a class="linkQuote" href="/hisrol/res/59578.html#q59952">59952</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/59578.html#59949">&gt;&gt;59949</a>
+Si la clase te molesta, pues molestalos de vuelta kek</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60011"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59578-60011">
+    
+    <a class="linkName  noEmailName" >Rolero</a>
+     <span class="labelRole">Board owner</span>
+    <span class="labelCreated">07/08/2022 (Vie) 00:10:18</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #5927ac">5927ac</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59578.html#60011">№</a>
+    <a class="linkQuote" href="/hisrol/res/59578.html#q60011">60011</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Relajense e intenten no tirar mierda, hablen las cosas de buena manera con OP si tienen alguna cosa que no les haya gustado, no es necesario tomar captura de un post y mandarlo al /mg/, o que entre todo el tablón a desviar el hilo.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60171"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-59578-60171">
+    
+    <a class="linkName  noEmailName" >OPanda</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 10:45:23</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #d75c50">d75c50</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/59578.html#60171">№</a>
+    <a class="linkQuote" href="/hisrol/res/59578.html#q60171">60171</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/16f229760006f9e30ea61c73fe3c89eb5adffa46ef810236d337dd3c928d1258.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">55.92 KB</span> <span class="dimensionLabel">612x408</span>
+  <a class="originalNameLink" href="/.media/16f229760006f9e30ea61c73fe3c89eb5adffa46ef810236d337dd3c928d1258.jpg" download="sueño.jpg">sueño.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/16f229760006f9e30ea61c73fe3c89eb5adffa46ef810236d337dd3c928d1258.jpg" data-filewidth="612" data-fileheight="408" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="150" src="/.media/t_16f229760006f9e30ea61c73fe3c89eb5adffa46ef810236d337dd3c928d1258"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><span class="spoiler">Ni siquiera tiré mi segundo turno, y ya se armó tremendo desastre, me siento desmotivado de repente, kek</span>
+
+Estoy demasiado cansado, de nuevo, mañana tiro los turnos que me faltan y respondo las preguntas y las quejas, pero ahora siento que estoy por desmayarme del sueño.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="49042"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b9d08033f0ebaae8bda792d424566b900577fd6716adff915bd1939843923eee.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.66 MB</span> <span class="dimensionLabel">1879x970</span>
+  <a class="originalNameLink" href="/.media/b9d08033f0ebaae8bda792d424566b900577fd6716adff915bd1939843923eee.png" download="Freidrak 2021-12-31-19-44.png">Freidrak 2021-12-31-19-44.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b9d08033f0ebaae8bda792d424566b900577fd6716adff915bd1939843923eee.png" data-filewidth="1879" data-fileheight="970" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="116" src="/.media/t_b9d08033f0ebaae8bda792d424566b900577fd6716adff915bd1939843923eee"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/7fa8e50a7ca44224b7649e06e7daf3fc8dbf02026d33dcaf76336e6c9a7e1a24.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">53.55 KB</span> <span class="dimensionLabel">576x662</span>
+  <a class="originalNameLink" href="/.media/7fa8e50a7ca44224b7649e06e7daf3fc8dbf02026d33dcaf76336e6c9a7e1a24.jpg" download="d39b3993dc87fff0d1f01202faca23f6.jpg">d39b3993dc87fff0d1f01202faca23f6.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/7fa8e50a7ca44224b7649e06e7daf3fc8dbf02026d33dcaf76336e6c9a7e1a24.jpg" data-filewidth="576" data-fileheight="662" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="196" height="225" src="/.media/t_7fa8e50a7ca44224b7649e06e7daf3fc8dbf02026d33dcaf76336e6c9a7e1a24"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-49042">
+    <span class="labelSubject">Freidrak, La aventura continua.</span>
+    <a class="linkName  noEmailName" >Op</a>
+     
+    <span class="labelCreated">04/20/2022 (Mie) 23:39:48</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #411ee7">411ee7</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/49042.html#49042">№</a>
+    <a class="linkQuote" href="/hisrol/res/49042.html#q49042">49042</a>
+    <a class="linkReply" href="/hisrol/res/49042.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/49042.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Durante siglos el continente de Freidrak estuvo bajo el yugo de del culto a Farzoul, una poderosa religión dedicada a la rectitud y el respeto a las enseñanzas de su Dios, el cual profesaba la superioridad de los Humanos, Elfos y Enanos, pero con el tiempo la iglesia comenzó a ser cada vez mas extremista, oprimiendo no solo a las razas que consideraba inferiores como los Orcos, Goblins y demás, si no que a las propias razas que profetizaba proteger, lo que poco a poco comenzó a generar un enorme descontento entre las masas. Así pasaron los años y en las sombras nacieron tres cultos dedicados a unas deidades que habían yacido olvidadas por mucho tiempo, Vixtrouz, Dios del conocimiento, la mente y la magia, Zerabias, Diosa de la fertilidad, el deseo y el poder y Ehor, Dios de la libertad, la naturaleza y el caos, poco a poco estos cultos ganaron los suficientes adeptos como para realizar una rebelión, derrocando a la iglesia de Farzoul y estableciéndose como las tres nuevas religiones de el continente. 
+
+  Ya han pasado veinte años desde esos eventos, las cosas se han vuelto cada vez mejores para las diversas razas que habitan el continente, los avances en magia y alquimia han permitido que las condiciones de vida sean cada vez mejores, pero las amenazas comunes de un mundo como este siguen al acecho, desde simples bandidos hasta criaturas mágicas como Cocatrizes o Basiliscos, Freidrak y su gente necesitan de valientes aventureros que estén dispuestos a enfrentarse a las amenazas de esta tierra para mantener la paz.
+
+ Aquí es donde continúan las aventuras de aquellos que han decidido dar un paso adelante y seguir sus sueños, ¿Qué es lo que depara a estos valientes?, solo el tiempo nos dará la respuesta. 
+
+ &gt;Ficha
+
+<span class="greenText">&gt;Nombre:</span>
+<span class="greenText">&gt;Raza: Cada raza posee una habilidad única y Stats iniciales propias.</span>
+<span class="greenText">&gt;Edad: Minimo 15, maximo 20</span>
+<span class="greenText">&gt;Clase:  Cada clase da una pequeña mejora a sus Stats principales.</span>
+<span class="greenText">&gt;Metas:  Cuales son tus objetivos en esta nueva aventura en la que estas apunto de encaminarte, debes tener claros tus objetivos.</span>
+<span class="greenText">&gt;Religión: Al seguir cierta religión tendrás ciertos beneficios con sus cultos, aunque también deberás respetar ciertas costumbres.</span>
+<span class="greenText">&gt;Stats: Se te darán un total de 20 puntos para repartirlos de la forma que prefieras.</span>
+Vitalidad: Determina la cantidad de vida que poseen los personajes, al igual de que la mitad de esta stat determina cuanto peso puedes cargar sin un bolso mágico.
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/49042.html#49042">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">289 posts y 97 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="60099"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-49042-60099">
+    
+    <a class="linkName  noEmailName" >Ojo de algodón</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 04:23:58</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #88255f">88255f</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/49042.html#60099">№</a>
+    <a class="linkQuote" href="/hisrol/res/49042.html#q60099">60099</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/cc1f75dd266b49a072f158f33c8076a5bfdeb815a90d3ea5077f479ad52daea3.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">97.17 KB</span> <span class="dimensionLabel">244x322</span>
+  <a class="originalNameLink" href="/.media/cc1f75dd266b49a072f158f33c8076a5bfdeb815a90d3ea5077f479ad52daea3.png" download="cc1f75dd266b49a072f158f33c8076a5bfdeb815a90d3ea5077f479ad52daea3.png">cc1f75dd266b49a072f158f33c8076a5bfdeb815a90d3ea5077f479ad52daea3.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/cc1f75dd266b49a072f158f33c8076a5bfdeb815a90d3ea5077f479ad52daea3.png" data-filewidth="244" data-fileheight="322" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="170" height="225" src="/.media/t_cc1f75dd266b49a072f158f33c8076a5bfdeb815a90d3ea5077f479ad52daea3"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/49042.html#59882">&gt;&gt;59882</a>
+
+Agradezco la oferta
+Y mantendré esa oportunidad abierta
+Pero por ahora es momento de que cruce mi puerta
+Y en un aventurero me convierta
+
+<span class="greenText">&gt;Doy una leve reverencia</span>
+<span class="greenText">&gt;Mientras finjo que una puerta hace presencia</span>
+<span class="greenText">&gt;La cruzó y camino con elegancia</span>
+<span class="greenText">&gt;Rumbo al lugar donde todos consiguen experiencia</span>
+
+Prosperidad
+Dificultad
+O seguridad
+
+<span class="greenText">&gt;Murmullo para mi mismo mientras veo las misiones</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/49042.html#60099">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60134"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-49042-60134">
+    
+    <a class="linkName  noEmailName" >VixOp</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 06:31:08</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #1b8048">1b8048</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/49042.html#60134">№</a>
+    <a class="linkQuote" href="/hisrol/res/49042.html#q60134">60134</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/49042.html#60099">&gt;&gt;60099</a>
+
+ Revisas las misiones publicadas en el tablón, estas requerirán de una buena cantidad de trabajo, por lo que conseguir un compañero será necesario, por lo que diriges tú atención a los otros dos aventureros que se encuentran frente a el tablón.
+
+ Expresas tus intenciones de la manera que siempre lo haces, recitando poesía que cautiva o cofunde a los oyentes, ambos aventureros te escuchan, la chica se muestra bastante desinteresada, manteniendo su enfoque en el espejo que carga, pero en cambio parece que conseguiste captar la atención del chico.
+
+ Tadión: <strong>Jajajaja, que sujeto mas interesante, mi nombre es Tadión, un placer.</strong>
+
+ Dijo el chico mientras se acercaba a ti con una sonrisa en su rostro, tal parece que lograste echarte encima un compañero, puede que con el sea suficiente para comenzar con este asunto de las misiones.
+
+ Tadión: <strong>Por cierto, que misión es la que mas te llama de estas, a mi es la de las ratas, no se porque, pero el internarme en una alcantarilla se me hace la mar de interesante.</strong>
+
+ Dijo Tadión con una sonrisa en su rostro mientras dirigía su mirada hacia el tablón de misiones.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60188"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-49042-60188">
+    
+    <a class="linkName  noEmailName" >Zapada</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 13:27:30</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #49c587">49c587</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/49042.html#60188">№</a>
+    <a class="linkQuote" href="/hisrol/res/49042.html#q60188">60188</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/49042.html#59739">&gt;&gt;59739</a>
+
+<strong>(¿En serio no sabe lo que es la nieve? ¿Siquiera cae nieve por aquí?)</strong>
+
+Esta pequeña interacción con la niña me hace sentir... ¿bien?... conmigo mismo. Es la primera vez que intercambio con una niña pequeña luego de aquello hace ya bastantes años.
+Al parecer el truco de &quot;magia&quot; sirvió, recibiendo buenas palabras de parte de Damy y asombro de parte de Feri.
+
+<strong>¿Gracias?</strong>
+
+Supongo. Paso entonces a dejar a la pequeña en el suelo que procede a correr hacia los demás niños con la misma felicidad de antes. Poco más, es una niña.
+
+<strong>(¿Qué significa el nombre Feri? ¿Hada?)</strong>
+
+Mientras pienso en este nombre y en los nombres en general, la hija Damy menciona que todavía nos faltan dos lugares por ver. Estoy de acuerdo y no puedo objetar.
+
+<strong>Vamos.</strong>
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/49042.html#60188">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="hisrol" id="12231"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/839ed40064e8b10a60d0b41b9a7223bd6167bcb9ea589c6bf44f8b2b2bd9c46e.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">665.71 KB</span> <span class="dimensionLabel">720x871</span>
+  <a class="originalNameLink" href="/.media/839ed40064e8b10a60d0b41b9a7223bd6167bcb9ea589c6bf44f8b2b2bd9c46e.png" download="Endgame.png">Endgame.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/839ed40064e8b10a60d0b41b9a7223bd6167bcb9ea589c6bf44f8b2b2bd9c46e.png" data-filewidth="720" data-fileheight="871" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="186" height="225" src="/.media/t_839ed40064e8b10a60d0b41b9a7223bd6167bcb9ea589c6bf44f8b2b2bd9c46e"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2e8ff966d6e707bf110d6d9e420ef1041e08ab0f45aecd1947202054b76606af.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">192.62 KB</span> <span class="dimensionLabel">1000x707</span>
+  <a class="originalNameLink" href="/.media/2e8ff966d6e707bf110d6d9e420ef1041e08ab0f45aecd1947202054b76606af.jpg" download="Speed run time.jpg">Speed run time.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2e8ff966d6e707bf110d6d9e420ef1041e08ab0f45aecd1947202054b76606af.jpg" data-filewidth="1000" data-fileheight="707" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="159" src="/.media/t_2e8ff966d6e707bf110d6d9e420ef1041e08ab0f45aecd1947202054b76606af"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-12231">
+    
+    <a class="linkName  noEmailName" >OPmu</a>
+     
+    <span class="labelCreated">05/26/2021 (Mie) 02:14:35</span>
+    <span class="spanId">
+      Id: <span class="labelId" style="background-color: #f12eb3">f12eb3</span></span>
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/hisrol/res/12231.html#12231">№</a>
+    <a class="linkQuote" href="/hisrol/res/12231.html#q12231">12231</a>
+    <a class="linkReply" href="/hisrol/res/12231.html">[Responder]</a>
+    <a class="linkLast" href="/hisrol/last/12231.html">[Últimos]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Continuación del anterior hilo de BNH
+
+<em>La ultima vez que vimos a nuestros aspirantes, estos finalmente habían finalizado la carrera y habían pasado a la segunda parte del famoso festival deportivo. Actualmente se andan desarrollando las peleas del torneo, y algunas estan llegando a su climax, lo que pronto le daría fin a la primera ronda</em>
+
+<span class="greenText">&gt;Jugadores</span>
+<span class="pinkText">&lt;Akira</span>
+<span class="pinkText">&lt;Alpyr</span>
+<span class="pinkText">&lt;Amane</span>
+<span class="pinkText">&lt;Fujiyoshi <span class="spoiler">;&#95;;</span></span>
+<span class="pinkText">&lt;Hanan</span>
+<span class="pinkText">&lt;Jackie</span>
+<span class="pinkText">&lt;Jūdai</span>
+<span class="pinkText">&lt;Kayako</span>
+<span class="pinkText">&lt;Lucas</span>
+<span class="pinkText">&lt;Misaboru</span>
+<span class="pinkText">&lt;Morrigan</span>
+<span class="pinkText">&lt;Nazuna</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/12231.html#12231">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">272 posts y 573 imágenes omitido.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="hisrol" id="59860"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-12231-59860">
+    
+    <a class="linkName  noEmailName" >OPmu</a>
+     
+    <span class="labelCreated">07/07/2022 (Jue) 03:27:00</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #706528">706528</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/12231.html#59860">№</a>
+    <a class="linkQuote" href="/hisrol/res/12231.html#q59860">59860</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/0fd68821db3cd117384634fecf1ae241b5db6184a640ddd8f9da66e9ef220891.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">103.85 KB</span> <span class="dimensionLabel">645x894</span>
+  <a class="originalNameLink" href="/.media/0fd68821db3cd117384634fecf1ae241b5db6184a640ddd8f9da66e9ef220891.jpg" download="Mirumo (1).jpg">Mirumo (1).jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/0fd68821db3cd117384634fecf1ae241b5db6184a640ddd8f9da66e9ef220891.jpg" data-filewidth="645" data-fileheight="894" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="162" height="225" src="/.media/t_0fd68821db3cd117384634fecf1ae241b5db6184a640ddd8f9da66e9ef220891"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/43928fea6d6a907040fc767611d8a985c3dca8e5a4306d77f440e2d029bee24a.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">89.03 KB</span> <span class="dimensionLabel">361x1196</span>
+  <a class="originalNameLink" href="/.media/43928fea6d6a907040fc767611d8a985c3dca8e5a4306d77f440e2d029bee24a.jpg" download="Charlie Mcgraves (21).jpg">Charlie Mcgraves (21).jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/43928fea6d6a907040fc767611d8a985c3dca8e5a4306d77f440e2d029bee24a.jpg" data-filewidth="361" data-fileheight="1196" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="68" height="225" src="/.media/t_43928fea6d6a907040fc767611d8a985c3dca8e5a4306d77f440e2d029bee24a"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/12231.html#59630">&gt;&gt;59630</a>
+<span class="greenText">&gt;...</span>
+<span class="greenText">&gt;Eri se rie jovialmente ante tu entusiasmo, y al preguntarle su sueño, esta mira hacia arriba para pensarlo bien</span>
+
+&quot;Hmm...mi sueño&quot; ¿Cuál podría ser su sueño?, el sueño de la miembro principal de los 3 grandes, la alumna más fuerte y atesorada de toda la UA &quot;Supongo que también quiero ser el héroe número. La UA y muchos héroes hicieron mucho por mí, y me hicieron la persona que soy ahora, me gustaría enorgullecerlos, y poder hacer lo mismo por otras personas&quot; Te mira de nuevo &quot;Un poco cursi, pero el héroe que siempre sonríe sigue siendo mi tipo favorito. ¡Deku es mi favorito!&quot; Lo último lo dijo con gran entusiasmo, típico de algún fanboy de sueperheroes...era algo parecida a ti en cierto aspecto
+
+<span class="greenText">&gt;...</span>
+<span class="greenText">&gt;Ya estando cerca de la enfermería, Eri se apura en curarte para así ahorrarte un regaño de Mirumo, buena acción hecha, la chica del cuerno se retira</span>
+<span class="greenText">&gt;Eri fuera, viene Aurelio y tragándose su orgullo te felicita por el combate, el chico temible que se creía superior a los demás se veía como un recuerdo lejano ahora, ¿se habría hecho bueno?</span>
+
+Ante la mención de su cambio, este hace una mueca de asco &quot;Agh...tu, Hikimiro, son todos iguales, me asquean&quot;
+
+<span class="greenText">&gt;Bueno, talvez seguía creyéndose superior, pero ahora era más soportable que antes</span>
+
+&quot;Hmph&quot; Aurelio se da la vuelta mientras se queja <span class="spoiler">como todo un tsundere</span> &quot;...tu también lo hiciste bien. Lucas&quot; Uso tu nombre al igual que tú usaste el suyo &quot;La próxima yo voy a ser el ganador&quot; Te mira por sobre su hombro, sonriendo &quot;Mejor prepárate&quot;
+
+<span class="greenText">&gt;Aurelio se va, y ahora sin más que hacer, entras en la enfermería para ver a Mirumo</span></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/12231.html#59860">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60017"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-12231-60017">
+    
+    <a class="linkName  noEmailName" >夢魔</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 00:23:57</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f79af1">f79af1</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/12231.html#60017">№</a>
+    <a class="linkQuote" href="/hisrol/res/12231.html#q60017">60017</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/97ed70d7d0b293e672e82ef5a26666975aecff8eee241c5e39738b7cb62b30ce.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">5.17 MB</span> <span class="dimensionLabel">3303x1832</span>
+  <a class="originalNameLink" href="/.media/97ed70d7d0b293e672e82ef5a26666975aecff8eee241c5e39738b7cb62b30ce.png" download="señornotepidonadapero.png">señornotepidonadapero.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/97ed70d7d0b293e672e82ef5a26666975aecff8eee241c5e39738b7cb62b30ce.png" data-filewidth="3303" data-fileheight="1832" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="125" src="/.media/t_97ed70d7d0b293e672e82ef5a26666975aecff8eee241c5e39738b7cb62b30ce"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/12231.html#59859">&gt;&gt;59859</a>
+
+<a target="&#95;blank" href="https://youtu.be/6mSXrDiyB6Q">https://youtu.be/6mSXrDiyB6Q</a>
+
+<em>Corriendo como bien podía, ella quedaba al margen intentando esquivar los escombros que intentaban llegar hacia a ella, viendo de reojo la batalla entre Adam y Deimon ella solo seguia junto a Sarah para intentar llegar a un lugar seguro.</em>
+
+<em>En la llegada de una de las esquinas.</em>
+
+<a target="&#95;blank" href="https://youtu.be/gZrbv1R27Bw">https://youtu.be/gZrbv1R27Bw</a>
+
+<em>Cayo resbalandose de la forma mas humillante por segunda vez este dia, golpeandose la cara otra vez.</em>
+
+<em>Aturdida y maldiciendo este pinche gobierno puto, se voltea para encarar de forma bastante fea al lobo, levantando sus brazos en un intento de evitar daños y obligando a sus pies a levantarse y seguir corriendo, cerro sus ojos enfrentando el golpe asi como asa.</em>
+
+<strong>...</strong>
+
+<em>Abriendolos, observando al lobo flotando en el aire, quedo con una ceja levantada hasta ver a Sarah haciendo aquello, con un Kosei...bastante fuerte, una bendecida por el azar, aunque eso no le molesta a la sucubo, simplemente se sorprende de que alguien asi fuera capaz de tener algo asi de fuerte.</em></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/hisrol/res/12231.html#60017">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="hisrol" id="60019"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="hisrol-12231-60019">
+    
+    <a class="linkName  noEmailName" >夢魔</a>
+     
+    <span class="labelCreated">07/08/2022 (Vie) 00:25:29</span> 
+    <span class="spanId"> Id: <span class="labelId" style="background-color: #f79af1">f79af1</span></span>
+    
+    <a class="linkSelf" href="/hisrol/res/12231.html#60019">№</a>
+    <a class="linkQuote" href="/hisrol/res/12231.html#q60019">60019</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/hisrol/res/12231.html#60017">&gt;&gt;60017</a>
+Jueputa
+
+REROLL
+
+
+ F<span class="diceRoll" title="99">1d100 = 99</span>
+
+Q <span class="diceRoll" title="10">1d100 = 10</span></div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a><a href="2.html">2</a><a href="3.html">3</a><a href="4.html">4</a><a href="5.html">5</a><a href="6.html">6</a><a href="7.html">7</a><a href="8.html">8</a><a href="9.html">9</a><a href="10.html">10</a><a href="11.html">11</a><a href="12.html">12</a><a href="13.html">13</a><a href="14.html">14</a></span> <a id="linkNext" class="coloredIcon" href="2.html"></a> ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=hisrol">Administrar Tablón</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=hisrol">Moderar Tablón</a>
+          <a id="linkMod" href="/mod.js?boardUri=hisrol&amp;page=1">Moderar Hilo</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">Acerca de</a>
+    •
+    <a href="/site/res/27.html#">Comentarios</a>
+    •
+    <a href="/.static/pages/globalRules.html">Reglas Globales</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contacto</a>
+    •
+    <a href="/.static/pages/donate.html">Donar</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">№</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[Historial del Post]</a>
+    <a class="linkFileHistory">[Historial de Archivos]</a>
+    <a class="linkOffenseRecord">[Historial de Infracciones]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Pequeña Gama (1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Amplia Gama (3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Desvincular]</a>
+  <a class="unlinkAndDeleteLink">[Desvincular y Borrar]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

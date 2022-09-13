@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:mathematics:calculus:integrals [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,mathematics,calculus,integrals"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:mathematics:calculus"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/mathematics/calculus/integrals"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:mathematics:calculus';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:mathematics:calculus:integrals","namespace":"fuss:mathematics:calculus","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:mathematics:calculus:integrals" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:mathematics:calculus:integrals&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics" class="wikilink1" title="fuss:mathematics" data-wiki-id="fuss:mathematics">mathematics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus" class="wikilink1" title="fuss:mathematics:calculus" data-wiki-id="fuss:mathematics:calculus">calculus</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals" class="wikilink1" title="fuss:mathematics:calculus:integrals" data-wiki-id="fuss:mathematics:calculus:integrals">integrals</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:mathematics:calculus:integrals</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#definite_integral">Definite Integral</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#example">Example</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#integrals_of_common_functions">Integrals of Common Functions</a></div></li>
+<li class="level1"><div class="li"><a href="#differentiating_integrals">Differentiating Integrals</a></div></li>
+<li class="level1"><div class="li"><a href="#convolution_integral">Convolution Integral</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#properties">Properties</a></div></li>
+<li class="level2"><div class="li"><a href="#convolution_integral_and_circuits">Convolution Integral and Circuits</a></div></li>
+<li class="level2"><div class="li"><a href="#example1">Example</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="definite_integral">Definite Integral</h1>
+<div class="level1">
+
+<p>
+A definite integral is written <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4390ed85bb95da9fc8d89815cc614759.png" class="latex_inline" alt="$\int_{a}^{b}f(x)dx$" title="Math" /> and are commonly used to find the area between the graph of a function and the x-axis.
+</p>
+
+</div>
+
+<h2 class="sectionedit2" id="example">Example</h2>
+<div class="level2">
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img30c5b49fc5645690bb1f0da117feaee5.png" class="latex_displayed" alt="\begin{eqnarray*}
+\int_{2}^{5}x^{2}dx &amp;=&amp; \frac{1}{3}x^{3}\biggr\vert_{2}^{5} &amp; \\
+&amp;=&amp; \frac{1}{3}(5)^{3}-\frac{1}{3}(2)^{3}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+</div>
+
+<h1 class="sectionedit3" id="integrals_of_common_functions">Integrals of Common Functions</h1>
+<div class="level1">
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8ef2807e2a9ec03013f9fd28d5812aa4.png" class="latex_inline" alt="${\color{gray}a},{\color{gray}b},{\color{gray}c}$" title="Math" /> are constants, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc8fea8fbab90544ece7e5b76156e34fa.png" class="latex_inline" alt="$\bf{u}$" title="Math" /> is a variable and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img75a5328e09a1534bcce4257d2f2d2e80.png" class="latex_inline" alt="${\color{red}f}$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6b505eb9293ae202d37a5ad048326f26.png" class="latex_inline" alt="${\color{green}g}$" title="Math" /> are functions.
+</p>
+<div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5846a80ff87855728776fb152659a1fa.png" class="latex_displayed" alt="\begin{eqnarray*}
+\int{{\color{gray}a}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}}} &amp;=&amp; {\color{gray}a}\int{{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}}} &amp; \\
+\int{{\color{red}{\color{red}f({\bf{u}})}}+{\color{green}g({\bf{u}})}}d{\bf{u}} &amp;=&amp; \int{{\color{red}{\color{red}f({\bf{u}})}}}d{\bf{u}} + \int{{\color{green}g({\bf{u}})}}d{\bf{u}} &amp; \\
+\int{{\color{red}{\color{red}f({\bf{u}})}}+{\color{green}g({\bf{u}})}}d{\bf{u}} &amp;=&amp; \int{{\color{red}{\color{red}f({\bf{u}})}}}d{\bf{u}} - \int{{\color{green}g({\bf{u}})}}d{\bf{u}} &amp; \\
+\int{{\color{gray}a}{\color{red}{\color{red}f({\bf{u}})}}+{\color{gray}b}{\color{green}g({\bf{u}})}}d{\bf{u}} &amp;=&amp; {\color{gray}a}\int{{\color{red}{\color{red}f({\bf{u}})}}}d{\bf{u}} + {\color{gray}b}\int{{\color{green}g({\bf{u}})}}d{\bf{u}} &amp; \\
+\end{eqnarray*}" title="Equations" />
+</p>
+</div><div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd6d84625809c3c35c46c8c2bf864bc77.png" class="latex_displayed" alt="\begin{eqnarray*}
+\int{{\bf{u}}d{\bf{v}}} &amp;=&amp; {\bf{u}}{\bf{v}} - \int{{\bf{v}}d{\bf{u}}}
+\end{eqnarray*}" title="Equations" />
+</p>
+</div><div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5240dc4e5863894641c2fb1e9428f5a8.png" class="latex_displayed" alt="\begin{eqnarray*}
+\int_{{\color{gray}a}}^{{\color{gray}b}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} &amp;=&amp; -\int_{{\color{gray}b}}^{{\color{gray}a}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} &amp; \\
+\int_{{\color{gray}a}}^{{\color{gray}c}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} &amp;=&amp; \int_{{\color{gray}a}}^{{\color{gray}b}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} + \int_{{\color{gray}b}}^{{\color{gray}c}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} \text{ and } {\color{gray}b} = {\color{gray}c}-{\color{gray}a} &amp; \\
+\int_{{\color{gray}a}}^{{\color{gray}b}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} &amp;\le&amp; -\int_{{\color{gray}b}}^{{\color{gray}a}}{\color{green}g({\bf{u}})}d{\bf{u}} \text{ if } {\color{red}{\color{red}f({\bf{u}})}} \le {\color{green}g({\bf{u}})} \text{,} \forall {\color{gray}a} \le {\bf{u}} \le {\color{gray}b} &amp; \\
+\int_{{\color{gray}a}}^{{\color{gray}b}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} &amp;\le&amp; M({\color{gray}b}-{\color{gray}a}) \text{ if } {\color{red}{\color{red}f({\bf{u}})}} \le M \text{,} \forall {\color{gray}a} \le {\bf{u}} \le {\color{gray}b} &amp; \\
+m({\color{gray}b}-{\color{gray}a}) &amp;\le&amp; \int_{{\color{gray}a}}^{{\color{gray}b}}{\color{red}{\color{red}f({\bf{u}})}}d{\bf{u}} \text{ if } m \le {\color{red}{\color{red}f({\bf{u}})}} \text{,} \forall {\color{gray}a} \le {\bf{u}} \le {\color{gray}b} &amp; \\
+\biggr\vert \int_{{\color{gray}a}}^{{\color{gray}b}}{\color{red}f({\bf{u}})}d{\bf{u}} \biggr\vert&amp;\le&amp; \int_{{\color{gray}a}}^{{\color{gray}b}}\vert {\color{red}{\color{red}f({\bf{u}})}} \vert d{\bf{u}} \text{ if } {\color{gray}a} \le {\color{gray}b}
+\end{eqnarray*}" title="Equations" />
+</p>
+</div>
+</div>
+
+<h1 class="sectionedit10" id="differentiating_integrals">Differentiating Integrals</h1>
+<div class="level1">
+
+<p>
+Differentiation is the symmetric operation of integrating:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgc76c87496567ee81c060ec2a427ef25a.png" class="latex_displayed" alt="\begin{eqnarray*}
+\frac{d}{d{\bf{x}}}\biggr{[}\int {\bf{x}}d{\bf{x}}\biggr{]} &amp;=&amp; {\bf{x}}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+</div>
+
+<h1 class="sectionedit11" id="convolution_integral">Convolution Integral</h1>
+<div class="level1">
+
+<p>
+The convolution of two functions (over the same variable, e.g. <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5ff326bfb12213b92d192bf76e704a32.png" class="latex_inline" alt="$f_{1}{t}$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img13a2f1e82044f54765e74089c4f0c989.png" class="latex_inline" alt="$f_{2}{t}$" title="Math" />) is an operation that produces a separate third function that describes how the first function modifies the second one. Conversely, the resulting function can also be used to describe how the second function modifies the fist function.
+</p>
+
+<p>
+The convolution of two functions is denoted with the <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7c74eeb32158ff7c4f67d191b95450fb.png" class="latex_inline" alt="$*$" title="Math" /> operator and written as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcd6cd507e3bc883ee8f6f5f5329e69cd.png" class="latex_displayed" alt="\begin{eqnarray*}
+f_{1}(x) * f_{2}(x) &amp;=&amp; \int_{-\infty}^{\infty} f_{1}{\tau} \cdot f_{2}(t-\tau) d\tau
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0fe1677705e987cac4f589ed600aa6b3.png" class="latex_inline" alt="$\tau$" title="Math" /> is a dummy variable.
+</p>
+
+<p>
+Here is an example of the convolution of two square pulses <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img27099e26220f898359382d05f75b941c.png" class="latex_inline" alt="$f(t)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcca73c3aedf6c1411823079d0af9ddd4.png" class="latex_inline" alt="$g(t-\tau)$" title="Math" />:
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/mathematics/calculus/fuss_mathematics_calculus_integrals_convolution.gif?id=fuss%3Amathematics%3Acalculus%3Aintegrals" class="media" title="fuss:mathematics:calculus:fuss_mathematics_calculus_integrals_convolution.gif"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/mathematics/calculus/fuss_mathematics_calculus_integrals_convolution.gif" class="media" alt="" /></a>
+</p>
+
+<p>
+resulting in <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7893a06dfe779345604e80cd1d0ccb5e.png" class="latex_inline" alt="$(f*g)(t)$" title="Math" />.
+</p>
+
+</div>
+
+<h2 class="sectionedit12" id="properties">Properties</h2>
+<div class="level2">
+<ul>
+<li class="level1"><div class="li"> Commutativity.</div>
+</li>
+</ul>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img40a5058551e61795907abd5604ba6bdc.png" class="latex_displayed" alt="\begin{eqnarray*}
+f_{1}(t) * f_{2}(t) &amp;=&amp; f_{2}(t) * f_{1}(t) 
+\end{eqnarray*}" title="Equations" />
+</p>
+<ul>
+<li class="level1"><div class="li"> Distributivity.</div>
+</li>
+</ul>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img27384f4cd954f17a1277475c86468c2d.png" class="latex_displayed" alt="\begin{eqnarray*}
+f_{1}(t) * (f_{2}(t) + f_{3}(t)) &amp;=&amp; f_{1}(t) * f_{2}(t) + f_{1}(t) * f_{3}(t) 
+\end{eqnarray*}" title="Equations" />
+</p>
+<ul>
+<li class="level1"><div class="li"> Shift</div>
+</li>
+</ul>
+
+<p>
+If:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8f31bef2ab14271aaf7947154419f6fa.png" class="latex_displayed" alt="\begin{eqnarray*}
+f_{1}(t) * f_{2}(t) &amp;=&amp; c(t)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+then:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4199b73801444eba70a2e133f45e9fd7.png" class="latex_displayed" alt="\begin{eqnarray*}
+f_{1}(t-T_{1}) * f_{2}(t-T_{2}) &amp;=&amp; c(t-T_{1}-T_{2})
+\end{eqnarray*}" title="Equations" />
+</p>
+<ul>
+<li class="level1"><div class="li"> Convolution with an impulse results in the original function (neutral element).</div>
+</li>
+</ul>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imged548e3d88a3870143037dd87450811c.png" class="latex_displayed" alt="\begin{eqnarray*}
+f(t) * \sigma(t) &amp;=&amp; f(t)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb5c8c30bbd8a1172046e10b3a95e46a7.png" class="latex_inline" alt="$\sigma(t)$" title="Math" /> is the unit impulse.
+</p>
+<ul>
+<li class="level1"><div class="li"> Width: the convolution of a signal of duration <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf2feace4795d36141f23db1b75d8bd50.png" class="latex_inline" alt="$T_{1}$" title="Math" /> and a signal of duration <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img114aef2d39f6bf9f78060adfa45fcbc2.png" class="latex_inline" alt="$T_{2}$" title="Math" /> will result in a signal of duration <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img83eb85d5a0a9b57a995b84bc3dee7fae.png" class="latex_inline" alt="$T_{3} = T_{1} + T_{2}$" title="Math" />.</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit13" id="convolution_integral_and_circuits">Convolution Integral and Circuits</h2>
+<div class="level2">
+
+<p>
+Most electrical circuits are designed to be linear, time-invariant systems (<code>LTI</code>) meaning that the magnitude of a circuit&#039;s output signal is a scaled version of the input signal&#039;s magnitude. Furthermore, and <code>LTI</code> system that is given two independent signal sources will output the sum of the scaled versions of each signal. Given a function <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img2e8990780b95f30f8f5be1323216cfc6.png" class="latex_inline" alt="$x_{1}(t)$" title="Math" /> that causes an <code>LTI</code> system to output <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd9ffb0b9b298a62d67352fdb12b5e51e.png" class="latex_inline" alt="$y_{1}(t)$" title="Math" />, then:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5442ded9dd53bc52b50314bfe76e81b6.png" class="latex_displayed" alt="\begin{eqnarray*}
+a_{1} \cdot x_{1}(t) &amp;\mapsto&amp; a_{1} \cdot y_{1}(t)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img079b75fd563cf05b47623e06b2003e64.png" class="latex_inline" alt="$a_{1}$" title="Math" /> is a multiplicative constant. Given a number of independent signal sources, this gives rise to the concept of signal superposition which allows us to say:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgafd9960eb603d517f6528214c4b40b2b.png" class="latex_displayed" alt="\begin{eqnarray*}
+a_{1} \cdot x_{1}(t) + a_{2} \cdot x_{2}(t) + \ldots + a_{n} \cdot x_{n}(t) &amp;\mapsto&amp; a_{1} \cdot y_{1}(t) + a_{2} \cdot y_{2}(t) + \ldots + a_{n} \cdot y_{n}(t)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+A time-invariant system means it does not matter when the input signal is applied - a specific input signal will always result in the same output signal for a given <code>LTI</code> system. The time-invariance can be expressed as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge75a9ddc8be4d5aae22de0adc18379c8.png" class="latex_displayed" alt="\begin{eqnarray*}
+x_{1}(t) \mapsto y_{1}(t) &amp;\Leftrightarrow&amp; x_{1}(t+\tau) \mapsto y_{1}(t+\tau)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+where <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0fe1677705e987cac4f589ed600aa6b3.png" class="latex_inline" alt="$\tau$" title="Math" /> can be viewed as a time delay when dealing with signals in time (i.e. &quot;time-domain signals&quot;). Indirectly, this concept also signifies than an output signal cannot contain frequency components not inherent in the input signal (causality).
+</p>
+
+<p>
+The vast majority of circuits are <code>LTI</code> systems, each with a specific impulse response. The &quot;impulse response&quot; of a system is a system&#039;s output when its input is fed with an impulse signal - a signal of a brief duration. An example of an &quot;impulse signal&quot; would be a lighting bolt or any form of <code>ESD</code> (electro-static discharge). Any voltage or current that spikes in magnitude for a relatively short period of time may be viewed as an impulse signal. The impulse response of a circuit will always be a time-domain signal and exists because no signal can propagate through a circuit will always be a time-domain signal, and exists because no signal can propagate through a circuit in zero time; each individual electron involved can only move so quickly through each component. Real-world electronic <code>LTI</code> systems exhibit an impulse response that consists of an initial spike in magnitude, followed by an everlasting and ever-decreasing exponential relationship in signal magnitude.
+</p>
+
+<p>
+<a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_detail/fuss/mathematics/calculus/fuss_mathematics_calculus_integrals_spike.gif?id=fuss%3Amathematics%3Acalculus%3Aintegrals" class="media" title="fuss:mathematics:calculus:fuss_mathematics_calculus_integrals_spike.gif"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_media/fuss/mathematics/calculus/fuss_mathematics_calculus_integrals_spike.gif" class="media" alt="" /></a>
+</p>
+
+<p>
+The integral of the impulse response and the input square wave stepped through time can be observed in the image above. The convolution equation is seen as the operation is done with respect to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0fe1677705e987cac4f589ed600aa6b3.png" class="latex_inline" alt="$\tau$" title="Math" />. In reality, we are taking an input signal, flipping it vertically through the origin and determining whether the what the integral is for each value of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0fe1677705e987cac4f589ed600aa6b3.png" class="latex_inline" alt="$\tau$" title="Math" /> which represents in this case a delay through time. Since the output of any <code>LTI</code> system is non-casual (it cannot exist until the signal that excites the output has seen applied), we must step through time to see how each impulse signal of the input affects the <code>LTI</code> system&#039;s impulse response - again, achieved by stepping through <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0fe1677705e987cac4f589ed600aa6b3.png" class="latex_inline" alt="$\tau$" title="Math" /> - the &quot;time-delay&quot; dummy variable.
+</p>
+
+</div>
+
+<h2 class="sectionedit14" id="example1">Example</h2>
+<div class="level2">
+
+<p>
+For an <code>LTI</code> system with an impulse response of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgfb48a210fe4beca5c0e196cbcad657a0.png" class="latex_inline" alt="$h(t)=e^{-2t}u(t)$" title="Math" />, calculate the output <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4378ba898213096600125929214f90a.png" class="latex_inline" alt="$y(t)$" title="Math" /> given the input of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img4962acca31d76e5ad146179200d0aef1.png" class="latex_inline" alt="$f(t) = e^{-t}u(t)$" title="Math" />.
+</p>
+
+<p>
+Using the convolution integral, we have to solve:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img897b8a4eb3b2d3bfbedce62f891a7ddb.png" class="latex_displayed" alt="\begin{eqnarray*}
+y(t)&amp;=&amp;h(t) * f(t) = \\
+&amp;=&amp;\int_{0}^{\infty}h(\tau)*f(t-\tau)d\tau
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+It only makes sense to integrate between <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img29632a9bf827ce0200454dd32fc3be82.png" class="latex_inline" alt="$0$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img701fa44621fd283e3f2c5468958859d8.png" class="latex_inline" alt="$+\infty$" title="Math" /> because at <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1c899e1c767eb4eac89facb5d1f2cb0d.png" class="latex_inline" alt="$t=0$" title="Math" /> the signal is applied and both <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5db6a630447f3e1510ef30b4769ee0aa.png" class="latex_inline" alt="$h(t)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img27099e26220f898359382d05f75b941c.png" class="latex_inline" alt="$f(t)$" title="Math" /> will have zero magnitude at any time <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8fc52baff56236007cb0a9d880805aaa.png" class="latex_inline" alt="$t &lt; 0$" title="Math" />.
+</p>
+
+<p>
+Now we can calculate:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd87779ce833055d8e497c5417d376ebb.png" class="latex_displayed" alt="\begin{eqnarray*}
+y(t) &amp;=&amp; \int_{0}^{\infty} e^{-2\tau} u(\tau) \cdot e^{-\tau} d\tau \\
+&amp;=&amp; \int_{0}^{t} e^{-2(t-\tau)} \cdot e^{-\tau} d\tau \\
+&amp;=&amp; e^{-2t} \int_{0}^{t} e^{\tau} d\tau \\
+&amp;=&amp; e^{-2t} (e^{t} - 1) \\
+&amp;=&amp; e^{-t} - e^{-2t}
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+Since <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img553efd131f70aa2a0610e85e7054f968.png" class="latex_inline" alt="$y(t) = 0$" title="Math" /> for all <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8fc52baff56236007cb0a9d880805aaa.png" class="latex_inline" alt="$t &lt; 0$" title="Math" />, we can write the output <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgd4378ba898213096600125929214f90a.png" class="latex_inline" alt="$y(t)$" title="Math" /> as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imged280f3711fdf40b2d605c2869229cf6.png" class="latex_displayed" alt="\begin{eqnarray*}
+y(t) &amp;=&amp; (e^{-t}-e^{-2t}) u(t)
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+which describes the output function for an <code>LTI</code> system with an initial impulse response <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5db6a630447f3e1510ef30b4769ee0aa.png" class="latex_inline" alt="$h(t)$" title="Math" /> when fed the input signal <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img27099e26220f898359382d05f75b941c.png" class="latex_inline" alt="$f(t)$" title="Math" />.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/mathematics/calculus/integrals.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics" class="wikilink1" title="fuss:mathematics" data-wiki-id="fuss:mathematics">mathematics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus" class="wikilink1" title="fuss:mathematics:calculus" data-wiki-id="fuss:mathematics:calculus">calculus</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals" class="wikilink1" title="fuss:mathematics:calculus:integrals" data-wiki-id="fuss:mathematics:calculus:integrals">integrals</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:mathematics:calculus:integrals" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/integrals"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Amathematics%3Acalculus%3Aintegrals&amp;1657305535" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

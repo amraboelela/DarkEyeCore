@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:bash [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,bash"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/bash"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:bash","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:bash" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:bash&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash" class="wikilink1" title="fuss:bash" data-wiki-id="fuss:bash">bash</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:bash</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#glob">Glob</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#range">Range</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#increment_in_bash_s">Increment in Bash s</a></div></li>
+<li class="level1"><div class="li"><a href="#string_substitute">String Substitute</a></div></li>
+<li class="level1"><div class="li"><a href="#check_if_string_contains_a_substring">Check if String Contains a Substring</a></div></li>
+<li class="level1"><div class="li"><a href="#split_a_string_to_an_and_other_manipulations">Split a String to an  and other  Manipulations</a></div></li>
+<li class="level1"><div class="li"><a href="#get_the_cpu_core_temperature_file">Get the CPU Core Temperature File</a></div></li>
+<li class="level1"><div class="li"><a href="#get_a_list_of_files_by_file_extension_from_an_array">Get a List of Files by File Extension from an Array</a></div></li>
+<li class="level1"><div class="li"><a href="#recursively_convert_video_files">Recursively Convert Video Files</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="glob">Glob</h1>
+<div class="level1">
+
+<p>
+<code>Glob</code> is a fast shell-based equivalent of regular expressions.
+</p>
+<div class="table sectionedit2"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Glob </th><th class="col1"> Explanation </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> <code>*</code> </td><td class="col1"> Matches any string, of any length </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> <code>foo*</code> </td><td class="col1"> Matches any string beginning with <code>foo</code> </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> <code>*x*</code> </td><td class="col1"> Matches any string containing an <code>x</code> (beginning, middle or end) </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> <code>*.tar.gz</code> </td><td class="col1"> Matches any string ending with <code>.tar.gz</code> </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"> <code>foo?</code> </td><td class="col1"> Matches <code>foot</code> or <code>foo$</code> but not <code>fools</code> </td>
+	</tr>
+</table></div>
+
+</div>
+
+<h2 class="sectionedit3" id="range">Range</h2>
+<div class="level2">
+<div class="table sectionedit4"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0 leftalign"> Glob   </th><th class="col1"> Explanation </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0"> <code>[abcd]</code> </td><td class="col1"> Matches <code>a</code>, <code>b</code>, <code>c</code> and <code>d</code> </td>
+	</tr>
+	<tr class="row2">
+		<td class="col0"> <code>[a-d]</code> </td><td class="col1"> The same as above, if your locale is <code>C</code> or <code>POSIX</code>. Otherwise, implementation-defined. </td>
+	</tr>
+	<tr class="row3">
+		<td class="col0"> <code>[!aeiouAEIOU]</code> </td><td class="col1"> Matches any character except <code>a</code>, <code>e</code>, <code>i</code>, <code>o</code>, <code>u</code> and their uppercase counterparts </td>
+	</tr>
+	<tr class="row4">
+		<td class="col0"> <code>[[:alnum:]]</code> </td><td class="col1"> Matches any alphanumeric character in the current locale (letter or number) </td>
+	</tr>
+	<tr class="row5">
+		<td class="col0"> <code>[[:space:]]</code> </td><td class="col1"> Matches any whitespace character </td>
+	</tr>
+	<tr class="row6">
+		<td class="col0"> <code>[![:space:]]</code> </td><td class="col1"> Matches any character that is not whitespace </td>
+	</tr>
+	<tr class="row7">
+		<td class="col0"> <code>[[:digit:]_.]</code> </td><td class="col1"> Matches any digit, or <code>_</code> or <code>.</code> </td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit5" id="increment_in_bash_s">Increment in Bash s</h1>
+<div class="level1">
+<pre class="code bash">array<span class="br0">&#91;</span>$<span class="br0">&#91;</span><span class="co1">${#array[@]}</span>+<span class="nu0">1</span><span class="br0">&#93;</span><span class="br0">&#93;</span> = <span class="nu0">3</span></pre>
+
+<p>
+is homologous to:
+</p>
+<pre class="code bash">array<span class="br0">&#91;</span>elements_in<span class="br0">&#40;</span>array<span class="br0">&#41;</span>+<span class="nu0">1</span><span class="br0">&#93;</span> = <span class="nu0">3</span></pre>
+
+</div>
+
+<h1 class="sectionedit6" id="string_substitute">String Substitute</h1>
+<div class="level1">
+
+<p>
+<code>Input</code>:
+</p>
+<pre class="code bash"><span class="re2">T</span>=<span class="st0">&quot;test.svg&quot;</span>
+<span class="kw3">echo</span> <span class="co1">${T/svg/png}</span></pre>
+
+<p>
+<code>Output</code>:
+</p>
+<pre class="code bash">test.png</pre>
+
+</div>
+
+<h1 class="sectionedit7" id="check_if_string_contains_a_substring">Check if String Contains a Substring</h1>
+<div class="level1">
+<pre class="code bash"><span class="re2">CHECK_STRING</span>=<span class="st0">&quot;google&quot;</span>
+<span class="kw1">if</span> <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="st0">&quot;<span class="es2">$CHECK_STRING</span>&quot;</span> <span class="sy0">!</span>= <span class="sy0">*</span>o<span class="sy0">*</span> <span class="br0">&#93;</span><span class="br0">&#93;</span>; <span class="kw1">then</span>
+  <span class="kw3">echo</span> <span class="st0">&quot;character o is in the string&quot;</span>
+<span class="kw1">fi</span></pre>
+
+</div>
+
+<h1 class="sectionedit8" id="split_a_string_to_an_and_other_manipulations">Split a String to an  and other  Manipulations</h1>
+<div class="level1">
+
+<p>
+The following code:
+</p>
+<pre class="code bash"><span class="re2">IFS</span>=<span class="st_h">' '</span> <span class="kw3">read</span> <span class="re5">-ra</span> VAR_ARRAY <span class="sy0">&lt;&lt;&lt;</span> <span class="st0">&quot;<span class="es2">$input</span>&quot;</span></pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>IFS</code> will switch the separator (the character to split on) to a space.</div>
+</li>
+<li class="level1"><div class="li"> <code>read</code> will read-in the input</div>
+</li>
+<li class="level1"><div class="li"> <code>VAR_ARRAY</code> is the array that will be filled with the values from the input split by the separator</div>
+</li>
+<li class="level1"><div class="li"> <code>$input</code> is the input to split</div>
+</li>
+</ul>
+
+<p>
+will split the input to an array.
+</p>
+
+<p>
+In order to iterate over the elements of the array, one would write:
+</p>
+<pre class="code bash"><span class="kw1">for</span> e <span class="kw1">in</span> <span class="st0">&quot;<span class="es3">${VAR_ARRAY[@]}</span>&quot;</span>; <span class="kw1">do</span>
+    <span class="kw3">echo</span> <span class="re1">$e</span>
+<span class="kw1">done</span></pre>
+
+<p>
+which will print out all the elements in the array.
+</p>
+
+<p>
+To get both the index and the value while iterating over the array, one would write:
+</p>
+<pre class="code bash"><span class="kw1">for</span> i <span class="kw1">in</span> <span class="st0">&quot;<span class="es3">${!VAR_ARRAY[@]}</span>&quot;</span>; <span class="kw1">do</span>
+    <span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$i</span> <span class="es3">${VAR_ARRAY[i]}</span>&quot;</span>
+<span class="kw1">done</span></pre>
+
+<p>
+where on every iteration <code>$i</code> is the index and <code>${VAR_ARRAY[i]}</code> will expand to the array element at <code>i</code>.
+</p>
+
+<p>
+To get the number of elements in the array, one would write:
+</p>
+<pre class="code bash"><span class="kw3">echo</span> <span class="st0">&quot;<span class="es3">${VAR_ARRAY[@]}</span>&quot;</span></pre>
+
+</div>
+
+<h1 class="sectionedit9" id="get_the_cpu_core_temperature_file">Get the CPU Core Temperature File</h1>
+<div class="level1">
+
+<p>
+If you use <code>coretemp</code> to retrieve the CPU sensors temperature, a bunch of files are created in <code>/sys/devices/platform/coretemp.*/hwmon/hwmon*/</code> such as <code>temp1_label</code>, <code>temp2_label</code>, etc... Each of them represent the temperature of one of the cores but there is no guarantee that the numbering will start at <code>1</code>. The following bash function reads the files in <code>/sys/devices/platform/coretemp.*/hwmon/hwmon*/</code> and returns the file corresponding to a certain core file:
+</p>
+<pre class="code bash"><span class="co0">###########################################################################</span>
+<span class="co0">##  Copyright (C) Wizardry and Steamworks 2016 - License: GNU GPLv3      ##</span>
+<span class="co0">###########################################################################</span>
+<span class="kw1">function</span> getCoreTemperatureFile <span class="br0">&#123;</span>                                          
+    <span class="kw1">for</span> i <span class="kw1">in</span> <span class="sy0">/</span>sys<span class="sy0">/</span>devices<span class="sy0">/</span>platform<span class="sy0">/</span>coretemp.<span class="sy0">*/</span>hwmon<span class="sy0">/</span>hwmon<span class="sy0">*/*</span>_label; <span class="kw1">do</span>     
+        <span class="re2">IFS</span>=<span class="st_h">' '</span> <span class="kw3">read</span> <span class="re5">-ra</span> CORE <span class="sy0">&lt;&lt;&lt;</span> <span class="sy0">`</span><span class="kw2">cat</span> <span class="re1">$i</span><span class="sy0">`</span>                                 
+        <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="st0">&quot;<span class="es3">${CORE[0]}</span>&quot;</span> == <span class="st0">&quot;Core&quot;</span> <span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> <span class="br0">&#91;</span> <span class="st0">&quot;<span class="es3">${CORE[1]}</span>&quot;</span> == <span class="re4">$1</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>     
+            <span class="kw3">echo</span> <span class="st0">&quot;<span class="es3">${i//label/input}</span>&quot;</span>
+        <span class="kw1">fi</span>
+    <span class="kw1">done</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+an example call, would then be:
+</p>
+<pre class="code bash"><span class="re2">CPU0_TEMPERATURE_FILE</span>=$<span class="br0">&#40;</span>getCoreTemperatureFile <span class="nu0">0</span><span class="br0">&#41;</span>
+<span class="kw3">echo</span> <span class="re1">$CPU0_TEMPERATURE_FILE</span></pre>
+
+<p>
+in order to retrieve the temperature of the first core (<code>0</code>).
+</p>
+
+</div>
+
+<h1 class="sectionedit10" id="get_a_list_of_files_by_file_extension_from_an_array">Get a List of Files by File Extension from an Array</h1>
+<div class="level1">
+
+<p>
+Via a function <code>listFiles</code>:
+</p>
+<pre class="code bash"><span class="co0"># By: https://stackoverflow.com/users/1773798/renaud-pacalet</span>
+listFiles<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw3">local</span> <span class="re5">-n</span> <span class="re2">_OUTPUT_</span>=<span class="st0">&quot;$1&quot;</span>
+    <span class="kw3">local</span> <span class="re5">-n</span> <span class="re2">_DIRECTORY_</span>=<span class="st0">&quot;$2&quot;</span>
+    <span class="kw3">local</span> <span class="re5">-n</span> <span class="re2">_TYPES_</span>=<span class="st0">&quot;$3&quot;</span>
+    <span class="kw3">local</span> _FILTER_
+&nbsp;
+    <span class="re2">_FILTER_</span>=<span class="st0">&quot;<span class="es3">${_TYPES_[@]/#/ -o -name *.}</span>&quot;</span>
+    <span class="re2">_FILTER_</span>=<span class="st0">&quot;<span class="es3">${_FILTER_# -o }</span>&quot;</span>
+    <span class="kw1">while</span> <span class="kw3">read</span> <span class="re5">-d</span> $<span class="st_h">'\0'</span> FILE; <span class="kw1">do</span>
+        _OUTPUT_+=<span class="br0">&#40;</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span> <span class="br0">&#41;</span>
+    <span class="kw1">done</span> <span class="sy0">&lt;</span> <span class="sy0">&lt;</span><span class="br0">&#40;</span> <span class="kw2">find</span> <span class="st0">&quot;<span class="es2">$_DIRECTORY_</span>&quot;</span> <span class="re5">-type</span> f \<span class="br0">&#40;</span> <span class="re1">$_FILTER_</span> \<span class="br0">&#41;</span> <span class="re5">-print0</span> <span class="br0">&#41;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Example call:
+</p>
+<pre class="code bash"><span class="re2">DIR_PATH</span>=<span class="sy0">/</span>mnt<span class="sy0">/</span>Movies
+<span class="re2">TYPES</span>=<span class="br0">&#40;</span>mkv mp4 avi<span class="br0">&#41;</span>
+&nbsp;
+listFiles FILES DIR_PATH TYPES</pre>
+
+</div>
+
+<h1 class="sectionedit11" id="recursively_convert_video_files">Recursively Convert Video Files</h1>
+<div class="level1">
+
+<p>
+As the title would imply, the following script will recursively convert video files to conform to the following parameters:
+</p>
+<ul>
+<li class="level1"><div class="li"> MPEG-4</div>
+</li>
+<li class="level1"><div class="li"> 720p or less,</div>
+</li>
+<li class="level1"><div class="li"> AVC (H.264),</div>
+</li>
+<li class="level1"><div class="li"> AAC</div>
+</li>
+</ul>
+
+<p>
+Its main design was meant to convert recorded TV shows where a set quality should not necessarily exceed the mentioned parameters for the sake of storage conservation.
+</p>
+<pre class="code bash"><span class="co0">#!/bin/bash</span>
+<span class="co0">###########################################################################</span>
+<span class="co0">##  Copyright (C) Wizardry and Steamworks 2021 - License: GNU GPLv3      ##</span>
+<span class="co0">###########################################################################</span>
+<span class="co0"># The script is a way of converting all video files recursively in a      #</span>
+<span class="co0"># directory tree in order to conform to the following parameters:         #</span>
+<span class="co0">#  * MPEG-4 (MP4)                                                         #</span>
+<span class="co0">#  * 480p or less                                                         # </span>
+<span class="co0">#  * AVC (H.264)                                                          #</span>
+<span class="co0">#  * AAC                                                                  #</span>
+<span class="co0">#                                                                         #</span>
+<span class="co0"># Notes:                                                                  #</span>
+<span class="co0">#  * There are some added optimizations such as switching to just         #</span>
+<span class="co0">#    converting to MPEG-4 in case no more than a container change is      #</span>
+<span class="co0">#    necessary  (ie: MKV to MP4).                                         #</span>
+<span class="co0">#  * This is a long-running script and best ran within a detachable       #</span>
+<span class="co0">#    terminal such as tmux or screen.                                     #</span>
+<span class="co0">#  * This is a bash script that will not run on other shells.             #</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0">###########################################################################</span>
+<span class="co0">##                            CONFIGURATION                              ##</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="co0"># The path to the ffmpeg binary.</span>
+<span class="re2">FFMPEG</span>=<span class="st_h">'/usr/bin/ffmpeg'</span>
+<span class="co0"># The ffmpeg flags to use when converting.</span>
+<span class="co0"># veryfast vs. veryslow https://write.corbpie.com/ffmpeg-preset-comparison-x264-2019-encode-speed-and-file-size/</span>
+<span class="re2">FFMPEG_OPTIONS</span>=<span class="sy0">`</span><span class="kw2">tr</span> <span class="re5">-d</span> <span class="st_h">'\012'</span> <span class="co2">&lt;&lt;'EOF'
+-c:v libx264 \
+-crf 23 \
+-level 3.1 \
+-preset veryfast \
+-tune film \
+-sws_flags lanczos \
+-sn \
+-c:a libfdk_aac \
+-vbr 5 \
+-q:a 2 \
+-ac 2 \
+-b:a 128k \
+-c:s mov_text \
+-map 0:v:0 \
+-map 0:a:0 \
+-map_metadata -1 \
+-movflags +faststart \
+-strict -2
+EOF</span><span class="sy0">`</span>
+<span class="co0"># The maximal height of the video files.</span>
+<span class="re2">FFMPEG_HEIGHT</span>=<span class="nu0">480</span>
+<span class="co0"># The maximal integral CPU percentage that will be allowed to be used.</span>
+<span class="re2">FFMPEG_CPU</span>=<span class="nu0">600</span>
+<span class="co0"># The file types to convert.</span>
+<span class="re2">TYPES</span>=<span class="br0">&#40;</span>mp4 mkv avi<span class="br0">&#41;</span>
+&nbsp;
+<span class="co0">###########################################################################</span>
+<span class="co0">##                              INTERNALS                                ##</span>
+<span class="co0">###########################################################################</span>
+&nbsp;
+<span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re5">-z</span> <span class="st0">&quot;$1&quot;</span> <span class="br0">&#93;</span> <span class="sy0">||</span> <span class="br0">&#91;</span> <span class="sy0">!</span> <span class="re5">-d</span> <span class="st0">&quot;$1&quot;</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+    <span class="kw3">echo</span> <span class="st0">&quot;SYNTAX: $0 &lt;DIRECTORY&gt;&quot;</span>
+    <span class="kw3">exit</span> <span class="nu0">1</span>
+<span class="kw1">fi</span>
+&nbsp;
+<span class="re2">DIR_PATH</span>=<span class="st0">&quot;$1&quot;</span>
+&nbsp;
+<span class="co0"># By: https://stackoverflow.com/users/1773798/renaud-pacalet</span>
+listFiles<span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    <span class="kw3">local</span> <span class="re5">-n</span> <span class="re2">_OUTPUT_</span>=<span class="st0">&quot;$1&quot;</span>
+    <span class="kw3">local</span> <span class="re5">-n</span> <span class="re2">_DIRECTORY_</span>=<span class="st0">&quot;$2&quot;</span>
+    <span class="kw3">local</span> <span class="re5">-n</span> <span class="re2">_TYPES_</span>=<span class="st0">&quot;$3&quot;</span>
+    <span class="kw3">local</span> _FILTER_
+&nbsp;
+    <span class="re2">_FILTER_</span>=<span class="st0">&quot;<span class="es3">${_TYPES_[@]/#/ -o -name *.}</span>&quot;</span>
+    <span class="re2">_FILTER_</span>=<span class="st0">&quot;<span class="es3">${_FILTER_# -o }</span>&quot;</span>
+    <span class="kw1">while</span> <span class="kw3">read</span> <span class="re5">-d</span> $<span class="st_h">'\0'</span> FILE; <span class="kw1">do</span>
+        _OUTPUT_+=<span class="br0">&#40;</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span> <span class="br0">&#41;</span>
+    <span class="kw1">done</span> <span class="sy0">&lt;</span> <span class="sy0">&lt;</span><span class="br0">&#40;</span> <span class="kw2">find</span> <span class="st0">&quot;<span class="es2">$_DIRECTORY_</span>&quot;</span> <span class="re5">-type</span> f \<span class="br0">&#40;</span> <span class="re1">$_FILTER_</span> \<span class="br0">&#41;</span> <span class="re5">-print0</span> <span class="br0">&#41;</span>
+<span class="br0">&#125;</span>
+&nbsp;
+<span class="re2">TEMP_FILE</span>=<span class="st0">&quot;&quot;</span>
+&nbsp;
+<span class="co0"># Cleanup on file termination.</span>
+<span class="kw3">trap</span> <span class="st_h">'{
+    rm -rf &quot;$TEMP_FILE&quot; 2&gt;&amp;1 2&gt;/dev/null
+    exit 0
+}'</span> KILL QUIT TERM EXIT INT HUP
+&nbsp;
+<span class="co0"># Iterate over all matching files.</span>
+<span class="re2">FILES</span>=<span class="br0">&#40;</span><span class="br0">&#41;</span>
+listFiles FILES DIR_PATH TYPES
+<span class="kw1">for</span> FILE <span class="kw1">in</span> <span class="st0">&quot;<span class="es3">${FILES[@]}</span>&quot;</span>; <span class="kw1">do</span>
+    <span class="re2">FILE_NAME</span>=<span class="sy0">`</span><span class="kw2">basename</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span><span class="sy0">`</span>
+    <span class="re2">DIR_NAME</span>=<span class="sy0">`</span><span class="kw2">dirname</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span><span class="sy0">`</span>
+    <span class="re2">FILE_EXTENSION</span>=<span class="sy0">`</span><span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="re5">-F</span><span class="st_h">'.'</span> <span class="st_h">'{ print $NF }'</span><span class="sy0">`</span>
+    <span class="re2">TEMP_FILE</span>=<span class="st0">&quot;/tmp/<span class="es3">${FILE_NAME/$FILE_EXTENSION/mp4}</span>&quot;</span>
+    <span class="re2">INFO</span>=<span class="sy0">`</span>mediainfo <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="re5">-F</span><span class="st_h">':'</span> <span class="st_h">'{ print $1&quot;:&quot;$2 }'</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{$1=$1};1'</span><span class="sy0">`</span>
+    <span class="re2">HAS_AVC</span>=<span class="sy0">`</span><span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$INFO</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="st_h">'Format : AVC'</span><span class="sy0">`</span>
+    <span class="re2">HAS_AAC</span>=<span class="sy0">`</span><span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$INFO</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="st_h">'Format : AAC LC'</span><span class="sy0">`</span>
+    <span class="re2">HAS_MP4</span>=<span class="sy0">`</span><span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$INFO</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="st_h">'Format : MPEG-4'</span><span class="sy0">`</span>
+    <span class="re2">HAS_2CH</span>=<span class="sy0">`</span><span class="kw3">echo</span> <span class="st0">&quot;<span class="es2">$INFO</span>&quot;</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="st_h">'Channel(s) : 2'</span><span class="sy0">`</span>
+    <span class="re2">HAS_TXT</span>=<span class="sy0">`</span>mediainfo <span class="re1">$FILE</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="st0">&quot;^Text&quot;</span><span class="sy0">`</span>
+    <span class="re2">HEIGHT</span>=<span class="sy0">`</span>mediainfo <span class="re5">--Inform</span>=<span class="st0">&quot;Video;%Height%&quot;</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span><span class="sy0">`</span>
+&nbsp;
+    <span class="co0"># If all criteria matches then proceed to the next file.</span>
+    <span class="kw1">if</span> <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="re1">$HEIGHT</span> <span class="re5">-le</span> <span class="re1">$FFMPEG_HEIGHT</span> <span class="br0">&#93;</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> \
+       <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="sy0">!</span> <span class="re5">-z</span> <span class="re1">$HAS_AVC</span> <span class="br0">&#93;</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> \
+       <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="sy0">!</span> <span class="re5">-z</span> <span class="re1">$HAS_AAC</span> <span class="br0">&#93;</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> \
+       <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="sy0">!</span> <span class="re5">-z</span> <span class="re1">$HAS_MP4</span> <span class="br0">&#93;</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> \
+       <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="sy0">!</span> <span class="re5">-z</span> <span class="re1">$HAS_2CH</span> <span class="br0">&#93;</span><span class="br0">&#93;</span> <span class="sy0">&amp;&amp;</span> \
+       <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="re5">-z</span> <span class="re1">$HAS_TXT</span> <span class="br0">&#93;</span><span class="br0">&#93;</span>
+    <span class="kw1">then</span>
+    	<span class="kw3">echo</span> <span class="st0">&quot;Skipping <span class="es2">$FILE_NAME</span>...&quot;</span>
+    	<span class="kw3">continue</span>
+    <span class="kw1">fi</span>
+&nbsp;
+    <span class="re2">FFMPEG_ACTION</span>=<span class="re1">$FFMPEG_OPTIONS</span>
+    <span class="co0"># Resize down to $FFMPEG_HEIGHT or less depending on the height of the file.</span>
+    <span class="kw1">if</span> <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="re1">$HEIGHT</span> <span class="re5">-gt</span> <span class="re1">$FFMPEG_HEIGHT</span> <span class="br0">&#93;</span><span class="br0">&#93;</span>; <span class="kw1">then</span>
+        <span class="re2">FFMPEG_SIZE</span>=<span class="st0">&quot;-vf scale=-2:<span class="es2">$FFMPEG_HEIGHT</span>&quot;</span>
+    <span class="kw1">fi</span>
+&nbsp;
+    <span class="co0"># Start the conversion.</span>
+    <span class="kw3">echo</span> <span class="re5">-n</span> <span class="st0">&quot;Converting <span class="es2">$FILE_NAME</span> to <span class="es2">$TEMP_FILE</span>: &quot;</span>
+    <span class="co0"># -loglevel quiet</span>
+    <span class="st0">&quot;<span class="es2">$FFMPEG</span>&quot;</span> -hide_banner <span class="re5">-loglevel</span> quiet <span class="re5">-i</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span> <span class="re1">$FFMPEG_ACTION</span> <span class="re1">$FFMPEG_SIZE</span> <span class="st0">&quot;<span class="es2">$TEMP_FILE</span>&quot;</span> <span class="sy0">&lt;/</span>dev<span class="sy0">/</span>null <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="nu0">2</span><span class="sy0">&gt;&amp;</span><span class="nu0">1</span> <span class="sy0">&amp;</span>
+    <span class="re2">FFMPEG_PID</span>=<span class="re4">$!</span>
+    cpulimit <span class="re5">-q</span> <span class="re5">-z</span> <span class="re5">-e</span> <span class="kw2">ffmpeg</span> <span class="re5">-l</span> <span class="re1">$FFMPEG_CPU</span> <span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="nu0">2</span><span class="sy0">&gt;/</span>dev<span class="sy0">/</span>null <span class="nu0">2</span><span class="sy0">&gt;&amp;</span><span class="nu0">1</span> <span class="sy0">&amp;</span>
+    <span class="re2">T1</span>=<span class="sy0">`</span><span class="kw2">date</span> +<span class="sy0">%</span>s<span class="sy0">`</span>
+    <span class="kw3">wait</span> <span class="re1">$FFMPEG_PID</span>
+    <span class="re2">T2</span>=<span class="sy0">`</span><span class="kw2">date</span> +<span class="sy0">%</span>s<span class="sy0">`</span>
+    <span class="re2">RUNTIME</span>=$<span class="br0">&#40;</span><span class="br0">&#40;</span> T2 - T1 <span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="re2">T_H</span>=$<span class="br0">&#40;</span><span class="br0">&#40;</span>RUNTIME <span class="sy0">/</span> <span class="nu0">3600</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="re2">T_M</span>=$<span class="br0">&#40;</span><span class="br0">&#40;</span>RUNTIME <span class="sy0">%</span> <span class="nu0">3600</span> <span class="sy0">/</span> <span class="nu0">60</span> <span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="re2">T_S</span>=$<span class="br0">&#40;</span><span class="br0">&#40;</span><span class="br0">&#40;</span>RUNTIME <span class="sy0">%</span> <span class="nu0">3600</span><span class="br0">&#41;</span> <span class="sy0">%</span> <span class="nu0">60</span> <span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="kw1">if</span> <span class="br0">&#91;</span><span class="br0">&#91;</span> <span class="st0">&quot;$?&quot;</span> <span class="re5">-eq</span> <span class="nu0">0</span> <span class="br0">&#93;</span><span class="br0">&#93;</span>; <span class="kw1">then</span>
+        <span class="kw3">echo</span> <span class="st0">&quot;Done (<span class="es2">$T_H</span>:<span class="es2">$T_M</span>:<span class="es2">$T_S</span>).&quot;</span>
+        <span class="co0"># Permute the files on successful conversion.</span>
+        <span class="kw2">rm</span> <span class="st0">&quot;<span class="es2">$FILE</span>&quot;</span>
+        <span class="kw2">cp</span> <span class="st0">&quot;<span class="es2">$TEMP_FILE</span>&quot;</span> <span class="st0">&quot;<span class="es2">$DIR_NAME</span>&quot;</span>
+        <span class="kw1">if</span> <span class="br0">&#91;</span> <span class="re4">$?</span> <span class="re5">-ne</span> <span class="nu0">0</span> <span class="br0">&#93;</span>; <span class="kw1">then</span>
+            <span class="kw3">echo</span> <span class="st0">&quot;Failed to copy converted file.&quot;</span>
+            <span class="kw3">continue</span>
+        <span class="kw1">fi</span>
+        <span class="kw2">rm</span> <span class="st0">&quot;<span class="es2">$TEMP_FILE</span>&quot;</span>
+    <span class="kw1">else</span>
+        <span class="kw3">echo</span> <span class="st0">&quot;Failed.&quot;</span>
+    <span class="kw1">fi</span>
+<span class="kw1">done</span></pre>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/bash.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash" class="wikilink1" title="fuss:bash" data-wiki-id="fuss:bash">bash</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:bash" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/bash"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Abash&amp;1657304055" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

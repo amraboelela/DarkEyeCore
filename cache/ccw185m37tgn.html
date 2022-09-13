@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:subversion [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,subversion"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/subversion"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:subversion","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:subversion" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:subversion&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion" class="wikilink1" title="fuss:subversion" data-wiki-id="fuss:subversion">subversion</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:subversion</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#add_missing_files_recursively">Add Missing Files Recursively</a></div></li>
+<li class="level1"><div class="li"><a href="#delete_or_filter_revisions">Delete or Filter Revisions</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#delete_revisions">Delete Revisions</a></div></li>
+<li class="level2"><div class="li"><a href="#delete_a_range_of_revisions">Delete a Range of Revisions</a></div></li>
+<li class="level2"><div class="li"><a href="#filter_dump_files">Filter Dump Files</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#checkout_repository_and_overwrite_files">Checkout Repository and Overwrite Files</a></div></li>
+<li class="level1"><div class="li"><a href="#exporting_contents_of_subversion_directory_to_current_directory">Exporting Contents of Subversion Directory to Current Directory</a></div></li>
+<li class="level1"><div class="li"><a href="#remove_all_local_changes_and_additional_files">Remove all Local Changes and Additional Files</a></div></li>
+<li class="level1"><div class="li"><a href="#ignore_files">Ignore Files</a></div></li>
+<li class="level1"><div class="li"><a href="#running_svnserve_on_debian">Running Svnserve on Debian</a></div></li>
+<li class="level1"><div class="li"><a href="#fixing_bad_gateway_responses">Fixing Bad Gateway Responses</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="add_missing_files_recursively">Add Missing Files Recursively</h1>
+<div class="level1">
+<pre class="code bash"><span class="kw2">svn status</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="st0">&quot;^\?&quot;</span> <span class="sy0">|</span> <span class="kw2">awk</span> <span class="st_h">'{print $2}'</span> <span class="sy0">|</span> <span class="kw2">xargs</span> <span class="kw2">svn add</span></pre>
+
+</div>
+
+<h1 class="sectionedit2" id="delete_or_filter_revisions">Delete or Filter Revisions</h1>
+<div class="level1">
+
+<p>
+The generic procedure is the following:
+</p>
+<ul>
+<li class="level1"><div class="li"> dump the svn repository with <code>svnadmin dump</code>.</div>
+</li>
+<li class="level1"><div class="li"> filter the dump file with <code>svndumpfilter</code>.</div>
+</li>
+<li class="level1"><div class="li"> create a new repository.</div>
+</li>
+<li class="level1"><div class="li"> load the modified dump file.</div>
+</li>
+</ul>
+
+</div>
+
+<h2 class="sectionedit3" id="delete_revisions">Delete Revisions</h2>
+<div class="level2">
+
+<p>
+In order to delete revisions by number, say <code>1</code> through <code>500</code>, the procedure is as follows:
+</p>
+<ul>
+<li class="level1"><div class="li"> dump the svn repository and select the revisions that you want to keep:</div>
+</li>
+</ul>
+<pre class="code bash"><span class="kw2">svnadmin dump</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>repo -r1:<span class="nu0">500</span> <span class="sy0">&gt;</span> repo.dump</pre>
+<ul>
+<li class="level1"><div class="li"> create a new repository:</div>
+</li>
+</ul>
+<pre class="code bash"><span class="kw2">svnadmin create</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>newrepo </pre>
+<ul>
+<li class="level1"><div class="li"> import the dump:</div>
+</li>
+</ul>
+<pre class="code bash"><span class="kw2">svnadmin load</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>newrepo <span class="sy0">&lt;</span> repo.dump</pre>
+
+</div>
+
+<h2 class="sectionedit4" id="delete_a_range_of_revisions">Delete a Range of Revisions</h2>
+<div class="level2">
+
+<p>
+Deleting a range of revisions involves dumping the exclusion set around those revisions and then importing both dumps. Suppose we wanted to delete revision <code>500</code> from a total of <code>1000</code> revisions, then we would:
+</p>
+<ul>
+<li class="level1"><div class="li"> dump revision <code>1</code> to <code>499</code> to a file <code>dump_1</code>.</div>
+</li>
+<li class="level1"><div class="li"> dump revision <code>501</code> to <code>1000</code> by passing the <code>--incremental</code> option to the <code>svnadmin dump</code> command to a file <code>dump_2</code>.</div>
+</li>
+<li class="level1"><div class="li"> create a new repository.</div>
+</li>
+<li class="level1"><div class="li"> first load the first dump file <code>dump_1</code> and then load the second dump file <code>dump_2</code>.</div>
+</li>
+</ul>
+
+<p>
+Note that removing intermediary revisions will fail if new files have been added in the revisions to be deleted and then altered in following revisions because <code>svnadmin</code> would, in that case, attempt to load changes to files that have not been created in the first place.
+</p>
+
+</div>
+
+<h2 class="sectionedit5" id="filter_dump_files">Filter Dump Files</h2>
+<div class="level2">
+
+<p>
+In order to delete unwanted files or folders from a subversion repository, the <code>svndumpfilter</code> command is used that can pattern-match files or folders in a dump file and create a new dump with those files or folders excluded or included.
+</p>
+<ul>
+<li class="level1"><div class="li"> dump the repository:</div>
+</li>
+</ul>
+<pre class="code bash"><span class="kw2">svnadmin dump</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>repo <span class="sy0">&gt;</span> repo.dump</pre>
+<ul>
+<li class="level1"><div class="li"> now we can exclude or include files that will be either removed, respectively kept in the new dump file.</div>
+</li>
+</ul>
+
+<p>
+Excluding can be performed by:
+</p>
+<pre class="code bash"><span class="kw2">svndumpfilter exclude</span> somefile <span class="sy0">&lt;</span> repo.dump <span class="sy0">&gt;</span> newrepo.dump</pre>
+
+<p>
+Including can be done by:
+</p>
+<pre class="code bash"><span class="kw2">svndumpfilter include</span> somefile <span class="sy0">&lt;</span> repo.dump <span class="sy0">&gt;</span> newrepo.dump</pre>
+
+<p>
+Both inclusion and exclusion can be performed by pattern matching, for example, to exclude <code>pdf</code> files:
+</p>
+<pre class="code bash"><span class="kw2">svndumpfilter exclude</span> <span class="re5">--pattern</span> <span class="st_h">'*.pdf'</span> <span class="sy0">&lt;</span> repo.dump <span class="sy0">&gt;</span> newrepo.dump</pre>
+<ul>
+<li class="level1"><div class="li"> now create the new repository:</div>
+</li>
+</ul>
+<pre class="code bash"><span class="kw2">svnadmin create</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>newrepo</pre>
+<ul>
+<li class="level1"><div class="li"> and load the filtered dump:</div>
+</li>
+</ul>
+<pre class="code bash"><span class="kw2">svnadmin load</span> <span class="sy0">/</span>path<span class="sy0">/</span>to<span class="sy0">/</span>newrepo <span class="sy0">&lt;</span> newrepo.dump</pre>
+
+</div>
+
+<h1 class="sectionedit6" id="checkout_repository_and_overwrite_files">Checkout Repository and Overwrite Files</h1>
+<div class="level1">
+
+<p>
+Subversion can be made to checkout a repository on top of an existing directory structure that may contain files in the repository to be checked out. If the checkout is executed without any flags, then Subversion will throw errors such as <code>An obstructing working copy was found</code>.
+</p>
+
+<p>
+To merge the copy being checked out with the local existing files, you would first clean all <code>.svn</code> folders from the directory structure and then issue:
+</p>
+<pre class="code bash"><span class="kw2">svn</span> <span class="re5">--force</span> <span class="kw2">co</span> http:<span class="sy0">//</span>svn.server.tld<span class="sy0">/</span>project</pre>
+
+<p>
+which, from the documentation, will check out the repository on top of existing files and consider the local files to be local changes, marking them as modified. However, we want to overwrite the local files with the files from the repository and we thus need to chuck away any local &quot;modifications&quot;. In order to do that, issue:
+</p>
+<pre class="code bash"><span class="kw2">svn revert</span> <span class="re5">-R</span> project </pre>
+
+<p>
+and the local files will be overwritten by the files from the repository.
+</p>
+
+</div>
+
+<h1 class="sectionedit7" id="exporting_contents_of_subversion_directory_to_current_directory">Exporting Contents of Subversion Directory to Current Directory</h1>
+<div class="level1">
+
+<p>
+Suppose that you have some configuration files in a Subversion repository:
+</p>
+<pre class="code">/configuration-templates/samba/3/standalone/smb.conf
+/configuration-templates/samba/3/standalone/smb.conf.local
+/configuration-templates/samba/3/standalone/smb.conf.share</pre>
+
+<p>
+and that you wish to tell Subversion to download those files to <code>/etc/samba</code> but without creating the <code>standalone</code> directory and without creating a <code>.svn</code> directory (that is, without keeping them under version control).
+</p>
+
+<p>
+In such cases, you can use the export feature of Subversion. Change to the destination directory:
+</p>
+<pre class="code bash"><span class="kw3">cd</span> <span class="sy0">/</span>etc<span class="sy0">/</span>samba<span class="sy0">/</span></pre>
+
+<p>
+and now export the Subversion directory:
+</p>
+<pre class="code bash"><span class="kw2">svn <span class="kw3">export</span></span> http:<span class="sy0">//</span>svn.grimore.org<span class="sy0">/</span>configuration-templates<span class="sy0">/</span>samba<span class="sy0">/</span><span class="nu0">3</span><span class="sy0">/</span>standalone <span class="re5">--force</span> .</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>--force</code> will allow Subversion to overwrite any files in the current directory - this is necessary, otherwise Subversion will say that the current directory already exists - which is obviously the case since we are in <code>/etc/samba/</code>.</div>
+</li>
+<li class="level1"><div class="li"> the dot <code>.</code> at the end of the command will export the contents of the <code>standalone</code> directory (ie: without ending up with <code>/etc/samba/standalone</code>) - thus, it will only pull the configuration files.</div>
+</li>
+</ul>
+
+</div>
+
+<h1 class="sectionedit8" id="remove_all_local_changes_and_additional_files">Remove all Local Changes and Additional Files</h1>
+<div class="level1">
+
+<p>
+To remove all local changes recursively:
+</p>
+<pre class="code bash"><span class="kw2">svn revert</span> <span class="re5">-R</span> .
+<span class="kw2">svn status</span> <span class="re5">--no-ignore</span> <span class="sy0">|</span> <span class="kw2">grep</span> <span class="re5">-E</span> <span class="st_h">'(^\?)|(^\I)'</span> <span class="sy0">|</span> <span class="kw2">sed</span> <span class="re5">-e</span> <span class="st_h">'s/^. *//'</span> <span class="sy0">|</span> <span class="kw2">sed</span> <span class="re5">-e</span> <span class="st_h">'s/\(.*\)/&quot;\1&quot;/'</span> <span class="sy0">|</span> <span class="kw2">xargs</span> <span class="kw2">rm</span> <span class="re5">-rf</span>
+<span class="kw2">svn update</span> <span class="re5">--force</span></pre>
+
+<p>
+In case you do not wish to remove files that are not in the subversion repository, then do not issue the <code>svn status</code> line.
+</p>
+
+</div>
+
+<h1 class="sectionedit9" id="ignore_files">Ignore Files</h1>
+<div class="level1">
+
+<p>
+The following command will globally ignore files matching the patterns <code>*.pem</code>, <code>*.key</code> and <code>*.crt</code>:
+</p>
+<pre class="code bash"><span class="kw2">svn propset</span> svn:global-ignores <span class="st0">&quot;
+*.pem
+*.key
+*.crt&quot;</span> .</pre>
+
+<p>
+Alternatively, ignores can be set local to a current directory. Issuing the command:
+</p>
+<pre class="code bash"><span class="kw2">svn propset</span> svn:ignores <span class="st0">&quot;
+*.pem
+*.key
+*.crt&quot;</span> .</pre>
+
+<p>
+within a directory will make SVN ignore the files in that directory.
+</p>
+
+</div>
+
+<h1 class="sectionedit10" id="running_svnserve_on_debian">Running Svnserve on Debian</h1>
+<div class="level1">
+
+<p>
+The <code>subversion</code> package on Debian is not installed with a service to conveniently start and stop the Subversion <code>svnserve</code>daemon so here are some files that can be used to manage <code>svnserve</code> in a Debian-compliant way.
+</p>
+
+<p>
+First create a user and group that <code>svnserve</code> should run under (in this example, a new user and group <code>svnserve</code> was created):
+</p>
+<pre class="code bash">useradd <span class="kw2">svnserve</span></pre>
+
+<p>
+Then the service file is created at <code>/etc/systemd/system/svnserve.service</code> with the contents:
+</p>
+<pre class="code">[Unit]
+Description=Subversion protocol daemon
+After=syslog.target network.target
+
+[Service]
+Type=forking
+RuntimeDirectory=svnserve
+PIDFile=/var/run/svnserve/svnserve.pid
+EnvironmentFile=/etc/default/svnserve
+ExecStart=/usr/bin/svnserve --pid-file /var/run/svnserve/svnserve.pid $DAEMON_ARGS
+User=svnserve
+Group=svnserve
+KillMode=control-group
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+Alias=svnserve.service</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>User</code> and <code>Group</code> has to be changed to the new user has been created.</div>
+</li>
+</ul>
+
+<p>
+Next, the defaults file for Debian is created at <code>/etc/default/svnserve</code> with the following contents:
+</p>
+<pre class="code"># svnserve options
+DAEMON_ARGS=&quot;--daemon --root /srv/svn --log-file /var/log/svnserve/svnserve.log&quot;</pre>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <code>/srv/svn</code> is the parent-path under which all SVN repositories are placed.</div>
+</li>
+</ul>
+
+<p>
+The <code>/var/log/svnserve</code> directory must be created:
+</p>
+<pre class="code bash"><span class="kw2">mkdir</span> <span class="sy0">/</span>var<span class="sy0">/</span>log<span class="sy0">/</span><span class="kw2">svnserve</span></pre>
+
+<p>
+and granted permission to the user and group specified in the system file:
+</p>
+<pre class="code bash"><span class="kw2">chown</span> <span class="re5">-R</span> svnserve:svnserve <span class="sy0">/</span>var<span class="sy0">/</span>log<span class="sy0">/</span><span class="kw2">svnserve</span></pre>
+
+<p>
+A matching logrotate file should be created at <code>/etc/logrotate.d/svnserve</code> (in order to rotate logs when they get too large) with the following contents:
+</p>
+<pre class="code">/var/log/svnserve/*.log {
+    daily
+    missingok
+    rotate 14
+    compress
+    notifempty
+    create 640 svnserve svnserve
+    sharedscripts
+    postrotate
+            if /bin/systemctl status svnserve &gt; /dev/null ; then \
+                /bin/systemctl restart svnserve &gt; /dev/null; \
+            fi;
+    endscript
+}</pre>
+
+<p>
+Now, systemctl is instructed to reload the daemon file with:
+</p>
+<pre class="code bash">systemctl daemon-reload</pre>
+
+<p>
+and finally <code>svnserve</code> is started with:
+</p>
+<pre class="code bash">systemctl start <span class="kw2">svnserve</span></pre>
+
+</div>
+
+<h1 class="sectionedit11" id="fixing_bad_gateway_responses">Fixing Bad Gateway Responses</h1>
+<div class="level1">
+
+<p>
+When attempting an SVN <code>COPY</code> or <code>MOVE</code> command, a repository running under Apache through SSL may yield:
+</p>
+<pre class="code">svn: E175002: Commit failed (details follow):
+svn: E175002: Unexpected HTTP status 502 &#039;Bad Gateway&#039; on &#039;/check/!svn/rvr/4/src/server&#039;</pre>
+
+<p>
+to address the issue, add to the Apache configuration file:
+</p>
+<pre class="code">RequestHeader edit Destination ^https http early</pre>
+
+<p>
+and restart Apache.
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/subversion.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion" class="wikilink1" title="fuss:subversion" data-wiki-id="fuss:subversion">subversion</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:subversion" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/subversion"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Asubversion&amp;1657306541" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

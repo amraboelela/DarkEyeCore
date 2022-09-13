@@ -1,0 +1,2952 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+<link href="/.static/css/katex.min.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>/vt/ - Vtubers-General</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeaderBoard"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+      <ul>
+        <li> <a href="/.static/pages/rules.html" class="coloredIcon">Global Rules
+        </a></li>
+        <li> <a href="rules.html" class="coloredIcon">Rules
+        </a></li>
+      </ul>
+      <div class="hamburger-bottom">
+        <a href="index.rss" class="coloredIcon linkRss">
+           <hr>
+           RSS
+        </a>
+        <a href="../catalog.html" class="coloredIcon navCatalog">
+           <hr>
+           Catalog
+        </a>
+        <a class="coloredIcon linkLogs">
+           <hr>
+           Logs
+        </a>
+      </div>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> <span>[</span> <a class="linkLogs coloredIcon hideMobile" title="Logs" id="linkLogs" href="/logs.js?boardUri=vt"></a> <span>/</span> <a href="#" class="coloredIcon" title="Top" id="linkTop"></a> <span>/</span> <a href="#footer" class="coloredIcon" title="Bottom" id="linkBottom"></a> <span>/</span> <a href="catalog.html" class="navCatalog hideMobile coloredIcon" title="Catalog" id="navCatalog"></a> <span>/</span> <a href="index.rss" class="linkRss hideMobile coloredIcon" title="RSS"></a> <span>]</span>
+</span>
+</nav>
+
+  <input type="checkbox" value="showSideCatalog" id="showSideCatalog">
+  <label for="showSideCatalog" id="sideCatalogMenu">
+    <div id="sideCatalogDiv">
+
+      <div id="sideCatalogHeader">
+
+        <button id="sideCatalogRefreshButton" class="catalogLabel">Refresh</button>
+        <span id="closeSideCatalogButton" class="close-btn coloredIcon glowOnHover"></span>
+      </div>
+
+      <div id="sideCatalogBody"></div>
+
+    </div>
+
+    <div id="sideCatalogOverlay"> </div>
+  </label>
+
+  <header class="boardHeader">
+    <img id="bannerImage" src="/randomBanner.js?boardUri=vt">
+    <div>
+      <p id="labelName">/vt/ - Vtubers-General</p>
+    </div>
+    <p id="labelDescription">Tablón dedicado al posteo de vtubers en general</p>
+	<span class="boardLinks">
+		<a href="catalog.html">Catalog</a>
+		<a id="archiveLinkBoard">Archive</a>
+	</span>
+  </header>
+
+  <div id="postingForm">
+
+    <fieldset id="newPostFieldset" class="boardFieldset">
+      <legend><label for="newPostFieldHide">Mode: Thread</label></legend>
+      <input type="checkbox" id="newPostFieldHide" class="hidden">
+
+      <form action="/newThread.js" enctype="multipart/form-data" method="post">
+
+        <div id="postingFormContents"><input type="text" id="prevent_autofill_uname" class="hidden" autocomplete="off" tabindex="-1">
+<input type="password" id="prevent_autofill_pwd" class="hidden" autocomplete="off" tabindex="-2">
+
+<table> <tbody>
+
+  
+ 
+  <tr id="divOptions">
+    <th>Options</th>
+    <td>
+      <span id="useSageSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" name="sage" id="doSageCheckbox">
+        <label for="doSageCheckbox"></label>
+      </span>
+
+      <span class="hidden" id="alwaysUseBypassSpan">
+        <input type="checkbox" class="postingCheckbox postingInput" id="alwaysUseBypassCheckBox">
+        <label for="alwaysUseBypassCheckBox"></label>
+      </span>
+    </td>
+  </tr>
+
+  <tr>
+    <th>Subject</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldSubject" name="subject">
+      <input name="boardUri" id="boardIdentifier" type="hidden" tabindex="-3" value="vt"></td>
+  </tr>
+
+  <tr>
+    <th>Message</th>
+    <td><textarea rows="5" cols="35" class="postingInput" id="fieldMessage" name="message"></textarea>
+
+      <p class="small">
+        Max message length: <span id="labelMessageLength">8000</span>
+      </p></td>
+  </tr>
+
+  <tr id="divUpload">
+    <th>Files</th>
+    <td>
+      <div class="hidden" id="dragAndDropDiv">
+        <div class="dropzone" id="dropzone">
+          Drag files to upload or
+          <br>
+          click here to select them
+        </div>
+        <div id="selectedDiv"></div>
+      </div>
+
+      <div>
+        <input type="file" name="files" id="inputFiles" multiple="" class="fileBrowser" accept="image/webp, image/png, image/jpeg, image/gif, image/bmp, image/svg+xml, video/webm, audio/mpeg, video/mp4, audio/x-m4a, video/ogg, audio/ogg, audio/webm, audio/mp3, audio/flac, text/plain, application/pdf, application/vnd.rar, application/x-shockwave-flash, font/ttf, font/woff, font/woff2, application/font-sfnt, application/gzip, video/x-msvideo, application/zip, application/x-bzip, application/x-bzip2, application/gzip, font/sfnt, application/font-sfnt, application/epub+zip, application/epub, application/vnd.ms-opentype, video/mpeg, video/x-ms-asf, application/json, audio/wave, audio/wav, audio/x-wav, audio/x-pn-wav">
+      </div>
+      <input type="checkbox" name="spoiler" class="postingCheckbox" id="checkboxSpoiler"> <label for="checkboxSpoiler"></label>
+      <label id="labelScramble" for="checkboxScramble"></label>
+
+      <p class="small">
+        Max file size: <span id="labelMaxFileSize">32.00 MB</span>
+      </p>
+      <p class="small">
+        Max files: <span id="labelMaxFiles">5</span>
+      </p>
+      <p class="small">
+        Supported file types: GIF, JPG, PNG, WebM, OGG, and
+       	<a class="localPageLink" href="/.static/pages/about.html#filetypes">more</a>
+      </p>
+
+    </td>
+  </tr>
+
+  
+
+</tbody> </table>
+
+<details class="postingFormExtra">
+<summary class="glowOnHover"></summary>
+
+<table> <tbody>
+
+  <tr>
+    <th>E-mail</th>
+    <td><input type="text" autocomplete="none" class="postingInput" id="fieldEmail" name="email"></td>
+  </tr>
+
+  <tr>
+    <th>Password</th>
+    <td><input id="fieldPostingPassword" name="password" class="postingInput" type="password">
+      <p class="small">(used to delete files and postings)</p></td>
+  </tr>
+
+  <tr>
+    <th>Misc</th>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody> </table>
+
+</details>
+
+<div id="selected-cell-template" class="hidden">
+  <a class="removeButton coloredIcon"></a>
+  <span class="nameLabel"></span>
+  <br>
+  <label class="spoilerPanel">
+    <input type="checkbox" class="spoilerCheckBox">
+    Spoiler
+  </label>
+</div>
+</div>
+
+        <p class="small">
+          Remember to follow the
+          <a href="rules.html" class="localPageLink">Rules</a>
+        </p>
+
+        <input type="submit" id="formButton" value="Post">
+
+      </form>
+
+    </fieldset>
+
+  </div>
+
+  <div id="dynamicAnnouncement"><!-- 
+
+<link
+  href="/.static/css/birthday.css"
+  type="text/css"
+  rel="stylesheet" 
+  class="globalTheme" /> 
+<style>
+.innerOP:before {
+  content: '';
+  background: url("/.static/bdayhat.png") no-repeat;
+  position: absolute;
+  left: 0;
+  width: 74px;
+  height: 150px;
+  z-index: 10;
+  margin-top: -140px;
+  pointer-events: none;
+}
+</style>
+
+-->
+
+<table>
+    <tbody><tr> <td align="center">
+          The backup domain is located at 8chan.se. .cc is a third fallback. TOR access can be found
+          <a href="http://4usoivrpy52lmc4mgn2h34cmfiltslesthr56yttv2pxudd3dapqciyd.onion">here</a>, or you can access the TOR portal from the clearnet at <a href="https://redchannit.com">Redchannit 2.0</a>.<br>
+	  <!--<link rel="stylesheet" href="https://csswizardry.com/ct/ct.css" class="ct" />-->
+	  <br>
+	  <strong>
+          Maintenance Complete! Use Ctrl+F5 to clear your cache and refresh! View the <a href="/site/res/5978.html">Changelog on &gt;&gt;&gt;/site/</a>!
+	  </strong>
+	  <br><br>
+          8chan.moe is a hobby project with no affiliation whatsoever to the administration of any other "8chan" site, past or present.
+   	  </td> </tr>
+    <!--<tr>
+        <td>DATE</td>
+        <td>NEXT ROW</td>
+    </tr> -->
+</tbody></table>
+</div>
+  <div id="panelMessage">
+    <hr>
+    <div id="divMessage">LEAN LAS REGLAS <a href="/vt/res/10.html">en este hilo</a>
+
+REFUGIOS Y TABLONES HERMANOS
+<a href="/hispachan">hispachan</a> / <a href="/ac">ac</a> / <a href="/arte">arte</a> / <a href="/av">av</a> / <a href="/hispatec/">hispatec</a> / <a href="/hisrol">hisrol</a> / <a href="/arepa">arepa</a> / <a href="/esp">esp</a> / <a href="/col">col</a> / <a href="/cc">cc</a> / <a href="/mex">mex</a> / <a href="/hispol">hispol</a></div>
+  </div>
+
+  <div id="threadList">
+
+    <form action="/contentActions.js" method="post" enctype="multipart/form-data">
+
+      <div id="divThreads"><div class="opCell" data-boarduri="vt" id="1"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/63e018a91d9f3c3986fa32f262340bed0ea6a9ecfde9da709a5ad165ae335c3a.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">54.10 KB</span> <span class="dimensionLabel">400x566</span>
+  <a class="originalNameLink" href="/.media/63e018a91d9f3c3986fa32f262340bed0ea6a9ecfde9da709a5ad165ae335c3a.jpg" download="Sora.jpg">Sora.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/63e018a91d9f3c3986fa32f262340bed0ea6a9ecfde9da709a5ad165ae335c3a.jpg" data-filewidth="400" data-fileheight="566" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="159" height="225" src="/.media/t_63e018a91d9f3c3986fa32f262340bed0ea6a9ecfde9da709a5ad165ae335c3a"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1">
+    <span class="labelSubject">META</span>
+    <a class="linkName  noEmailName" >Test</a>
+     
+    <span class="labelCreated">05/31/2022 (Tue) 04:39:51</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    <span class="cyclicIndicator" title="Cyclical Thread"></span>
+    
+    
+    <a class="linkSelf" href="/vt/res/1.html#1">No.</a>
+    <a class="linkQuote" href="/vt/res/1.html#q1">1</a>
+    <a class="linkReply" href="/vt/res/1.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/1.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Sora diosa del tablón</div>
+  
+  
+  <div class="labelLastEdit">Edited last time by HoloVt on 05/31/2022 (Tue) 17:52:05.</div>
+  <div class="labelOmission">69 posts and 34 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1939"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1-1939">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 01:11:15</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1.html#1939">No.</a>
+    <a class="linkQuote" href="/vt/res/1.html#q1939">1939</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Negros ¿no les parece exagerado la cantidad de stickys que tienen? apenas me paso por acá, pero cada que entró me da cosa tener que pasar por tanto de estos solo para ver un tema</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="123"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/676494adf7ace155e8eba1e81323388bb695a02dd058028c268d6553291b704f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">687.35 KB</span> <span class="dimensionLabel">4096x1728</span>
+  <a class="originalNameLink" href="/.media/676494adf7ace155e8eba1e81323388bb695a02dd058028c268d6553291b704f.jpg" download="IMG&#95;20210614&#95;022032.jpg">IMG&#95;20210614&#95;022032.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/676494adf7ace155e8eba1e81323388bb695a02dd058028c268d6553291b704f.jpg" data-filewidth="4096" data-fileheight="1728" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="95" src="/.media/t_676494adf7ace155e8eba1e81323388bb695a02dd058028c268d6553291b704f"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-123">
+    <span class="labelSubject">Hilo General de OCs/Banners y entre otras cosas</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/01/2022 (Wed) 03:35:50</span>
+    
+    
+    
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/123.html#123">No.</a>
+    <a class="linkQuote" href="/vt/res/123.html#q123">123</a>
+    <a class="linkReply" href="/vt/res/123.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Lo del título, pueden usar este hilo para postear OCs relativos a sus chubas, y que deseen compartir con todos, algún banner que quisieran que ocupará la cabecera del tablón, y cualquier cosita que pueda ayudar a darle un bonito look al sitio.
+
+<span class="redText">PARA BANNERS</span>
+El tamaño debe ser de 300x100 píxeles para que se pueda ver bien. El tamaño máximo para banners, es de 1mb.
+
+<span class="redText">SPOILERS CUSTOMIZADOS</span>
+8moe permite customizar el spoiler, para que no sea sencillamente un enorme &quot;?&quot; Negro. Aunque no se menciona el tamaño máximo para esto, se permitirá también la subida de candidatos para spoiler customizado.
+
+<span class="redText">CSS CUSTOMIZADO</span>
+O el tema de fondo del tablón. Por aspectos tecnicos, no se utilizará de momento ningún CSS para el tablón, en un futuro, puede que se acepten nuevos estilos para el tablón.
+
+.......
+<span class="redText">¿Te consideras bastante bueno para ser un vtuber?, ¿Quieres saber un poquito más del software ligado a éste?</span>
+Abajo te dejo las herramientas a utilizar. Úsalas con sabiduría, y recuerda que está prohibido el spam.
+
+Guía completa de como ser vtuber para cualquier pc: <a target="&#95;blank" href="https://youtu.be/mmybgKALILI">https://youtu.be/mmybgKALILI</a>
+Ser vtuber sin cámara usando VMagicMirror + descarga + configuración + avatar: <a target="&#95;blank" href="https://youtu.be/32q8kqaHufY">https://youtu.be/32q8kqaHufY</a></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/vt/res/123.html#123">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  <div class="labelLastEdit">Edited last time by Ohayappi on 06/12/2022 (Sun) 09:08:31.</div>
+  <div class="labelOmission">22 posts and 13 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1768"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-123-1768">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 05:41:35</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/123.html#1768">No.</a>
+    <a class="linkQuote" href="/vt/res/123.html#q1768">1768</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/123.html#1755">&gt;&gt;1755</a>
+Estan bonitos, anon.
+Deja los pego aqui en el refrigerador para que todos lo vean.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="836"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c145e22a27401d6f5345539af66c0d1857d7d0d5785a1d15c4597b2ce49681e4.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">283.90 KB</span> <span class="dimensionLabel">1024x820</span>
+  <a class="originalNameLink" href="/.media/c145e22a27401d6f5345539af66c0d1857d7d0d5785a1d15c4597b2ce49681e4.jpg" download="V-Carnival&#95;VOL.2&#95;main&#95;0425&#95;&#95;c&#95;&#95;i4kh-tk.jpg">V-Carnival&#95;VOL.2&#95;main&#95;0425&#95;&#95;c&#95;&#95;i4kh-tk.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c145e22a27401d6f5345539af66c0d1857d7d0d5785a1d15c4597b2ce49681e4.jpg" data-filewidth="1024" data-fileheight="820" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="180" src="/.media/t_c145e22a27401d6f5345539af66c0d1857d7d0d5785a1d15c4597b2ce49681e4"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/cdab3c7b2ba41bc23256e161ed2baa63244aa1fdd411020f5485ba325b2d267e.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">451.73 KB</span> <span class="dimensionLabel">632x527</span>
+  <a class="originalNameLink" href="/.media/cdab3c7b2ba41bc23256e161ed2baa63244aa1fdd411020f5485ba325b2d267e.jpg" download="vcarnival2.jpg">vcarnival2.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/cdab3c7b2ba41bc23256e161ed2baa63244aa1fdd411020f5485ba325b2d267e.jpg" data-filewidth="632" data-fileheight="527" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="188" src="/.media/t_cdab3c7b2ba41bc23256e161ed2baa63244aa1fdd411020f5485ba325b2d267e"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5928ed19cbd785faa7f5919e4b9a675e9b2a5faa17f60b09531fc7339ea5a307.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">163.68 KB</span> <span class="dimensionLabel">1500x500</span>
+  <a class="originalNameLink" href="/.media/5928ed19cbd785faa7f5919e4b9a675e9b2a5faa17f60b09531fc7339ea5a307.jpg" download="1500x500.jpg">1500x500.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5928ed19cbd785faa7f5919e4b9a675e9b2a5faa17f60b09531fc7339ea5a307.jpg" data-filewidth="1500" data-fileheight="500" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="75" src="/.media/t_5928ed19cbd785faa7f5919e4b9a675e9b2a5faa17f60b09531fc7339ea5a307"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-836">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/13/2022 (Mon) 15:18:48</span>
+    
+    
+    <span class="lockIndicator" title="Locked"></span>
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/836.html#836">No.</a>
+    <a class="linkQuote" href="/vt/res/836.html#q836">836</a>
+    <a class="linkReply" href="/vt/res/836.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Ya esta disponible para escorias tercermundistas como yo el V Carnival Vol. 02
+
+<a target="&#95;blank" href="https://nyaa.si/view/1541002">https://nyaa.si/view/1541002</a>
+<a target="&#95;blank" href="https://nyaa.si/view/1541037">https://nyaa.si/view/1541037</a>
+
+Que es el V Carnival? cada compañia lanza a sus mejores Chubas a una sangrienta batalla de canto y baile en un escenario Real
+
+
+les dejo el año pasado por si no lo vieron
+
+<a target="&#95;blank" href="https://nyaa.si/view/1366844">https://nyaa.si/view/1366844</a>
+<a target="&#95;blank" href="https://nyaa.si/view/1367318">https://nyaa.si/view/1367318</a></div>
+  
+  
+  
+  <div class="labelOmission">4 posts and 1 image omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="861"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-836-861">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/14/2022 (Tue) 01:46:45</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/836.html#861">No.</a>
+    <a class="linkQuote" href="/vt/res/836.html#q861">861</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c630c6dd21cf3f8061ca272ed47979e11fe96dd8330195c9caf5ee56d506fd0f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">93.98 KB</span> <span class="dimensionLabel">850x1444</span>
+  <a class="originalNameLink" href="/.media/c630c6dd21cf3f8061ca272ed47979e11fe96dd8330195c9caf5ee56d506fd0f.jpg" download="&#95;&#95;momosuzu&#95;nene&#95;hololive&#95;drawn&#95;by&#95;kon&#95;07263545&#95;&#95;sample-c281198d944491b0c1df2ff7621c07d3.jpg">&#95;&#95;momosuzu&#95;nene&#95;hololive&#95;drawn&#95;by&#95;kon&#95;07263545&#95;&#95;sample-c281198d944491b0c1df2ff7621c07d3.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c630c6dd21cf3f8061ca272ed47979e11fe96dd8330195c9caf5ee56d506fd0f.jpg" data-filewidth="850" data-fileheight="1444" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="132" height="225" src="/.media/t_c630c6dd21cf3f8061ca272ed47979e11fe96dd8330195c9caf5ee56d506fd0f"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/836.html#849">&gt;&gt;849</a>
+Habla por ti, yo disfruto de su pequeño cuerpo mientras ustedes juegan a las niñeras.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="10"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/93eb77f2714f650e66e5fa27fe80fd2f45718e8f7fbc4c8ae8e51c79342610da.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">174.46 KB</span> <span class="dimensionLabel">2000x1253</span>
+  <a class="originalNameLink" href="/.media/93eb77f2714f650e66e5fa27fe80fd2f45718e8f7fbc4c8ae8e51c79342610da.jpg" download="Subaru.jpg">Subaru.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/93eb77f2714f650e66e5fa27fe80fd2f45718e8f7fbc4c8ae8e51c79342610da.jpg" data-filewidth="2000" data-fileheight="1253" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="141" src="/.media/t_93eb77f2714f650e66e5fa27fe80fd2f45718e8f7fbc4c8ae8e51c79342610da"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-10">
+    <span class="labelSubject">REGLAS</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">05/31/2022 (Tue) 05:13:28</span>
+    
+    
+    <span class="lockIndicator" title="Locked"></span>
+    <span class="pinIndicator" title="Sticky"></span>
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/10.html#10">No.</a>
+    <a class="linkQuote" href="/vt/res/10.html#q10">10</a>
+    <a class="linkReply" href="/vt/res/10.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">1. Libertad de expresión: puedes decir lo que quieras con respecto a cualquier vtuber o el tablon ya sea positivo o negativo indiferentemente de lo que otros puedan opinar a favor o en contra. Cabe aclarar y mencionar que libertad no es lo mismo que libertinaje.
+
+2. El contenido NSFW NO SERÁ PROHIBIDO, pero se deberá de mantener hasta cierto punto un grado de control y prudencia sobre la publicación de cualquier contenido NSFW en el tablón. Sí lo haces, postéalo con spoiler. (En pocas palabras: no se quiere que esto meramente se convierta en una pagina porno)
+ 
+3. No compartas, postees, pidas o enlaces contenido que viole las leyes de estados unidos, tu país o las leyes de los Países Bajos. Nada de contenido que pueda causar problemas: ya sea CP (las lolis 2D no están incluidas aquí pero de ser posible mantener esto con cierto control) o Gore. 
+
+4. No está permitido el &quot;shitposting&quot; (cualquier contenido de pésima calidad posteado de forma consciente para ensuciar el tablón). Algunos ejemplos:
+
+• Horrores ortográficos, posts indescifrables, imágenes, etc.
+• Repetición reiterada de contenido (&quot;flood&quot;).
+• Escribir y gritar a los cuatro vientos &quot;mi gustos &gt; tus gustos&quot;, &quot;sages&quot; y &quot;hides&quot;
+• Abuso y exceso de GET&apos;s.
+• Desvío de hilos.
+• Cualquier contenido que reduzca la calidad percibida en tablón.
+
+Si lo único que haces es shitpostear o spamear basura que no aporte nada al tablón o al tema del hilo. Cosas que no tengan nada que ver con respecto al hilo o tablón, y realizar spam en el mismo será considerada una sanción por lo acontecido y hecho. Recuerda puede no gustarte algo y estas en todo el derecho, pero eso no significa que vuelvas el tablón un tiradero de mierda solo porque ese &quot;algo&quot; no te gusto.
+</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/vt/res/10.html#10">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  <div class="labelLastEdit">Edited last time by HoloVt on 06/20/2022 (Mon) 20:40:56.</div>
+  
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="47"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-10-47">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">05/31/2022 (Tue) 18:25:12</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/10.html#47">No.</a>
+    <a class="linkQuote" href="/vt/res/10.html#q47">47</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/bb6c613e84a14558b70e8f0d82ae4ed06a811a8f2022f2803dbefae585ef9fea.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">61.43 KB</span> <span class="dimensionLabel">767x345</span>
+  <a class="originalNameLink" href="/.media/bb6c613e84a14558b70e8f0d82ae4ed06a811a8f2022f2803dbefae585ef9fea.png" download="imagen&#95;2022-05-31&#95;132305636.png">imagen&#95;2022-05-31&#95;132305636.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/bb6c613e84a14558b70e8f0d82ae4ed06a811a8f2022f2803dbefae585ef9fea.png" data-filewidth="767" data-fileheight="345" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="101" src="/.media/t_bb6c613e84a14558b70e8f0d82ae4ed06a811a8f2022f2803dbefae585ef9fea"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Muy bien negros, aquí el primer negro y ejemplo en incumplir las reglas donde su único post y argumento es &quot;puta&quot;, este es uno de los ejemplos de  &quot;Si lo único que haces es shitpostear o spamear basura que no aporte nada al tablon o al tema del hilo&quot;</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="348"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/8cce353aaf1db0bb42b2cbf4801408478c4611d2604852213a0da738a6fc6944.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">190.35 KB</span> <span class="dimensionLabel">900x900</span>
+  <a class="originalNameLink" href="/.media/8cce353aaf1db0bb42b2cbf4801408478c4611d2604852213a0da738a6fc6944.jpg" download="unnamed.jpg">unnamed.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/8cce353aaf1db0bb42b2cbf4801408478c4611d2604852213a0da738a6fc6944.jpg" data-filewidth="900" data-fileheight="900" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_8cce353aaf1db0bb42b2cbf4801408478c4611d2604852213a0da738a6fc6944"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-348">
+    <span class="labelSubject">Vtubers Indies Global</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/04/2022 (Sat) 03:38:30</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/348.html#348">No.</a>
+    <a class="linkQuote" href="/vt/res/348.html#q348">348</a>
+    <a class="linkReply" href="/vt/res/348.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/348.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo para hablar acerca de vtubers independientes de cualquier parte del mundo ya sean grandes o pequeñas presentar nuevas chuubas y sus actividades ya sean videos o directos</div>
+  
+  
+  
+  <div class="labelOmission">44 posts and 21 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1325"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-348-1325">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/26/2022 (Sun) 02:05:57</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/348.html#1325">No.</a>
+    <a class="linkQuote" href="/vt/res/348.html#q1325">1325</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Cyan Nyan, ella sube gameplays y retos de programacion
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;AS&#95;Z6eQdnh4">https://www.youtube.com/watch?v&#61;AS&#95;Z6eQdnh4</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1938"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-348-1938">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 00:38:27</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/348.html#1938">No.</a>
+    <a class="linkQuote" href="/vt/res/348.html#q1938">1938</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">cyan sabutori tiene un anuncio importante
+
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;l6KjRbJFE2M&amp;ab&#95;channel&#61;CyanSarutobi%2F%E7%8C%BF%E9%A3%9B%E3%82%B7%E3%82%A2%E3%83%B3">https://www.youtube.com/watch?v&#61;l6KjRbJFE2M&amp;ab&#95;channel&#61;CyanSarutobi%2F%E7%8C%BF%E9%A3%9B%E3%82%B7%E3%82%A2%E3%83%B3</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1943"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-348-1943">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 03:04:23</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/348.html#1943">No.</a>
+    <a class="linkQuote" href="/vt/res/348.html#q1943">1943</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/348.html#1938">&gt;&gt;1938</a>
+¿Quién negrito?, necesito contexto.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1810"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel multipleUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/effe3772fa75f61365799e6b7ae8bbfb67866500528e9237eb808af652267120.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">338.31 KB</span> <span class="dimensionLabel">713x383</span>
+  <a class="originalNameLink" href="/.media/effe3772fa75f61365799e6b7ae8bbfb67866500528e9237eb808af652267120.png" download="Polish&#95;20220704&#95;232119447.png">Polish&#95;20220704&#95;232119447.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/effe3772fa75f61365799e6b7ae8bbfb67866500528e9237eb808af652267120.png" data-filewidth="713" data-fileheight="383" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="121" src="/.media/t_effe3772fa75f61365799e6b7ae8bbfb67866500528e9237eb808af652267120"></a>
+</details>
+</figure><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/df300b12a1b493c5ed8ad78c5efeddcb25140b48a50eef42689b9212f9953813.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">88.40 KB</span> <span class="dimensionLabel">850x981</span>
+  <a class="originalNameLink" href="/.media/df300b12a1b493c5ed8ad78c5efeddcb25140b48a50eef42689b9212f9953813.jpg" download="&#95;&#95;oozora&#95;subaru&#95;hololive&#95;drawn&#95;by&#95;kilesha&#95;&#95;sample-fa44b817dc47756ac59969137fb3cd15.jpg">&#95;&#95;oozora&#95;subaru&#95;hololive&#95;drawn&#95;by&#95;kilesha&#95;&#95;sample-fa44b817dc47756ac59969137fb3cd15.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/df300b12a1b493c5ed8ad78c5efeddcb25140b48a50eef42689b9212f9953813.jpg" data-filewidth="850" data-fileheight="981" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="195" height="225" src="/.media/t_df300b12a1b493c5ed8ad78c5efeddcb25140b48a50eef42689b9212f9953813"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1810">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/05/2022 (Tue) 04:22:40</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1810.html#1810">No.</a>
+    <a class="linkQuote" href="/vt/res/1810.html#q1810">1810</a>
+    <a class="linkReply" href="/vt/res/1810.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">¿Que hay de Subaru? ¿Ese es un pato con el que tendría sexo?</div>
+  
+  
+  
+  <div class="labelOmission">11 posts and 5 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1936"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1810-1936">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 18:51:35</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1810.html#1936">No.</a>
+    <a class="linkQuote" href="/vt/res/1810.html#q1936">1936</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/6881a78affaa9d0a4774501853a7a01f072e4d4ee8e14928f6a46f2891965d43.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">128.59 KB</span> <span class="dimensionLabel">1200x740</span>
+  <a class="originalNameLink" href="/.media/6881a78affaa9d0a4774501853a7a01f072e4d4ee8e14928f6a46f2891965d43.jpg" download="mriko1&#95;1.jpg&#95;172596871.jpg">mriko1&#95;1.jpg&#95;172596871.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/6881a78affaa9d0a4774501853a7a01f072e4d4ee8e14928f6a46f2891965d43.jpg" data-filewidth="1200" data-fileheight="740" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="125" height="125" src="/vt/custom.spoiler"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1810.html#1911">&gt;&gt;1911</a>
+<span class="spoiler">No seria como Mirko</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1941"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1810-1941">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 03:02:09</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1810.html#1941">No.</a>
+    <a class="linkQuote" href="/vt/res/1810.html#q1941">1941</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/bb3d203e516020bed9d27aa26f8dcf249c1ccae153eb7e6fab65ed93f22e8e27.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">453.27 KB</span> <span class="dimensionLabel">640x659</span>
+  <a class="originalNameLink" href="/.media/bb3d203e516020bed9d27aa26f8dcf249c1ccae153eb7e6fab65ed93f22e8e27.png" download="bb3d203e516020bed9d27aa26f8dcf249c1ccae153eb7e6fab65ed93f22e8e27.png">bb3d203e516020bed9d27aa26f8dcf249c1ccae153eb7e6fab65ed93f22e8e27.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/bb3d203e516020bed9d27aa26f8dcf249c1ccae153eb7e6fab65ed93f22e8e27.png" data-filewidth="640" data-fileheight="659" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="219" height="225" src="/.media/t_bb3d203e516020bed9d27aa26f8dcf249c1ccae153eb7e6fab65ed93f22e8e27"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1810.html#1934">&gt;&gt;1934</a>
+La única holo con la cual tendría serias dudas al momento de cojerla es Hachama, no porque no me ponga dura la monda (que lo hace) sino porque me da miedo lo que pueda pasar luego de eso
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;6t5iyhfgpLk">https://www.youtube.com/watch?v&#61;6t5iyhfgpLk</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1942"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1810-1942">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 03:03:44</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1810.html#1942">No.</a>
+    <a class="linkQuote" href="/vt/res/1810.html#q1942">1942</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1810.html#1941">&gt;&gt;1941</a>
+Esa pic es demasiado realista para mi...</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1566"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/2bb63461f35f2c6c123530652a05022d8c78513e3ed6ba8570f95e289759d22a.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">193.66 KB</span> <span class="dimensionLabel">1280x720</span>
+  <a class="originalNameLink" href="/.media/2bb63461f35f2c6c123530652a05022d8c78513e3ed6ba8570f95e289759d22a.jpg" download="904ed8df272a321d968f870fafa9bd63929e7fee.jpg">904ed8df272a321d968f870fafa9bd63929e7fee.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/2bb63461f35f2c6c123530652a05022d8c78513e3ed6ba8570f95e289759d22a.jpg" data-filewidth="1280" data-fileheight="720" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_2bb63461f35f2c6c123530652a05022d8c78513e3ed6ba8570f95e289759d22a"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1566">
+    <span class="labelSubject">Vshoujo Japan</span>
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 21:57:03</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1566.html#1566">No.</a>
+    <a class="linkQuote" href="/vt/res/1566.html#q1566">1566</a>
+    <a class="linkReply" href="/vt/res/1566.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/1566.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Kson y Rushia se unieron a Vshojo Japan
+
+<a target="&#95;blank" href="https://youtu.be/NQlH1lXq4tg?t&#61;460">https://youtu.be/NQlH1lXq4tg?t&#61;460</a>
+
+Existe un rumor de que Aloe y algunas graduadas de Nijisanji estarian en camino</div>
+  
+  
+  
+  <div class="labelOmission">59 posts and 35 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1921"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1566-1921">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 04:29:27</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1566.html#1921">No.</a>
+    <a class="linkQuote" href="/vt/res/1566.html#q1921">1921</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1566.html#1880">&gt;&gt;1880</a>
+aaayyyyyyyyyy</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1922"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1566-1922">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 04:29:54</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1566.html#1922">No.</a>
+    <a class="linkQuote" href="/vt/res/1566.html#q1922">1922</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1566.html#1869">&gt;&gt;1869</a>
+Las pastillas negro.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1940"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1566-1940">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 02:08:33</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1566.html#1940">No.</a>
+    <a class="linkQuote" href="/vt/res/1566.html#q1940">1940</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/50f58947e0f3f8d6452b066a514ab62d4dc85bb72ecd050ffbbfa4c7d415bc08.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">98.81 KB</span> <span class="dimensionLabel">600x572</span>
+  <a class="originalNameLink" href="/.media/50f58947e0f3f8d6452b066a514ab62d4dc85bb72ecd050ffbbfa4c7d415bc08.png" download="kson121.png">kson121.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/50f58947e0f3f8d6452b066a514ab62d4dc85bb72ecd050ffbbfa4c7d415bc08.png" data-filewidth="600" data-fileheight="572" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="215" src="/.media/t_50f58947e0f3f8d6452b066a514ab62d4dc85bb72ecd050ffbbfa4c7d415bc08"></a>
+</details>
+</figure></div>
+  <div class="divMessage">como algunos negros saben kson ya no vivira con su amiga de otra compañia y esto ha hecho que todos los haters de kson, hololive, vshojo y los cochinos se junten causando una tormenta de mierda respecto a este tema, esto ha llegando a tal punto que la propia kson tuvo que decir que todo lo que han dicho de ella y su amiga es falso sin embargo es obvio que los haters de todos los bandos actualmente se dieron festin con el tema</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1618"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/c01af995a4937c72de58de35223cc5b9483320ed2e83a82ec22d0d13bd27f35d.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">176.95 KB</span> <span class="dimensionLabel">900x900</span>
+  <a class="originalNameLink" href="/.media/c01af995a4937c72de58de35223cc5b9483320ed2e83a82ec22d0d13bd27f35d.jpg" download="lia mitsurigi.jpg">lia mitsurigi.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/c01af995a4937c72de58de35223cc5b9483320ed2e83a82ec22d0d13bd27f35d.jpg" data-filewidth="900" data-fileheight="900" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_c01af995a4937c72de58de35223cc5b9483320ed2e83a82ec22d0d13bd27f35d"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1618">
+    <span class="labelSubject">Wactor General</span>
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 03:15:12</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1618.html#1618">No.</a>
+    <a class="linkQuote" href="/vt/res/1618.html#q1618">1618</a>
+    <a class="linkReply" href="/vt/res/1618.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/1618.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo exclusivamente dedicado a vtubers de la agencia wactor 
+
+Canales de sus integrantes:
+
+Miu: <a target="&#95;blank" href="https://www.youtube.com/channel/UCM6iy&#95;rSgSMbFjx10Z6VVGA">https://www.youtube.com/channel/UCM6iy&#95;rSgSMbFjx10Z6VVGA</a>
+
+Lia: <a target="&#95;blank" href="https://www.youtube.com/channel/UCJePO0Zl-zZTqjpHO82RNNA">https://www.youtube.com/channel/UCJePO0Zl-zZTqjpHO82RNNA</a>
+
+Hina: <a target="&#95;blank" href="https://www.youtube.com/channel/UC6tSB9TnO0f01OBeo9UEJZA">https://www.youtube.com/channel/UC6tSB9TnO0f01OBeo9UEJZA</a>
+
+Luna: <a target="&#95;blank" href="https://www.youtube.com/channel/UCN3mosAMYBdogyQovOhPrxA">https://www.youtube.com/channel/UCN3mosAMYBdogyQovOhPrxA</a>
+
+Pal: <a target="&#95;blank" href="https://www.youtube.com/channel/UCQdqGzhc5Ey&#95;5nh&#95;bOowAhg">https://www.youtube.com/channel/UCQdqGzhc5Ey&#95;5nh&#95;bOowAhg</a>
+
+Himari: <a target="&#95;blank" href="https://www.youtube.com/channel/UCAx0YWXJgyvXx5oDvrDaN&#95;A">https://www.youtube.com/channel/UCAx0YWXJgyvXx5oDvrDaN&#95;A</a>
+
+Yue: <a target="&#95;blank" href="https://www.youtube.com/channel/UCIm8pnnTNhCgGAtNxrQQv-g">https://www.youtube.com/channel/UCIm8pnnTNhCgGAtNxrQQv-g</a></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/vt/res/1618.html#1618">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+  <div class="labelOmission">134 posts and 28 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1933"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1618-1933">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 16:27:32</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1618.html#1933">No.</a>
+    <a class="linkQuote" href="/vt/res/1618.html#q1933">1933</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1618.html#1929">&gt;&gt;1929</a>
+Hablo de que una vez hizo un stream sin quitarse su uniforme.
+Dime que universidad pide uniforme?
+Esta en preparatoria.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1935"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1618-1935">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 18:51:14</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1618.html#1935">No.</a>
+    <a class="linkQuote" href="/vt/res/1618.html#q1935">1935</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1618.html#1933">&gt;&gt;1933</a>
+<span class="greenText">&gt;Implicando que Japon funciona como latinoamerica</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1937"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1618-1937">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/09/2022 (Sat) 00:03:51</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1618.html#1937">No.</a>
+    <a class="linkQuote" href="/vt/res/1618.html#q1937">1937</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1618.html#1935">&gt;&gt;1935</a>
+Las universidades japonesas no piden uniforme, hasta donde se, van vestidos como quieren.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1237"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/f815752fff8258f91d170bd086aa07f2a85a71c61688a04ce7150f112bb4cd55.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">415.58 KB</span> <span class="dimensionLabel">959x539</span>
+  <a class="originalNameLink" href="/.media/f815752fff8258f91d170bd086aa07f2a85a71c61688a04ce7150f112bb4cd55.png" download="la+cunny.png">la+cunny.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/f815752fff8258f91d170bd086aa07f2a85a71c61688a04ce7150f112bb4cd55.png" data-filewidth="959" data-fileheight="539" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="126" src="/.media/t_f815752fff8258f91d170bd086aa07f2a85a71c61688a04ce7150f112bb4cd55"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1237">
+    <span class="labelSubject">Hololive general</span>
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/22/2022 (Wed) 02:49:49</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1237.html#1237">No.</a>
+    <a class="linkQuote" href="/vt/res/1237.html#q1237">1237</a>
+    <a class="linkReply" href="/vt/res/1237.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/1237.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage"><span class="moeText">Hilo de discusión y aporte sobre todo lo relacionado a Hololive.</span>
+<span class="redText">Y no se olviden que el lunes 27 de junio es el debut 3D de La+Cunny </span>
+<a target="&#95;blank" href="https://hololive.jetri.co/#/">https://hololive.jetri.co/#/</a> 
+<a target="&#95;blank" href="https://holodex.net/">https://holodex.net/</a>
+<a target="&#95;blank" href="https://schedule.hololive.tv/lives">https://schedule.hololive.tv/lives</a>
+<a target="&#95;blank" href="https://holo.poi.cat/youtube-channel">https://holo.poi.cat/youtube-channel</a>
+<a target="&#95;blank" href="https://pastebin.com/KzG4hmgK">https://pastebin.com/KzG4hmgK</a></div>
+  
+  
+  <div class="labelLastEdit">Edited last time by HoloVt on 06/23/2022 (Thu) 05:56:27.</div>
+  <div class="labelOmission">114 posts and 78 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1863"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1237-1863">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/06/2022 (Wed) 19:28:29</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1237.html#1863">No.</a>
+    <a class="linkQuote" href="/vt/res/1237.html#q1863">1863</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/3d1d66c459962b68c0337a326fd9fe6d8cbaaeb633032d4c40f2451f3aed25b5.webm"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">2.09 MB</span> <span class="dimensionLabel">640x360</span>
+  <a class="originalNameLink" href="/.media/3d1d66c459962b68c0337a326fd9fe6d8cbaaeb633032d4c40f2451f3aed25b5.webm" download="1657133705388.webm">1657133705388.webm</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/3d1d66c459962b68c0337a326fd9fe6d8cbaaeb633032d4c40f2451f3aed25b5.webm" data-filewidth="640" data-fileheight="360" data-filemime="video/webm">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_3d1d66c459962b68c0337a326fd9fe6d8cbaaeb633032d4c40f2451f3aed25b5"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Para ser grabado en la casa de Ame la calidad es bastante buena
+
+<a target="&#95;blank" href="https://youtu.be/W0lICCjnuDs">https://youtu.be/W0lICCjnuDs</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1873"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1237-1873">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/07/2022 (Thu) 01:01:09</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1237.html#1873">No.</a>
+    <a class="linkQuote" href="/vt/res/1237.html#q1873">1873</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/51a1ac71cba738a81fd17cb6cc86bb4365324323a7124426e449bf72e76e4af6.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">290.01 KB</span> <span class="dimensionLabel">900x900</span>
+  <a class="originalNameLink" href="/.media/51a1ac71cba738a81fd17cb6cc86bb4365324323a7124426e449bf72e76e4af6.png" download="1630979837320.png">1630979837320.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/51a1ac71cba738a81fd17cb6cc86bb4365324323a7124426e449bf72e76e4af6.png" data-filewidth="900" data-fileheight="900" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_51a1ac71cba738a81fd17cb6cc86bb4365324323a7124426e449bf72e76e4af6"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1237.html#1863">&gt;&gt;1863</a>
+Lo hizo realmente bien, hoy si que se lució la fénix.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1923"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1237-1923">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 04:30:36</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1237.html#1923">No.</a>
+    <a class="linkQuote" href="/vt/res/1237.html#q1923">1923</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1237.html#1851">&gt;&gt;1851</a>
+Borren todo negros.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="169"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9f610c4f1f0f8b67ab76c52c4718a29ba12a4f28da9e9245c58be55ba072f220.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">113.87 KB</span> <span class="dimensionLabel">923x933</span>
+  <a class="originalNameLink" href="/.media/9f610c4f1f0f8b67ab76c52c4718a29ba12a4f28da9e9245c58be55ba072f220.jpg" download="FL98-02WUAEBCKR.jpg">FL98-02WUAEBCKR.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9f610c4f1f0f8b67ab76c52c4718a29ba12a4f28da9e9245c58be55ba072f220.jpg" data-filewidth="923" data-fileheight="933" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="223" height="225" src="/.media/t_9f610c4f1f0f8b67ab76c52c4718a29ba12a4f28da9e9245c58be55ba072f220"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-169">
+    <span class="labelSubject">Vtubers hispanos general</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/01/2022 (Wed) 08:38:44</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/169.html#169">No.</a>
+    <a class="linkQuote" href="/vt/res/169.html#q169">169</a>
+    <a class="linkReply" href="/vt/res/169.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/169.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo dedicado a vtubers de habla hispana ya sean de agencias o independientes ya sean recomendaciones opiniones y críticas</div>
+  
+  
+  
+  <div class="labelOmission">123 posts and 64 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1907"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-169-1907">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/07/2022 (Thu) 23:08:30</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/169.html#1907">No.</a>
+    <a class="linkQuote" href="/vt/res/169.html#q1907">1907</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Y el gordo va a seguir sacando más dinero no sé de donde mierda, según el quiere armar una &quot;boyband&quot; en su agencia (o sea armar un grupo de vtubers hombres).</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1910"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-169-1910">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 00:18:11</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/169.html#1910">No.</a>
+    <a class="linkQuote" href="/vt/res/169.html#q1910">1910</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/169.html#1907">&gt;&gt;1907</a>
+si el gordo hace eso que los ponga a cazar gachis chinas como los nijos, porque aca en latam los vtubers masculinos no funcionan a menos que sean como la rata norteña o que sean trapos</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1920"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-169-1920">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/08/2022 (Fri) 04:13:36</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/169.html#1920">No.</a>
+    <a class="linkQuote" href="/vt/res/169.html#q1920">1920</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/bf297ec5f83b98acb7e323661c0cc8fc52303919f279f21e2c0f5522120a3272.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">48.29 KB</span> <span class="dimensionLabel">281x264</span>
+  <a class="originalNameLink" href="/.media/bf297ec5f83b98acb7e323661c0cc8fc52303919f279f21e2c0f5522120a3272.png" download="FXGht1JXEAApTR9.png">FXGht1JXEAApTR9.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/bf297ec5f83b98acb7e323661c0cc8fc52303919f279f21e2c0f5522120a3272.png" data-filewidth="281" data-fileheight="264" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="211" src="/.media/t_bf297ec5f83b98acb7e323661c0cc8fc52303919f279f21e2c0f5522120a3272"></a>
+</details>
+</figure></div>
+  <div class="divMessage">próximamente alk4pone vtuber con tetas</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="427"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/446d0ede026497d5e25f8c859240c8aef39e458df6f2a548df179b7808762b53.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">128.13 KB</span> <span class="dimensionLabel">640x361</span>
+  <a class="originalNameLink" href="/.media/446d0ede026497d5e25f8c859240c8aef39e458df6f2a548df179b7808762b53.png" download="me7rrpogbz191.png">me7rrpogbz191.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/446d0ede026497d5e25f8c859240c8aef39e458df6f2a548df179b7808762b53.png" data-filewidth="640" data-fileheight="361" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_446d0ede026497d5e25f8c859240c8aef39e458df6f2a548df179b7808762b53"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-427">
+    <span class="labelSubject"># Números vtubers</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/06/2022 (Mon) 03:40:23</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/427.html#427">No.</a>
+    <a class="linkQuote" href="/vt/res/427.html#q427">427</a>
+    <a class="linkReply" href="/vt/res/427.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/427.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Páginas para métricas:
+
+<a target="&#95;blank" href="https://pastebin.com/nCGZL1Lp">https://pastebin.com/nCGZL1Lp</a></div>
+  
+  
+  
+  <div class="labelOmission">67 posts and 55 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1501"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-427-1501">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 01:55:33</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/427.html#1501">No.</a>
+    <a class="linkQuote" href="/vt/res/427.html#q1501">1501</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/cc27ccdc17f46ffb5e34ff56a6aa7d4bc39c41a0dc5dfc61753d5d0a4b6c58e1.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">280.70 KB</span> <span class="dimensionLabel">558x280</span>
+  <a class="originalNameLink" href="/.media/cc27ccdc17f46ffb5e34ff56a6aa7d4bc39c41a0dc5dfc61753d5d0a4b6c58e1.png" download="isegye.png">isegye.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/cc27ccdc17f46ffb5e34ff56a6aa7d4bc39c41a0dc5dfc61753d5d0a4b6c58e1.png" data-filewidth="558" data-fileheight="280" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="113" src="/.media/t_cc27ccdc17f46ffb5e34ff56a6aa7d4bc39c41a0dc5dfc61753d5d0a4b6c58e1"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Lo mas visto de twitch junio 2022:
+
+1) Viichan (Isedol) - 15,498 - reacciones
+2) Gosegu (Isedol) - 14,571 - vrchat 
+3) Ine (Isedol) - 14,343 - reacciones, charlando
+4) Lilpa (Isedol) - 16,556 - reacciones
+5) Kris Yim (Board of Trustees) - 19,915 - Black Mesa (publicitado por twitch)
+6) Jingburger (Isedol) - 15,804 - viendo openings de animes
+7) Shxtou (Indie) - 12,513 - Unpacking
+8) Ine (Isedol) - 22,248 - reacciones
+9) Gosegu (Isedol) - 14,832 - vr chat
+10) Nimu (Indie) - 21,050 - among Us
+11) Ine (Isedol) - 20,477 - reacciones
+12) VIichan (Isedol) - 14,668 - VRChat
+13) Ine (Isedol) - 20,357 - actualizacion de avatar VR
+14) Lilpa (Isedol) - 15,177 - 20 Minutes Till Dawn 
+15) Jururu &quot;Cottom123&quot; (Isedol) - 16,361 - Artery Gear + videos de waktaverse</div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText" href="/vt/res/427.html#1501">here</a>
+      to view full text.
+    </p>
+  </div>
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1582"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-427-1582">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/02/2022 (Sat) 23:15:27</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/427.html#1582">No.</a>
+    <a class="linkQuote" href="/vt/res/427.html#q1582">1582</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/75d0318a5d02209c201b512c947fb05d3498a6236b0ca294824b1e2509b73309.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">404.40 KB</span> <span class="dimensionLabel">1444x1874</span>
+  <a class="originalNameLink" href="/.media/75d0318a5d02209c201b512c947fb05d3498a6236b0ca294824b1e2509b73309.jpg" download="1656561877505.jpg">1656561877505.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/75d0318a5d02209c201b512c947fb05d3498a6236b0ca294824b1e2509b73309.jpg" data-filewidth="1444" data-fileheight="1874" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="173" height="225" src="/.media/t_75d0318a5d02209c201b512c947fb05d3498a6236b0ca294824b1e2509b73309"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/427.html#1500">&gt;&gt;1500</a>
+<span class="greenText">&gt; Salome aparece 6 veces en el top 10</span>
+Y la desu wa~ sigue arrasando</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1848"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-427-1848">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/06/2022 (Wed) 02:25:56</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/427.html#1848">No.</a>
+    <a class="linkQuote" href="/vt/res/427.html#q1848">1848</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Negro de los números eres calidad.</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1257"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/0b677d9ba1920d311ee6e911fcb1245224fadf4a75a69eb8ae6b9667253d577b.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">175.99 KB</span> <span class="dimensionLabel">1920x1086</span>
+  <a class="originalNameLink" href="/.media/0b677d9ba1920d311ee6e911fcb1245224fadf4a75a69eb8ae6b9667253d577b.jpg" download="recesion.jpg">recesion.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/0b677d9ba1920d311ee6e911fcb1245224fadf4a75a69eb8ae6b9667253d577b.jpg" data-filewidth="1920" data-fileheight="1086" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_0b677d9ba1920d311ee6e911fcb1245224fadf4a75a69eb8ae6b9667253d577b"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1257">
+    <span class="labelSubject">vtubers y la recesion economica</span>
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/22/2022 (Wed) 23:21:11</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1257.html#1257">No.</a>
+    <a class="linkQuote" href="/vt/res/1257.html#q1257">1257</a>
+    <a class="linkReply" href="/vt/res/1257.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">para nadie es sorpresa que el mundo economicamente se va a la mierda y los primeros que se ven afectados siempre es la industria del entretenimiento, eso puede incluir a los vtubers, fuera de asia donde tienen una industria fuerte aun y las grandes compañias que ya estan posicionadas, que creen que pasara con los vtubers economicamente hablando y quienes lograran pasar estas dificultades</div>
+  
+  
+  
+  <div class="labelOmission">7 posts omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1333"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1257-1333">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/26/2022 (Sun) 17:52:26</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1257.html#1333">No.</a>
+    <a class="linkQuote" href="/vt/res/1257.html#q1333">1333</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1257.html#1291">&gt;&gt;1291</a>
+<span class="greenText">&gt; por lo que las comunidades se fijarían al español y chino</span>
+Ahí lo dudo negro, el español no creo que sea lo suficiente relevante y el chino es jodidamente difícil, en cambio el inglés todo el mundo lo conoce y es sencillo de aprender, no por nada reemplazó al francés como lengua académica también.
+<a class="quoteLink" href="/vt/res/1257.html#1331">&gt;&gt;1331</a>
+Ayy ese culo ardido</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1436"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1257-1436">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/29/2022 (Wed) 03:21:12</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1257.html#1436">No.</a>
+    <a class="linkQuote" href="/vt/res/1257.html#q1436">1436</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">¿Por que hablan de esto?, siempre esta onlyfans.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1846"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1257-1846">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/06/2022 (Wed) 02:23:56</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1257.html#1846">No.</a>
+    <a class="linkQuote" href="/vt/res/1257.html#q1846">1846</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage">Estamos a mitad de julio y argentina acaba de explotar, ¿alguien que mire a las vtubers narizonas saben si ya dejaron de grabar?
+<a target="&#95;blank" href="https://www.infobae.com/economia/2022/07/05/el-banco-jp-morgan-advirtio-que-la-argentina-se-encamina-a-una-compleja-situacion-de-alta-inflacion/">https://www.infobae.com/economia/2022/07/05/el-banco-jp-morgan-advirtio-que-la-argentina-se-encamina-a-una-compleja-situacion-de-alta-inflacion/</a></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1267"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ce5015442c9b5b8978d0be3f22a1b6377ed3ec84c0e1135841a75e03685714d4.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">5.10 MB</span> <span class="dimensionLabel">4096x3276</span>
+  <a class="originalNameLink" href="/.media/ce5015442c9b5b8978d0be3f22a1b6377ed3ec84c0e1135841a75e03685714d4.jpg" download="Polish&#95;20220623&#95;083240825.jpg">Polish&#95;20220623&#95;083240825.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ce5015442c9b5b8978d0be3f22a1b6377ed3ec84c0e1135841a75e03685714d4.jpg" data-filewidth="4096" data-fileheight="3276" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="180" src="/.media/t_ce5015442c9b5b8978d0be3f22a1b6377ed3ec84c0e1135841a75e03685714d4"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1267">
+    <span class="labelSubject">Matar, follar, casar.</span>
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/23/2022 (Thu) 13:34:57</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1267.html#1267">No.</a>
+    <a class="linkQuote" href="/vt/res/1267.html#q1267">1267</a>
+    <a class="linkReply" href="/vt/res/1267.html">[Reply]</a>
+    <a class="linkLast" href="/vt/last/1267.html">[Last]</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">¿A cual matarías? ¿A cual le darías sexo sin protección una sola vez? Y ¿Con cual te casarías?</div>
+  
+  
+  
+  <div class="labelOmission">54 posts and 30 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1789"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1267-1789">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 13:59:53</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1267.html#1789">No.</a>
+    <a class="linkQuote" href="/vt/res/1267.html#q1789">1789</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1267.html#1754">&gt;&gt;1754</a>
+Prefiero penetrar a la rata de Zilverk que estar cerca de cualquiera de esas asquerosas.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1791"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1267-1791">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 17:39:13</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1267.html#1791">No.</a>
+    <a class="linkQuote" href="/vt/res/1267.html#q1791">1791</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1267.html#1789">&gt;&gt;1789</a>
+Mejor cojerse a su amige ganster.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1799"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1267-1799">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 22:13:42</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1267.html#1799">No.</a>
+    <a class="linkQuote" href="/vt/res/1267.html#q1799">1799</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/9df2a21b4296cd99e9c12bf40f6ee5220465f7d323a46fffaeca2f7d9cbe2128.gif"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">40.60 KB</span> <span class="dimensionLabel">239x239</span>
+  <a class="originalNameLink" href="/.media/9df2a21b4296cd99e9c12bf40f6ee5220465f7d323a46fffaeca2f7d9cbe2128.gif" download="151334980970.gif">151334980970.gif</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/9df2a21b4296cd99e9c12bf40f6ee5220465f7d323a46fffaeca2f7d9cbe2128.gif" data-filewidth="239" data-fileheight="239" data-filemime="image/gif">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_9df2a21b4296cd99e9c12bf40f6ee5220465f7d323a46fffaeca2f7d9cbe2128"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1267.html#1754">&gt;&gt;1754</a>
+¿Seguro que no puedo matarlas a todas?</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="1641"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/ddd263f9fa4ab29624ba44c6a5786e1ef6b0c244c0447684c6315cc07104a844.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">193.81 KB</span> <span class="dimensionLabel">1366x768</span>
+  <a class="originalNameLink" href="/.media/ddd263f9fa4ab29624ba44c6a5786e1ef6b0c244c0447684c6315cc07104a844.jpg" download="628174268.jpg">628174268.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/ddd263f9fa4ab29624ba44c6a5786e1ef6b0c244c0447684c6315cc07104a844.jpg" data-filewidth="1366" data-fileheight="768" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="127" src="/.media/t_ddd263f9fa4ab29624ba44c6a5786e1ef6b0c244c0447684c6315cc07104a844"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-1641">
+    <span class="labelSubject">Rameras de ASMR</span>
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 13:18:11</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/1641.html#1641">No.</a>
+    <a class="linkQuote" href="/vt/res/1641.html#q1641">1641</a>
+    <a class="linkReply" href="/vt/res/1641.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">En este hilo posteamos chubas lame microfonos, ya sea para darte sueño o para coomear o simplemente por las cosquillas.
+Mi playlist personal con mas de 600 videos y creciendo (95%-98% chubas, no lo he limpiado completamente): denle en reproducir aleatorio y dejense llevar
+<a target="&#95;blank" href="https://www.youtube.com/playlist?list&#61;PLE2scjNchfgT69IqwkpJ9MXqWFqcF33sZ">https://www.youtube.com/playlist?list&#61;PLE2scjNchfgT69IqwkpJ9MXqWFqcF33sZ</a>
+Alguna chuba que no vean en la lista la pueden sugerir, links de material nuevo que les arroje el agoritmo lo pueden postear aqui, recomendaciones pueden preguntar aqui. mierda relacionada a las chubas de asmr puede discutirse aqui.
+USEN SIEMPRE AUDIFONOS
+Aunque el ASMR es una buena alternativa a la musica de fondo cuando te has cansado de escuchar musica, NO ES musica de fondo, creeme que no quieres que alguien mas escuche. Dependiendo de la chuba esta puede cumplir cierto rol para ti, algunas son buenas para antes de dormir simplemente para relajarte, otras son buenas para que dispares tu frustracion.</div>
+  
+  
+  
+  <div class="labelOmission">1 post omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1655"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1641-1655">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 16:52:40</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1641.html#1655">No.</a>
+    <a class="linkQuote" href="/vt/res/1641.html#q1655">1655</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b35679c1b8962544e6d3182a18ed3c3772a939960561d7cc9d6bc43996a2559f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">216.16 KB</span> <span class="dimensionLabel">850x1133</span>
+  <a class="originalNameLink" href="/.media/b35679c1b8962544e6d3182a18ed3c3772a939960561d7cc9d6bc43996a2559f.jpg" download="ok8.jpg">ok8.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b35679c1b8962544e6d3182a18ed3c3772a939960561d7cc9d6bc43996a2559f.jpg" data-filewidth="850" data-fileheight="1133" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="169" height="225" src="/.media/t_b35679c1b8962544e6d3182a18ed3c3772a939960561d7cc9d6bc43996a2559f"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1641.html#1641">&gt;&gt;1641</a>
+Si no fuera molestia me podrías indicar cuales hacen contenido explicito como esta
+
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;aWSBjs-f2nQ">https://www.youtube.com/watch?v&#61;aWSBjs-f2nQ</a>
+
+Los susurros y voz baja son relajantes pero a veces prefiero algo mas crudo y jugoso</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1717"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1641-1717">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 00:40:11</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1641.html#1717">No.</a>
+    <a class="linkQuote" href="/vt/res/1641.html#q1717">1717</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/1641.html#1655">&gt;&gt;1655</a>
+Ah, Reina se llamaba, se me habia olvidado el nombre, hasta la fecha aun no he encontrado su reencarnacion. Actualmente es un poco dificil encontrar a alguien que se pasee asi por el limite de las reglas del tubo judio, la mayoria no las vas a encontrar en jewtube, sino que tienen su canal ahi para promocionar su fanbooth o como se llame, generalmente el algoritmo las desprecia.
+Aunque esta de aqui esta esperando que Susan la amarre y la nalguee.
+Si quieres una chica monstruo que te llame patetico mientras te escupe en la boca y te diga que la tienes chiquita (no exagero), esta de aqui es buena opcion, por lo que he visto ha hecho su tarea, definitivamente se sienten las vibras de chica monstruo, y es kekeante ver como le dice a los japos que tienen un &quot;chiisai pipi&quot;
+<a target="&#95;blank" href="https://www.youtube.com/c/KumoKuddelmuddelCh">https://www.youtube.com/c/KumoKuddelmuddelCh</a></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1785"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-1641-1785">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 09:20:53</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/1641.html#1785">No.</a>
+    <a class="linkQuote" href="/vt/res/1641.html#q1785">1785</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/410a6f886f438f6c1cb3f1af4e486317afe950d3114b9c5dd47ee054f79f136f.jpg"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">900.90 KB</span> <span class="dimensionLabel">941x1260</span>
+  <a class="originalNameLink" href="/.media/410a6f886f438f6c1cb3f1af4e486317afe950d3114b9c5dd47ee054f79f136f.jpg" download="1638667221990.jpg">1638667221990.jpg</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/410a6f886f438f6c1cb3f1af4e486317afe950d3114b9c5dd47ee054f79f136f.jpg" data-filewidth="941" data-fileheight="1260" data-filemime="image/jpeg">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="168" height="225" src="/.media/t_410a6f886f438f6c1cb3f1af4e486317afe950d3114b9c5dd47ee054f79f136f"></a>
+</details>
+</figure></div>
+  <div class="divMessage">Parece que Fauna cambio un poco su estilo
+<a target="&#95;blank" href="https://www.youtube.com/watch?v&#61;MU0KRy-Nb0U">https://www.youtube.com/watch?v&#61;MU0KRy-Nb0U</a></div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="127"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/b3578726af9fe41bb0d4efa295db38ff7f16d06bc85d1e4138553146132b5d59.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.12 MB</span> <span class="dimensionLabel">992x1031</span>
+  <a class="originalNameLink" href="/.media/b3578726af9fe41bb0d4efa295db38ff7f16d06bc85d1e4138553146132b5d59.png" download="165066797363.png">165066797363.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/b3578726af9fe41bb0d4efa295db38ff7f16d06bc85d1e4138553146132b5d59.png" data-filewidth="992" data-fileheight="1031" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="216" height="225" src="/.media/t_b3578726af9fe41bb0d4efa295db38ff7f16d06bc85d1e4138553146132b5d59"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-127">
+    <span class="labelSubject">Cuidadores de Nene</span>
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/01/2022 (Wed) 03:47:46</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/127.html#127">No.</a>
+    <a class="linkQuote" href="/vt/res/127.html#q127">127</a>
+    <a class="linkReply" href="/vt/res/127.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Hilo de nene, yeeeeeeeeeaaaaaaaaaaaah</div>
+  
+  
+  
+  <div class="labelOmission">18 posts and 8 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1596"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-127-1596">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 01:35:09</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/127.html#1596">No.</a>
+    <a class="linkQuote" href="/vt/res/127.html#q1596">1596</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/3af60a85451234c7dcf0126661c6307314cfab679c9dbd0d1fb036c3f665d59b.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">888.94 KB</span> <span class="dimensionLabel">2053x962</span>
+  <a class="originalNameLink" href="/.media/3af60a85451234c7dcf0126661c6307314cfab679c9dbd0d1fb036c3f665d59b.png" download="3af.png">3af.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/3af60a85451234c7dcf0126661c6307314cfab679c9dbd0d1fb036c3f665d59b.png" data-filewidth="2053" data-fileheight="962" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="105" src="/.media/t_3af60a85451234c7dcf0126661c6307314cfab679c9dbd0d1fb036c3f665d59b"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/127.html#1503">&gt;&gt;1503</a>
+<a class="quoteLink" href="/vt/res/127.html#1503">&gt;&gt;1503</a>
+NO ESCAPARAS.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1632"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-127-1632">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 04:25:13</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/127.html#1632">No.</a>
+    <a class="linkQuote" href="/vt/res/127.html#q1632">1632</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/127.html#1503">&gt;&gt;1503</a>
+CORRE Y NO MIRES ATRAS.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1753"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-127-1753">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/04/2022 (Mon) 04:04:08</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/127.html#1753">No.</a>
+    <a class="linkQuote" href="/vt/res/127.html#q1753">1753</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="panelUploads"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/728801919ec71f03a9ea84a08033ffec9a9e9bcecfe9b3543bfd1205b5294ba0.png"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">1.08 MB</span> <span class="dimensionLabel">959x960</span>
+  <a class="originalNameLink" href="/.media/728801919ec71f03a9ea84a08033ffec9a9e9bcecfe9b3543bfd1205b5294ba0.png" download="155400546815.png">155400546815.png</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/728801919ec71f03a9ea84a08033ffec9a9e9bcecfe9b3543bfd1205b5294ba0.png" data-filewidth="959" data-fileheight="960" data-filemime="image/png">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="225" height="225" src="/.media/t_728801919ec71f03a9ea84a08033ffec9a9e9bcecfe9b3543bfd1205b5294ba0"></a>
+</details>
+</figure></div>
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/127.html#1503">&gt;&gt;1503</a>
+NO ESCAPARAS HIJO DE PUTA</div>
+  
+  
+  
+</div>
+</div></div>
+</div><div class="opCell" data-boarduri="vt" id="405"><hr>
+<div class="innerOP">
+  <div class="panelUploads opUploadPanel"><figure class="uploadCell"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank" href="/.media/5aa35aa0089d4eaf34974e84158ff702bed17d8e321c65b5f223aa66b093fc73.webm"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel">95.62 KB</span> <span class="dimensionLabel">270x360</span>
+  <a class="originalNameLink" href="/.media/5aa35aa0089d4eaf34974e84158ff702bed17d8e321c65b5f223aa66b093fc73.webm" download="160400317073.webm">160400317073.webm</a><span class="hideMobile">)</span>
+</div>
+
+<div>
+  
+  
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank" href="/.media/5aa35aa0089d4eaf34974e84158ff702bed17d8e321c65b5f223aa66b093fc73.webm" data-filewidth="270" data-fileheight="360" data-filemime="video/webm">
+<!-- image expansion summary goes here -->
+<img loading="lazy" width="169" height="225" src="/.media/t_5aa35aa0089d4eaf34974e84158ff702bed17d8e321c65b5f223aa66b093fc73"></a>
+</details>
+</figure></div>
+  <div class="opHead title">
+    <input type="checkbox" class="deletionCheckBox" name="vt-405">
+    
+    <a class="linkName  noEmailName" >Anonymous</a>
+     
+    <span class="labelCreated">06/05/2022 (Sun) 19:56:58</span>
+    
+    
+    
+    
+    
+    
+    
+    <a class="linkSelf" href="/vt/res/405.html#405">No.</a>
+    <a class="linkQuote" href="/vt/res/405.html#q405">405</a>
+    <a class="linkReply" href="/vt/res/405.html">[Reply]</a>
+    
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  <div class="divMessage">Defínanla con una palabra, yo empiezo TMT</div>
+  
+  
+  
+  <div class="labelOmission">20 posts and 14 images omitted.</div>
+</div>
+<div class="divPosts"><div class="postCell" data-boarduri="vt" id="1132"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-405-1132">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/20/2022 (Mon) 03:00:09</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/405.html#1132">No.</a>
+    <a class="linkQuote" href="/vt/res/405.html#q1132">1132</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/405.html#1084">&gt;&gt;1084</a>
+No eres el único negro, no eres el único.</div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1454"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-405-1454">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">06/30/2022 (Thu) 04:43:32</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/405.html#1454">No.</a>
+    <a class="linkQuote" href="/vt/res/405.html#q1454">1454</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/405.html#1092">&gt;&gt;1092</a>
+Negro de alto IQ, <span class="spoiler">nada mas bello que una sonrisa pura.</span></div>
+  
+  
+  
+</div>
+</div><div class="postCell" data-boarduri="vt" id="1659"><div class="innerPost">
+  
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox" name="vt-405-1659">
+    
+    <a class="linkName  noEmailName" >Esquizo</a>
+     
+    <span class="labelCreated">07/03/2022 (Sun) 18:03:58</span> 
+    
+    
+    <a class="linkSelf" href="/vt/res/405.html#1659">No.</a>
+    <a class="linkQuote" href="/vt/res/405.html#q1659">1659</a>
+    
+    
+    
+    
+    <span class="panelBacklinks"></span>
+  </div>
+  
+  
+  
+  
+  <div class="divMessage"><a class="quoteLink" href="/vt/res/405.html#1124">&gt;&gt;1124</a>
+mierda negro, lo lei con la voz de towa y me puso doki doki, waku waku.</div>
+  
+  
+  
+</div>
+</div></div>
+</div></div>
+
+      <hr class="clearer">
+
+      <div>
+
+        <span class="containPages">[  <span id="divPages"><a href="index.html">1</a><a href="2.html">2</a><a href="3.html">3</a><a href="4.html">4</a></span> <a id="linkNext" class="coloredIcon" href="2.html"></a> ]
+        </span>
+
+        <br>
+
+        <div id="boardContentLinks" class="innerUtility">
+          <a id="linkManagement" href="/boardManagement.js?boardUri=vt">Manage Board</a>
+          <a id="linkModeration" href="/boardModeration.js?boardUri=vt">Moderate Board</a>
+          <a id="linkMod" href="/mod.js?boardUri=vt&amp;page=1">Moderate Thread</a>
+        </div>
+
+      </div>
+
+      <div id="actionsForm"><details class="showFormDetails">
+  <summary class="glowOnHover">Forms</summary>
+
+<fieldset class="reportFieldset">
+  <legend>Delete</legend>
+
+  <div class="contentAction">
+    <label>
+      Password
+      <input type="text" class="deletionField" id="deletionFieldPassword" name="password">
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxOnlyFiles" name="deleteUploads">
+      Delete only files (Removes the file reference to the posts)
+    </label>
+    <label>
+      <input type="checkbox" class="deletionField" id="checkboxMediaDeletion" name="deleteMedia">
+      Delete media (Removes the saved files from the server)
+    </label>
+    <button type="submit" id="deleteFormButton" value="delete" name="action">Delete</button>
+    <button type="submit" id="trashFormButton" value="trash" name="action">Trash</button>
+
+  </div>
+</fieldset>
+
+<fieldset class="reportFieldset">
+  <legend>Report</legend>
+
+  <div class="contentAction">
+
+    <label>
+      Reason
+      <input type="text" class="reportField" id="reportFieldReason" name="reasonReport">
+    </label>
+    
+    <label>
+      <input type="checkbox" class="reportField" id="checkboxGlobalReport" name="globalReport">
+      Global
+    </label>
+
+    <div id="divReportCaptcha">
+      <img class="captchaImage" src="/captcha.js">
+
+      <input type="button" class="hidden reloadCaptchaButton" value="Reload">
+      <span class="captchaTimer"></span>
+      <br>
+
+      <input name="captchaReport" type="text" class="captchaField reportField" id="fieldCaptchaReport" placeholder="answer">
+
+      <a href="/noCookieCaptcha.js" class="small">no cookies?</a>
+      <br>
+    </div>
+
+    <button type="submit" id="reportFormButton" value="report" name="action">Report</button>
+
+  </div>
+</fieldset>
+
+
+
+</details>
+</div>
+
+    </form>
+
+  </div>
+
+  <footer id="dynamicFooterAlt"><div id="footer">
+	<div class="footerDisclaimer">
+		All trademarks and copyrights on this page are owned by their respective parties.
+		Images uploaded are the responsibility of the Poster.
+		Comments are owned by the Poster.
+		<br>
+		Browsing this site constitutes your agreement to abide by the Global Rules and applicable board rules.
+    </div>
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+  <div id="thread-post-template" class="hidden"><div class="innerPost">
+  <h3 class="labelBoard"></h3>
+  <div class="postInfo title"> 
+    <input type="checkbox" class="deletionCheckBox">
+    <span class="labelSubject"></span>
+    <a class="linkName"></a>
+    <img class="imgFlag"> <span class="labelRole"></span>
+    <span class="labelCreated"></span> 
+    <span class="spanId"> Id: <span class="labelId"></span></span>
+    <span class="trashIndicator" title="Trashed"></span>
+    <a class="linkSelf">No.</a>
+    <a class="linkQuote"></a>
+    <a class="linkEdit">[Edit]</a>
+    <a class="linkHistory">[History]</a>
+    <a class="linkFileHistory">[File History]</a>
+    <a class="linkOffenseRecord">[Offense Record]</a>
+    <span class="panelBacklinks"></span>
+  </div>
+  <div class="panelASN"> ASN: <span class="labelASN"></span>
+  </div>
+  <div class="panelBypassId"> Bypass ID: <span class="labelBypassId"></span>
+  </div>
+  <div class="panelIp">
+    <span class="panelRange">
+      Broad range(1/2 octets): <span class="labelBroadRange"> </span> <br>
+      Narrow range(3/4 octets): <span class="labelNarrowRange"> </span> <br>
+    </span>
+    Ip: <span class="labelIp"></span>
+  </div>
+  <div class="panelUploads"></div>
+  <div class="divMessage"></div>
+  <div class="contentOmissionIndicator">
+    <p>
+      Message too long. Click
+      <a class="linkFullText">here</a>
+      to view full text.
+    </p>
+  </div>
+  <div class="divBanMessage"></div>
+  <div class="labelLastEdit"></div>
+</div>
+</div>
+  <div id="thread-upload-template" class="hidden"><details open="">
+<summary>
+<div class="uploadDetails">
+  <a class="nameLink coloredIcon" target="_blank"></a>
+  <span class="hideFileButton glowOnHover coloredIcon"></span>
+  <span class="hideMobile">(</span><span class="sizeLabel"></span> <span class="dimensionLabel"></span>
+  <a class="originalNameLink"></a><span class="hideMobile">)</span>
+</div>
+<div class="divHash">
+  <span>SHA256: <span class="labelHash"></span></span>
+</div>
+<div>
+  <a class="unlinkLink">[Unlink]</a>
+  <a class="unlinkAndDeleteLink">[Unlink & Delete]</a>
+</div>
+</summary>
+<br>
+<a class="imgLink" target="_blank">
+<!-- image expansion summary goes here -->
+</a>
+</details>
+</div>
+
+
+
+<script src="/.static/js/crypto.js"></script>
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/postCommon.js"></script>
+<script src="/.static/js/board.js"></script>
+
+<script src="/.static/js/watcher.js"></script>
+<script src="/.static/js/thumbs.js"></script>
+<script src="/.static/js/embed.js"></script>
+<script src="/.static/js/tooltips.js"></script>
+<script src="/.static/js/hiding.js"></script>
+<script src="/.static/js/postingMenu.js"></script>
+<script src="/.static/js/posting.js"></script>
+<script src="/.static/js/multiboardMenu.js"></script>
+
+<script src="/.static/js/captchaUtils.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/sideCatalog.js"></script>
+<script src="/.static/js/bypassUtils.js"></script>
+<script src="/.static/js/ruffle/ruffle.js" defer=""></script>
+
+
+</body></html>

@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:cpuflags [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,cpuflags"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/cpuflags"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:cpuflags","namespace":"fuss","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:cpuflags" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:cpuflags&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags" class="wikilink1" title="fuss:cpuflags" data-wiki-id="fuss:cpuflags">cpuflags</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:cpuflags</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#intel-defined_cpu_features_cpuid_level_0x00000001_ecx">Intel-defined CPU features, CPUID level 0x00000001 (ecx)</a></div></li>
+<li class="level1"><div class="li"><a href="#viacyrixcentaur-defined_cpu_features_cpuid_level_0xc0000001">VIA/Cyrix/Centaur-defined CPU features, CPUID level 0xC0000001</a></div></li>
+<li class="level1"><div class="li"><a href="#intel-defined_cpu_features_cpuid_level_0x000000070_ebx">Intel-defined CPU features, CPUID level 0x00000007:0 (ebx)</a></div></li>
+<li class="level1"><div class="li"><a href="#intel-defined_cpu_features_cpuid_level_0x00000001_edx">Intel-defined CPU features, CPUID level 0x00000001 (edx)</a></div></li>
+<li class="level1"><div class="li"><a href="#amd-defined_cpu_features_cpuid_level_0x80000001">AMD-defined CPU features, CPUID level 0x80000001</a></div>
+<ul class="toc">
+<li class="clear">
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#more_extended_amd_flags_cpuid_level_0x80000001_ecx">More extended AMD flags|CPUID level 0x80000001 (ecx)</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#transmeta-defined_cpu_features_cpuid_level_0x80860001">Transmeta-defined CPU features, CPUID level 0x80860001</a></div></li>
+<li class="level1"><div class="li"><a href="#other_features_linux-defined_mapping">Other features, Linux-defined mapping</a></div></li>
+<li class="level1"><div class="li"><a href="#auxiliary_flags_defined_by_linux">Auxiliary flags defined by Linux</a></div></li>
+<li class="level1"><div class="li"><a href="#xen">Xen</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="intel-defined_cpu_features_cpuid_level_0x00000001_ecx">Intel-defined CPU features, CPUID level 0x00000001 (ecx)</h1>
+<div class="level1">
+<div class="table sectionedit2"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Flag </th><th class="col1"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">pni</td><td class="col1">Prescott New Instruction. This was the codename for SSE3 before it was released on the Intel Prescott processor (which was later added to the Pentium 4 family name).</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">pclmulqdq</td><td class="col1">PCLMULQDQ instruction (carry-less multiplication — accelerator for GCM)</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">dtes64</td><td class="col1">64-bit Debug Store</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">monitor/mon</td><td class="col1">Monitor/Mwait support (Intel SSE3 supplements)</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">ds_cpl</td><td class="col1">CPL Qual. Debug Store</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">vmx</td><td class="col1">Hardware virtualization: Intel VMX</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">smx</td><td class="col1">Safer mode: TXT (TPM support)</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">eist/est</td><td class="col1">Enhanced SpeedStep</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">tm2</td><td class="col1">Thermal Monitor 2</td>
+	</tr>
+	<tr class="row10">
+		<td class="col0">sse3</td><td class="col1">Streaming SIMD Extensions 3. (An additional 13 instructions) introduced with &quot;Prescott&quot; revision Intel Pentium 4 processors. AMD introduced SSE3 with the Athlon 64 &quot;Venice&quot; revision</td>
+	</tr>
+	<tr class="row11">
+		<td class="col0">ssse3</td><td class="col1">Supplemental SSE-3</td>
+	</tr>
+	<tr class="row12">
+		<td class="col0">cid</td><td class="col1">Context ID</td>
+	</tr>
+	<tr class="row13">
+		<td class="col0">fma</td><td class="col1">Fused multiply-add</td>
+	</tr>
+	<tr class="row14">
+		<td class="col0">cx16</td><td class="col1">CMPXCHG16B. CMPXCHG16B allows for atomic operations on 128-bit double quadword (or oword) data types. This is useful for high resolution counters that could be updated by multiple processors (or cores). Without CMPXCHG16B the only way to perform such an operation is by using a critical section.</td>
+	</tr>
+	<tr class="row15">
+		<td class="col0">xtpr</td><td class="col1">Send Task Priority Messages. TPR register chipset update control messenger. Part of the APIC code.</td>
+	</tr>
+	<tr class="row16">
+		<td class="col0">pdcm</td><td class="col1">Performance Capabilities</td>
+	</tr>
+	<tr class="row17">
+		<td class="col0">pcid</td><td class="col1">Process Context Identifiers</td>
+	</tr>
+	<tr class="row18">
+		<td class="col0">dca</td><td class="col1">Direct Cache Access</td>
+	</tr>
+	<tr class="row19">
+		<td class="col0">sse4</td><td class="col1">Streaming SIMD Extentions 4. Introduced with &quot;Nehalem&quot; processor in 2008. Also known as &quot;Nehalem New Instructions (NNI)&quot;</td>
+	</tr>
+	<tr class="row20">
+		<td class="col0">sse4_1</td><td class="col1">Streaming SIMD Extentions 4.1</td>
+	</tr>
+	<tr class="row21">
+		<td class="col0">sse4_2</td><td class="col1">Streaming SIMD Extentions 4.2</td>
+	</tr>
+	<tr class="row22">
+		<td class="col0">x2apic</td><td class="col1">x2APIC</td>
+	</tr>
+	<tr class="row23">
+		<td class="col0">movbe</td><td class="col1">MOVBE instruction</td>
+	</tr>
+	<tr class="row24">
+		<td class="col0">popcnt</td><td class="col1">POPCNT instruction (Hamming weight, i.e. bit count)</td>
+	</tr>
+	<tr class="row25">
+		<td class="col0">tsc_deadline_timer</td><td class="col1">Tsc deadline timer</td>
+	</tr>
+	<tr class="row26">
+		<td class="col0">aes</td><td class="col1">AES instructions: AES-NI</td>
+	</tr>
+	<tr class="row27">
+		<td class="col0">xsave</td><td class="col1">XSAVE/XRSTOR/XSETBV/XGETBV</td>
+	</tr>
+	<tr class="row28">
+		<td class="col0">avx</td><td class="col1">Advanced Vector Extensions</td>
+	</tr>
+	<tr class="row29">
+		<td class="col0">f16c</td><td class="col1">16-bit fp conversions (CVT16)</td>
+	</tr>
+	<tr class="row30">
+		<td class="col0">rdrand</td><td class="col1">The RDRAND instruction (hardware random number generator)</td>
+	</tr>
+	<tr class="row31">
+		<td class="col0">hypervisor</td><td class="col1">Running on a hypervisor</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit3" id="viacyrixcentaur-defined_cpu_features_cpuid_level_0xc0000001">VIA/Cyrix/Centaur-defined CPU features, CPUID level 0xC0000001</h1>
+<div class="level1">
+<div class="table sectionedit4"><table class="inline">
+	<tr class="row0">
+		<td class="col0">rng</td><td class="col1">RNG present (xstore)</td>
+	</tr>
+	<tr class="row1">
+		<td class="col0">rng_en</td><td class="col1">RNG enabled</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">ace</td><td class="col1">on-CPU crypto (xcrypt)</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">ace_en</td><td class="col1">on-CPU crypto enabled</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">ace2</td><td class="col1">Advanced Cryptography Engine v2</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">ace2_en</td><td class="col1">ACE v2 enabled</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">phe</td><td class="col1">PadLock Hash Engine</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">phe_en</td><td class="col1">PHE enabled</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">pmm</td><td class="col1">PadLock Montgomery Multiplier</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">pmm_en</td><td class="col1">PMM enabled</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit5" id="intel-defined_cpu_features_cpuid_level_0x000000070_ebx">Intel-defined CPU features, CPUID level 0x00000007:0 (ebx)</h1>
+<div class="level1">
+<div class="table sectionedit6"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Flag </th><th class="col1"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">fsgsbase</td><td class="col1">{RD/WR}{FS/GS}BASE instructions</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">bmi1</td><td class="col1">1st group bit manipulation extensions</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">hle</td><td class="col1">Hardware Lock Elision</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">avx2</td><td class="col1">AVX2 instructions</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">smep</td><td class="col1">Supervisor Mode Execution Protection</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">bmi2</td><td class="col1">2nd group bit manipulation extensions</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">erms</td><td class="col1">Enhanced REP MOVSB/STOSB</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">invpcid</td><td class="col1">Invalidate Processor Context ID</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">rtm</td><td class="col1">Restricted Transactional Memory</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit7" id="intel-defined_cpu_features_cpuid_level_0x00000001_edx">Intel-defined CPU features, CPUID level 0x00000001 (edx)</h1>
+<div class="level1">
+<div class="table sectionedit8"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Flag </th><th class="col1"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">fpu</td><td class="col1">Onboard FPU (floating point support)</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">vme</td><td class="col1">Virtual Mode Extensions (8086 mode)</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">de</td><td class="col1">Debugging Extensions (CR4.DE)</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">pse</td><td class="col1">Page Size Extensions (4MB pages)</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">tsc</td><td class="col1">Time Stamp Counter (RDTSC)</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">msr</td><td class="col1">Model-Specific Registers (RDMSR, WRMSR)</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">pae</td><td class="col1">Physical Address Extensions (support for more than 4GB of RAM). PAE is the added ability of the IA32 processor to address more than 4 GB of physical memory using Intel’s 36bit page addresses instead of the standard 32bit page addresses to access a total of 64GB of RAM. Also supported by many AMD chips.</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">mce</td><td class="col1">Machine Check Exception</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">cx8</td><td class="col1">CMPXCHG8 instruction (64-bit compare-and-swap). Compare and exchange 8 bytes. Also known as F00F, which is an abbreviation of the hexadecimal encoding of an instruction that exhibits a design flaw in the majority of older Intel Pentium CPU.</td>
+	</tr>
+	<tr class="row10">
+		<td class="col0">apic</td><td class="col1">Onboard APIC</td>
+	</tr>
+	<tr class="row11">
+		<td class="col0">sep</td><td class="col1">SYSENTER/SYSEXIT</td>
+	</tr>
+	<tr class="row12">
+		<td class="col0">mtrr</td><td class="col1">Memory Type Range Registers</td>
+	</tr>
+	<tr class="row13">
+		<td class="col0">pge</td><td class="col1">Page Global Enable (global bit in PDEs and PTEs)</td>
+	</tr>
+	<tr class="row14">
+		<td class="col0">mca</td><td class="col1">Machine Check Architecture</td>
+	</tr>
+	<tr class="row15">
+		<td class="col0">cmov</td><td class="col1">CMOV instructions (conditional move) (also FCMOV)</td>
+	</tr>
+	<tr class="row16">
+		<td class="col0">pat</td><td class="col1">Page Attribute Table</td>
+	</tr>
+	<tr class="row17">
+		<td class="col0">pse36</td><td class="col1">36-bit PSEs (huge pages). Page Size Extensions 36. IA-32 supports two methods to access memory above 4 GB (32 bits), PSE and PAE. PSE is the older and far less used version.</td>
+	</tr>
+	<tr class="row18">
+		<td class="col0">pn</td><td class="col1">Processor serial number</td>
+	</tr>
+	<tr class="row19">
+		<td class="col0">clflush</td><td class="col1">CLFLUSH instruction</td>
+	</tr>
+	<tr class="row20">
+		<td class="col0">dts</td><td class="col1">Debug Store (buffer for debugging and profiling instructions), can also mean Digital Thermal Sensor.</td>
+	</tr>
+	<tr class="row21">
+		<td class="col0">acpi</td><td class="col1">ACPI via MSR (temperature monitoring and clock speed modulation)</td>
+	</tr>
+	<tr class="row22">
+		<td class="col0">mmxext/mmx</td><td class="col1">Multimedia Extensions</td>
+	</tr>
+	<tr class="row23">
+		<td class="col0">fxsr</td><td class="col1">FXSAVE/FXRSTOR, CR4.OSFXSR</td>
+	</tr>
+	<tr class="row24">
+		<td class="col0">sse</td><td class="col1">Streaming SIMD Extensions. Developed by Intel for its Pentium III but also implemented by AMD processors from Athlon XP onwards</td>
+	</tr>
+	<tr class="row25">
+		<td class="col0">sse2</td><td class="col1">Streaming SIMD Extensions 2. (An additional 144 SIMDs.) Introduced by Intel Pentium 4, on AMD since Athlon 64</td>
+	</tr>
+	<tr class="row26">
+		<td class="col0">ss</td><td class="col1">CPU self snoop</td>
+	</tr>
+	<tr class="row27">
+		<td class="col0">htt/ht</td><td class="col1">Hyper-Threading or Hyper-Transport</td>
+	</tr>
+	<tr class="row28">
+		<td class="col0">tm</td><td class="col1">Automatic clock control (Thermal Monitor)</td>
+	</tr>
+	<tr class="row29">
+		<td class="col0">ia64</td><td class="col1">IA-64 processor (not to be confused with x86-64 = amd64, indicated by lm)</td>
+	</tr>
+	<tr class="row30">
+		<td class="col0">pbe</td><td class="col1">Pending Break Enable</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit9" id="amd-defined_cpu_features_cpuid_level_0x80000001">AMD-defined CPU features, CPUID level 0x80000001</h1>
+<div class="level1">
+<div class="table sectionedit10"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Flag </th><th class="col1"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">syscall</td><td class="col1">SYSCALL/SYSRET (calls between the operating system and the hardware).</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">mp</td><td class="col1">MP Capable.</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">nx</td><td class="col1">No eXecute, a flag that can be set on memory pages to disable execution of code in these pages.</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">mmxext</td><td class="col1">AMD MMX extensions</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">fxsr_opt</td><td class="col1">FXSAVE/FXRSTOR optimizations</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">pdpe1gb</td><td class="col1">GB pages</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">rdtscp</td><td class="col1">RDTSCP</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">lm</td><td class="col1">Long Mode (x86-64: amd64, also known as Intel 64, i.e. 64-bit capable)</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">3dnowext</td><td class="col1">AMD 3DNow! extensions</td>
+	</tr>
+	<tr class="row10">
+		<td class="col0">3dnow</td><td class="col1">3DNow! (AMD vector instructions, competing with Intel&#039;s SSE1)</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h3 class="sectionedit11" id="more_extended_amd_flags_cpuid_level_0x80000001_ecx">More extended AMD flags|CPUID level 0x80000001 (ecx)</h3>
+<div class="level3">
+<div class="table sectionedit12"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Flag </th><th class="col1"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">lahf_lm</td><td class="col1">LAHF/SAHF in long mode</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">cmp_legacy</td><td class="col1">If yes HyperThreading not valid</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">svm</td><td class="col1">&quot;Secure virtual machine&quot;: AMD-V (AMD’s virtualization extensions to the 64-bit x86 architecture, equivalent to Intel’s VMX, both also known as HVM in the Xen hypervisor.)</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">extapic</td><td class="col1">Extended APIC space</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">cr8_legacy</td><td class="col1">CR8 in 32-bit mode</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">abm</td><td class="col1">Advanced bit manipulation</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">sse4a</td><td class="col1">SSE-4A</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">misalignsse</td><td class="col1">Misaligned SSE mode</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">3dnowprefetch</td><td class="col1">3DNow prefetch instructions</td>
+	</tr>
+	<tr class="row10">
+		<td class="col0">osvw</td><td class="col1">OS Visible Workaround</td>
+	</tr>
+	<tr class="row11">
+		<td class="col0">ibs</td><td class="col1">Instruction Based Sampling</td>
+	</tr>
+	<tr class="row12">
+		<td class="col0">xop</td><td class="col1">extended AVX instructions</td>
+	</tr>
+	<tr class="row13">
+		<td class="col0">skinit</td><td class="col1">SKINIT/STGI instructions</td>
+	</tr>
+	<tr class="row14">
+		<td class="col0">wdt</td><td class="col1">Watchdog timer</td>
+	</tr>
+	<tr class="row15">
+		<td class="col0">lwp</td><td class="col1">Light Weight Profiling</td>
+	</tr>
+	<tr class="row16">
+		<td class="col0">fma4</td><td class="col1">4 operands MAC instructions</td>
+	</tr>
+	<tr class="row17">
+		<td class="col0">tce</td><td class="col1">translation cache extension</td>
+	</tr>
+	<tr class="row18">
+		<td class="col0">nodeid_msr</td><td class="col1">NodeId MSR</td>
+	</tr>
+	<tr class="row19">
+		<td class="col0">tbm</td><td class="col1">trailing bit manipulations</td>
+	</tr>
+	<tr class="row20">
+		<td class="col0">topoext</td><td class="col1">topology extensions CPUID leafs</td>
+	</tr>
+	<tr class="row21">
+		<td class="col0">perfctr_core</td><td class="col1">core performance counter extensions</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit13" id="transmeta-defined_cpu_features_cpuid_level_0x80860001">Transmeta-defined CPU features, CPUID level 0x80860001</h1>
+<div class="level1">
+<div class="table sectionedit14"><table class="inline">
+	<tr class="row0">
+		<td class="col0">recovery</td><td class="col1">CPU in recovery mode</td>
+	</tr>
+	<tr class="row1">
+		<td class="col0">longrun</td><td class="col1">Longrun power control</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">lrti</td><td class="col1">LongRun table interface</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit15" id="other_features_linux-defined_mapping">Other features, Linux-defined mapping</h1>
+<div class="level1">
+<div class="table sectionedit16"><table class="inline">
+	<tr class="row0">
+		<td class="col0">cxmmx</td><td class="col1">Cyrix MMX extensions</td>
+	</tr>
+	<tr class="row1">
+		<td class="col0">k6_mtrr</td><td class="col1">AMD K6 nonstandard MTRRs</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">cyrix_arr</td><td class="col1">Cyrix ARRs (= MTRRs)</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">centaur_mcr</td><td class="col1">Centaur MCRs (= MTRRs)</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">constant_tsc</td><td class="col1">TSC ticks at a constant rate. On Intel P-4s, the TSC runs with constant frequency independent of cpu frequency when EST is used</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">up</td><td class="col1">smp kernel running on up</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">arch_perfmon</td><td class="col1">Intel Architectural PerfMon</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">pebs</td><td class="col1">Precise-Event Based Sampling</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">bts</td><td class="col1">Branch Trace Store</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">rep_good</td><td class="col1">rep microcode works well</td>
+	</tr>
+	<tr class="row10">
+		<td class="col0">nopl</td><td class="col1">The NOPL (0F 1F) instructions</td>
+	</tr>
+	<tr class="row11">
+		<td class="col0">xtopology</td><td class="col1">cpu topology enum extensions</td>
+	</tr>
+	<tr class="row12">
+		<td class="col0">tsc_reliable</td><td class="col1">TSC is known to be reliable</td>
+	</tr>
+	<tr class="row13">
+		<td class="col0">nonstop_tsc</td><td class="col1">TSC does not stop in C states</td>
+	</tr>
+	<tr class="row14">
+		<td class="col0">extd_apicid</td><td class="col1">has extended APICID (8 bits)</td>
+	</tr>
+	<tr class="row15">
+		<td class="col0">amd_dcm</td><td class="col1">multi-node processor</td>
+	</tr>
+	<tr class="row16">
+		<td class="col0">aperfmperf</td><td class="col1">APERFMPERF</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit17" id="auxiliary_flags_defined_by_linux">Auxiliary flags defined by Linux</h1>
+<div class="level1">
+<div class="table sectionedit18"><table class="inline">
+	<thead>
+	<tr class="row0">
+		<th class="col0"> Flag </th><th class="col1"> Description </th>
+	</tr>
+	</thead>
+	<tr class="row1">
+		<td class="col0">ida</td><td class="col1">Intel Dynamic Acceleration</td>
+	</tr>
+	<tr class="row2">
+		<td class="col0">arat</td><td class="col1">Always Running APIC Timer</td>
+	</tr>
+	<tr class="row3">
+		<td class="col0">cpb</td><td class="col1">AMD Core Performance Boost</td>
+	</tr>
+	<tr class="row4">
+		<td class="col0">epb</td><td class="col1">IA32_ENERGY_PERF_BIAS support</td>
+	</tr>
+	<tr class="row5">
+		<td class="col0">xsaveopt</td><td class="col1">Optimized Xsave</td>
+	</tr>
+	<tr class="row6">
+		<td class="col0">pln</td><td class="col1">Intel Power Limit Notification</td>
+	</tr>
+	<tr class="row7">
+		<td class="col0">pts</td><td class="col1">Intel Package Thermal Status</td>
+	</tr>
+	<tr class="row8">
+		<td class="col0">dts</td><td class="col1">Digital Thermal Sensor</td>
+	</tr>
+	<tr class="row9">
+		<td class="col0">hw_pstate</td><td class="col1">AMD HW-PState</td>
+	</tr>
+	<tr class="row10">
+		<td class="col0">Virtualization flags</td><td class="col1">Linux defined</td>
+	</tr>
+	<tr class="row11">
+		<td class="col0">tpr_shadow</td><td class="col1">Intel TPR Shadow (for virtualization)</td>
+	</tr>
+	<tr class="row12">
+		<td class="col0">vnmi</td><td class="col1">Intel Virtual NMI (non-maskable interrupts) (for virtualization)</td>
+	</tr>
+	<tr class="row13">
+		<td class="col0">flexpriority</td><td class="col1">Intel FlexPriority</td>
+	</tr>
+	<tr class="row14">
+		<td class="col0">ept</td><td class="col1">Intel Extended Page Table</td>
+	</tr>
+	<tr class="row15">
+		<td class="col0">vpid</td><td class="col1">Intel Virtual Processor ID (for virtualization)</td>
+	</tr>
+	<tr class="row16">
+		<td class="col0">npt</td><td class="col1">AMD Nested Page Table support (similar to ept on Intel)</td>
+	</tr>
+	<tr class="row17">
+		<td class="col0">lbrv</td><td class="col1">AMD LBR Virtualization support</td>
+	</tr>
+	<tr class="row18">
+		<td class="col0">svm_lock</td><td class="col1">AMD SVM locking MSR</td>
+	</tr>
+	<tr class="row19">
+		<td class="col0">nrip_save</td><td class="col1">AMD SVM next_rip save</td>
+	</tr>
+	<tr class="row20">
+		<td class="col0">tsc_scale</td><td class="col1">AMD TSC scaling support</td>
+	</tr>
+	<tr class="row21">
+		<td class="col0">vmcb_clean</td><td class="col1">AMD VMCB clean bits support</td>
+	</tr>
+	<tr class="row22">
+		<td class="col0">flushbyasid</td><td class="col1">AMD flush-by-ASID support</td>
+	</tr>
+	<tr class="row23">
+		<td class="col0">decodeassists</td><td class="col1">AMD Decode Assists support</td>
+	</tr>
+	<tr class="row24">
+		<td class="col0">pausefilter</td><td class="col1">AMD filtered pause intercept</td>
+	</tr>
+	<tr class="row25">
+		<td class="col0">pfthreshold</td><td class="col1">AMD pause filter threshold</td>
+	</tr>
+</table></div>
+
+</div>
+
+<h1 class="sectionedit19" id="xen">Xen</h1>
+<div class="level1">
+<div class="table sectionedit20"><table class="inline">
+	<tr class="row0">
+		<td class="col0">hvm</td><td class="col1">Hardware support for virtual machines (Xen abbreviation for AMD SVM / Intel VMX)</td>
+	</tr>
+</table></div>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/cpuflags.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags" class="wikilink1" title="fuss:cpuflags" data-wiki-id="fuss:cpuflags">cpuflags</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:cpuflags" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/cpuflags"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Acpuflags&amp;1657304300" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="generator" content="HTML Tidy for HTML5 for FreeBSD version 5.8.0">
+  <title>SporeStack: VPS hosting for Bitcoin, Bitcoin Cash, and Monero. No email required, API-driven</title>
+  <meta charset="UTF-8">
+  <meta name="description" content="Deploy VPS servers with Bitcoin, Bitcoin Cash, or Monero. No email. API driven.">
+  <meta name="keywords" content="Monero, Bitcoin, cryptocurrency, Bitcoin Cash, ephemeral, disposable, vps, infrastructure, virtual private server, server">
+  <meta name="yandex-verification" content="e3fd949cdfb2465c">
+  <meta name="msvalidate.01" content="D5DFEC99600E11EB3D74C1CD971D77D2">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/static/normalize.css">
+  <link rel="stylesheet" href="/static/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/sporestack.css"><!-- ****** faviconit.com favicons ****** -->
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="icon" sizes="16x16 32x32 64x64" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="196x196" href="/favicon-192.png">
+  <link rel="icon" type="image/png" sizes="160x160" href="/favicon-160.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="/favicon-64.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+  <link rel="apple-touch-icon" href="/favicon-57.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/favicon-114.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/favicon-72.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/favicon-144.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/favicon-60.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/favicon-120.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/favicon-76.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/favicon-152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png">
+  <meta name="msapplication-TileColor" content="#FFFFFF">
+  <meta name="msapplication-TileImage" content="/favicon-144.png">
+  <meta name="msapplication-config" content="/browserconfig.xml"><!-- ****** faviconit.com favicons ****** -->
+
+  <script src="/static/sporestack.js"></script>
+  <script src="/static/utils.js"></script>
+  <script src="/static/qr.min.js"></script><!-- https://github.com/thednp/bootstrap.native -->
+
+  <script src="/static/bootstrap-native-v4.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <a href="/">
+      <h1><img class="img-fluid" src="../static/sporestack.png" alt="SporeStack"></h1></a>
+      <p>API-driven VPS hosting for Bitcoin, Bitcoin Cash, and Monero</p>
+    </div>
+    <div class="d-md-flex flex-wrap">
+      <div>
+        <a class="btn btn-outline-primary btn-block active" href="/">Main</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-primary btn-block" href="/pricing/">Pricing</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-primary btn-block" href="/affiliate/">Affiliate</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-primary btn-block" href="/about/">About</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-primary btn-block" href="/contact/">Contact</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-primary btn-block" href="/faq/">FAQ</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-primary btn-block" href="/api_documentation/">API</a>
+      </div>
+      <div>
+        <a class="btn btn-outline-warning btn-block" href="/legacy-launcher.html">Legacy Launcher</a>
+      </div>
+    </div>
+    <h3>First, get a token</h3>
+    <div class="card card-body">
+      <span style="color: #a33; text-align: right;">Write your token down, keep it, and <em>do not</em> lose it!</span>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="Payment Tokens are like anonymous number-accounts on swiss banks. You only need a token to receive funds and pay for our services. So save your token, keep it secret, and do not use it.">Payment Token</span>
+        </div><input required="" autocomplete="off" type="text" id="settlement_token" pattern="^[a-f0-9]*$" class="control form-control" minlength="64" maxlength="64" spellcheck="false" title="Payment Token (Keep this secret! Do not lose it!)" placeholder="Enter your Payment Token here, or click on 'Generate'" oninput="settlement_token_onchange(this.value)"> <button id="generate_button" class="mx-2 btn-primary" type="button" onclick='generate_token_modal()' title="Don't have a settlement token? Generate one here">Generate</button>
+      </div>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="Referral Tokens are used to participate in our Affiliate Program.">Referral Token</span>
+        </div><input id="deposit_token" autocomplete="off" readonly class="form-control" minlength="64" maxlength="64" spellcheck="false" title="Referral Token (This doesn't have to be secret)" placeholder="">
+      </div>
+      <div class="input-group input-group-lg mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="How much money has been deposited on your Token">Funds</span>
+        </div>
+        <div id="funds" title="How much money you have on your Token" style="font-size: 2rem; margin-left: 0.5em;">
+          $0.00
+        </div>
+      </div><button id="balance_button" class="mt-1 form-control btn-primary" type="button" onclick='page_sporestackTokenBalance()'>Query balance</button>
+    </div>
+    <h3>Second, make a deposit</h3>
+    <div class="card card-body">
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="In which cryptocurrency do you want to deposit money onto your token?">Currency</span>
+        </div><select id="currency" class="control form-control">
+          <option value="xmr">
+            Monero
+          </option>
+          <option value="btc">
+            Bitcoin
+          </option>
+          <option value="bch">
+            Bitcoin Cash
+          </option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="How much money do you want to deposit?">Amount in USD ($)</span>
+        </div><input id="dollars" type="number" value="20" min="5" max="25000" class="control" oninput="document.getElementById('dollars_range').value = this.value"> <input id="dollars_range" type="range" step="1" value="20" min="5" max="25000" class="mx-2 control form-control input-group-append" oninput="document.getElementById('dollars').value = this.value">
+      </div><button id="add_button" class="mt-1 control form-control btn-primary" type="button" onclick='page_sporestackTokenAdd()'>Add to balance</button><br>
+      <div id="info"></div>
+      <div id="uri"></div>
+      <div class="mx-4" id="qr"></div><br>
+      <br>
+      <div class="fixed-top" id="banner"></div>
+    </div>
+    <h3 id="launch-header">Now, launch a server!</h3>
+    <div class="card card-body">
+      <!-- This launcher is released into the public domain under the UNLICENSE -->
+       <noscript>
+      <h2>The SporeStack web launcher needs Javascript to work.</h2></noscript>
+      <div class="input-group mb-2 launch_only">
+        <div class="input-group-prepend">
+          <span class="input-group-text font-weight-bold ss-tooltip expand" data-title="Select the hardware setup you want your server to have.">Server Size</span>
+        </div><select id="flavor" class="control form-control">
+          <option value="vps-1vcpu-512mb-10gb">
+            512MB Memory / 1 vCPU / 10GB SSD / 0.5TB Transfer / $7.50 per 30 days (vps-1vcpu-512mb-10gb)
+          </option>
+          <option value="vps-1vcpu-1gb" selected>
+            1GB Memory / 1 vCPU / 25GB SSD / 1.0TB Transfer / $11.40 per 30 days (vps-1vcpu-1gb)
+          </option>
+          <option value="vps-1vcpu-1gb-amd">
+            1GB Memory / 1 vCPU / 25GB NVMe / 1.0TB Transfer / $13.50 per 30 days (vps-1vcpu-1gb-amd)
+          </option>
+          <option value="vps-1vcpu-1gb-intel">
+            1GB Memory / 1 vCPU / 25GB NVMe / 1.0TB Transfer / $13.50 per 30 days (vps-1vcpu-1gb-intel)
+          </option>
+          <option value="vps-1vcpu-2gb">
+            2GB Memory / 1 vCPU / 50GB SSD / 2.0TB Transfer / $23.10 per 30 days (vps-1vcpu-2gb)
+          </option>
+          <option value="vps-1vcpu-2gb-amd">
+            2GB Memory / 1 vCPU / 50GB NVMe / 2.0TB Transfer / $26.70 per 30 days (vps-1vcpu-2gb-amd)
+          </option>
+          <option value="vps-1vcpu-2gb-intel">
+            2GB Memory / 1 vCPU / 50GB NVMe / 2.0TB Transfer / $26.70 per 30 days (vps-1vcpu-2gb-intel)
+          </option>
+          <option value="vps-3vcpu-1gb">
+            1GB Memory / 3 vCPU / 60GB SSD / 3.0TB Transfer / $34.50 per 30 days (vps-3vcpu-1gb)
+          </option>
+          <option value="vps-2vcpu-2gb">
+            2GB Memory / 2 vCPU / 60GB SSD / 3.0TB Transfer / $34.50 per 30 days (vps-2vcpu-2gb)
+          </option>
+          <option value="vps-1vcpu-3gb">
+            3GB Memory / 1 vCPU / 60GB SSD / 3.0TB Transfer / $34.50 per 30 days (vps-1vcpu-3gb)
+          </option>
+          <option value="vps-2vcpu-2gb-amd">
+            2GB Memory / 2 vCPU / 60GB NVMe / 3.0TB Transfer / $40.50 per 30 days (vps-2vcpu-2gb-amd)
+          </option>
+          <option value="vps-2vcpu-2gb-intel">
+            2GB Memory / 2 vCPU / 60GB NVMe / 3.0TB Transfer / $40.50 per 30 days (vps-2vcpu-2gb-intel)
+          </option>
+          <option value="vps-2vcpu-4gb">
+            4GB Memory / 2 vCPU / 80GB SSD / 4.0TB Transfer / $46.20 per 30 days (vps-2vcpu-4gb)
+          </option>
+          <option value="vps-2vcpu-4gb-amd">
+            4GB Memory / 2 vCPU / 80GB NVMe / 4.0TB Transfer / $54.00 per 30 days (vps-2vcpu-4gb-amd)
+          </option>
+          <option value="vps-2vcpu-4gb-intel">
+            4GB Memory / 2 vCPU / 80GB NVMe / 4.0TB Transfer / $54.00 per 30 days (vps-2vcpu-4gb-intel)
+          </option>
+          <option value="vps-m-1vcpu-8gb">
+            8GB Memory / 1 vCPU / 40GB SSD / 5.0TB Transfer / $81.00 per 30 days (vps-m-1vcpu-8gb)
+          </option>
+          <option value="vps-c-2">
+            4GB Memory / 2 vCPU / 25GB SSD / 4.0TB Transfer / $81.00 per 30 days (vps-c-2)
+          </option>
+          <option value="vps-c2-2vcpu-4gb">
+            4GB Memory / 2 vCPU / 50GB SSD / 4.0TB Transfer / $90.60 per 30 days (vps-c2-2vcpu-4gb)
+          </option>
+          <option value="vps-4vcpu-8gb">
+            8GB Memory / 4 vCPU / 160GB SSD / 5.0TB Transfer / $92.40 per 30 days (vps-4vcpu-8gb)
+          </option>
+          <option value="vps-4vcpu-8gb-amd">
+            8GB Memory / 4 vCPU / 160GB NVMe / 5.0TB Transfer / $107.70 per 30 days (vps-4vcpu-8gb-amd)
+          </option>
+          <option value="vps-4vcpu-8gb-intel">
+            8GB Memory / 4 vCPU / 160GB NVMe / 5.0TB Transfer / $107.70 per 30 days (vps-4vcpu-8gb-intel)
+          </option>
+          <option value="vps-g-2vcpu-8gb">
+            8GB Memory / 2 vCPU / 25GB SSD / 4.0TB Transfer / $121.50 per 30 days (vps-g-2vcpu-8gb)
+          </option>
+          <option value="vps-gd-2vcpu-8gb">
+            8GB Memory / 2 vCPU / 50GB SSD / 4.0TB Transfer / $131.10 per 30 days (vps-gd-2vcpu-8gb)
+          </option>
+          <option value="vps-m-16gb">
+            16GB Memory / 2 vCPU / 60GB SSD / 5.0TB Transfer / $150.30 per 30 days (vps-m-16gb)
+          </option>
+          <option value="vps-m-2vcpu-16gb">
+            16GB Memory / 2 vCPU / 50GB SSD / 4.0TB Transfer / $162.00 per 30 days (vps-m-2vcpu-16gb)
+          </option>
+          <option value="vps-c-4">
+            8GB Memory / 4 vCPU / 50GB SSD / 5.0TB Transfer / $162.00 per 30 days (vps-c-4)
+          </option>
+          <option value="vps-c2-4vcpu-8gb">
+            8GB Memory / 4 vCPU / 100GB SSD / 5.0TB Transfer / $181.20 per 30 days (vps-c2-4vcpu-8gb)
+          </option>
+          <option value="vps-8vcpu-16gb">
+            16GB Memory / 8 vCPU / 320GB SSD / 6.0TB Transfer / $185.10 per 30 days (vps-8vcpu-16gb)
+          </option>
+          <option value="vps-6vcpu-16gb">
+            16GB Memory / 6 vCPU / 320GB SSD / 6.0TB Transfer / $185.10 per 30 days (vps-6vcpu-16gb)
+          </option>
+          <option value="vps-m3-2vcpu-16gb">
+            16GB Memory / 2 vCPU / 150GB SSD / 4.0TB Transfer / $200.40 per 30 days (vps-m3-2vcpu-16gb)
+          </option>
+          <option value="vps-8vcpu-16gb-amd">
+            16GB Memory / 8 vCPU / 320GB NVMe / 6.0TB Transfer / $216.00 per 30 days (vps-8vcpu-16gb-amd)
+          </option>
+          <option value="vps-8vcpu-16gb-intel">
+            16GB Memory / 8 vCPU / 320GB NVMe / 6.0TB Transfer / $216.00 per 30 days (vps-8vcpu-16gb-intel)
+          </option>
+          <option value="vps-g-4vcpu-16gb">
+            16GB Memory / 4 vCPU / 50GB SSD / 5.0TB Transfer / $243.00 per 30 days (vps-g-4vcpu-16gb)
+          </option>
+          <option value="vps-so-2vcpu-16gb">
+            16GB Memory / 2 vCPU / 300GB NVMe / 4.0TB Transfer / $252.60 per 30 days (vps-so-2vcpu-16gb)
+          </option>
+          <option value="vps-m6-2vcpu-16gb">
+            16GB Memory / 2 vCPU / 300GB SSD / 4.0TB Transfer / $252.60 per 30 days (vps-m6-2vcpu-16gb)
+          </option>
+          <option value="vps-gd-4vcpu-16gb">
+            16GB Memory / 4 vCPU / 100GB SSD / 5.0TB Transfer / $262.20 per 30 days (vps-gd-4vcpu-16gb)
+          </option>
+          <option value="vps-m-32gb">
+            32GB Memory / 4 vCPU / 90GB SSD / 5.0TB Transfer / $300.60 per 30 days (vps-m-32gb)
+          </option>
+          <option value="vps-so1_5-2vcpu-16gb">
+            16GB Memory / 2 vCPU / 450GB NVMe / 4.0TB Transfer / $314.10 per 30 days (vps-so1_5-2vcpu-16gb)
+          </option>
+          <option value="vps-m-4vcpu-32gb">
+            32GB Memory / 4 vCPU / 100GB SSD / 6.0TB Transfer / $324.00 per 30 days (vps-m-4vcpu-32gb)
+          </option>
+          <option value="vps-c-8">
+            16GB Memory / 8 vCPU / 100GB SSD / 6.0TB Transfer / $324.00 per 30 days (vps-c-8)
+          </option>
+          <option value="vps-c2-8vcpu-16gb">
+            16GB Memory / 8 vCPU / 200GB SSD / 6.0TB Transfer / $362.40 per 30 days (vps-c2-8vcpu-16gb)
+          </option>
+          <option value="vps-8vcpu-32gb">
+            32GB Memory / 8 vCPU / 640GB SSD / 7.0TB Transfer / $370.20 per 30 days (vps-8vcpu-32gb)
+          </option>
+          <option value="vps-m3-4vcpu-32gb">
+            32GB Memory / 4 vCPU / 300GB SSD / 6.0TB Transfer / $401.10 per 30 days (vps-m3-4vcpu-32gb)
+          </option>
+          <option value="vps-g-8vcpu-32gb">
+            32GB Memory / 8 vCPU / 100GB SSD / 6.0TB Transfer / $486.00 per 30 days (vps-g-8vcpu-32gb)
+          </option>
+          <option value="vps-so-4vcpu-32gb">
+            32GB Memory / 4 vCPU / 600GB NVMe / 6.0TB Transfer / $505.20 per 30 days (vps-so-4vcpu-32gb)
+          </option>
+          <option value="vps-m6-4vcpu-32gb">
+            32GB Memory / 4 vCPU / 600GB SSD / 6.0TB Transfer / $505.20 per 30 days (vps-m6-4vcpu-32gb)
+          </option>
+          <option value="vps-gd-8vcpu-32gb">
+            32GB Memory / 8 vCPU / 200GB SSD / 6.0TB Transfer / $524.40 per 30 days (vps-gd-8vcpu-32gb)
+          </option>
+          <option value="vps-12vcpu-48gb">
+            48GB Memory / 12 vCPU / 960GB SSD / 8.0TB Transfer / $555.30 per 30 days (vps-12vcpu-48gb)
+          </option>
+          <option value="vps-m-64gb">
+            64GB Memory / 8 vCPU / 200GB SSD / 5.0TB Transfer / $601.50 per 30 days (vps-m-64gb)
+          </option>
+          <option value="vps-so1_5-4vcpu-32gb">
+            32GB Memory / 4 vCPU / 900GB NVMe / 6.0TB Transfer / $628.50 per 30 days (vps-so1_5-4vcpu-32gb)
+          </option>
+          <option value="vps-m-8vcpu-64gb">
+            64GB Memory / 8 vCPU / 200GB SSD / 7.0TB Transfer / $648.00 per 30 days (vps-m-8vcpu-64gb)
+          </option>
+          <option value="vps-c-16">
+            32GB Memory / 16 vCPU / 200GB SSD / 7.0TB Transfer / $648.00 per 30 days (vps-c-16)
+          </option>
+          <option value="vps-c2-16vcpu-32gb">
+            32GB Memory / 16 vCPU / 400GB SSD / 7.0TB Transfer / $725.10 per 30 days (vps-c2-16vcpu-32gb)
+          </option>
+          <option value="vps-16vcpu-64gb">
+            64GB Memory / 16 vCPU / 1280GB SSD / 9.0TB Transfer / $740.40 per 30 days (vps-16vcpu-64gb)
+          </option>
+          <option value="vps-m3-8vcpu-64gb">
+            64GB Memory / 8 vCPU / 600GB SSD / 7.0TB Transfer / $802.20 per 30 days (vps-m3-8vcpu-64gb)
+          </option>
+          <option value="vps-g-16vcpu-64gb">
+            64GB Memory / 16 vCPU / 200GB SSD / 7.0TB Transfer / $972.00 per 30 days (vps-g-16vcpu-64gb)
+          </option>
+          <option value="vps-so-8vcpu-64gb">
+            64GB Memory / 8 vCPU / 1200GB NVMe / 7.0TB Transfer / $1,010.40 per 30 days (vps-so-8vcpu-64gb)
+          </option>
+          <option value="vps-m6-8vcpu-64gb">
+            64GB Memory / 8 vCPU / 1200GB SSD / 7.0TB Transfer / $1,010.40 per 30 days (vps-m6-8vcpu-64gb)
+          </option>
+          <option value="vps-gd-16vcpu-64gb">
+            64GB Memory / 16 vCPU / 400GB SSD / 7.0TB Transfer / $1,049.10 per 30 days (vps-gd-16vcpu-64gb)
+          </option>
+          <option value="vps-20vcpu-96gb">
+            96GB Memory / 20 vCPU / 1920GB SSD / 10.0TB Transfer / $1,110.60 per 30 days (vps-20vcpu-96gb)
+          </option>
+          <option value="vps-m-128gb">
+            128GB Memory / 16 vCPU / 340GB SSD / 5.0TB Transfer / $1,203.30 per 30 days (vps-m-128gb)
+          </option>
+          <option value="vps-so1_5-8vcpu-64gb">
+            64GB Memory / 8 vCPU / 1800GB NVMe / 7.0TB Transfer / $1,257.30 per 30 days (vps-so1_5-8vcpu-64gb)
+          </option>
+          <option value="vps-m-16vcpu-128gb">
+            128GB Memory / 16 vCPU / 400GB SSD / 8.0TB Transfer / $1,296.00 per 30 days (vps-m-16vcpu-128gb)
+          </option>
+          <option value="vps-c-32">
+            64GB Memory / 32 vCPU / 400GB SSD / 9.0TB Transfer / $1,296.00 per 30 days (vps-c-32)
+          </option>
+          <option value="vps-c2-32vcpu-64gb">
+            64GB Memory / 32 vCPU / 800GB SSD / 9.0TB Transfer / $1,450.20 per 30 days (vps-c2-32vcpu-64gb)
+          </option>
+          <option value="vps-24vcpu-128gb">
+            128GB Memory / 24 vCPU / 2560GB SSD / 11.0TB Transfer / $1,481.10 per 30 days (vps-24vcpu-128gb)
+          </option>
+          <option value="vps-m3-16vcpu-128gb">
+            128GB Memory / 16 vCPU / 1200GB SSD / 8.0TB Transfer / $1,604.40 per 30 days (vps-m3-16vcpu-128gb)
+          </option>
+          <option value="vps-m-24vcpu-192gb">
+            192GB Memory / 24 vCPU / 600GB SSD / 9.0TB Transfer / $1,944.00 per 30 days (vps-m-24vcpu-192gb)
+          </option>
+          <option value="vps-g-32vcpu-128gb">
+            128GB Memory / 32 vCPU / 400GB SSD / 8.0TB Transfer / $1,944.00 per 30 days (vps-g-32vcpu-128gb)
+          </option>
+          <option value="vps-so-16vcpu-128gb">
+            128GB Memory / 16 vCPU / 2400GB NVMe / 8.0TB Transfer / $2,021.10 per 30 days (vps-so-16vcpu-128gb)
+          </option>
+          <option value="vps-m6-16vcpu-128gb">
+            128GB Memory / 16 vCPU / 2400GB SSD / 8.0TB Transfer / $2,021.10 per 30 days (vps-m6-16vcpu-128gb)
+          </option>
+          <option value="vps-gd-32vcpu-128gb">
+            128GB Memory / 32 vCPU / 800GB SSD / 8.0TB Transfer / $2,098.20 per 30 days (vps-gd-32vcpu-128gb)
+          </option>
+          <option value="vps-m-224gb">
+            224GB Memory / 32 vCPU / 500GB SSD / 5.0TB Transfer / $2,206.20 per 30 days (vps-m-224gb)
+          </option>
+          <option value="vps-32vcpu-192gb">
+            192GB Memory / 32 vCPU / 3840GB SSD / 12.0TB Transfer / $2,221.50 per 30 days (vps-32vcpu-192gb)
+          </option>
+          <option value="vps-m3-24vcpu-192gb">
+            192GB Memory / 24 vCPU / 1800GB SSD / 9.0TB Transfer / $2,406.60 per 30 days (vps-m3-24vcpu-192gb)
+          </option>
+          <option value="vps-g-40vcpu-160gb">
+            160GB Memory / 40 vCPU / 500GB SSD / 9.0TB Transfer / $2,430.00 per 30 days (vps-g-40vcpu-160gb)
+          </option>
+          <option value="vps-so1_5-16vcpu-128gb">
+            128GB Memory / 16 vCPU / 3600GB NVMe / 8.0TB Transfer / $2,514.60 per 30 days (vps-so1_5-16vcpu-128gb)
+          </option>
+          <option value="vps-m-32vcpu-256gb">
+            256GB Memory / 32 vCPU / 800GB SSD / 10.0TB Transfer / $2,592.00 per 30 days (vps-m-32vcpu-256gb)
+          </option>
+          <option value="vps-gd-40vcpu-160gb">
+            160GB Memory / 40 vCPU / 1000GB SSD / 9.0TB Transfer / $2,622.60 per 30 days (vps-gd-40vcpu-160gb)
+          </option>
+          <option value="vps-so-24vcpu-192gb">
+            192GB Memory / 24 vCPU / 3600GB NVMe / 9.0TB Transfer / $3,031.50 per 30 days (vps-so-24vcpu-192gb)
+          </option>
+          <option value="vps-m6-24vcpu-192gb">
+            192GB Memory / 24 vCPU / 3600GB SSD / 9.0TB Transfer / $3,031.50 per 30 days (vps-m6-24vcpu-192gb)
+          </option>
+          <option value="vps-m3-32vcpu-256gb">
+            256GB Memory / 32 vCPU / 2400GB SSD / 10.0TB Transfer / $3,209.10 per 30 days (vps-m3-32vcpu-256gb)
+          </option>
+          <option value="vps-so1_5-24vcpu-192gb">
+            192GB Memory / 24 vCPU / 5400GB NVMe / 9.0TB Transfer / $3,772.20 per 30 days (vps-so1_5-24vcpu-192gb)
+          </option>
+          <option value="vps-so-32vcpu-256gb">
+            256GB Memory / 32 vCPU / 4800GB NVMe / 10.0TB Transfer / $4,042.20 per 30 days (vps-so-32vcpu-256gb)
+          </option>
+          <option value="vps-m6-32vcpu-256gb">
+            256GB Memory / 32 vCPU / 4800GB SSD / 10.0TB Transfer / $4,042.20 per 30 days (vps-m6-32vcpu-256gb)
+          </option>
+          <option value="vps-so1_5-32vcpu-256gb">
+            256GB Memory / 32 vCPU / 7200GB NVMe / 10.0TB Transfer / $5,029.50 per 30 days (vps-so1_5-32vcpu-256gb)
+          </option>
+        </select>
+      </div>
+      <div class="input-group mb-2 launch_only" id="region_div">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="In which Region do you want your Server to run? The US? Europe? Asia?">Region</span>
+        </div><select id="region" class="control form-control">
+          <option value="auto">
+            Random with capacity
+          </option>
+          <option value="sfo2">
+            San Francisco
+          </option>
+          <option value="nyc1">
+            New York City 1
+          </option>
+          <option value="nyc3">
+            New York City 3
+          </option>
+          <option value="tor1">
+            Toronto
+          </option>
+          <option value="lon1">
+            London
+          </option>
+          <option value="ams3">
+            Amsterdam
+          </option>
+          <option value="fra1">
+            Frankfurt
+          </option>
+          <option value="sgp1">
+            Singapore
+          </option>
+          <option value="blr1">
+            Bangalore
+          </option>
+        </select>
+      </div>
+      <div class="input-group mb-2 launch_only">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="Which Operating System do you want your Node to run?">Operating System</span>
+        </div><select id="operating_system" class="control form-control">
+          <option value="centos-7">
+            CentOS 7 x64
+          </option>
+          <option value="centos-8">
+            CentOS 8 Stream x64
+          </option>
+          <option value="centos-9">
+            CentOS 9 Stream x64
+          </option>
+          <option value="debian-10">
+            Debian 10 x64
+          </option>
+          <option value="debian-11">
+            Debian 11 x64
+          </option>
+          <option value="debian-9">
+            Debian 9 x64
+          </option>
+          <option value="fedora-34">
+            Fedora 34 x64
+          </option>
+          <option value="fedora-35">
+            Fedora 35 x64
+          </option>
+          <option value="fedora-36">
+            Fedora 36 x64
+          </option>
+          <option value="rancheros">
+            RancherOS 1.5.8 x64
+          </option>
+          <option value="rockylinux-8">
+            Rocky Linux RockyLinux 8.5 x64
+          </option>
+          <option value="ubuntu-20-04">
+            Ubuntu 20.04 (LTS) x64
+          </option>
+          <option value="ubuntu-21-10">
+            Ubuntu 21.10 x64
+          </option>
+          <option value="ubuntu-22-04">
+            Ubuntu 22.04 (LTS) x64
+          </option>
+        </select>
+      </div>
+      <div class="launch_only input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="Enter the SSH key you want to use to access the machine here. You can either paste it in the field, or select it as a file. Under Linux you'll find your SSH key in a file with the filename ~/.ssh/id_rsa.pub or similar.">SSH public key <!-- <code>(~/.ssh/id_rsa.pub)</code> --></span>
+        </div><input required="" type="text" id="ssh_key" class="control form-control" placeholder="ssh-rsa... or id_ed25519... or similar"> <input class="control form-control-file border" type="file" accept=".pub" onchange="key_attach(this.files)">
+      </div>
+      <div class="input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="How many days do you want your Server to run? You can also renew the server and thereby increase that time-limit later on, but the node will be deleted once it expires, so make sure you don't miss it's expiration date.">Days to live (Can be renewed.)</span>
+        </div><input id="days" type="number" value="7" min="1" max="90" size="2" class="control" oninput="document.getElementById('days_range').value = this.value"> <input id="days_range" type="range" step="1" value="7" min="1" max="90" class="control form-control input-group-append" oninput="document.getElementById('days').value = this.value">
+      </div>
+      <div class="launch_only input-group mb-2">
+        <div class="input-group-prepend">
+          <span class="input-group-text ss-tooltip expand" data-title="Optional hostname for the server" max="64">Hostname</span>
+        </div><input id="hostname" type="text" class="control form-control" placeholder="(Optional)">
+      </div><button id="launch_button" class="control form-control btn-primary" type="button" onclick='try_launch();'>Launch a server</button><br>
+      <button id="reset_button" class="form-control btn-outline-danger" type="button" onclick='reset_modal()'>Reset</button>
+    </div>
+    <h3>Already built a server?</h3>
+    <div id="import_server" class="card card-body">
+      <code><input id="import_machineid" autocomplete="off" type="text" minlength="32" maxlength="64" class="form-control" placeholder='Enter your Machine ID, i.e ss_m_1deadbeefcafedeadbeef1_0892'></code> <input id="import_button" class="control form-control btn-secondary btn-sm" type="button" value="Import server from machine ID" onclick='import_server();'>
+      <div id="output"></div>
+      <div id="existing_servers"></div><!-- blank modal template -->
+      <div id="modalID" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <!-- the .setContent() method will update this element's HTML -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <h3>Acceptable Use Policy</h3>
+    <div class="card card-body mb-3">
+      <p>Predominantly, SporeStack launches servers on VPS providers such as Digital Ocean. As such, your actions and use of the server must conform to their policies.</p>
+      <p>Generally speaking, this means no:</p>
+      <ul>
+        <li>Mass port scanning</li>
+        <li>Child pornography</li>
+        <li>Phishing</li>
+        <li>DDoS</li>
+        <li>Hacking</li>
+        <li>Exceeding your allotted bandwidth</li>
+      </ul>
+      <p>Any one of these actions that results in an abuse ticket to Digital Ocean will typically result in the termination of your server(s).</p>
+      <p>For more details, please see <a target="_blank" href="https://www.digitalocean.com/legal/acceptable-use-policy/">Digital Ocean's Acceptable Use Policy</a>.</p>
+    </div>
+    <h3>Privacy Policy</h3>
+    <div class="card card-body mb-3">
+      <p>Regardless of what we write in our privacy policy, if you wish to remain private, the safest option is to provide fewer details. What you don't provide can't be leaked in one way or the other. We can't guarantee privacy, but we make it easier to stay private than some hosts.</p>
+      <p>Consider the following if you want to be more private:</p>
+      <ul>
+        <li>Paying with Monero</li>
+        <li>Stripping off the comment section from your SSH public key (~/.ssh/id_rsa.pub, most likely). It's common to have user.name@host, which might look like John.Doe@mylaptop</li>
+        <li>Using the <a href="http://spore64i5sofqlfz5gq2ju4msgzojjwifls7rok2cti624zyq3fcelad.onion">SporeStack Tor Hidden Service</a>, with Tor Browser, Tails, Whonix, etc.
+        </li>
+      </ul>
+      <p>While we can claim that this is generally a privacy oriented service, we may not always have the resources to fight legal requests in court, and often must comply with law enforcement. So please keep this in mind. These aren't servers in a bunker, in Greenland, guarded by mercenaries.</p>
+    </div>
+    <h3>Don't have a token and need to renew your server that you got without a token?</h3>Use the <a href="/legacy-launcher.html">Legacy Launcher</a>! Of course we encourage you to try out a token. The legacy launcher may not be around forever, the new launcher has many improvements and there's many benefits to using tokens.
+    <h3>Try SporeStack in your terminal</h3>
+    <div class="card card-body">
+      <pre>$ ssh-keygen # If you don't have an SSH key already.
+# pip is the Python package manager. Make sure you are using Python 3.
+$ python3 -m pip install sporestack
+
+# First, create a token, pay with BTC, BCH, or XMR
+$ sporestack token create --dollars 20 --currency xmr
+
+# Or, you can also import an existing token
+$ sporestack token import --key (token)
+
+# Now, launch a server
+$ sporestack launch SomeHostname --days 1 --operating-system debian-11 --ssh-key ~/.ssh/id_rsa.pub</pre>
+    </div>
+    <h3>Libraries</h3>
+    <ul>
+      <li>
+        <a href="https://git.sporestack.com/SporeStack/sporestack-python">Python 3</a>: <code>python3 -m pip install sporestack</code>
+      </li>
+      <li>
+        <a href="/static/sporestack.js">Javascript</a>: Feel free to use this library or any of the HTML/Javascript on this page for the web launcher
+      </li>
+    </ul>
+    <footer class="card card-body rounded-lg bg-light">
+      <ul>
+        <li><small><code>Tor Hidden Service: <a href="http://spore64i5sofqlfz5gq2ju4msgzojjwifls7rok2cti624zyq3fcelad.onion">spore64i5sofqlfz5gq2ju4msgzojjwifls7rok2cti624zyq3fcelad.onion</a></code></small></li>
+        <li><small><code>Clearnet: <a href="https://sporestack.com">SporeStack.com</a></code></small></li>
+      </ul>
+    </footer>
+  </div>
+  <script src="/static/launcher.js"></script> 
+  <script>
+
+  "use strict";
+
+  var current_epoch = new Date().getTime();
+  var controls_disabled = true;
+  var affiliateToken = window.localStorage.getItem("SporeStackAffiliate");
+  var affiliateTokenTimestamp = window.localStorage.getItem("SporeStackAffiliateTimeStamp");
+
+  if (window.location.hash) {
+    const hash = window.location.hash.substring(1);
+    if (hash.startsWith("ref=")) {
+      affiliateToken = hash.split("=")[1];
+      window.localStorage.setItem("SporeStackAffiliate", affiliateToken);
+      window.localStorage.setItem("SporeStackAffiliateTimeStamp", current_epoch);
+      console.log("Using affiliate token from URL");
+    }
+  }
+
+  const token = window.localStorage.getItem("SporeStackToken");
+  if (token !== null) {
+    document.getElementById("settlement_token").value = token;
+    settlement_token_onchange(token);
+    page_sporestackTokenBalance();
+  } else {
+    generate_token();
+  }
+
+  if (affiliateTokenTimestamp != null) {
+    if ((parseInt(affiliateTokenTimestamp) + 86400) < current_epoch) {
+      console.log("Token in localstorage expired.");
+      affiliateToken = null;
+    }
+  }
+
+  if (affiliateToken != null) {
+    console.log("Using affiliate token: " + affiliateToken);
+  }
+
+  list_servers();
+  BSN.initCallback();
+  hide_by_id("reset_button");
+  lock_out_controls(false);
+
+  </script>
+</body>
+</html>

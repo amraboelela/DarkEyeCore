@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:mathematics:calculus:derivatives [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,mathematics,calculus,derivatives"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:mathematics:calculus"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/mathematics/calculus/derivatives"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:mathematics:calculus';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:mathematics:calculus:derivatives","namespace":"fuss:mathematics:calculus","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:mathematics:calculus:derivatives" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:mathematics:calculus:derivatives&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics" class="wikilink1" title="fuss:mathematics" data-wiki-id="fuss:mathematics">mathematics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus" class="wikilink1" title="fuss:mathematics:calculus" data-wiki-id="fuss:mathematics:calculus">calculus</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives" class="wikilink1" title="fuss:mathematics:calculus:derivatives" data-wiki-id="fuss:mathematics:calculus:derivatives">derivatives</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:mathematics:calculus:derivatives</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#the_derivate">The Derivate</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#derivates_of_common_functions">Derivates of Common Functions</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#partial_derivates">Partial Derivates</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#practical_applications">Practical Applications</a></div></li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#combination_of_functions">Combination of Functions</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#product_of_two_functions">Product of Two Functions</a></div></li>
+<li class="level2"><div class="li"><a href="#sum_of_two_functions">Sum of Two Functions</a></div></li>
+<li class="level2"><div class="li"><a href="#chain_rule">Chain Rule</a></div></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="the_derivate">The Derivate</h1>
+<div class="level1">
+
+<p>
+The derivate of a function <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7997339883ac20f551e7f35efff0a2b9.png" class="latex_inline" alt="$f(x)$" title="Math" /> with respect to its variable <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" /> is the instantaneous rate of change (slope) of the function at any value of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" />.
+</p>
+<div class="wrap_box wrap_round wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img9a61f77e5e1654b1b39106728f9c43fb.png" class="latex_inline" alt="
+\begin{tikzpicture}[domain=0:4]
+  % grid
+  \draw[help lines] (0,0) grid (4,4);
+  
+  % origin
+  \draw[red, line width=.1mm] (-0.1,-0.1) -- (0.1,0.1)
+    (0.1,-0.1) -- (-0.1,0.1);
+  \coordinate[label={[red]below:$O$}] (O) at (0,0);
+  \draw[dotted,-&gt;] (O) -- (4,0) node[below] {$x$};
+  \draw[dotted,-&gt;] (O) -- (0,4) node[left] {$y$}; 
+  
+  \draw[color=blue] plot[id=exp] function{0.05*exp(x)} node[right] {$y = f(x) = \frac{1}{20} \mathrm e^x$};
+  \coordinate[label={[red]below:$f(x_{1})$}] (F1) at (2, {1/20*exp(2)});
+  \drawpoint{F1}{.5mm}[red];
+  
+  \coordinate[label={[red]above:$f(x_{2})$}] (F2) at (3.5, {1/20*exp(3.5)});
+  \drawpoint{F2}{.5mm}[red];
+  
+  \draw[green] (F1) -- (3.5,{1/20*exp(2)}) node [below left] {$\Delta x$} -- (F2) node [below right] {$\Delta f$};
+  
+\end{tikzpicture}
+
+" title="LaTeX" />
+</p>
+</div><div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img99efca6974d948cbca48d2388c397cd3.png" class="latex_displayed" alt="\begin{eqnarray*}
+\frac{dy}{dx} &amp;=&amp; \lim_{\Delta x \to 0} \frac{\Delta f}{\Delta x}
+\end{eqnarray*}" title="Equations" />
+</p>
+</div>
+</div>
+
+<h2 class="sectionedit6" id="derivates_of_common_functions">Derivates of Common Functions</h2>
+<div class="level2">
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcae931dd5087f0f0aafe59f4826d8093.png" class="latex_inline" alt="${\color{gray}a}$" title="Math" /> is a constant, while <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img203bc62adce2f13b64e4f5981f246b07.png" class="latex_inline" alt="${\color{red}u}$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img98ba58d6b7b51ae5b87b96137add8479.png" class="latex_inline" alt="${\color{blue}v}$" title="Math" />, <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img56765d5b1843794f52e7060003f169a9.png" class="latex_inline" alt="${\color{green}w}$" title="Math" /> are functions. The derivates are expressed as derivatives with respect to an arbitrary variable x.
+</p>
+<div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img35b094d5beef5879636921de54df403b.png" class="latex_displayed" alt="\begin{eqnarray*}
+\frac{d}{d{\bf{x}}}{\color{gray}a} &amp;=&amp; 0 &amp; \\
+\frac{d}{d{\bf{x}}}{\bf{x}} &amp;=&amp; 1 &amp; \\
+\frac{d}{d{\bf{x}}}{\color{gray}a}{\color{red}u} &amp;=&amp; {\color{gray}a}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}{\color{red}u}+{\color{blue}v}-{\color{green}w} &amp;=&amp; \frac{d{\color{red}u}}{d{\bf{x}}} + \frac{d{\color{blue}v}}{d{\bf{x}}} - \frac{d{\color{green}w}}{d{\bf{x}}}  &amp; \\
+\frac{d}{d{\bf{x}}}{\color{red}u}{\color{blue}v} &amp;=&amp; {\color{red}u}\frac{d{\color{blue}v}}{d{\bf{x}}}+{\color{blue}v}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\frac{{\color{red}u}}{{\color{blue}v}} &amp;=&amp; \frac{1}{{\color{blue}v}}\frac{d{\color{red}u}}{d{\bf{x}}}-\frac{{\color{red}u}}{{\color{blue}v}^{2}}\frac{d{\color{blue}v}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}{\color{red}u}^n &amp;=&amp; nu^{n-1}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\sqrt{{\color{red}u}} &amp;=&amp; \frac{1}{2\sqrt{{\color{red}u}}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+
+
+
+\end{eqnarray*}" title="Equations" />
+</p>
+</div><div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcc3ac47e722cdc789e4c460efb6602e2.png" class="latex_displayed" alt="\begin{eqnarray*}
+\frac{d}{d{\bf{x}}}\frac{1}{{\color{red}u}} &amp;=&amp; -\frac{1}{{\color{red}u}^2}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\frac{1}{{\color{red}u}^{n}} &amp;=&amp; -\frac{n}{{\color{red}u}^{n+1}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}[f({\color{red}u})] &amp;=&amp; \frac{d}{d{\color{red}u}}[f({\color{red}u})]\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}[\ln{{\color{red}u}}] &amp;=&amp; \frac{d}{d{\bf{x}}}[\log_{e}{{\color{red}u}}]=\frac{1}{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}[\log_{{\color{gray}a}}{\color{red}u}] &amp;=&amp; \log_{{\color{gray}a}}{e}\frac{1}{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}e^{{\color{red}u}} &amp;=&amp; e^{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}{\color{gray}a}^{{\color{red}u}} &amp;=&amp; {\color{gray}a}^{{\color{red}u}}\ln{{\color{gray}a}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}{\color{red}u}^{{\color{blue}v}} &amp;=&amp; {\color{blue}v}{\color{red}u}^{{\color{blue}v}-1}\frac{d{\color{red}u}}{d{\bf{x}}}+{\color{red}u}^{{\color{blue}v}}\ln{{\color{red}u}}\frac{d{\color{blue}v}}{d{\bf{x}}} &amp; \\
+\end{eqnarray*}" title="Equations" />
+</p>
+</div><div class="wrap_left plugin_wrap">
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img2979e17992ac40af63d353685cee9a6d.png" class="latex_displayed" alt="\begin{eqnarray*}
+\frac{d}{d{\bf{x}}}\sin{{\color{red}u}} &amp;=&amp; \cos{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\cos{{\color{red}u}} &amp;=&amp; -\sin{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\tan{{\color{red}u}} &amp;=&amp; \sec^{2}{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\cot{{\color{red}u}} &amp;=&amp; -\csc^2{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\sec{{\color{red}u}} &amp;=&amp; \sec{{\color{red}u}}\tan{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\frac{d}{d{\bf{x}}}\csc{{\color{red}u}} &amp;=&amp; -\csc{{\color{red}u}}\cot{{\color{red}u}}\frac{d{\color{red}u}}{d{\bf{x}}} &amp; \\
+\end{eqnarray*}" title="Equations" />
+</p>
+</div>
+</div>
+
+<h1 class="sectionedit13" id="partial_derivates">Partial Derivates</h1>
+<div class="level1">
+
+<p>
+When there is more than one variable in a function it is often useful to examine the variation of the function with respect to one of the variables with all the other variables considered to stay constant.
+</p>
+
+<p>
+Suppose we have a function:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcf6b5f35359fb0d8152c38c3668c211a.png" class="latex_inline" alt="
+\begin{eqnarray*}
+F(x,y) &amp;=&amp; ax^{2} + by^{2}
+\end{eqnarray*}
+" title="LaTeX" />
+</p>
+
+<p>
+then, the partial derivate with respect to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img332cc365a4987aacce0ead01b8bdcc0b.png" class="latex_inline" alt="$x$" title="Math" /> is written as:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgcb0d6603b0666864d7ec907c583de18d.png" class="latex_inline" alt="
+\begin{eqnarray*}
+\frac{\partial{F(x,y)}}{\partial{x}} &amp;=&amp; \frac{\partial}{\partial{x}}[ax^2+by^2] = 2ax
+\end{eqnarray*}
+" title="LaTeX" />
+</p>
+
+<p>
+respectively, after deriving by <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdeceeaf6940a8c7a5a02373728002b0f.png" class="latex_inline" alt="$y$" title="Math" />:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img8ca1752a76d5aa7bae0b90650ead49cd.png" class="latex_inline" alt="
+\begin{eqnarray*}
+\frac{\partial{F(x,y)}}{\partial{y}} &amp;=&amp; \frac{\partial}{\partial{y}}[ax^2+by^2] = 2by
+\end{eqnarray*}
+" title="LaTeX" />
+</p>
+
+</div>
+
+<h2 class="sectionedit14" id="practical_applications">Practical Applications</h2>
+<div class="level2">
+
+<p>
+In physics, partial derivates are used to express various equations that rely on time. For example, the velocity <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img6c4adbc36120d62b98deef2a20d5d303.png" class="latex_inline" alt="$v$" title="Math" /> is the derivate of the position with respect to time:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img46adce7c5c1ac29a62742563bae889d3.png" class="latex_inline" alt="
+\begin{eqnarray*}
+v &amp;=&amp; \frac{dp}{dt} 
+\end{eqnarray*}
+" title="LaTeX" />
+</p>
+
+<p>
+and acceleration is the derivative of velocity with respect to time (and hence the double derivate):
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgbe97e5dba45639690550d84cb0c24040.png" class="latex_inline" alt="
+\begin{eqnarray*}
+v &amp;=&amp; \frac{dp}{dt} \Rightarrow &amp;  \\
+a &amp;=&amp; \frac{d^{2}p}{dt^{2}} 
+\end{eqnarray*}
+" title="LaTeX" />
+</p>
+
+</div>
+
+<h1 class="sectionedit15" id="combination_of_functions">Combination of Functions</h1>
+<div class="level1">
+
+<p>
+When applied to combination of functions certain properties of derivates apply.
+</p>
+
+</div>
+
+<h2 class="sectionedit16" id="product_of_two_functions">Product of Two Functions</h2>
+<div class="level2">
+
+<p>
+If a function <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7997339883ac20f551e7f35efff0a2b9.png" class="latex_inline" alt="$f(x)$" title="Math" /> is a product of two functions <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imga8d4da3f136efc85b25c5d38ab0497d6.png" class="latex_inline" alt="$m(x)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb30444a33372ba2be8549462ea679730.png" class="latex_inline" alt="$n(x)$" title="Math" />, then the derivate of this product is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img269863cc8a5c1622f015ece8acf42599.png" class="latex_inline" alt="
+\begin{equation*}
+\frac{df(x)}{dx} &amp;=&amp; \frac{d(m(x)n(x))}{dx} &amp;=&amp; m\frac{dn}{dx} + n\frac{dm}{dx} 
+\end{equation*}
+" title="LaTeX" />
+</p>
+
+</div>
+
+<h2 class="sectionedit17" id="sum_of_two_functions">Sum of Two Functions</h2>
+<div class="level2">
+
+<p>
+If the function <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img7997339883ac20f551e7f35efff0a2b9.png" class="latex_inline" alt="$f(x)$" title="Math" /> is a sum of two functions <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imga8d4da3f136efc85b25c5d38ab0497d6.png" class="latex_inline" alt="$m(x)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgb30444a33372ba2be8549462ea679730.png" class="latex_inline" alt="$n(x)$" title="Math" />, then the derivate of this sum is:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img34a899b0c511f4e4a6b081ba1ead0f28.png" class="latex_inline" alt="
+\begin{equation*}
+\frac{df(x)}{dx} &amp;=&amp; \frac{d(m(x) + n(x))}{dx} &amp;=&amp; \frac{dn}{dx} + \frac{dm}{dx} 
+\end{equation*}
+" title="LaTeX" />
+</p>
+
+</div>
+
+<h2 class="sectionedit18" id="chain_rule">Chain Rule</h2>
+<div class="level2">
+
+<p>
+If the function <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img0e241c321e18ed6141f9a47d8095bebd.png" class="latex_inline" alt="$y=f(x)$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imge2453fd0535926a2402497fef7379a07.png" class="latex_inline" alt="$x=g(z)$" title="Math" />, then the derivative of <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdeceeaf6940a8c7a5a02373728002b0f.png" class="latex_inline" alt="$y$" title="Math" /> with respect to <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf93ce33e511096ed626b4719d50f17d2.png" class="latex_inline" alt="$z$" title="Math" /> can be written as a product of derivates:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img5e84544c0abc99f5e9605d8be5425c3f.png" class="latex_inline" alt="
+\begin{equation*}
+\frac{df(x)}{dz} &amp;=&amp; \frac{d(f(x))}{dx}\frac{dx}{dz} 
+\end{equation*}
+" title="LaTeX" />
+</p>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/mathematics/calculus/derivatives.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics" class="wikilink1" title="fuss:mathematics" data-wiki-id="fuss:mathematics">mathematics</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus" class="wikilink1" title="fuss:mathematics:calculus" data-wiki-id="fuss:mathematics:calculus">calculus</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives" class="wikilink1" title="fuss:mathematics:calculus:derivatives" data-wiki-id="fuss:mathematics:calculus:derivatives">derivatives</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:mathematics:calculus:derivatives" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/mathematics/calculus/derivatives"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Amathematics%3Acalculus%3Aderivatives&amp;1657305529" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

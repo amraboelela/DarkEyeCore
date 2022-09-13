@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html class="client-nojs" lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"/>
+<title>How-to: Use Electrum Bitcoin Wallet in Whonix ™</title>
+<script>document.documentElement.className="client-js";RLCONF={"wgBreakFrames":!1,"wgSeparatorTransformTable":["",""],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","January","February","March","April","May","June","July","August","September","October","November","December"],"wgRequestId":"e7e27fafac6eef3c20560a88","wgCSPNonce":!1,"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":!1,"wgNamespaceNumber":0,"wgPageName":"Electrum","wgTitle":"Electrum","wgCurRevisionId":83140,"wgRevisionId":83140,"wgArticleId":6624,"wgIsArticle":!0,"wgIsRedirect":!1,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":["Documentation"],"wgPageContentLanguage":"en","wgPageContentModel":"wikitext","wgRelevantPageName":"Electrum","wgRelevantArticleId":6624,"wgIsProbablyEditable":!0,"wgRelevantPageIsProbablyEditable":!0,"wgRestrictionEdit":[],"wgRestrictionMove":[],"wgFlaggedRevsParams":{"tags":{"accuracy":{"levels":3}}},"wgStableRevisionId":
+83140,"wgMediaViewerOnClick":!0,"wgMediaViewerEnabledByDefault":!0,"wgSiteNoticeId":"1.35"};RLSTATE={"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","ext.flaggedRevs.icons":"ready","oojs-ui-core.styles":"ready","oojs-ui.styles.indicators":"ready","mediawiki.widgets.styles":"ready","oojs-ui-core.icons":"ready","ext.cite.styles":"ready","ext.bootstrap.styles":"ready","skins.vector.styles.legacy":"ready","ext.CookieWarning.styles":"ready","ext.flaggedRevs.basic":"ready","ext.dismissableSiteNotice.styles":"ready"};RLPAGEMODULES=["ext.cite.ux-enhancements","ext.bootstrap.scripts","site","mediawiki.page.ready","mediawiki.toc","skins.vector.legacy.js","ext.gadget.ReferenceTooltips","ext.CookieWarning","ext.flaggedRevs.advanced","mmv.head","mmv.bootstrap.autostart","ext.dismissableSiteNotice"];</script>
+<script>(RLQ=window.RLQ||[]).push(function(){mw.loader.implement("user.options@1hzgi",function($,jQuery,require,module){/*@nomin*/mw.user.tokens.set({"patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});
+});});</script>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=ext.CookieWarning.styles%7Cext.bootstrap.styles%7Cext.cite.styles%7Cext.dismissableSiteNotice.styles%7Cext.flaggedRevs.basic%2Cicons%7Cmediawiki.widgets.styles%7Coojs-ui-core.icons%2Cstyles%7Coojs-ui.styles.indicators%7Cskins.vector.styles.legacy&amp;only=styles&amp;skin=vector"/>
+<script async="" src="/w/load.php?lang=en&amp;modules=startup&amp;only=scripts&amp;raw=1&amp;skin=vector"></script>
+<meta name="ResourceLoaderDynamicStyles" content=""/>
+<link rel="stylesheet" href="/w/load.php?lang=en&amp;modules=site.styles&amp;only=styles&amp;skin=vector"/>
+<meta name="generator" content="MediaWiki 1.37.2"/>
+<meta name="format-detection" content="telephone=no"/>
+<meta name="description" content="How-to: Use Electrum Bitcoin Wallet in Whonix"/>
+<meta name="twitter:site" content="@Whonix"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, minimum-scale=0.25, maximum-scale=5.0"/>
+<link rel="alternate" type="application/x-wiki" title="Edit" href="/w/index.php?title=Electrum&amp;action=edit"/>
+<link rel="edit" title="Edit" href="/w/index.php?title=Electrum&amp;action=edit"/>
+<link rel="shortcut icon" href="/w/images/a/a4/Whonix-home-favicon.ico"/>
+<link rel="search" type="application/opensearchdescription+xml" href="/w/opensearch_desc.php" title="Whonix (en)"/>
+<link rel="EditURI" type="application/rsd+xml" href="http://www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/w/api.php?action=rsd"/>
+<link rel="license" href="/wiki/WgRightsPage"/>
+<link rel="alternate" type="application/atom+xml" title="Whonix Atom feed" href="/w/index.php?title=Special:RecentChanges&amp;feed=atom"/>
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Header.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:SiteSpecific.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Sitenotice.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<!-- Begin Extension:CSS --><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Footer.css&amp;action=raw&amp;ctype=text/css&amp;css-extension=1"/><!-- End Extension:CSS -->
+<noscript><link rel="stylesheet" href="/w/index.php?title=MediaWiki:Nojs.css&action=raw&ctype=text/css"></noscript>
+<link rel="stylesheet" type="text/css" href="/libs/Font-Awesome/css/all.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title" content="How-to: Use Electrum Bitcoin Wallet in Whonix ™"/>
+<meta property="og:site_name" content="Whonix"/>
+<meta property="og:url" content="http://www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/wiki/Electrum"/>
+<meta property="og:description" content="How-to: Use Electrum Bitcoin Wallet in Whonix"/>
+<meta property="og:image" content="https://www.whonix.org/w/images/c/cb/Electrum.png"/>
+<meta property="article:modified_time" content="2022-04-19T07:59:50Z"/>
+<meta property="article:published_time" content="2022-04-19T07:59:50Z"/>
+<meta property="og:type" content="website"/>
+<script type="application/ld+json">{"@context":"http:\/\/schema.org","@type":"website","name":"How-to: Use Electrum Bitcoin Wallet in Whonix \u2122","headline":"How-to: Use Electrum Bitcoin Wallet in Whonix \u2122","mainEntityOfPage":"How-to: Use Electrum Bitcoin Wallet in Whonix \u2122","identifier":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/wiki\/Electrum","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/wiki\/Electrum","description":"How-to: Use Electrum Bitcoin Wallet in Whonix","dateModified":"2022-04-19T07:59:50Z","datePublished":"2022-04-19T07:59:50Z","image":{"@type":"ImageObject","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/images\/thumb\/f\/f1\/Logo_box.png\/200px-Logo_box.png"},"author":{"@type":"Organization","name":"Whonix","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion","logo":{"@type":"ImageObject","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/images\/thumb\/f\/f1\/Logo_box.png\/200px-Logo_box.png","caption":"Whonix"}},"publisher":{"@type":"Organization","name":"Whonix","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion","logo":{"@type":"ImageObject","url":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/images\/thumb\/f\/f1\/Logo_box.png\/200px-Logo_box.png","caption":"Whonix"}},"potentialAction":{"@type":"SearchAction","target":"http:\/\/www.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion\/w\/index.php?title=Special:Search&search={search_term}","query-input":"required name=search_term"}}</script>
+</head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject mw-editable page-Electrum rootpage-Electrum skin-vector action-view skin--responsive skin-vector-legacy"><div id="mw-page-base" class="noprint"></div>
+<div id="mw-head-base" class="noprint"></div>
+<div id="content" class="mw-body" role="main">
+	<a id="top"></a>
+	<div id="siteNotice"><div id="mw-dismissablenotice-anonplace"></div><script>(function(){var node=document.getElementById("mw-dismissablenotice-anonplace");if(node){node.outerHTML="\u003Cdiv class=\"mw-dismissable-notice\"\u003E\u003Cdiv class=\"mw-dismissable-notice-close\"\u003E[\u003Ca tabindex=\"0\" role=\"button\"\u003Edismiss\u003C/a\u003E]\u003C/div\u003E\u003Cdiv class=\"mw-dismissable-notice-body\"\u003E\u003Cdiv id=\"localNotice\" lang=\"en\" dir=\"ltr\"\u003E\u003Cp\u003E\u003C!--\n2022-02-21 version 2 : 10 year celebration\n--\u003E\n\u003Ca class=\"active-banner active-banner-02\" href=\"/wiki/Donate\"  data-dismiss-id=\"ab02\"\u003E\n\u003Cimg src=\"/w/images/0/0b/Whonix-10-year-celebration-banner.jpg\"\u003E\n\u003C/a\u003E\n\u003C!--first version --\u003E\n\u003C!--\n\u003Ca class=\"active-banner active-banner-01\" href=\"/wiki/Donate\" data-dismiss-id=\"ab01\"\u003E\n\u003Cimg class=\"icon\" src=\"/w/images/0/0b/Grow-symbol.png\"\u003E\n\u003Cspan\u003EWant to help us grow?\u003C/span\u003E\n\u003C/a\u003E\n--\u003E\n\u003C/p\u003E\u003C/div\u003E\u003C/div\u003E\u003C/div\u003E";}}());</script></div>
+	<div class="mw-indicators">
+	</div>
+	<h1 id="firstHeading" class="firstHeading" >How-to: Use Electrum Bitcoin Wallet in Whonix ™</h1>
+	<div id="bodyContent" class="vector-body">
+		<div id="siteSub" class="noprint">From Whonix</div>
+		<div id="contentSub"></div>
+		<div id="contentSub2"></div>
+		
+		<div id="jump-to-nav"></div>
+		<a class="mw-jump-link" href="#mw-head">Jump to navigation</a>
+		<a class="mw-jump-link" href="#searchInput">Jump to search</a>
+		<div id="mw-content-text" class="mw-body-content mw-content-ltr" lang="en" dir="ltr"><div class="mw-parser-output"><p>  <div id="custom-header">
+ <div class="style-wrapper">
+  <a href="/" class="home"></a>
+
+  <div class="nav-menu">
+   <div class="menu-title">Menu</div>
+
+   <div class="submenu">
+    <a href="/wiki/Download">Download</a>
+    <a href="/wiki/Documentation">Docs</a>
+    <a href="https://forums.whonix.org/c/news">News</a>
+    <a href="/wiki/Contribute">Help us</a>
+   </div>
+  </div>
+
+  <div class="menu-right">
+   <a class="search" href="/w/index.php?search="></a>
+
+   <div class="super-menu">
+    <div class="menu-title"></div>
+
+    <div class="submenus">
+     <div class="col1">
+      <span class="headline tools">Tools</span>
+      <a class="upload user-logged-in" href="/wiki/Special:Upload">Upload file</a>
+      <a class="special" href="/wiki/Special:SpecialPages">Special pages</a>
+      <a class="recentchanges user-logged-in" href="/wiki/Special:RecentChanges">Recent changes</a>
+      <a class="print" href="javascript:print();">Print Version</a>
+
+      <span class="headline pagemeta">Page meta</span>
+      <a class="whatlinkshere user-logged-in" href="/wiki/Special:WhatLinksHere/Electrum">What links here</a>
+      <a class="relatedchanges" href="/wiki/Special:RecentChangesLinked/Electrum">Related changes</a>
+      <a class="info" href="https://www.whonix.org/w/index.php?title=Electrum&action=info">Page information</a>
+     </div>
+
+     <div class="col2">
+      <span class="headline page">Page</span>
+      <a class="view" href="/wiki/Electrum">Read</a>
+      <a class="edit" href="/w/index.php?title=Electrum&action=edit&oldid=83140">Edit</a>
+      <a class="history user-logged-in" href="/w/index.php?title=Electrum&action=history">History</a>
+      <a class="move user-logged-in" href="/wiki/Special:MovePage/Electrum">Move</a>
+      <a class="protect" href="/w/index.php?title=Electrum&action=protect">Protection</a>
+      <a class="unwatch user-logged-in" href="/w/index.php?title=Electrum&action=unwatch">Unwatch</a>
+      <a class="watch user-logged-in" href="/w/index.php?title=Electrum&action=watch">Watch</a>
+      <a class="delete user-logged-in" href="/w/index.php?title=Electrum&action=delete">Delete</a>
+      <a class="purge" href="/w/index.php?title=Electrum&action=purge">Purge</a>
+     </div>
+
+     <div class="col3">
+      <span class="headline user">User</span>
+      <a class="preferences user-logged-in" href="/wiki/Special:Preferences">Preferences</a>
+      <a class="watchlist user-logged-in" href="/wiki/Special:Watchlist">Watchlist</a>
+      <a class="contributions user-logged-in" href="/wiki/Special:Contributions">Contributions</a>
+      <a class="logout user-logged-in" href="/w/index.php?title=Special:UserLogout&returnto=Electrum">Logout</a>
+      <a class="createaccount user-logged-out" href="/w/index.php?title=Special:CreateAccount&returnto=Electrum">Create account</a>
+      <a class="login user-logged-out" href="/w/index.php?title=Special:UserLogin&returnto=Electrum">Login</a>
+     </div>
+    </div>
+   </div>
+
+   <a class="donate" href="/wiki/Donate">Donate</a>
+  </div>
+ </div>
+   <div id="top-bar-search-modal" class="modal fade" tabindex="-1" role="dialog">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title"></h5><span class="close" data-dismiss="modal" aria-label="Close">&times;</span>
+       </div>
+       <div class="modal-body">
+       </div>
+     </div>
+   </div>
+ </div>
+</div><div id="fly-in-notification-panel">
+ <div class="inner-wrapper">
+  <i class="close-panel fas fa-times"></i>
+ </div>
+</div>
+</p>
+<div class="thumb tright"><div class="thumbinner" style="width:130px;"><a href="/wiki/File:Electrum-appimage.png" class="image"><img alt="" src="/w/images/6/63/Electrum-appimage.png" decoding="async" width="128" height="116" class="thumbimage" data-file-width="128" data-file-height="116" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:Electrum-appimage.png" class="internal" title="Enlarge"></a></div>Electrum Logo</div></div></div>
+<div class="thumb tright"><div class="thumbinner" style="width:130px;"><a href="/wiki/File:BC_Logo_.png" class="image"><img alt="" src="/w/images/thumb/2/29/BC_Logo_.png/128px-BC_Logo_.png" decoding="async" width="128" height="128" class="thumbimage" srcset="/w/images/thumb/2/29/BC_Logo_.png/192px-BC_Logo_.png 1.5x, /w/images/thumb/2/29/BC_Logo_.png/256px-BC_Logo_.png 2x" data-file-width="1000" data-file-height="1000" /></a>  <div class="thumbcaption"><div class="magnify"><a href="/wiki/File:BC_Logo_.png" class="internal" title="Enlarge"></a></div>Bitcoin Logo</div></div></div>
+<div id="toc" class="toc" role="navigation" aria-labelledby="mw-toc-heading"><input type="checkbox" role="button" id="toctogglecheckbox" class="toctogglecheckbox" style="display:none" /><div class="toctitle" lang="en" dir="ltr"><h2 id="mw-toc-heading">Contents</h2><span class="toctogglespan"><label class="toctogglelabel" for="toctogglecheckbox"></label></span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1 tocsection-2"><a href="#Warnings"><span class="tocnumber">2</span> <span class="toctext">Warnings</span></a></li>
+<li class="toclevel-1 tocsection-3"><a href="#Install_Electrum"><span class="tocnumber">3</span> <span class="toctext">Install Electrum</span></a></li>
+<li class="toclevel-1 tocsection-4"><a href="#Version_Numbers"><span class="tocnumber">4</span> <span class="toctext">Version Numbers</span></a></li>
+<li class="toclevel-1 tocsection-5"><a href="#Start_Electrum"><span class="tocnumber">5</span> <span class="toctext">Start Electrum</span></a></li>
+<li class="toclevel-1 tocsection-6"><a href="#Electrum:_First_Run"><span class="tocnumber">6</span> <span class="toctext">Electrum: First Run</span></a></li>
+<li class="toclevel-1 tocsection-7"><a href="#Uninstallation"><span class="tocnumber">7</span> <span class="toctext">Uninstallation</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#See_Also"><span class="tocnumber">8</span> <span class="toctext">See Also</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Donations"><span class="tocnumber">9</span> <span class="toctext">Donations</span></a></li>
+<li class="toclevel-1 tocsection-10"><a href="#Footnotes"><span class="tocnumber">10</span> <span class="toctext">Footnotes</span></a></li>
+</ul>
+</div>
+
+<h1><span class="mw-headline" id="Introduction">Introduction</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=1" title="Edit section: Introduction">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p><a target="_blank" rel="noreferrer noopener" class="external text" href="https://electrum.org/">Electrum</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://electrum.org/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> is a popular Bitcoin wallet. According to the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://electrum.readthedocs.io/en/latest/faq.html#how-does-electrum-work">Electrum FAQ</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://electrum.readthedocs.io/en/latest/faq.html#how-does-electrum-work" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>:
+</p>
+<blockquote><p><b>How does Electrum work?</b>
+Electrum’s focus is speed, with low resource usage and simplifying Bitcoin. Startup times are instant because it operates in conjunction with high-performance servers that handle the most complicated parts of the Bitcoin system.</p></blockquote>
+<p>Electrum does not need to download/verify the blockchain and users store their private keys locally.
+</p><p>This is an advantage over some other Bitcoin wallets which are affected by this: if the third-party server were ever compromised, all of the users' bitcoins could be stolen. There is also the possibility that the third-party could lose a user's private keys or walk away with them.
+</p>
+<h1><span class="mw-headline" id="Warnings">Warnings</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=2" title="Edit section: Warnings">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="info-box &#123;&#123;&#123;addToClass&#125;&#125;&#125;">
+<p><a href="/wiki/File:Ambox_warning_pn.svg.png" class="image"><img alt="Ambox warning pn.svg.png" src="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/60px-Ambox_warning_pn.svg.png 1.5x, /w/images/thumb/f/f7/Ambox_warning_pn.svg.png/80px-Ambox_warning_pn.svg.png 2x" data-file-width="2000" data-file-height="1725" /></a> <b>Warning:</b> This documentation is not comprehensive. It should not be viewed as a complete guide to cryptocurrency privacy and security, and does not cover all possible threats that can cause users to lose their cryptocurrency.
+</p>
+</div>
+<p>See also dedicated wiki pages:
+</p>
+<ul><li><a href="/wiki/Money" title="Money">Anonymous Money</a></li>
+<li><a href="/wiki/Bitcoin" title="Bitcoin">Bitcoin</a></li></ul>
+<p>Electrum is configured by electrum upstream default to use public third party servers. If users are not using their own self-hosted electrum server (<a href="/wiki/ElectrumX" title="ElectrumX">ElectrumX</a>), consider the following quote from the electrum upstream documentation <a target="_blank" rel="noreferrer noopener" class="external text" href="https://electrum.readthedocs.io/en/latest/faq.html#does-electrum-trust-servers">Does Electrum trust servers?</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://electrum.readthedocs.io/en/latest/faq.html#does-electrum-trust-servers" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>:
+</p>
+<blockquote><p>[...]
+</p><p>One of the servers, arbitrarily, is selected as the “main” server.
+</p>
+<ul><li>The client subscribes to its own addresses (nit: sha256 hashes of scriptPubKeys) so that it would be notified of new transactions touching them. It also synchronizes the existing history of its addresses. This means the client sacrifices some privacy to the server, as the server can now reasonably guess that all these addresses belong to the same entity.</li>
+<li>As above, confirmed transactions are verified via SPV.</li>
+<li>The server is trusted about unconfirmed transactions.</li>
+<li>The server can lie by omission. That is, it can “forget” to mention (both confirmed and unconfirmed) transactions that are relevant to the client.</li>
+<li>The main server is also used for fee estimates, and is trusted with those (low-high sanity limits are applied in the client)</li>
+<li>The main server is also used to broadcast the transactions the client makes.</li></ul><p>
+[...]</p></blockquote>
+<p>There can be no blanket recommendation for all users which Bitcoin wallet should be used. It depends on:
+</p>
+<ul><li>Technical skill.</li>
+<li>Personal risk assignment.</li>
+<li>Financial value in Bitcoin.</li>
+<li>Time.</li>
+<li>And probably other factors as well.</li></ul>
+<p>While Electrum has better usability (is easier to use), above warnings apply. However, for best security, the official Bitcoin client (bitcoin-qt) should be seriously considered for balances of Bitcoin representing serious financial value. For reasons, see <a href="/wiki/Bitcoin_Core" title="Bitcoin Core">Bitcoin Core</a>.
+</p>
+<h1><span class="mw-headline" id="Install_Electrum">Install Electrum</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=3" title="Edit section: Install Electrum">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p><sup id="cite_ref-1" class="reference"><a href="#cite_note-1">&#91;1&#93;</a></sup>
+</p><p>Installed by default in Whonix-Workstation ™.
+</p>
+<h1><span class="mw-headline" id="Version_Numbers">Version Numbers</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=4" title="Edit section: Version Numbers">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="info-box &#123;&#123;&#123;addToClass&#125;&#125;&#125;">
+<p><a href="/wiki/File:Ambox_notice.png" class="image"><img alt="Info" src="/w/images/thumb/c/c8/Ambox_notice.png/40px-Ambox_notice.png" decoding="async" width="40" height="40" srcset="/w/images/thumb/c/c8/Ambox_notice.png/60px-Ambox_notice.png 1.5x, /w/images/thumb/c/c8/Ambox_notice.png/80px-Ambox_notice.png 2x" data-file-width="2000" data-file-height="2000" /></a> <u>Prerequisite knowledge</u>: refer to the <a href="/wiki/Operating_System_Software_and_Updates#Frozen_Packages" class="mw-redirect" title="Operating System Software and Updates">Frozen Packages</a> and <a href="/wiki/Operating_System_Software_and_Updates#Application_Specific_Update_Indicators" class="mw-redirect" title="Operating System Software and Updates">Application Specific Update Indicators</a> entries in the <a href="/wiki/Operating_System_Software_and_Updates" class="mw-redirect" title="Operating System Software and Updates">Operating System Software and Updates</a> chapter.
+</p>
+</div>
+<p>Should the user wish to use a newer version of Electrum than available in the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://packages.debian.org/electrum">packages.debian.org electrum package</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://packages.debian.org/electrum" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> since <a href="/wiki/About#Based_on_Debian" title="About">Whonix ™ is based on Debian</a>, the user can optionally install Electrum using the usual instructions from the Electrum website. Recommendations from the <a href="/wiki/Install_Software" title="Install Software">safely installing software</a> wiki page such as <a href="/wiki/Verifying_Software_Signatures" class="mw-redirect" title="Verifying Software Signatures">Verifying Software Signatures</a> applies. See also <a href="/wiki/Install_Software#Install_Newer_Software_Versions" title="Install Software">Install Newer Software Versions</a>.
+</p><p>It is possible to <a href="#Uninstallation">uninstall the electrum package</a> but and uninstallation is optional if Electrum is manually installed in home folder.
+</p><p>See also <a href="/wiki/Electrum/Manual_Installation" title="Electrum/Manual Installation">Electrum, Manual Installation</a>.
+</p>
+<h1><span class="mw-headline" id="Start_Electrum">Start Electrum</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=5" title="Edit section: Start Electrum">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="info-box &#123;&#123;&#123;addToClass&#125;&#125;&#125;">
+<p><a href="/wiki/File:Ambox_notice.png" class="image"><img alt="Info" src="/w/images/thumb/c/c8/Ambox_notice.png/40px-Ambox_notice.png" decoding="async" width="40" height="40" srcset="/w/images/thumb/c/c8/Ambox_notice.png/60px-Ambox_notice.png 1.5x, /w/images/thumb/c/c8/Ambox_notice.png/80px-Ambox_notice.png 2x" data-file-width="2000" data-file-height="2000" /></a> Users should create a wallet with a <a href="/wiki/Passwords#Generating_Unbreakable_Passwords" class="mw-redirect" title="Passwords">strong password</a>!
+</p>
+</div>
+<p>Please refer to the <a target="_blank" rel="noreferrer noopener" class="external text" href="https://electrum.readthedocs.io/en/latest/">official Electrum documentation</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://electrum.readthedocs.io/en/latest/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> for comprehensive instructions, as well as more advanced topics like <a target="_blank" rel="noreferrer noopener" class="external text" href="https://electrum.readthedocs.io/en/latest/coldstorage.html">Cold Storage</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://electrum.readthedocs.io/en/latest/coldstorage.html" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> of private keys.
+</p><p>To start Electrum from start menu.
+</p><p><code>Start Menu</code> &#8594; <code>Internet</code> &#8594; <code>Electrum</code>
+</p><p>To start Electrum from command line, run.
+</p><p><div class="code-select ">electrum</div>
+</p><p><a href="/wiki/Qubes-Whonix" class="mw-redirect" title="Qubes-Whonix">Qubes-Whonix ™</a> users are recommended to configure a <a target="_blank" rel="noreferrer noopener" class="external text" href="https://qubes-os.org//doc/split-bitcoin/">Split Bitcoin Wallet</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://qubes-os.org//doc/split-bitcoin/" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> to better protect their private keys. To protect against identity correlation through Tor circuit sharing, follow the instructions below (see <a href="/wiki/Stream_Isolation" title="Stream Isolation">Stream Isolation</a> for more information).
+</p>
+<h1><span class="mw-headline" id="Electrum:_First_Run">Electrum: First Run</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=6" title="Edit section: Electrum: First Run">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="info-box &#123;&#123;&#123;addToClass&#125;&#125;&#125;">
+<p><a href="/wiki/File:Ambox_notice.png" class="image"><img alt="Info" src="/w/images/thumb/c/c8/Ambox_notice.png/40px-Ambox_notice.png" decoding="async" width="40" height="40" srcset="/w/images/thumb/c/c8/Ambox_notice.png/60px-Ambox_notice.png 1.5x, /w/images/thumb/c/c8/Ambox_notice.png/80px-Ambox_notice.png 2x" data-file-width="2000" data-file-height="2000" /></a> These steps enable <a href="/wiki/Stream_Isolation" title="Stream Isolation">Stream Isolation</a> for the Electrum application.
+</p>
+</div>
+<div class="info-box &#123;&#123;&#123;addToClass&#125;&#125;&#125;">
+<p><a href="/wiki/File:Ambox_warning_pn.svg.png" class="image"><img alt="warning" src="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/40px-Ambox_warning_pn.svg.png" decoding="async" width="40" height="35" srcset="/w/images/thumb/f/f7/Ambox_warning_pn.svg.png/60px-Ambox_warning_pn.svg.png 1.5x, /w/images/thumb/f/f7/Ambox_warning_pn.svg.png/80px-Ambox_warning_pn.svg.png 2x" data-file-width="2000" data-file-height="1725" /></a> <b>Warning:</b>
+</p><p>This is a notice for users of the <a href="/wiki/ElectrumX" title="ElectrumX">ElectrumX</a> server. Do <u>not</u> set up stream isolation if electrum should be used in combination with a self-hosted <a href="/wiki/ElectrumX" title="ElectrumX">ElectrumX</a> server running inside the same virtual machine since that would circumvent the <a href="/wiki/ElectrumX#Isolating_Proxy" title="ElectrumX">isolating proxy</a> setup.
+</p>
+</div>
+<div class="info-box">
+<p><b>1.</b> Configure a manual server connection.
+</p><p>When Electrum is started for the first time, users are met with the prompt: <code>"How do you want to connect to a server?"</code>. 
+</p><p>Choose <code>Select server manually</code> and press <code>Next</code>.
+</p><p><b>Figure:</b> <i>Server Setting</i>
+</p><p><a href="/wiki/File:Electrum_select_server_manually.png" class="image"><img alt="Electrum select server manually.png" src="/w/images/8/83/Electrum_select_server_manually.png" decoding="async" width="610" height="428" data-file-width="610" data-file-height="428" /></a>
+</p><p><b>2.</b> Change the proxy settings. This is useful for <a href="/wiki/Stream_Isolation" title="Stream Isolation">Stream Isolation</a>.
+</p><p>The necessary settings are:
+</p>
+<ul><li>Proxy: <code>SOCKS5</code></li>
+<li>Host: <code>10.152.152.10</code></li>
+<li>Port: <code>9111</code></li></ul>
+<p>Press <code>Next</code> and the application should be fully functional.
+</p><p><b>Figure:</b> <i>SOCKS5 Proxy Configuration</i>
+</p><p><a href="/wiki/File:Electrum_use_proxy_socks5_.png" class="image"><img alt="Electrum use proxy socks5 .png" src="/w/images/0/0a/Electrum_use_proxy_socks5_.png" decoding="async" width="610" height="428" data-file-width="610" data-file-height="428" /></a>
+</p><p><b>Note:</b> If Electrum is already set up but stream isolation was not enabled, then navigate to <code>Tools</code> &#8594; <code>Network</code> in Electrum to bring up the server and proxy settings.
+</p>
+</div>
+<h1><span class="mw-headline" id="Uninstallation">Uninstallation</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=7" title="Edit section: Uninstallation">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p>To avoid any issues with <a href="/wiki/Debian_Packages" title="Debian Packages">Whonix ™ meta package</a> removal, first install the <code>dummy-dependency</code> package.
+</p>
+<div class="info-box">
+<p>Install package(s) <code>dummy-dependency</code>.
+</p><p><b>A.</b> <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.kicksecure.com/wiki/Operating_System_Software_and_Updates">Update the package lists and upgrade the system</a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.kicksecure.com/wiki/Operating_System_Software_and_Updates" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup>.
+</p><p><div class="code-select ">sudo apt update &amp;&amp; sudo apt full-upgrade</div>
+</p><p><b>B.</b> Install the <code>dummy-dependency</code> package(s).
+</p><p>Using <code>apt</code> command line <a target="_blank" rel="noreferrer noopener" class="external text" href="https://www.kicksecure.com/wiki/Install_Software#--no-install-recommends">parameter <code>--no-install-recommends</code></a><sup class="ext-link-to-archive" title="Link to archived version"><a rel="noreferrer noopener" href="https://web.archive.org/web/https://www.kicksecure.com/wiki/Install_Software#--no-install-recommends" target="_blank"><img src="/w/images/7/73/Internet_Archive_logo.png" /></a></sup> is in most cases optional.
+</p><p><div class="code-select ">sudo apt install --no-install-recommends dummy-dependency</div>
+</p><p><b>C.</b> Done.
+</p><p>The procedure of installing package(s) <code>dummy-dependency</code> is complete.
+</p>
+</div>
+<p>Remove the <code>electrum</code> package.
+</p><p><div class="code-select ">sudo apt purge electrum</div>
+</p><p>Done, removal of the <code>electrum</code> package is complete.
+</p>
+<h1><span class="mw-headline" id="See_Also">See Also</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=8" title="Edit section: See Also">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<ul><li><a href="/wiki/Money" title="Money">Anonymous Money</a></li>
+<li><a href="/wiki/Bitcoin" title="Bitcoin">Bitcoin</a></li>
+<li><a href="/wiki/ElectrumX" title="ElectrumX">How-to: Use ElectrumX Personal Server in Whonix ™</a></li></ul>
+<h1><span class="mw-headline" id="Donations">Donations</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=9" title="Edit section: Donations">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<p>After installing Electrum, please consider making a <a href="/wiki/Donate" title="Donate">donation</a> to Whonix ™ to keep it running for many years to come.
+</p><p><a href="bitcoin:3LspZMk4p7ECc4Ugd6DKwSTgqyxn41KG3B" target="_blank" rel=" noreferrer noopener"><img alt="Bitcoin accepted here" src="/w/images/thumb/2/29/BC_Logo_.png/25px-BC_Logo_.png" decoding="async" width="25" height="25" srcset="/w/images/thumb/2/29/BC_Logo_.png/38px-BC_Logo_.png 1.5x, /w/images/thumb/2/29/BC_Logo_.png/50px-BC_Logo_.png 2x" data-file-width="1000" data-file-height="1000" /></a> Donate Bitcoin (BTC) to Whonix ™.
+</p><p><div class="code-select ">3LspZMk4p7ECc4Ugd6DKwSTgqyxn41KG3B</div>
+</p><p><a href="/wiki/File:Whonix_donate_bitcoin.png" class="image"><img alt="Whonix donate bitcoin.png" src="/w/images/thumb/3/30/Whonix_donate_bitcoin.png/100px-Whonix_donate_bitcoin.png" decoding="async" width="100" height="100" srcset="/w/images/thumb/3/30/Whonix_donate_bitcoin.png/150px-Whonix_donate_bitcoin.png 1.5x, /w/images/thumb/3/30/Whonix_donate_bitcoin.png/200px-Whonix_donate_bitcoin.png 2x" data-file-width="300" data-file-height="300" /></a>
+</p>
+<h1><span class="mw-headline" id="Footnotes">Footnotes</span><span class="mw-editsection"><span class="mw-editsection-bracket">[</span><a href="/w/index.php?title=Electrum&amp;action=edit&amp;section=10" title="Edit section: Footnotes">edit</a><span class="mw-editsection-bracket">]</span></span></h1>
+<div class="reflist" style="list-style-type: decimal;">
+<div class="mw-references-wrap"><ol class="references">
+<li id="cite_note-1"><span class="mw-cite-backlink"><a href="#cite_ref-1">↑</a></span> <span class="reference-text">
+<a href="/wiki/Dev/electrum" title="Dev/electrum">Electrum Bitcoin Wallet in Whonix ™ Development Notes</a></span>
+</li>
+</ol></div></div>
+<p><br />
+</p>
+<div id="custom-footer">
+<p>
+
+
+
+<div class="content-wrapper">
+ <div class="main-claim divider-border">
+  <span class="headline">
+   Whonix ™
+  </span>
+
+  <span class="claim">
+   The most watertight privacy operating system in the world.
+  </span>
+ </div>
+
+ <div class="donate divider-border">
+  <a href="/wiki/Donate/Bitcoin" title="Donate Bitcoin to help us grow" data-address="3LspZMk4p7ECc4Ugd6DKwSTgqyxn41KG3B">
+   <img src="/w/images/3/30/Whonix_donate_bitcoin.png">
+  </a>
+
+  <a href="/wiki/Donate/Monero" title="Donate Monero to help us grow" data-address="84ZZSsqyh5niztCgxmWAejDLu9eDerWo4Wsx8woEhDGpdKP3BWPtqenNjKuv8vojrB968U3hqYTKgLGt2zEcGopX1qaEPew">
+   <img src="/w/images/9/92/Whonix_donate_monero.png">
+  </a>
+
+  <a href="/wiki/Donate/Ethereum" title="Donate Ethereum or Token to help us grow" data-address="0xB95B577Fb9ab085BBaC7808b8ECee905d3009943">
+   <img src="/w/images/0/09/Whonix_donate_ethereum.png">
+  </a>
+
+  <a class="donate-button" href="/wiki/Donate" title="Donate to help us grow">
+   <div>
+    <span class="text">Donate</span>
+    <span class="image"><img src="/w/images/4/40/Donate-banner.png" /></span>
+   </div>
+  </a>
+ </div>
+
+ <div class="social divider-border">
+  <div class="text">Follow us on social media</div>
+  <div class="icons">
+   <a class="expand-button-50" href="https://t.me/s/Whonix" target="_blank" title="Whonix on Telegram">
+    <img src="/w/images/thumb/9/9a/1024px-Telegram_2019_Logo.svg.png/50px-1024px-Telegram_2019_Logo.svg.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://twitter.com/Whonix" target="_blank" title="Whonix on Twitter">
+    <img src="/w/images/thumb/6/67/Twitter-logo.png/50px-Twitter-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://www.facebook.com/Whonix" target="_blank" title="Whonix on Facebook">
+    <img src="/w/images/thumb/9/9d/Facebook-logo.png/50px-Facebook-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://www.reddit.com/r/Whonix" target="_blank" title="Whonix on Reddit">
+    <img src="/w/images/thumb/1/14/Reddit-logo.png/50px-Reddit-logo.png" />
+   </a>
+
+   <a class="expand-button-50" href="http://forums.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/c/news.rss" target="_blank" title="Whonix as RSS">
+    <img src="/w/images/thumb/0/09/Rss.png/50px-Rss.png" />
+   </a>
+
+   <a class="expand-button-50" href="https://mastodon.technology/@Whonix" target="_blank" title="Whonix on Mastodon">
+    <img src="/w/images/thumb/b/b7/Mastodon-logo.png/50px-Mastodon-logo.png" />
+   </a>
+  </div>
+ </div>
+
+ <div class="support divider-border">
+  <div class="text">FREE &nbsp;·&nbsp; PLUS &nbsp;·&nbsp; PREMIUM Support</div>
+
+  <div class="logos">
+   <a class="expand-button-50" href="/wiki/Support" target="_blank" title="Whonix FREE Support">
+    <img src="/w/images/thumb/a/a6/Support-free.png/50px-Support-free.png" />
+   </a>
+
+   <a class="expand-button-50" href="/wiki/Plus_Support" target="_blank" title="Whonix PLUS Support">
+    <img src="/w/images/thumb/c/c0/Support-plus.png/50px-Support-plus.png" />
+   </a>
+
+   <a class="expand-button-50" href="/wiki/Premium_Support" target="_blank" title="Whonix PREMIUM Support">
+    <img src="/w/images/thumb/2/22/Support-premium.png/50px-Support-remium.png" />
+   </a>
+  </div>
+ </div>
+
+ <div class="opensource">
+  <img src="/w/images/thumb/a/a3/Heckert_gnu.big.png/50px-Heckert_gnu.big.png" alt="GNU logo" />
+  <img src="/w/images/thumb/0/09/Osi_standard_logo_0.png/50px-Osi_standard_logo_0.png" alt="Open Source Initiative logo" />
+  <span class="text">
+   At Whonix we believe in <b>freedom and trust</b>. That's why we fully support Open Source and Freedom Software.
+   <a href="/wiki/Reasons_for_Freedom_Software" title="Reasons for Freedom Software">Learn more</a>.
+  </span>
+ </div>
+</div>
+
+<div class="content-wrapper-2">
+ <div class="endorsements">
+  <a class="evohost" href="https://evolution-host.com/ddos-protected-vps.php" target="_blank" title="Evolution Host provides system administration advice for the whonix.org website.">
+   <img src="/w/images/e/e4/Evolution-host.png" />
+   Whonix ™ is supported by <b>Evolution Host</b> DDoS Protected VPS.
+  </a>
+
+  <div class="fosshost">
+   <a href="https://fosshost.org" target="_blank" title="Fosshost sponsors a Kicksecure stage server.">
+    <img src="/w/images/thumb/b/be/Fosshost.org_Cloud_Light.png/200px-Fosshost.org_Cloud_Light.png" />
+   </a>
+  </div>
+
+  <div class="whonix">
+   <img src="/w/images/thumb/f/f1/Logo_box.png/80px-Logo_box.png" />
+   <div>
+    Whonix is the most watertight privacy operating system in the world 
+   </div>
+  </div>
+ </div>
+
+ <div class="legal">
+  <span class="disclaimer">
+   The personal opinions of
+   <a href="http://forums.dds6qkxpwdeubwucdiaord2xgbbeyds25rbsgr73tbfpqpt4a6vjwsyd.onion/about" title="About (Forum)">moderators</a>
+   or
+   <a href="/wiki/Contributors" title="Contributors">contributors</a>
+   to the
+   <a href="/wiki/Whonix" title="Whonix">Whonix ™</a>
+   project do not represent the project as a whole.
+  </span>
+
+  <span class="disclaimer">
+   By using this website, you acknowledge you have read, understood, and agree to be bound by these these agreements:
+   <a href="/wiki/Terms_of_Service" title="Terms of Service">Terms of Service</a>
+   ,
+   <a href="/wiki/Privacy_Policy" title="Privacy Policy">Privacy Policy</a>
+   ,
+   <a href="/wiki/Cookie_Policy" title="Cookie Policy">Cookie Policy</a>
+   ,
+   <a href="/wiki/E-Sign_Consent" title="E-Sign Consent">E-Sign Consent</a>
+   ,
+   <a href="/wiki/DMCA" title="DMCA">DMCA</a>
+   ,
+   <a href="/wiki/Imprint" title="Imprint">Imprint</a>
+  </span>
+
+  <span class="rights">
+   Whonix
+   <a href="/wiki/Trademark_Policy" title="Trademark Policy">™</a>
+   <a href="/wiki/Whonix:Copyrights" title="Copyrights">©</a>
+   ENCRYPTED SUPPORT LP,
+   2022
+  </span>
+ </div>
+</div>
+
+
+
+<div id="footer-show-qr-codes-modal" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="qr-area">
+        <img src="/" />
+
+        <span>
+         <strong>Whonix is free from corporate interest by being user funded. Thank you so much!</strong>
+         <i class="fa fa-heart"></i>
+         <br/><br/>
+         Scan the QR code or use the wallet address below.
+        </span>
+       </div>
+
+       &nbsp;
+
+       <div class="code-select"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</p>
+<div class="project-random-news-ticker">
+<p>Want to help spread the word? Tell your friends! Or share <a href="https://forums.whonix.org/c/news" target="_blank" rel="noreferrer">Whonix news</a>
+</p>
+</div>
+</div></div>
+<div class="printfooter">Retrieved from "<a dir="ltr" href="https://www.whonix.org/w/index.php?title=Electrum&amp;oldid=83140">https://www.whonix.org/w/index.php?title=Electrum&amp;oldid=83140</a>"</div></div>
+		<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"><div id="mw-hidden-catlinks" class="mw-hidden-catlinks mw-hidden-cats-hidden">Hidden category: <ul><li><a href="/wiki/Category:Documentation" title="Category:Documentation">Documentation</a></li></ul></div></div>
+	</div>
+</div>
+<div id='mw-data-after-content'>
+	<div class="mw-cookiewarning-container"><div class="mw-cookiewarning-text"><span>By using our website, you acknowledge that you have read, understood and agreed to our Privacy Policy, Cookie Policy, Terms of Service, and E-Sign Consent.</span></div><form method="POST"><div class='oo-ui-layout oo-ui-horizontalLayout'><span aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-flaggedElement-progressive oo-ui-buttonWidget'><a role='button' tabindex='0' aria-disabled='false' href='/wiki/Terms_of_Service' rel='nofollow' class='oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-iconElement-noIcon oo-ui-image-progressive'></span><span class='oo-ui-labelElement-label'>More information</span><span class='oo-ui-indicatorElement-indicator oo-ui-indicatorElement-noIndicator oo-ui-image-progressive'></span></a></span><span aria-disabled='false' class='oo-ui-widget oo-ui-widget-enabled oo-ui-inputWidget oo-ui-buttonElement oo-ui-buttonElement-framed oo-ui-labelElement oo-ui-flaggedElement-primary oo-ui-flaggedElement-progressive oo-ui-buttonInputWidget'><button type='submit' tabindex='0' aria-disabled='false' name='disablecookiewarning' value='OK' class='oo-ui-inputWidget-input oo-ui-buttonElement-button'><span class='oo-ui-iconElement-icon oo-ui-iconElement-noIcon oo-ui-image-invert'></span><span class='oo-ui-labelElement-label'>OK</span><span class='oo-ui-indicatorElement-indicator oo-ui-indicatorElement-noIndicator oo-ui-image-invert'></span></button></span></div></form></div>
+</div>
+
+<div id="mw-navigation">
+	<h2>Navigation menu</h2>
+	<div id="mw-head">
+		<nav id="p-personal" class="mw-portlet mw-portlet-personal vector-user-menu-legacy vector-menu" aria-labelledby="p-personal-label" role="navigation" 
+	 >
+	<h3 id="p-personal-label" class="vector-menu-heading"> <span>Personal tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="pt-anonuserpage" class="mw-list-item">Not logged in</li><li id="pt-anontalk" class="mw-list-item"><a href="/wiki/Special:MyTalk" title="Discussion about edits from this IP address [n]" accesskey="n">Talk</a></li><li id="pt-anoncontribs" class="mw-list-item"><a href="/wiki/Special:MyContributions" title="A list of edits made from this IP address [y]" accesskey="y">Contributions</a></li><li id="pt-createaccount" class="mw-list-item"><a href="/w/index.php?title=Special:CreateAccount&amp;returnto=Electrum" title="You are encouraged to create an account and log in; however, it is not mandatory">Create account</a></li><li id="pt-login" class="mw-list-item"><a href="/w/index.php?title=Special:UserLogin&amp;returnto=Electrum" title="You are encouraged to log in; however, it is not mandatory [o]" accesskey="o">Log in</a></li></ul>
+		
+	</div>
+</nav>
+
+		<div id="left-navigation">
+			<nav id="p-namespaces" class="mw-portlet mw-portlet-namespaces vector-menu vector-menu-tabs" aria-labelledby="p-namespaces-label" role="navigation" 
+	 >
+	<h3 id="p-namespaces-label" class="vector-menu-heading"> <span>Namespaces</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-nstab-main" class="selected mw-list-item"><a href="/wiki/Electrum" title="View the content page [c]" accesskey="c">Page</a></li><li id="ca-talk" class="new mw-list-item"><a href="/w/index.php?title=Talk:Electrum&amp;action=edit&amp;redlink=1" rel="discussion" title="Discussion about the content page (page does not exist) [t]" accesskey="t">Discussion</a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-variants" class="mw-portlet mw-portlet-variants emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-variants-label" role="navigation" 
+	 >
+	<input type="checkbox"
+		id="p-variants-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-variants"
+		class=" vector-menu-checkbox" aria-labelledby="p-variants-label" />
+	<h3 id="p-variants-label" class="vector-menu-heading"> <span>Variants</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+		</div>
+		<div id="right-navigation">
+			<nav id="p-views" class="mw-portlet mw-portlet-views vector-menu vector-menu-tabs" aria-labelledby="p-views-label" role="navigation" 
+	 >
+	<h3 id="p-views-label" class="vector-menu-heading"> <span>Views</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="ca-view" class="selected mw-list-item"><a href="/wiki/Electrum">Read</a></li><li id="ca-edit" class="mw-list-item"><a href="/w/index.php?title=Electrum&amp;action=edit" title="Edit this page [e]" accesskey="e">Edit</a></li><li id="ca-history" class="mw-list-item"><a href="/w/index.php?title=Electrum&amp;action=history" title="Past revisions of this page [h]" accesskey="h">View history</a></li></ul>
+		
+	</div>
+</nav>
+
+			<nav id="p-cactions" class="mw-portlet mw-portlet-cactions emptyPortlet vector-menu-dropdown-noicon vector-menu vector-menu-dropdown" aria-labelledby="p-cactions-label" role="navigation"  title="More options"
+	 >
+	<input type="checkbox"
+		id="p-cactions-checkbox"
+		role="button"
+		aria-haspopup="true"
+		data-event-name="ui.dropdown-p-cactions"
+		class=" vector-menu-checkbox" aria-labelledby="p-cactions-label" />
+	<h3 id="p-cactions-label" class="vector-menu-heading"> <span>More</span>
+			<span class="vector-menu-checkbox-expanded">expanded</span>
+			<span class="vector-menu-checkbox-collapsed">collapsed</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"></ul>
+		
+	</div>
+</nav>
+
+			<div id="p-search" role="search" class="vector-search-box">
+	<div>
+		<h3 >
+			<label for="searchInput">Search</label>
+		</h3>
+		<form action="/w/index.php" id="searchform">
+			<div id="simpleSearch" data-search-loc="header-navigation">
+				<input type="search" name="search" placeholder="Search Whonix" autocapitalize="sentences" title="Search Whonix [f]" accesskey="f" id="searchInput"/>
+				<input type="hidden" name="title" value="Special:Search"/>
+				<input type="submit" name="fulltext" value="Search" title="Search the pages for this text" id="mw-searchButton" class="searchButton mw-fallbackSearchButton"/>
+				<input type="submit" name="go" value="Go" title="Go to a page with this exact name if it exists" id="searchButton" class="searchButton"/>
+			</div>
+		</form>
+	</div>
+</div>
+
+		</div>
+	</div>
+	
+<div id="mw-panel">
+	<div id="p-logo" role="banner">
+		<a class="mw-wiki-logo" href="/wiki/Main_Page"
+			title="Visit the main page"></a>
+	</div>
+	<nav id="p-Menu" class="mw-portlet mw-portlet-Menu vector-menu vector-menu-portal portal" aria-labelledby="p-Menu-label" role="navigation" 
+	 >
+	<h3 id="p-Menu-label" class="vector-menu-heading"> <span>Menu</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="n-Download " class="mw-list-item"><a href="/wiki/Download">Download </a></li><li id="n-Docs" class="mw-list-item"><a href="/wiki/Documentation">Docs</a></li><li id="n-News" class="mw-list-item"><a href="https://forums.whonix.org/c/news" target="_blank">News</a></li><li id="n-Help-us" class="mw-list-item"><a href="/wiki/Contribute">Help us</a></li></ul>
+		
+	</div>
+</nav>
+
+	<nav id="p-tb" class="mw-portlet mw-portlet-tb vector-menu vector-menu-portal portal" aria-labelledby="p-tb-label" role="navigation" 
+	 >
+	<h3 id="p-tb-label" class="vector-menu-heading"> <span>Tools</span>
+	</h3>
+	<div class="vector-menu-content">
+		
+		<ul class="vector-menu-content-list"><li id="t-whatlinkshere" class="mw-list-item"><a href="/wiki/Special:WhatLinksHere/Electrum" title="A list of all wiki pages that link here [j]" accesskey="j">What links here</a></li><li id="t-recentchangeslinked" class="mw-list-item"><a href="/wiki/Special:RecentChangesLinked/Electrum" rel="nofollow" title="Recent changes in pages linked from this page [k]" accesskey="k">Related changes</a></li><li id="t-specialpages" class="mw-list-item"><a href="/wiki/Special:SpecialPages" title="A list of all special pages [q]" accesskey="q">Special pages</a></li><li id="t-print" class="mw-list-item"><a href="javascript:print();" rel="alternate" title="Printable version of this page [p]" accesskey="p">Printable version</a></li><li id="t-permalink" class="mw-list-item"><a href="/w/index.php?title=Electrum&amp;oldid=83140" title="Permanent link to this revision of the page">Permanent link</a></li><li id="t-info" class="mw-list-item"><a href="/w/index.php?title=Electrum&amp;action=info" title="More information about this page">Page information</a></li></ul>
+		
+	</div>
+</nav>
+
+	
+</div>
+
+</div>
+<footer id="footer" class="mw-footer" role="contentinfo" >
+	<ul id="footer-info" >
+	<li id="footer-info-lastmod"> </li>
+	<li id="footer-info-copyright">By using this website, you acknowledge you have read, understood, and agree to be bound by these these agreements:</li>
+</ul>
+
+	<ul id="footer-places" >
+	<li id="footer-places-Terms of Service"><a href="/wiki/Terms_of_Service" title="Terms of Service">Terms of Service</a></li>
+	<li id="footer-places-Privacy Policy"><a href="/wiki/Privacy_Policy" title="Privacy Policy">Privacy Policy</a></li>
+	<li id="footer-places-Cookie Policy"><a href="/wiki/Cookie_Policy" title="Cookie Policy">Cookie Policy</a></li>
+	<li id="footer-places-E-Sign_Consent"><a href="/wiki/E-Sign_Consent" title="E-Sign Consent">E-Sign Consent</a></li>
+	<li id="footer-places-DMCA"><a href="/wiki/DMCA" class="mw-redirect" title="DMCA">DMCA</a></li>
+	<li id="footer-places-Imprint"><a href="/wiki/Imprint" title="Imprint">Imprint</a></li>
+</ul>
+
+	
+</footer>
+
+
+<script>(RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":369});});</script>
+</body></html>

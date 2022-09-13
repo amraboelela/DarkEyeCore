@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>fuss:lambda_calculus:functional_programming:aggreagators:if [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="fuss,lambda_calculus,functional_programming,aggreagators,if"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=fuss:lambda_calculus:functional_programming:aggreagators"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/fuss/lambda_calculus/functional_programming/aggreagators/if"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='fuss:lambda_calculus:functional_programming:aggreagators';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"fuss:lambda_calculus:functional_programming:aggreagators:if","namespace":"fuss:lambda_calculus:functional_programming:aggreagators","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=24551d22639bdaeb736aec3dca86fd82&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:lambda_calculus:functional_programming:aggreagators:if" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=fuss:lambda_calculus:functional_programming:aggreagators:if&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus" class="wikilink1" title="fuss:lambda_calculus" data-wiki-id="fuss:lambda_calculus">lambda_calculus</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/start" class="wikilink2" title="fuss:lambda_calculus:functional_programming:start" rel="nofollow" data-wiki-id="fuss:lambda_calculus:functional_programming:start">functional_programming</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators" class="wikilink1" title="fuss:lambda_calculus:functional_programming:aggreagators" data-wiki-id="fuss:lambda_calculus:functional_programming:aggreagators">aggreagators</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if" class="wikilink1" title="fuss:lambda_calculus:functional_programming:aggreagators:if" data-wiki-id="fuss:lambda_calculus:functional_programming:aggreagators:if">if</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>fuss:lambda_calculus:functional_programming:aggreagators:if</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    <!-- TOC START -->
+<div id="dw__toc" class="dw__toc">
+<h3 class="toggle">Table of Contents</h3>
+<div>
+
+<ul class="toc">
+<li class="level1"><div class="li"><a href="#about">About</a></div></li>
+<li class="level1"><div class="li"><a href="#lambda_calculus">Lambda Calculus</a></div></li>
+<li class="level1"><div class="li"><a href="#implementations">Implementations</a></div>
+<ul class="toc">
+<li class="level2"><div class="li"><a href="#if-a-then-b-else-c">If-a-Then-b-Else-c</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#c">C#</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#if-a-then-b-elseif-c-then-d">If-a-Then-b-ElseIf-c-Then-d</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#c1">C#</a></div></li>
+</ul>
+</li>
+<li class="level2"><div class="li"><a href="#if-a-then-b-elseif-c-then-d-else-e">If-a-Then-b-ElseIf-c-Then-d-Else-e</a></div>
+<ul class="toc">
+<li class="level3"><div class="li"><a href="#c2">C#</a></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="level1"><div class="li"><a href="#control-flow_constructs">Control-Flow Constructs</a></div></li>
+</ul>
+</div>
+</div>
+<!-- TOC END -->
+
+<h1 class="sectionedit1" id="about">About</h1>
+<div class="level1">
+
+<p>
+One of the shortcoming for all languages that implement linq-style data aggregators is that none of them include semantics for if-clauses. Consider the following case in C# where a selector is given (<code>select</code>) in the first line, perhaps, by user-input and then a lambda is executed for all items in a collection that match a property from the selector set:
+</p>
+<pre class="code csharp"><span class="kw1">var</span> <span class="kw1">select</span> <span class="sy0">=</span> <a href="http://www.google.com/search?q=new+msdn.microsoft.com"><span class="kw3">new</span></a> HashSet<span class="sy0">&lt;</span>Species<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="st0">&quot;Bacteria&quot;</span>, <span class="st0">&quot;Archaea&quot;</span>, <span class="st0">&quot;Eukaryota&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+entities
+    <span class="sy0">.</span><span class="me1">AsParallel</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="sy0">.</span><span class="kw1">Where</span><span class="br0">&#40;</span>entity <span class="sy0">=&gt;</span> entity<span class="sy0">.</span><span class="me1">species</span><span class="sy0">.</span><span class="me1">Intersect</span><span class="br0">&#40;</span><span class="kw1">select</span><span class="br0">&#41;</span><span class="sy0">.</span><span class="me1">Any</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="br0">&#41;</span>
+    <span class="sy0">.</span><span class="me1">ForAll</span><span class="br0">&#40;</span>entity <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+        Console<span class="sy0">.</span><span class="me1">WriteLine</span><span class="br0">&#40;</span>entity<span class="sy0">.</span><span class="me1">Name</span><span class="br0">&#41;</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+Whilst this is fine, the selection predicate in the <code>Where</code> clause will cause the downstream lambda function in the <code>ForAll</code> clause to be executed if and only if the predicate in the <code>Where</code> clause matched.
+</p>
+
+<p>
+In case the predicate passed to the <code>Where</code> clause does not match, the downstream lambda function will not be executed - and that is fine, in some scenarios. However, it may be desirable to have additional functionality where the lambda function gets called for all predicate matches of the <code>Where</code> clause, but a different lambda function gets called when the predicate passed to the <code>Where</code> clause does not match.
+</p>
+
+</div>
+
+<h1 class="sectionedit2" id="lambda_calculus">Lambda Calculus</h1>
+<div class="level1">
+
+<p>
+Conveniently, untyped lambda calculus is already capable to perform <code>if a then b else c</code>-branching. Consider two lambda expressions:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img69a397243dea52b7ada58e3da6ca1c86.png" class="latex_displayed" alt="\begin{eqnarray*}
+\lambda x.\lambda y.x &amp;\equiv&amp; TRUE \\
+\lambda x.\lambda y.y &amp;\equiv&amp; FALSE
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+and two other expressions <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdf5a289587a2f0247a5b97c1e8ac58ca.png" class="latex_inline" alt="$P$" title="Math" /> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1afcdb0f704394b16fe85fb40c45ca7a.png" class="latex_inline" alt="$Q$" title="Math" />, then:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imga8a9779e6e4b1a181bc93ae9bec71425.png" class="latex_displayed" alt="\begin{eqnarray*}
+TRUE\mbox{ }P\mbox{ }Q &amp;=&amp; \\
+(\lambda x.\lambda y.x) P Q &amp;\equiv&amp; \\
+\lambda y.P Q &amp;\equiv&amp; \\
+P \\
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+conversely:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgf2057e3b45eacd4e8ca7a53becaf2509.png" class="latex_displayed" alt="\begin{eqnarray*}
+FALSE\mbox{ }P\mbox{ }Q &amp;=&amp; \\
+(\lambda x.\lambda y.y) P Q &amp;\equiv&amp; \\
+\lambda y.Q &amp;\equiv&amp; \\
+Q \\
+\end{eqnarray*}" title="Equations" />
+</p>
+
+<p>
+such that we can write:
+</p>
+
+<p>
+<img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img07aef3220578ec2b829fd9046876fba2.png" class="latex_displayed" alt="$$
+(n\mbox{ }P\mbox{ }Q)
+$$" title="Equation" />
+</p>
+
+<p>
+where:
+</p>
+<ul>
+<li class="level1"><div class="li"> <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img55a049b8f161ae7cfeb0197d75aff967.png" class="latex_inline" alt="$n$" title="Math" /> is either <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdd8589370330c79bd2f75a965d8b46a2.png" class="latex_inline" alt="$TRUE$" title="Math" /> or <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img00ecea1f2f3152cca9663ca35e33f392.png" class="latex_inline" alt="$FALSE$" title="Math" /></div>
+</li>
+<li class="level1"><div class="li"> and <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/imgdf5a289587a2f0247a5b97c1e8ac58ca.png" class="latex_inline" alt="$P$" title="Math" />, respectively <img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/fetch.php?media=wiki:latex:/img1afcdb0f704394b16fe85fb40c45ca7a.png" class="latex_inline" alt="$Q$" title="Math" /> are two expressions</div>
+</li>
+</ul>
+
+<p>
+thereby implementing the semantic:
+</p>
+<pre class="code c"><span class="kw1">if</span> <span class="br0">&#40;</span>n<span class="br0">&#41;</span> 
+<span class="br0">&#123;</span>
+   P<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="kw1">else</span> 
+<span class="br0">&#123;</span>
+   Q<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit3" id="implementations">Implementations</h1>
+<div class="level1">
+
+<p>
+Some implementations are more trivial than others given lambda calculus semantics in newer programming languages, however the usefulness of branching in a cascade of lambda function calls is extremely convenient, semantically elegant, and spares switching to imperative programming from functional programming in order to implement simple branches.
+</p>
+
+<p>
+We can derive various semantics based on the original <code>if a then b else c</code> branching semantics.
+</p>
+
+</div>
+
+<h2 class="sectionedit4" id="if-a-then-b-else-c">If-a-Then-b-Else-c</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit5" id="c">C#</h3>
+<div class="level3">
+
+<p>
+An implementation of <code>if-a-then-b-else-c</code>, which, given the initial example, would work as such:
+</p>
+<pre class="code csharp"><span class="kw1">var</span> <span class="kw1">select</span> <span class="sy0">=</span> <a href="http://www.google.com/search?q=new+msdn.microsoft.com"><span class="kw3">new</span></a> HashSet<span class="sy0">&lt;</span>Species<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="st0">&quot;Bacteria&quot;</span>, <span class="st0">&quot;Archaea&quot;</span>, <span class="st0">&quot;Eukaryota&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+entities
+    <span class="sy0">.</span><span class="me1">AsParallel</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="sy0">.</span><span class="me1">ForAll</span><span class="br0">&#40;</span>entity <span class="sy0">=&gt;</span>
+        <span class="co1">// if a</span>
+        entity<span class="sy0">.</span><span class="me1">species</span><span class="sy0">.</span><span class="me1">Intersect</span><span class="br0">&#40;</span><span class="kw1">select</span><span class="br0">&#41;</span><span class="sy0">.</span><span class="me1">Any</span><span class="br0">&#40;</span><span class="br0">&#41;</span>,
+        <span class="co1">// then b </span>
+        entity <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            Console<span class="sy0">.</span><span class="me1">WriteLine</span><span class="br0">&#40;</span>entity<span class="sy0">.</span><span class="me1">Name</span> <span class="sy0">+</span> <span class="st0">&quot; found&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>,
+        <span class="co1">// else c</span>
+        entity <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            Console<span class="sy0">.</span><span class="me1">WriteLine</span><span class="br0">&#40;</span>entity<span class="sy0">.</span><span class="me1">Name</span> <span class="sy0">+</span> <span class="st0">&quot; not found.&quot;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#41;</span><span class="sy0">;</span></pre>
+
+<p>
+Using a parallel query (the semantics of <code>ForAll</code> in C# only works in a parallel query context): 
+</p>
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pass if and only if predicate resovles or fail otherwise.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;T&quot;&gt;the type of items in the query&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;query&quot;&gt;the selector query&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;predicate&quot;&gt;the condition for invoking pf&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pass&quot;&gt;the function to invoke in case the predicate resolves&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;fail&quot;&gt;the function to invoke otherwise&lt;/param&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> ForAll<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> ParallelQuery<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> query, Predicate<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> predicate, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> pass, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> fail<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    query<span class="sy0">.</span><span class="me1">ForAll</span><span class="br0">&#40;</span>o <span class="sy0">=&gt;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw1">switch</span> <span class="br0">&#40;</span>predicate<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            <span class="kw1">case</span> <span class="kw1">true</span><span class="sy0">:</span>
+                pass<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="kw1">return</span><span class="sy0">;</span>
+&nbsp;
+            <span class="kw1">default</span><span class="sy0">:</span>
+                fail<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+                <span class="kw1">return</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Or, by extending a boolean:
+</p>
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pass if and only if condition holds or fail otherwise.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;T&quot;&gt;the return type of the pass and fail functions&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;condition&quot;&gt;the branch condition&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pass&quot;&gt;function with no parameters and return type T in case condition passes&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;fail&quot;&gt;function with no parameters and return type T in case condition fails&lt;/param&gt;</span>
+<span class="co1">/// &lt;returns&gt;the result of pass in case condition holds or the result of fail otherwise&lt;/returns&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> T IfElse<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> <span class="kw4">bool</span> condition, Func<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> pass, Func<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> fail<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">return</span> condition <span class="sy0">?</span> pass<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span><span class="br0">&#41;</span> <span class="sy0">:</span> fail<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Or by passing an extra optional argument to the functions to be invoked conditionally:
+</p>
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pass if and only if condition holds or fail otherwise.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;U&quot;&gt;the type of the argument to pass and fail&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;V&quot;&gt;the return type of pass and fail&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;condition&quot;&gt;the branch condition&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pass&quot;&gt;function that takes argument arg and returns type V in case condition holds&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;fail&quot;&gt;function that takes argument arg and returns type V in case condition fails&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;arg&quot;&gt;the argument passed to pass or fail functions&lt;/param&gt;</span>
+<span class="co1">/// &lt;returns&gt;the result of pass in case condition holds or the result of fail otherwise&lt;/returns&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> V IfElse<span class="sy0">&lt;</span>U, V<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> <span class="kw4">bool</span> condition, Func<span class="sy0">&lt;</span>U, V<span class="sy0">&gt;</span> pass, Func<span class="sy0">&lt;</span>U, V<span class="sy0">&gt;</span> fail, U arg <span class="sy0">=</span> <span class="kw1">default</span><span class="br0">&#40;</span>U<span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">return</span> condition <span class="sy0">?</span> pass<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>arg<span class="br0">&#41;</span> <span class="sy0">:</span> fail<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>arg<span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+Or perhaps make <code>pass</code> and <code>fail</code> functions return nothing but take an argument as in the previous examples:
+</p>
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pass if and only if condition holds or fail otherwise.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;T&quot;&gt;the type of the argument to pass and fail&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;condition&quot;&gt;the branch condition&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pass&quot;&gt;function that takes argument arg and returns nothing in case condition holds&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;fail&quot;&gt;function that takes argument arg and returns nothing in case condition fails&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;arg&quot;&gt;the optional argument passed to pass or fail functions&lt;/param&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> IfElse<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> <span class="kw4">bool</span> condition, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> pass, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> fail, T arg <span class="sy0">=</span> <span class="kw1">default</span><span class="br0">&#40;</span>T<span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">switch</span> <span class="br0">&#40;</span>condition<span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="kw1">true</span><span class="sy0">:</span>
+            pass<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>arg<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">default</span><span class="sy0">:</span>
+            fail<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>arg<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+<p>
+A variadic <code>Func</code> or <code>Action</code> is not available in C#, so how about a function with no return but taking two arguments:
+</p>
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pass if and only if condition holds or fail otherwise.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;U&quot;&gt;the type of the first argument to the pass or fail functions&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;V&quot;&gt;the type of the second argument to the pass or fail functions&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;condition&quot;&gt;the branch condition&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pass&quot;&gt;function that takes argument arg and returns nothing in case condition holds&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;fail&quot;&gt;function that takes argument arg and returns nothing in case condition fails&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;arga&quot;&gt;first optional argument passed to pass or fail functions&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;argb&quot;&gt;second optional argument passed to pass or fail functions&lt;/param&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> IfElse<span class="sy0">&lt;</span>U, V<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> <span class="kw4">bool</span> condition, Action<span class="sy0">&lt;</span>U, V<span class="sy0">&gt;</span> pass, Action<span class="sy0">&lt;</span>U, V<span class="sy0">&gt;</span> fail, U arga <span class="sy0">=</span> <span class="kw1">default</span><span class="br0">&#40;</span>U<span class="br0">&#41;</span>, V argb <span class="sy0">=</span> <span class="kw1">default</span><span class="br0">&#40;</span>V<span class="br0">&#41;</span><span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    <span class="kw1">switch</span> <span class="br0">&#40;</span>condition<span class="br0">&#41;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw1">case</span> <span class="kw1">true</span><span class="sy0">:</span>
+            pass<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>arga, argb<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+&nbsp;
+        <span class="kw1">default</span><span class="sy0">:</span>
+            fail<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>arga, argb<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+    <span class="br0">&#125;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h2 class="sectionedit6" id="if-a-then-b-elseif-c-then-d">If-a-Then-b-ElseIf-c-Then-d</h2>
+<div class="level2">
+
+</div>
+
+<h3 class="sectionedit7" id="c1">C#</h3>
+<div class="level3">
+
+<p>
+An implementation of <code>if-a-then-b-elseif-c-then-d</code>, which, given the initial example, would work as such:
+</p>
+<pre class="code csharp"><span class="kw1">var</span> seta <span class="sy0">=</span> <a href="http://www.google.com/search?q=new+msdn.microsoft.com"><span class="kw3">new</span></a> HashSet<span class="sy0">&lt;</span>Species<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="st0">&quot;Bacteria&quot;</span>, <span class="st0">&quot;Archaea&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="kw1">var</span> setb <span class="sy0">=</span> <a href="http://www.google.com/search?q=new+msdn.microsoft.com"><span class="kw3">new</span></a> HashSet<span class="sy0">&lt;</span>Species<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="br0">&#123;</span> <span class="st0">&quot;Eukaryota&quot;</span> <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+entities
+    <span class="sy0">.</span><span class="me1">AsParallel</span><span class="br0">&#40;</span><span class="br0">&#41;</span>
+    <span class="sy0">.</span><span class="me1">ForAll</span><span class="br0">&#40;</span>
+        <span class="co1">// if a</span>
+        entity <span class="sy0">=&gt;</span> entity<span class="sy0">.</span><span class="me1">species</span><span class="sy0">.</span><span class="me1">Intersect</span><span class="br0">&#40;</span>seta<span class="br0">&#41;</span><span class="sy0">.</span><span class="me1">Any</span><span class="br0">&#40;</span><span class="br0">&#41;</span>,
+        <span class="co1">// then b</span>
+        entity <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            Console<span class="sy0">.</span><span class="me1">WriteLine</span><span class="br0">&#40;</span>entity<span class="sy0">.</span><span class="me1">Name</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>,
+        <span class="co1">// elseif c</span>
+        entity <span class="sy0">=&gt;</span> entity<span class="sy0">.</span><span class="me1">species</span><span class="sy0">.</span><span class="me1">Intersect</span><span class="br0">&#40;</span>setb<span class="br0">&#41;</span><span class="sy0">.</span><span class="me1">Any</span><span class="br0">&#40;</span><span class="br0">&#41;</span>,
+        <span class="co1">// then d</span>
+        entity <span class="sy0">=&gt;</span> <span class="br0">&#123;</span>
+            Console<span class="sy0">.</span><span class="me1">WriteLine</span><span class="br0">&#40;</span>entity<span class="sy0">.</span><span class="me1">FullName</span><span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+   <span class="br0">&#41;</span><span class="sy0">;</span></pre>
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pf in case the predicate p resolves or qf in case the predicate q resolves.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;T&quot;&gt;the type of items in the query&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;query&quot;&gt;the selector query&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;p&quot;&gt;the condition for invoking pf&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pf&quot;&gt;the action to invoke in case p resolves&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;q&quot;&gt;the condition for invoking qf&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;qf&quot;&gt;the action to invoke in case q resolves&lt;/param&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> ForAll<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> ParallelQuery<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> query, Predicate<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> p, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> pf, Predicate<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> q, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> qf<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    query<span class="sy0">.</span><span class="me1">ForAll</span><span class="br0">&#40;</span>o <span class="sy0">=&gt;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>p<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            pf<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+            <span class="kw1">return</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+&nbsp;
+        <span class="kw1">if</span> <span class="br0">&#40;</span>q<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            qf<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h2 class="sectionedit8" id="if-a-then-b-elseif-c-then-d-else-e">If-a-Then-b-ElseIf-c-Then-d-Else-e</h2>
+<div class="level2">
+
+<p>
+A full if-branching example:
+</p>
+<pre class="code c"><span class="kw1">if</span> <span class="br0">&#40;</span>a<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    b<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="kw1">else</span> <span class="kw1">if</span><span class="br0">&#40;</span>c<span class="br0">&#41;</span> <span class="br0">&#123;</span>
+    d<span class="sy0">;</span>
+<span class="br0">&#125;</span>
+<span class="kw1">else</span> <span class="br0">&#123;</span>
+    e<span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h3 class="sectionedit9" id="c2">C#</h3>
+<div class="level3">
+<pre class="code csharp"><span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">//    Copyright (C) 2017 Wizardry and Steamworks - License: GNU GPLv3    //</span>
+<span class="co1">///////////////////////////////////////////////////////////////////////////</span>
+<span class="co1">/// &lt;summary&gt;</span>
+<span class="co1">///     Invokes pf in case the predicate p resolves or qf in case the predicate q resolves, or ef otherwise.</span>
+<span class="co1">/// &lt;/summary&gt;</span>
+<span class="co1">/// &lt;typeparam name=&quot;T&quot;&gt;the type of items in the query&lt;/typeparam&gt;</span>
+<span class="co1">/// &lt;param name=&quot;query&quot;&gt;the selector query&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;p&quot;&gt;the condition for invoking pf&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;pf&quot;&gt;the action to invoke in case p resolves&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;q&quot;&gt;the condition for invoking qf&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;qf&quot;&gt;the action to invoke in case q resolves&lt;/param&gt;</span>
+<span class="co1">/// &lt;param name=&quot;ef&quot;&gt;the action to invoke otherwise&lt;/param&gt;</span>
+<span class="kw1">public</span> <span class="kw1">static</span> <span class="kw4">void</span> ForAll<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span><span class="br0">&#40;</span><span class="kw1">this</span> ParallelQuery<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> query, Predicate<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> p, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> pf, Predicate<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> q, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> qf, Action<span class="sy0">&lt;</span>T<span class="sy0">&gt;</span> ef<span class="br0">&#41;</span>
+<span class="br0">&#123;</span>
+    query<span class="sy0">.</span><span class="me1">ForAll</span><span class="br0">&#40;</span>o <span class="sy0">=&gt;</span>
+    <span class="br0">&#123;</span>
+        <span class="kw1">if</span> <span class="br0">&#40;</span>p<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            pf<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">else</span> <span class="kw1">if</span> <span class="br0">&#40;</span>q<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="br0">&#41;</span>
+        <span class="br0">&#123;</span>
+            qf<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+        <span class="kw1">else</span>
+        <span class="br0">&#123;</span>
+            ef<span class="sy0">.</span><span class="me1">Invoke</span><span class="br0">&#40;</span>o<span class="br0">&#41;</span><span class="sy0">;</span>
+        <span class="br0">&#125;</span>
+    <span class="br0">&#125;</span><span class="br0">&#41;</span><span class="sy0">;</span>
+<span class="br0">&#125;</span></pre>
+
+</div>
+
+<h1 class="sectionedit10" id="control-flow_constructs">Control-Flow Constructs</h1>
+<div class="level1">
+
+<p>
+Very similar, yet more powerful, is the <code>switch</code> aggregator in lambda calculus:
+</p>
+<ul>
+<li class="level1"><div class="li"> <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/switch" class="wikilink1" title="fuss:lambda_calculus:functional_programming:aggreagators:switch" data-wiki-id="fuss:lambda_calculus:functional_programming:aggreagators:switch">switch aggregator</a></div>
+</li>
+</ul>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>fuss/lambda_calculus/functional_programming/aggreagators/if.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss" class="wikilink1" title="fuss" data-wiki-id="fuss">fuss</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus" class="wikilink1" title="fuss:lambda_calculus" data-wiki-id="fuss:lambda_calculus">lambda_calculus</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/start" class="wikilink2" title="fuss:lambda_calculus:functional_programming:start" rel="nofollow" data-wiki-id="fuss:lambda_calculus:functional_programming:start">functional_programming</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators" class="wikilink1" title="fuss:lambda_calculus:functional_programming:aggreagators" data-wiki-id="fuss:lambda_calculus:functional_programming:aggreagators">aggreagators</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if" class="wikilink1" title="fuss:lambda_calculus:functional_programming:aggreagators:if" data-wiki-id="fuss:lambda_calculus:functional_programming:aggreagators:if">if</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="fuss:lambda_calculus:functional_programming:aggreagators:if" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/fuss/lambda_calculus/functional_programming/aggreagators/if"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=fuss%3Alambda_calculus%3Afunctional_programming%3Aaggreagators%3Aif&amp;1657305221" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

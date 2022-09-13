@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="was" dir="ltr" class="no-js">
+<head>
+    <meta charset="utf-8" />
+    <title>assets:databases:unix:sysctl:linux [Wizardry and Steamworks]</title>
+    <script>(function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)</script>
+    <meta name="generator" content="DokuWiki"/>
+<meta name="robots" content="index,follow"/>
+<meta name="keywords" content="assets,databases,unix,sysctl,linux"/>
+<link rel="search" type="application/opensearchdescription+xml" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/opensearch.php" title="Wizardry and Steamworks"/>
+<link rel="start" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/"/>
+<link rel="contents" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux?do=index" title="Sitemap"/>
+<link rel="manifest" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/manifest.php"/>
+<link rel="alternate" type="application/rss+xml" title="Changes" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php"/>
+<link rel="alternate" type="application/rss+xml" title="Current namespace" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/feed.php?mode=list&amp;ns=assets:databases:unix:sysctl"/>
+<link rel="alternate" type="text/html" title="Plain HTML" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/xhtml/assets/databases/unix/sysctl/linux"/>
+<link rel="canonical" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"/>
+<link rel="stylesheet" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/css.php?t=was&amp;tseed=432e89e3541f30e5cde17d6daf3c6afb"/>
+<!--[if gte IE 9]><!-->
+<script >/*<![CDATA[*/var NS='assets:databases:unix:sysctl';var JSINFO = {"plugin_imagemap_mldummy":"http:\/\/3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion\/_media\/wiki\/dokuwiki-128.png","isadmin":0,"isauth":0,"plugin_pdfjs":{"hide_download_button":0},"plugins":{"vshare":{"youtube":"youtube\\.com\/.*[&?]v=([a-z0-9_\\-]+)","vimeo":"vimeo\\.com\\\/(\\d+)","slideshare":"slideshare.*id=(\\d+)","dailymotion":"dailymotion\\.com\/video\/([a-z0-9]+)","archiveorg":"archive\\.org\/(?:embed|details)\/([a-zA-Z0-9_\\-]+)","soundcloud":"soundcloud\\.com\/([\\w-]+\/[\\w-]+)","niconico":"nicovideo\\.jp\/watch\/(sm[0-9]+)","bitchute":"bitchute\\.com\\\/video\\\/([a-zA-Z0-9_\\-]+)","coub":"coub\\.com\\\/view\\\/([a-zA-Z0-9_\\-]+)","odysee":"odysee\\.com\/\\$\/(?:embed|download)\/([-%_?=\/a-zA-Z0-9]+)","youku":"v\\.youku\\.com\/v_show\/id_([0-9A-Za-z=]+)\\.html","bilibili":"bilibili\\.com\\\/video\\\/(BV[0-9A-Za-z]+)","msoffice":"(?:office\\.com.*[&?]videoid=([a-z0-9\\-]+))","msstream":"microsoftstream\\.com\\\/video\\\/([a-f0-9\\-]{36})"}},"id":"assets:databases:unix:sysctl:linux","namespace":"assets:databases:unix:sysctl","ACT":"show","useHeadingNavigation":0,"useHeadingContent":0};
+/*!]]>*/</script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/jquery.php?tseed=34a552433bc33cc9c3bc32527289a0b2"></script>
+<script charset="utf-8" src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/js.php?t=was&amp;tseed=432e89e3541f30e5cde17d6daf3c6afb&amp;template=was"></script>
+<!--<![endif]-->
+    <!-- <link rel="shortcut icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/favicon.ico" />
+<link rel="apple-touch-icon" href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/apple-touch-icon.png" />
+ -->
+    <!-- Viewport -->
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png?v=2">
+<link rel="apple-touch-icon" sizes="60x60" href="/apple-touch-icon-60x60.png?v=2">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png?v=2">
+<link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png?v=2">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png?v=2">
+<link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png?v=2">
+<link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png?v=2">
+<link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png?v=2">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png?v=2">
+<link rel="icon" type="image/png" href="/favicon-32x32.png?v=2" sizes="32x32">
+<link rel="icon" type="image/png" href="/android-chrome-192x192.png?v=2" sizes="192x192">
+<link rel="icon" type="image/png" href="/favicon-96x96.png?v=2" sizes="96x96">
+<link rel="icon" type="image/png" href="/favicon-16x16.png?v=2" sizes="16x16">
+<link rel="manifest" href="/manifest.json?v=2">
+<link rel="shortcut icon" href="/favicon.ico?v=2">
+<meta name="apple-mobile-web-app-title" content="[Wizardry and Steamworks]">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/mstile-144x144.png?v=2">
+<meta name="application-name" content="[Wizardry and Steamworks]">
+<meta name="theme-color" content="#ffffff">
+    <!-- <script async type="text/javascript" src="/lib/tpl/was/loadCSS.js"></script>
+    <script async type="text/javascript" src="/lib/tpl/was/cssrelpreload.js"></script> -->
+</head>
+
+<body>
+    <!--[if lte IE 8 ]><div id="IE8"><![endif]-->
+    <div id="dokuwiki__site"><div id="dokuwiki__top" class="site dokuwiki mode_show tpl_was     ">
+
+        
+<!-- ********** HEADER ********** -->
+<div id="dokuwiki__header">
+
+	    
+	<!-- ********** TOP BAR ********** -->
+	<div class="bar" id="bar__top">
+		<div class="bar-left" id="bar__topleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>						<form class="button btn_pdf" action="?do=export_pdf" method="POST">
+			    <button type="submit" title="PDF">PDF</button>
+                        </form>
+		</div>
+		<div class="bar-center">
+		        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="assets:databases:unix:sysctl:linux" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		</div>
+		<div class="bar-right" id="bar__topright">
+		        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+			    <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?type=rss2&amp;ns=assets:databases:unix:sysctl:linux&amp;linkto=page&amp;content=abstract" method="POST">
+			    <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								</div>
+			</div>
+
+    <!-- BREADCRUMBS -->
+            <div class="breadcrumbs">
+                            <div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets" class="wikilink1" title="assets" data-wiki-id="assets">assets</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases" class="wikilink1" title="assets:databases" data-wiki-id="assets:databases">databases</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/start" class="wikilink2" title="assets:databases:unix:start" rel="nofollow" data-wiki-id="assets:databases:unix:start">unix</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/start" class="wikilink2" title="assets:databases:unix:sysctl:start" rel="nofollow" data-wiki-id="assets:databases:unix:sysctl:start">sysctl</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux" class="wikilink1" title="assets:databases:unix:sysctl:linux" data-wiki-id="assets:databases:unix:sysctl:linux">linux</a></bdi></div>
+                                </div>
+    
+    <hr class="a11y" />
+</div><!-- /header -->
+
+        <div class="wrapper group">
+
+            <!--  -->
+
+            <!-- ********** CONTENT ********** -->
+            <div id="dokuwiki__content"><div class="pad group">
+                
+                <!-- <div class="pageId"><span>assets:databases:unix:sysctl:linux</span></div> -->
+
+                <div class="page group">
+                                                            <!-- wikipage start -->
+                    
+<h1 class="sectionedit1" id="about">About</h1>
+<div class="level1">
+
+<p>
+This file is based on the work of <code>Michiel Klaver</code> and provides some optimisations for current Linux kernels. It should either replace <code>/etc/sysctl.conf</code> or placed at <code>/etc/sysctl.d/local.conf</code> on Debian-like Linux distributions.
+</p>
+
+<p>
+In order to load the file without rebooting, one can issue:
+</p>
+<pre class="code bash">sysctl <span class="re5">--system</span></pre>
+
+</div>
+
+<h1 class="sectionedit2" id="code">Code</h1>
+<div class="level1">
+<dl class="file">
+<dt><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/_export/code/assets/databases/unix/sysctl/linux?codeblock=1" title="Download Snippet" class="mediafile mf_conf">local.conf</a></dt>
+<dd><pre class="code file txt"># Kernel sysctl configuration file for Linux
+&nbsp;
+# These settings are meant for busy linux servers and not for DSL or Cable. The file is 
+# based on the original provided by Michiel Klaver and includes additional optimizations 
+# by the Wizardry and Steamworks group.
+&nbsp;
+# The file should either replace /etc/sysctl.conf or, on Debian-like distributions, placed 
+# at /etc/sysctl.d/local.conf and the distribution will load them on reboot or by issuing 
+# sysctl --system
+&nbsp;
+# Originally created by:
+# Michiel Klaver - IT Professional
+# Linux: http://klaver.it/linux/ 
+# BSD: http://klaver.it/bsd/ for a BSD variant
+&nbsp;
+# Credits:
+# http://www.enigma.id.au/linux_tuning.txt
+# http://www.securityfocus.com/infocus/1729
+# http://fasterdata.es.net/TCP-tuning/linux.html
+# http://fedorahosted.org/ktune/browser/sysctl.ktune
+# http://www.cymru.com/Documents/ip-stack-tuning.html
+# http://www.kernel.org/doc/Documentation/networking/ip-sysctl.txt
+# http://www.frozentux.net/ipsysctl-tutorial/chunkyhtml/index.html
+# http://knol.google.com/k/linux-performance-tuning-and-measurement
+# http://www.cyberciti.biz/faq/linux-kernel-tuning-virtual-memory-subsystem/
+# http://www.redbooks.ibm.com/abstracts/REDP4285.html
+# http://www.speedguide.net/read_articles.php?id=121
+# http://lartc.org/howto/lartc.kernel.obscure.html
+# http://en.wikipedia.org/wiki/Sysctl
+&nbsp;
+&nbsp;
+###
+### GENERAL SYSTEM SECURITY OPTIONS ###
+###
+&nbsp;
+# Auto-reboot linux 30 seconds after a kernel panic
+kernel.panic = 30
+kernel.panic_on_oops = 30
+kernel.printk = 3 4 1 3
+&nbsp;
+# Controls the System Request debugging functionality of the kernel
+kernel.sysrq = 0
+&nbsp;
+# Controls whether core dumps will append the PID to the core filename.
+# Useful for debugging multi-threaded applications.
+kernel.core_uses_pid = 1
+&nbsp;
+# Allow for more PIDs
+kernel.pid_max = 65536
+&nbsp;
+# The contents of /proc/&lt;pid&gt;/maps and smaps files are only visible to
+# readers that are allowed to ptrace() the process
+#kernel.maps_protect = 1
+&nbsp;
+#Enable ExecShield protection
+#kernel.exec-shield = 1
+kernel.randomize_va_space = 1
+&nbsp;
+# Controls the maximum size of a message, in bytes
+kernel.msgmnb = 65536
+&nbsp;
+# Controls the default maxmimum size of a mesage queue
+kernel.msgmax = 65536
+&nbsp;
+###
+### IMPROVE SYSTEM MEMORY MANAGEMENT ###
+###
+&nbsp;
+# Increase size of file handles and inode cache
+fs.file-max = 209708
+&nbsp;
+# CFS
+kernel.sched_min_granularity_ns = 10000000
+kernel.sched_wakeup_granularity_ns = 15000000
+&nbsp;
+# HugePages
+vm.nr_hugepages = 1024
+vm.hugepages_treat_as_movable = 1
+# vm.hugetlb_shm_group = 2021
+&nbsp;
+# Do less swapping
+#vm.swappiness = 10
+vm.dirty_ratio = 40
+#vm.dirty_background_ratio = 2
+&nbsp;
+#vm.dirty_expire_centisecs = 1800
+#vm.dirty_writeback_centisecs = 6000
+&nbsp;
+#vm.dirty_writeback_centisecs=60000
+#vm.dirty_expire_centisecs=120000
+&nbsp;
+# specifies the minimum virtual address that a process is allowed to mmap
+vm.mmap_min_addr = 4096
+&nbsp;
+# No overcommitment of available memory
+vm.overcommit_ratio = 0
+vm.overcommit_memory = 0
+&nbsp;
+# Set maximum amount of memory allocated to shm to 256MB
+kernel.shmmax = 268435456
+kernel.shmall = 268435456
+&nbsp;
+# Keep at least 64MB of free RAM space available
+vm.min_free_kbytes = 65536
+&nbsp;
+###
+### GENERAL NETWORK SECURITY OPTIONS ###
+###
+&nbsp;
+#Prevent SYN attack, enable SYNcookies (they will kick-in when the max_syn_backlog reached)
+net.ipv4.tcp_syncookies = 1
+net.ipv4.tcp_syn_retries = 2
+net.ipv4.tcp_synack_retries = 2
+net.ipv4.tcp_max_syn_backlog = 4096
+&nbsp;
+# Disables packet forwarding
+net.ipv4.ip_forward = 1
+net.ipv4.conf.all.forwarding = 1
+net.ipv4.conf.default.forwarding = 1
+net.ipv6.conf.all.forwarding = 1
+net.ipv6.conf.default.forwarding = 1
+&nbsp;
+# Disables IP source routing
+net.ipv4.conf.all.send_redirects = 1
+net.ipv4.conf.default.send_redirects = 1
+net.ipv4.conf.all.accept_source_route = 1
+net.ipv4.conf.default.accept_source_route = 1
+net.ipv6.conf.all.accept_source_route = 1
+net.ipv6.conf.default.accept_source_route = 1
+&nbsp;
+# Enable IP spoofing protection, turn on source route verification
+# Conflicts on bridges, disable.
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter = 0
+&nbsp;
+# Disable ICMP Redirect Acceptance
+net.ipv4.conf.all.accept_redirects = 1
+net.ipv4.conf.default.accept_redirects = 1
+net.ipv6.conf.all.accept_redirects = 1
+net.ipv6.conf.default.accept_redirects = 1
+&nbsp;
+# Disable Log Spoofed Packets, Source Routed Packets, Redirect Packets
+net.ipv4.conf.all.log_martians = 0
+net.ipv4.conf.default.log_martians = 0
+&nbsp;
+# Time to hold socket in state FIN-WAIT-2,
+# if it was closed by our side. Peer can be broken and never close its
+# side, or even die unexpectedly. The default value is 60 seconds.
+# Usual value used in 2.2 was 180 seconds, you may restore it, but
+# remember that if your machine is even underloaded web server, you risk
+# to overflow memory with lots of dead sockets. FIN-WAIT-2 sockets are
+# less dangerous than FIN-WAIT-1, because they eat maximum 1.5 kilobytes
+# of memory, but they tend to live longer.
+net.ipv4.tcp_fin_timeout = 15
+&nbsp;
+# Decrease the time default value for connections to keep alive
+net.ipv4.tcp_keepalive_time = 300
+net.ipv4.tcp_keepalive_probes = 5
+net.ipv4.tcp_keepalive_intvl = 15
+&nbsp;
+# Don't relay bootp
+net.ipv4.conf.all.bootp_relay = 0
+&nbsp;
+# Don't proxy arp for anyone
+net.ipv4.conf.all.proxy_arp = 1
+&nbsp;
+# Turn on SACK
+net.ipv4.tcp_dsack = 1
+net.ipv4.tcp_sack = 1
+net.ipv4.tcp_fack = 1
+&nbsp;
+# Turn off FRTO for a server
+net.ipv4.tcp_frto = 0
+net.ipv4.tcp_frto_response = 0
+&nbsp;
+# If enabled, assume that no receipt of a window-scaling option means that 
+# the remote TCP is broken and treats the window as a signed quantity.
+net.ipv4.tcp_workaround_signed_windows = 1
+&nbsp;
+# Determine from MTU
+net.ipv4.ip_no_pmtu_disc = 1
+&nbsp;
+# Jumbo frames
+net.ipv4.tcp_mtu_probing = 1
+&nbsp;
+# Kernel 3.6+
+#net.ipv4.tcp_fastopen = 1
+# Turn on low latency (disable pre-queue)
+net.ipv4.tcp_low_latency = 1
+&nbsp;
+# Turn on the tcp_timestamps
+net.ipv4.tcp_timestamps = 1
+&nbsp;
+# Don't ignore directed pings
+net.ipv4.icmp_echo_ignore_all = 0
+&nbsp;
+# Enable ignoring broadcasts request
+net.ipv4.icmp_echo_ignore_broadcasts = 1
+&nbsp;
+# Enable bad error message Protection
+net.ipv4.icmp_ignore_bogus_error_responses = 1
+&nbsp;
+# Allowed local port range
+#net.ipv4.ip_local_port_range = 16384 65536
+&nbsp;
+# Enable a fix for RFC1337 - time-wait assassination hazards in TCP
+net.ipv4.tcp_rfc1337 = 1
+&nbsp;
+###
+### TUNING NETWORK PERFORMANCE ###
+###
+&nbsp;
+# Do a 'modprobe illinois' first
+net.ipv4.tcp_congestion_control = illinois
+&nbsp;
+# Increase port range
+net.ipv4.ip_local_port_range = 1025 65535
+&nbsp;
+# Turn on the tcp_window_scaling
+net.ipv4.tcp_window_scaling = 1
+&nbsp;
+# Disable netfilter on bridges
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+net.bridge.bridge-nf-call-arptables = 1
+&nbsp;
+# Increase the maximum total buffer-space allocatable
+# This is measured in units of pages (4096 bytes)
+net.ipv4.tcp_mem = 65536 131072 262144
+net.ipv4.udp_mem = 65536 131072 262144
+&nbsp;
+# Increase the read-buffer space allocatable
+net.ipv4.tcp_rmem = 8192 87380 262144
+net.ipv4.udp_rmem_min = 16384
+net.core.rmem_default = 131072
+net.core.rmem_max = 262144
+&nbsp;
+# Increase the write-buffer-space allocatable
+net.ipv4.tcp_wmem = 8192 65536 262144
+net.ipv4.udp_wmem_min = 16384
+net.core.wmem_default = 131072
+net.core.wmem_max = 262144
+&nbsp;
+# Increase number of incoming connections
+net.core.somaxconn = 32768
+&nbsp;
+# Increase number of incoming connections backlog
+net.core.netdev_max_backlog = 32768
+net.core.dev_weight = 64
+&nbsp;
+# Increase the maximum amount of option memory buffers
+net.core.optmem_max = 65536
+&nbsp;
+# Increase the maximum number of skb-heads to be cached
+#net.core.hot_list_length = 1024
+&nbsp;
+# Increase the tcp-time-wait buckets pool size to prevent simple DOS attacks
+net.ipv4.tcp_max_tw_buckets = 1440000
+# Allow to reuse TIME-WAIT sockets for new connections when it is safe
+# from protocol viewpoint. The default value is 0
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_tw_reuse = 1
+&nbsp;
+# Limit number of orphans, each orphan can eat up to 16M (max wmem) of unswappable memory
+net.ipv4.tcp_max_orphans = 65536
+net.ipv4.tcp_orphan_retries = 1
+&nbsp;
+# Increase the maximum memory used to reassemble IP fragments
+net.ipv4.ipfrag_high_thresh = 512000
+net.ipv4.ipfrag_low_thresh = 446464
+&nbsp;
+# This removes an odd behavior in the 2.6 kernels, whereby the kernel stores 
+# the slow start threshold for a client between TCP sessions. This can cause 
+# undesired results, as a single period of congestion can affect many 
+# subsequent connections.
+net.ipv4.tcp_no_metrics_save = 1
+net.ipv4.tcp_moderate_rcvbuf = 1
+&nbsp;
+# Disable slow start (SPDY)
+net.ipv4.tcp_slow_start_after_idle = 0
+&nbsp;
+# Increase RPC slots
+#sunrpc.tcp_slot_table_entries = 32
+#sunrpc.udp_slot_table_entries = 32
+&nbsp;
+# Increase size of RPC datagram queue length
+net.unix.max_dgram_qlen = 50
+&nbsp;
+# Don't allow the arp table to become bigger than this
+net.ipv4.neigh.default.gc_thresh3 = 2048
+&nbsp;
+# Tell the gc when to become aggressive with arp table cleaning.
+# Adjust this based on size of the LAN. 1024 is suitable for most /24 networks
+net.ipv4.neigh.default.gc_thresh2 = 1024
+&nbsp;
+# Adjust where the gc will leave arp table alone - set to 32.
+net.ipv4.neigh.default.gc_thresh1 = 32
+&nbsp;
+# Adjust to arp table gc to clean-up more often
+net.ipv4.neigh.default.gc_interval = 30
+&nbsp;
+# Increase TCP queue length
+net.ipv4.neigh.default.proxy_qlen = 96
+net.ipv4.neigh.default.unres_qlen = 6
+&nbsp;
+# Enable Explicit Congestion Notification (RFC 3168), disable it if it doesn't work for you
+net.ipv4.tcp_ecn = 1
+#net.ipv4.tcp_ecn = 2
+net.ipv4.tcp_reordering = 3
+&nbsp;
+# How many times to retry killing an alive TCP connection
+net.ipv4.tcp_retries2 = 15
+net.ipv4.tcp_retries1 = 3
+&nbsp;
+# This will enusre that immediatly subsequent connections use the new values
+net.ipv4.route.flush = 1
+net.ipv6.route.flush = 1</pre>
+</dd></dl>
+
+</div>
+
+                    <!-- wikipage stop -->
+                                    </div>
+
+                            </div></div><!-- /content -->
+
+            <hr class="a11y" />
+
+            <div class="docInfo"><bdi>assets/databases/unix/sysctl/linux.txt</bdi> · Last modified: 2022/04/19 09:28 (external edit)</div>
+
+            <!-- PAGE ACTIONS -->
+            <!-- <div id="dokuwiki__pagetools">
+                <h3 class="a11y">Page Tools</h3>
+                <div class="tools">
+                    <ul>
+                        <li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux?do=revisions"  class="action revs" accesskey="o" rel="nofollow" title="Revisions [O]"><span>Revisions</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux?do=backlink"  class="action backlink" rel="nofollow" title="Backlinks"><span>Backlinks</span></a></li><li><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux?do=export_pdf"  class="action export_pdf" rel="nofollow" title="Export to PDF"><span>Export to PDF</span></a></li><li><a href="#dokuwiki__top"  class="action top" accesskey="t" rel="nofollow" title="Back to top [T]"><span>Back to top</span></a></li>                    </ul>
+                </div>
+            </div>
+        </div>--><!-- /wrapper -->
+
+        
+<!-- ********** FOOTER ********** -->
+<div id="dokuwiki__footer">
+    <!-- <div class="buttons">
+                <a href="http://www.dokuwiki.org/donate" title="Donate" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-donate.gif" width="80" height="15" alt="Donate" /></a>
+        <a href="http://www.php.net" title="Powered by PHP" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-php.gif" width="80" height="15" alt="Powered by PHP" /></a>
+        <a href="http://validator.w3.org/check/referer" title="Valid HTML5" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-html5.png" width="80" height="15" alt="Valid HTML5" /></a>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3" title="Valid CSS" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-css.png" width="80" height="15" alt="Valid CSS" /></a>
+        <a href="http://dokuwiki.org/" title="Driven by DokuWiki" ><img
+            src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/tpl/was/images/button-dw.png" width="80" height="15" alt="Driven by DokuWiki" /></a>
+    </div> -->
+
+		<!-- BREADCRUMBS -->
+					<div class="breadcrumbs">
+									<div class="youarehere"><span class="bchead">You are here: </span><span class="home"><bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" class="wikilink1" title="start" data-wiki-id="start">start</a></bdi></span> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets" class="wikilink1" title="assets" data-wiki-id="assets">assets</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases" class="wikilink1" title="assets:databases" data-wiki-id="assets:databases">databases</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/start" class="wikilink2" title="assets:databases:unix:start" rel="nofollow" data-wiki-id="assets:databases:unix:start">unix</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/start" class="wikilink2" title="assets:databases:unix:sysctl:start" rel="nofollow" data-wiki-id="assets:databases:unix:sysctl:start">sysctl</a></bdi> / <bdi><a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux" class="wikilink1" title="assets:databases:unix:sysctl:linux" data-wiki-id="assets:databases:unix:sysctl:linux">linux</a></bdi></div>
+											</div>
+		
+		<!-- ********** BOTTOM BAR ********** -->
+		<div class="bar" id="bar__bottom">
+		  <div class="bar-left" id="bar__bottomleft">
+			<form class="button btn_login" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"><div class="no"><input type="hidden" name="do" value="login" /><input type="hidden" name="sectok" value="" /><button type="submit" title="Log In">Log In</button></div></form>						<form class="button btn_revs" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"><div class="no"><input type="hidden" name="do" value="revisions" /><button type="submit" accesskey="o" title="Revisions [O]">Revisions</button></div></form>			                        <form class="button btn_pdf" action="?do=export_pdf" method="POST">
+                            <button type="submit" title="PDF">PDF</button>
+                        </form>
+		  </div>
+		  <div class="bar-center">
+                        <form class="button btn_home" action="/" method="POST">
+                            <button type="submit" title="Home">Home</button>
+                        </form>
+			<form action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/start" method="get" role="search" class="search doku_form" id="dw__search" accept-charset="utf-8"><input type="hidden" name="do" value="search" /><input type="hidden" name="id" value="assets:databases:unix:sysctl:linux" /><div class="no"><input name="q" type="text" class="edit" title="[F]" accesskey="f" placeholder="Search" autocomplete="on" id="qsearch__in" value="" /><button value="1" type="submit" title="Search">Search</button><div id="qsearch__out" class="ajax_qsearch JSpopup"></div></div></form>			<!-- <form id="osssearchform" method="get" action="renderer">
+        <input type="hidden" name="use" value="grimore.org">
+        <input type="hidden" name="name" value="default">
+        <input type="text" id="osssearchbox" name="query">
+        <input type="hidden" name="login" value="search">
+        <input type="hidden" name="key" value="1a5f74ab3f4df6ce883c4c158540e25e">
+        <input type="submit" value="Search">
+</form>
+ -->
+		  </div>
+		  <div class="bar-right" id="bar__bottomright">
+                        <form class="button btn_contact" action="mailto:%6F%66%66%69%63%65%40%67%72%69%6D%6F%72%65%2E%6F%72%67" method="POST">
+                            <button type="submit" title="Contact">Contact</button>
+                        </form>
+                        <form class="button btn_news" action="/feed.php?mode=recent&amp;type=rss" method="POST">
+                            <button type="submit" title="News">News</button>
+                        </form>
+			<form class="button btn_admin" method="get" action="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/assets/databases/unix/sysctl/linux"><div class="no"><input type="hidden" name="do" value="admin" /><button type="submit" title="Admin">Admin</button></div></form>								  </div>
+		  		</div>
+
+		
+</div><!-- /footer -->
+
+<div style="text-align: center;">
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion">
+          <img src="/lib/tpl/was/images/button-tor.png" alt="Access website using Tor" />
+        </a> 
+        <a href="http://ioujrf2uwqairs7l3vyvqp7n2pia3x3wg5w5qtcqvg32zezuezza.b32.i2p/" />
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a>
+        <a href="http://pgp.grimore.org/" />
+          <img src="/lib/tpl/was/images/button-pgp.png" alt="Wizardry and Steamworks PGP Key" />
+        </a>
+      </p>
+    </div>
+<!--    <div style="display:inline-block;">
+      <p>
+        <a href="http://ij4lpzuyyng6cc4jw5mxibcyjv4rx4uk6x5jijoduglkgjh7mmya.b32.i2p">
+          <img src="/lib/tpl/was/images/button-i2p.png" alt="Access website using i2p" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://cydia.grimore.org/">
+          <img src="/lib/tpl/was/images/button-cydia.png" alt="Wizardry and Steamworks Cydia Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="http://debian.grimore.org/">
+          <img src="/lib/tpl/was/images/button-debian.png" alt="Wizardry and Steamworks Debian Repository" />
+        </a> 
+      </p>
+    </div>
+    <div style="display:inline-block;">
+      <p>
+        <a href="/opt/pasteboard/" rel="external nofollow">
+          <img src="/lib/tpl/was/images/button-live.png" alt="Live Pasteboard" />
+        </a> 
+      </p>
+    </div> -->
+    
+<br/>
+
+    <p>
+      For the copyright, license, warranty and privacy terms for the usage of this website please see the <a
+      href="/wiki:license">license</a>, <a href="/wiki:privacy">privacy</a>, <a
+      href="/wiki:copyright">copyright</a>
+      and the <a href="/wiki:plagiarism">plagiarism</a> pages.
+    </p>
+</div>
+    </div></div><!-- /site -->
+
+    <div class="no"><img src="http://3wymlmcsvxiaqzmbepsdawqpk6o2qsk65jhms72qqjulk5u4bgmvs3qd.onion/lib/exe/taskrunner.php?id=assets%3Adatabases%3Aunix%3Asysctl%3Alinux&amp;1657241945" width="2" height="1" alt="" /></div>
+    <div id="screen__mode" class="no"></div>    <!--[if lte IE 8 ]></div><![endif]-->
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html><html><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/.static/css/global.css" type="text/css" rel="stylesheet">
+
+<script src="/.static/js/theme.js"></script>
+<script src="/.static/js/interfaceUtils.js"></script>
+<title>Available daily graphs</title></head>
+<body>
+
+  <nav class="navHeader" id="dynamicHeader"><span id="navLinkSpan"> <span>[</span>
+
+  <input type="checkbox" id="mobile-hamburger">
+  <label id="hamburger-menu-icon" for="mobile-hamburger" class="glowOnHover"> 
+    <nav id="sidebar-menu">
+      <ul>
+        <li> <a href="/" class="coloredIcon navLinkHome">Home
+        </a></li>
+        <li> <a href="/boards.js" class="coloredIcon navBoardList">Boards
+        </a></li>
+        <li> <a href="/overboard" class="coloredIcon linkOverboard">Overboard
+        </a></li>
+        <li> <a href="/sfw" class="coloredIcon linkSfwOver">SFW Overboard
+        </a></li>
+        <li> <a class="coloredIcon multiboardButton">Multiboard
+        </a></li>
+        <li> <a href="/.static/pages/posting.html" class="coloredIcon navPosting">Posting
+        </a></li>
+        <li> <a class="coloredIcon settingsButton">Settings
+        </a></li>
+        <li> <a class="coloredIcon watcherButton">Watcher
+        </a></li>
+        <li> <a href="/account.js" class="coloredIcon navMod">User Account
+        </a></li>
+      </ul>
+    </nav>
+    <div id="hamburger-overlay">
+    </div>
+  </label>
+
+  <a href="/" class="coloredIcon navLinkHome" title="Home"></a> <span>/</span> <a href="/boards.js" class="coloredIcon navBoardList" title="Boards"></a> <span>/</span> <a href="/overboard" class="coloredIcon linkOverboard" title="Overboard"></a> <span>/</span> <a href="/sfw" class="coloredIcon linkSfwOver" title="SFW Overboard"></a> <span>/</span> <a class="coloredIcon multiboardButton" title="Multiboard (requires JavaScript)"></a> <span>/</span> <a href="/.static/pages/posting.html" class="coloredIcon navPosting" title="Posting"></a> <span>/</span> <a class="coloredIcon settingsButton" title="Settings (requires JavaScript)"></a> <span>/</span> <a class="coloredIcon watcherButton" title="Thread Watcher (requires JavaScript)"></a> <span>/</span> <a href="/account.js" id="themesBefore" class="coloredIcon navMod" title="User Account"></a> <span>]</span>
+</span>
+<span id="navTopBoardsSpan"> </span>
+<span id="navBoardsSpan"> </span>
+<span id="navOptionsSpan"> </span>
+</nav>
+
+  <header>
+    <img src="/.static/logo.png" class="logoImg" alt="logo">
+  </header>
+
+  <div class="titleWrapper">
+
+    <fieldset class="titleFieldset">
+
+      <legend>Graphs</legend>
+
+      <form method="get" action="graphs.js">
+
+        <label>
+          Year:
+          <input type="text" name="year" placeholder="YYYY">
+        </label>
+
+        <input type="submit" value="Search">
+
+      </form>
+
+      <hr>
+
+      <div id="divDates" class="linkList"><a href="/.global/graphs/2022-07-07.png">07/07/2022</a><a href="/.global/graphs/2022-07-06.png">07/06/2022</a><a href="/.global/graphs/2022-07-05.png">07/05/2022</a><a href="/.global/graphs/2022-07-04.png">07/04/2022</a><a href="/.global/graphs/2022-07-03.png">07/03/2022</a><a href="/.global/graphs/2022-07-02.png">07/02/2022</a><a href="/.global/graphs/2022-07-01.png">07/01/2022</a><a href="/.global/graphs/2022-06-29.png">06/29/2022</a><a href="/.global/graphs/2022-06-28.png">06/28/2022</a><a href="/.global/graphs/2022-06-27.png">06/27/2022</a><a href="/.global/graphs/2022-06-26.png">06/26/2022</a><a href="/.global/graphs/2022-06-25.png">06/25/2022</a><a href="/.global/graphs/2022-06-24.png">06/24/2022</a><a href="/.global/graphs/2022-06-23.png">06/23/2022</a><a href="/.global/graphs/2022-06-22.png">06/22/2022</a><a href="/.global/graphs/2022-06-21.png">06/21/2022</a><a href="/.global/graphs/2022-06-20.png">06/20/2022</a><a href="/.global/graphs/2022-06-19.png">06/19/2022</a><a href="/.global/graphs/2022-06-18.png">06/18/2022</a><a href="/.global/graphs/2022-06-17.png">06/17/2022</a><a href="/.global/graphs/2022-06-16.png">06/16/2022</a><a href="/.global/graphs/2022-06-15.png">06/15/2022</a><a href="/.global/graphs/2022-06-14.png">06/14/2022</a><a href="/.global/graphs/2022-06-13.png">06/13/2022</a><a href="/.global/graphs/2022-06-12.png">06/12/2022</a><a href="/.global/graphs/2022-06-11.png">06/11/2022</a><a href="/.global/graphs/2022-06-10.png">06/10/2022</a><a href="/.global/graphs/2022-06-09.png">06/09/2022</a><a href="/.global/graphs/2022-06-08.png">06/08/2022</a><a href="/.global/graphs/2022-06-07.png">06/07/2022</a><a href="/.global/graphs/2022-06-06.png">06/06/2022</a><a href="/.global/graphs/2022-06-05.png">06/05/2022</a><a href="/.global/graphs/2022-06-04.png">06/04/2022</a><a href="/.global/graphs/2022-06-03.png">06/03/2022</a><a href="/.global/graphs/2022-06-02.png">06/02/2022</a><a href="/.global/graphs/2022-06-01.png">06/01/2022</a><a href="/.global/graphs/2022-05-31.png">05/31/2022</a><a href="/.global/graphs/2022-05-30.png">05/30/2022</a><a href="/.global/graphs/2022-05-29.png">05/29/2022</a><a href="/.global/graphs/2022-05-28.png">05/28/2022</a><a href="/.global/graphs/2022-05-27.png">05/27/2022</a><a href="/.global/graphs/2022-05-26.png">05/26/2022</a><a href="/.global/graphs/2022-05-25.png">05/25/2022</a><a href="/.global/graphs/2022-05-24.png">05/24/2022</a><a href="/.global/graphs/2022-05-23.png">05/23/2022</a><a href="/.global/graphs/2022-05-22.png">05/22/2022</a><a href="/.global/graphs/2022-05-21.png">05/21/2022</a><a href="/.global/graphs/2022-05-20.png">05/20/2022</a><a href="/.global/graphs/2022-05-19.png">05/19/2022</a><a href="/.global/graphs/2022-05-18.png">05/18/2022</a><a href="/.global/graphs/2022-05-17.png">05/17/2022</a><a href="/.global/graphs/2022-05-16.png">05/16/2022</a><a href="/.global/graphs/2022-05-15.png">05/15/2022</a><a href="/.global/graphs/2022-05-14.png">05/14/2022</a><a href="/.global/graphs/2022-05-13.png">05/13/2022</a><a href="/.global/graphs/2022-05-12.png">05/12/2022</a><a href="/.global/graphs/2022-05-11.png">05/11/2022</a><a href="/.global/graphs/2022-05-10.png">05/10/2022</a><a href="/.global/graphs/2022-05-09.png">05/09/2022</a><a href="/.global/graphs/2022-05-08.png">05/08/2022</a><a href="/.global/graphs/2022-05-07.png">05/07/2022</a><a href="/.global/graphs/2022-05-06.png">05/06/2022</a><a href="/.global/graphs/2022-05-05.png">05/05/2022</a><a href="/.global/graphs/2022-05-04.png">05/04/2022</a><a href="/.global/graphs/2022-05-03.png">05/03/2022</a><a href="/.global/graphs/2022-05-02.png">05/02/2022</a><a href="/.global/graphs/2022-05-01.png">05/01/2022</a><a href="/.global/graphs/2022-04-30.png">04/30/2022</a><a href="/.global/graphs/2022-04-29.png">04/29/2022</a><a href="/.global/graphs/2022-04-28.png">04/28/2022</a><a href="/.global/graphs/2022-04-27.png">04/27/2022</a><a href="/.global/graphs/2022-04-26.png">04/26/2022</a><a href="/.global/graphs/2022-04-25.png">04/25/2022</a><a href="/.global/graphs/2022-04-24.png">04/24/2022</a><a href="/.global/graphs/2022-04-23.png">04/23/2022</a><a href="/.global/graphs/2022-04-22.png">04/22/2022</a><a href="/.global/graphs/2022-04-21.png">04/21/2022</a><a href="/.global/graphs/2022-04-20.png">04/20/2022</a><a href="/.global/graphs/2022-04-19.png">04/19/2022</a><a href="/.global/graphs/2022-04-18.png">04/18/2022</a><a href="/.global/graphs/2022-04-17.png">04/17/2022</a><a href="/.global/graphs/2022-04-16.png">04/16/2022</a><a href="/.global/graphs/2022-04-15.png">04/15/2022</a><a href="/.global/graphs/2022-04-14.png">04/14/2022</a><a href="/.global/graphs/2022-04-13.png">04/13/2022</a><a href="/.global/graphs/2022-04-12.png">04/12/2022</a><a href="/.global/graphs/2022-04-11.png">04/11/2022</a><a href="/.global/graphs/2022-04-10.png">04/10/2022</a><a href="/.global/graphs/2022-04-09.png">04/09/2022</a><a href="/.global/graphs/2022-04-08.png">04/08/2022</a><a href="/.global/graphs/2022-04-07.png">04/07/2022</a><a href="/.global/graphs/2022-04-06.png">04/06/2022</a><a href="/.global/graphs/2022-04-05.png">04/05/2022</a><a href="/.global/graphs/2022-04-04.png">04/04/2022</a><a href="/.global/graphs/2022-04-03.png">04/03/2022</a><a href="/.global/graphs/2022-04-02.png">04/02/2022</a><a href="/.global/graphs/2022-04-01.png">04/01/2022</a><a href="/.global/graphs/2022-03-31.png">03/31/2022</a><a href="/.global/graphs/2022-03-30.png">03/30/2022</a><a href="/.global/graphs/2022-03-29.png">03/29/2022</a><a href="/.global/graphs/2022-03-28.png">03/28/2022</a><a href="/.global/graphs/2022-03-27.png">03/27/2022</a><a href="/.global/graphs/2022-03-26.png">03/26/2022</a><a href="/.global/graphs/2022-03-25.png">03/25/2022</a><a href="/.global/graphs/2022-03-24.png">03/24/2022</a><a href="/.global/graphs/2022-03-23.png">03/23/2022</a><a href="/.global/graphs/2022-03-22.png">03/22/2022</a><a href="/.global/graphs/2022-03-21.png">03/21/2022</a><a href="/.global/graphs/2022-03-20.png">03/20/2022</a><a href="/.global/graphs/2022-03-19.png">03/19/2022</a><a href="/.global/graphs/2022-03-18.png">03/18/2022</a><a href="/.global/graphs/2022-03-17.png">03/17/2022</a><a href="/.global/graphs/2022-03-16.png">03/16/2022</a><a href="/.global/graphs/2022-03-15.png">03/15/2022</a><a href="/.global/graphs/2022-03-14.png">03/14/2022</a><a href="/.global/graphs/2022-03-13.png">03/13/2022</a><a href="/.global/graphs/2022-03-12.png">03/12/2022</a><a href="/.global/graphs/2022-03-11.png">03/11/2022</a><a href="/.global/graphs/2022-03-10.png">03/10/2022</a><a href="/.global/graphs/2022-03-09.png">03/09/2022</a><a href="/.global/graphs/2022-03-08.png">03/08/2022</a><a href="/.global/graphs/2022-03-07.png">03/07/2022</a><a href="/.global/graphs/2022-03-06.png">03/06/2022</a><a href="/.global/graphs/2022-03-05.png">03/05/2022</a><a href="/.global/graphs/2022-03-04.png">03/04/2022</a><a href="/.global/graphs/2022-03-03.png">03/03/2022</a><a href="/.global/graphs/2022-03-02.png">03/02/2022</a><a href="/.global/graphs/2022-03-01.png">03/01/2022</a><a href="/.global/graphs/2022-02-28.png">02/28/2022</a><a href="/.global/graphs/2022-02-27.png">02/27/2022</a><a href="/.global/graphs/2022-02-26.png">02/26/2022</a><a href="/.global/graphs/2022-02-25.png">02/25/2022</a><a href="/.global/graphs/2022-02-24.png">02/24/2022</a><a href="/.global/graphs/2022-02-23.png">02/23/2022</a><a href="/.global/graphs/2022-02-22.png">02/22/2022</a><a href="/.global/graphs/2022-02-21.png">02/21/2022</a><a href="/.global/graphs/2022-02-20.png">02/20/2022</a><a href="/.global/graphs/2022-02-19.png">02/19/2022</a><a href="/.global/graphs/2022-02-18.png">02/18/2022</a><a href="/.global/graphs/2022-02-17.png">02/17/2022</a><a href="/.global/graphs/2022-02-16.png">02/16/2022</a><a href="/.global/graphs/2022-02-15.png">02/15/2022</a><a href="/.global/graphs/2022-02-14.png">02/14/2022</a><a href="/.global/graphs/2022-02-13.png">02/13/2022</a><a href="/.global/graphs/2022-02-12.png">02/12/2022</a><a href="/.global/graphs/2022-02-11.png">02/11/2022</a><a href="/.global/graphs/2022-02-10.png">02/10/2022</a><a href="/.global/graphs/2022-02-09.png">02/09/2022</a><a href="/.global/graphs/2022-02-08.png">02/08/2022</a><a href="/.global/graphs/2022-02-07.png">02/07/2022</a><a href="/.global/graphs/2022-02-06.png">02/06/2022</a><a href="/.global/graphs/2022-02-05.png">02/05/2022</a><a href="/.global/graphs/2022-02-04.png">02/04/2022</a><a href="/.global/graphs/2022-02-03.png">02/03/2022</a><a href="/.global/graphs/2022-02-02.png">02/02/2022</a><a href="/.global/graphs/2022-02-01.png">02/01/2022</a><a href="/.global/graphs/2022-01-31.png">01/31/2022</a><a href="/.global/graphs/2022-01-30.png">01/30/2022</a><a href="/.global/graphs/2022-01-29.png">01/29/2022</a><a href="/.global/graphs/2022-01-28.png">01/28/2022</a><a href="/.global/graphs/2022-01-27.png">01/27/2022</a><a href="/.global/graphs/2022-01-26.png">01/26/2022</a><a href="/.global/graphs/2022-01-25.png">01/25/2022</a><a href="/.global/graphs/2022-01-24.png">01/24/2022</a><a href="/.global/graphs/2022-01-23.png">01/23/2022</a><a href="/.global/graphs/2022-01-22.png">01/22/2022</a><a href="/.global/graphs/2022-01-21.png">01/21/2022</a><a href="/.global/graphs/2022-01-20.png">01/20/2022</a><a href="/.global/graphs/2022-01-19.png">01/19/2022</a><a href="/.global/graphs/2022-01-18.png">01/18/2022</a><a href="/.global/graphs/2022-01-17.png">01/17/2022</a><a href="/.global/graphs/2022-01-16.png">01/16/2022</a><a href="/.global/graphs/2022-01-15.png">01/15/2022</a><a href="/.global/graphs/2022-01-14.png">01/14/2022</a><a href="/.global/graphs/2022-01-13.png">01/13/2022</a><a href="/.global/graphs/2022-01-12.png">01/12/2022</a><a href="/.global/graphs/2022-01-11.png">01/11/2022</a><a href="/.global/graphs/2022-01-10.png">01/10/2022</a><a href="/.global/graphs/2022-01-09.png">01/09/2022</a><a href="/.global/graphs/2022-01-08.png">01/08/2022</a><a href="/.global/graphs/2022-01-07.png">01/07/2022</a><a href="/.global/graphs/2022-01-06.png">01/06/2022</a><a href="/.global/graphs/2022-01-05.png">01/05/2022</a><a href="/.global/graphs/2022-01-04.png">01/04/2022</a><a href="/.global/graphs/2022-01-03.png">01/03/2022</a><a href="/.global/graphs/2022-01-02.png">01/02/2022</a><a href="/.global/graphs/2022-01-01.png">01/01/2022</a></div>
+
+    </fieldset>
+
+  </div>
+  <footer id="dynamicFooter"><div id="footer">
+    <a href="/.static/pages/about.html">About</a>
+    •
+    <a href="/site/res/27.html#">Feedback</a>
+    •
+    <a href="/.static/pages/globalRules.html">Global Rules</a>
+    •
+    <a href="/.static/pages/legal.html">Legal</a>
+    •
+    <a href="/.static/pages/contact.html">Contact</a>
+    •
+    <a href="/.static/pages/donate.html">Donate</a>
+	<br>
+	<a class="coloredIcon" id="linkEngine" href="//gitgud.io/LynxChan/LynxChan"></a>
+	+
+	<a class="coloredIcon" id="linkFrontend" href="//gitgud.io/8chan/Aleph"></a>
+</div>
+</footer>
+
+
+
+<script src="/.static/js/api.js"></script>
+<script src="/.static/js/favouriteBoards.js"></script>
+<script src="/.static/js/settingsMenu.js"></script>
+<script src="/.static/js/watcher.js"></script>
+
+
+</body></html>

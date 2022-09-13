@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Dark Arts : An overview of Brute Forcing and Defense | Coarse Enigma</title>
+<meta name="generator" content="Jekyll v4.1.1" />
+<meta property="og:title" content="Dark Arts : An overview of Brute Forcing and Defense" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="If you run a service with authentication, your servers will be targeted…" />
+<meta property="og:description" content="If you run a service with authentication, your servers will be targeted…" />
+<link rel="canonical" href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/dark-arts-brute-forcing-and-defense.html" />
+<meta property="og:url" content="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/dark-arts-brute-forcing-and-defense.html" />
+<meta property="og:site_name" content="Coarse Enigma" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-08-22T00:00:00-04:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Dark Arts : An overview of Brute Forcing and Defense" />
+<script type="application/ld+json">
+{"description":"If you run a service with authentication, your servers will be targeted…","@type":"BlogPosting","headline":"Dark Arts : An overview of Brute Forcing and Defense","dateModified":"2020-08-22T00:00:00-04:00","datePublished":"2020-08-22T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/dark-arts-brute-forcing-and-defense.html"},"url":"http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/blog/dark-arts-brute-forcing-and-defense.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://pofst4hoyijmth3uzzd4lnmmivzdhesbhu32qit5sh5trrcflfma.b32.i2p/feed.xml" title="Coarse Enigma" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Coarse Enigma</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a><a class="page-link" href="/code/">Code</a><a class="page-link" href="/links/">Links</a><a class="page-link" href="/webring/">Webring</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Dark Arts : An overview of Brute Forcing and Defense</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-08-22T00:00:00-04:00" itemprop="datePublished">Aug 22, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <h2 id="anatomy-of-the-dark-side">Anatomy of the Dark Side</h2>
+<p>If you run a service with authentication, your servers will be targeted with <a href="https://attack.mitre.org/techniques/T1110/">brute force attempts</a>. There are a couple of interesting attacks here that we will explain, and cover controls for including</p>
+<ul>
+  <li>Standard Brute Force,</li>
+  <li>Wordlists,</li>
+  <li>Targeted Wordlists and</li>
+  <li>Credential Stuffing.</li>
+</ul>
+
+<h4 id="brute-force-and-password-entropy">Brute Force and Password Entropy</h4>
+<p>An actual brute force attack involves iteratively/repetitively generating possible passwords. Think ‘A’, ‘B’, … ‘AA’, ‘AB’, … and so on. This kind of attack is unlikely to occur over network due to the number of attempts expected to succeed. Although, theoretically, this could ultimately break any password, the network is too slow to try this. For instance, a week password of just 5 characters would like ~(95)^5 about 7 Billion passwords. Trying passwords randomly, we expect a 50% chance of success after covering 50% the space or 3.5 Billion. At 10 passwords per second this would take 4,000 years. This tactic simply isn’t viable. Traditional brute forcing is used mostly for offline password cracking where millions of attempts per second can be had.</p>
+
+<p>To deal with this problem of limited numbers of guesses, attackers must control the passwords they want to guess out of the “keyspace”. This is a good tactic because humans don’t generally choose random passwords. Some are far more likely than others.</p>
+
+<h4 id="wordlists--controlling-the-keyspace">Wordlists : Controlling the Keyspace</h4>
+<p>Mostly commonly, untargeted attacks with try commonly used and default credentials to computers or services using specially designed <a href="/blog/SSH-Brute-Force-Metasploit-Nmap-THCHydra.html">programs</a>. Think (admin/password), (rot/toor) combinations. These combinations are placed on a list called a “Wordlist”. This kind of attack is as old as passwords, and used in the movie the 1995 movie “Hackers”. As sad as it is, attackers do this because it works, and your server will be a target. If you are reading this, this attack is unlikely to succeed against your admin accounts, but it can still clutter logs, waste disk space, network bandwidth, and processor power, and you may have users.</p>
+
+<h4 id="targeted-attacks-with-custom-wordlists">Targeted Attacks with Custom Wordlists</h4>
+<p>A more targeted attack might use a wordlist customized to your footprint by taking into account content you have posted (wordhound), a website (ceWL) or other details about likely account usernames and passwords from (OSINT), and / or by clever construction of possible possible passwords with rules (hashcat), or prince attack to align with ways users, including possibly you, generate passwords. You are much less likely to be a victim of this kind of attack, if only, because the targeting requires more effort.</p>
+
+<h4 id="credential-stuffing-with-breach-data">Credential Stuffing with Breach Data</h4>
+<p>Finally, attackers may use “Breach Data” - data taken from other, less protected services, and attempt to reuse credentials. This is an attacker obtaining passwords you or your uses might be likely to use on your service, by leveraging a list of passwords that you or your users have used on other services which have been broken into. This technique assumes password reuse. This technique is likely to be of little value for an admin account on a server (although it might work!), but increases in value as the number of users increases.</p>
+
+<h2 id="an-overview-of-defense">An Overview of Defense</h2>
+<h4 id="passwordless-authentication--more-entropy">Passwordless Authentication : More Entropy</h4>
+<p>The number one best defense you can have against password brute forcing is simply not having passwords. If your service supports alternative authentication methods USE THEM. For instance, SSH , which this article was written with in mind, and is most commonly brute forced, supports Public-Key Authentication. Choosing an SSH key gives you 256 to 512 bits of <em>real</em> entropy from the signature used to authenticate you, equivalent to an actually random 38 character password whereas humans choose passwords that appear on wordlists with far higher frequency due to requirement to memorize. Don’t use passwords. SSH, and many other UNIX services support a wide variety of authentication methods through PAM (Pluggable Authentication Modules).</p>
+
+<h5 id="compensating-controls-for-passwords-if-you-must">Compensating Controls for Passwords if you must</h5>
+<p>If you must use password, consider compensating controls like 2 Factor Authentication where more than simply guessing a password is required. You can also make passwords harder to guess by enforcing password complexity requirements. However, you should be aware that password complexity requirements usually result in users writing down passwords - which may not be undesirable.</p>
+
+<h4 id="dont-use-common-usernames">Don’t Use Common Usernames</h4>
+<p>An important thing to consider, is does your username actually have to be public. Although usernames are not passwords, they do represent 50% of authentication information, and by refusing to use commonly used accounts, you can deny low-skill attackers/ untargeted attacks the ability to even get started. Don’t enable root login via ssh. Don’t use the username admin.</p>
+<h4 id="monitoring-breach-data">Monitoring Breach Data</h4>
+<p>If you have users, as it is unlikely the reader of this does, given the nature of where this is published, consider monitoring for breach data. If you have users, there is a very reasonable chance that they are reusing passwords. Force users to reset passwords after a breach occurs weather the password is an exact match or not; Any information on a users password allows refining the keyspace. Monitoring for breach data can is an OSINT discipline.</p>
+<h4 id="reducing-attempts-instead-of-entropy">Reducing Attempts instead of Entropy</h4>
+<p>All of the above defenses, passwordless authentication, not using commonly used usernames, 2 Factor Authentication[1] and password complexity, try to make the keyspace larger by adding additional entropy. 2 Factor Authentication is famously difficult to implement at scale, password complexity policies frustrate users, Breach Monitoring is labour intensive. Another type of control focuses limiting the ability to attempt authentication: IP Blacklisting and account lockouts. By limiting the number of attempts a party can make, we can make even low entropy authentication methods impossible to brute force. Imagine trying to guess a 5 digit password with three attempts per day. Although this cannot prevent default credentials from working on the first attempt, it can limit an attackers ability to explore the keyspace in any real way at all. Either you have the password, or you don’t get in. This can be effected by locking users out of their accounts, which predictably results in angry users, and support costs OR by limiting the number of attempts at the IP level.</p>
+
+<p>[1] - Actually, 2 Factor Authentication might be out of band signaling, and doesn’t solely have to relay on a one-time code entered in the same channel.</p>
+
+  </div><a class="u-url" href="/blog/dark-arts-brute-forcing-and-defense.html" hidden></a>
+</article>
+
+      </div>
+    </main></body>
+
+</html>
