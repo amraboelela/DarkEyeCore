@@ -170,7 +170,8 @@ public struct Link: Codable, Equatable, Sendable {
                                 }
                                 if refinedHref.first == "/" {
                                     return (href.htmlEncoded, base + refinedHref)
-                                } else if refinedHref.range(of: ".onion") != nil {
+                                } else if refinedHref.range(of: ".onion") != nil &&
+                                            Site.allowed(onionID: refinedHref.onionID) {
                                     return (href.htmlEncoded, refinedHref)
                                 }
                             }
@@ -244,7 +245,7 @@ public struct Link: Codable, Equatable, Sendable {
         var myLink = link
         //NSLog("process link, site: \(String(describing: await link.site()))")
         //NSLog("process link, blocked: \(await link.blocked())")
-        if await link.blocked() || !allowed(url: link.url) {
+        if await link.blocked() || !Site.allowed(onionID: link.url.onionID) {
             NSLog("link not allowed")
             await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
@@ -350,9 +351,9 @@ public struct Link: Codable, Equatable, Sendable {
     
     static func allowed(url: String) -> Bool {
         //NSLog("checking if allowed url")
-        if !Site.allowed(onionID: url.onionID) {
+        /*if !Site.allowed(onionID: url.onionID) {
             return false
-        }
+        }*/
         if url.range(of: ":") != nil &&
             url.range(of: "http") == nil {
             return false
