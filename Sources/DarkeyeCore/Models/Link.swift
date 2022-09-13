@@ -223,8 +223,10 @@ public struct Link: Codable, Equatable, Sendable {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
-        let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
-        result = availableLinks[chosenLinkIndex]
+        if availableLinks.count > 0 {
+            let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
+            result = availableLinks[chosenLinkIndex]
+        }
         return result
     }
     
