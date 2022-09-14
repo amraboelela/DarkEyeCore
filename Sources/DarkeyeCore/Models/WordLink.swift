@@ -137,8 +137,8 @@ public struct WordLink: Codable, Hashable, Sendable {
         if result.count > count {
             result.removeLast(result.count - count)
         }
-        var refinedResult = [WordLink]()
-        for i in 0..<result.count {
+        var refinedResult = result //[WordLink]()
+        /*for i in 0..<result.count {
             var foundIt = false
             for j in 0..<refinedResult.count {
                 let wordLink = result[i]
@@ -156,7 +156,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             if !foundIt {
                 refinedResult.append(result[i])
             }
-        }
+        }*/
         return refinedResult
     }
     
