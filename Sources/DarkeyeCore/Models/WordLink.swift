@@ -46,7 +46,6 @@ public struct WordLink: Codable, Hashable, Sendable {
         case wordCount
         case numberOfVisits
         case lastVisitTime
-        case numberOfLinks
     }
     
     // MARK: - Accessors
@@ -130,6 +129,11 @@ public struct WordLink: Codable, Hashable, Sendable {
                 return false
             }
             return true
+        }
+        for i in 0..<result.count {
+            if let link = await result[i].link() {
+                result[i].numberOfLinks = link.numberOfLinks
+            }
         }
         result = result.sorted { $0.score() > $1.score() }
         if result.count > count {
