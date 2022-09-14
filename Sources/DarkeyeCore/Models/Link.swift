@@ -299,7 +299,7 @@ public struct Link: Codable, Equatable, Sendable {
         for (_, childURL) in await urls() {
             if var link: Link = await database.value(forKey: Link.prefix + childURL) {
                 link.numberOfLinks += 1
-                NSLog("link.url: \(link.url)")
+                //NSLog("link.url: \(link.url)")
                 //NSLog("link.numberOfLinks: \(link.numberOfLinks)")
                 await link.save()
             } else {
