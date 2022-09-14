@@ -133,7 +133,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             return true
         }
-        await result.quickSort { await $0.score() > $1.score() }
+        await result.insertionSort { await $0.score() > $1.score() }
         if result.count > count {
             result.removeLast(result.count - count)
         }
