@@ -36,6 +36,7 @@ public struct WordLink: Codable, Hashable, Sendable {
     public var wordCount: Int
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0
+    public var numberOfLinks: Int = 1
     public var children: [ChildWordLink]? = nil
     
     public enum CodingKeys: String, CodingKey {
@@ -45,15 +46,12 @@ public struct WordLink: Codable, Hashable, Sendable {
         case wordCount
         case numberOfVisits
         case lastVisitTime
+        case numberOfLinks
     }
     
     // MARK: - Accessors
     
-    func score() async -> Int {
-        var numberOfLinks = 1
-        if let link = await link() {
-            numberOfLinks = link.numberOfLinks
-        }
+    func score() -> Int {
         return numberOfLinks * 1000 + numberOfVisits * 500 + wordCount * 100 + lastVisitTime
     }
     
@@ -93,7 +91,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             do {
                 if word.count > 2 {
                     let key = prefix + word + "-" + link.url
-                    let wordLink = WordLink(word: word, url: link.url, text: text, wordCount: counts[word] ?? 0)
+                    let wordLink = WordLink(word: word, url: link.url, text: text, wordCount: counts[word] ?? 0, numberOfLinks: link.numberOfLinks)
                     try await database.setValue(wordLink, forKey: key)
                 }
             } catch {
@@ -133,12 +131,12 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             return true
         }
-        await result.insertionSort { await $0.score() > $1.score() }
+        result = result.sorted { $0.score() > $1.score() }
         if result.count > count {
             result.removeLast(result.count - count)
         }
-        var refinedResult = result //[WordLink]()
-        /*for i in 0..<result.count {
+        var refinedResult = [WordLink]()
+        for i in 0..<result.count {
             var foundIt = false
             for j in 0..<refinedResult.count {
                 let wordLink = result[i]
@@ -156,7 +154,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             if !foundIt {
                 refinedResult.append(result[i])
             }
-        }*/
+        }
         return refinedResult
     }
     
