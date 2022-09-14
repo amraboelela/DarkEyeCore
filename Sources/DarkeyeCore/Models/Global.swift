@@ -42,7 +42,7 @@ public struct Global: Codable, Sendable {
     // MARK: - Helpers
     
     func save() async {
-        NSLog("global.save()")
+        //NSLog("global.save()")
         do {
             try await database.setValue(self, forKey: Global.prefix)
         } catch {
