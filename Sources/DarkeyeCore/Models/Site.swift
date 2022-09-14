@@ -13,9 +13,6 @@ import SwiftEncrypt
 
 public struct Site: Codable, Sendable {
     public static let prefix = "site-"
-    public static var workingDirectory = ""
-    
-    static var numberOfProcessedSites = 0
     
     public var url: String
     var processed: Bool = false
@@ -138,7 +135,8 @@ public struct Site: Codable, Sendable {
         } else {
             do {
                 NSLog("can't find any site to process")
-                NSLog("Last processed site #\(Site.numberOfProcessedSites)")
+                let global = await Global.global()
+                NSLog("Last processed site #\(global.numberOfProcessedSites)")
                 try await Link.crawlNext()
             } catch {
                 NSLog("Link.crawlNext() error: \(error)")
@@ -150,8 +148,10 @@ public struct Site: Codable, Sendable {
         //NSLog("updateSiteProcessedAndSave")
         processed = true
         await save()
-        Site.numberOfProcessedSites += 1
-        NSLog("Processed site #\(Site.numberOfProcessedSites)")
+        var global = await Global.global()
+        global.numberOfProcessedSites += 1
+        await global.save()
+        NSLog("Processed site #\(global.numberOfProcessedSites)")
     }
     
     // MARK: - Saving

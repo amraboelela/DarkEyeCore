@@ -34,7 +34,8 @@ final class CrawlerTests: TestsBase, CrawlerDelegate {
         try? await Task.sleep(seconds: secondsDelay)
         crawler.canRun = false
         try? await Task.sleep(seconds: 2.0)
-        XCTAssertTrue(Link.numberOfProcessedLinks > 3)
+        let global = await Global.global()
+        XCTAssertTrue(global.numberOfProcessedLinks > 3)
         await asyncTearDown()
     }
     
