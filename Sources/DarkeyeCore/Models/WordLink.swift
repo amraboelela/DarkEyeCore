@@ -15,6 +15,18 @@ public enum WordStatus {
     case failed
 }
 
+public struct ChildWordLink: Codable, Hashable, Sendable {
+    public var word: String
+    public var url: String
+    public var text: String
+    
+    // MARK: - Factory methods
+    
+    static func from(wordLink: WordLink) -> ChildWordLink {
+        return ChildWordLink(word: wordLink.word, url: wordLink.url, text: wordLink.text)
+    }
+}
+
 public struct WordLink: Codable, Hashable, Sendable {
     public static let prefix = "wordlink-"
 
@@ -24,6 +36,16 @@ public struct WordLink: Codable, Hashable, Sendable {
     public var wordCount: Int
     public var numberOfVisits: Int = 0
     public var lastVisitTime: Int = 0
+    public var children: [ChildWordLink]? = nil
+    
+    public enum CodingKeys: String, CodingKey {
+        case word
+        case url
+        case text
+        case wordCount
+        case numberOfVisits
+        case lastVisitTime
+    }
     
     // MARK: - Accessors
     
@@ -111,11 +133,31 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             return true
         }
-        await result.insertionSort { await $0.score() > $1.score() }
+        await result.quickSort { await $0.score() > $1.score() }
         if result.count > count {
             result.removeLast(result.count - count)
         }
-        return result
+        var refinedResult = [WordLink]()
+        for i in 0..<result.count {
+            var foundIt = false
+            for j in 0..<refinedResult.count {
+                let wordLink = result[i]
+                if wordLink.url.onionID == refinedResult[j].url.onionID {
+                    foundIt = true
+                    let child = ChildWordLink.from(wordLink: wordLink)
+                    if refinedResult[j].children == nil {
+                        refinedResult[j].children = [child]
+                    } else {
+                        refinedResult[j].children?.append(child)
+                    }
+                    break
+                }
+            }
+            if !foundIt {
+                refinedResult.append(result[i])
+            }
+        }
+        return refinedResult
     }
     
     // MARK: - Delegates
