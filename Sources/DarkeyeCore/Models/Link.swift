@@ -92,7 +92,8 @@ public struct Link: Codable, Equatable, Sendable {
 #if os(Linux)
             do {
                 NSLog("needToRefresh, calling torsocks")
-                if let shellResult = try await shell(timeout: 5 * 60, "torsocks", "wget", "-O", fileURL.path, url) {
+                let timeout = result == nil ? 5 * 60 : 60
+                if let shellResult = try await shell(timeout: timeout, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                 }
                 if let fileContent = try? String(contentsOf: fileURL, encoding: .utf8), !fileContent.isVacant {
@@ -217,10 +218,10 @@ public struct Link: Codable, Equatable, Sendable {
         var mainSiteLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                if link.url.onionID == Global.mainOnionID {
+                /*if link.url.onionID == Global.mainOnionID {
                     mainSiteLink = link
                     stop.pointee = true
-                }
+                }*/
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
