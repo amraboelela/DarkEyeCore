@@ -56,7 +56,7 @@ final class LinkTests: TestsBase {
     
     func testText() async {
         await asyncSetup()
-        let link = Link(url: Global.mainUrl)
+        let link = Link(url: Global.mainUrls.first!)
         let text = await link.text()
         XCTAssertTrue(text.contains("All pages - The Hidden Wiki"))
         print("text.count: \(text.count)")
@@ -66,7 +66,7 @@ final class LinkTests: TestsBase {
     
     func testRawUrls() async {
         await asyncSetup()
-        let link = Link(url: Global.mainUrl)
+        let link = Link(url: Global.mainUrls.first!)
         var urls = await link.urls()
         XCTAssertTrue(urls.count > 100)
         XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
@@ -100,7 +100,7 @@ final class LinkTests: TestsBase {
     
     func testRefindedUrls() async {
         await asyncSetup()
-        let link = Link(url: Global.mainUrl)
+        let link = Link(url: Global.mainUrls.first!)
         var urls = await link.urls()
         XCTAssertTrue(urls.count > 250)
         XCTAssertEqual(urls[0].1, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/.Preparing_For_Pregnancy_16980")
@@ -143,7 +143,7 @@ final class LinkTests: TestsBase {
     
     func testHtml() async {
         await asyncSetup()
-        var link = Link(url: Global.mainUrl)
+        var link = Link(url: Global.mainUrls.first!)
         await link.save()
         let html = link.html
         XCTAssertNotNil(html)
@@ -183,17 +183,17 @@ final class LinkTests: TestsBase {
     
     func testLoad() async {
         await asyncSetup()
-        let link = Link(url: Global.mainUrl)
+        let link = Link(url: Global.mainUrls.first!)
         XCTAssertNotNil(link.html)
         await asyncTearDown()
     }
     
     func testProcessLink() async {
         await asyncSetup()
-        let link1 = Link(url: Global.mainUrl)
+        let link1 = Link(url: Global.mainUrls.first!)
         try? await Link.process(link: link1)
         try? await Task.sleep(seconds: 5)
-        if let word: WordLink = await database.value(forKey: WordLink.prefix + "print-" + Global.mainUrl) {
+        if let word: WordLink = await database.value(forKey: WordLink.prefix + "print-" + Global.mainUrls.first!) {
             XCTAssertTrue(word.text.lowercased().contains("print"))
         } else {
             XCTFail()
@@ -224,7 +224,7 @@ final class LinkTests: TestsBase {
     
     func testSaveChildrenIfNeeded() async {
         await asyncSetup()
-        var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
+        var link = Link(url: Global.mainUrls.first!, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         link.lastProcessTime = Date.secondsSinceReferenceDate
         await link.saveChildrenIfNeeded()
         if let _: Link = await database.value(forKey: Link.prefix + "exampleenglish.onion") {
@@ -238,7 +238,7 @@ final class LinkTests: TestsBase {
     
     func testSaveChildren() async {
         await asyncSetup()
-        var link = Link(url: Global.mainUrl, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
+        var link = Link(url: Global.mainUrls.first!, lastProcessTime: 0, numberOfVisits: 0, lastVisitTime: 0)
         XCTAssertEqual(link.lastProcessTime, 0)
         await link.saveChildren()
         if let _: Site = await database.value(forKey: Site.prefix + "zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad") {
