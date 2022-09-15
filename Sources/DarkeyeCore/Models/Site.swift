@@ -93,7 +93,11 @@ public struct Site: Codable, Sendable {
             "csalryx3xenotyljyttsju6jfthrjyt6ijwd3zzykhkpyfoeao2nxaqd",
             "gocdtu23yutzszejz4ar5axa7nmmz2oxs2ce3ivrld63axbcq5lsvdqd"
         ]
-        return !forbiddenIDs.contains(onionID)
+        let result = !forbiddenIDs.contains(onionID)
+        if !result {
+            NSLog("onionID not allowed: \(onionID)")
+        }
+        return result
     }
     // MARK: - Crawling
     
