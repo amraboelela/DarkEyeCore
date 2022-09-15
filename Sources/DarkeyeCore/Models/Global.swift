@@ -12,6 +12,7 @@ public struct Global: Codable, Sendable {
     public static let prefix = "global"
     public static var workingDirectory = ""
     static let mainUrl = "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Special:AllPages"
+    static let wikiOnionID = "zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad"
     
     // "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
     

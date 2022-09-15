@@ -211,15 +211,23 @@ public struct Link: Codable, Equatable, Sendable {
     
     static func nextLinkToProcess() async -> Link? {
         //NSLog("nextLinkToProcess")
-        var result: Link? = nil
+        var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         var availableLinks = [Link]()
+        var wikiLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
+                if link.url.onionID == Global.wikiOnionID {
+                    wikiLink = link
+                    stop.pointee = true
+                }
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
+        }
+        if wikiLink != nil {
+            return wikiLink
         }
         if availableLinks.count > 0 {
             let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
