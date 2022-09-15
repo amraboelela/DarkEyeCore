@@ -69,9 +69,9 @@ final class LinkTests: TestsBase {
         let link = Link(url: Global.mainUrl)
         var urls = await link.urls()
         XCTAssertTrue(urls.count > 100)
-        XCTAssertEqual(urls[0].0, "/wiki/Special:BrokenRedirects")
-        XCTAssertEqual(urls[1].0, "/wiki/Special:DeadendPages")
-        XCTAssertEqual(urls[2].0, "/wiki/Special:DoubleRedirects")
+        XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion")
+        XCTAssertEqual(urls[1].0, "/wiki/Contest2022")
+        XCTAssertEqual(urls[2].0, "/wiki/The_Matrix")
     
         urls = await link.urls()
         print("urls.count: \(urls.count)")

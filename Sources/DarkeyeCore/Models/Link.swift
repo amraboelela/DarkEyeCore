@@ -217,10 +217,10 @@ public struct Link: Codable, Equatable, Sendable {
         var wikiLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                if link.url.onionID == Global.wikiOnionID {
+                /*if link.url.onionID == Global.wikiOnionID {
                     wikiLink = link
                     stop.pointee = true
-                }
+                }*/
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
@@ -408,7 +408,6 @@ public struct Link: Codable, Equatable, Sendable {
             "daughter",
             "girl",
             "boy",
-            "Special:",
             "User_talk:",
             "/File:"
         ]
