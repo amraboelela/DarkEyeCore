@@ -20,8 +20,6 @@ enum LinkProcessError: Error {
 public struct Link: Codable, Equatable, Sendable {
     public static let prefix = "link-"
     
-    static var numberOfProcessedLinks = 0
-    
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var failedToLoad = false
@@ -213,17 +211,23 @@ public struct Link: Codable, Equatable, Sendable {
     
     static func nextLinkToProcess() async -> Link? {
         //NSLog("nextLinkToProcess")
-        var result: Link? = nil
+        var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         var availableLinks = [Link]()
+        var wikiLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                //stop.pointee = true
-                //result = link
+                if link.url.onionID == Global.wikiOnionID {
+                    wikiLink = link
+                    stop.pointee = true
+                }
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
+        }
+        if wikiLink != nil {
+            return wikiLink
         }
         if availableLinks.count > 0 {
             let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
@@ -238,6 +242,9 @@ public struct Link: Codable, Equatable, Sendable {
             //print("crawlNext nextLink: \(nextLink.url)")
             try await Link.process(link: nextLink)
         } else {
+            var global = await Global.global()
+            global.processTimeThreshold = Date.secondsSinceReferenceDate
+            await global.save()
             NSLog("can't find any link to process")
         }
     }
@@ -283,8 +290,10 @@ public struct Link: Codable, Equatable, Sendable {
         //NSLog("updateLinkProcessedAndSave")
         lastProcessTime = Date.secondsSinceReferenceDate
         await save()
-        Link.numberOfProcessedLinks += 1
-        NSLog("Processed link #\(Link.numberOfProcessedLinks)")
+        var global = await Global.global()
+        global.numberOfProcessedLinks += 1
+        await global.save()
+        NSLog("Processed link #\(global.numberOfProcessedLinks)")
     }
     
     public mutating func saveChildrenIfNeeded() async {
