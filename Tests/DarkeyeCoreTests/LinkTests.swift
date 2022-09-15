@@ -69,14 +69,12 @@ final class LinkTests: TestsBase {
         let link = Link(url: Global.mainUrl)
         var urls = await link.urls()
         XCTAssertTrue(urls.count > 100)
-        XCTAssertEqual(urls[0].0, "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Special:SpecialPages")
+        XCTAssertEqual(urls[0].0, "/wiki/Special:BrokenRedirects")
         XCTAssertEqual(urls[1].0, "/wiki/Special:DeadendPages")
         XCTAssertEqual(urls[2].0, "/wiki/Special:DoubleRedirects")
     
         urls = await link.urls()
         print("urls.count: \(urls.count)")
-        XCTAssertTrue(urls.count > 180)
-        XCTAssertEqual(urls[0].0, "/wiki/.Preparing_For_Pregnancy_16980")
         let wikiUrls = urls.filter { rawURL, refinedURL in
             rawURL.range(of: "/wiki")?.lowerBound == rawURL.startIndex
         }
