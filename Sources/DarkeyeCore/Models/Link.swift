@@ -383,7 +383,8 @@ public struct Link: Codable, Equatable, Sendable {
             ".pdf",
             ".asc",
             ".webm",
-            "?menu=1"
+            "?menu=1",
+            ".svg"
         ]
         for anExtension in forbiddenExtensions {
             if url.suffix(anExtension.count).range(of: anExtension) != nil {
@@ -408,7 +409,8 @@ public struct Link: Codable, Equatable, Sendable {
             "girl",
             "boy",
             "Special:",
-            "User_talk:"
+            "User_talk:",
+            "/File:"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
