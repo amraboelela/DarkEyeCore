@@ -406,7 +406,8 @@ public struct Link: Codable, Equatable, Sendable {
             "year",
             "daughter",
             "girl",
-            "boy"
+            "boy",
+            "Special:"
         ]
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
