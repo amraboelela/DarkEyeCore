@@ -58,7 +58,7 @@ final class LinkTests: TestsBase {
         await asyncSetup()
         let link = Link(url: Global.mainUrls.last!)
         let text = await link.text()
-        XCTAssertTrue(text.contains("All pages - The Hidden Wiki"))
+        XCTAssertTrue(text.contains("The Hidden Wiki"))
         print("text.count: \(text.count)")
         XCTAssertTrue(text.count > 27000)
         await asyncTearDown()
