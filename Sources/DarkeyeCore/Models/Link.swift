@@ -214,20 +214,20 @@ public struct Link: Codable, Equatable, Sendable {
         var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         var availableLinks = [Link]()
-        var wikiLink: Link?
+        var mainSiteLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                /*if link.url.onionID == Global.wikiOnionID {
-                    wikiLink = link
+                if link.url.onionID == Global.mainOnionID {
+                    mainSiteLink = link
                     stop.pointee = true
-                }*/
+                }
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
-        if wikiLink != nil {
-            return wikiLink
+        if mainSiteLink != nil {
+            return mainSiteLink
         }
         if availableLinks.count > 0 {
             let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
