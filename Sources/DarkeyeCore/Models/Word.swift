@@ -76,6 +76,7 @@ class Word {
                 }
             }
             if !arrayAllowed {
+                NSLog("Found forbiddenWordArray: \(forbiddenWordArray)")
                 return false
             }
         }
