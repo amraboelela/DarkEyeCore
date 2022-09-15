@@ -300,8 +300,8 @@ public struct Link: Codable, Equatable, Sendable {
         for (_, childURL) in await urls() {
             if var link: Link = await database.value(forKey: Link.prefix + childURL) {
                 link.numberOfLinks += 1
-                NSLog("link.url: \(link.url)")
-                NSLog("link.numberOfLinks: \(link.numberOfLinks)")
+                //NSLog("link.url: \(link.url)")
+                //NSLog("link.numberOfLinks: \(link.numberOfLinks)")
                 await link.save()
             } else {
                 var link = Link(url: childURL)
@@ -314,15 +314,12 @@ public struct Link: Codable, Equatable, Sendable {
     
     public mutating func save() async {
         do {
-            if let link: Link = await database.value(forKey: key) {
-                NSLog("link already exists: \(link.url)")
+            if let _: Link = await database.value(forKey: key) {
             } else {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
                 let siteKey = Site.prefix + url.onionID
-                NSLog("siteKey: \(siteKey)")
                 if let _: Site = await database.value(forKey: siteKey) {
-                    NSLog("site already exists")
                 } else if Site.allowed(onionID: url.onionID) {
                     let site = Site(url: url)
                     NSLog("New site: \(url.onionID)")
