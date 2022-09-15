@@ -92,7 +92,7 @@ public struct Link: Codable, Equatable, Sendable {
 #if os(Linux)
             do {
                 NSLog("needToRefresh, calling torsocks")
-                let timeout = result == nil ? 5 * 60 : 60
+                let timeout: TimeInterval = result == nil ? 5 * 60 : 60
                 if let shellResult = try await shell(timeout: timeout, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
                 }
