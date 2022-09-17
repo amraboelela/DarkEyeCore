@@ -13,28 +13,28 @@ final class WordLinkTests: TestsBase {
     
     func testIndexLink() async {
         await asyncSetup()
-        var link = Link(url: Global.mainUrls.last!)
+        var link = Link(url: Global.mainUrls.first!)
         var result  = await WordLink.index(link: link)
         XCTAssertEqual(result, .complete)
-        if let word: WordLink = await database.value(forKey: WordLink.prefix + "hidden-" + Global.mainUrls.last!) {
+        if let word: WordLink = await database.value(forKey: WordLink.prefix + "hidden-" + Global.mainUrls.first!) {
             XCTAssertTrue(word.text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.url, Global.mainUrls.last!)
+            XCTAssertEqual(word.url, Global.mainUrls.first!)
         } else {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "body-" + Global.mainUrls.last!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "body-" + Global.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "a-" + Global.mainUrls.last!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "a-" + Global.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "in-" + Global.mainUrls.last!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "in-" + Global.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "of-" + Global.mainUrls.last!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "of-" + Global.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "to-" + Global.mainUrls.last!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "to-" + Global.mainUrls.first!) {
             XCTFail()
         }
         
@@ -46,7 +46,6 @@ final class WordLinkTests: TestsBase {
     
    func testWordLinksWithSearchText() async {
        await asyncSetup()
-       //Link.numberOfProcessedLinks = 0
        let crawler = await Crawler.shared()
        await crawler.start()
        let secondsDelay = 10.0
@@ -54,13 +53,13 @@ final class WordLinkTests: TestsBase {
        try? await Task.sleep(seconds: secondsDelay)
        crawler.canRun = false
        try? await Task.sleep(seconds: 2.0)
-       var wordLinks = await WordLink.wordLinks(withSearchText: "to print", count: countLimit)
+       var wordLinks = await WordLink.wordLinks(withSearchText: "to wiki", count: countLimit)
        var wordLinksCount = wordLinks.count
        print("wordLinksCount 1: \(wordLinksCount)")
        print("wordLinks 1: \(wordLinks)")
        if wordLinksCount > 0 {
            for wordLink in wordLinks {
-               XCTAssertEqual(wordLink.word, "print")
+               XCTAssertNotNil(wordLink.word.range(of: "wiki"))
            }
        } else {
            XCTFail()
@@ -74,7 +73,6 @@ final class WordLinkTests: TestsBase {
            let blockedKey = Site.prefix + wordLinks[0].url.onionID
            print("blockedKey: \(blockedKey)")
            if var site: Site = await database.value(forKey: blockedKey) {
-               //var link = await hashLink.link()
                site.blocked = true
                await site.save()
            }

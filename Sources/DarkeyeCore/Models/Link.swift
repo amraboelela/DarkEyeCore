@@ -17,6 +17,21 @@ enum LinkProcessError: Error {
     case failed
 }
 
+enum Priority: Int, Codable {
+    case high
+    case medium
+    case low
+    
+    var childPriority: Priority {
+        switch self {
+        case .high:
+            return .medium
+        case .medium, .low:
+            return .low
+        }
+    }
+}
+
 public struct Link: Codable, Equatable, Sendable {
     public static let prefix = "link-"
     
@@ -26,6 +41,8 @@ public struct Link: Codable, Equatable, Sendable {
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfLinks = 1 // # of inbound links
+    var isSearchEngline: Bool?
+    var priority: Priority? // default is .low
     
     public enum CodingKeys: String, CodingKey {
         case url
@@ -34,6 +51,8 @@ public struct Link: Codable, Equatable, Sendable {
         case numberOfVisits
         case lastVisitTime
         case numberOfLinks
+        case isSearchEngline
+        case priority
     }
     
     // MARK: - Accessors
@@ -84,14 +103,14 @@ public struct Link: Codable, Equatable, Sendable {
             let cacheThreashold = Date.days(numberOfDays: thresholdDays)
             let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
             if secondsDiff > cacheThreashold {
-                NSLog("secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
+                NSLog("needToRefresh, secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
                 needToRefresh = true
             }
         }
         if result == nil || needToRefresh {
 #if os(Linux)
             do {
-                NSLog("needToRefresh, calling torsocks")
+                NSLog("Calling torsocks")
                 let timeout: TimeInterval = result == nil ? 5 * 60 : 60
                 if let shellResult = try await shell(timeout: timeout, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
@@ -104,6 +123,7 @@ public struct Link: Codable, Equatable, Sendable {
             } catch {
                 NSLog("html, error: \(error)")
                 if "\(error)".contains("Bad file descriptor") {
+                    NSLog("exiting")
                     exit(1)
                 }
             }
@@ -160,6 +180,9 @@ public struct Link: Codable, Equatable, Sendable {
                                     return nil
                                 }
                                 var refinedHref = href
+                                if refinedHref.range(of: "redirect_url=") != nil {
+                                    refinedHref = refinedHref.slice(from: "redirect_url=") ?? refinedHref
+                                }
                                 if refinedHref.last == "/" {
                                     refinedHref = String(refinedHref.dropLast())
                                 }
@@ -215,20 +238,20 @@ public struct Link: Codable, Equatable, Sendable {
         var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         var availableLinks = [Link]()
-        var mainSiteLink: Link?
+        //var resultLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                /*if link.url.onionID == Global.mainOnionID {
-                    mainSiteLink = link
+                if let priority = link.priority, priority != .low {
+                    result = link
                     stop.pointee = true
-                }*/
+                }
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
-        if mainSiteLink != nil {
-            return mainSiteLink
+        if result != nil {
+            return result
         }
         if availableLinks.count > 0 {
             let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
@@ -313,7 +336,7 @@ public struct Link: Codable, Equatable, Sendable {
                 //NSLog("link.numberOfLinks: \(link.numberOfLinks)")
                 await link.save()
             } else {
-                var link = Link(url: childURL)
+                var link = Link(url: childURL, priority: priority?.childPriority)
                 await link.save()
             }
         }

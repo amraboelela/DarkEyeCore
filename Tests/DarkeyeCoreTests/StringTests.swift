@@ -37,6 +37,9 @@ final class StringTests: TestsBase {
         let token = "javascript:getInfo(1,'Info/99/something', 'City Hall',1, 99);"
             .slice(from: "'", to: "',")
         XCTAssertEqual(token, "Info/99/something")
+        
+        let string = "/search/search/redirect?search_term=war on ukrain&redirect_url=http://bafkad5xfa6zbzhyvczf24j4ppbc4ylcavgwnmkppccikejzbdxzxlad.onion/node/205669"
+        XCTAssertEqual(string.slice(from: "redirect_url="), "http://bafkad5xfa6zbzhyvczf24j4ppbc4ylcavgwnmkppccikejzbdxzxlad.onion/node/205669")
     }
     
     func testOnionID() {

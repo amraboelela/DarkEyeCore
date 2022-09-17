@@ -33,10 +33,14 @@ extension String {
         return String(splitArray.last ?? "")
     }
     
-    func slice(from: String, to: String) -> String? {
+    func slice(from: String, to: String? = nil) -> String? {
         return (range(of: from)?.upperBound).flatMap { substringFrom in
-            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
-                String(self[substringFrom..<substringTo])
+            if let to = to {
+                return (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                    String(self[substringFrom..<substringTo])
+                }
+            } else {
+                return String(self[substringFrom..<endIndex])
             }
         }
     }
