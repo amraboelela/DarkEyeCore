@@ -118,6 +118,7 @@ public struct Site: Codable, Sendable {
     
     public static func crawlNext() async {
         NSLog("Site.crawlNext")
+        let global = await Global.global()
         if let link = await Link.importantLinkToProcess() {
             do {
                 try await Link.process(link: link)
@@ -152,7 +153,7 @@ public struct Site: Codable, Sendable {
         } else {
             do {
                 NSLog("can't find any site to process")
-                let global = await Global.global()
+                //let global = await Global.global()
                 NSLog("Last processed site #\(global.numberOfProcessedSites)")
                 try await Link.crawlNext()
             } catch {
