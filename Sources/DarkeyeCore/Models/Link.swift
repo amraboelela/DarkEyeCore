@@ -305,8 +305,6 @@ public struct Link: Codable, Equatable, Sendable {
     static func process(link: Link) async throws {
         NSLog("processing link: \(link.url)")
         var myLink = link
-        //NSLog("process link, site: \(String(describing: await link.site()))")
-        //NSLog("process link, blocked: \(await link.blocked())")
         if await link.blocked() {
             NSLog("link not allowed")
             await myLink.updateLinkProcessedAndSave()

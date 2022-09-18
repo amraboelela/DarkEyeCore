@@ -120,7 +120,9 @@ public struct Site: Codable, Sendable {
         NSLog("Site.crawlNext")
         if var nextSite = await nextSiteToProcess() {
             do {
-                if let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
+                let processTimeThreshold = await Global.global().processTimeThreshold
+                if let link: Link = await database.value(forKey: Link.prefix + nextSite.url),
+                   link.lastProcessTime < processTimeThreshold {
                     try await Link.process(link: link)
                 }
                 await nextSite.updateSiteProcessedAndSave()
