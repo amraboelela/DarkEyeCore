@@ -35,6 +35,8 @@ enum Priority: Int, Codable {
 public struct Link: Codable, Equatable, Sendable {
     public static let prefix = "link-"
     
+    static var cachedHtml = [String: String]()
+    
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var numberOfVisits = 0
@@ -77,7 +79,12 @@ public struct Link: Codable, Equatable, Sendable {
         return url.hashBase32(numberOfDigits: 12)
     }
     
-    static var cachedHtml = [String: String]()
+    func exists() async -> Bool {
+        if let _: Link = await database.value(forKey: key) {
+            return true
+        }
+        return false
+    }
     
     public func html() async -> String? {
         //NSLog("getting html")
@@ -371,10 +378,25 @@ public struct Link: Codable, Equatable, Sendable {
     
     // MARK: - Saving
     
-    public mutating func save() async {
+    static func saveLinksWith(searchText: String) async {
+        NSLog("wordLinks with searchText: \(searchText)")
+        let searchTextEncoded = searchText.lowercased().replacingOccurrences(of: " ", with: "+")
+        let searchURLs = [
+            "http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=" + searchTextEncoded,
+            "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=" + searchTextEncoded
+        ]
+        for searchURL in searchURLs {
+            var searchLink = Link(url: searchURL, priority: .high)
+            if await !searchLink.exists() {
+                NSLog("wordLinks with searchText, searchLink: \(searchLink)")
+                await searchLink.save()
+            }
+        }
+    }
+    
+    mutating func save() async {
         do {
-            if let _: Link = await database.value(forKey: key) {
-            } else {
+            if await !exists() {
                 let hashLink = HashLink(url: url)
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
                 let siteKey = Site.prefix + url.onionID
