@@ -112,12 +112,12 @@ public struct WordLink: Codable, Hashable, Sendable {
         let searchTextEncoded = searchText.lowercased().replacingOccurrences(of: " ", with: "+") // e.g. war+on+ukrain
         let torchURL = "http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=" + searchTextEncoded // e.g. http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=war+on+ukrain
         var torchLink = Link(url: torchURL, isSearchEngline: true, priority: .high)
-        NSLog("wordLinks withSearchText, torchLink: \(torchLink)")
+        NSLog("wordLinks with searchText, torchLink: \(torchLink)")
         await torchLink.save()
         
         let ahmiaURL = "http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=" + searchTextEncoded // e.g. http://juhanurmihxlp77nkq76byazcldy2hlmovfu2epvl5ankdibsot4csyd.onion/search/?q=war+on+ukrain
         var ahmiaLink = Link(url: ahmiaURL, isSearchEngline: true, priority: .high)
-        NSLog("wordLinks withSearchText, ahmiaLink: \(ahmiaLink)")
+        NSLog("wordLinks with searchText, ahmiaLink: \(ahmiaLink)")
         await ahmiaLink.save()
         
         var resultSet = Set<WordLink>()

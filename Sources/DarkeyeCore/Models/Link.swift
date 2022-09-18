@@ -238,10 +238,10 @@ public struct Link: Codable, Equatable, Sendable {
         var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         var availableLinks = [Link]()
-        //var resultLink: Link?
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
                 if let priority = link.priority, priority != .low {
+                    NSLog("nextLinkToProcess priority != .low link: \(link)")
                     result = link
                     stop.pointee = true
                 }
