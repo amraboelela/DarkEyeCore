@@ -13,28 +13,28 @@ final class WordLinkTests: TestsBase {
     
     func testIndexLink() async {
         await asyncSetup()
-        var link = Link(url: Global.mainUrls.first!)
+        var link = Link(url: Link.mainUrls.first!)
         var result  = await WordLink.index(link: link)
         XCTAssertEqual(result, .complete)
-        if let word: WordLink = await database.value(forKey: WordLink.prefix + "hidden-" + Global.mainUrls.first!) {
+        if let word: WordLink = await database.value(forKey: WordLink.prefix + "hidden-" + Link.mainUrls.first!) {
             XCTAssertTrue(word.text.lowercased().contains("hidden"))
-            XCTAssertEqual(word.url, Global.mainUrls.first!)
+            XCTAssertEqual(word.url, Link.mainUrls.first!)
         } else {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "body-" + Global.mainUrls.first!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "body-" + Link.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "a-" + Global.mainUrls.first!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "a-" + Link.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "in-" + Global.mainUrls.first!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "in-" + Link.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "of-" + Global.mainUrls.first!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "of-" + Link.mainUrls.first!) {
             XCTFail()
         }
-        if let _: WordLink = await database.value(forKey: WordLink.prefix + "to-" + Global.mainUrls.first!) {
+        if let _: WordLink = await database.value(forKey: WordLink.prefix + "to-" + Link.mainUrls.first!) {
             XCTFail()
         }
         

@@ -22,7 +22,7 @@ public class Crawler: @unchecked Sendable {
     var isRunning = false
     
     init() async {
-        for mainUrl in Global.mainUrls {
+        for mainUrl in Link.mainUrls {
             if let _: Link = await database.value(forKey: Link.prefix + mainUrl) {
                 NSLog("Crawler init, " + Link.prefix + mainUrl + " already exists")
             } else {
