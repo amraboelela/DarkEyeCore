@@ -37,21 +37,21 @@ public struct Link: Codable, Equatable, Sendable {
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
-    public var failedToLoad = false
+    //public var failedToLoad: Bool? // default is false
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfLinks = 1 // # of inbound links
-    var isSearchEngline: Bool?
+    //var isSearchEngline: Bool?
     var priority: Priority? // default is .low
     
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
-        case failedToLoad
+        //case failedToLoad
         case numberOfVisits
         case lastVisitTime
         case numberOfLinks
-        case isSearchEngline
+        //case isSearchEngline
         case priority
     }
     
