@@ -79,7 +79,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         let text = Word.contextStringFrom(array: wordsArray, atIndex: 0)
         let crawler = await Crawler.shared()
         wordsArray = wordsArray.map { $0.lowercased() }
-        if !Word.allowed(wordsArray: wordsArray) {
+        if link.priority != .high && !Word.allowed(wordsArray: wordsArray) {
             return .notAllowed
         }
         for word in wordsArray {

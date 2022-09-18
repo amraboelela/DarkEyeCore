@@ -275,7 +275,7 @@ public struct Link: Codable, Equatable, Sendable {
     }
     
     static func crawlNextImportant() async -> Bool {
-        NSLog("Link.crawlNextImportant")
+        //NSLog("Link.crawlNextImportant")
         if let link = await Link.importantLinkToProcess() {
             NSLog("Link.crawlNextImportant importantLinkToProcess: \(link)")
             do {
