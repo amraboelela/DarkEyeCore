@@ -108,6 +108,12 @@ public struct WordLink: Codable, Hashable, Sendable {
         withSearchText searchText: String,
         count: Int
     ) async -> [WordLink] {
+        var urlsSet = Set<String>()
+        var resultSet = Set<WordLink>()
+        let searchWords = Word.words(fromText: searchText, lowerCase: true)
+        if !Word.allowed(wordsArray: searchWords) {
+            return []
+        }
         await Link.saveLinksWith(searchText: searchText)
         
         var global = await Global.global()
@@ -115,9 +121,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         await global.save()
         NSLog("numberOfSearches: \(global.numberOfSearches)")
         
-        var urlsSet = Set<String>()
-        var resultSet = Set<WordLink>()
-        let searchWords = Word.words(fromText: searchText, lowerCase: true)
+        
         for searchWord in searchWords {
             if searchWords.count > 0 && searchWord.count <= 2 {
                 continue
