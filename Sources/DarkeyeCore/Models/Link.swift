@@ -37,21 +37,17 @@ public struct Link: Codable, Equatable, Sendable {
     
     public var url: String
     public var lastProcessTime = 0 // # of seconds since reference date.
-    //public var failedToLoad: Bool? // default is false
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfLinks = 1 // # of inbound links
-    //var isSearchEngline: Bool?
     var priority: Priority? // default is .low
     
     public enum CodingKeys: String, CodingKey {
         case url
         case lastProcessTime
-        //case failedToLoad
         case numberOfVisits
         case lastVisitTime
         case numberOfLinks
-        //case isSearchEngline
         case priority
     }
     
@@ -271,11 +267,33 @@ public struct Link: Codable, Equatable, Sendable {
         return result
     }
     
-    public static func crawlNext() async throws {
+    static func crawlNextImportant() async -> Bool {
+        NSLog("Link.crawlNextImportant")
+        if let link = await Link.importantLinkToProcess() {
+            NSLog("Link.crawlNextImportant importantLinkToProcess: \(link)")
+            do {
+                try await process(link: link)
+            }
+            catch {
+                switch error {
+                case LinkProcessError.notAllowed:
+                    break
+                default:
+                    NSLog("Link crawlNextImportant error: \(error)")
+                }
+            }
+            let global = await Global.global()
+            NSLog("Last processed site #\(global.numberOfProcessedSites)")
+            return true
+        }
+        return false
+    }
+    
+    static func crawlNext() async throws {
         NSLog("Link.crawlNext")
         if let nextLink = await nextLinkToProcess() {
             //print("crawlNext nextLink: \(nextLink.url)")
-            try await Link.process(link: nextLink)
+            try await process(link: nextLink)
         } else {
             var global = await Global.global()
             global.processTimeThreshold = Date.secondsSinceReferenceDate

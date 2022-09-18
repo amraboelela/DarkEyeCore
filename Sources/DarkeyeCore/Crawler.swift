@@ -59,7 +59,9 @@ public class Crawler: @unchecked Sendable {
         }
         try? await Task.sleep(seconds: 1.0)
         isRunning = true
-        await Site.crawlNext()
+        if await !Link.crawlNextImportant() {
+            await Site.crawlNext()
+        }
         Task(priority: .background) {
             if canRun {
                 await crawl()
