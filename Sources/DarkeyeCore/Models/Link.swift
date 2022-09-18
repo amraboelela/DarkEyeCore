@@ -240,13 +240,10 @@ public struct Link: Codable, Equatable, Sendable {
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
                 //NSLog("importantLinkToProcess link.lastProcessTime < processTimeThreshold")
-                if let priority = link.priority {
-                    //NSLog("importantLinkToProcess priority: \(priority)")
-                    if priority != .low {
-                        NSLog("importantLinkToProcess priority != .low link: \(link)")
-                        result = link
-                        stop.pointee = true
-                    }
+                if let priority = link.priority, priority != .low {
+                    //NSLog("importantLinkToProcess priority != .low link: \(link)")
+                    result = link
+                    stop.pointee = true
                 }
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
@@ -267,9 +264,6 @@ public struct Link: Codable, Equatable, Sendable {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
-        /*if result != nil {
-            return result
-        }*/
         if availableLinks.count > 0 {
             let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
             result = availableLinks[chosenLinkIndex]

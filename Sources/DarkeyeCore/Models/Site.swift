@@ -120,6 +120,7 @@ public struct Site: Codable, Sendable {
         NSLog("Site.crawlNext")
         let global = await Global.global()
         if let link = await Link.importantLinkToProcess() {
+            NSLog("Site.crawlNext importantLinkToProcess: \(importantLinkToProcess)")
             do {
                 try await Link.process(link: link)
             }
