@@ -130,6 +130,7 @@ public struct Site: Codable, Sendable {
                     NSLog("Site importantLink process error: \(error)")
                 }
             }
+            NSLog("Last processed site #\(global.numberOfProcessedSites)")
         } else if var nextSite = await nextSiteToProcess() {
             do {
                 if let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
