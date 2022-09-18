@@ -233,30 +233,43 @@ public struct Link: Codable, Equatable, Sendable {
 
     // MARK: - Crawling
     
+    static func importantLinkToProcess() async -> Link? {
+        NSLog("importantLinkToProcess")
+        var result: Link?
+        let processTimeThreshold = await Global.global().processTimeThreshold
+        await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
+            if link.lastProcessTime < processTimeThreshold {
+                NSLog("importantLinkToProcess link.lastProcessTime < processTimeThreshold")
+                if let priority = link.priority {
+                    NSLog("importantLinkToProcess priority: \(priority)")
+                    if priority != .low {
+                        NSLog("importantLinkToProcess priority != .low link: \(link)")
+                        result = link
+                        stop.pointee = true
+                    }
+                }
+            } else {
+                //NSLog("nextLinkToProcess else, Key: \(Key)")
+            }
+        }
+        return result
+    }
+    
     static func nextLinkToProcess() async -> Link? {
-        //NSLog("nextLinkToProcess")
+        NSLog("nextLinkToProcess")
         var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         var availableLinks = [Link]()
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                NSLog("nextLinkToProcess link.lastProcessTime < processTimeThreshold")
-                if let priority = link.priority {
-                    NSLog("nextLinkToProcess priority: \(priority)")
-                    if priority != .low {
-                        NSLog("nextLinkToProcess priority != .low link: \(link)")
-                        result = link
-                        stop.pointee = true
-                    }
-                }
                 availableLinks.append(link)
             } else {
                 //NSLog("nextLinkToProcess else, Key: \(Key)")
             }
         }
-        if result != nil {
+        /*if result != nil {
             return result
-        }
+        }*/
         if availableLinks.count > 0 {
             let chosenLinkIndex = Int.random(in: 0..<availableLinks.count)
             result = availableLinks[chosenLinkIndex]

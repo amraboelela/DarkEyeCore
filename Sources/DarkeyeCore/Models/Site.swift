@@ -117,8 +117,20 @@ public struct Site: Codable, Sendable {
     }
     
     public static func crawlNext() async {
-        //NSLog("Site.crawlNext")
-        if var nextSite = await nextSiteToProcess() {
+        NSLog("Site.crawlNext")
+        if let link = await Link.importantLinkToProcess() {
+            do {
+                try await Link.process(link: link)
+            }
+            catch {
+                switch error {
+                case LinkProcessError.notAllowed:
+                    break
+                default:
+                    NSLog("Site importantLink process error: \(error)")
+                }
+            }
+        } else if var nextSite = await nextSiteToProcess() {
             do {
                 if let link: Link = await database.value(forKey: Link.prefix + nextSite.url) {
                     try await Link.process(link: link)
