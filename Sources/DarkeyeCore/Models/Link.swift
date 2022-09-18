@@ -123,7 +123,7 @@ public struct Link: Codable, Equatable, Sendable {
             } catch {
                 NSLog("html, error: \(error)")
                 if "\(error)".contains("Bad file descriptor") {
-                    NSLog("exiting")
+                    NSLog("exit(1)")
                     exit(1)
                 }
             }
