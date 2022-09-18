@@ -234,14 +234,14 @@ public struct Link: Codable, Equatable, Sendable {
     // MARK: - Crawling
     
     static func importantLinkToProcess() async -> Link? {
-        NSLog("importantLinkToProcess")
+        //NSLog("importantLinkToProcess")
         var result: Link?
         let processTimeThreshold = await Global.global().processTimeThreshold
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Link.prefix) { (Key, link: Link, stop) in
             if link.lastProcessTime < processTimeThreshold {
-                NSLog("importantLinkToProcess link.lastProcessTime < processTimeThreshold")
+                //NSLog("importantLinkToProcess link.lastProcessTime < processTimeThreshold")
                 if let priority = link.priority {
-                    NSLog("importantLinkToProcess priority: \(priority)")
+                    //NSLog("importantLinkToProcess priority: \(priority)")
                     if priority != .low {
                         NSLog("importantLinkToProcess priority != .low link: \(link)")
                         result = link
