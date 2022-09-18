@@ -109,7 +109,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         count: Int
     ) async -> [WordLink] {
         await Link.saveLinksWith(searchText: searchText)
-        
+        var urlsSet = Set<String>()
         var resultSet = Set<WordLink>()
         let searchWords = Word.words(fromText: searchText, lowerCase: true)
         for searchWord in searchWords {
@@ -117,7 +117,10 @@ public struct WordLink: Codable, Hashable, Sendable {
                 continue
             }
             await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: WordLink.prefix + searchWord) { (key, wordLink: WordLink, stop) in
-                resultSet.insert(wordLink)
+                if !urlsSet.contains(wordLink.url) {
+                    urlsSet.insert(wordLink.url)
+                    resultSet.insert(wordLink)
+                }
             }
         }
         var result = Array(resultSet)
