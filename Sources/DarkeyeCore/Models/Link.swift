@@ -398,7 +398,7 @@ public struct Link: Codable, Equatable, Sendable {
         for searchURL in searchURLs {
             var searchLink = Link(url: searchURL, priority: .high)
             if await !searchLink.exists() {
-                NSLog("wordLinks with searchText, searchLink: \(searchLink)")
+                //NSLog("wordLinks with searchText, searchLink: \(searchLink)")
                 await searchLink.save()
             }
         }
