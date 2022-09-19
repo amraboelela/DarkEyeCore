@@ -389,7 +389,6 @@ public struct Link: Codable, Equatable, Sendable {
     // MARK: - Saving
     
     static func saveLinksWith(searchText: String) async {
-        NSLog("wordLinks with searchText: \(searchText)")
         let searchTextEncoded = searchText.lowercased().replacingOccurrences(of: " ", with: "+")
         let searchURLs = [
             "http://torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion/search?query=" + searchTextEncoded,

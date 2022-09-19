@@ -111,6 +111,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         var global = await Global.global()
         global.numberOfSearches += 1
         await global.save()
+        NSLog("wordLinks with searchText: \(searchText)")
         NSLog("numberOfSearches: \(global.numberOfSearches)")
         
         var urlsSet = Set<String>()
