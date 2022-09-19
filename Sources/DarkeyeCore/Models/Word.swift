@@ -102,7 +102,9 @@ class Word {
             "gamble",
             "ejaculate",
             "nacked",
-            "cards"
+            "cards",
+            "polarlight",
+            "drugs"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {
