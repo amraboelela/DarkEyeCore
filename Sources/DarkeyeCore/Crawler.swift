@@ -24,9 +24,9 @@ public class Crawler: @unchecked Sendable {
     init() async {
         for mainUrl in Link.mainUrls {
             if let _: Link = await database.value(forKey: Link.prefix + mainUrl) {
-                NSLog("Crawler init, " + Link.prefix + mainUrl + " already exists")
+                NSLog("crawler init, " + Link.prefix + mainUrl + " already exists")
             } else {
-                NSLog("Crawler init, creating: " + Link.prefix + mainUrl)
+                NSLog("crawler init, creating: " + Link.prefix + mainUrl)
                 var link = Link(url: mainUrl)
                 await link.save()
             }

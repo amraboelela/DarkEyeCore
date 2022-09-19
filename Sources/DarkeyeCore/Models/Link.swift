@@ -123,7 +123,7 @@ public struct Link: Codable, Equatable, Sendable {
         if result == nil || needToRefresh {
 #if os(Linux)
             do {
-                NSLog("Calling torsocks")
+                NSLog("calling torsocks")
                 let timeout: TimeInterval = result == nil ? 5 * 60 : 60
                 if let shellResult = try await shell(timeout: timeout, "torsocks", "wget", "-O", fileURL.path, url) {
                     NSLog("torsocks shellResult: \(shellResult.prefix(200))")
@@ -300,7 +300,7 @@ public struct Link: Codable, Equatable, Sendable {
                 }
             }
             let global = await Global.global()
-            NSLog("Last processed site #\(global.numberOfProcessedSites)")
+            NSLog("last processed site #\(global.numberOfProcessedSites)")
             return true
         }
         return false
@@ -361,7 +361,7 @@ public struct Link: Codable, Equatable, Sendable {
         var global = await Global.global()
         global.numberOfProcessedLinks += 1
         await global.save()
-        NSLog("Processed link #\(global.numberOfProcessedLinks)")
+        NSLog("processed link #\(global.numberOfProcessedLinks)")
     }
     
     public mutating func saveChildrenIfNeeded() async {

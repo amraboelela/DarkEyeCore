@@ -130,6 +130,7 @@ public struct Site: Codable, Sendable {
             catch {
                 switch error {
                 case LinkProcessError.notAllowed:
+                    NSLog("Site crawlNext notAllowed")
                     if nextSite.canBeBlocked {
                         nextSite.blocked = true
                     }
@@ -142,7 +143,7 @@ public struct Site: Codable, Sendable {
             do {
                 NSLog("can't find any site to process")
                 let global = await Global.global()
-                NSLog("Last processed site #\(global.numberOfProcessedSites)")
+                NSLog("last processed site #\(global.numberOfProcessedSites)")
                 try await Link.crawlNext()
             } catch {
                 NSLog("Link.crawlNext() error: \(error)")
@@ -157,7 +158,7 @@ public struct Site: Codable, Sendable {
         var global = await Global.global()
         global.numberOfProcessedSites += 1
         await global.save()
-        NSLog("Processed site #\(global.numberOfProcessedSites)")
+        NSLog("processed site #\(global.numberOfProcessedSites)")
     }
     
     // MARK: - Saving
@@ -167,7 +168,7 @@ public struct Site: Codable, Sendable {
             //NSLog("Site, new site: \(self.onionID)")
             try await database.setValue(self, forKey: key)
         } catch {
-            NSLog("Link save failed.")
+            NSLog("link save failed.")
             try? await Task.sleep(seconds: 1.0)
         }
     }

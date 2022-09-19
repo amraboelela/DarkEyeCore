@@ -65,7 +65,9 @@ class Word {
         let forbiddenWordArrays = [
             ["credit", "card"],
             ["bitcoin", "private", "keys"],
-            ["bitcoin", "private", "key"]
+            ["bitcoin", "private", "key"],
+            ["polar", "light"],
+            ["polar", "lights"]
         ]
         let wordsSet = Set(wordsArray)
         for forbiddenWordArray in forbiddenWordArrays {
