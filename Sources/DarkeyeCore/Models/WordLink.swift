@@ -34,9 +34,7 @@ public struct WordLink: Codable, Hashable, Sendable {
     public var url: String
     public var text: String
     public var wordCount: Int
-    public var numberOfVisits: Int = 0
-    public var lastVisitTime: Int = 0
-    public var numberOfLinks: Int = 1
+    public var score = 0
     public var children: [ChildWordLink]? = nil
     
     public enum CodingKeys: String, CodingKey {
@@ -44,14 +42,16 @@ public struct WordLink: Codable, Hashable, Sendable {
         case url
         case text
         case wordCount
-        case numberOfVisits
-        case lastVisitTime
     }
     
     // MARK: - Accessors
     
-    func score() -> Int {
-        return numberOfLinks * 1000 + numberOfVisits * 500 + wordCount * 100 + lastVisitTime
+    func currentScore() async -> Int {
+        if let link = await link() {
+            return link.numberOfLinks * 1000 + link.numberOfVisits * 500 + wordCount * 100 + link.lastVisitTime
+        } else {
+            return wordCount * 100
+        }
     }
     
     func link() async -> Link? {
@@ -90,7 +90,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             do {
                 if word.count > 2 {
                     let key = prefix + word + "-" + link.url
-                    let wordLink = WordLink(word: word, url: link.url, text: text, wordCount: counts[word] ?? 0, numberOfLinks: link.numberOfLinks)
+                    let wordLink = WordLink(word: word, url: link.url, text: text, wordCount: counts[word] ?? 0)
                     try await database.setValue(wordLink, forKey: key)
                 }
             } catch {
@@ -146,11 +146,9 @@ public struct WordLink: Codable, Hashable, Sendable {
             return true
         }
         for i in 0..<result.count {
-            if let link = await result[i].link() {
-                result[i].numberOfLinks = link.numberOfLinks
-            }
+            result[i].score = await result[i].currentScore()
         }
-        result = result.sorted { $0.score() > $1.score() }
+        result = result.sorted { $0.score > $1.score }
         if result.count > count {
             result.removeLast(result.count - count)
         }
