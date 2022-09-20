@@ -68,7 +68,9 @@ class Word {
             ["bitcoin", "private", "key"],
             ["polar", "light"],
             ["polar", "lights"],
-            ["real", "money"]
+            ["real", "money"],
+            ["teen", "upskirt"],
+            ["teen", "pooping"]
         ]
         let wordsSet = Set(wordsArray)
         for forbiddenWordArray in forbiddenWordArrays {
@@ -108,7 +110,8 @@ class Word {
             "cards",
             "polarlight",
             "drugs",
-            "hitman"
+            "hitman",
+            "teenworld"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {

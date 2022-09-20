@@ -116,7 +116,7 @@ public struct Link: Codable, Equatable, Sendable {
             let cacheThreashold = Date.days(numberOfDays: thresholdDays)
             let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
             if secondsDiff > cacheThreashold {
-                NSLog("needToRefresh, secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
+                NSLog("html needToRefresh") // secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
                 needToRefresh = true
             }
         }
@@ -403,7 +403,7 @@ public struct Link: Codable, Equatable, Sendable {
         }
     }
     
-    mutating func save() async {
+    public mutating func save() async {
         do {
             if await !exists() {
                 let hashLink = HashLink(url: url)
