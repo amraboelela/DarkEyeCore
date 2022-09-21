@@ -121,10 +121,10 @@ public struct Link: Codable, Equatable, Sendable {
             }
         }
         if result == nil || needToRefresh {
-#if os(Linux)
-            if !Crawler.shared().canRun {
+            if await !Crawler.shared().canRun {
                 throw LinkProcessError.cannotRun
             }
+#if os(Linux)
             do {
                 NSLog("calling torsocks")
                 let timeout: TimeInterval = result == nil ? 5 * 60 : 60
