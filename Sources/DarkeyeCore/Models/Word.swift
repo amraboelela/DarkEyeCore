@@ -92,7 +92,6 @@ class Word {
         let forbiddenTerms = [
             "fuck",
             "cocaine",
-            "music",
             "adult",
             "porn",
             "sex",
@@ -111,7 +110,9 @@ class Word {
             "polarlight",
             "drugs",
             "hitman",
-            "teenworld"
+            "teenworld",
+            "milf",
+            "voyeur"
         ]
         for term in forbiddenTerms {
             if word.range(of: term) != nil {
