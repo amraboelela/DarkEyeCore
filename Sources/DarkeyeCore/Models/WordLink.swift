@@ -157,7 +157,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             currentCount += 1
         }
-        NSLog("sort and filter ended")
+        //NSLog("sort and filter ended")
         var refinedResult = [WordLink]()
         for i in 0..<result.count {
             var foundIt = false
