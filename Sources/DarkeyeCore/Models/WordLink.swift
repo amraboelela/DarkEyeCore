@@ -136,18 +136,6 @@ public struct WordLink: Codable, Hashable, Sendable {
         NSLog("for searchWord in searchWords ended")
         var rawResult = Array(resultSet)
         NSLog("rawResult.count: \(rawResult.count)")
-        /*result = await result.asyncFilter { wordLink in
-            if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
-                if site.blocked == true {
-                    return false
-                }
-            } else {
-                NSLog("Couldn't get site from wordLink: \(wordLink)")
-                return false
-            }
-            return true
-        }
-        NSLog("result = await result.asyncFilter ended")*/
         for i in 0..<rawResult.count {
             rawResult[i].score = await rawResult[i].currentScore()
         }
