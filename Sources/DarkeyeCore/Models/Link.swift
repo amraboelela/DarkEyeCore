@@ -57,6 +57,7 @@ public struct Link: Codable, Equatable, Sendable {
     
     public enum CodingKeys: String, CodingKey {
         case url
+        case title
         case lastProcessTime
         case numberOfVisits
         case lastVisitTime
