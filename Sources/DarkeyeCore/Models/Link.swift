@@ -96,7 +96,7 @@ public struct Link: Codable, Equatable, Sendable {
         return false
     }
     
-    public func html() async -> String? {
+    public func html() async throws -> String? {
         //NSLog("getting html")
         if let cachedHtml = Link.cachedHtml[self.url] {
             return cachedHtml
@@ -122,6 +122,9 @@ public struct Link: Codable, Equatable, Sendable {
         }
         if result == nil || needToRefresh {
 #if os(Linux)
+            if !Crawler.shared().canRun {
+                throw LinkProcessError.cannotRun
+            }
             do {
                 NSLog("calling torsocks")
                 let timeout: TimeInterval = result == nil ? 5 * 60 : 60
@@ -151,7 +154,7 @@ public struct Link: Codable, Equatable, Sendable {
     
     public func title() async -> String {
         var result = ""
-        if let html = await html(), let doc = try? HTMLDocument(string: html) {
+        if let html = try? await html(), let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
         }
         result = result.replacingOccurrences(
@@ -163,7 +166,7 @@ public struct Link: Codable, Equatable, Sendable {
     
     public func text() async -> String {
         var result = ""
-        if let html = await html(), let doc = try? HTMLDocument(string: html) {
+        if let html = try? await html(), let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
             if let textNodes = doc.body?.childNodes(ofTypes: [.Element]) {
                 for textNode in textNodes {
@@ -182,7 +185,7 @@ public struct Link: Codable, Equatable, Sendable {
     // Returns raw urls and refined urls
     public func urls() async -> [(String, String)] {
         var result = [(String,String)]()
-        if let html = await html(), let doc = try? HTMLDocument(string: html) {
+        if let html = try? await html(), let doc = try? HTMLDocument(string: html) {
             if let nodes = doc.body?.childNodes(ofTypes: [.Element]) {
                 for node in nodes {
                     if let elementNode = node.toElement() {
@@ -334,7 +337,7 @@ public struct Link: Codable, Equatable, Sendable {
         if !crawler.canRun || dbClosed {
             throw LinkProcessError.cannotRun
         }
-        if await link.html() == nil {
+        if try await link.html() == nil {
             //NSLog("myLink.html() == nil ")
             await myLink.updateLinkProcessedAndSave()
         } else {
