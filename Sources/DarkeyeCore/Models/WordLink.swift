@@ -142,7 +142,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         let sortedResult = rawResult.sorted { $0.score > $1.score }
         var currentCount = 0
         var result = [WordLink]()
-        while currentCount < count {
+        while currentCount < count && currentCount < sortedResult.count {
             let wordLink = sortedResult[currentCount]
             var isBlocked = false
             if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
