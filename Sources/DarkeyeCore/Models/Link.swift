@@ -123,6 +123,7 @@ public struct Link: Codable, Equatable, Sendable {
         if result == nil || needToRefresh {
             if await !Crawler.shared().canRun {
                 if result != nil {
+                    NSLog("html returning current cached file")
                     return result
                 } else {
                     NSLog("html throw LinkProcessError.cannotRun")
