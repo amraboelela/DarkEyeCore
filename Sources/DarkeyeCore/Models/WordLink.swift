@@ -133,6 +133,7 @@ public struct WordLink: Codable, Hashable, Sendable {
                 }
             }
         }
+        NSLog("for searchWord in searchWords ended")
         var result = Array(resultSet)
         result = await result.asyncFilter { wordLink in
             if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
@@ -145,6 +146,7 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             return true
         }
+        NSLog("result = await result.asyncFilter ended")
         for i in 0..<result.count {
             result[i].score = await result[i].currentScore()
         }
@@ -152,6 +154,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         if result.count > count {
             result.removeLast(result.count - count)
         }
+        NSLog("result = result.sorted ended")
         var refinedResult = [WordLink]()
         for i in 0..<result.count {
             var foundIt = false
@@ -172,6 +175,7 @@ public struct WordLink: Codable, Hashable, Sendable {
                 refinedResult.append(result[i])
             }
         }
+        NSLog("for i in 0..<result.count ended")
         return refinedResult
     }
     
