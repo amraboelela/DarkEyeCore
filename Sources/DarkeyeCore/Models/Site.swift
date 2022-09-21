@@ -124,6 +124,8 @@ public struct Site: Codable, Sendable {
                 if let link: Link = await database.value(forKey: Link.prefix + nextSite.url),
                    link.lastProcessTime < processTimeThreshold {
                     try await Link.process(link: link)
+                } else {
+                    NSLog("link is nil or link.lastProcessTime >= processTimeThreshold")
                 }
                 await nextSite.updateSiteProcessedAndSave()
             }
