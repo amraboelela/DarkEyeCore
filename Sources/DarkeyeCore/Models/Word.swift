@@ -115,7 +115,7 @@ class Word {
             "voyeur"
         ]
         for term in forbiddenTerms {
-            if word.range(of: term) != nil {
+            if word == term {
                 return false
             }
         }
