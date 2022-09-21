@@ -42,13 +42,13 @@ public class Crawler: @unchecked Sendable {
     
     public func start() async {
         Task(priority: .background) {
+            try? await Task.sleep(seconds: 1.0)
             //if Date().timeIntervalSinceReferenceDate >= self.startTime {
             NSLog("start")
             await Crawler.shared().canRun = true
             if !self.isRunning {
                 await self.crawl()
             }
-            //}
         }
     }
     
