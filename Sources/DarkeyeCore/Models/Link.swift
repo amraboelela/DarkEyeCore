@@ -116,13 +116,18 @@ public struct Link: Codable, Equatable, Sendable {
             let cacheThreashold = Date.days(numberOfDays: thresholdDays)
             let secondsDiff = Date().timeIntervalSinceReferenceDate - fileDate.timeIntervalSinceReferenceDate
             if secondsDiff > cacheThreashold {
-                NSLog("html needToRefresh") // secondsDiff > cacheThreashold: \(cacheThreashold/(24*60*60)) days")
+                NSLog("html needToRefresh")
                 needToRefresh = true
             }
         }
         if result == nil || needToRefresh {
             if await !Crawler.shared().canRun {
-                throw LinkProcessError.cannotRun
+                if result != nil {
+                    return result
+                } else {
+                    NSLog("html throw LinkProcessError.cannotRun")
+                    throw LinkProcessError.cannotRun
+                }
             }
 #if os(Linux)
             do {
