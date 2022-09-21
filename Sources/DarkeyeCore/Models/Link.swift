@@ -97,8 +97,8 @@ public struct Link: Codable, Equatable, Sendable {
     }
     
     public func html() async throws -> String? {
-        //NSLog("getting html")
-        if let cachedHtml = Link.cachedHtml[self.url] {
+        NSLog("html, url: \(url)")
+        if let cachedHtml = Link.cachedHtml[url] {
             return cachedHtml
         }
 #if os(Linux)
