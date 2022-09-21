@@ -134,8 +134,9 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
         }
         NSLog("for searchWord in searchWords ended")
-        var result = Array(resultSet)
-        result = await result.asyncFilter { wordLink in
+        var rawResult = Array(resultSet)
+        NSLog("result.count: \(result.count)")
+        /*result = await result.asyncFilter { wordLink in
             if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
                 if site.blocked == true {
                     return false
@@ -146,15 +147,29 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             return true
         }
-        NSLog("result = await result.asyncFilter ended")
-        for i in 0..<result.count {
-            result[i].score = await result[i].currentScore()
+        NSLog("result = await result.asyncFilter ended")*/
+        for i in 0..<rawResult.count {
+            rawResult[i].score = await rawResult[i].currentScore()
         }
-        result = result.sorted { $0.score > $1.score }
-        if result.count > count {
-            result.removeLast(result.count - count)
+        let sortedResult = rawResult.sorted { $0.score > $1.score }
+        var currentCount = 0
+        var result = [WordLink]()
+        while currentCount < count {
+            let wordLink = sortedResult[currentCount]
+            var isBlocked = false
+            if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
+                if site.blocked == true {
+                    isBlocked = true
+                }
+            } else {
+                NSLog("Couldn't get site from wordLink: \(wordLink)")
+            }
+            if !isBlocked {
+                result.append(wordLink)
+            }
+            currentCount += 1
         }
-        NSLog("result = result.sorted ended")
+        NSLog("sort and filter ended")
         var refinedResult = [WordLink]()
         for i in 0..<result.count {
             var foundIt = false
