@@ -51,7 +51,8 @@ final class WordLinkTests: TestsBase {
        let secondsDelay = 10.0
        let countLimit = 1000
        try? await Task.sleep(seconds: secondsDelay)
-       crawler.canRun = false
+       //crawler.canRun = false
+       await crawler.stop()
        try? await Task.sleep(seconds: 2.0)
        var wordLinks = await WordLink.wordLinks(withSearchText: "to wiki", count: countLimit)
        var wordLinksCount = wordLinks.count

@@ -48,6 +48,7 @@ public struct Link: Codable, Equatable, Sendable {
     static var cachedHtml = [String: String]()
     
     public var url: String
+    public var title: String?
     public var lastProcessTime = 0 // # of seconds since reference date.
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
@@ -158,7 +159,7 @@ public struct Link: Codable, Equatable, Sendable {
         return result
     }
     
-    public func title() async -> String {
+    public mutating func updateTitle() async {
         var result = ""
         if let html = try? await html(), let doc = try? HTMLDocument(string: html) {
             result += doc.title ?? ""
@@ -167,7 +168,7 @@ public struct Link: Codable, Equatable, Sendable {
             of: "[ \n]+",
             with: " ",
             options: .regularExpression).trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        return String(result.prefix(100))
+        title = String(result.prefix(100))
     }
     
     public func text() async -> String {
@@ -350,6 +351,7 @@ public struct Link: Codable, Equatable, Sendable {
             switch await WordLink.index(link: myLink) {
             case .complete:
                 await myLink.saveChildren()
+                await myLink.updateTitle()
                 await myLink.updateLinkProcessedAndSave()
             case .ended:
                 NSLog("indexNextWord returned .ended")
