@@ -59,14 +59,22 @@ public class Crawler: @unchecked Sendable {
         }
         try? await Task.sleep(seconds: 1.0)
         isRunning = true
-        if await !Link.crawlNextImportant() {
-            await Site.crawlNext()
-        }
         Task(priority: .background) {
-            if canRun {
-                await crawl()
-            } else {
-                self.delegate?.crawlerStopped()
+            do {
+                if try await !Link.crawlNextImportant() {
+                    await Site.crawlNext()
+                }
+                if canRun {
+                    await crawl()
+                } else {
+                    self.delegate?.crawlerStopped()
+                    self.isRunning = false
+                }
+            } catch {
+                NSLog("crawl error: \(error)")
+                if !canRun {
+                    self.delegate?.crawlerStopped()
+                }
                 self.isRunning = false
             }
         }

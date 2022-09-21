@@ -284,7 +284,7 @@ public struct Link: Codable, Equatable, Sendable {
         return result
     }
     
-    static func crawlNextImportant() async -> Bool {
+    static func crawlNextImportant() async throws -> Bool {
         //NSLog("Link.crawlNextImportant")
         if let link = await Link.importantLinkToProcess() {
             NSLog("Link.crawlNextImportant importantLinkToProcess: \(link)")
@@ -295,6 +295,8 @@ public struct Link: Codable, Equatable, Sendable {
                 switch error {
                 case LinkProcessError.notAllowed:
                     break
+                case LinkProcessError.cannotRun:
+                    throw error
                 default:
                     NSLog("Link crawlNextImportant error: \(error)")
                 }
