@@ -140,10 +140,31 @@ public struct WordLink: Codable, Hashable, Sendable {
             rawResult[i].score = await rawResult[i].currentScore()
         }
         let sortedResult = rawResult.sorted { $0.score > $1.score }
+        //NSLog("sort and filter ended")
+        var refinedResult = [WordLink]()
+        for i in 0..<sortedResult.count {
+            var foundIt = false
+            for j in 0..<refinedResult.count {
+                let wordLink = sortedResult[i]
+                if wordLink.url.onionID == refinedResult[j].url.onionID {
+                    foundIt = true
+                    let child = ChildWordLink.from(wordLink: wordLink)
+                    if refinedResult[j].children == nil {
+                        refinedResult[j].children = [child]
+                    } else {
+                        refinedResult[j].children?.append(child)
+                    }
+                    break
+                }
+            }
+            if !foundIt {
+                refinedResult.append(sortedResult[i])
+            }
+        }
         var currentCount = 0
         var result = [WordLink]()
-        while currentCount < count && currentCount < sortedResult.count {
-            let wordLink = sortedResult[currentCount]
+        while currentCount < count && currentCount < refinedResult.count {
+            let wordLink = refinedResult[currentCount]
             var isBlocked = false
             if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
                 if site.blocked == true {
@@ -157,29 +178,8 @@ public struct WordLink: Codable, Hashable, Sendable {
             }
             currentCount += 1
         }
-        //NSLog("sort and filter ended")
-        var refinedResult = [WordLink]()
-        for i in 0..<result.count {
-            var foundIt = false
-            for j in 0..<refinedResult.count {
-                let wordLink = result[i]
-                if wordLink.url.onionID == refinedResult[j].url.onionID {
-                    foundIt = true
-                    let child = ChildWordLink.from(wordLink: wordLink)
-                    if refinedResult[j].children == nil {
-                        refinedResult[j].children = [child]
-                    } else {
-                        refinedResult[j].children?.append(child)
-                    }
-                    break
-                }
-            }
-            if !foundIt {
-                refinedResult.append(result[i])
-            }
-        }
         //NSLog("for i in 0..<result.count ended")
-        return refinedResult
+        return result
     }
     
     // MARK: - Delegates

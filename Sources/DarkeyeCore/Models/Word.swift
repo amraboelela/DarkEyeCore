@@ -112,7 +112,8 @@ class Word {
             "hitman",
             "teenworld",
             "milf",
-            "voyeur"
+            "voyeur",
+            "lolitas"
         ]
         for term in forbiddenTerms {
             if word == term {
