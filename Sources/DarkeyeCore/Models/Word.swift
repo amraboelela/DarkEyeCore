@@ -9,6 +9,40 @@
 import Foundation
 
 class Word {
+    static let forbiddenTerms = [
+        "fuck",
+        "cocaine",
+        "adult",
+        "porn",
+        "sex",
+        "rape",
+        "pussy",
+        "nude",
+        "paypal",
+        "prepaid",
+        "weed",
+        "cannabis",
+        "wine",
+        "gamble",
+        "ejaculate",
+        "nacked",
+        "cards",
+        "polarlight",
+        "drugs",
+        "hitman",
+        "teenworld",
+        "milf",
+        "voyeur",
+        "lolitas",
+        "lolita",
+        "boobs",
+        "teenager",
+        "loliporn",
+        "pedomom",
+        "loliworld",
+        "lolycon",
+        "bitcards"
+    ]
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
         var result = [String]()
@@ -89,39 +123,6 @@ class Word {
     }
     
     static func allowed(word: String) -> Bool {
-        let forbiddenTerms = [
-            "fuck",
-            "cocaine",
-            "adult",
-            "porn",
-            "sex",
-            "rape",
-            "pussy",
-            "nude",
-            "paypal",
-            "prepaid",
-            "weed",
-            "cannabis",
-            "wine",
-            "gamble",
-            "ejaculate",
-            "nacked",
-            "cards",
-            "polarlight",
-            "drugs",
-            "hitman",
-            "teenworld",
-            "milf",
-            "voyeur",
-            "lolitas",
-            "lolita",
-            "boobs",
-            "teenager",
-            "loliporn",
-            "pedomom",
-            "loliworld",
-            "lolycon"
-        ]
         for term in forbiddenTerms {
             if word == term {
                 return false

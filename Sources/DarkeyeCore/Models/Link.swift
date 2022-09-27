@@ -247,6 +247,9 @@ public struct Link: Codable, Equatable, Sendable {
         if blocked == true {
             return true
         }
+        if !Link.allowed(url: url) {
+            return true
+        }
         return await site()?.blocked ?? false
     }
     
@@ -497,25 +500,15 @@ public struct Link: Codable, Equatable, Sendable {
                 return false
             }
         }
-        let forbiddenTerms = [
-            "beverages",
+        var forbiddenTerms = [
             "money-transfers",
             ".media",
             "_media",
             ".php?",
-            "ejaculate",
-            "bitcards",
-            "fuck",
-            "nacked",
-            "porn",
-            "video",
-            "year",
-            "daughter",
-            "girl",
-            "boy",
             "User_talk:",
             "/File:"
         ]
+        forbiddenTerms.append(contentsOf: Word.forbiddenTerms)
         for term in forbiddenTerms {
             if url.range(of: term) != nil {
                 return false

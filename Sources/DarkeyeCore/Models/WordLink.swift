@@ -166,12 +166,10 @@ public struct WordLink: Codable, Hashable, Sendable {
         while currentCount < count && currentCount < refinedResult.count {
             let wordLink = refinedResult[currentCount]
             var isBlocked = false
-            if let site: Site = await database.value(forKey: Site.prefix + wordLink.url.onionID) {
-                if site.blocked == true {
+            if let wordLinkLink = await wordLink.link() {
+                if await wordLinkLink.isBlocked() {
                     isBlocked = true
                 }
-            } else {
-                NSLog("Couldn't get site from wordLink: \(wordLink)")
             }
             if !isBlocked {
                 result.append(wordLink)
