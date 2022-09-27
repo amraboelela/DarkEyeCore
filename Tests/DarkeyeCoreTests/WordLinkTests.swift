@@ -71,11 +71,11 @@ final class WordLinkTests: TestsBase {
        print("wordLinksCount 2: \(wordLinksCount)")
        print("wordLinks 2: \(wordLinks)")
        if wordLinksCount >= 1 {
-           let blockedKey = Site.prefix + wordLinks[0].url.onionID
+           let blockedKey = Link.prefix + wordLinks[0].url
            print("blockedKey: \(blockedKey)")
-           if var site: Site = await database.value(forKey: blockedKey) {
-               site.blocked = true
-               await site.save()
+           if var link: Link = await database.value(forKey: blockedKey) {
+               link.blocked = true
+               await link.save()
            }
            wordLinks = await WordLink.wordLinks(withSearchText: "hidden wiki", count: countLimit)
            //print("wordLinks: \(wordLinks)")

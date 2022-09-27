@@ -41,9 +41,6 @@ public struct Link: Codable, Equatable, Sendable {
     ]
     
     //static let mainOnionID = "torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion"
-    //"zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad"
-    // "http://zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad.onion/wiki/Main_Page"
-    
     
     static var cachedHtml = [String: String]()
     
@@ -200,10 +197,11 @@ public struct Link: Codable, Equatable, Sendable {
                 for node in nodes {
                     if let elementNode = node.toElement() {
                         let anchorNodes = anchorNodesFrom(node: elementNode)
-                        result.append(contentsOf: anchorNodes.compactMap { anchor in
+                        for anchor in anchorNodes {
+                            //result.append(contentsOf: anchorNodes.compactMap { anchor in
                             if let href = anchor["href"], href.range(of: "#") == nil {
                                 if !Link.allowed(url: href) {
-                                    return nil
+                                    continue
                                 }
                                 var refinedHref = href
                                 if refinedHref.range(of: "redirect_url=") != nil {
@@ -219,14 +217,14 @@ public struct Link: Codable, Equatable, Sendable {
                                     refinedHref = refinedHref.replacingOccurrences(of: "www", with: "http://www")
                                 }
                                 if refinedHref.first == "/" {
-                                    return (href.htmlEncoded, base + refinedHref)
+                                    result.append((href.htmlEncoded, base + refinedHref))
                                 } else if refinedHref.range(of: ".onion") != nil &&
                                             Site.allowed(onionID: refinedHref.onionID) {
-                                    return (href.htmlEncoded, refinedHref)
+                                    result.append((href.htmlEncoded, refinedHref))
                                 }
                             }
-                            return nil
-                        })
+                            //return nil
+                        }
                     }
                 }
             }
@@ -244,13 +242,7 @@ public struct Link: Codable, Equatable, Sendable {
     }
     
     func isBlocked() async -> Bool {
-        if blocked == true {
-            return true
-        }
-        if !Link.allowed(url: url) {
-            return true
-        }
-        return await site()?.blocked ?? false
+        return blocked == true || !Link.allowed(url: url)
     }
     
     // MARK: - Factory methods
@@ -347,15 +339,7 @@ public struct Link: Codable, Equatable, Sendable {
             NSLog("link not allowed")
             myLink.blocked = true
             await myLink.updateLinkProcessedAndSave()
-            if myLink.priority == .high {
-                if var site = await myLink.site() {
-                    site.blocked = false
-                    await site.save()
-                }
-                return
-            } else {
-                throw LinkProcessError.notAllowed
-            }
+            throw LinkProcessError.notAllowed
         }
         let crawler = await Crawler.shared()
         let dbClosed = await database.closed()
@@ -378,9 +362,7 @@ public struct Link: Codable, Equatable, Sendable {
                 NSLog("url not allowed")
                 myLink.blocked = true
                 await myLink.updateLinkProcessedAndSave()
-                if myLink.priority != .high {
-                    throw LinkProcessError.notAllowed
-                }
+                throw LinkProcessError.notAllowed
             case .failed:
                 NSLog("indexNextWord returned .failed")
                 throw LinkProcessError.failed
@@ -446,7 +428,7 @@ public struct Link: Codable, Equatable, Sendable {
                 try await database.setValue(hashLink, forKey: HashLink.prefix + hash)
                 let siteKey = Site.prefix + url.onionID
                 if let _: Site = await database.value(forKey: siteKey) {
-                } else if Site.allowed(onionID: url.onionID) {
+                } else if await !isBlocked() {
                     let site = Site(url: url)
                     NSLog("New site: \(url.onionID)")
                     try await database.setValue(site, forKey: siteKey)

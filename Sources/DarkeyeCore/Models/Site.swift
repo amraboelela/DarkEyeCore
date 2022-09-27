@@ -19,7 +19,6 @@ public struct Site: Codable, Sendable {
     public var numberOfVisits = 0
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfReports = 0
-    public var blocked: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case url
@@ -27,7 +26,6 @@ public struct Site: Codable, Sendable {
         case numberOfVisits
         case lastVisitTime
         case numberOfReports
-        case blocked
     }
     
     // MARK: - Accessors
@@ -58,7 +56,7 @@ public struct Site: Codable, Sendable {
     }
     
     public var allowed: Bool {
-        return Site.allowed(onionID: onionID) && blocked != true
+        return Site.allowed(onionID: onionID) //&& blocked != true
     }
     
     static func allowed(onionID: String) -> Bool {
@@ -99,6 +97,7 @@ public struct Site: Codable, Sendable {
         }
         return result
     }
+    
     // MARK: - Crawling
     
     static func nextSiteToProcess() async -> Site? {
@@ -106,7 +105,7 @@ public struct Site: Codable, Sendable {
         var result: Site? = nil
         await database.enumerateKeysAndValues(backward: false, startingAtKey: nil, andPrefix: Site.prefix) { (Key, site: Site, stop) in
             //NSLog("nextLinkToProcess, Key: \(Key)")
-            if !site.processed && site.allowed {
+            if !site.processed {
                 stop.pointee = true
                 result = site
             } else {
@@ -133,9 +132,6 @@ public struct Site: Codable, Sendable {
                 switch error {
                 case LinkProcessError.notAllowed:
                     NSLog("Site crawlNext notAllowed")
-                    if nextSite.canBeBlocked {
-                        nextSite.blocked = true
-                    }
                     await nextSite.updateSiteProcessedAndSave()
                 default:
                     NSLog("Site crawlNext error: \(error)")

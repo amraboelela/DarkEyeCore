@@ -60,7 +60,7 @@ final class SiteTests: TestsBase {
     
     func testNextSiteToProcess() async {
         await asyncSetup()
-        var site = Site(url: "http://darkeyejce5fone2srstf3j26u6jbjpctkwejiis6qsrqxbpa4k4hlad.onion/darkeye", blocked: true)
+        var site = Site(url: "http://darkeyejce5fone2srstf3j26u6jbjpctkwejiis6qsrqxbpa4k4hlad.onion/darkeye")
         try? await database.setValue(site, forKey: "site-darkeyejce5fone2srstf3j26u6jbjpctkwejiis6qsrqxbpa4k4hlad")
         site = Site(url: "http://haneinhodfxcjcnsm6efuyzdffcrejd7jmstte7hwdvhf67x6okyb2ad.onion")
         try? await database.setValue(site, forKey: "site-haneinhodfxcjcnsm6efuyzdffcrejd7jmstte7hwdvhf67x6okyb2ad")
