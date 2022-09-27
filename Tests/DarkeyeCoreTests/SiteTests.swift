@@ -37,7 +37,7 @@ final class SiteTests: TestsBase {
         await asyncTearDown()
     }
     
-    func testCanBeBlocked() async {
+    /*func testCanBeBlocked() async {
         await asyncSetup()
         var site = Site(url: "http://hanein1.onion")
         XCTAssertTrue(site.canBeBlocked)
@@ -45,7 +45,7 @@ final class SiteTests: TestsBase {
         site = Site(url: url)
         XCTAssertFalse(site.canBeBlocked)
         await asyncTearDown()
-    }
+    }*/
     
     func testAllowed() async {
         await asyncSetup()

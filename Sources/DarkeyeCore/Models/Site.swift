@@ -47,13 +47,13 @@ public struct Site: Codable, Sendable {
         return Site.prefix + onionID
     }
 
-    public var canBeBlocked: Bool {
+    /*public var canBeBlocked: Bool {
         let cannotBeBlockedSites: Set = [
             "5wvugn3zqfbianszhldcqz2u7ulj3xex6i3ha3c5znpgdcnqzn24nnid",
             "zqktlwiuavvvqqt4ybvgvi7tyo4hjl5xgfuvpdf6otjiycgwqbym2qad"
         ]
         return !cannotBeBlockedSites.contains(self.onionID)
-    }
+    }*/
     
     public var allowed: Bool {
         return Site.allowed(onionID: onionID) //&& blocked != true
