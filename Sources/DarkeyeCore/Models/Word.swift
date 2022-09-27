@@ -113,7 +113,14 @@ class Word {
             "teenworld",
             "milf",
             "voyeur",
-            "lolitas"
+            "lolitas",
+            "lolita",
+            "boobs",
+            "teenager",
+            "loliporn",
+            "pedomom",
+            "loliworld",
+            "lolycon"
         ]
         for term in forbiddenTerms {
             if word == term {
