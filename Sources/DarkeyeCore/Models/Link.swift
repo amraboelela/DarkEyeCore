@@ -54,6 +54,7 @@ public struct Link: Codable, Equatable, Sendable {
     public var lastVisitTime = 0 // # of seconds since reference date.
     public var numberOfLinks = 1 // # of inbound links
     var priority: Priority? // default is .low
+    public var blocked: Bool?
     
     public enum CodingKeys: String, CodingKey {
         case url
@@ -63,6 +64,7 @@ public struct Link: Codable, Equatable, Sendable {
         case lastVisitTime
         case numberOfLinks
         case priority
+        case blocked
     }
     
     // MARK: - Accessors
@@ -241,7 +243,10 @@ public struct Link: Codable, Equatable, Sendable {
         return nil
     }
     
-    func blocked() async -> Bool {
+    func isBlocked() async -> Bool {
+        if blocked == true {
+            return true
+        }
         return await site()?.blocked ?? false
     }
     
@@ -335,7 +340,7 @@ public struct Link: Codable, Equatable, Sendable {
     static func process(link: Link) async throws {
         NSLog("processing link: \(link.url)")
         var myLink = link
-        if await link.blocked() {
+        if await link.isBlocked() {
             NSLog("link not allowed")
             await myLink.updateLinkProcessedAndSave()
             throw LinkProcessError.notAllowed
@@ -359,8 +364,11 @@ public struct Link: Codable, Equatable, Sendable {
                 throw LinkProcessError.cannotRun
             case .notAllowed:
                 NSLog("url not allowed")
+                myLink.blocked = true
                 await myLink.updateLinkProcessedAndSave()
-                throw LinkProcessError.notAllowed
+                if myLink.priority != .high {
+                    throw LinkProcessError.notAllowed
+                }
             case .failed:
                 NSLog("indexNextWord returned .failed")
                 throw LinkProcessError.failed
