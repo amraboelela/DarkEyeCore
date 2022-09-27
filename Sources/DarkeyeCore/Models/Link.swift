@@ -345,8 +345,17 @@ public struct Link: Codable, Equatable, Sendable {
         var myLink = link
         if await link.isBlocked() {
             NSLog("link not allowed")
+            myLink.blocked = true
             await myLink.updateLinkProcessedAndSave()
-            throw LinkProcessError.notAllowed
+            if myLink.priority == .high {
+                if var site = await myLink.site() {
+                    site.blocked = false
+                    await site.save()
+                }
+                return
+            } else {
+                throw LinkProcessError.notAllowed
+            }
         }
         let crawler = await Crawler.shared()
         let dbClosed = await database.closed()
