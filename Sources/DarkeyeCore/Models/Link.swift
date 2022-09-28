@@ -450,6 +450,17 @@ public struct Link: Codable, Equatable, Sendable {
         return result
     }
     
+    public mutating func viewing() async {
+        NSLog("viewing link: \(url) \(title ?? "")")
+        numberOfVisits += 1
+        lastVisitTime = Date.secondsSinceReferenceDate
+        await save()
+        var global = await Global.global()
+        global.numberOfViews += 1
+        NSLog("numberOfViews: \(global.numberOfViews)")
+        await global.save()
+    }
+    
     func anchorNodesFrom(node: Fuzi.XMLElement) -> [Fuzi.XMLElement] {
         var result = [Fuzi.XMLElement]()
         if node.toElement()?.tag == "a" {
