@@ -135,7 +135,7 @@ public struct WordLink: Codable, Hashable, Sendable {
         }
         //NSLog("for searchWord in searchWords ended")
         var rawResult = Array(resultSet)
-        NSLog("rawResult.count: \(rawResult.count)")
+        //NSLog("rawResult.count: \(rawResult.count)")
         for i in 0..<rawResult.count {
             rawResult[i].score = await rawResult[i].currentScore()
         }

@@ -44,7 +44,10 @@ class Word {
         "bitcards",
         "vodka",
         "whiskey",
-        "rindexxx"
+        "rindexxx",
+        "teen",
+        "teens",
+        "amorzinho"
     ]
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
