@@ -16,7 +16,7 @@ public struct Global: Codable, Sendable {
     var numberOfProcessedSites = 0
     var numberOfProcessedLinks = 0
     var numberOfSearches = 0
-    public var numberOfViews = 0
+    var numberOfViews = 0
     
     public static func global() async -> Global {
         if let result: Global = await database.value(forKey: Global.prefix) {
