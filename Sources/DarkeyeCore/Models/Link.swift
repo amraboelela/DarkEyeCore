@@ -40,8 +40,6 @@ public struct Link: Codable, Equatable, Sendable {
         "http://haneinhodfxcjcnsm6efuyzdffcrejd7jmstte7hwdvhf67x6okyb2ad.onion"
     ]
     
-    //static let mainOnionID = "torchdeedp3i2jigzjdmfpn5ttjhthh5wbmda2rr3jvqjg5p77c54dqd.onion"
-    
     static var cachedHtml = [String: String]()
     
     public var url: String

@@ -43,7 +43,8 @@ class Word {
         "lolycon",
         "bitcards",
         "vodka",
-        "whiskey"
+        "whiskey",
+        "rindexxx"
     ]
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
