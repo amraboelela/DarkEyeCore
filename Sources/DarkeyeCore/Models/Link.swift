@@ -78,7 +78,7 @@ public struct Link: Codable, Equatable, Sendable {
     }
 
     public var date: String {
-        return Date.friendlyDateStringFrom(timeInterval: TimeInterval(lastProcessTime))
+        return Date.dateStringFrom(timeInterval: TimeInterval(lastProcessTime))
     }
     
     var base: String {
