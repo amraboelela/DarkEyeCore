@@ -47,7 +47,15 @@ class Word {
         "rindexxx",
         "teen",
         "teens",
-        "amorzinho"
+        "amorzinho",
+        "childslave",
+        "nudism",
+        "ilovecp",
+        "torpedochat",
+        "pedoempire",
+        "cpforums",
+        "kidflix",
+        "pedo"
     ]
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {

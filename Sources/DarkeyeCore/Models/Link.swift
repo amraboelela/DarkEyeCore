@@ -77,6 +77,10 @@ public struct Link: Codable, Equatable, Sendable {
         return Link.prefix + url
     }
 
+    var date: String {
+        return Date.friendlyDateStringFrom(timeInterval: TimeInterval(lastProcessTime))
+    }
+    
     var base: String {
         if let onionRange = url.range(of: ".onion") {
             return String(url.prefix(upTo: onionRange.upperBound))
