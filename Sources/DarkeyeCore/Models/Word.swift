@@ -55,7 +55,10 @@ class Word {
         "pedoempire",
         "cpforums",
         "kidflix",
-        "pedo"
+        "pedo",
+        "ilcp",
+        "loli",
+        "tpchat"
     ]
     
     static func words(fromText text: String, lowerCase: Bool = false) -> [String] {
